@@ -1,29 +1,29 @@
 \ProvidesFile{OMLMinion-LF-C.fd}[2004/09/20 font definitions for OML/Minion-LF-C.]
 \DeclareFontFamily{OML}{Minion-LF-C}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m}{n}{
-   <-6>  MinionPro-SemiboldCapt-L-7m
-   <6->  MinionPro-Capt-L-7m}{}
+   <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-7m
+   <6->  MinionPro-\Mn@Avail@Capt-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m}{it}{
-   <-6>  MinionPro-SemiboldItCapt-L-7m
-   <6->  MinionPro-ItCapt-L-7m}{}
+   <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-7m
+   <6->  MinionPro-\Mn@Avail@Capt@P{It}-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m}{sc}{
-   <-6>  MinionPro-SemiboldItCapt-LSC-7m
-   <6->  MinionPro-Capt-LSC-7m}{}
+   <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-LSC-7m
+   <6->  MinionPro-\Mn@Avail@Capt-LSC-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{sb}{n}{
-   <-6>  MinionPro-BoldCapt-L-7m
-   <6->  MinionPro-SemiboldCapt-L-7m}{}
+   <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-7m
+   <6->  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{sb}{it}{
-   <-6>  MinionPro-BoldItCapt-L-7m
-   <6->  MinionPro-SemiboldItCapt-L-7m}{}
+   <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-7m
+   <6->  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{sb}{sc}{
-   <-6>  MinionPro-BoldItCapt-LSC-7m
-   <6->  MinionPro-SemiboldCapt-LSC-7m}{}
+   <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-LSC-7m
+   <6->  MinionPro-\Mn@Avail@Capt@P{Semibold}-LSC-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{b}{n}{
-    <->  MinionPro-BoldCapt-L-7m}{}
+    <->  MinionPro-\Mn@Avail@Capt@P{Bold}-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{b}{it}{
-    <->  MinionPro-BoldItCapt-L-7m}{}
+    <->  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{b}{sc}{
-    <->  MinionPro-BoldCapt-LSC-7m}{}
+    <->  MinionPro-\Mn@Avail@Capt@P{Bold}-LSC-7m}{}
 
 \DeclareFontShape{OML}{Minion-LF-C}{bx}{it}{<->ssub * minion/b/it}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m} {sl}{<->ssub * minion/m/it}{}

@@ -1,45 +1,45 @@
 \ProvidesFile{x2Minion-OsF.fd}[2004/08/08 font definitions for X2/Minion-OsF.]
 \DeclareFontFamily{X2}{Minion-OsF}{}
 \DeclareFontShape{X2}{Minion-OsF}{m}{n}{
-    <-6>  MinionPro-SemiboldCapt-OSFL-6x
-   <6-8>  MinionPro-Capt-OSFL-6x
-   <8-9>  MinionPro-Capt-OSF-6x
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFL-6x
+   <6-8>  MinionPro-\Mn@Avail@Capt-OSFL-6x
+   <8-9>  MinionPro-\Mn@Avail@Capt-OSF-6x
    <9-12> MinionPro-Regular-OSF-6x
-  <12-15> MinionPro-Subh-OSF-6x
-  <15->   MinionPro-Disp-OSF-6x}{}
+  <12-15> MinionPro-\Mn@Avail@Subh-OSF-6x
+  <15->   MinionPro-\Mn@Avail@Disp-OSF-6x}{}
 \DeclareFontShape{X2}{Minion-OsF}{m}{it}{
-    <-6>  MinionPro-SemiboldItCapt-OSFL-6x
-   <6-8>  MinionPro-ItCapt-OSFL-6x
-   <8-9>  MinionPro-ItCapt-OSF-6x
+    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSFL-6x
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{It}-OSFL-6x
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{It}-OSF-6x
    <9-12> MinionPro-It-OSF-6x
-  <12-15> MinionPro-ItSubh-OSF-6x
-  <15->   MinionPro-ItDisp-OSF-6x}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-OSF-6x
+  <15->   MinionPro-\Mn@Avail@Disp@P{It}-OSF-6x}{}
 \DeclareFontShape{X2}{Minion-OsF}{sb}{n}{
-    <-6>  MinionPro-BoldCapt-OSFL-6x
-   <6-8>  MinionPro-SemiboldCapt-OSFL-6x
-   <8-9>  MinionPro-SemiboldCapt-OSF-6x
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFL-6x
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFL-6x
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSF-6x
    <9-12> MinionPro-Semibold-OSF-6x
-  <12-15> MinionPro-SemiboldSubh-OSF-6x
-  <15->   MinionPro-SemiboldDisp-OSF-6x}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-OSF-6x
+  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-OSF-6x}{}
 \DeclareFontShape{X2}{Minion-OsF}{sb}{it}{
-    <-6>  MinionPro-BoldItCapt-OSFL-6x
-   <6-8>  MinionPro-SemiboldItCapt-OSFL-6x
-   <8-9>  MinionPro-SemiboldItCapt-OSF-6x
+    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSFL-6x
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSFL-6x
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSF-6x
    <9-12> MinionPro-SemiboldIt-OSF-6x
-  <12-15> MinionPro-SemiboldItSubh-OSF-6x
-  <15->   MinionPro-SemiboldItDisp-OSF-6x}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-OSF-6x
+  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-OSF-6x}{}
 \DeclareFontShape{X2}{Minion-OsF}{b}{n}{
-    <-8>  MinionPro-BoldCapt-OSFL-6x
-   <8-9>  MinionPro-BoldCapt-OSF-6x
+    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFL-6x
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSF-6x
    <9-12> MinionPro-Bold-OSF-6x
-  <12-15> MinionPro-BoldSubh-OSF-6x
-  <15->   MinionPro-BoldDisp-OSF-6x}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-OSF-6x
+  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-OSF-6x}{}
 \DeclareFontShape{X2}{Minion-OsF}{b}{it}{
-    <-8>  MinionPro-BoldItCapt-OSFL-6x
-   <8-9>  MinionPro-BoldItCapt-OSF-6x
+    <-8>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSFL-6x
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSF-6x
    <9-12> MinionPro-BoldIt-OSF-6x
-  <12-15> MinionPro-BoldItSubh-OSF-6x
-  <15->   MinionPro-BoldItDisp-OSF-6x}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-OSF-6x
+  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-OSF-6x}{}
 
 \DeclareFontShape{X2}{Minion-OsF}{m} {sl}{<->ssub * Minion-OsF/m/it}{}
 \DeclareFontShape{X2}{Minion-OsF}{sb}{sl}{<->ssub * Minion-OsF/sb/it}{}

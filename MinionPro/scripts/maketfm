@@ -162,7 +162,13 @@ make_series() {
       make_metrics "$1$sub"
     fi
   done
-
+  
+  if [ "x$1" = "x" ]
+  then 
+    make_spaced_metrics Regular
+  else
+    make_spaced_metrics "$1"
+  fi
   make_spaced_metrics "$1Capt"
 }
 

@@ -1,16 +1,16 @@
 \ProvidesFile{UMinion.fd}[2004/12/12 font definitions for U/Minion.]
 \DeclareFontFamily{U}{Minion}{}
 \DeclareFontShape{U}{Minion}{m}{n}{
-    <-6>  MinionPro-SemiboldCapt-U
-   <6-9>  MinionPro-Capt-U
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-U
+   <6-9>  MinionPro-\Mn@Avail@Capt-U
    <9-12> MinionPro-Regular-U
-  <12-15> MinionPro-Subh-U
-  <15->   MinionPro-Disp-U}{}
+  <12-15> MinionPro-\Mn@Avail@Subh-U
+  <15->   MinionPro-\Mn@Avail@Disp-U}{}
 \DeclareFontShape{U}{Minion}{m}{it}{
-    <-6>  MinionPro-SemiboldItCapt-U
-   <6-9>  MinionPro-ItCapt-U
+    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-U
+   <6-9>  MinionPro-\Mn@Avail@Capt@P{It}-U
    <9-12> MinionPro-It-U
-  <12-15> MinionPro-ItSubh-U
-  <15->   MinionPro-ItDisp-U}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-U
+  <15->   MinionPro-\Mn@Avail@Disp@P{It}-U}{}
 \endinput
 % vim:set ft=tex:

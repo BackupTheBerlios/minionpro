@@ -1,65 +1,65 @@
 \ProvidesFile{OMLMinion-OsF.fd}[2004/09/20 font definitions for OML/Minion-OsF.]
 \DeclareFontFamily{OML}{Minion-OsF}{}
 \DeclareFontShape{OML}{Minion-OsF}{m}{n}{
-    <-6>  MinionPro-SemiboldCapt-OSFL-7m
-   <6-8>  MinionPro-Capt-OSFL-7m
-   <8-9>  MinionPro-Capt-OSFL-7m
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFL-7m
+   <6-8>  MinionPro-\Mn@Avail@Capt-OSFL-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt-OSFL-7m
    <9-12> MinionPro-Regular-OSFL-7m
-  <12-15> MinionPro-Subh-OSFL-7m
-  <15->   MinionPro-Disp-OSFL-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh-OSFL-7m
+  <15->   MinionPro-\Mn@Avail@Disp-OSFL-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{m}{it}{
-    <-6>  MinionPro-SemiboldItCapt-OSFL-7m
-   <6-8>  MinionPro-ItCapt-OSFL-7m
-   <8-9>  MinionPro-ItCapt-OSFL-7m
+    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSFL-7m
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{It}-OSFL-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{It}-OSFL-7m
    <9-12> MinionPro-It-OSFL-7m
-  <12-15> MinionPro-ItSubh-OSFL-7m
-  <15->   MinionPro-ItDisp-OSFL-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-OSFL-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{It}-OSFL-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{m}{sc}{
-    <-6>  MinionPro-SemiboldItCapt-OSFLSC-7m
-   <6-8>  MinionPro-Capt-OSFLSC-7m
-   <8-9>  MinionPro-Capt-OSFLSC-7m
+    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSFLSC-7m
+   <6-8>  MinionPro-\Mn@Avail@Capt-OSFLSC-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt-OSFLSC-7m
    <9-12> MinionPro-Regular-OSFLSC-7m
-  <12-15> MinionPro-Subh-OSFLSC-7m
-  <15->   MinionPro-Disp-OSFLSC-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh-OSFLSC-7m
+  <15->   MinionPro-\Mn@Avail@Disp-OSFLSC-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{sb}{n}{
-    <-6>  MinionPro-BoldCapt-OSFL-7m
-   <6-8>  MinionPro-SemiboldCapt-OSFL-7m
-   <8-9>  MinionPro-SemiboldCapt-OSFL-7m
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFL-7m
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFL-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFL-7m
    <9-12> MinionPro-Semibold-OSFL-7m
-  <12-15> MinionPro-SemiboldSubh-OSFL-7m
-  <15->   MinionPro-SemiboldDisp-OSFL-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-OSFL-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-OSFL-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{sb}{it}{
-    <-6>  MinionPro-BoldItCapt-OSFL-7m
-   <6-8>  MinionPro-SemiboldItCapt-OSFL-7m
-   <8-9>  MinionPro-SemiboldItCapt-OSFL-7m
+    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSFL-7m
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSFL-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-OSFL-7m
    <9-12> MinionPro-SemiboldIt-OSFL-7m
-  <12-15> MinionPro-SemiboldItSubh-OSFL-7m
-  <15->   MinionPro-SemiboldItDisp-OSFL-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-OSFL-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-OSFL-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{sb}{sc}{
-    <-6>  MinionPro-BoldItCapt-OSFLSC-7m
-   <6-8>  MinionPro-SemiboldCapt-OSFLSC-7m
-   <8-9>  MinionPro-SemiboldCapt-OSFLSC-7m
+    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSFLSC-7m
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFLSC-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-OSFLSC-7m
    <9-12> MinionPro-Semibold-OSFLSC-7m
-  <12-15> MinionPro-SemiboldSubh-OSFLSC-7m
-  <15->   MinionPro-SemiboldDisp-OSFLSC-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-OSFLSC-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-OSFLSC-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{b}{n}{
-    <-8>  MinionPro-BoldCapt-OSFL-7m
-   <8-9>  MinionPro-BoldCapt-OSFL-7m
+    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFL-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFL-7m
    <9-12> MinionPro-Bold-OSFL-7m
-  <12-15> MinionPro-BoldSubh-OSFL-7m
-  <15->   MinionPro-BoldDisp-OSFL-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-OSFL-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-OSFL-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{b}{it}{
-    <-8>  MinionPro-BoldItCapt-OSFL-7m
-   <8-9>  MinionPro-BoldItCapt-OSFL-7m
+    <-8>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSFL-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-OSFL-7m
    <9-12> MinionPro-BoldIt-OSFL-7m
-  <12-15> MinionPro-BoldItSubh-OSFL-7m
-  <15->   MinionPro-BoldItDisp-OSFL-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-OSFL-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-OSFL-7m}{}
 \DeclareFontShape{OML}{Minion-OsF}{b}{sc}{
-    <-8>  MinionPro-BoldCapt-OSFLSC-7m
-   <8-9>  MinionPro-BoldCapt-OSFLSC-7m
+    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFLSC-7m
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-OSFLSC-7m
    <9-12> MinionPro-Bold-OSFLSC-7m
-  <12-15> MinionPro-BoldSubh-OSFLSC-7m
-  <15->   MinionPro-BoldDisp-OSFLSC-7m}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-OSFLSC-7m
+  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-OSFLSC-7m}{}
 
 \DeclareFontShape{OML}{Minion-OsF}{bx}{it}{<->ssub * Minion-OsF/b/it}{}
 \DeclareFontShape{OML}{Minion-OsF}{m} {sl}{<->ssub * Minion-OsF/m/it}{}

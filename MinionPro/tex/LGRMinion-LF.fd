@@ -1,45 +1,45 @@
 \ProvidesFile{LGRMinion-LF.fd}[2004/11/16 font definitions for LGR/Minion-LF.]
 \DeclareFontFamily{LGR}{Minion-LF}{}
 \DeclareFontShape{LGR}{Minion-LF}{m}{n}{
-    <-6>  MinionPro-SemiboldCapt-L-k
-   <6-8>  MinionPro-Capt-L-k
-   <8-9>  MinionPro-Capt-k
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-k
+   <6-8>  MinionPro-\Mn@Avail@Capt-L-k
+   <8-9>  MinionPro-\Mn@Avail@Capt-k
    <9-12> MinionPro-Regular-k
-  <12-15> MinionPro-Subh-k
-  <15->   MinionPro-Disp-k}{}
+  <12-15> MinionPro-\Mn@Avail@Subh-k
+  <15->   MinionPro-\Mn@Avail@Disp-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{m}{it}{
-    <-6>  MinionPro-SemiboldItCapt-L-k
-   <6-8>  MinionPro-ItCapt-L-k
-   <8-9>  MinionPro-ItCapt-k
+    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-k
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{It}-L-k
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{It}-k
    <9-12> MinionPro-It-k
-  <12-15> MinionPro-ItSubh-k
-  <15->   MinionPro-ItDisp-k}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-k
+  <15->   MinionPro-\Mn@Avail@Disp@P{It}-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{sb}{n}{
-    <-6>  MinionPro-BoldCapt-L-k
-   <6-8>  MinionPro-SemiboldCapt-L-k
-   <8-9>  MinionPro-SemiboldCapt-k
+    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-k
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-k
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-k
    <9-12> MinionPro-Semibold-k
-  <12-15> MinionPro-SemiboldSubh-k
-  <15->   MinionPro-SemiboldDisp-k}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-k
+  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{sb}{it}{
-    <-6>  MinionPro-BoldItCapt-L-k
-   <6-8>  MinionPro-SemiboldItCapt-L-k
-   <8-9>  MinionPro-SemiboldItCapt-k
+    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-k
+   <6-8>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-k
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-k
    <9-12> MinionPro-SemiboldIt-k
-  <12-15> MinionPro-SemiboldItSubh-k
-  <15->   MinionPro-SemiboldItDisp-k}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-k
+  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{b}{n}{
-    <-8>  MinionPro-BoldCapt-L-k
-   <8-9>  MinionPro-BoldCapt-k
+    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-k
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-k
    <9-12> MinionPro-Bold-k
-  <12-15> MinionPro-BoldSubh-k
-  <15->   MinionPro-BoldDisp-k}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-k
+  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{b}{it}{
-    <-8>  MinionPro-BoldItCapt-L-k
-   <8-9>  MinionPro-BoldItCapt-k
+    <-8>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-k
+   <8-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-k
    <9-12> MinionPro-BoldIt-k
-  <12-15> MinionPro-BoldItSubh-k
-  <15->   MinionPro-BoldItDisp-k}{}
+  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-k
+  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-k}{}
 
 \DeclareFontShape{LGR}{Minion-LF}{m} {sl}{<->ssub * Minion-LF/m/it}{}
 \DeclareFontShape{LGR}{Minion-LF}{sb}{sl}{<->ssub * Minion-LF/sb/it}{}
