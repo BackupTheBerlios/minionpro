@@ -79,8 +79,8 @@ make_normal_metrics() {
   make_tfm "$1" ot2    $2-ot2       -scyrl $flags
 
   make_tfm "$1" ts1    $2-ts1       $ts_flags
-  make_tfm "$1" ts1    $2-sc-ts1    --unicoding 'germandbls =: SSsmall' $sc_ts_flags
-  make_tfm "$1" ts1    $2-sc-l2-ts1 -L 80 --unicoding 'germandbls =: SSsmall' $sc_ts_flags
+  make_tfm "$1" ts1    $2-sc-ts1    $sc_ts_flags
+  make_tfm "$1" ts1    $2-sc-l2-ts1 -L 80 $sc_ts_flags
 
   make_tfm "$1" t1     $2-sc-t1     --unicoding 'germandbls =: SSsmall' $sc_flags
   make_tfm "$1" ot1    $2-sc-ot1    --unicoding 'germandbls =: SSsmall' $sc_flags
@@ -107,7 +107,7 @@ make_spread_metrics() {
   make_tfm "$1" t1     $2-l1-t1     -L 40        $flags
   make_tfm "$1" ot1    $2-l1-ot1    -L 40        $flags
   make_tfm "$1" lgr    $2-l1-lgr    -L 40 -sgrek $flags
-  make_tfm "$1" ly1    $2-ly1       -L 40        $flags
+  make_tfm "$1" ly1    $2-l1-ly1    -L 40        $flags
   make_tfm "$1" t2a    $2-l1-t2a    -L 40 -scyrl $flags
   make_tfm "$1" t2b    $2-l1-t2b    -L 40 -scyrl $flags
   make_tfm "$1" t2c    $2-l1-t2c    -L 40 -scyrl $flags
@@ -115,8 +115,8 @@ make_spread_metrics() {
   make_tfm "$1" ot2    $2-l1-ot2    -L 40 -scyrl $flags
   make_tfm "$1" ts1    $2-l1-ts1    -L 40        $ts_flags
   make_tfm "$1" ts1    $2-sc-l1-ts1 -L 40        $sc_ts_flags
-  make_tfm "$1" t1     $2-sc-l1-t1  -L 40        $sc_flags
-  make_tfm "$1" ot1    $2-sc-l1-ot1 -L 40        $sc_flags
+  make_tfm "$1" t1     $2-sc-l1-t1  -L 40 --unicoding 'germandbls =: SSsmall' $sc_flags
+  make_tfm "$1" ot1    $2-sc-l1-ot1 -L 40 --unicoding 'germandbls =: SSsmall' $sc_flags
 }
 
 make_metrics() {
