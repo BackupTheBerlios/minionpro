@@ -104,83 +104,79 @@ make_spread_metrics() {
   make_tfm "$1" sc-ot1 $2-sc-l1-ot1 "-L 40        $sc_flags"
 }
 
-#make_spread_ts1_metrics() {
-#
-#  make_tfm "$1" ts1 $2-l1-ts1    "-L 40 $3"
-#  make_tfm "$1" ts1 $2-sc-l1-ts1 "-L 40 $3 -fsmcp"
-#}
-
 make_metrics() {
 
-  echo -n "Processing font $font-$1 ..." >&2
+  if [ -e "$font-$1.pfb" ]
+  then
+    echo -n "Processing font $font-$1 ..." >&2
 
-  make_normal_metrics     "$1" lf   "-flnum -fpnum"
-  make_normal_metrics     "$1" tlf  "-flnum -ftnum"
-  make_normal_metrics     "$1" osf  "-fonum -fpnum"
-  make_normal_metrics     "$1" tosf "-fonum -ftnum"
+    make_normal_metrics     "$1" lf   "-flnum -fpnum"
+    make_normal_metrics     "$1" tlf  "-flnum -ftnum"
+    make_normal_metrics     "$1" osf  "-fonum -fpnum"
+    make_normal_metrics     "$1" tosf "-fonum -ftnum"
 
-#  make_normal_ts1_metrics "$1" lf   "-fpnum --filter=<Number> -fonum --filter=!<Number> -flnum"
-#  make_normal_ts1_metrics "$1" tlf  "-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum"
-#  make_normal_ts1_metrics "$1" osf  "-fpnum --filter=<Number> -flnum --filter=!<Number> -fonum"
-#  make_normal_ts1_metrics "$1" tosf "-ftnum --filter=<Number> -flnum --filter=!<Number> -fonum"
+    make_oml_metrics        "$1" lf   "-flnum -ftnum"
+    make_oml_metrics        "$1" tlf  "-flnum -fpnum"
+    make_oml_metrics        "$1" osf  "-fonum -ftnum"
+    make_oml_metrics        "$1" tosf "-fonum -fpnum"
 
-  make_oml_metrics        "$1" lf   "-flnum -ftnum"
-  make_oml_metrics        "$1" tlf  "-flnum -fpnum"
-  make_oml_metrics        "$1" osf  "-fonum -ftnum"
-  make_oml_metrics        "$1" tosf "-fonum -fpnum"
+    make_tfm "$1" orn-u orn-u ""
 
-  make_tfm "$1" orn-u orn-u ""
-
-  echo " done." >&2
+    echo " done." >&2
+  fi
 }
 
 make_spaced_metrics() {
 
-  echo -n "Processing font $font-$1 ..." >&2
+  if [ -e "$font-$1.pfb" ]
+  then
+    echo -n "Processing font $font-$1 ..." >&2
 
-  make_spread_metrics     "$1" lf   "-flnum -fpnum"
-  make_spread_metrics     "$1" tlf  "-flnum -ftnum"
-  make_spread_metrics     "$1" osf  "-fonum -fpnum"
-  make_spread_metrics     "$1" tosf "-fonum -ftnum"
+    make_spread_metrics     "$1" lf   "-flnum -fpnum"
+    make_spread_metrics     "$1" tlf  "-flnum -ftnum"
+    make_spread_metrics     "$1" osf  "-fonum -fpnum"
+    make_spread_metrics     "$1" tosf "-fonum -ftnum"
 
-#  make_spread_ts1_metrics "$1" lf   "-fpnum --filter=<Number> -fonum --filter=!<Number> -flnum"
-#  make_spread_ts1_metrics "$1" tlf  "-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum"
-#  make_spread_ts1_metrics "$1" osf  "-fpnum --filter=<Number> -flnum --filter=!<Number> -fonum"
-#  make_spread_ts1_metrics "$1" tosf "-ftnum --filter=<Number> -flnum --filter=!<Number> -fonum"
-
-  echo " done." >&2
+    echo " done." >&2
+  fi
 }
 
 make_swash_metrics() {
 
-  echo -n "Processing font $font-$1 ..." >&2
+  if [ -e "$font-$1.pfb" ]
+  then
+    echo -n "Processing font $font-$1 ..." >&2
 
-  make_tfm "$1" t1  lf-swash-t1    "-flnum -fpnum -fswsh"
-  make_tfm "$1" ot1 lf-swash-ot1   "-flnum -fpnum -fswsh"
-  make_tfm "$1" t1  osf-swash-t1   "-fonum -fpnum -fswsh"
-  make_tfm "$1" ot1 osf-swash-ot1  "-fonum -fpnum -fswsh"
-  make_tfm "$1" t1  tlf-swash-t1   "-flnum -ftnum -fswsh"
-  make_tfm "$1" ot1 tlf-swash-ot1  "-flnum -ftnum -fswsh"
-  make_tfm "$1" t1  tosf-swash-t1  "-fonum -ftnum -fswsh"
-  make_tfm "$1" ot1 tosf-swash-ot1 "-fonum -ftnum -fswsh"
+    make_tfm "$1" t1  lf-swash-t1    "-flnum -fpnum -fswsh"
+    make_tfm "$1" ot1 lf-swash-ot1   "-flnum -fpnum -fswsh"
+    make_tfm "$1" t1  osf-swash-t1   "-fonum -fpnum -fswsh"
+    make_tfm "$1" ot1 osf-swash-ot1  "-fonum -fpnum -fswsh"
+    make_tfm "$1" t1  tlf-swash-t1   "-flnum -ftnum -fswsh"
+    make_tfm "$1" ot1 tlf-swash-ot1  "-flnum -ftnum -fswsh"
+    make_tfm "$1" t1  tosf-swash-t1  "-fonum -ftnum -fswsh"
+    make_tfm "$1" ot1 tosf-swash-ot1 "-fonum -ftnum -fswsh"
 
-  echo " done." >&2
+    echo " done." >&2
+  fi
 }
 
 make_spaced_swash_metrics() {
 
-  echo -n "Processing font $font-$1 ..." >&2
+  if [ -e "$font-$1.pfb" ]
+  then
+    echo -n "Processing font $font-$1 ..." >&2
 
-  make_tfm "$1" t1  lf-swash-l1-t1    "-L 40 -flnum -fpnum -fswsh"
-  make_tfm "$1" ot1 lf-swash-l1-ot1   "-L 40 -flnum -fpnum -fswsh"
-  make_tfm "$1" t1  osf-swash-l1-t1   "-L 40 -fonum -fpnum -fswsh"
-  make_tfm "$1" ot1 osf-swash-l1-ot1  "-L 40 -fonum -fpnum -fswsh"
-  make_tfm "$1" t1  tlf-swash-l1-t1   "-L 40 -flnum -ftnum -fswsh"
-  make_tfm "$1" ot1 tlf-swash-l1-ot1  "-L 40 -flnum -ftnum -fswsh"
-  make_tfm "$1" t1  tosf-swash-l1-t1  "-L 40 -fonum -ftnum -fswsh"
-  make_tfm "$1" ot1 tosf-swash-l1-ot1 "-L 40 -fonum -ftnum -fswsh"
+    make_tfm "$1" t1  lf-swash-l1-t1    "-L 40 -flnum -fpnum -fswsh"
+    make_tfm "$1" ot1 lf-swash-l1-ot1   "-L 40 -flnum -fpnum -fswsh"
+    make_tfm "$1" t1  osf-swash-l1-t1   "-L 40 -fonum -fpnum -fswsh"
+    make_tfm "$1" ot1 osf-swash-l1-ot1  "-L 40 -fonum -fpnum -fswsh"
+    make_tfm "$1" t1  tlf-swash-l1-t1   "-L 40 -flnum -ftnum -fswsh"
+    make_tfm "$1" ot1 tlf-swash-l1-ot1  "-L 40 -flnum -ftnum -fswsh"
+    make_tfm "$1" t1  tosf-swash-l1-t1  "-L 40 -fonum -ftnum -fswsh"
+    make_tfm "$1" ot1 tosf-swash-l1-ot1 "-L 40 -fonum -ftnum -fswsh"
 
-  echo " done." >&2
+    echo " done." >&2
+  fi
 }
 
 make_series() {
