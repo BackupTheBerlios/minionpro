@@ -33,8 +33,8 @@
 % LIGKERN afii10057 two =: afii10048 ;
 
 % CYRK
-% LIGKERN afii10028 =: afii10039 ;
-% LIGKERN afii10028 =: afii10039 ;
+% LIGKERN afii10028 afii10039 =: afii10039 ;
+% LIGKERN afii10028 afii10087 =: afii10039 ;
 
 % CYRL 
 % LIGKERN afii10029 one =: afii10058 ;
