@@ -1,46 +1,5 @@
-diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
---- ../otftotfm.orig/metrics.cc	2004-10-01 09:42:29.000000000 +0200
-+++ ./metrics.cc	2005-02-22 21:59:39.000000000 +0100
-@@ -24,7 +24,7 @@
- #include <lcdf/straccum.hh>
- 
- Metrics::Metrics(Efont::CharstringProgram *font, int nglyphs)
--    : _boundary_glyph(nglyphs), _emptyslot_glyph(nglyphs + 1),
-+    : _boundary_glyph(nglyphs), _skew_glyph(nglyphs + 1), _emptyslot_glyph(nglyphs + 2),
-       _design_units(1000), _liveness_marked(false)
- {
-     _encoding.assign(256, Char());
-@@ -97,6 +97,8 @@
- 	    return ch.virtual_char->name;
- 	else if (ch.glyph == _boundary_glyph)
- 	    return "<boundary>";
-+	else if (ch.glyph == _skew_glyph)
-+	    return "<skew>";
- 	else if (ch.glyph == _emptyslot_glyph)
- 	    return "<emptyslot>";
- 	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
-diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
---- ../otftotfm.orig/metrics.hh	2004-08-10 09:27:30.000000000 +0200
-+++ ./metrics.hh	2005-02-22 20:48:51.000000000 +0100
-@@ -31,6 +31,7 @@
-     void check() const;
-     
-     Glyph boundary_glyph() const	{ return _boundary_glyph; }
-+    Glyph skew_glyph() const		{ return _skew_glyph; }
-     Glyph emptyslot_glyph() const	{ return _emptyslot_glyph; }
- 
-     String coding_scheme() const		{ return _coding_scheme; }
-@@ -147,6 +148,7 @@
-     mutable Vector<int> _emap;
- 
-     Glyph _boundary_glyph;
-+    Glyph _skew_glyph;
-     Glyph _emptyslot_glyph;
- 
-     Vector<Kern> _altselectors;
-diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
---- ../otftotfm.orig/otftotfm.cc	2005-02-10 00:56:30.000000000 +0100
-+++ ./otftotfm.cc	2005-02-27 18:56:35.000000000 +0100
+--- ../otftotfm.orig/otftotfm.cc	2005-02-16 23:11:28.000000000 +0100
++++ otftotfm.cc	2005-03-02 19:38:49.000000000 +0100
 @@ -94,6 +94,7 @@
  #define ALTERNATES_FILTER_OPT	336
  #define SPACE_FACTOR_OPT	337
@@ -100,14 +59,11 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  {
      // XXX check DESIGNSIZE and DESIGNUNITS for correctness
  
-@@ -511,10 +537,9 @@
- 	font_xform.shear(slant);
-     int bounds[4], width;
+@@ -513,8 +539,7 @@
      double du = (design_units == 1000 ? 1. : design_units / 1000.);
--    
-+
+     
      double val;
--    (void) family_cff->dict_value(Efont::Cff::oItalicAngle, 0, &val);
+-    (void) family_cff->dict_value(Efont::Cff::oItalicAngle, &val);
 -    double actual_slant = -tan(val * M_PI / 180.0) + slant;
 +    double actual_slant = get_slant(family_cff) + slant;
      if (actual_slant)
@@ -137,7 +93,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
 -    // don't print KRN x after printing LIG x
 -    uint32_t used[8];
 -    for (int i = 0; i <= 256; i++)
--	if (metrics.glyph(i)) {
+-	if (metrics.glyph(i) && minimum_kern < 10000) {
 -	    int any_lig = metrics.ligatures(i, lig_code2, lig_outcode, lig_context);
 -	    int any_kern = metrics.kerns(i, kern_code2, kern_amt);
 -	    if (any_lig || any_kern) {
@@ -249,7 +205,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	fclose(f);
      }
  
-@@ -1008,10 +1032,10 @@
+@@ -1008,30 +1032,26 @@
  	if (output_flags & G_BINARY) {
  	    String tfm = getodir(O_TFM, errh) + "/" + font_name + ".tfm";
  	    String vf = getodir(O_VF, errh) + "/" + font_name + ".vf";
@@ -262,7 +218,13 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	    update_odir(O_VPL, outfile, errh);
  	}
  	metrics.make_base(257);
-@@ -1022,10 +1046,10 @@
+     }
+ 
+     // output metrics
+-    double save_minimum_kern = minimum_kern;
+-    if (need_virtual)
+-	minimum_kern = 100000;
+     if (!(output_flags & G_METRICS))
  	/* do nothing */;
      else if (output_flags & G_BINARY) {
  	String tfm = getodir(O_TFM, errh) + "/" + base_font_name + ".tfm";
@@ -274,8 +236,11 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
 +	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, false, !(output_flags & G_VMETRICS), outfile, errh);
  	update_odir(O_PL, outfile, errh);
      }
+-    minimum_kern = save_minimum_kern;
  
-@@ -1268,6 +1292,9 @@
+     // print DVIPS map line
+     if (errh->nerrors() == 0 && (output_flags & G_PSFONTSMAP)) {
+@@ -1272,6 +1292,9 @@
      // encode boundary glyph at 256; pretend its Unicode value is '\n'
      metrics.encode(256, '\n', metrics.boundary_glyph());
  
@@ -285,7 +250,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
      // maintain statistics about features
      HashMap<uint32_t, int> feature_usage(0);
  
-@@ -1322,15 +1349,26 @@
+@@ -1326,15 +1349,26 @@
      // apply math letterspacing, if any
      if (math_spacing) {
  	Transform font_xform;
@@ -313,7 +278,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  		}
  	    }
  	}
-@@ -1578,6 +1616,10 @@
+@@ -1582,6 +1616,10 @@
  	    default_ligkern = true;
  	    break;
  
