@@ -15,7 +15,7 @@ done
 
 echo "Creating TeX metrics ..."
 
-./scripts/maketfm MinionPro | sort | uniq >dvips/Minion.map
+./scripts/maketfm MinionPro | grep -v "^I had to" | sort -u >dvips/Minion.map
 
 for v in *.pl
 do
