@@ -282,7 +282,7 @@
 /MinionPro-LGREncoding [
 % 0x00 (encoded characters from Babel's standard format)
 	/endash /Alphatonos /uni1F08 /uni1F09 /uni1F0A /uni1F0B /uni1F0C /uni1F0D
-	 /.notdef /uni1FBC /uni1F0E /uni1FFC /uni03D1 /Epsilontonos /uni1F18 /uni03D5
+	 /uni1FEC /uni1FBC /uni1F0E /uni1FFC /uni03D1 /Epsilontonos /uni1F18 /uni03D5
 % 0x10
 	 /uni03D0 /uni03D6 /uni1F18 /uni03DE /Etatonos /Iotatonos /Omegatonos /Omicrontonos
 	 /Euro /perthousand  /uni03E0 /uni1F0F /quoteleft /quoteright /uni1FBA /macron
