@@ -4,6 +4,11 @@
 % LIGKERN Tcedilla {L} h ; Tcaron {L} h
 % LIGKERN less less =: guillemotleft
 % LIGKERN greater greater =: guillemotright
+% LIGKERN question quoteleft =: questiondown ; exclam quoteleft =: exclamdown ;
+% LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;
+% LIGKERN quoteleft quoteleft =: quotedblleft ; 
+% LIGKERN quoteright quoteright =: quotedblright
+
 %
 /MinionPro-T1Encoding [          % now 256 chars follow
 % 0x00
