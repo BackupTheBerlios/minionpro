@@ -10,7 +10,7 @@
 \usepackage[minionint]{MinionPro}
 \usepackage{microtype}
 \usepackage[british]{babel}
-\usepackage{booktabs,pifont}
+\usepackage{array,booktabs,pifont}
 \begin{document}
 \DocInput{MinionPro.dtx}
 \end{document}
@@ -178,19 +178,20 @@
 % letters are accessed via the \textsf{pifont} package using
 % |\Pisymbol{MinionPro-Ornaments}{|$\langle\mathit{int}\rangle$|}|\?:
 %
-% \medskip\noindent{\centering
-% \begin{tabular}{@{}rllrllrllrl@{}}
+% \medskip\noindent{\centering\figureversion{tabular}%
+% \newcommand\sym[1]{\Pisymbol{MinionPro-Ornaments}{#1}}%
+% \begin{tabular}{@{}*{3}{rl@{\qquad}}rl@{}}
 % \toprule
-%  number & glyph & & number & glyph & & number & glyph & & number & glyph \\
+%  number & glyph & number & glyph & number & glyph & number & glyph\\
 % \midrule
-%  0 & \Pisymbol{MinionPro-Ornaments}{0} &&  8 & \Pisymbol{MinionPro-Ornaments}{8}  && 16 & \Pisymbol{MinionPro-Ornaments}{16} && 24 &\Pisymbol{MinionPro-Ornaments}{24}\\
-%  1 & \Pisymbol{MinionPro-Ornaments}{1} &&  9 & \Pisymbol{MinionPro-Ornaments}{9}  && 17 & \Pisymbol{MinionPro-Ornaments}{17} && 25 &\Pisymbol{MinionPro-Ornaments}{25}\\
-%  2 & \Pisymbol{MinionPro-Ornaments}{2} && 10 & \Pisymbol{MinionPro-Ornaments}{10} && 18 & \Pisymbol{MinionPro-Ornaments}{18} && 26 &\Pisymbol{MinionPro-Ornaments}{26}\\
-%  3 & \Pisymbol{MinionPro-Ornaments}{3} && 11 & \Pisymbol{MinionPro-Ornaments}{11} && 19 & \Pisymbol{MinionPro-Ornaments}{19} && 27 &\Pisymbol{MinionPro-Ornaments}{27}\\
-%  4 & \Pisymbol{MinionPro-Ornaments}{4} && 12 & \Pisymbol{MinionPro-Ornaments}{12} && 20 & \Pisymbol{MinionPro-Ornaments}{20} && 28 &\Pisymbol{MinionPro-Ornaments}{28}\\
-%  5 & \Pisymbol{MinionPro-Ornaments}{5} && 13 & \Pisymbol{MinionPro-Ornaments}{13} && 21 & \Pisymbol{MinionPro-Ornaments}{21} && 29 &\Pisymbol{MinionPro-Ornaments}{29}\\
-%  6 & \Pisymbol{MinionPro-Ornaments}{6} && 14 & \Pisymbol{MinionPro-Ornaments}{14} && 22 & \Pisymbol{MinionPro-Ornaments}{22} &&    &\\
-%  7 & \Pisymbol{MinionPro-Ornaments}{7} && 15 & \Pisymbol{MinionPro-Ornaments}{15} && 23 & \Pisymbol{MinionPro-Ornaments}{23} &&    &\\
+%  0 & \sym{0} &  8 & \sym{8}  & 16 & \sym{16} & 24 & \sym{24}\\
+%  1 & \sym{1} &  9 & \sym{9}  & 17 & \sym{17} & 25 & \sym{25}\\
+%  2 & \sym{2} & 10 & \sym{10} & 18 & \sym{18} & 26 & \sym{26}\\
+%  3 & \sym{3} & 11 & \sym{11} & 19 & \sym{19} & 27 & \sym{27}\\
+%  4 & \sym{4} & 12 & \sym{12} & 20 & \sym{20} & 28 & \sym{28}\\
+%  5 & \sym{5} & 13 & \sym{13} & 21 & \sym{21} & 29 & \sym{29}\\
+%  6 & \sym{6} & 14 & \sym{14} & 22 & \sym{22}\\
+%  7 & \sym{7} & 15 & \sym{15} & 23 & \sym{23}\\
 % \bottomrule
 % \end{tabular}\par}
 %
