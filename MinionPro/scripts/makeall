@@ -25,6 +25,6 @@ done
 mv *.tfm tfm
 
 # we only need the VF-files with increased letterspacing
-mv *L*.vf *SSC*.vf vf
+mv *L[^F]*.vf *SSC*.vf vf
 rm *.vf
 
