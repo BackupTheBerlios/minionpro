@@ -25,7 +25,7 @@ make_tfm() {
   shift 3
 
   echo -n " $spec," >&2
-  otftotfm --no-dotlessj "$@" --clear-subs -fliga -fkern -e enc/mn-$enc.enc "otf/$font-$name.otf" "$font-$name-$spec"
+  otftotfm --no-dotlessj "$@" --clear-subs -fkern -e enc/mn-$enc.enc "otf/$font-$name.otf" "$font-$name-$spec"
 }
 
 get_flags() {
@@ -68,22 +68,22 @@ make_normal_metrics() {
   get_sc_flags $2
   get_sc_ts_flags $2
 
-  make_tfm "$1" t1     $2-t1        $flags
-  make_tfm "$1" ot1    $2-ot1       $flags
-  make_tfm "$1" lgr    $2-lgr       -sgrek $flags
-  make_tfm "$1" ly1    $2-ly1       $flags
-  make_tfm "$1" t2a    $2-t2a       -scyrl $flags
-  make_tfm "$1" t2b    $2-t2b       -scyrl $flags
-  make_tfm "$1" t2c    $2-t2c       -scyrl $flags
-  make_tfm "$1" x2     $2-x2        -scyrl $flags
-  make_tfm "$1" ot2    $2-ot2       -scyrl $flags
+  make_tfm "$1" t1     $2-t1        -fliga $flags
+  make_tfm "$1" ot1    $2-ot1       -fliga $flags
+  make_tfm "$1" lgr    $2-lgr       -fliga -sgrek $flags
+  make_tfm "$1" ly1    $2-ly1       -fliga $flags
+  make_tfm "$1" t2a    $2-t2a       -fliga -scyrl $flags
+  make_tfm "$1" t2b    $2-t2b       -fliga -scyrl $flags
+  make_tfm "$1" t2c    $2-t2c       -fliga -scyrl $flags
+  make_tfm "$1" x2     $2-x2        -fliga -scyrl $flags
+  make_tfm "$1" ot2    $2-ot2       -fliga -scyrl $flags
 
-  make_tfm "$1" ts1    $2-ts1       $ts_flags
-  make_tfm "$1" ts1    $2-sc-ts1    $sc_ts_flags
+  make_tfm "$1" ts1    $2-ts1       -fliga $ts_flags
+  make_tfm "$1" ts1    $2-sc-ts1    -fliga $sc_ts_flags
   make_tfm "$1" ts1    $2-sc-l2-ts1 -L 80 $sc_ts_flags
 
-  make_tfm "$1" t1     $2-sc-t1     --unicoding 'germandbls =: SSsmall' $sc_flags
-  make_tfm "$1" ot1    $2-sc-ot1    --unicoding 'germandbls =: SSsmall' $sc_flags
+  make_tfm "$1" t1     $2-sc-t1     --unicoding 'germandbls =: SSsmall' -fliga $sc_flags
+  make_tfm "$1" ot1    $2-sc-ot1    --unicoding 'germandbls =: SSsmall' -fliga $sc_flags
 
   make_tfm "$1" t1     $2-sc-l2-t1  --unicoding 'germandbls =: SSsmall' -L 80 $sc_flags
   make_tfm "$1" ot1    $2-sc-l2-ot1 --unicoding 'germandbls =: SSsmall' -L 80 $sc_flags
@@ -91,7 +91,7 @@ make_normal_metrics() {
 
 make_oml_metrics() {
 
-  make_tfm "$1" oml      $2-oml          --math-spacing --skew-char 255 $3
+  make_tfm "$1" oml      $2-oml          --math-spacing --skew-char 255 -fliga $3
   make_tfm "$1" oml      $2-l1-oml       --math-spacing --skew-char 255 -L 40 $3
   make_tfm "$1" integral $2-cn1-integral -E 0.85 $3
   make_tfm "$1" integral $2-cn2-integral -E 0.75 -S 0.04 $3
@@ -125,15 +125,15 @@ make_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_normal_metrics     "$1" lf   -flnum -fpnum
-    make_normal_metrics     "$1" tlf  -flnum -ftnum
-    make_normal_metrics     "$1" osf  -fonum -fpnum
-    make_normal_metrics     "$1" tosf -fonum -ftnum
+    make_normal_metrics     "$1" lf
+    make_normal_metrics     "$1" tlf
+    make_normal_metrics     "$1" osf
+    make_normal_metrics     "$1" tosf
 
-    make_oml_metrics        "$1" lf   -flnum -ftnum
-    make_oml_metrics        "$1" tlf  -flnum -fpnum
-    make_oml_metrics        "$1" osf  -fonum -ftnum
-    make_oml_metrics        "$1" tosf -fonum -fpnum
+    make_oml_metrics        "$1" lf   "-flnum -ftnum"
+    make_oml_metrics        "$1" tlf  "-flnum -fpnum"
+    make_oml_metrics        "$1" osf  "-fonum -ftnum"
+    make_oml_metrics        "$1" tosf "-fonum -fpnum"
 
     make_tfm "$1" orn-u orn-u
 
@@ -147,10 +147,10 @@ make_spaced_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_spread_metrics     "$1" lf   -flnum -fpnum
-    make_spread_metrics     "$1" tlf  -flnum -ftnum
-    make_spread_metrics     "$1" osf  -fonum -fpnum
-    make_spread_metrics     "$1" tosf -fonum -ftnum
+    make_spread_metrics     "$1" lf
+    make_spread_metrics     "$1" tlf
+    make_spread_metrics     "$1" osf
+    make_spread_metrics     "$1" tosf
 
     echo " done." >&2
   fi
@@ -162,14 +162,14 @@ make_swash_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_tfm "$1" swash-t1  lf-swash-t1    -flnum -fpnum 
-    make_tfm "$1" swash-ot1 lf-swash-ot1   -flnum -fpnum 
-    make_tfm "$1" swash-t1  osf-swash-t1   -fonum -fpnum 
-    make_tfm "$1" swash-ot1 osf-swash-ot1  -fonum -fpnum 
-    make_tfm "$1" swash-t1  tlf-swash-t1   -flnum -ftnum 
-    make_tfm "$1" swash-ot1 tlf-swash-ot1  -flnum -ftnum 
-    make_tfm "$1" swash-t1  tosf-swash-t1  -fonum -ftnum 
-    make_tfm "$1" swash-ot1 tosf-swash-ot1 -fonum -ftnum 
+    make_tfm "$1" swash-t1  lf-swash-t1    -fliga -flnum -fpnum 
+    make_tfm "$1" swash-ot1 lf-swash-ot1   -fliga -flnum -fpnum 
+    make_tfm "$1" swash-t1  osf-swash-t1   -fliga -fonum -fpnum 
+    make_tfm "$1" swash-ot1 osf-swash-ot1  -fliga -fonum -fpnum 
+    make_tfm "$1" swash-t1  tlf-swash-t1   -fliga -flnum -ftnum 
+    make_tfm "$1" swash-ot1 tlf-swash-ot1  -fliga -flnum -ftnum 
+    make_tfm "$1" swash-t1  tosf-swash-t1  -fliga -fonum -ftnum 
+    make_tfm "$1" swash-ot1 tosf-swash-ot1 -fliga -fonum -ftnum 
 
     echo " done." >&2
   fi
