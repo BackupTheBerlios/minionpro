@@ -58,10 +58,10 @@
   /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /OE
   /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /Germandbls
 % 0xE0
-  /agrave.sc /aacute.sc /acircumflex.sc /atilde.sc /adieresis.sc /aring.sc /Aesmall /ccedilla.sc
+  /agrave.sc /aacute.sc /acircumflex.sc /atilde.sc /adieresis.sc /aring.sc /AEsmall /ccedilla.sc
   /egrave.sc /eacute.sc /ecircumflex.sc /edieresis.sc
   /igrave.sc /iacute.sc /icircumflex.sc /idieresis.sc
 % 0xF0
-  /eth.sc /ntilde.sc /ograve.sc /oacute.sc /ocircumflex.sc /otilde.sc /odieresis.sc /Oesmall
+  /eth.sc /ntilde.sc /ograve.sc /oacute.sc /ocircumflex.sc /otilde.sc /odieresis.sc /OEsmall
   /oslash.sc /ugrave.sc /uacute.sc /ucircumflex.sc /udieresis.sc /yacute.sc /thorn.sc /germandbls
 ] def

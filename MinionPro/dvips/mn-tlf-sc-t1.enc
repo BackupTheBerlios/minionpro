@@ -58,10 +58,10 @@
   /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /OE
   /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /Germandbls
 % 0xE0
-  /Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /Aesmall /Ccedillasmall
+  /Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /AEsmall /Ccedillasmall
   /Egravesmall /Eacutesmall /Ecircumflexsmall /Edieresissmall
   /Igravesmall /Iacutesmall /Icircumflexsmall /Idieresissmall
 % 0xF0
-  /Ethsmall /Ntildesmall /Ogravesmall /Oacutesmall /Ocircumflexsmall /Otildesmall /Odieresissmall /Oesmall
+  /Ethsmall /Ntildesmall /Ogravesmall /Oacutesmall /Ocircumflexsmall /Otildesmall /Odieresissmall /OEsmall
   /Oslashsmall /Ugravesmall /Uacutesmall /Ucircumflexsmall /Udieresissmall /Yacutesmall /Thornsmall /germandbls
 ] def

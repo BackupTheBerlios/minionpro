@@ -4,7 +4,7 @@
 /fl /.notdef /cwm /ff /fi /.notdef /ffi /ffl
 % 0x10
 /dotlessi /dotlessj /Gravesmall /Acutesmall /Caronsmall /Brevesmall /Macronsmall /Ringsmall
-/Cedillasmall /germandbls /Aesmall /Oesmall /oslash /AE /OE /Oslash
+/Cedillasmall /germandbls /AEsmall /OEsmall /oslash /AE /OE /Oslash
 % 0x20
 /space /exclamsmall /quotedbl /numbersign /dollar /percent /ampersandsmall /quoteright
 /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
@@ -28,7 +28,7 @@
 /Circumflexsmall /perthousand /Scaron /guilsinglleft /OE /Zcaron /asciicircum /minus
 % 0x90
 /lslash /quoteleft /quoteright /quotedblleft /quotedblright /bullet /endash /emdash
-/tilde /trademark /scaron /guilsinglright /Oesmall /Zcaronsmall /asciitilde /Ydieresis
+/tilde /trademark /scaron /guilsinglright /OEsmall /Zcaronsmall /asciitilde /Ydieresis
 % 0xA0
 /nbspace /Exclamdownsmall /cent /sterling /currency /yen /brokenbar /section
 /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /sfthyphen /registered /macron
@@ -42,7 +42,7 @@
 /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
 /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
 % 0xE0
-/Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /Aesmall /Ccedillasmall
+/Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /AEsmall /Ccedillasmall
 /Egravesmall /Eacutesmall /Ecircumflexsmall /Edieresissmall /Igravesmall /Iacutesmall /Icircumflexsmall /Idieresissmall
 % 0xF0
 /Ethsmall /Ntildesmall /Ogravesmall /Oacutesmall /Ocircumflexsmall /Otildesmall /Odieresissmall /divide
