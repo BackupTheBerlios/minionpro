@@ -26,6 +26,7 @@ make_metrics() {
   make_simple_tfm "$1" lf-t2b      6t
   make_simple_tfm "$1" lf-t2c      6c
   make_simple_tfm "$1" lf-x2       6x
+  make_simple_tfm "$1" lf-lgr      k
   make_simple_tfm "$1" osf-t1      OSF-8t
   make_simple_tfm "$1" osf-ts1     OSF-8c
   make_simple_tfm "$1" osf-ot1     OSF-7t
@@ -84,6 +85,7 @@ make_spaced_metrics() {
   make_spread_tfm "$1" lf-t1       L-8t       8t        20
   make_spread_tfm "$1" lf-ts1      L-8c       8c        20
   make_spread_tfm "$1" lf-ot1      L-7t       7t        20
+  make_spread_tfm "$1" lf-lgr      L-k        k         20
   make_spread_tfm "$1" lf-sc-t1    LSC-8t     SC-8t     20
   make_spread_tfm "$1" lf-sc-ts1   LSC-8c     SC-8c     20
   make_spread_tfm "$1" lf-sc-ot1   LSC-7t     SC-7t     20
@@ -176,7 +178,7 @@ make_additional_italic() {
 
 for series in "" Semibold Bold
 do
-  make_series "$series" #&
+  make_series "$series" &
   make_series "${series}It"
 
   make_additional_italic  "${series}It"

@@ -1,13 +1,16 @@
 % LGR Encoding with Lining Figures
 
+% boundary character: endash
+% LIGKERN || = 0 ;
+
 % LIGKERN sigma || =:| uni03C2 ; sigma guillemotright =:| uni03C2 ;
 % LIGKERN sigma parenright =:| uni03C2 ; sigma period =:| uni03C2 ;
 % LIGKERN sigma comma =:| uni03C2 ; sigma exclam =:| uni03C2 ; 
 % LIGKERN sigma semicolon =:| uni03C2 ; sigma anoteleia =:| uni03C2 ;
 
-% LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;           
-% LIGKERN parenleft parenleft =: guillemotleft ;			
-% LIGKERN parenright parenright =: guillemotright ;	
+% LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;
+% LIGKERN parenleft parenleft =: guillemotleft ;
+% LIGKERN parenright parenright =: guillemotright ;
 
 % >
 % LIGKERN uni1FBD tonos =: uni1FCE ; 
