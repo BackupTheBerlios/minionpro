@@ -454,6 +454,29 @@
         \kern-.15em%
         \TeX}
 
+% fix bug in amsmath.sty
+
+\def\macc@set@skewchar#1{%
+  \begingroup
+  \ifnum\mathgroup=\m@ne \let\@tempa\@ne
+  \else
+    \ifnum\skewchar\textfont\mathgroup=\m@ne \let\@tempa\@ne
+    \else \let\@tempa\mathgroup
+    \fi
+  \fi
+  \count@=\skewchar\textfont\@tempa
+  \ifnum\count@=\m@ne
+    \endgroup
+    \def\macc@skewchar{}
+  \else
+    \advance\count@"7100
+    \edef\@tempa{\endgroup
+      \mathchardef\noexpand\macc@skewchar=\number\count@\relax}%
+    \@tempa
+  \fi
+  #1%
+}
+
 % make the changes take effect
 
 \normalfont\selectfont
