@@ -1,4 +1,4 @@
-\ProvidesFile{t1Minion-LF.fd}[2004/08/08 font definitions for T1/Minion-LF.]
+\ProvidesFile{T1Minion-LF.fd}[2004/10/15 font definitions for T1/Minion-LF.]
 \DeclareFontFamily{T1}{Minion-LF}{}
 \DeclareFontShape{T1}{Minion-LF}{m}{n}{
     <-6>  MinionPro-SemiboldCapt-L-8t
@@ -27,6 +27,19 @@
    <9-12> MinionPro-Regular-SSC-8t
   <12-15> MinionPro-Subh-SSC-8t
   <15->   MinionPro-Disp-SSC-8t}{\Tone@roman@protruding}
+\DeclareFontShape{T1}{Minion-LF}{m}{scit}{
+    <-6>  MinionPro-SemiboldItCapt-LSC-8t
+   <6-8>  MinionPro-ItCapt-LSC-8t
+   <8-9>  MinionPro-ItCapt-SC-8t
+   <9-12> MinionPro-It-SC-8t
+  <12-15> MinionPro-ItSubh-SC-8t
+  <15->   MinionPro-ItDisp-SC-8t}{\Tone@italic@protruding}
+\DeclareFontShape{T1}{Minion-LF}{m}{sscit}{
+    <-6>  MinionPro-SemiboldItCapt-SSC-8t
+   <6-9>  MinionPro-ItCapt-SSC-8t
+   <9-12> MinionPro-It-SSC-8t
+  <12-15> MinionPro-ItSubh-SSC-8t
+  <15->   MinionPro-ItDisp-SSC-8t}{\Tone@italic@protruding}
 \DeclareFontShape{T1}{Minion-LF}{m}{sw}{
     <-6>  MinionPro-SemiboldItCapt-L-Swash-8t
    <6-8>  MinionPro-ItCapt-L-Swash-8t
@@ -61,6 +74,19 @@
    <9-12> MinionPro-Semibold-SSC-8t
   <12-15> MinionPro-SemiboldSubh-SSC-8t
   <15->   MinionPro-SemiboldDisp-SSC-8t}{\Tone@roman@protruding}
+\DeclareFontShape{T1}{Minion-LF}{sb}{scit}{
+    <-6>  MinionPro-BoldItCapt-LSC-8t
+   <6-8>  MinionPro-SemiboldItCapt-LSC-8t
+   <8-9>  MinionPro-SemiboldItCapt-SC-8t
+   <9-12> MinionPro-SemiboldIt-SC-8t
+  <12-15> MinionPro-SemiboldItSubh-SC-8t
+  <15->   MinionPro-SemiboldItDisp-SC-8t}{\Tone@italic@protruding}
+\DeclareFontShape{T1}{Minion-LF}{sb}{sscit}{
+    <-6>  MinionPro-BoldItCapt-SSC-8t
+   <6-9>  MinionPro-SemiboldItCapt-SSC-8t
+   <9-12> MinionPro-SemiboldIt-SSC-8t
+  <12-15> MinionPro-SemiboldItSubh-SSC-8t
+  <15->   MinionPro-SemiboldItDisp-SSC-8t}{\Tone@italic@protruding}
 \DeclareFontShape{T1}{Minion-LF}{sb}{sw}{
     <-6>  MinionPro-BoldItCapt-L-Swash-8t
    <6-8>  MinionPro-SemiboldItCapt-L-Swash-8t
@@ -91,6 +117,19 @@
    <9-12> MinionPro-Bold-SSC-8t
   <12-15> MinionPro-BoldSubh-SSC-8t
   <15->   MinionPro-BoldDisp-SSC-8t}{\Tone@roman@protruding}
+\DeclareFontShape{T1}{Minion-LF}{b}{scit}{
+    <-6>  MinionPro-BoldItCapt-LSC-8t
+   <6-8>  MinionPro-BoldItCapt-LSC-8t
+   <8-9>  MinionPro-BoldItCapt-SC-8t
+   <9-12> MinionPro-BoldIt-SC-8t
+  <12-15> MinionPro-BoldItSubh-SC-8t
+  <15->   MinionPro-BoldItDisp-SC-8t}{\Tone@italic@protruding}
+\DeclareFontShape{T1}{Minion-LF}{b}{sscit}{
+    <-6>  MinionPro-BoldItCapt-SSC-8t
+   <6-9>  MinionPro-BoldItCapt-SSC-8t
+   <9-12> MinionPro-BoldIt-SSC-8t
+  <12-15> MinionPro-BoldItSubh-SSC-8t
+  <15->   MinionPro-BoldItDisp-SSC-8t}{\Tone@italic@protruding}
 \DeclareFontShape{T1}{Minion-LF}{b}{sw}{
     <-8>  MinionPro-BoldItCapt-L-Swash-8t
    <8-9>  MinionPro-BoldItCapt-Swash-8t

@@ -1,4 +1,4 @@
-\ProvidesFile{ot1Minion-OsF.fd}[2004/09/20 font definitions for OT1/Minion-OsF.]
+\ProvidesFile{OT1Minion-OsF.fd}[2004/10/15 font definitions for OT1/Minion-OsF.]
 \DeclareFontFamily{OT1}{Minion-OsF}{}
 \DeclareFontShape{OT1}{Minion-OsF}{m}{n}{
     <-6>  MinionPro-SemiboldCapt-OSFL-7t
@@ -27,6 +27,19 @@
    <9-12> MinionPro-Regular-OSFSSC-7t
   <12-15> MinionPro-Subh-OSFSSC-7t
   <15->   MinionPro-Disp-OSFSSC-7t}{\OTone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-OsF}{m}{scit}{
+    <-6>  MinionPro-SemiboldItCapt-OSFLSC-7t
+   <6-8>  MinionPro-ItCapt-OSFLSC-7t
+   <8-9>  MinionPro-ItCapt-OSFSC-7t
+   <9-12> MinionPro-It-OSFSC-7t
+  <12-15> MinionPro-ItSubh-OSFSC-7t
+  <15->   MinionPro-ItDisp-OSFSC-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-OsF}{m}{sscit}{
+    <-6>  MinionPro-SemiboldItCapt-SSC-7t
+   <6-9>  MinionPro-ItCapt-OSFSSC-7t
+   <9-12> MinionPro-It-OSFSSC-7t
+  <12-15> MinionPro-ItSubh-OSFSSC-7t
+  <15->   MinionPro-ItDisp-OSFSSC-7t}{\Tone@italic@protruding}
 \DeclareFontShape{OT1}{Minion-OsF}{m}{sw}{
     <-6>  MinionPro-SemiboldItCapt-OSFL-Swash-7t
    <6-8>  MinionPro-ItCapt-OSFL-Swash-7t
@@ -61,6 +74,19 @@
    <9-12> MinionPro-Semibold-OSFSSC-7t
   <12-15> MinionPro-SemiboldSubh-OSFSSC-7t
   <15->   MinionPro-SemiboldDisp-OSFSSC-7t}{\OTone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-OsF}{sb}{scit}{
+    <-6>  MinionPro-BoldItCapt-OSFLSC-7t
+   <6-8>  MinionPro-SemiboldItCapt-OSFLSC-7t
+   <8-9>  MinionPro-SemiboldItCapt-OSFSC-7t
+   <9-12> MinionPro-SemiboldIt-OSFSC-7t
+  <12-15> MinionPro-SemiboldItSubh-OSFSC-7t
+  <15->   MinionPro-SemiboldItDisp-OSFSC-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-OsF}{sb}{sscit}{
+    <-6>  MinionPro-BoldItCapt-OSFSSC-7t
+   <6-9>  MinionPro-SemiboldItCapt-OSFSSC-7t
+   <9-12> MinionPro-SemiboldIt-OSFSSC-7t
+  <12-15> MinionPro-SemiboldItSubh-OSFSSC-7t
+  <15->   MinionPro-SemiboldItDisp-OSFSSC-7t}{\Tone@italic@protruding}
 \DeclareFontShape{OT1}{Minion-OsF}{sb}{sw}{
     <-6>  MinionPro-BoldItCapt-OSFL-Swash-7t
    <6-8>  MinionPro-SemiboldItCapt-OSFL-Swash-7t
@@ -91,6 +117,19 @@
    <9-12> MinionPro-Bold-OSFSSC-7t
   <12-15> MinionPro-BoldSubh-OSFSSC-7t
   <15->   MinionPro-BoldDisp-OSFSSC-7t}{\OTone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-OsF}{b}{scit}{
+    <-6>  MinionPro-BoldItCapt-OSFLSC-7t
+   <6-8>  MinionPro-BoldItCapt-OSFLSC-7t
+   <8-9>  MinionPro-BoldItCapt-OSFSC-7t
+   <9-12> MinionPro-BoldIt-OSFSC-7t
+  <12-15> MinionPro-BoldItSubh-OSFSC-7t
+  <15->   MinionPro-BoldItDisp-OSFSC-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-OsF}{b}{sscit}{
+    <-6>  MinionPro-BoldItCapt-OSFSSC-7t
+   <6-9>  MinionPro-BoldItCapt-OSFSSC-7t
+   <9-12> MinionPro-BoldIt-OSFSSC-7t
+  <12-15> MinionPro-BoldItSubh-OSFSSC-7t
+  <15->   MinionPro-BoldItDisp-OSFSSC-7t}{\Tone@italic@protruding}
 \DeclareFontShape{OT1}{Minion-OsF}{b}{sw}{
     <-8>  MinionPro-BoldItCapt-OSFL-Swash-7t
    <8-9>  MinionPro-BoldItCapt-OSF-Swash-7t

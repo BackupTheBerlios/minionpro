@@ -1,4 +1,4 @@
-\ProvidesFile{ot1Minion-LF-C.fd}[2004/08/08 font definitions for OT1/Minion-LF-C.]
+\ProvidesFile{OT1Minion-LF-C.fd}[2004/10/15 font definitions for OT1/Minion-LF-C.]
 \DeclareFontFamily{OT1}{Minion-LF-C}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{m}{n}{
    <-6>  MinionPro-SemiboldCapt-7t
@@ -12,6 +12,12 @@
 \DeclareFontShape{OT1}{Minion-LF-C}{m}{ssc}{
    <-6>  MinionPro-SemiboldCapt-SSC-7t
    <6->  MinionPro-Capt-SSC-7t}{}
+\DeclareFontShape{OT1}{Minion-LF-C}{m}{scit}{
+    <-6>  MinionPro-SemiboldItCapt-SC-7t
+   <6->  MinionPro-ItCapt-SC-7t}{}
+\DeclareFontShape{OT1}{Minion-LF-C}{m}{sscit}{
+    <-6>  MinionPro-SemiboldItCapt-SSC-7t
+   <6->  MinionPro-ItCapt-SSC-7t}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{sb}{n}{
    <-6>  MinionPro-BoldCapt-7t
    <6->  MinionPro-SemiboldCapt-7t}{}
@@ -24,6 +30,12 @@
 \DeclareFontShape{OT1}{Minion-LF-C}{sb}{ssc}{
    <-6>  MinionPro-BoldCapt-SSC-7t
    <6->  MinionPro-SemiboldCapt-SSC-7t}{}
+\DeclareFontShape{OT1}{Minion-LF-C}{sb}{scit}{
+    <-6>  MinionPro-BoldItCapt-SC-7t
+   <6->  MinionPro-SemiboldItCapt-SC-7t}{}
+\DeclareFontShape{OT1}{Minion-LF-C}{sb}{sscit}{
+    <-6>  MinionPro-BoldItCapt-SSC-7t
+   <6->  MinionPro-SemiboldItCapt-SSC-7t}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{b}{n}{
    <->  MinionPro-BoldCapt-7t}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{b}{it}{
@@ -32,6 +44,12 @@
    <->  MinionPro-BoldCapt-SC-7t}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{b}{ssc}{
    <->  MinionPro-BoldCapt-SSC-7t}{}
+\DeclareFontShape{OT1}{Minion-LF-C}{b}{scit}{
+    <-6>  MinionPro-BoldItCapt-SC-7t
+   <6->  MinionPro-BoldItCapt-SC-7t}{}
+\DeclareFontShape{OT1}{Minion-LF-C}{b}{sscit}{
+    <-6>  MinionPro-BoldItCapt-SSC-7t
+   <6->  MinionPro-BoldItCapt-SSC-7t}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{m} {sl}{<->ssub * Minion-LF-C/m/it}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{sb}{sl}{<->ssub * Minion-LF-C/sb/it}{}
 \DeclareFontShape{OT1}{Minion-LF-C}{b} {sl}{<->ssub * Minion-LF-C/b/it}{}
