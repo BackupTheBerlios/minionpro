@@ -822,7 +822,7 @@
 %<*protruding>
 % We allow this file to be included multiple times.
 \ifx\MinionProProtrudeLoaded\undefined
-\def\MinionProProtrudeLoaded{}
+\gdef\MinionProProtrudeLoaded{}
 \ProvidesFile{MinionPro-Protrude}[2005/01/23 v2.0 support for margin kerning]%
 %
 \newcommand*\ProtrudeCommand[4]{%
@@ -1205,7 +1205,7 @@
 %    \begin{macrocode}
 %<*mtcfg>
 \ifx\MinionProProtrudeLoaded\undefined
-  \def\MinionProProtrudeLoaded{}
+  \gdef\MinionProProtrudeLoaded{}
 \else\endinput\fi
 
 \ProvidesFile{mt-MinionPro.cfg}[2005/02/07 v0.1 microtype config file for MinionPro]
