@@ -1,0 +1,131 @@
+KPX uni1FBD Alpha -370
+KPX uni1FBD Epsilon -120
+KPX uni1FBD Eta -120
+KPX uni1FBD Iota -120
+KPX uni1FBD Omega -200
+KPX uni1FBD Omicron -190
+KPX uni1FBD Upsilon -90
+KPX uni1FBD Rho -125
+
+KPX uni1FCD Alpha -280
+KPX uni1FCD Epsilon -50
+KPX uni1FCD Eta -50
+KPX uni1FCD Iota -50
+KPX uni1FCD Omega -110
+KPX uni1FCD Omicron -105
+KPX uni1FCD Upsilon -40
+KPX uni1FCD Rho -77
+
+KPX uni1FCE Alpha -300
+KPX uni1FCE Epsilon -20
+KPX uni1FCE Eta -20
+KPX uni1FCE Iota -20
+KPX uni1FCE Omega -137
+KPX uni1FCE Omicron -137
+KPX uni1FCE Rho -20
+
+KPX uni1FCF Alpha -340
+KPX uni1FCF Epsilon -80
+KPX uni1FCF Eta -80
+KPX uni1FCF Iota -80
+KPX uni1FCF Omega -160
+KPX uni1FCF Omicron -160
+KPX uni1FCF Upsilon -40
+KPX uni1FCF Rho -75
+
+KPX uni1FDD Alpha -250
+KPX uni1FDD Epsilon -50
+KPX uni1FDD Eta -50
+KPX uni1FDD Iota -50
+KPX uni1FDD Omega -120
+KPX uni1FDD Omicron -95
+KPX uni1FDD Upsilon -30
+KPX uni1FDD Rho -50
+
+KPX uni1FDE Alpha -300
+KPX uni1FDE Epsilon -50
+KPX uni1FDE Eta -50
+KPX uni1FDE Iota -50
+KPX uni1FDE Omega -150
+KPX uni1FDE Omicron -110
+KPX uni1FDE Upsilon -10
+KPX uni1FDE Rho -30
+
+KPX uni1FDF Alpha -350
+KPX uni1FDF Epsilon -80
+KPX uni1FDF Eta -80
+KPX uni1FDF Iota -80
+KPX uni1FDF Omega -180
+KPX uni1FDF Omicron -160
+KPX uni1FDF Upsilon -40
+KPX uni1FDF Rho -75
+
+KPX uni1FFE Alpha -350
+KPX uni1FFE Epsilon -117
+KPX uni1FFE Eta -117
+KPX uni1FFE Iota -117
+KPX uni1FFE Omega -180
+KPX uni1FFE Omicron -150
+KPX uni1FFE Upsilon -70
+KPX uni1FFE Rho -85
+
+KPX grave Alpha -330
+KPX grave Epsilon -137
+KPX grave Eta -137
+KPX grave Iota -137
+KPX grave Omega -170
+KPX grave Omicron -150
+KPX grave Upsilon -100 
+KPX grave Rho -150 
+
+KPX v v 55
+KPX v w 55
+KPX v y 55 
+KPX w v 55
+KPX w w 55
+KPX w y 55
+KPX y w 55
+KPX y y 55
+KPX x x 25
+KPX x y 15
+
+KPX e V -65
+KPX m V -80
+KPX mu V -60
+KPX n V -80
+KPX p V -60
+KPX a V -50
+
+KPX m W -80
+KPX mu W -60
+KPX n W -80
+KPX p W -60
+KPX a W -50
+
+KPX p A -40
+KPX f C 70
+KPX f F 80
+KPX f H 100
+KPX f J 100
+KPX f K 80
+KPX f N 110
+KPX f P 80
+KPX f S 55
+KPX f T 90
+KPX f V 110
+KPX f W 110
+
+KPX f b 110
+KPX f h 100
+KPX f k 95
+KPX f p 50
+
+KPX Y g -75
+KPX Y s -60
+KPX W a -50
+KPX W o -60
+KPX W adieresis -1
+KPX W odieresis -20
+KPX W udieresis -1
+KPX W a.sc -100
+KPX W o.sc -60
