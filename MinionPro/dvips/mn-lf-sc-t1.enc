@@ -43,13 +43,13 @@
   /Tcaron /Tcedilla /Uhungarumlaut /Uring
   /Ydieresis /Zacute /Zcaron /Zdotaccent /IJ /Idotaccent /dbar /section
 % 0xA0
-  /Abrevesmall /Aogoneksmall /Cacutesmall /Ccaronsmall /Dcaronsmall /Ecaronsmall /Eogoneksmall /Gbrevesmall
-  /Lacutesmall /Lcaronsmall /Lslashsmall /Nacutesmall /Ncaronsmall /Ngsmall /Ohungarumlautsmall /Racutesmall
+  /uniF66D /uniF66F /uniF671 /uniF672 /uniF675 /uniF678 /uniF67C /uniF67D
+  /uniF68A /Lcaronsmall /Lslashsmall /uniF68E /uniF68F /Ngsmall /uniF692 /uniF695
 % 0xB0
-  /Rcaronsmall /Sacutesmall /Scaronsmall /Scedillasmall
-  /Tquoterightsmall /Tcedillasmall /Uhungarumlautsmall /Uringsmall
-  /Ydieresissmall /Zacutesmall /Zcaronsmall /Zdotaccentsmall
-  /Ijsmall /Exclamdownsmall /Questiondownsmall /sterling
+  /uniF696 /uniF698 /Scaronsmall /uniF699
+  /Tquoterightsmall /Tcedillasmall /uniF6A0 /uniF6A3
+  /Ydieresissmall /uniF6AB /Zcaronsmall /uniF6AC
+  /uniF684 /uniF6B4 /uniF6B5 /uniF651
 % 0xC0
   /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
   /Egrave /Eacute /Ecircumflex /Edieresis
@@ -58,7 +58,7 @@
   /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /OE
   /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /Germandbls
 % 0xE0
-  /Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /Aesmall /Ccedillasmall
+  /Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /AEsmall /Ccedillasmall
   /Egravesmall /Eacutesmall /Ecircumflexsmall /Edieresissmall
   /Igravesmall /Iacutesmall /Icircumflexsmall /Idieresissmall
 % 0xF0
