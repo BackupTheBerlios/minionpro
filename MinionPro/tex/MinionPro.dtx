@@ -173,7 +173,7 @@
 %
 % The \textsf{MinionPro} package provides all symbols from the \textsf{MnSymbol} package.
 % Additionally, the following math symbols are made availabe\?:
-% |\digamma|, |\hbar|, |\jmath|, |\varkappa|.
+% |\digamma|, |\varkappa|, |\backepsilon|, |\hbar|, |\jmath|, |\eth|.
 % The slashed zero, ornaments and archaic greek
 % letters are accessed via the \textsf{pifont} package using
 % |\Pisymbol{MinionPro-Ornaments}{|$\langle\mathit{int}\rangle$|}|\?:
@@ -622,6 +622,8 @@
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\hbar}       {\mathord}{letters}{"81}
 \DeclareMathSymbol{\digamma}    {\mathord}{letters}{"82}
+\DeclareMathSymbol{\backepsilon}{\mathord}{letters}{"84}
+\DeclareMathSymbol{\eth}        {\mathord}{letters}{"85}
 \DeclareTextSymbol{\j}{OML}{"7C}
 \DeclareTextCommandDefault{\pounds}{\textsterling}
 \UndeclareTextCommand{\textvisiblespace}{T1}
@@ -1663,7 +1665,7 @@
   \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
 \newcommand*\MnDeclareMathFontFamily[4]{%
-  \DeclareFontFamily{#1}{#2}{\skewchar\font=127}%
+  \DeclareFontFamily{#1}{#2}{\skewchar\font=255}%
 %
 %  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\RomanProtruding{#1}}%
 %  \DefineProtrudeCommand{#1}{#2}{m}{it}   {\ItalicProtruding{#1}}%

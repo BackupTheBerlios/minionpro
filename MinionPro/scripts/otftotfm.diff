@@ -1,13 +1,13 @@
-Only in .: automatic.o
-Only in .: .deps
-Only in .: dvipsencoding.o
-Only in .: glyphfilter.o
-Only in .: kpseinterface.o
-Only in .: Makefile
-Only in .: md5.o
-diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
---- ../otftotfm.orig/metrics.cc	2004-10-01 09:42:29.000000000 +0200
-+++ ./metrics.cc	2005-03-11 19:50:39.000000000 +0100
+Only in otftotfm: automatic.o
+Only in otftotfm: .deps
+Only in otftotfm: dvipsencoding.o
+Only in otftotfm: glyphfilter.o
+Only in otftotfm: kpseinterface.o
+Only in otftotfm: Makefile
+Only in otftotfm: md5.o
+diff -u otftotfm.orig/metrics.cc otftotfm/metrics.cc
+--- otftotfm.orig/metrics.cc	2005-03-16 19:38:15.000000000 +0100
++++ otftotfm/metrics.cc	2005-03-16 19:38:32.000000000 +0100
 @@ -24,7 +24,7 @@
  #include <lcdf/straccum.hh>
  
@@ -26,9 +26,9 @@ diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
  	else if (ch.glyph == _emptyslot_glyph)
  	    return "<emptyslot>";
  	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
-diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
---- ../otftotfm.orig/metrics.hh	2004-08-10 09:27:30.000000000 +0200
-+++ ./metrics.hh	2005-03-11 19:50:39.000000000 +0100
+diff -u otftotfm.orig/metrics.hh otftotfm/metrics.hh
+--- otftotfm.orig/metrics.hh	2005-03-16 19:38:15.000000000 +0100
++++ otftotfm/metrics.hh	2005-03-16 19:38:32.000000000 +0100
 @@ -31,6 +31,7 @@
      void check() const;
      
@@ -45,36 +45,39 @@ diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
      Glyph _emptyslot_glyph;
  
      Vector<Kern> _altselectors;
-Only in .: metrics.o
-Only in .: otftotfm
-diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
---- ../otftotfm.orig/otftotfm.cc	2005-03-04 20:25:54.000000000 +0100
-+++ ./otftotfm.cc	2005-03-13 21:40:59.000000000 +0100
-@@ -94,6 +94,7 @@
+Only in otftotfm: metrics.o
+Only in otftotfm: otftotfm
+diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
+--- otftotfm.orig/otftotfm.cc	2005-03-16 19:38:15.000000000 +0100
++++ otftotfm/otftotfm.cc	2005-03-30 18:46:37.000000000 +0200
+@@ -94,6 +94,8 @@
  #define ALTERNATES_FILTER_OPT	336
  #define SPACE_FACTOR_OPT	337
  #define MATH_SPACING_OPT	338
 +#define SKEW_CHAR_OPT		339
++#define EXTRA_SKEW_OPT		340
  
  #define AUTOMATIC_OPT		341
  #define FONT_NAME_OPT		342
-@@ -163,6 +164,7 @@
+@@ -163,6 +165,8 @@
      { "alternates-filter", 0, ALTERNATES_FILTER_OPT, Clp_ArgString, 0 },
      { "space-factor", 0, SPACE_FACTOR_OPT, Clp_ArgDouble, 0 },
      { "math-spacing", 0, MATH_SPACING_OPT, 0, Clp_Negate },
 +    { "skew-char", 0, SKEW_CHAR_OPT, CHAR_OPTTYPE, 0 },
++    { "extra-skew", 0, EXTRA_SKEW_OPT, Clp_ArgInt, 0 },
      
      { "pl", 'p', PL_OPT, 0, 0 },
      { "virtual", 0, VIRTUAL_OPT, 0, Clp_Negate },
-@@ -235,6 +237,7 @@
+@@ -235,6 +239,8 @@
  static double minimum_kern = 2.0;
  static double space_factor = 1.0;
  static bool math_spacing = false;
++static int extra_skew = 0;
 +static int skew_char = -1;
  
  static String out_encoding_file;
  static String out_encoding_name;
-@@ -476,10 +479,33 @@
+@@ -476,10 +482,33 @@
      }
  }
  
@@ -109,7 +112,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  {
      // XXX check DESIGNSIZE and DESIGNUNITS for correctness
  
-@@ -513,8 +539,7 @@
+@@ -513,8 +542,7 @@
      double du = (design_units == 1000 ? 1. : design_units / 1000.);
      
      double val;
@@ -119,7 +122,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
      if (actual_slant)
  	fprintf(f, "   (SLANT R %g)\n", actual_slant);
  
-@@ -536,12 +561,7 @@
+@@ -536,12 +564,7 @@
  	}
      }
  
@@ -133,7 +136,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
      if (xheight < 1000)
  	fprint_real(f, "   (XHEIGHT", xheight, du);
      
-@@ -594,39 +614,42 @@
+@@ -594,39 +617,42 @@
      // finally, BOUNDARYCHAR
      glyph_ids.push_back("BOUNDARYCHAR");
  
@@ -209,7 +212,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
      
      // CHARACTERs
      Vector<Setting> settings;
-@@ -685,7 +708,7 @@
+@@ -685,7 +711,7 @@
  static void
  output_pl(const Metrics &metrics, const String &ps_name, int boundary_char,
  	  const OpenType::Font &family_otf, const Cff::Font *family_cff,
@@ -218,7 +221,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  {
      if (no_create)
  	errh->message("would create %s", filename.c_str());
-@@ -693,7 +716,7 @@
+@@ -693,7 +719,7 @@
  	if (verbose)
  	    errh->message("creating %s", filename.c_str());
  	if (FILE *f = fopen(filename.c_str(), "w")) {
@@ -227,7 +230,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	    fclose(f);
  	} else
  	    errh->error("%s: %s", filename.c_str(), strerror(errno));
-@@ -859,7 +882,8 @@
+@@ -859,7 +885,8 @@
  	    sa << (i ? "\n%" : "%") << hex_digits[(i >> 4) & 0xF] << '0' << '\n' << ' ';
  	else if ((i & 0x7) == 0)
  	    sa << '\n' << ' ';
@@ -237,7 +240,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	    sa << ' ' << '/' << glyph_names[g];
  	else
  	    sa << " /.notdef";
-@@ -933,7 +957,7 @@
+@@ -933,7 +960,7 @@
  static void
  output_tfm(const Metrics &metrics, const String &ps_name, int boundary_char,
  	   const OpenType::Font &family_otf, const Cff::Font *family_cff,
@@ -246,7 +249,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  {
      String pl_filename;
      int pl_fd = temporary_file(pl_filename, errh);
-@@ -949,7 +973,7 @@
+@@ -949,7 +976,7 @@
  	if (verbose)
  	    errh->message("writing %s to temporary file", (vpl ? "VPL" : "PL"));
  	FILE *f = fdopen(pl_fd, "w");
@@ -255,7 +258,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	fclose(f);
      }
  
-@@ -1008,30 +1032,26 @@
+@@ -1008,30 +1035,26 @@
  	if (output_flags & G_BINARY) {
  	    String tfm = getodir(O_TFM, errh) + "/" + font_name + ".tfm";
  	    String vf = getodir(O_VF, errh) + "/" + font_name + ".vf";
@@ -290,7 +293,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  
      // print DVIPS map line
      if (errh->nerrors() == 0 && (output_flags & G_PSFONTSMAP)) {
-@@ -1272,6 +1292,9 @@
+@@ -1272,6 +1295,9 @@
      // encode boundary glyph at 256; pretend its Unicode value is '\n'
      metrics.encode(256, '\n', metrics.boundary_glyph());
  
@@ -300,7 +303,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
      // maintain statistics about features
      HashMap<uint32_t, int> feature_usage(0);
  
-@@ -1326,15 +1349,28 @@
+@@ -1326,18 +1352,33 @@
      // apply math letterspacing, if any
      if (math_spacing) {
  	Transform font_xform;
@@ -308,31 +311,54 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	int bounds[4], width;
 +
 +        double actual_slant = get_slant(font) + slant;
++	int x_height = get_x_height(font, cmap, font_xform);
 +
  	for (int code = 0; code < 256; code++) {
  	    int g = metrics.glyph(code);
  	    if (g != 0 && g != Metrics::VIRTUAL_GLYPH && code != boundary_char) {
- 		if (char_bounds(bounds, width, font, cmap, code, font_xform)) {
+-		if (char_bounds(bounds, width, font, cmap, code, font_xform)) {
+-		    int left_sb = (bounds[0] < 0 ? -bounds[0] : 0);
++		if (Efont::CharstringBounds::bounds(font_xform, font->glyph_context(g), bounds, width)) {
 +		    // increase sidebearings
- 		    int left_sb = (bounds[0] < 0 ? -bounds[0] : 0);
++		    int left_sb  = (bounds[0] < 0 ? -bounds[0] : 0);
  		    int right_sb = (bounds[2] > width ? bounds[2] - width : 0);
- 		    metrics.add_single_positioning(code, left_sb, 0, left_sb + right_sb);
+-		    metrics.add_single_positioning(code, left_sb, 0, left_sb + right_sb);
++		    metrics.add_single_positioning(code, left_sb, 0, left_sb);
 +
 +		    if (skew_char >= 0) {
 +		        // compute accent skew
 +		        int height = bounds[3];
-+		        int x_height = get_x_height(font, cmap, font_xform);
-+		        int skew = (int)(height > x_height ? actual_slant * (height - x_height) : 0);
++		        int skew = (int)(actual_slant * (height > x_height ? height - 0.5*x_height : 0.5*x_height))
++                                      + left_sb - right_sb
++                                      + extra_skew;
 +
 +                        if (skew != 0)
-+			    metrics.add_kern(code, skew_char, skew);
++			    metrics.add_kern(code, skew_char, (int)skew);
 +                    }
  		}
  	    }
- 	}
-Binary files ../otftotfm.orig/.otftotfm.cc.swp and ./.otftotfm.cc.swp differ
-Only in .: otftotfm.diff
-Only in .: otftotfm.o
-Only in .: secondary.o
-Only in .: uniprop.o
-Only in .: util.o
+-	}
++        }
+     }
+ 
+     // reencode right components of boundary_glyph as boundary_char
+@@ -1558,6 +1599,14 @@
+ 	    space_factor = clp->val.d;
+ 	    break;
+ 
++	  case SKEW_CHAR_OPT:
++	    skew_char = clp->val.i;
++	    break;
++
++	  case EXTRA_SKEW_OPT:
++	    extra_skew = clp->val.i;
++	    break;
++
+ 	  case MATH_SPACING_OPT:
+ 	    math_spacing = !clp->negated;
+ 	    break;
+Only in otftotfm: otftotfm.o
+Only in otftotfm: secondary.o
+Only in otftotfm: uniprop.o
+Only in otftotfm: util.o
+Only in otftotfm: .viminfo

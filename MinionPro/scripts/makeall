@@ -46,5 +46,5 @@ mv *tlf*.tfm  tfm
 mv *lf*.tfm   tfm
 mv *.tfm      tfm
 
-(cd fontinst; ../scripts/makeint)
+(cd fontinst; ../scripts/makeint MinionPro)
 
