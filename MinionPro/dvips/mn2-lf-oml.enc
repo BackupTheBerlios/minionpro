@@ -1,0 +1,182 @@
+% TeX math italic encoding.
+%
+/OMLEncoding [          % now 256 chars follow
+% 0x0
+/Gamma
+/Delta
+/Theta
+/Lambda
+/Xi
+/Pi
+/Sigma
+/Upsilon
+
+% 0x8
+/Phi
+/Psi
+/Omega
+/alpha
+/beta
+/gamma
+/delta
+/afii10101   % this is not the right glyph but looks similar
+
+% 0x10
+/zeta
+/eta
+/theta
+/iota
+/kappa
+/lambda
+/mu
+/nu
+
+% 0x18
+/xi
+/pi
+/rho
+/sigma
+/tau
+/upsilon
+/uni03D5
+/chi
+
+% 0x20
+/psi
+/omega
+/epsilon
+/uni03D1
+/uni03D6
+/rho
+/uni03C2
+/phi
+
+% 0x28
+/arrowlefttophalf
+/arrowleftbothalf
+/arrowrighttophalf
+/arrowrightbothalf
+/arrowhookleft
+/arrowhookright
+/triangleright
+/triangleleft
+
+% 0x30
+/uniF639
+/uniF6DC
+/uniF63A
+/uniF63B
+/uniF63C
+/uniF63D
+/uniF63E
+/uniF63F
+
+% 0x38
+/uniF640
+/uniF641
+/period
+/comma
+/less
+/slash
+/greater
+/star
+
+% 0x40
+/partialdiff
+/A
+/B
+/C
+/D
+/E
+/F
+/G
+
+% 0x48
+/H
+/I
+/J
+/K
+/L
+/M
+/N
+/O
+
+% 0x50
+/P
+/Q
+/R
+/S
+/T
+/U
+/V
+/W
+
+% 0x58
+/X
+/Y
+/Z
+/flat
+/natural
+/sharp
+/slurbelow
+/slurabove
+
+% 0x60
+/afii61289
+/a
+/b
+/c
+/d
+/e
+/f
+/g
+
+% 0x68
+/h
+/i
+/j
+/k
+/l
+/m
+/n
+/o
+
+% 0x70
+/p
+/q
+/r
+/s
+/t
+/u
+/v
+/w
+
+% 0x78
+/x
+/y
+/z
+/dotlessi
+/dotlessj
+/weierstrass
+/vector
+/tie
+
+% Have to have 128 .notdef's now to fill things out.
+%
+/integral /hbar /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+] def
