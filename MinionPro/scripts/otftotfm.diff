@@ -1,110 +1,326 @@
---- otftotfm.cc.orig	2005-02-05 10:45:19.000000000 +0100
-+++ otftotfm.cc	2005-02-05 14:35:14.000000000 +0100
-@@ -92,6 +92,8 @@
- #define CLEAR_SUBS_OPT		334
- #define SUBS_FILTER_OPT		335
+diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
+--- ../otftotfm.orig/metrics.cc	2004-10-01 09:42:29.000000000 +0200
++++ ./metrics.cc	2005-02-22 21:59:39.000000000 +0100
+@@ -24,7 +24,7 @@
+ #include <lcdf/straccum.hh>
+ 
+ Metrics::Metrics(Efont::CharstringProgram *font, int nglyphs)
+-    : _boundary_glyph(nglyphs), _emptyslot_glyph(nglyphs + 1),
++    : _boundary_glyph(nglyphs), _skew_glyph(nglyphs + 1), _emptyslot_glyph(nglyphs + 2),
+       _design_units(1000), _liveness_marked(false)
+ {
+     _encoding.assign(256, Char());
+@@ -97,6 +97,8 @@
+ 	    return ch.virtual_char->name;
+ 	else if (ch.glyph == _boundary_glyph)
+ 	    return "<boundary>";
++	else if (ch.glyph == _skew_glyph)
++	    return "<skew>";
+ 	else if (ch.glyph == _emptyslot_glyph)
+ 	    return "<emptyslot>";
+ 	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
+diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
+--- ../otftotfm.orig/metrics.hh	2004-08-10 09:27:30.000000000 +0200
++++ ./metrics.hh	2005-02-22 20:48:51.000000000 +0100
+@@ -31,6 +31,7 @@
+     void check() const;
+     
+     Glyph boundary_glyph() const	{ return _boundary_glyph; }
++    Glyph skew_glyph() const		{ return _skew_glyph; }
+     Glyph emptyslot_glyph() const	{ return _emptyslot_glyph; }
+ 
+     String coding_scheme() const		{ return _coding_scheme; }
+@@ -147,6 +148,7 @@
+     mutable Vector<int> _emap;
+ 
+     Glyph _boundary_glyph;
++    Glyph _skew_glyph;
+     Glyph _emptyslot_glyph;
+ 
+     Vector<Kern> _altselectors;
+diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
+--- ../otftotfm.orig/otftotfm.cc	2005-02-10 00:56:30.000000000 +0100
++++ ./otftotfm.cc	2005-02-27 18:56:35.000000000 +0100
+@@ -94,6 +94,7 @@
  #define ALTERNATES_FILTER_OPT	336
-+#define SPACE_FACTOR_OPT	337
-+#define MATH_FONT_OPT		338
+ #define SPACE_FACTOR_OPT	337
+ #define MATH_SPACING_OPT	338
++#define SKEW_CHAR_OPT		339
  
  #define AUTOMATIC_OPT		341
  #define FONT_NAME_OPT		342
-@@ -136,6 +138,8 @@
-     { "clear-substitutions", 0, CLEAR_SUBS_OPT, 0, 0 },
-     { "substitution-filter", 0, SUBS_FILTER_OPT, Clp_ArgString, 0 },
-     { "subs-filter", 0, SUBS_FILTER_OPT, Clp_ArgString, 0 },
-+    { "space-factor", 0, SPACE_FACTOR_OPT, Clp_ArgDouble, 0 },
-+    { "math-font", 0, MATH_FONT_OPT, 0, 0 },
-     { "encoding", 'e', ENCODING_OPT, Clp_ArgString, 0 },
-     { "literal-encoding", 0, LITERAL_ENCODING_OPT, Clp_ArgString, 0 },
-     { "extend", 'E', EXTEND_OPT, Clp_ArgDouble, 0 },
-@@ -227,9 +231,10 @@
- static double extend;
- static double slant;
- static int letterspace;
-+static bool math_font = false;
- static double design_size;
+@@ -163,6 +164,7 @@
+     { "alternates-filter", 0, ALTERNATES_FILTER_OPT, Clp_ArgString, 0 },
+     { "space-factor", 0, SPACE_FACTOR_OPT, Clp_ArgDouble, 0 },
+     { "math-spacing", 0, MATH_SPACING_OPT, 0, Clp_Negate },
++    { "skew-char", 0, SKEW_CHAR_OPT, CHAR_OPTTYPE, 0 },
+     
+     { "pl", 'p', PL_OPT, 0, 0 },
+     { "virtual", 0, VIRTUAL_OPT, 0, Clp_Negate },
+@@ -235,6 +237,7 @@
  static double minimum_kern = 2.0;
--
-+static double space_factor = 1.0;
+ static double space_factor = 1.0;
+ static bool math_spacing = false;
++static int skew_char = -1;
+ 
  static String out_encoding_file;
  static String out_encoding_name;
+@@ -476,10 +479,33 @@
+     }
+ }
  
-@@ -273,15 +278,17 @@
-   -s, --script=SCRIPT[.LANG]   Use features for script SCRIPT[.LANG] [latn].\n\
-   -f, --feature=FEAT           Activate feature FEAT.\n\
-   --lf, --letter-feature=FEAT  Activate feature FEAT for letters.\n\
--      --subs-filter=PAT        Substitute only characters matching PAT.\n\
--      --include-subs=PAT       Same, but cumulative.\n\
--      --exclude-subs=PAT       Don't substitute characters matching PAT.\n\
--      --clear-subs             Clear included/excluded substitutions.\n\
-+   --substitution-filter=PAT   Substitute only characters matching PAT.\n\
-+   --include-substitutions=PAT Same, but cumulative.\n\
-+   --exclude-substitutions=PAT Don't substitute characters matching PAT.\n\
-+   --clear-substitutions       Clear included/excluded substitutions.\n\
-   -E, --extend=F               Widen characters by a factor of F.\n\
-   -S, --slant=AMT              Oblique characters by AMT, generally <<1.\n\
-   -L, --letterspacing=AMT      Letterspace each character by AMT units.\n\
-   -k, --min-kern=N             Omit kerns with absolute value < N [2.0].\n\
-+      --space-factor=F         Scales the wordspace by a factor of F.\n\
-       --design-size=SIZE       Set font design size to SIZE.\n\
-+      --math-font              Adjust the letterspacing for use in math.\n\
- \n");
-     printf("\
- Encoding options:\n\
-@@ -513,7 +520,7 @@
-     if (char_bounds(bounds, width, family_cff, cmap, ' ', font_xform)) {
- 	// advance space width by letterspacing
- 	width += letterspace;
--	fprint_real(f, "   (SPACE", width, du);
-+	fprint_real(f, "   (SPACE", width * space_factor, du);
- 	if (family_cff->dict_value(Efont::Cff::oIsFixedPitch, 0, &val) && val) {
- 	    // fixed-pitch: no space stretch or shrink
- 	    fprint_real(f, "   (STRETCH", 0, du);
-@@ -1345,6 +1352,29 @@
++static int
++get_x_height(const Cff::Font *family_cff, const OpenType::Cmap &cmap,
++             const Transform &font_xform)
++{
++    // XXX what if 'x', 'm', 'z' were subject to substitution?
++    int xheight = 1000;
++    int bounds[4];
++    int width;
++    static const int xheight_unis[] = { 'x', 'm', 'z', 0 };
++    for (const int *x = xheight_unis; *x; x++)
++	if (char_bounds(bounds, width, family_cff, cmap, 'x', font_xform) && bounds[3] < xheight)
++	    xheight = bounds[3];
++    return xheight;
++};
++
++static double
++get_slant(const Cff::Font *family_cff)
++{
++    double val;
++    (void) family_cff->dict_value(Efont::Cff::oItalicAngle, 0, &val);
++    return -tan(val * M_PI / 180.0);
++};
++
+ static void
+ output_pl(const Metrics &metrics, const String &ps_name, int boundary_char,
+ 	  const OpenType::Font &family_otf, const Cff::Font *family_cff,
+-	  bool vpl, FILE *f)
++	  bool vpl, bool output_ligkern, FILE *f)
+ {
+     // XXX check DESIGNSIZE and DESIGNUNITS for correctness
+ 
+@@ -511,10 +537,9 @@
+ 	font_xform.shear(slant);
+     int bounds[4], width;
+     double du = (design_units == 1000 ? 1. : design_units / 1000.);
+-    
++
+     double val;
+-    (void) family_cff->dict_value(Efont::Cff::oItalicAngle, 0, &val);
+-    double actual_slant = -tan(val * M_PI / 180.0) + slant;
++    double actual_slant = get_slant(family_cff) + slant;
+     if (actual_slant)
+ 	fprintf(f, "   (SLANT R %g)\n", actual_slant);
+ 
+@@ -536,12 +561,7 @@
  	}
      }
  
-+    if (math_font) {
-+	Transform font_xform;
-+	CharstringBounds boundser(font_xform);
-+	int bounds[4], width;
-+	int left_sb, right_sb;
-+	for (int code = 0; code < 256; code++) {
-+	    int g = metrics.glyph(code);
-+	    if (g != 0 && g != Metrics::VIRTUAL_GLYPH && code != dvipsenc.boundary_char()) {
-+		if (char_bounds(bounds, width, font, cmap, code, font_xform)) {
-+		    if (bounds[0] < 0)
-+			left_sb = -bounds[0];
-+		    else
-+			left_sb = 0;
-+		    if (bounds[2] > width)
-+			right_sb = bounds[2] - width;
-+		    else
-+		        right_sb = 0;
-+		    metrics.add_single_positioning(code, left_sb, 0, left_sb + right_sb);
-+		}
-+	    }
-+	}
-+    }
-+
-     // reencode right components of boundary_glyph as boundary_char
-     int boundary_char = dvipsenc.boundary_char();
-     if (metrics.reencode_right_ligkern(256, boundary_char) > 0
-@@ -1482,6 +1512,16 @@
- 	      break;
- 	  }
+-    // XXX what if 'x', 'm', 'z' were subject to substitution?
+-    int xheight = 1000;
+-    static const int xheight_unis[] = { 'x', 'm', 'z', 0 };
+-    for (const int *x = xheight_unis; *x; x++)
+-	if (char_bounds(bounds, width, family_cff, cmap, 'x', font_xform) && bounds[3] < xheight)
+-	    xheight = bounds[3];
++    int xheight = get_x_height(family_cff, cmap, font_xform);
+     if (xheight < 1000)
+ 	fprint_real(f, "   (XHEIGHT", xheight, du);
+     
+@@ -594,39 +614,42 @@
+     // finally, BOUNDARYCHAR
+     glyph_ids.push_back("BOUNDARYCHAR");
  
-+	  case SPACE_FACTOR_OPT: {
-+	    space_factor = clp->val.d;
-+	    break;
-+	  }
+-    // LIGTABLE
+-    fprintf(f, "(LIGTABLE\n");
+-    Vector<int> lig_code2, lig_outcode, lig_context, kern_code2, kern_amt;
+-    // don't print KRN x after printing LIG x
+-    uint32_t used[8];
+-    for (int i = 0; i <= 256; i++)
+-	if (metrics.glyph(i)) {
+-	    int any_lig = metrics.ligatures(i, lig_code2, lig_outcode, lig_context);
+-	    int any_kern = metrics.kerns(i, kern_code2, kern_amt);
+-	    if (any_lig || any_kern) {
+-		StringAccum kern_sa;
+-		memset(&used[0], 0, 32);
+-		for (int j = 0; j < lig_code2.size(); j++) {
+-		    kern_sa << "   (" << lig_context_str(lig_context[j])
+-			    << ' ' << glyph_ids[lig_code2[j]]
+-			    << ' ' << glyph_ids[lig_outcode[j]]
+-			    << ')' << glyph_comments[lig_code2[j]]
+-			    << glyph_comments[lig_outcode[j]] << '\n';
+-		    used[lig_code2[j] >> 5] |= (1 << (lig_code2[j] & 0x1F));
+-		}
+-		for (Vector<int>::const_iterator k2 = kern_code2.begin(); k2 < kern_code2.end(); k2++)
+-		    if (!(used[*k2 >> 5] & (1 << (*k2 & 0x1F)))) {
+-			double this_kern = kern_amt[k2 - kern_code2.begin()];
+-			if (fabs(this_kern) >= minimum_kern)
+-			    kern_sa << "   (KRN " << glyph_ids[*k2]
+-				    << " R " << real_string(this_kern, du)
+-				    << ')' << glyph_comments[*k2] << '\n';
+-		    }
+-		if (kern_sa)
+-		    fprintf(f, "   (LABEL %s)%s\n%s   (STOP)\n", glyph_ids[i].c_str(), glyph_comments[i].c_str(), kern_sa.c_str());
+-	    }
+-	}
+-    fprintf(f, "   )\n");
++    if (output_ligkern)
++    {
++      // LIGTABLE
++      fprintf(f, "(LIGTABLE\n");
++      Vector<int> lig_code2, lig_outcode, lig_context, kern_code2, kern_amt;
++      // don't print KRN x after printing LIG x
++      uint32_t used[8];
++      for (int i = 0; i <= 256; i++)
++          if (metrics.glyph(i)) {
++              int any_lig = metrics.ligatures(i, lig_code2, lig_outcode, lig_context);
++              int any_kern = metrics.kerns(i, kern_code2, kern_amt);
++              if (any_lig || any_kern) {
++                  StringAccum kern_sa;
++                  memset(&used[0], 0, 32);
++                  for (int j = 0; j < lig_code2.size(); j++) {
++                      kern_sa << "   (" << lig_context_str(lig_context[j])
++                              << ' ' << glyph_ids[lig_code2[j]]
++                              << ' ' << glyph_ids[lig_outcode[j]]
++                              << ')' << glyph_comments[lig_code2[j]]
++                              << glyph_comments[lig_outcode[j]] << '\n';
++                      used[lig_code2[j] >> 5] |= (1 << (lig_code2[j] & 0x1F));
++                  }
++                  for (Vector<int>::const_iterator k2 = kern_code2.begin(); k2 < kern_code2.end(); k2++)
++                      if (!(used[*k2 >> 5] & (1 << (*k2 & 0x1F)))) {
++                          double this_kern = kern_amt[k2 - kern_code2.begin()];
++                          if (fabs(this_kern) >= minimum_kern)
++                              kern_sa << "   (KRN " << glyph_ids[*k2]
++                                      << " R " << real_string(this_kern, du)
++                                      << ')' << glyph_comments[*k2] << '\n';
++                      }
++                  if (kern_sa)
++                      fprintf(f, "   (LABEL %s)%s\n%s   (STOP)\n", glyph_ids[i].c_str(), glyph_comments[i].c_str(), kern_sa.c_str());
++              }
++          }
++      fprintf(f, "   )\n");
++    }
+     
+     // CHARACTERs
+     Vector<Setting> settings;
+@@ -685,7 +708,7 @@
+ static void
+ output_pl(const Metrics &metrics, const String &ps_name, int boundary_char,
+ 	  const OpenType::Font &family_otf, const Cff::Font *family_cff,
+-	  bool vpl, String filename, ErrorHandler *errh)
++	  bool vpl, bool output_ligkern, String filename, ErrorHandler *errh)
+ {
+     if (no_create)
+ 	errh->message("would create %s", filename.c_str());
+@@ -693,7 +716,7 @@
+ 	if (verbose)
+ 	    errh->message("creating %s", filename.c_str());
+ 	if (FILE *f = fopen(filename.c_str(), "w")) {
+-	    output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, vpl, f);
++	    output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, vpl, output_ligkern, f);
+ 	    fclose(f);
+ 	} else
+ 	    errh->error("%s: %s", filename.c_str(), strerror(errno));
+@@ -859,7 +882,8 @@
+ 	    sa << (i ? "\n%" : "%") << hex_digits[(i >> 4) & 0xF] << '0' << '\n' << ' ';
+ 	else if ((i & 0x7) == 0)
+ 	    sa << '\n' << ' ';
+-	if (int g = glyphs[i])
++	int g = glyphs[i];
++	if (g > 0 && g < glyph_names.size())
+ 	    sa << ' ' << '/' << glyph_names[g];
+ 	else
+ 	    sa << " /.notdef";
+@@ -933,7 +957,7 @@
+ static void
+ output_tfm(const Metrics &metrics, const String &ps_name, int boundary_char,
+ 	   const OpenType::Font &family_otf, const Cff::Font *family_cff,
+-	   String tfm_filename, String vf_filename, ErrorHandler *errh)
++	   String tfm_filename, String vf_filename, bool output_ligkern, ErrorHandler *errh)
+ {
+     String pl_filename;
+     int pl_fd = temporary_file(pl_filename, errh);
+@@ -949,7 +973,7 @@
+ 	if (verbose)
+ 	    errh->message("writing %s to temporary file", (vpl ? "VPL" : "PL"));
+ 	FILE *f = fdopen(pl_fd, "w");
+-	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, vpl, f);
++	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, vpl, output_ligkern, f);
+ 	fclose(f);
+     }
+ 
+@@ -1008,10 +1032,10 @@
+ 	if (output_flags & G_BINARY) {
+ 	    String tfm = getodir(O_TFM, errh) + "/" + font_name + ".tfm";
+ 	    String vf = getodir(O_VF, errh) + "/" + font_name + ".vf";
+-	    output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, vf, errh);
++	    output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, vf, true, errh);
+ 	} else {
+ 	    String outfile = getodir(O_VPL, errh) + "/" + font_name + ".vpl";
+-	    output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, true, outfile, errh);
++	    output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, true, true, outfile, errh);
+ 	    update_odir(O_VPL, outfile, errh);
+ 	}
+ 	metrics.make_base(257);
+@@ -1022,10 +1046,10 @@
+ 	/* do nothing */;
+     else if (output_flags & G_BINARY) {
+ 	String tfm = getodir(O_TFM, errh) + "/" + base_font_name + ".tfm";
+-	output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, String(), errh);
++	output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, String(), !(output_flags & G_VMETRICS), errh);
+     } else {
+ 	String outfile = getodir(O_PL, errh) + "/" + base_font_name + ".pl";
+-	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, false, outfile, errh);
++	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, false, !(output_flags & G_VMETRICS), outfile, errh);
+ 	update_odir(O_PL, outfile, errh);
+     }
+ 
+@@ -1268,6 +1292,9 @@
+     // encode boundary glyph at 256; pretend its Unicode value is '\n'
+     metrics.encode(256, '\n', metrics.boundary_glyph());
+ 
++    if (skew_char >= 0)
++        metrics.encode(skew_char, '\n', metrics.skew_glyph());
 +
-+	  case MATH_FONT_OPT: {
-+	    math_font = true;
-+	    break;
-+	  }
+     // maintain statistics about features
+     HashMap<uint32_t, int> feature_usage(0);
+ 
+@@ -1322,15 +1349,26 @@
+     // apply math letterspacing, if any
+     if (math_spacing) {
+ 	Transform font_xform;
+-	CharstringBounds boundser(font_xform);
+ 	int bounds[4], width;
 +
- 	  case FEATURE_OPT: {
- 	      OpenType::Tag t(clp->arg);
- 	      if (!t.valid())
++        double actual_slant = get_slant(font) + slant;
++
+ 	for (int code = 0; code < 256; code++) {
+ 	    int g = metrics.glyph(code);
+ 	    if (g != 0 && g != Metrics::VIRTUAL_GLYPH && code != boundary_char) {
+ 		if (char_bounds(bounds, width, font, cmap, code, font_xform)) {
++		    // increase sidebearings
+ 		    int left_sb = (bounds[0] < 0 ? -bounds[0] : 0);
+ 		    int right_sb = (bounds[2] > width ? bounds[2] - width : 0);
+ 		    metrics.add_single_positioning(code, left_sb, 0, left_sb + right_sb);
++
++		    // compute accent skew
++		    int height = bounds[3];
++		    int x_height = get_x_height(font, cmap, font_xform);
++		    int skew = (int)(height > x_height ? actual_slant * (height - x_height) : 0);
++
++                    if (skew != 0)
++			metrics.add_kern(code, skew_char, skew);
+ 		}
+ 	    }
+ 	}
+@@ -1578,6 +1616,10 @@
+ 	    default_ligkern = true;
+ 	    break;
+ 
++	  case SKEW_CHAR_OPT:
++	    skew_char = clp->val.i;
++	    break;
++
+ 	  case BOUNDARY_CHAR_OPT:
+ 	    ligkern.push_back(String("|| = ") + String(clp->val.i));
+ 	    break;

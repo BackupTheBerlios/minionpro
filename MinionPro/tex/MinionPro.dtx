@@ -1474,18 +1474,18 @@
 \newcommand*\MnDeclareMathFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
 %
-  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{it}   {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{sc}   {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{scit} {\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{n}   {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{it}  {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{sc}  {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{scit}{\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{n}    {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{it}   {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{sc}   {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{scit} {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\skewchar\font=255\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{it}   {\skewchar\font=255\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{sc}   {\skewchar\font=255\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{scit} {\skewchar\font=255\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{n}   {\skewchar\font=255\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{it}  {\skewchar\font=255\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{sc}  {\skewchar\font=255\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{scit}{\skewchar\font=255\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{n}    {\skewchar\font=255\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{it}   {\skewchar\font=255\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{sc}   {\skewchar\font=255\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{scit} {\skewchar\font=255\SmallcapsItalicProtruding{#1}}%
 %
   \MnDeclareFontRegular       {#1}{#2}{m}{n}    {#3-l1-#4}   {#3-l1-#4}%
   \MnDeclareFontItalic        {#1}{#2}{m}{it}   {#3-l1-#4}   {#3-l1-#4}%
