@@ -1,7 +1,6 @@
-\ProvidesPackage{Minion}[2004/10/07 support for MinionPro]
+\ProvidesPackage{Minion}[2005/01/11 support for MinionPro]
 
 \RequirePackage{Minion-Protrude}
-\RequirePackage{keyval}
 
 \DeclareOption{protrude}{\enableprotruding}
 \DeclareOption{fleqn}{\PassOptionsToPackage{fleqn}{MnSymbol}}
@@ -146,12 +145,32 @@
 
 % figures
 
-\define@key{figures}{osf}[]{\def\Mn@Text@FigB{OsF}}
-\define@key{figures}{lf}[]{\def\Mn@Text@FigB{LF}}
-\define@key{figures}{tabular}[]{\def\Mn@Text@FigA{T}\mathversion{tabular}}
-\define@key{figures}{proportional}[]{\def\Mn@Text@FigA{}}
+\def\Mn@Key@lf{0}
+\def\Mn@Key@osf{1}
+\def\Mn@Key@tabular{2}
+\def\Mn@Key@proportional{3}
 
-\newcommand*\figureversion[1]{\setkeys{figures}{#1}\fontfamily\Mn@Text@Family\selectfont}
+\def\figureversion#1{%
+  \@for\@fv@arg:=#1\do{%
+    \edef\@fv@arg{\expandafter\@firstofone\@fv@arg\@empty}%
+    \expandafter\ifx\csname Mn@Key@\@fv@arg\endcsname\relax
+      \PackageWarning{minion}%
+      {Unknown figure style `\@fv@arg' specified as the argument to
+       \string\figureversion. Figure style not changed.}%
+    \else
+      \ifcase\csname Mn@Key@\@fv@arg\endcsname
+        \def\Mn@Text@FigB{LF}%
+      \or
+        \def\Mn@Text@FigB{OsF}%
+      \or
+        \def\Mn@Text@FigA{T}\mathversion{tabular}%
+      \or
+        \def\Mn@Text@FigA{}%
+      \fi
+    \fi
+  }%
+  \fontfamily\Mn@Text@Family\selectfont
+}
 
 \newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
 \newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
