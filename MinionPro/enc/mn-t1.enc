@@ -2,8 +2,8 @@
 %
 % LIGKERN f {L} b ; ff {L} b ; f {L} h ; ff {L} h ; f {L} k ; ff {L} k
 % LIGKERN Tcedilla {L} h ; Tcaron {L} h
-% LIGKERN less less =: guillementleft ;
-% LIGKERN greater greater =: guillementright ;
+% LIGKERN less less =: guillemotleft ;
+% LIGKERN greater greater =: guillemotright ;
 
 /MinionPro-T1Encoding [          % now 256 chars follow
 % 0x00
