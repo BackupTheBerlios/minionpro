@@ -17,34 +17,7 @@ echo "Creating TeX metrics ..."
 
 ./scripts/maketfm MinionPro | grep -v "^I had to" | sort -u >dvips/MinionPro.map
 
-#for v in *.pl
-#do
-#  if [ -e "$v" ]
-#  then
-#    pltotf "$v"
-#  fi
-#done
-#
-#for v in *.vpl
-#do
-#  if [ -e "$v" ]
-#  then
-#    vptovf "$v"
-#  fi
-#done
-
-mv a_*.enc    dvips
 mv *.pfb      pfb
-mv *tosf*.vf  vf
-mv *osf*.vf   vf
-mv *tlf*.vf   vf
-mv *lf*.vf    vf
-
-mv *tosf*.tfm tfm
-mv *osf*.tfm  tfm
-mv *tlf*.tfm  tfm
-mv *lf*.tfm   tfm
-mv *.tfm      tfm
 
 (cd fontinst; ../scripts/makeint MinionPro)
 
