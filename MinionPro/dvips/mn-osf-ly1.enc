@@ -1,10 +1,10 @@
 /MinionPro-TeXnANSIEncoding [
-% 00
+% 0x00
 /.notdef /Euro /.notdef /.notdef /fraction /dotaccent /hungarumlaut /ogonek
 /fl /.notdef /cwm /ff /fi /.notdef /ffi /ffl
 /dotlessi /dotlessj /grave /acute /caron /breve /macron /ring
 /cedilla /germandbls /ae /oe /oslash /AE /OE /Oslash
-0x20
+% 0x20
 /space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
 /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
 /zerooldstyle /oneoldstyle /twooldstyle /threeoldstyle /fouroldstyle /fiveoldstyle /sixoldstyle /sevenoldstyle
