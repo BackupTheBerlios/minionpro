@@ -308,40 +308,102 @@
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\hbar}{\mathord}{letters}{"81}
 
-\def\Mn@Decl@Minion@Ints{
-  \DeclareFontFamily{OML}{Minion-Integral-Text}{}
-  \DeclareFontFamily{OML}{Minion-Integral-Display}{}
-  \DeclareFontShape{OML}{Minion-Integral-Text}{m}{it}{
-      <-6>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
-     <6-8>  s*[1.1] MinionPro-ItCapt-L-7m
-     <8-9>  s*[1.1] MinionPro-ItCapt-L-7m
-     <9-12> s*[1.1] MinionPro-It-L-7m
-    <12-15> s*[1.1] MinionPro-ItSubh-L-7m
-    <15->   s*[1.1] MinionPro-ItDisp-L-7m}{}
-  \DeclareFontShape{OML}{Minion-Integral-Text}{b}{it}{
-      <-8>  s*[1.1] MinionPro-BoldItCapt-L-7m
-     <8-9>  s*[1.1] MinionPro-BoldItCapt-L-7m
-     <9-12> s*[1.1] MinionPro-BoldIt-L-7m
-    <12-15> s*[1.1] MinionPro-BoldItSubh-L-7m
-    <15->   s*[1.1] MinionPro-BoldItDisp-L-7m}{}
-  \DeclareFontShape{OML}{Minion-Integral-Display}{m}{it}{
-      <-6>  s*[1.9] MinionPro-SemiboldIt-L-7m
-     <6-8>  s*[1.9] MinionPro-It-L-7m
-     <8-9>  s*[1.9] MinionPro-ItSubh-L-7m
-     <9->   s*[1.9] MinionPro-ItDisp-L-7m}{}
-  \DeclareFontShape{OML}{Minion-Integral-Display}{b}{it}{
-      <-8>  s*[1.9] MinionPro-BoldIt-L-7m
-     <8-9>  s*[1.9] MinionPro-BoldItSubh-L-7m
-     <9->   s*[1.9] MinionPro-BoldItDisp-L-7m}{}
-  \DeclareMathAlphabet\mathinttext  {OML}{Minion-Integral-Text}{m}{it}
-  \SetMathAlphabet\mathinttext{bold}{OML}{Minion-Integral-Text}{b}{it}
-  \DeclareMathAlphabet\mathintdisp  {OML}{Minion-Integral-Display}{m}{it}
-  \SetMathAlphabet\mathintdisp{bold}{OML}{Minion-Integral-Display}{b}{it}
+\DeclareFontFamily{OML}{Minion-Integral-Text}{}
+\DeclareFontFamily{OML}{Minion-Integral-Display}{}
+\DeclareFontShape{OML}{Minion-Integral-Text}{m}{it}{
+    <-6>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+   <6-8>  s*[1.1] MinionPro-ItCapt-L-7m
+   <8-9>  s*[1.1] MinionPro-ItCapt-L-7m
+   <9-12> s*[1.1] MinionPro-It-L-7m
+  <12-15> s*[1.1] MinionPro-ItSubh-L-7m
+  <15->   s*[1.1] MinionPro-ItDisp-L-7m}{}
+\DeclareFontShape{OML}{Minion-Integral-Text}{sb}{it}{
+    <-6>  s*[1.1] MinionPro-BoldItCapt-L-7m
+   <6-8>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+   <8-9>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+   <9-12> s*[1.1] MinionPro-SemiboldIt-L-7m
+  <12-15> s*[1.1] MinionPro-SemiboldItSubh-L-7m
+  <15->   s*[1.1] MinionPro-SemiboldItDisp-L-7m}{}
+\DeclareFontShape{OML}{Minion-Integral-Text}{b}{it}{
+    <-8>  s*[1.1] MinionPro-BoldItCapt-L-7m
+   <8-9>  s*[1.1] MinionPro-BoldItCapt-L-7m
+   <9-12> s*[1.1] MinionPro-BoldIt-L-7m
+  <12-15> s*[1.1] MinionPro-BoldItSubh-L-7m
+  <15->   s*[1.1] MinionPro-BoldItDisp-L-7m}{}
+\DeclareFontShape{OML}{Minion-Integral-Display}{m}{it}{
+    <-6>  s*[1.9] MinionPro-SemiboldIt-L-7m
+   <6-8>  s*[1.9] MinionPro-It-L-7m
+   <8-9>  s*[1.9] MinionPro-ItSubh-L-7m
+   <9->   s*[1.9] MinionPro-ItDisp-L-7m}{}
+\DeclareFontShape{OML}{Minion-Integral-Display}{sb}{it}{
+    <-6>  s*[1.9] MinionPro-BoldIt-L-7m
+   <6-8>  s*[1.9] MinionPro-SemiboldIt-L-7m
+   <8-9>  s*[1.9] MinionPro-SemiboldItSubh-L-7m
+   <9->   s*[1.9] MinionPro-SemiboldItDisp-L-7m}{}
+\DeclareFontShape{OML}{Minion-Integral-Display}{b}{it}{
+    <-8>  s*[1.9] MinionPro-BoldIt-L-7m
+   <8-9>  s*[1.9] MinionPro-BoldItSubh-L-7m
+   <9->   s*[1.9] MinionPro-BoldItDisp-L-7m}{}
+\DeclareMathAlphabet\mathinttext  {OML}{Minion-Integral-Text}{m}{it}
+\SetMathAlphabet\mathinttext{bold}{OML}{Minion-Integral-Text}{sb}{it}
+\DeclareMathAlphabet\mathintdisp  {OML}{Minion-Integral-Display}{m}{it}
+\SetMathAlphabet\mathintdisp{bold}{OML}{Minion-Integral-Display}{sb}{it}
 
-  \def\vartintop{\mathop{\mathinttext{\mathchar"7180}}}
-  \def\vardintop{\mathop{\mathintdisp{\mathchar"7180}}}
+\def\centered@op#1#2{\mathop{\vcenter{\hbox{$\m@th#1\Mn@Text@With@MathVersion{#2}$}}}}
+\def\vartintop{\mathpalette\centered@op
+  {\fontencoding{OML}%
+   \fontfamily{Minion-Integral-Text}%
+   \fontshape{it}%
+   \selectfont
+   \char"80}}
+\def\vardintop{\mathpalette\centered@op
+  {\fontencoding{OML}%
+   \fontfamily{Minion-Integral-Display}%
+   \fontshape{it}%
+   \selectfont
+   \char"80}}
+\def\intkern@{\mkern-6mu\mathchoice{\mkern-2mu}{}{}{}}
+\def\intdots@{\mkern-5mu%
+  \mathchoice{\mkern-1mu\@cdots\mkern-1mu}%
+  {{\cdotp}{\cdotp}{\cdotp}}%
+  {{\cdotp}{\cdotp}{\cdotp}}%
+  {{\cdotp}{\cdotp}{\cdotp}\mkern1mu}%
+  \mkern-6mu}
 
+\def\vartlandupintop{\mathop{\overstrike\partialvartlandupint\vartintop}}
+\def\vardlandupintop{\mathop{\overstrike\partialvardlandupint\vardintop}}
+\def\vartlanddownintop{\mathop{\overstrike\partialvartlanddownint\vartintop}}
+\def\vardlanddownintop{\mathop{\overstrike\partialvardlanddownint\vardintop}}
+\def\vartstrokedintop{\mathop{\overstrike\partialvartstrokedint\vartintop}}
+\def\vardstrokedintop{\mathop{\overstrike\partialvardstrokedint\vardintop}}
+\def\vartointop{\mathop{\overstrike\partialvartoint\vartintop}}
+\def\vardointop{\mathop{\overstrike\partialvardoint\vardintop}}
+\def\vartoiintop{\mathop{\overstrike\partialvartoiint{\vartintop\intkern@\vartintop}}}
+\def\vardoiintop{\mathop{\overstrike\partialvardoiint{\vardintop\intkern@\vardintop}}}
+\def\vartrcirclerightintop{\mathop{\overstrike\partialvartrcirclerightint\vartintop}}
+\def\vardrcirclerightintop{\mathop{\overstrike\partialvardrcirclerightint\vardintop}}
+\def\vartlcirclerightintop{\mathop{\overstrike\partialvartlcirclerightint\vartintop}}
+\def\vardlcirclerightintop{\mathop{\overstrike\partialvardlcirclerightint\vardintop}}
+\def\vartrcircleleftintop{\mathop{\overstrike\partialvartrcircleleftint\vartintop}}
+\def\vardrcircleleftintop{\mathop{\overstrike\partialvardrcircleleftint\vardintop}}
+\def\vartlcircleleftintop{\mathop{\overstrike\partialvartlcircleleftint\vartintop}}
+\def\vardlcircleleftintop{\mathop{\overstrike\partialvardlcircleleftint\vardintop}}
+
+\def\Mn@Decl@Minion@Ints{%
   \def\intop{\mathop{\mathchoice{\vardintop}{\vartintop}{\vartintop}{\vartintop}}}
+  \def\iint{\DOTSI\protect\MultiIntegral{2}}
+  \def\iiint{\DOTSI\protect\MultiIntegral{3}}
+  \def\iiiint{\DOTSI\protect\MultiIntegral{4}}
+  \def\idotsint{\DOTSI\protect\MultiIntegral{0}}}
+  \def\landupint{\DOTSI\mathop{\mathchoice{\vardlandupintop}{\vartlandupintop}{\vartlandupintop}{\vartlandupintop}{\vartlandupintop}}\ilimits@}
+  \def\landdownint{\DOTSI\mathop{\mathchoice{\vardlanddownintop}{\vartlanddownintop}{\vartlanddownintop}{\vartlanddownintop}{\vartlanddownintop}}\ilimits@}
+  \def\strokeint{\DOTSI\mathop{\mathchoice{\vardstrokedintop}{\vartstrokedintop}{\vartstrokedintop}{\vartstrokedintop}}\ilimits@}
+  \def\oint{\DOTSI\mathop{\mathchoice{\vardointop}{\vartointop}{\vartointop}{\vartointop}}\ilimits@}
+  \def\oiint{\DOTSI\mathop{\mathchoice{\vardoiintop}{\vartoiintop}{\vartoiintop}{\vartoiintop}}\ilimits@}
+  \def\rcirclerightint{\DOTSI\mathop{\mathchoice{\vardrcirclerightintop}{\vartrcirclerightintop}{\vartrcirclerightintop}{\vartrcirclerightintop}}\ilimits@}
+  \def\lcirclerightint{\DOTSI\mathop{\mathchoice{\vardlcirclerightintop}{\vartlcirclerightintop}{\vartlcirclerightintop}{\vartlcirclerightintop}}\ilimits@}
+  \def\rcircleleftint{\DOTSI\mathop{\mathchoice{\vardrcircleleftintop}{\vartrcircleleftintop}{\vartrcircleleftintop}{\vartrcircleleftintop}}\ilimits@}
+  \def\lcircleleftint{\DOTSI\mathop{\mathchoice{\vardlcircleleftintop}{\vartlcircleleftintop}{\vartlcircleleftintop}{\vartlcircleleftintop}}\ilimits@}
 }
 
 \Mn@Decl@Ints
