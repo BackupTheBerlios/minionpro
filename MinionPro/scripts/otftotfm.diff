@@ -1,13 +1,73 @@
-Only in otftotfm: automatic.o
-Only in otftotfm: .deps
-Only in otftotfm: dvipsencoding.o
-Only in otftotfm: glyphfilter.o
-Only in otftotfm: kpseinterface.o
-Only in otftotfm: Makefile
-Only in otftotfm: md5.o
+diff -u otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
+--- otftotfm.orig/dvipsencoding.cc	Fri Mar 11 03:41:56 2005
++++ otftotfm/dvipsencoding.cc	Wed Apr  6 08:31:07 2005
+@@ -301,9 +301,30 @@
+     for (int i = 0; ligkern_ops[i].s; i++)
+ 	if (ligkern_ops[i].s == s)
+ 	    return ligkern_ops[i].v;
++
++    if (s[0] == '{' && s.back() == '}' &&
++        (s[1] == '-' || isdigit(s[1]))) {
++        for (int i = 2; i < s.length() - 1; i++)
++            if (!isdigit(s[i]))
++                return -1;
++        return DvipsEncoding::J_KERN;
++    }
+     return -1;
+ }
+ 
++static long
++parse_kern_op(const String &s)
++{
++    if (s[0] == '{' && s.back() == '}') {
++        char *endptr;
++        long kern = strtol(s.data() + 1, &endptr, 10);
++
++        if (endptr == s.end() - 1)
++          return kern;
++    }
++    return 0;
++}
++
+ inline bool
+ operator==(const DvipsEncoding::Ligature& l1, const DvipsEncoding::Ligature& l2)
+ {
+@@ -349,6 +370,10 @@
+ 	    if (bv < 0)
+ 		return errh->warning("'%s' has no encoding, ignoring %s", v[2].c_str(), nokern_names[op - J_NOKERN]);
+ 	    Ligature lig = { av, bv, op, 0 };
++
++            if (op == J_KERN)
++              lig.d = parse_kern_op(v[1]);
++
+ 	    Ligature *what = std::find(_lig.begin(), _lig.end(), lig);
+ 	    if (override > 0 && what < _lig.end())
+ 		*what = lig;
+@@ -698,6 +723,9 @@
+ 	} else if (l.join == J_CLIG) {
+ 	    metrics.remove_ligatures(l.c1, l.c2);
+ 	    metrics.add_ligature(l.c1, l.c2, metrics.pair_code(l.c1, l.d));
++	} else if (l.join == J_KERN) {
++	    metrics.remove_ligatures(l.c1, l.c2);
++	    metrics.add_kern(l.c1, l.c2, l.d);
+ 	} else {
+ 	    static int complex_join_warning = 0;
+ 	    if (!complex_join_warning) {
+diff -u otftotfm.orig/dvipsencoding.hh otftotfm/dvipsencoding.hh
+--- otftotfm.orig/dvipsencoding.hh	Fri Mar 11 03:41:07 2005
++++ otftotfm/dvipsencoding.hh	Wed Apr  6 08:30:01 2005
+@@ -42,7 +42,7 @@
+     enum { J_BAD = -1,
+ 	   J_LIG = 0, J_CLIG = 1, J_CLIG_S = 2, J_LIGC = 3,
+ 	   J_LIGC_S = 4, J_CLIGC = 5, J_CLIGC_S = 6, J_CLIGC_SS = 7,
+-	   J_NOKERN = 100, J_NOLIG = 101, J_NOLIGKERN = 102,
++	   J_NOKERN = 100, J_NOLIG = 101, J_NOLIGKERN = 102, J_KERN = 103,
+ 	   J_ALL = 0x7FFFFFFF }; // also see nokern_names in dvipsencoding.cc
+     
+   private:
 diff -u otftotfm.orig/metrics.cc otftotfm/metrics.cc
---- otftotfm.orig/metrics.cc	2005-03-16 19:38:15.000000000 +0100
-+++ otftotfm/metrics.cc	2005-03-16 19:38:32.000000000 +0100
+--- otftotfm.orig/metrics.cc	Sun Apr  3 04:25:04 2005
++++ otftotfm/metrics.cc	Wed Apr  6 08:30:01 2005
 @@ -24,7 +24,7 @@
  #include <lcdf/straccum.hh>
  
@@ -27,8 +87,8 @@ diff -u otftotfm.orig/metrics.cc otftotfm/metrics.cc
  	    return "<emptyslot>";
  	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
 diff -u otftotfm.orig/metrics.hh otftotfm/metrics.hh
---- otftotfm.orig/metrics.hh	2005-03-16 19:38:15.000000000 +0100
-+++ otftotfm/metrics.hh	2005-03-16 19:38:32.000000000 +0100
+--- otftotfm.orig/metrics.hh	Tue Aug 10 09:27:30 2004
++++ otftotfm/metrics.hh	Wed Apr  6 08:30:01 2005
 @@ -31,6 +31,7 @@
      void check() const;
      
@@ -45,11 +105,45 @@ diff -u otftotfm.orig/metrics.hh otftotfm/metrics.hh
      Glyph _emptyslot_glyph;
  
      Vector<Kern> _altselectors;
-Only in otftotfm: metrics.o
-Only in otftotfm: otftotfm
+diff -u otftotfm.orig/otftotfm.1 otftotfm/otftotfm.1
+--- otftotfm.orig/otftotfm.1	Sun Apr  3 02:28:50 2005
++++ otftotfm/otftotfm.1	Wed Apr  6 08:30:01 2005
+@@ -431,6 +431,13 @@
+ such feature.
+ .PD
+ '
++.Sp
++.TP 5
++.BI \-\-extra\-skew= amount
++Increases the kerning with the skew character by
++.IR amount .
++This results in shifting accents in math mode to the left.
++'
+ '
+ .SS Encoding Options
+ '
+@@ -603,6 +610,18 @@
+ .nf
+     \fBotftotfm\fR \fB\-f\fRsalt \fB\-\-include\-alternates\fR='*.end' \fB\-f\fRaalt \.\.\.
+ .fi
++'
++.Sp
++.TP 5
++.BI \-\-skew\-char= char
++Set the font's skew character to
++.IR char ,
++Computes kerning values for the skew character that determine accent
++positions in math mode. This option only works in conjunction with the
++.B \-\-math\-font
++option. You can use the
++.B \-\-extra\-skew
++option to further modify the accent positions.
+ '
+ .PD
+ '
 diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
---- otftotfm.orig/otftotfm.cc	2005-03-16 19:38:15.000000000 +0100
-+++ otftotfm/otftotfm.cc	2005-03-30 18:46:37.000000000 +0200
+--- otftotfm.orig/otftotfm.cc	Sun Apr  3 04:25:24 2005
++++ otftotfm/otftotfm.cc	Wed Apr  6 08:30:01 2005
 @@ -94,6 +94,8 @@
  #define ALTERNATES_FILTER_OPT	336
  #define SPACE_FACTOR_OPT	337
@@ -77,7 +171,23 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  
  static String out_encoding_file;
  static String out_encoding_name;
-@@ -476,10 +482,33 @@
+@@ -292,6 +298,7 @@
+   -k, --min-kern=N             Omit kerns with absolute value < N [2.0].\n\
+       --space-factor=F         Scale wordspace by a factor of F.\n\
+       --design-size=SIZE       Set font design size to SIZE.\n\
++      --extra-skew=AMT         Add AMT to the kerning with the skew character.\n\
+ \n");
+     printf("\
+ Encoding options:\n\
+@@ -309,6 +316,7 @@
+       --include-alternates=PAT Same, but cumulative.\n\
+       --exclude-alternates=PAT Ignore alternate characters matching PAT.\n\
+       --clear-alternates       Clear included/excluded alternates.\n\
++      --skew-char=CHAR         Set the skew character to CHAR.\n\
+ \n");
+     printf("\
+ Automatic mode options:\n\
+@@ -476,10 +484,33 @@
      }
  }
  
@@ -112,7 +222,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  {
      // XXX check DESIGNSIZE and DESIGNUNITS for correctness
  
-@@ -513,8 +542,7 @@
+@@ -513,8 +544,7 @@
      double du = (design_units == 1000 ? 1. : design_units / 1000.);
      
      double val;
@@ -122,7 +232,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
      if (actual_slant)
  	fprintf(f, "   (SLANT R %g)\n", actual_slant);
  
-@@ -536,12 +564,7 @@
+@@ -536,12 +566,7 @@
  	}
      }
  
@@ -136,7 +246,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
      if (xheight < 1000)
  	fprint_real(f, "   (XHEIGHT", xheight, du);
      
-@@ -594,39 +617,42 @@
+@@ -594,39 +619,42 @@
      // finally, BOUNDARYCHAR
      glyph_ids.push_back("BOUNDARYCHAR");
  
@@ -212,7 +322,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
      
      // CHARACTERs
      Vector<Setting> settings;
-@@ -685,7 +711,7 @@
+@@ -685,7 +713,7 @@
  static void
  output_pl(const Metrics &metrics, const String &ps_name, int boundary_char,
  	  const OpenType::Font &family_otf, const Cff::Font *family_cff,
@@ -221,7 +331,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  {
      if (no_create)
  	errh->message("would create %s", filename.c_str());
-@@ -693,7 +719,7 @@
+@@ -693,7 +721,7 @@
  	if (verbose)
  	    errh->message("creating %s", filename.c_str());
  	if (FILE *f = fopen(filename.c_str(), "w")) {
@@ -230,7 +340,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  	    fclose(f);
  	} else
  	    errh->error("%s: %s", filename.c_str(), strerror(errno));
-@@ -859,7 +885,8 @@
+@@ -859,7 +887,8 @@
  	    sa << (i ? "\n%" : "%") << hex_digits[(i >> 4) & 0xF] << '0' << '\n' << ' ';
  	else if ((i & 0x7) == 0)
  	    sa << '\n' << ' ';
@@ -240,7 +350,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  	    sa << ' ' << '/' << glyph_names[g];
  	else
  	    sa << " /.notdef";
-@@ -933,7 +960,7 @@
+@@ -933,7 +962,7 @@
  static void
  output_tfm(const Metrics &metrics, const String &ps_name, int boundary_char,
  	   const OpenType::Font &family_otf, const Cff::Font *family_cff,
@@ -249,7 +359,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  {
      String pl_filename;
      int pl_fd = temporary_file(pl_filename, errh);
-@@ -949,7 +976,7 @@
+@@ -949,7 +978,7 @@
  	if (verbose)
  	    errh->message("writing %s to temporary file", (vpl ? "VPL" : "PL"));
  	FILE *f = fdopen(pl_fd, "w");
@@ -258,7 +368,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  	fclose(f);
      }
  
-@@ -1008,30 +1035,26 @@
+@@ -1008,30 +1037,26 @@
  	if (output_flags & G_BINARY) {
  	    String tfm = getodir(O_TFM, errh) + "/" + font_name + ".tfm";
  	    String vf = getodir(O_VF, errh) + "/" + font_name + ".vf";
@@ -293,7 +403,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  
      // print DVIPS map line
      if (errh->nerrors() == 0 && (output_flags & G_PSFONTSMAP)) {
-@@ -1272,6 +1295,9 @@
+@@ -1272,6 +1297,9 @@
      // encode boundary glyph at 256; pretend its Unicode value is '\n'
      metrics.encode(256, '\n', metrics.boundary_glyph());
  
@@ -303,7 +413,7 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
      // maintain statistics about features
      HashMap<uint32_t, int> feature_usage(0);
  
-@@ -1326,18 +1352,33 @@
+@@ -1326,18 +1354,33 @@
      // apply math letterspacing, if any
      if (math_spacing) {
  	Transform font_xform;
@@ -342,23 +452,18 @@ diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
      }
  
      // reencode right components of boundary_glyph as boundary_char
-@@ -1558,6 +1599,14 @@
+@@ -1556,6 +1599,14 @@
+ 	    if (space_factor != 1)
+ 		usage_error(errh, "space factor specified twice");
  	    space_factor = clp->val.d;
- 	    break;
- 
++	    break;
++
 +	  case SKEW_CHAR_OPT:
 +	    skew_char = clp->val.i;
 +	    break;
 +
 +	  case EXTRA_SKEW_OPT:
 +	    extra_skew = clp->val.i;
-+	    break;
-+
- 	  case MATH_SPACING_OPT:
- 	    math_spacing = !clp->negated;
  	    break;
-Only in otftotfm: otftotfm.o
-Only in otftotfm: secondary.o
-Only in otftotfm: uniprop.o
-Only in otftotfm: util.o
-Only in otftotfm: .viminfo
+ 
+ 	  case MATH_SPACING_OPT:
