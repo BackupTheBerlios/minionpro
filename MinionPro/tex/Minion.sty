@@ -1,6 +1,7 @@
 \ProvidesPackage{Minion}[2004/10/07 support for MinionPro]
 
 \RequirePackage{Minion-Protrude}
+\RequirePackage{keyval}
 
 \DeclareOption{protrude}{\enableprotruding}
 \DeclareOption{fleqn}{\PassOptionsToPackage{fleqn}{MnSymbol}}
@@ -93,9 +94,18 @@
 \DeclareMathAlphabet\mathit     {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{it}
 \SetMathAlphabet\mathit   {bold}{OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{it}
 
+% figures
+
 \newcommand*\tabularfigures[1]{{\fontencoding{OML}\selectfont#1}}
 \newcommand*\liningfigures[1]{{\fontfamily{Minion-LF\Mn@Capt}\selectfont#1}}
 \newcommand*\textfigures[1]{{\fontfamily{Minion-OsF\Mn@Capt}\selectfont#1}}
+
+\define@key{figures}{osf}[]{\fontfamily{Minion-OsF\Mn@Capt}\selectfont}
+\define@key{figures}{lf}[]{\fontfamily{Minion-LF\Mn@Capt}\selectfont}
+\define@key{figures}{tabular}[]{\fontencoding{OML}\selectfont}
+\define@key{figures}{proportional}[]{\fontencoding\encodingdefault\selectfont}
+
+\newcommand*\figureversion[1]{\setkeys{figures}{#1}}
 
 \DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
 \DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
