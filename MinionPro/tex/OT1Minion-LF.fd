@@ -1,4 +1,4 @@
-\ProvidesFile{ot1Minion-LF.fd}[2004/08/08 font definitions for OT1/Minion-LF.]
+\ProvidesFile{ot1Minion-LF.fd}[2004/09/20 font definitions for OT1/Minion-LF.]
 \DeclareFontFamily{OT1}{Minion-LF}{}
 \DeclareFontShape{OT1}{Minion-LF}{m}{n}{
     <-6>  MinionPro-SemiboldCapt-L-7t

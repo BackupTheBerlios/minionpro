@@ -1,5 +1,5 @@
-\ProvidesFile{OMLMinion-OsF.fd}[2004/08/08 font definitions for OML/Minion-OsF.]
-\DeclareFontFamily{OML}{Minion-OsF}{\skewchar\font=127}
+\ProvidesFile{OMLMinion-OsF.fd}[2004/09/20 font definitions for OML/Minion-OsF.]
+\DeclareFontFamily{OML}{Minion-OsF}{}
 \DeclareFontShape{OML}{Minion-OsF}{m}{n}{
     <-6>  MinionPro-SemiboldCapt-OSFL-7m
    <6-8>  MinionPro-Capt-OSFL-7m
