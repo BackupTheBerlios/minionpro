@@ -17,13 +17,13 @@
 % 0x10
   /quotedblleft /quotedblright /quotedblbase /guillemotleft 
   /guillemotright /endash /emdash
-  /f_t %/compwordmark
-  /f_t_t %/perthousandzero
+  /.notdef %/f_t %/compwordmark
+  /.notdef %/f_t_t %/perthousandzero
   /dotlessi
-  /f_j %/dotlessj
+  /.notdef %/f_j %/dotlessj
   /ff /fi /fl /ffi /ffl
 % 0x20
-  /f_f_j %/visualspace
+  /.notdef %/f_f_j %/visualspace
   /exclam /quotedbl /numbersign
   /dollar /percent /ampersand /quoteright
   /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
@@ -51,7 +51,7 @@
   /lacute /lcaron /lslash /nacute /ncaron /ng /ohungarumlaut /racute
 % 0xB0
   /rcaron /sacute /scaron /scedilla /tcaron /tcedilla /uhungarumlaut /uring
-  /ydieresis /zacute /zcaron /zdotaccent /ij /exclamdown /questiondown /T_h %/sterling
+  /ydieresis /zacute /zcaron /zdotaccent /ij /exclamdown /questiondown /.notdef %/T_h %/sterling
 % 0xC0
   /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
   /Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
