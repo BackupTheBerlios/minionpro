@@ -158,19 +158,19 @@
 /afii10081 /afii10089 /afii10082 /afii10083 /afii10084 /afii10085 /afii10067 /afii10091
 /afii10090 /afii10093 /afii10073 /endash /emdash /afii61352 /afii10094 /afii10092
 % 0x80
-/dieresis /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0x90
-/dieresis /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xA0
-/.notdef /afii10059 /afii10058 /afii10145 /afii10047 /afii10055 /afii10053 /afii10051
-/afii10060 /afii10107 /afii10106 /.notdef /.notdef /afii10193 /afii10095 /afii10103
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xB0
-/afii10101 /afii10099 /afii10108 /afii10048 /afii10024 /afii10027 /afii10023 /afii10148
-/afii10147 /afii10054 /afii10049 /afii10096 /afii10072 /afii10075 /afii10071 /afii10196
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xC0
-/afii10195 /afii10102 /afii10097 /dieresis /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xD0
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
