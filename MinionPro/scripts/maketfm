@@ -22,6 +22,11 @@ make_tfm() {
   otftotfm --no-dotlessj -fliga -fkern $4 -e enc/mn-$2.enc "otf/$font-$1.otf" "$font-$1-$3"
 }
 
+make_sc_tfm() {
+  echo -n " $3," >&2
+  otftotfm --no-dotlessj --unicoding 'germandbls =: SSsmall' -fliga -fkern $4 -e enc/mn-$2.enc "otf/$font-$1.otf" "$font-$1-$3"
+}
+
   lf_flags="-flnum -fpnum"
  osf_flags="-fonum -fpnum"
  tlf_flags="-flnum -ftnum"
@@ -63,11 +68,11 @@ make_normal_metrics() {
   make_tfm "$1" ts1    $2-sc-ts1    "$sc_ts_flags"
   make_tfm "$1" ts1    $2-sc-l2-ts1 "-L 80 $sc_ts_flags"
 
-  make_tfm "$1" t1     $2-sc-t1     "$sc_flags"
-  make_tfm "$1" ot1    $2-sc-ot1    "$sc_flags"
+  make_sc_tfm "$1" t1     $2-sc-t1     "$sc_flags"
+  make_sc_tfm "$1" ot1    $2-sc-ot1    "$sc_flags"
 
-  make_tfm "$1" t1     $2-sc-l2-t1  "-L 80 $sc_flags"
-  make_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80 $sc_flags"
+  make_sc_tfm "$1" t1     $2-sc-l2-t1  "-L 80 $sc_flags"
+  make_sc_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80 $sc_flags"
 }
 
 make_oml_metrics() {
@@ -95,8 +100,8 @@ make_spread_metrics() {
   make_tfm "$1" ot2    $2-l1-ot2    "-L 40 -scyrl $flags"
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
   make_tfm "$1" ts1    $2-sc-l1-ts1 "-L 40        $sc_ts_flags"
-  make_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags"
-  make_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40        $sc_flags"
+  make_sc_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags"
+  make_sc_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40        $sc_flags"
 }
 
 make_metrics() {
