@@ -433,7 +433,8 @@
 \DeclareMathSymbol{\digamma}    {\mathord}{letters}{"82}
 \DeclareTextSymbol{\j}{OML}{"7C}
 \DeclareTextCommandDefault{\pounds}{\textsterling}
-%\DeclareTextCommandDefault{\textcompwordmark}{\leavemode\kern\z@}
+\UndeclareTextCommand{\textvisiblespace}{T1}
+\UndeclareTextCommand{\textcompwordmark}{T1}
 
 \DeclareFontFamily{OML}{MinionPro-Integral-Text}{}
 \DeclareFontFamily{OML}{MinionPro-Integral-Display}{}

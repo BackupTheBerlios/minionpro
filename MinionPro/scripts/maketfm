@@ -52,7 +52,7 @@ make_oml_metrics() {
   make_tfm "$1" oml $2-oml       "$3"
   make_tfm "$1" oml $2-l1-oml    "-L 40 $3"
   make_tfm "$1" integral $2-cn1-integral    "-E 0.85 $3"  # -E .90 ??
-  make_tfm "$1" integral $2-cn2-integral    "-E 0.75 -S 0.1 $3"  # -E .90 ??
+  make_tfm "$1" integral $2-cn2-integral    "-E 0.75 -S 0.04 $3"  # -E .90 ??
 #  make_tfm "$1" integral $2-cn-l1-integral "-E 0.85 -L 40 $3"  # -E .90 ??
 }
 
