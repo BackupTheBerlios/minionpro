@@ -13,8 +13,8 @@ fi
 if [ -d "$dir/fonts/enc" ]
 then
   # new directory layout
-  enc_dir="$dir/fonts/enc/$vendor/$font"
-  map_dir="$dir/fonts/map/$vendor/$font"
+  enc_dir="$dir/fonts/enc/dvips/$font"
+  map_dir="$dir/fonts/map/dvips/$font"
   pfb_dir="$dir/fonts/type1/$vendor/$font"
   tfm_dir="$dir/fonts/tfm/$vendor/$font"
   vf_dir="$dir/fonts/vf/$vendor/$font"
