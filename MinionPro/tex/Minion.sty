@@ -76,42 +76,20 @@
 
 \DeclareOption{minionint}{\def\Mn@Decl@Ints{\Mn@Decl@Minion@Ints}}
 
-% \begin{option}{textonly}
-%
-%   The option |textonly| forces this package to \emph{not} use the
-%   optically corrected caption, subhead, and display fonts.
-%
-%  \begin{macro}{\Mn@Avail@Capt}\begin{macro}{\Mn@Avail@Capt@P}
-%  \begin{macro}{\Mn@Avail@Subh}\begin{macro}{\Mn@Avail@Subh@P}
-%  \begin{macro}{\Mn@Avail@Disp}\begin{macro}{\Mn@Avail@Disp@P}
-%
-%   The commands are divided as follows: first, we have three sets
-%   that deal with caption size fonts (|\Mn@Avail@Capt| and
-%   |\Mn@Avail@Capt@P|), subhead size fonts (|\Mn@Avail@Subh| and
-%   |\Mn@Avail@Subh@P|), and finally display size fonts (|\Mn@Avail@Disp|
-%   and |\Mn@Avail@Disp@P|). For each set, two command variants exist:
-%   one takes no parameter and either evaluates to the string ``Regular''
-%   or the abbreviation used for the particular font size style (``Capt'',
-%   ``Subh'', and ``Disp''). The other command takes a single parameter
-%   which is a string of font style and other information. Depending
-%   on whether the optically corrected fonts should be used or not (option
-%   |textonly|), these commands evaluate to either just their argument or
-% the argument with a trailing ``Capt'', ``Subh'', or ``Disp''.
-%
-\newif\ifMn@Avail@Capt\Mn@Avail@Capttrue
-\def\Mn@Avail@Capt{\ifMn@Avail@Capt Capt\else Regular\fi}
-\def\Mn@Avail@Capt@P#1{\ifMn@Avail@Capt#1Capt\else#1\fi}
+\def\Mn@Suffix@Capt{Capt}
+\def\Mn@Suffix@Subh{Subh}
+\def\Mn@Suffix@Disp{Disp}
+\def\Mn@Suffix@Capt@P{Capt}
+\def\Mn@Suffix@Subh@P{Subh}
+\def\Mn@Suffix@Disp@P{Disp}
 
-\newif\ifMn@Avail@Subh\Mn@Avail@Subhtrue
-\def\Mn@Avail@Subh{\ifMn@Avail@Subh Subh\else Regular\fi}
-\def\Mn@Avail@Subh@P#1{\ifMn@Avail@Subh#1Subh\else#1\fi}
-
-\newif\ifMn@Avail@Disp\Mn@Avail@Disptrue
-\def\Mn@Avail@Disp{\ifMn@Avail@Disp Disp\else Regular\fi}
-\def\Mn@Avail@Disp@P#1{\ifMn@Avail@Disp#1Disp\else#1\fi}
-
-\DeclareOption{textonly}{\Mn@Avail@Captfalse\Mn@Avail@Subhfalse\Mn@Avail@Dispfalse}
-
+\DeclareOption{textonly}{
+  \def\Mn@Suffix@Capt{Regular}
+  \def\Mn@Suffix@Subh{Regular}
+  \def\Mn@Suffix@Disp{Regular}
+  \def\Mn@Suffix@Capt@P{}
+  \def\Mn@Suffix@Subh@P{}
+  \def\Mn@Suffix@Disp@P{}}
 
 \ExecuteOptions{osf}
 \ProcessOptions\relax

@@ -1,29 +1,29 @@
 \ProvidesFile{OMLMinion-LF-C.fd}[2004/09/20 font definitions for OML/Minion-LF-C.]
 \DeclareFontFamily{OML}{Minion-LF-C}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m}{n}{
-   <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-7m
-   <6->  MinionPro-\Mn@Avail@Capt-L-7m}{}
+   <-6>  MinionPro-Semibold\Mn@Suffix@Capt@P-L-7m
+   <6->  MinionPro-\Mn@Suffix@Capt-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m}{it}{
-   <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-7m
-   <6->  MinionPro-\Mn@Avail@Capt@P{It}-L-7m}{}
+   <-6>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-L-7m
+   <6->  MinionPro-It\Mn@Suffix@Capt@P-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m}{sc}{
-   <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-LSC-7m
-   <6->  MinionPro-\Mn@Avail@Capt-LSC-7m}{}
+   <-6>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-LSC-7m
+   <6->  MinionPro-\Mn@Suffix@Capt-LSC-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{sb}{n}{
-   <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-7m
-   <6->  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-7m}{}
+   <-6>  MinionPro-Bold\Mn@Suffix@Capt@P-L-7m
+   <6->  MinionPro-Semibold\Mn@Suffix@Capt@P-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{sb}{it}{
-   <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-7m
-   <6->  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-7m}{}
+   <-6>  MinionPro-BoldIt\Mn@Suffix@Capt@P-L-7m
+   <6->  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{sb}{sc}{
-   <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-LSC-7m
-   <6->  MinionPro-\Mn@Avail@Capt@P{Semibold}-LSC-7m}{}
+   <-6>  MinionPro-BoldIt\Mn@Suffix@Capt@P-LSC-7m
+   <6->  MinionPro-Semibold\Mn@Suffix@Capt@P-LSC-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{b}{n}{
-    <->  MinionPro-\Mn@Avail@Capt@P{Bold}-L-7m}{}
+    <->  MinionPro-Bold\Mn@Suffix@Capt@P-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{b}{it}{
-    <->  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-7m}{}
+    <->  MinionPro-BoldIt\Mn@Suffix@Capt@P-L-7m}{}
 \DeclareFontShape{OML}{Minion-LF-C}{b}{sc}{
-    <->  MinionPro-\Mn@Avail@Capt@P{Bold}-LSC-7m}{}
+    <->  MinionPro-Bold\Mn@Suffix@Capt@P-LSC-7m}{}
 
 \DeclareFontShape{OML}{Minion-LF-C}{bx}{it}{<->ssub * minion/b/it}{}
 \DeclareFontShape{OML}{Minion-LF-C}{m} {sl}{<->ssub * minion/m/it}{}

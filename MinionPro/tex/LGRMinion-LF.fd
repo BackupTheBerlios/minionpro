@@ -1,45 +1,45 @@
 \ProvidesFile{LGRMinion-LF.fd}[2004/11/16 font definitions for LGR/Minion-LF.]
 \DeclareFontFamily{LGR}{Minion-LF}{}
 \DeclareFontShape{LGR}{Minion-LF}{m}{n}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-k
-   <6-8>  MinionPro-\Mn@Avail@Capt-L-k
-   <8-9>  MinionPro-\Mn@Avail@Capt-k
+    <-6>  MinionPro-Semibold\Mn@Suffix@Capt@P-L-k
+   <6-8>  MinionPro-\Mn@Suffix@Capt-L-k
+   <8-9>  MinionPro-\Mn@Suffix@Capt-k
    <9-12> MinionPro-Regular-k
-  <12-15> MinionPro-\Mn@Avail@Subh-k
-  <15->   MinionPro-\Mn@Avail@Disp-k}{}
+  <12-15> MinionPro-\Mn@Suffix@Subh-k
+  <15->   MinionPro-\Mn@Suffix@Disp-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{m}{it}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-k
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{It}-L-k
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{It}-k
+    <-6>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-L-k
+   <6-8>  MinionPro-It\Mn@Suffix@Capt@P-L-k
+   <8-9>  MinionPro-It\Mn@Suffix@Capt@P-k
    <9-12> MinionPro-It-k
-  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-k
-  <15->   MinionPro-\Mn@Avail@Disp@P{It}-k}{}
+  <12-15> MinionPro-It\Mn@Suffix@Subh@P-k
+  <15->   MinionPro-It\Mn@Suffix@Disp@P-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{sb}{n}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-k
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-k
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-k
+    <-6>  MinionPro-Bold\Mn@Suffix@Capt@P-L-k
+   <6-8>  MinionPro-Semibold\Mn@Suffix@Capt@P-L-k
+   <8-9>  MinionPro-Semibold\Mn@Suffix@Capt@P-k
    <9-12> MinionPro-Semibold-k
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-k
-  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-k}{}
+  <12-15> MinionPro-Semibold\Mn@Suffix@Subh@P-k
+  <15->   MinionPro-Semibold\Mn@Suffix@Disp@P-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{sb}{it}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-k
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-k
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-k
+    <-6>  MinionPro-BoldIt\Mn@Suffix@Capt@P-L-k
+   <6-8>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-L-k
+   <8-9>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-k
    <9-12> MinionPro-SemiboldIt-k
-  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-k
-  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-k}{}
+  <12-15> MinionPro-SemiboldIt\Mn@Suffix@Subh@P-k
+  <15->   MinionPro-SemiboldIt\Mn@Suffix@Disp@P-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{b}{n}{
-    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-k
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-k
+    <-8>  MinionPro-Bold\Mn@Suffix@Capt@P-L-k
+   <8-9>  MinionPro-Bold\Mn@Suffix@Capt@P-k
    <9-12> MinionPro-Bold-k
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-k
-  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-k}{}
+  <12-15> MinionPro-Bold\Mn@Suffix@Subh@P-k
+  <15->   MinionPro-Bold\Mn@Suffix@Disp@P-k}{}
 \DeclareFontShape{LGR}{Minion-LF}{b}{it}{
-    <-8>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-k
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-k
+    <-8>  MinionPro-BoldIt\Mn@Suffix@Capt@P-L-k
+   <8-9>  MinionPro-BoldIt\Mn@Suffix@Capt@P-k
    <9-12> MinionPro-BoldIt-k
-  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-k
-  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-k}{}
+  <12-15> MinionPro-BoldIt\Mn@Suffix@Subh@P-k
+  <15->   MinionPro-BoldIt\Mn@Suffix@Disp@P-k}{}
 
 \DeclareFontShape{LGR}{Minion-LF}{m} {sl}{<->ssub * Minion-LF/m/it}{}
 \DeclareFontShape{LGR}{Minion-LF}{sb}{sl}{<->ssub * Minion-LF/sb/it}{}

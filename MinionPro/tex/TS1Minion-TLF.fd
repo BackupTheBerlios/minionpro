@@ -1,119 +1,119 @@
 \ProvidesFile{TS1Minion-TLF.fd}[2004/10/15 font definitions for TS1/Minion-TLF.]
 \DeclareFontFamily{TS1}{Minion-TLF}{}
 \DeclareFontShape{TS1}{Minion-TLF}{m}{n}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt-L-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt-8c
+    <-6>  MinionPro-Semibold\Mn@Suffix@Capt@P-L-8c
+   <6-8>  MinionPro-\Mn@Suffix@Capt-L-8c
+   <8-9>  MinionPro-\Mn@Suffix@Capt-8c
    <9-12> MinionPro-Regular-8c
-  <12-15> MinionPro-\Mn@Avail@Subh-8c
-  <15->   MinionPro-\Mn@Avail@Disp-8c}{}
+  <12-15> MinionPro-\Mn@Suffix@Subh-8c
+  <15->   MinionPro-\Mn@Suffix@Disp-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{m}{it}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{It}-L-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{It}-8c
+    <-6>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-L-8c
+   <6-8>  MinionPro-It\Mn@Suffix@Capt@P-L-8c
+   <8-9>  MinionPro-It\Mn@Suffix@Capt@P-8c
    <9-12> MinionPro-It-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{It}-8c}{}
+  <12-15> MinionPro-It\Mn@Suffix@Subh@P-8c
+  <15->   MinionPro-It\Mn@Suffix@Disp@P-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{m}{sc}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-LSC-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt-LSC-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt-SC-8c
+    <-6>  MinionPro-Semibold\Mn@Suffix@Capt@P-LSC-8c
+   <6-8>  MinionPro-\Mn@Suffix@Capt-LSC-8c
+   <8-9>  MinionPro-\Mn@Suffix@Capt-SC-8c
    <9-12> MinionPro-Regular-SC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh-SC-8c
-  <15->   MinionPro-\Mn@Avail@Disp-SC-8c}{}
+  <12-15> MinionPro-\Mn@Suffix@Subh-SC-8c
+  <15->   MinionPro-\Mn@Suffix@Disp-SC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{m}{ssc}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Semibold}-SSC-8c
-   <6-9>  MinionPro-\Mn@Avail@Capt-SSC-8c
+    <-6>  MinionPro-Semibold\Mn@Suffix@Capt@P-SSC-8c
+   <6-9>  MinionPro-\Mn@Suffix@Capt-SSC-8c
    <9-12> MinionPro-Regular-SSC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh-SSC-8c
-  <15->   MinionPro-\Mn@Avail@Disp-SSC-8c}{}
+  <12-15> MinionPro-\Mn@Suffix@Subh-SSC-8c
+  <15->   MinionPro-\Mn@Suffix@Disp-SSC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{m}{scit}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-LSC-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{It}-LSC-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{It}-SC-8c
+    <-6>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-LSC-8c
+   <6-8>  MinionPro-It\Mn@Suffix@Capt@P-LSC-8c
+   <8-9>  MinionPro-It\Mn@Suffix@Capt@P-SC-8c
    <9-12> MinionPro-It-SC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-SC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{It}-SC-8c}{}
+  <12-15> MinionPro-It\Mn@Suffix@Subh@P-SC-8c
+  <15->   MinionPro-It\Mn@Suffix@Disp@P-SC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{m}{sscit}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-SSC-8c
-   <6-9>  MinionPro-\Mn@Avail@Capt@P{It}-SSC-8c
+    <-6>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-SSC-8c
+   <6-9>  MinionPro-It\Mn@Suffix@Capt@P-SSC-8c
    <9-12> MinionPro-It-SSC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{It}-SSC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{It}-SSC-8c}{}
+  <12-15> MinionPro-It\Mn@Suffix@Subh@P-SSC-8c
+  <15->   MinionPro-It\Mn@Suffix@Disp@P-SSC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{n}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-L-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-8c
+    <-6>  MinionPro-Bold\Mn@Suffix@Capt@P-L-8c
+   <6-8>  MinionPro-Semibold\Mn@Suffix@Capt@P-L-8c
+   <8-9>  MinionPro-Semibold\Mn@Suffix@Capt@P-8c
    <9-12> MinionPro-Semibold-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-8c}{}
+  <12-15> MinionPro-Semibold\Mn@Suffix@Subh@P-8c
+  <15->   MinionPro-Semibold\Mn@Suffix@Disp@P-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{it}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-L-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-8c
+    <-6>  MinionPro-BoldIt\Mn@Suffix@Capt@P-L-8c
+   <6-8>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-L-8c
+   <8-9>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-8c
    <9-12> MinionPro-SemiboldIt-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-8c}{}
+  <12-15> MinionPro-SemiboldIt\Mn@Suffix@Subh@P-8c
+  <15->   MinionPro-SemiboldIt\Mn@Suffix@Disp@P-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{sc}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-LSC-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{Semibold}-LSC-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-SC-8c
+    <-6>  MinionPro-Bold\Mn@Suffix@Capt@P-LSC-8c
+   <6-8>  MinionPro-Semibold\Mn@Suffix@Capt@P-LSC-8c
+   <8-9>  MinionPro-Semibold\Mn@Suffix@Capt@P-SC-8c
    <9-12> MinionPro-Semibold-SC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-SC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-SC-8c}{}
+  <12-15> MinionPro-Semibold\Mn@Suffix@Subh@P-SC-8c
+  <15->   MinionPro-Semibold\Mn@Suffix@Disp@P-SC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{ssc}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{Bold}-SSC-8c
-   <6-9>  MinionPro-\Mn@Avail@Capt@P{Semibold}-SSC-8c
+    <-6>  MinionPro-Bold\Mn@Suffix@Capt@P-SSC-8c
+   <6-9>  MinionPro-Semibold\Mn@Suffix@Capt@P-SSC-8c
    <9-12> MinionPro-Semibold-SSC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Semibold}-SSC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{Semibold}-SSC-8c}{}
+  <12-15> MinionPro-Semibold\Mn@Suffix@Subh@P-SSC-8c
+  <15->   MinionPro-Semibold\Mn@Suffix@Disp@P-SSC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{scit}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-LSC-8c
-   <6-8>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-LSC-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-SC-8c
+    <-6>  MinionPro-BoldIt\Mn@Suffix@Capt@P-LSC-8c
+   <6-8>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-LSC-8c
+   <8-9>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-SC-8c
    <9-12> MinionPro-SemiboldIt-SC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-SC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-SC-8c}{}
+  <12-15> MinionPro-SemiboldIt\Mn@Suffix@Subh@P-SC-8c
+  <15->   MinionPro-SemiboldIt\Mn@Suffix@Disp@P-SC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{sscit}{
-    <-6>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-SSC-8c
-   <6-9>  MinionPro-\Mn@Avail@Capt@P{SemiboldIt}-SSC-8c
+    <-6>  MinionPro-BoldIt\Mn@Suffix@Capt@P-SSC-8c
+   <6-9>  MinionPro-SemiboldIt\Mn@Suffix@Capt@P-SSC-8c
    <9-12> MinionPro-SemiboldIt-SSC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{SemiboldIt}-SSC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{SemiboldIt}-SSC-8c}{}
+  <12-15> MinionPro-SemiboldIt\Mn@Suffix@Subh@P-SSC-8c
+  <15->   MinionPro-SemiboldIt\Mn@Suffix@Disp@P-SSC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{b}{n}{
-    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-L-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-8c
+    <-8>  MinionPro-Bold\Mn@Suffix@Capt@P-L-8c
+   <8-9>  MinionPro-Bold\Mn@Suffix@Capt@P-8c
    <9-12> MinionPro-Bold-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-8c}{}
+  <12-15> MinionPro-Bold\Mn@Suffix@Subh@P-8c
+  <15->   MinionPro-Bold\Mn@Suffix@Disp@P-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{b}{it}{
-    <-8>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-L-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-8c
+    <-8>  MinionPro-BoldIt\Mn@Suffix@Capt@P-L-8c
+   <8-9>  MinionPro-BoldIt\Mn@Suffix@Capt@P-8c
    <9-12> MinionPro-BoldIt-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-8c}{}
+  <12-15> MinionPro-BoldIt\Mn@Suffix@Subh@P-8c
+  <15->   MinionPro-BoldIt\Mn@Suffix@Disp@P-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{b}{sc}{
-    <-8>  MinionPro-\Mn@Avail@Capt@P{Bold}-LSC-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-SC-8c
+    <-8>  MinionPro-Bold\Mn@Suffix@Capt@P-LSC-8c
+   <8-9>  MinionPro-Bold\Mn@Suffix@Capt@P-SC-8c
    <9-12> MinionPro-Bold-SC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-SC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-SC-8c}{}
+  <12-15> MinionPro-Bold\Mn@Suffix@Subh@P-SC-8c
+  <15->   MinionPro-Bold\Mn@Suffix@Disp@P-SC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{b}{ssc}{
-    <-9>  MinionPro-\Mn@Avail@Capt@P{Bold}-SSC-8c
+    <-9>  MinionPro-Bold\Mn@Suffix@Capt@P-SSC-8c
    <9-12> MinionPro-Bold-SSC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{Bold}-SSC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{Bold}-SSC-8c}{}
+  <12-15> MinionPro-Bold\Mn@Suffix@Subh@P-SSC-8c
+  <15->   MinionPro-Bold\Mn@Suffix@Disp@P-SSC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{b}{scit}{
-    <-8>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-LSC-8c
-   <8-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-SC-8c
+    <-8>  MinionPro-BoldIt\Mn@Suffix@Capt@P-LSC-8c
+   <8-9>  MinionPro-BoldIt\Mn@Suffix@Capt@P-SC-8c
    <9-12> MinionPro-BoldIt-SC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-SC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-SC-8c}{}
+  <12-15> MinionPro-BoldIt\Mn@Suffix@Subh@P-SC-8c
+  <15->   MinionPro-BoldIt\Mn@Suffix@Disp@P-SC-8c}{}
 \DeclareFontShape{TS1}{Minion-TLF}{b}{sscit}{
-    <-9>  MinionPro-\Mn@Avail@Capt@P{BoldIt}-SSC-8c
+    <-9>  MinionPro-BoldIt\Mn@Suffix@Capt@P-SSC-8c
    <9-12> MinionPro-BoldIt-SSC-8c
-  <12-15> MinionPro-\Mn@Avail@Subh@P{BoldIt}-SSC-8c
-  <15->   MinionPro-\Mn@Avail@Disp@P{BoldIt}-SSC-8c}{}
+  <12-15> MinionPro-BoldIt\Mn@Suffix@Subh@P-SSC-8c
+  <15->   MinionPro-BoldIt\Mn@Suffix@Disp@P-SSC-8c}{}
 
 \DeclareFontShape{TS1}{Minion-TLF}{m} {sl}{<->ssub * Minion-TLF/m/it}{}
 \DeclareFontShape{TS1}{Minion-TLF}{sb}{sl}{<->ssub * Minion-TLF/sb/it}{}
