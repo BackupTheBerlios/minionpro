@@ -1,0 +1,160 @@
+\relax
+\metrics
+
+\setglyph{dintegral}
+  \moveup{-80}
+  \glyph{intdint}{1750}
+  \moveup{80}
+  \resetitalic{400}
+  \resetwidth{\add{\width{dintegral}}{-100}}
+\endsetglyph
+
+\setglyph{dint}
+  %\glyph{mndint}{1000}\movert{400}
+  \movert{150}
+  \glyph{dintegral}{1000}
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{diint}
+  %\glyph{mndiint}{1000}\movert{400}
+  \movert{150}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{diiint}
+  %\glyph{mndiiint}{1000}\movert{400}
+  \movert{150}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{diiiint}
+  %\glyph{mndiiiint}{1000}\movert{400}
+  \movert{150}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{didotsint}
+  %\glyph{mndidotsint}{1000}\movert{400}
+  \movert{150}
+  \glyph{dintegral}{1000}
+  \moveup{430}
+  \movert{100}
+  \glyph{period}{1000}
+  \glyph{period}{1000}
+  \glyph{period}{1000}
+  \moveup{-430}
+  \glyph{dintegral}{1000}
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dlandupint}
+  %\glyph{mndlandupint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-680}
+  \glyph{mnpdlandupint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dlanddownint}
+  %\glyph{mndlanddownint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-670}
+  \glyph{mnpdlanddownint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dstrokedint}
+  %\glyph{mndstrokedint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-660}
+  \glyph{mnpdstrokedint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{doint}
+  %\glyph{mndoint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-670}
+  \glyph{mnpdoint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{doiint}
+  %\glyph{mndoiint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \movert{-100}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-1078}
+  \glyph{mnpdoiint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{drcirclerightint}
+  %\glyph{mndcirclelefttint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-670}
+  \glyph{mnpdrcirclerightint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dlcirclerightint}
+  %\glyph{mndcirclerightint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-670}
+  \glyph{mnpdlcirclerightint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{drcircleleftint}
+  %\glyph{mndcirclelefttint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-670}
+  \glyph{mnpdrcircleleftint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dlcircleleftint}
+  %\glyph{mndcirclerightint}{1000}\movert{400}
+  \movert{250}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-670}
+  \glyph{mnpdlcircleleftint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+\endmetrics

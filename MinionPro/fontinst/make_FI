@@ -1,0 +1,12 @@
+tftopl MnSymbolF10.tfm MnSymbolF10.pl
+tftopl ../tfm/MinionPro-It-tlf-cn2-integral.tfm MinionPro-It-tlf-cn2-integral.pl
+tftopl ../tfm/MinionPro-ItDisp-tlf-cn1-integral.tfm MinionPro-ItDisp-tlf-cn1-integral.pl
+tftopl ../tfm/MinionPro-Regular-tlf-ot--base1.tfm MinionPro-Regular-tlf-ot--base1.pl
+tftopl ../tfm/MinionPro-It-tlf-oml--base.tfm MinionPro-It-tlf-oml--base.pl
+
+tex MnSymbolFI
+vptovf MinionPro-Integral-opticals.vpl MinionPro-Integral-opticals.vf MinionPro-Integral-opticals.tfm
+vptovf MinionPro-Integral-noopticals.vpl MinionPro-Integral-noopticals.vf MinionPro-Integral-noopticals.tfm
+
+mv *.vf ../vf
+mv *.tfm ../tfm
