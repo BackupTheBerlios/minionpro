@@ -194,10 +194,12 @@
 
 \DeclareOption{protrude}{\enableprotruding}
 
-\def\Mn@minionintsuffix{}
+\def\Mn@minionint@version{}
 \DeclareOption{slides}{\PassOptionsToPackage{slides}{MinionPro-FontDef}}
 \DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
-\DeclareOption{noopticals}{\def\Mn@minionintsuffix{NoOpticals}\PassOptionsToPackage{noopticals}{MinionPro-FontDef}}
+\DeclareOption{noopticals}{%
+  \PassOptionsToPackage{noopticals}{MinionPro-FontDef}%
+  \def\Mn@minionint@version{-NoOpticals}}
 \DeclareOption{smallfamily}{\PassOptionsToPackage{smallfamily}{MinionPro-FontDef}}
 \DeclareOption{medfamily}{\PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
 \DeclareOption{fullfamily}{\PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
@@ -700,21 +702,21 @@
   \DeclareFontFamily{U}{MnSymbolFI}{}
 
 \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
-    <-6>  MnSymbolFI-\Mn@minionintsuffix5
-   <6-7>  MnSymbolFI-\Mn@minionintsuffix6
-   <7-8>  MnSymbolFI-\Mn@minionintsuffix7
-   <8-9>  MnSymbolFI-\Mn@minionintsuffix8
-   <9-10> MnSymbolFI-\Mn@minionintsuffix9
-  <10-12> MnSymbolFI-\Mn@minionintsuffix10
-  <12->   MnSymbolFI-\Mn@minionintsuffix12}{}
+    <-6>  MnSymbolFI\Mn@minionint@version5
+   <6-7>  MnSymbolFI\Mn@minionint@version6
+   <7-8>  MnSymbolFI\Mn@minionint@version7
+   <8-9>  MnSymbolFI\Mn@minionint@version8
+   <9-10> MnSymbolFI\Mn@minionint@version9
+  <10-12> MnSymbolFI\Mn@minionint@version10
+  <12->   MnSymbolFI\Mn@minionint@version12}{}
 \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
-    <-6>  MnSymbolFI-Bold-\Mn@minionintsuffix5
-   <6-7>  MnSymbolFI-Bold-\Mn@minionintsuffix6
-   <7-8>  MnSymbolFI-Bold-\Mn@minionintsuffix7
-   <8-9>  MnSymbolFI-Bold-\Mn@minionintsuffix8
-   <9-10> MnSymbolFI-Bold-\Mn@minionintsuffix9
-  <10-12> MnSymbolFI-Bold-\Mn@minionintsuffix10
-  <12->   MnSymbolFI-Bold-\Mn@minionintsuffix12}{}
+    <-6>  MnSymbolFI-Bold\Mn@minionint@version5
+   <6-7>  MnSymbolFI-Bold\Mn@minionint@version6
+   <7-8>  MnSymbolFI-Bold\Mn@minionint@version7
+   <8-9>  MnSymbolFI-Bold\Mn@minionint@version8
+   <9-10> MnSymbolFI-Bold\Mn@minionint@version9
+  <10-12> MnSymbolFI-Bold\Mn@minionint@version10
+  <12->   MnSymbolFI-Bold\Mn@minionint@version12}{}
 
   \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
   \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
