@@ -399,218 +399,85 @@
 % Furthermore, there are three commands to select the default version of the letters (all upright,
 % all italic, or capitals upright and lowercase italic).
 %
+% While delaring the greek letters, we collect two lists of uppercase and
+% lowercase ones (distinguished by the first letter of their name). These are
+% useful for selecting different versions.
 %    \begin{macrocode}
-\DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
-\DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
-\DeclareMathSymbol{\itTheta}     {\mathord}{letters}{"02}
-\DeclareMathSymbol{\itLambda}    {\mathord}{letters}{"03}
-\DeclareMathSymbol{\itXi}        {\mathord}{letters}{"04}
-\DeclareMathSymbol{\itPi}        {\mathord}{letters}{"05}
-\DeclareMathSymbol{\itSigma}     {\mathord}{letters}{"06}
-\DeclareMathSymbol{\itUpsilon}   {\mathord}{letters}{"07}
-\DeclareMathSymbol{\itPhi}       {\mathord}{letters}{"08}
-\DeclareMathSymbol{\itPsi}       {\mathord}{letters}{"09}
-\DeclareMathSymbol{\itOmega}     {\mathord}{letters}{"0A}
-\DeclareMathSymbol{\italpha}     {\mathord}{letters}{"0B}
-\DeclareMathSymbol{\itbeta}      {\mathord}{letters}{"0C}
-\DeclareMathSymbol{\itgamma}     {\mathord}{letters}{"0D}
-\DeclareMathSymbol{\itdelta}     {\mathord}{letters}{"0E}
-\DeclareMathSymbol{\itepsilon}   {\mathord}{letters}{"0F}
-\DeclareMathSymbol{\itzeta}      {\mathord}{letters}{"10}
-\DeclareMathSymbol{\iteta}       {\mathord}{letters}{"11}
-\DeclareMathSymbol{\ittheta}     {\mathord}{letters}{"12}
-\DeclareMathSymbol{\itiota}      {\mathord}{letters}{"13}
-\DeclareMathSymbol{\itkappa}     {\mathord}{letters}{"14}
-\DeclareMathSymbol{\itlambda}    {\mathord}{letters}{"15}
-\DeclareMathSymbol{\itmu}        {\mathord}{letters}{"16}
-\DeclareMathSymbol{\itnu}        {\mathord}{letters}{"17}
-\DeclareMathSymbol{\itxi}        {\mathord}{letters}{"18}
-\DeclareMathSymbol{\itpi}        {\mathord}{letters}{"19}
-\DeclareMathSymbol{\itrho}       {\mathord}{letters}{"1A}
-\DeclareMathSymbol{\itsigma}     {\mathord}{letters}{"1B}
-\DeclareMathSymbol{\ittau}       {\mathord}{letters}{"1C}
-\DeclareMathSymbol{\itupsilon}   {\mathord}{letters}{"1D}
-\DeclareMathSymbol{\itphi}       {\mathord}{letters}{"1E}
-\DeclareMathSymbol{\itchi}       {\mathord}{letters}{"1F}
-\DeclareMathSymbol{\itpsi}       {\mathord}{letters}{"20}
-\DeclareMathSymbol{\itomega}     {\mathord}{letters}{"21}
-\DeclareMathSymbol{\itvarepsilon}{\mathord}{letters}{"22}
-\DeclareMathSymbol{\itvartheta}  {\mathord}{letters}{"23}
-\DeclareMathSymbol{\itvarpi}     {\mathord}{letters}{"24}
-\DeclareMathSymbol{\itvarrho}    {\mathord}{letters}{"25}
-\DeclareMathSymbol{\itvarsigma}  {\mathord}{letters}{"26}
-\DeclareMathSymbol{\itvarphi}    {\mathord}{letters}{"27}
-\DeclareMathSymbol{\itvarkappa}  {\mathord}{letters}{"83}
-\DeclareMathSymbol{\upGamma}     {\mathord}{rmletters}{"00}
-\DeclareMathSymbol{\upDelta}     {\mathord}{rmletters}{"01}
-\DeclareMathSymbol{\upTheta}     {\mathord}{rmletters}{"02}
-\DeclareMathSymbol{\upLambda}    {\mathord}{rmletters}{"03}
-\DeclareMathSymbol{\upXi}        {\mathord}{rmletters}{"04}
-\DeclareMathSymbol{\upPi}        {\mathord}{rmletters}{"05}
-\DeclareMathSymbol{\upSigma}     {\mathord}{rmletters}{"06}
-\DeclareMathSymbol{\upUpsilon}   {\mathord}{rmletters}{"07}
-\DeclareMathSymbol{\upPhi}       {\mathord}{rmletters}{"08}
-\DeclareMathSymbol{\upPsi}       {\mathord}{rmletters}{"09}
-\DeclareMathSymbol{\upOmega}     {\mathord}{rmletters}{"0A}
-\DeclareMathSymbol{\upalpha}     {\mathord}{rmletters}{"0B}
-\DeclareMathSymbol{\upbeta}      {\mathord}{rmletters}{"0C}
-\DeclareMathSymbol{\upgamma}     {\mathord}{rmletters}{"0D}
-\DeclareMathSymbol{\updelta}     {\mathord}{rmletters}{"0E}
-\DeclareMathSymbol{\upepsilon}   {\mathord}{rmletters}{"0F}
-\DeclareMathSymbol{\upzeta}      {\mathord}{rmletters}{"10}
-\DeclareMathSymbol{\upeta}       {\mathord}{rmletters}{"11}
-\DeclareMathSymbol{\uptheta}     {\mathord}{rmletters}{"12}
-\DeclareMathSymbol{\upiota}      {\mathord}{rmletters}{"13}
-\DeclareMathSymbol{\upkappa}     {\mathord}{rmletters}{"14}
-\DeclareMathSymbol{\uplambda}    {\mathord}{rmletters}{"15}
-\DeclareMathSymbol{\upmu}        {\mathord}{rmletters}{"16}
-\DeclareMathSymbol{\upnu}        {\mathord}{rmletters}{"17}
-\DeclareMathSymbol{\upxi}        {\mathord}{rmletters}{"18}
-\DeclareMathSymbol{\uppi}        {\mathord}{rmletters}{"19}
-\DeclareMathSymbol{\uprho}       {\mathord}{rmletters}{"1A}
-\DeclareMathSymbol{\upsigma}     {\mathord}{rmletters}{"1B}
-\DeclareMathSymbol{\uptau}       {\mathord}{rmletters}{"1C}
-\DeclareMathSymbol{\upupsilon}   {\mathord}{rmletters}{"1D}
-\DeclareMathSymbol{\upphi}       {\mathord}{rmletters}{"1E}
-\DeclareMathSymbol{\upchi}       {\mathord}{rmletters}{"1F}
-\DeclareMathSymbol{\uppsi}       {\mathord}{rmletters}{"20}
-\DeclareMathSymbol{\upomega}     {\mathord}{rmletters}{"21}
-\DeclareMathSymbol{\upvarepsilon}{\mathord}{rmletters}{"22}
-\DeclareMathSymbol{\upvartheta}  {\mathord}{rmletters}{"23}
-\DeclareMathSymbol{\upvarpi}     {\mathord}{rmletters}{"24}
-\DeclareMathSymbol{\upvarrho}    {\mathord}{rmletters}{"25}
-\DeclareMathSymbol{\upvarsigma}  {\mathord}{rmletters}{"26}
-\DeclareMathSymbol{\upvarphi}    {\mathord}{rmletters}{"27}
-\DeclareMathSymbol{\upvarkappa}  {\mathord}{rmletters}{"83}
+\newcommand*\Mn@greek@list@upper{}
+\newcommand*\Mn@greek@list@lower{}
+\let\Mn@greek@list@upper\@gobble
+\let\Mn@greek@list@lower\@gobble
+\newcommand*\Mn@greek@list{}
+\newcommand*\Mn@greek@letter[2]{%
+  \expandafter\DeclareMathSymbol
+  \expandafter{\csname it#1\endcsname}{\mathord}{letters}{#2}%
+  \expandafter\DeclareMathSymbol
+  \expandafter{\csname up#1\endcsname}{\mathord}{rmletters}{#2}%
+  \edef\@tempa{`\@car#1\@nil}%
+  \edef\Mn@greek@list{\expandafter\noexpand\csname
+    Mn@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
+  \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
+}
+\Mn@greek@letter{Gamma}     {"00}
+\Mn@greek@letter{Delta}     {"01}
+\Mn@greek@letter{Theta}     {"02}
+\Mn@greek@letter{Lambda}    {"03}
+\Mn@greek@letter{Xi}        {"04}
+\Mn@greek@letter{Pi}        {"05}
+\Mn@greek@letter{Sigma}     {"06}
+\Mn@greek@letter{Upsilon}   {"07}
+\Mn@greek@letter{Phi}       {"08}
+\Mn@greek@letter{Psi}       {"09}
+\Mn@greek@letter{Omega}     {"0A}
+\Mn@greek@letter{alpha}     {"0B}
+\Mn@greek@letter{beta}      {"0C}
+\Mn@greek@letter{gamma}     {"0D}
+\Mn@greek@letter{delta}     {"0E}
+\Mn@greek@letter{epsilon}   {"0F}
+\Mn@greek@letter{zeta}      {"10}
+\Mn@greek@letter{eta}       {"11}
+\Mn@greek@letter{theta}     {"12}
+\Mn@greek@letter{iota}      {"13}
+\Mn@greek@letter{kappa}     {"14}
+\Mn@greek@letter{lambda}    {"15}
+\Mn@greek@letter{mu}        {"16}
+\Mn@greek@letter{nu}        {"17}
+\Mn@greek@letter{xi}        {"18}
+\Mn@greek@letter{pi}        {"19}
+\Mn@greek@letter{rho}       {"1A}
+\Mn@greek@letter{sigma}     {"1B}
+\Mn@greek@letter{tau}       {"1C}
+\Mn@greek@letter{upsilon}   {"1D}
+\Mn@greek@letter{phi}       {"1E}
+\Mn@greek@letter{chi}       {"1F}
+\Mn@greek@letter{psi}       {"20}
+\Mn@greek@letter{omega}     {"21}
+\Mn@greek@letter{varepsilon}{"22}
+\Mn@greek@letter{vartheta}  {"23}
+\Mn@greek@letter{varpi}     {"24}
+\Mn@greek@letter{varrho}    {"25}
+\Mn@greek@letter{varsigma}  {"26}
+\Mn@greek@letter{varphi}    {"27}
+\Mn@greek@letter{varkappa}  {"83}
 
-\def\Mn@Greek@Rm{
-  \let\Gamma     \upGamma
-  \let\Delta     \upDelta
-  \let\Theta     \upTheta
-  \let\Lambda    \upLambda
-  \let\Xi        \upXi
-  \let\Pi        \upPi
-  \let\Sigma     \upSigma
-  \let\Upsilon   \upUpsilon
-  \let\Phi       \upPhi
-  \let\Psi       \upPsi
-  \let\Omega     \upOmega
-  \let\alpha     \upalpha
-  \let\beta      \upbeta
-  \let\gamma     \upgamma
-  \let\delta     \updelta
-  \let\epsilon   \upepsilon
-  \let\zeta      \upzeta
-  \let\eta       \upeta
-  \let\theta     \uptheta
-  \let\iota      \upiota
-  \let\kappa     \upkappa
-  \let\lambda    \uplambda
-  \let\mu        \upmu
-  \let\nu        \upnu
-  \let\xi        \upxi
-  \let\pi        \uppi
-  \let\rho       \uprho
-  \let\sigma     \upsigma
-  \let\tau       \uptau
-  \let\upsilon   \upupsilon
-  \let\phi       \upphi
-  \let\chi       \upchi
-  \let\psi       \uppsi
-  \let\omega     \upomega
-  \let\varepsilon\upvarepsilon
-  \let\vartheta  \upvartheta
-  \let\varpi     \upvarpi
-  \let\varrho    \upvarrho
-  \let\varsigma  \upvarsigma
-  \let\varphi    \upvarphi
-  \let\varkappa  \upvarkappa
+\newcommand*\Mn@greek@select[2]{%
+  \expandafter\let\expandafter\Mn@greek@list\csname Mn@greek@list@#2\endcsname
+  \@for\@tempa:=\Mn@greek@list\do{%
+    \expandafter\let\csname\@tempa\expandafter\endcsname
+    \csname#1\@tempa\endcsname
+  }%
 }
-\def\Mn@Greek@It{
-  \let\Gamma     \itGamma
-  \let\Delta     \itDelta
-  \let\Theta     \itTheta
-  \let\Lambda    \itLambda
-  \let\Xi        \itXi
-  \let\Pi        \itPi
-  \let\Sigma     \itSigma
-  \let\Upsilon   \itUpsilon
-  \let\Phi       \itPhi
-  \let\Psi       \itPsi
-  \let\Omega     \itOmega
-  \let\alpha     \italpha
-  \let\beta      \itbeta
-  \let\gamma     \itgamma
-  \let\delta     \itdelta
-  \let\epsilon   \itepsilon
-  \let\zeta      \itzeta
-  \let\eta       \iteta
-  \let\theta     \ittheta
-  \let\iota      \itiota
-  \let\kappa     \itkappa
-  \let\lambda    \itlambda
-  \let\mu        \itmu
-  \let\nu        \itnu
-  \let\xi        \itxi
-  \let\pi        \itpi
-  \let\rho       \itrho
-  \let\sigma     \itsigma
-  \let\tau       \ittau
-  \let\upsilon   \itupsilon
-  \let\phi       \itphi
-  \let\chi       \itchi
-  \let\psi       \itpsi
-  \let\omega     \itomega
-  \let\varepsilon\itvarepsilon
-  \let\vartheta  \itvartheta
-  \let\varpi     \itvarpi
-  \let\varrho    \itvarrho
-  \let\varsigma  \itvarsigma
-  \let\varphi    \itvarphi
-  \let\varkappa  \itvarkappa
+\newcommand*\Mn@Greek@Rm{%
+  \Mn@greek@select{up}{upper}%
+  \Mn@greek@select{up}{lower}%
 }
-\def\Mn@Greek@Mix{
-  \let\Gamma     \upGamma
-  \let\Delta     \upDelta
-  \let\Theta     \upTheta
-  \let\Lambda    \upLambda
-  \let\Xi        \upXi
-  \let\Pi        \upPi
-  \let\Sigma     \upSigma
-  \let\Upsilon   \upUpsilon
-  \let\Phi       \upPhi
-  \let\Psi       \upPsi
-  \let\Omega     \upOmega
-  \let\alpha     \italpha
-  \let\beta      \itbeta
-  \let\gamma     \itgamma
-  \let\delta     \itdelta
-  \let\epsilon   \itepsilon
-  \let\zeta      \itzeta
-  \let\eta       \iteta
-  \let\theta     \ittheta
-  \let\iota      \itiota
-  \let\kappa     \itkappa
-  \let\lambda    \itlambda
-  \let\mu        \itmu
-  \let\nu        \itnu
-  \let\xi        \itxi
-  \let\pi        \itpi
-  \let\rho       \itrho
-  \let\sigma     \itsigma
-  \let\tau       \ittau
-  \let\upsilon   \itupsilon
-  \let\phi       \itphi
-  \let\chi       \itchi
-  \let\psi       \itpsi
-  \let\omega     \itomega
-  \let\varepsilon\itvarepsilon
-  \let\vartheta  \itvartheta
-  \let\varpi     \itvarpi
-  \let\varrho    \itvarrho
-  \let\varsigma  \itvarsigma
-  \let\varphi    \itvarphi
-  \let\varkappa  \itvarkappa
+\newcommand*\Mn@Greek@It{%
+  \Mn@greek@select{it}{upper}%
+  \Mn@greek@select{it}{lower}%
+}
+\newcommand*\Mn@Greek@Mix{%
+  \Mn@greek@select{up}{upper}%
+  \Mn@greek@select{it}{lower}%
 }
 
 \Mn@Greek@Shape
