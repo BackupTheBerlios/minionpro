@@ -33,6 +33,7 @@
 
 \DeclareOption{protrude}{\enableprotruding}
 
+\DeclareOption{slides}{\PassOptionsToPackage{slides}{MinionPro-FontDef}}
 \DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
 \DeclareOption{noopticals}{\PassOptionsToPackage{noopticals}{MinionPro-FontDef}}
 \DeclareOption{smallfamily}{\PassOptionsToPackage{smallfamily}{MinionPro-FontDef}}
@@ -50,7 +51,6 @@
 \def\Mn@Math@Family{MinionPro-\Mn@Math@Fig\Mn@Capt}
 \def\Mn@Math@TFamily{MinionPro-T\Mn@Math@Fig\Mn@Capt}
 
-\DeclareOption{slides}{\def\Mn@Capt{-C}}
 \DeclareOption{textosf}{\def\Mn@Text@FigB{OsF}}
 \DeclareOption{textlf}{\def\Mn@Text@FigB{LF}}
 \DeclareOption{mathosf}{\def\Mn@Math@Fig{OsF}}
@@ -1236,12 +1236,12 @@
   \MnDeclareFontBoldItalic    {#1}{#2}{b}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}%
   \MnDeclareFontBoldItalic    {#1}{#2}{b}{sw}    {#3-swash-l1-#4}{#3-swash-#4}%
 %
-  \DeclareFontShape{#1}{#2}{bx}{n} {<->ssub * #2/b/n}{}%
-  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub * #2/b/it}{}%
-  \DeclareFontShape{#1}{#2}{m} {sl}{<->ssub * #2/m/it}{}%
-  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub * #2/sb/it}{}%
-  \DeclareFontShape{#1}{#2}{b} {sl}{<->ssub * #2/b/it}{}%
-  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
+  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{m}{sl}{<->ssub*#2/m/it}{}%
+  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub*#2/sb/it}{}%
+  \DeclareFontShape{#1}{#2}{b}{sl}{<->ssub*#2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
 \newcommand*\MnDeclareSmallFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
@@ -1260,12 +1260,12 @@
   \MnDeclareFontBold          {#1}{#2}{b}{n}  {#3-l1-#4}{#3-#4}%
   \MnDeclareFontBoldItalic    {#1}{#2}{b}{it} {#3-l1-#4}{#3-#4}%
 %
-  \DeclareFontShape{#1}{#2}{bx}{n} {<->ssub * #2/b/n}{}%
-  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub * #2/b/it}{}%
-  \DeclareFontShape{#1}{#2}{m} {sl}{<->ssub * #2/m/it}{}%
-  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub * #2/sb/it}{}%
-  \DeclareFontShape{#1}{#2}{b} {sl}{<->ssub * #2/b/it}{}%
-  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
+  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{m}{sl}{<->ssub*#2/m/it}{}%
+  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub*#2/sb/it}{}%
+  \DeclareFontShape{#1}{#2}{b}{sl}{<->ssub*#2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
 \newcommand*\MnDeclareMathFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
@@ -1296,12 +1296,12 @@
   \MnDeclareFontBold          {#1}{#2}{b}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}%
   \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}%
 %
-  \DeclareFontShape{#1}{#2}{bx}{n} {<->ssub * #2/b/n}{}%
-  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub * #2/b/it}{}%
-  \DeclareFontShape{#1}{#2}{m} {sl}{<->ssub * #2/m/it}{}%
-  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub * #2/sb/it}{}%
-  \DeclareFontShape{#1}{#2}{b} {sl}{<->ssub * #2/b/it}{}%
-  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
+  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{m}{sl}{<->ssub*#2/m/it}{}%
+  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub*#2/sb/it}{}%
+  \DeclareFontShape{#1}{#2}{b}{sl}{<->ssub*#2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
 %
 % If we are called in the preamble we provide package options.
