@@ -7,7 +7,7 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
-\usepackage[protrude,minionint]{MinionPro}
+\usepackage[minionint]{MinionPro}
 \usepackage[british]{babel}
 \usepackage{booktabs,pifont}
 \begin{document}
@@ -25,103 +25,126 @@
 %
 % \tableofcontents
 %
-% The MinionPro package loads the \textsf{textcomp},
-% \textsf{amsmath} and \textsf{MnSymbol} package. It is \emph{not}
-% compatible with \textsf{amssymb}. For a list of symbols, please
-% consult the section ``Additional symbols'' and the documentation of
-% \textsf{MnSymbol}.
+% \section{Overview}
 %
-% \section{Fonts to be used}
+% The \textsf{MinionPro} package provides support for the MinionPro
+% font family from Adobe.
+% To use this fonts in a \LaTeX\ document you can issue the command
+% \begin{quote}
+%   |\usepackage{MinionPro}|
+% \end{quote}
 %
-% Package Options (applies to both text and math mode)\?:
-% \par\medskip\noindent\hspace{3em}
+% \section{Interference with other packages}
+%
+% The \textsf{MinionPro} package automatically loads the following packages\?:
+% \textsf{textcomp}, \textsf{amsmath}, \textsf{microtype} and
+% \textsf{MnSymbol}. If you want to pass options to these packages you can
+% either put the corresponding |\usepackage| command before the
+% |\usepackage{MinionPro}| or you can include the options in the
+% |\documentclass| command. The \textsf{MinionPro} package is \emph{not}
+% compatible with \textsf{amssymb} and \textsf{amsfonts}. Please see also the
+% corresponding section in the \textsf{MnSymbol} documentation.
+%
+% There is also a slight incompatibility with the \textsf{dcolumn} package
+% which expects all figures to have the same size. If you want to use this
+% package you either have to specify the \textsf{mathtabular} option (this is
+% the brute force solution, not recommended), or you can use the
+% |\figureversion{tabular}| command to switch to tabular figures in front of
+% every table (much better, but also more work).
+%
+% \section{Options}
+%
+% \subsubsection*{Selection of the fonts to be used}
+%
+% The following options specify which version of the fonts you want to use.
+% The default settings are marked with a asterisk*.
+%
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}ll@{}}
-%   \rlap{smallfamily}{\hphantom{mixedgreek*}}& use only regular and bold face\\
-%   medfamily*&   use semibold face in addition to smallfamily \\
-%   fullfamily&  use medium face in addition to medfamily\\
-%   opticals*&    use the optical sizes Caption/Subhead/Display\\
-%   noopticals&  use only the text optical size\\
-%   slides&      use only the Caption optical shape (useful for slides)
+%   \rlap{\textsf{smallfamily}}{\hphantom{\textsf{mixedgreek}*}} & use only regular and bold face\\
+%   \textsf{medfamily}* &  use semibold face in addition to \textsf{smallfamily} \\
+%   \textsf{fullfamily} &  use medium face in addition to \textsf{medfamily}\\
+%   \textsf{opticals}*  &  use the optical sizes Caption/Subhead/Display\\
+%   \textsf{noopticals} &  use only the text optical size\\
+%   \textsf{slides}     &  use only the Caption optical shape (useful for slides)
 % \end{tabular}
 %
-% \section{Figure selection}
+% \subsubsection*{Figure selection}
 %
-% Package options\?:
-% \par\medskip\noindent\hspace{3em}
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}ll@{}}
-%   textosf& textstyle figures in text mode\\
-%   mathosf& textstyle figures in math mode\\
-%   osf*&     textstyle figures in text and math mode\\
-%   textlf&  lining figures in text mode\\
-%   mathlf&  lining figures in math mode\\
-%   lf&      lining figures in text and math mode\\
-%   mathtabular& tabular figures in math mode, useful for the \textsf{dcolumn} package
+%   \textsf{textosf}     & use text figures in text mode\\
+%   \textsf{mathosf}     & use text figures in math mode\\
+%   \textsf{osf}*        & use text figures in text and math mode\\
+%   \textsf{textlf}      & use lining figures in text mode\\
+%   \textsf{mathlf}      & use lining figures in math mode\\
+%   \textsf{lf}          & use lining figures in text and math mode\\
+%   \textsf{mathtabular} & tabular figures in math mode
 % \end{tabular}
-% 
+%
 % \medskip\noindent
 % Inside the document the |\figureversion| command can be used to switch between
 % different figure versions. Possible parameters are\?:
 %
-% \medskip\noindent\hspace{3em}
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}ll@{}}
-%   \rlap{osf}{\hphantom{mixedgreek*}}& textstyle figures   \\
-%   lf&  lining figures\\
-%   tabular& tabular figures\\
-%   proportional& proportional figures
-% \end{tabular}
-% 
-% \section{Calligraphic Fonts}
-%
-% Package options\?:
-%
-% \medskip\noindent\hspace{3em}
-% \begin{tabular}{@{}ll@{}}
-%   \rlap{mnsy*}{\hphantom{mixedgreek*}}& calligraphic symbols provided by MnSymbol\\
-%   cmsy&        calligraphic symbols provided by Computer Modern\\
-%   swash&       MinionPro swash captials\\
-%   abx&         calligraphic symbols provided by mathabx. \\
-%      &These provide lower case letters, too.
+%   \rlap{\textsf{osf}}{\hphantom{\textsf{mixedgreek}*}} & textstyle figures   \\
+%   \textsf{lf}           &  lining figures\\
+%   \textsf{tabular}      & tabular figures\\
+%   \textsf{proportional} & proportional figures
 % \end{tabular}
 %
-% \section{Greek letters}
+% \subsubsection*{Calligraphic Fonts}
 %
-% Package options\?:
-%
-% \medskip\noindent\hspace{3em}
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}ll@{}}
-%   mixedgreek*& uppercase Greek upright, lowercase Greek italic\\
-%   romangreek&  all Greek upright\\
-%   italicgreek& all Greek italic
+%   \rlap{\textsf{mnsy}*}{\hphantom{\textsf{mixedgreek}*}} & use the calligraphic font from MnSymbol\\
+%   \textsf{cmsy}  & take the calligraphic symbols from Computer Modern\\
+%   \textsf{swash} & use the swash captials from MinionPro\\
+%   \textsf{abx}   & use the calligraphic symbols provided by mathabx\?; \\
+%                  & this font contains also lower case letters, but it is not quite finished.
+% \end{tabular}
+%
+% \subsubsection*{Greek letters}
+%
+% The following options specify whether you want to use upright or italic Greek
+% letters in math mode.
+%
+% \medskip\noindent\hspace{2em}
+% \begin{tabular}{@{}ll@{}}
+%   \textsf{mixedgreek}* & uppercase Greek upright, lowercase Greek italic\\
+%   \textsf{romangreek}  & all Greek letters upright\\
+%   \textsf{italicgreek} & all Greek letters italic
 % \end{tabular}
 %
 % \medskip\noindent
-% Upright and italic greek letters are directly accessible by the commands
+% Upright and italic greek letters are also directly accessible by the commands
 % |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
 %
-% \section{Blackboard and fraktur letters}
+% \subsubsection*{Blackboard and fraktur letters}
 %
 % Package options\?:
 %
-% \medskip\noindent\hspace{3em}
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}ll@{}}
-%   \rlap{amsbb}{\hphantom{mixedgreek*}}&     AMS blackboard fonts\\
-%   pazobb&    Pazo blackboard fonts\\
-%   eufrak*&    Euler fraktur\\
+%   \rlap{\textsf{amsbb}*}{\hphantom{\textsf{mixedgreek}*}} & use the AMS blackboard font\\
+%   \textsf{pazobb}  & use the Pazo blackboard font (does not fit very well to MinionPro)\\
+%   \textsf{eufrak}* & use the Euler fraktur font\\
 % \end{tabular}
 %
-% \section{Miscellaneous options}
+% \subsubsection*{Miscellaneous options}
 %
-% Package options\?:
-%
-% \medskip\noindent\hspace{3em}
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}ll@{}}
-%   \rlap{protrude}{\hphantom{mixedgreek*}}&    enable character protrusion with pdflatex    \\
-%   minionint&   use the integral symbol from MinionPro instead of the MnSymbol one\?:\\
-%            &   $\displaystyle\int$ instead of $\dint$
+%\iffalse \rlap{protrude}{\hphantom{mixedgreek*}}&    enable character protrusion with pdflatex    \\\fi
+%   \rlap{\textsf{minionint}}\hphantom{\textsf{mixedgreek}*}
+%      & take the integral symbols from MinionPro instead of the MnSymbol\?:\\
+%      & $\displaystyle\int$ instead of $\dint$
 % \end{tabular}
 %
-% \medskip\noindent
-% In addition to the normal small caps shape |sc| there is a letterspaced |ssc| shape.
+% \section{Additional font shapes and symbols}
+%
+% In addition to the normal small caps shape |sc| there is a letterspaced version called~|ssc|.
 % It can be used by issuing the commands
 % \begin{quote}
 %   |\fontshape{ssc}\selectfont|
@@ -130,7 +153,7 @@
 % |\renewcommand{\scdefault}{ssc}| in the preamble of your document. Swash capitals
 % like {\fontshape{sw}\selectfont ``Canadian Mountain Holidays''} are acessed via the |sw| fontshape.
 %
-% \medskip\noindent\hspace{3em}
+% \medskip\noindent\hspace{2em}
 % \begin{tabular}{@{}rl@{}}
 %   \rlap{\texttt{sc}}{\hphantom{mixedgreek*}}& \textsc{This is a Sample Text}\\
 %   \rlap{\texttt{ssc}}{\hphantom{mixedgreek*}}& {\fontshape{ssc}\selectfont{This is a Sample Text}}\\
@@ -140,37 +163,28 @@
 % In order to make non-standard ligatures searchable in the \textsc{pdf} generated by pdflatex,
 % \textsf{cmapex.sty} needs to be loaded before \textsf{fontenc.sty}.
 %
-% \section{Additional symbols}
-%
 % The \textsf{MinionPro} package provides all symbols from the \textsf{MnSymbol} package.
 % Additionally, the following math symbols are made availabe\?:
 % |\digamma|, |\hbar|, |\jmath|.
 % The slashed zero, ornaments and archaic greek
 % letters are accessed via the \textsf{pifont} package using
-% |\Pisymbol{MinionPro-Ornaments}{|$<\mathit{int}>$|}|\?:
+% |\Pisymbol{MinionPro-Ornaments}{|$\langle\mathit{int}\rangle$|}|\?:
 %
-% \medskip\noindent\hspace{3em}
-% \begin{tabular}{@{}rllrl@{}}
+% \medskip\noindent{\centering
+% \begin{tabular}{@{}rllrllrllrl@{}}
 % \toprule
-% number & glyph & &number & glyph\\
+%  number & glyph & & number & glyph & & number & glyph & & number & glyph \\
 % \midrule
-% 0&\Pisymbol{MinionPro-Ornaments}{0} &  &     15&\Pisymbol{MinionPro-Ornaments}{15}\\
-% 1&\Pisymbol{MinionPro-Ornaments}{1} &  &     16&\Pisymbol{MinionPro-Ornaments}{16}\\
-% 2&\Pisymbol{MinionPro-Ornaments}{2} &  &     17&\Pisymbol{MinionPro-Ornaments}{17}\\
-% 3&\Pisymbol{MinionPro-Ornaments}{3} &  &     18&\Pisymbol{MinionPro-Ornaments}{18}\\
-% 4&\Pisymbol{MinionPro-Ornaments}{4} &  &     19&\Pisymbol{MinionPro-Ornaments}{19}\\
-% 5&\Pisymbol{MinionPro-Ornaments}{5} &  &     20&\Pisymbol{MinionPro-Ornaments}{20}\\
-% 6&\Pisymbol{MinionPro-Ornaments}{6} &  &     21&\Pisymbol{MinionPro-Ornaments}{21}\\
-% 7&\Pisymbol{MinionPro-Ornaments}{7} &  &     22&\Pisymbol{MinionPro-Ornaments}{22}\\
-% 8&\Pisymbol{MinionPro-Ornaments}{8} &  &     23&\Pisymbol{MinionPro-Ornaments}{23}\\
-% 9&\Pisymbol{MinionPro-Ornaments}{9} &  &     24&\Pisymbol{MinionPro-Ornaments}{24}\\
-% 10&\Pisymbol{MinionPro-Ornaments}{10} &&     25&\Pisymbol{MinionPro-Ornaments}{25}\\
-% 11&\Pisymbol{MinionPro-Ornaments}{11} &&     26&\Pisymbol{MinionPro-Ornaments}{26}\\
-% 12&\Pisymbol{MinionPro-Ornaments}{12} &&     27&\Pisymbol{MinionPro-Ornaments}{27}\\
-% 13&\Pisymbol{MinionPro-Ornaments}{13} &&     28&\Pisymbol{MinionPro-Ornaments}{28}\\
-% 14&\Pisymbol{MinionPro-Ornaments}{14} &&     29&\Pisymbol{MinionPro-Ornaments}{29}\\
+%  0 & \Pisymbol{MinionPro-Ornaments}{0} &&  8 & \Pisymbol{MinionPro-Ornaments}{8}  && 16 & \Pisymbol{MinionPro-Ornaments}{16} && 24 &\Pisymbol{MinionPro-Ornaments}{24}\\
+%  1 & \Pisymbol{MinionPro-Ornaments}{1} &&  9 & \Pisymbol{MinionPro-Ornaments}{9}  && 17 & \Pisymbol{MinionPro-Ornaments}{17} && 25 &\Pisymbol{MinionPro-Ornaments}{25}\\
+%  2 & \Pisymbol{MinionPro-Ornaments}{2} && 10 & \Pisymbol{MinionPro-Ornaments}{10} && 18 & \Pisymbol{MinionPro-Ornaments}{18} && 26 &\Pisymbol{MinionPro-Ornaments}{26}\\
+%  3 & \Pisymbol{MinionPro-Ornaments}{3} && 11 & \Pisymbol{MinionPro-Ornaments}{11} && 19 & \Pisymbol{MinionPro-Ornaments}{19} && 27 &\Pisymbol{MinionPro-Ornaments}{27}\\
+%  4 & \Pisymbol{MinionPro-Ornaments}{4} && 12 & \Pisymbol{MinionPro-Ornaments}{12} && 20 & \Pisymbol{MinionPro-Ornaments}{20} && 28 &\Pisymbol{MinionPro-Ornaments}{28}\\
+%  5 & \Pisymbol{MinionPro-Ornaments}{5} && 13 & \Pisymbol{MinionPro-Ornaments}{13} && 21 & \Pisymbol{MinionPro-Ornaments}{21} && 29 &\Pisymbol{MinionPro-Ornaments}{29}\\
+%  6 & \Pisymbol{MinionPro-Ornaments}{6} && 14 & \Pisymbol{MinionPro-Ornaments}{14} && 22 & \Pisymbol{MinionPro-Ornaments}{22} &&    &\\
+%  7 & \Pisymbol{MinionPro-Ornaments}{7} && 15 & \Pisymbol{MinionPro-Ornaments}{15} && 23 & \Pisymbol{MinionPro-Ornaments}{23} &&    &\\
 % \bottomrule
-% \end{tabular}
+% \end{tabular}\par}
 %
 % \section{Language support}
 %
@@ -178,9 +192,9 @@
 %
 % \medskip\noindent\hspace{3em}
 % \begin{tabular}{@{}ll@{}}
-%   latin&    \textsc{ot1}, \textsc{t1}, \textsc{ts1}, \textsc{ly1}\\
-%   cyrillic& \textsc{t2a}, \textsc{t2b}, \textsc{t2c}, \textsc{x2}, \textsc{ot2}\\
-%   greek&    \textsc{lgr} (to be used with babel, including polutonikogreek)
+%   latin    & \textsc{ot1}, \textsc{t1}, \textsc{ts1}, \textsc{ly1}\\
+%   cyrillic & \textsc{t2a}, \textsc{t2b}, \textsc{t2c}, \textsc{x2}, \textsc{ot2}\\
+%   greek    & \textsc{lgr} (to be used with babel, including polutonikogreek)
 % \end{tabular}
 %
 % \section{The main style file}
@@ -190,9 +204,9 @@
 %<*style>
 \ProvidesPackage{MinionPro}[2005/01/23 v2.0 support for MinionPro]
 
-\RequirePackage{MinionPro-Protrude}
-
-\DeclareOption{protrude}{\enableprotruding}
+%\RequirePackage{MinionPro-Protrude}
+%
+%\DeclareOption{protrude}{\enableprotruding}
 
 \def\Mn@minionint@version{}
 \def\Mn@minionintbold@version{Semibold}
@@ -282,24 +296,10 @@
 
 \DeclareOption{minionint}{\def\Mn@Decl@Ints{\Mn@Decl@Minion@Ints}}
 
-%\def\Mn@Suffix@Capt{Capt}
-%\def\Mn@Suffix@Subh{Subh}
-%\def\Mn@Suffix@Disp{Disp}
-%\def\Mn@Suffix@Capt@P{Capt}
-%\def\Mn@Suffix@Subh@P{Subh}
-%\def\Mn@Suffix@Disp@P{Disp}
-%
-%\DeclareOption{textonly}{
-%  \def\Mn@Suffix@Capt{Regular}
-%  \def\Mn@Suffix@Subh{Regular}
-%  \def\Mn@Suffix@Disp{Regular}
-%  \def\Mn@Suffix@Capt@P{}
-%  \def\Mn@Suffix@Subh@P{}
-%  \def\Mn@Suffix@Disp@P{}}
-
 \ExecuteOptions{osf}
 \ProcessOptions\relax
 
+\@ifpackageloaded{microtype}{}{\RequirePackage{microtype}}
 \RequirePackage{MnSymbol,MinionPro-FontDef}
 
 %% declare the fonts
@@ -1386,7 +1386,7 @@
 \ifx\MnDeclareFont\undefined
 \ProvidesFile{MinionPro-FontDef}[2005/01/23 v2.0 font definition macros]%
 %
-\input{MinionPro-Protrude.sty}%
+%\input{MinionPro-Protrude.sty}%
 %
 \newcommand*\MnDeclareFont[7]{
     <-6>    MinionPro-#1-#6
@@ -1397,10 +1397,10 @@
   <20->     MinionPro-#5-#7
 }%
 \newcommand*\MnDefineFontDeclarationCommand[6]{%
-  \newcommand*{#1}[6]{%
+  \newcommand*{#1}[7]{%
     \DeclareFontShape{##1}{##2}{##3}{##4}{%
       \MnDeclareFont{#2}{#3}{#4}{#5}{#6}{##5}{##6}%
-      }{\ProtrudeCommand{##1}{##2}{##3}{##4}}%
+       }{##7}%
   }%
 }%
 %
@@ -1575,49 +1575,49 @@
 \newcommand*\MnDeclareLargeFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
 %
-  \DefineProtrudeCommand{#1}{#2}{m}{n}     {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{it}    {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{sc}    {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{ssc}   {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{scit}  {\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{sscit} {\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{sw}    {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{n}    {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{it}   {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{sc}   {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{ssc}  {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{scit} {\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{sscit}{\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{sw}   {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{n}     {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{it}    {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{sc}    {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{ssc}   {\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{scit}  {\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{sscit} {\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{sw}    {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{n}     {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{it}    {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{sc}    {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{ssc}   {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{scit}  {\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{sscit} {\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{sw}    {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{n}    {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{it}   {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{sc}   {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{ssc}  {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{scit} {\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{sscit}{\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{sw}   {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{n}     {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{it}    {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{sc}    {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{ssc}   {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{scit}  {\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{sscit} {\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{sw}    {\ItalicProtruding{#1}}%
 %
-  \MnDeclareFontRegular       {#1}{#2}{m}{n}     {#3-l1-#4}      {#3-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{it}    {#3-l1-#4}      {#3-#4}%
-  \MnDeclareFontRegular       {#1}{#2}{m}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}%
-  \MnDeclareFontRegular       {#1}{#2}{m}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{sw}    {#3-swash-l1-#4}{#3-swash-#4}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}    {#3-l1-#4}      {#3-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}   {#3-l1-#4}      {#3-#4}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}   {#3-sc-l1-#4}   {#3-sc-#4}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{ssc}  {#3-sc-l2-#4}   {#3-sc-l2-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit} {#3-sc-l1-#4}   {#3-sc-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sscit}{#3-sc-l2-#4}   {#3-sc-l2-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sw}   {#3-swash-l1-#4}{#3-swash-#4}%
-  \MnDeclareFontBold          {#1}{#2}{b}{n}     {#3-l1-#4}      {#3-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}    {#3-l1-#4}      {#3-#4}%
-  \MnDeclareFontBold          {#1}{#2}{b}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}%
-  \MnDeclareFontBold          {#1}{#2}{b}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sw}    {#3-swash-l1-#4}{#3-swash-#4}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{n}     {#3-l1-#4}      {#3-#4}        {}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{it}    {#3-l1-#4}      {#3-#4}        {}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{sw}    {#3-swash-l1-#4}{#3-swash-#4}  {}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}    {#3-l1-#4}      {#3-#4}        {}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}   {#3-l1-#4}      {#3-#4}        {}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}   {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{ssc}  {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit} {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sscit}{#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sw}   {#3-swash-l1-#4}{#3-swash-#4}  {}%
+  \MnDeclareFontBold          {#1}{#2}{b}{n}     {#3-l1-#4}      {#3-#4}        {}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}    {#3-l1-#4}      {#3-#4}        {}%
+  \MnDeclareFontBold          {#1}{#2}{b}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \MnDeclareFontBold          {#1}{#2}{b}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sw}    {#3-swash-l1-#4}{#3-swash-#4}  {}%
 %
   \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
   \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
@@ -1629,19 +1629,19 @@
 \newcommand*\MnDeclareSmallFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
 %
-  \DefineProtrudeCommand{#1}{#2}{m}{n}  {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{it} {\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{n} {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{it}{\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{n}  {\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{it} {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{n}  {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{it} {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{n} {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{it}{\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{n}  {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{it} {\ItalicProtruding{#1}}%
 %
-  \MnDeclareFontRegular       {#1}{#2}{m}{n}  {#3-l1-#4}{#3-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{it} {#3-l1-#4}{#3-#4}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{n} {#3-l1-#4}{#3-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}{#3-l1-#4}{#3-#4}%
-  \MnDeclareFontBold          {#1}{#2}{b}{n}  {#3-l1-#4}{#3-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it} {#3-l1-#4}{#3-#4}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{n}  {#3-l1-#4}{#3-#4} {}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{it} {#3-l1-#4}{#3-#4} {}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{n} {#3-l1-#4}{#3-#4} {}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}{#3-l1-#4}{#3-#4} {}%
+  \MnDeclareFontBold          {#1}{#2}{b}{n}  {#3-l1-#4}{#3-#4} {}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it} {#3-l1-#4}{#3-#4} {}%
 %
   \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
   \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
@@ -1653,31 +1653,31 @@
 \newcommand*\MnDeclareMathFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
 %
-  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\skewchar\font=255\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{it}   {\skewchar\font=255\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{sc}   {\skewchar\font=255\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{m}{scit} {\skewchar\font=255\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{n}   {\skewchar\font=255\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{it}  {\skewchar\font=255\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{sc}  {\skewchar\font=255\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{sb}{scit}{\skewchar\font=255\SmallcapsItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{n}    {\skewchar\font=255\RomanProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{it}   {\skewchar\font=255\ItalicProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{sc}   {\skewchar\font=255\SmallcapsProtruding{#1}}%
-  \DefineProtrudeCommand{#1}{#2}{b}{scit} {\skewchar\font=255\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{it}   {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{sc}   {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{m}{scit} {\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{n}   {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{it}  {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{sc}  {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{sb}{scit}{\SmallcapsItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{n}    {\RomanProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{it}   {\ItalicProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{sc}   {\SmallcapsProtruding{#1}}%
+%  \DefineProtrudeCommand{#1}{#2}{b}{scit} {\SmallcapsItalicProtruding{#1}}%
 %
-  \MnDeclareFontRegular       {#1}{#2}{m}{n}    {#3-l1-#4}   {#3-l1-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{it}   {#3-l1-#4}   {#3-l1-#4}%
-  \MnDeclareFontRegular       {#1}{#2}{m}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}   {#3-l1-#4}   {#3-l1-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}  {#3-l1-#4}   {#3-l1-#4}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}  {#3-sc-l1-#4}{#3-sc-l1-#4}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit}{#3-sc-l1-#4}{#3-sc-l1-#4}%
-  \MnDeclareFontBold          {#1}{#2}{b}{n}    {#3-l1-#4}   {#3-l1-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}   {#3-l1-#4}   {#3-l1-#4}%
-  \MnDeclareFontBold          {#1}{#2}{b}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{n}    {#3-l1-#4}   {#3-l1-#4}   {\skewchar\font=255}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{it}   {#3-l1-#4}   {#3-l1-#4}   {\skewchar\font=255}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}{\skewchar\font=255}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}{\skewchar\font=255}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}   {#3-l1-#4}   {#3-l1-#4}   {\skewchar\font=255}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}  {#3-l1-#4}   {#3-l1-#4}   {\skewchar\font=255}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}  {#3-sc-l1-#4}{#3-sc-l1-#4}{\skewchar\font=255}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit}{#3-sc-l1-#4}{#3-sc-l1-#4}{\skewchar\font=255}%
+  \MnDeclareFontBold          {#1}{#2}{b}{n}    {#3-l1-#4}   {#3-l1-#4}   {\skewchar\font=255}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}   {#3-l1-#4}   {#3-l1-#4}   {\skewchar\font=255}%
+  \MnDeclareFontBold          {#1}{#2}{b}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}{\skewchar\font=255}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}{\skewchar\font=255}%
 %
   \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
   \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
