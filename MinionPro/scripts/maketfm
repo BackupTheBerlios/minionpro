@@ -96,40 +96,36 @@ make_math_metrics() {
 }
 
 make_series() {
-  series="$1"
 
   for sub in "" Capt Disp Subh
   do
-    if [ "x$series$sub" = "x" ]
+    if [ "x$1$sub" = "x" ]
     then
       make_metrics Regular
     else
-      make_metrics "$series$sub"
+      make_metrics "$1$sub"
     fi
   done
 
-  make_spaced_metrics "${series}Capt"
+  make_spaced_metrics "$1Capt"
 }
 
 make_additional_italic() {
-  series="$1"
 
   for sub in "" Capt Disp Subh
   do
-    make_swash_metrics "$series$sub"
-    make_math_metrics  "$series$sub-Cn"
+    make_swash_metrics "$1$sub"
+    make_math_metrics  "$1$sub-Cn"
   done
 
-  make_spaced_swash_metrics "${series}Capt"
+  make_spaced_swash_metrics "$1Capt"
 }
 
-make_series "" &
-make_series It
-make_additional_italic  It
-make_series Semibold &
-make_series SemiboldIt
-make_additional_italic  SemiboldIt
-make_series Bold &
-make_series BoldIt
-make_additional_italic  BoldIt
+for series in "" Semibold Bold
+do
+  make_series "$series" #&
+  make_series "${series}It"
+
+  make_additional_italic  "${series}It"
+done
 
