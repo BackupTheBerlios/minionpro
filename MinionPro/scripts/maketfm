@@ -28,8 +28,8 @@ make_tfm() {
 tosf_flags="-fonum -ftnum"
 
   lf_ts_flags="-fpnum --filter=<Number> -fonum --filter=!<Number> -flnum"
- osf_ts_flags="-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum"
- tlf_ts_flags="-fpnum --filter=<Number> -flnum --filter=!<Number> -fonum"
+ osf_ts_flags="-fpnum --filter=<Number> -flnum --filter=!<Number> -fonum"
+ tlf_ts_flags="-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum"
 tosf_ts_flags="-ftnum --filter=<Number> -flnum --filter=!<Number> -fonum"
 
   lf_sc_flags="-flnum -fpnum --filter=<Letter> -fsmcp"
@@ -38,8 +38,8 @@ tosf_ts_flags="-ftnum --filter=<Number> -flnum --filter=!<Number> -fonum"
 tosf_sc_flags="-fonum -ftnum -fsmcp"
 
   lf_sc_ts_flags="-fpnum --filter=<Number> -fonum --filter=!<Number> -flnum --filter=<Letter> -fsmcp"
- osf_sc_ts_flags="-ftnum -fsmcp --filter=<Number> -fonum --filter=!<Number> -flnum"
- tlf_sc_ts_flags="-fpnum --filter=<Number> -flnum --filter=!<Number> -fonum --filter=<Letter> -fsmcp"
+ osf_sc_ts_flags="-fpnum -fsmcp --filter=<Number> -flnum --filter=!<Number> -fonum"
+ tlf_sc_ts_flags="-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum --filter=<Letter> -fsmcp"
 tosf_sc_ts_flags="-ftnum -fsmcp --filter=<Number> -flnum --filter=!<Number> -fonum"
 
 make_normal_metrics() {
