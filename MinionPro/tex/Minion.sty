@@ -416,20 +416,20 @@
 \def\varlcircleleftint{\DOTSI\overstrike\shiftedvarintop\partialvartlcircleleftint\ilimits@}
 
 \def\Mn@Decl@Minion@Ints{%
-  \def\intop{\mathop{\mathchoice{\vardintop}{\vartintop}{\vartintop}{\vartintop}}}
-  \def\iint{\DOTSI\protect\MultiIntegral{2}}
-  \def\iiint{\DOTSI\protect\MultiIntegral{3}}
-  \def\iiiint{\DOTSI\protect\MultiIntegral{4}}
+  \let\intop\varintop
+  \let\iint\variint
+  \let\iiint\variiint
+  \let\iiiint\variiiint
   \def\idotsint{\DOTSI\protect\MultiIntegral{0}}
-  \def\landupint{\DOTSI\mathop{\mathchoice{\vardlandupintop}{\vartlandupintop}{\vartlandupintop}{\vartlandupintop}}\ilimits@}
-  \def\landdownint{\DOTSI\mathop{\mathchoice{\vardlanddownintop}{\vartlanddownintop}{\vartlanddownintop}{\vartlanddownintop}}\ilimits@}
-  \def\strokedint{\DOTSI\mathop{\mathchoice{\vardstrokedintop}{\vartstrokedintop}{\vartstrokedintop}{\vartstrokedintop}}\ilimits@}
-  \def\oint{\DOTSI\mathop{\mathchoice{\vardointop}{\vartointop}{\vartointop}{\vartointop}}\ilimits@}
-  \def\oiint{\DOTSI\mathop{\mathchoice{\vardoiintop}{\vartoiintop}{\vartoiintop}{\vartoiintop}}\ilimits@}
-  \def\rcirclerightint{\DOTSI\mathop{\mathchoice{\vardrcirclerightintop}{\vartrcirclerightintop}{\vartrcirclerightintop}{\vartrcirclerightintop}}\ilimits@}
-  \def\lcirclerightint{\DOTSI\mathop{\mathchoice{\vardlcirclerightintop}{\vartlcirclerightintop}{\vartlcirclerightintop}{\vartlcirclerightintop}}\ilimits@}
-  \def\rcircleleftint{\DOTSI\mathop{\mathchoice{\vardrcircleleftintop}{\vartrcircleleftintop}{\vartrcircleleftintop}{\vartrcircleleftintop}}\ilimits@}
-  \def\lcircleleftint{\DOTSI\mathop{\mathchoice{\vardlcircleleftintop}{\vartlcircleleftintop}{\vartlcircleleftintop}{\vartlcircleleftintop}}\ilimits@}
+  \let\landupint\varlandupint
+  \let\landdownint\varlanddownint
+  \let\strokedint\varstrokedint
+  \let\oint\varoint
+  \let\oiint\varoiint
+  \let\rcirclerightint\varrcirclerightint
+  \let\lcirclerightint\varlcirclerightint
+  \let\rcircleleftint\varrcircleleftint
+  \let\lcircleleftint\varlcircleleftint
 }
 
 \Mn@Decl@Ints
