@@ -162,14 +162,14 @@ make_swash_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_tfm "$1" t1-swash  lf-swash-t1    -flnum -fpnum 
-    make_tfm "$1" ot1-swash lf-swash-ot1   -flnum -fpnum 
-    make_tfm "$1" t1-swash  osf-swash-t1   -fonum -fpnum 
-    make_tfm "$1" ot1-swash osf-swash-ot1  -fonum -fpnum 
-    make_tfm "$1" t1-swash  tlf-swash-t1   -flnum -ftnum 
-    make_tfm "$1" ot1-swash tlf-swash-ot1  -flnum -ftnum 
-    make_tfm "$1" t1-swash  tosf-swash-t1  -fonum -ftnum 
-    make_tfm "$1" ot1-swash tosf-swash-ot1 -fonum -ftnum 
+    make_tfm "$1" swash-t1  lf-swash-t1    -flnum -fpnum 
+    make_tfm "$1" swash-ot1 lf-swash-ot1   -flnum -fpnum 
+    make_tfm "$1" swash-t1  osf-swash-t1   -fonum -fpnum 
+    make_tfm "$1" swash-ot1 osf-swash-ot1  -fonum -fpnum 
+    make_tfm "$1" swash-t1  tlf-swash-t1   -flnum -ftnum 
+    make_tfm "$1" swash-ot1 tlf-swash-ot1  -flnum -ftnum 
+    make_tfm "$1" swash-t1  tosf-swash-t1  -fonum -ftnum 
+    make_tfm "$1" swash-ot1 tosf-swash-ot1 -fonum -ftnum 
 
     echo " done." >&2
   fi
@@ -181,14 +181,14 @@ make_spaced_swash_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_tfm "$1" t1-swash  lf-swash-l1-t1    -L 40 -flnum -fpnum 
-    make_tfm "$1" ot1-swash lf-swash-l1-ot1   -L 40 -flnum -fpnum 
-    make_tfm "$1" t1-swash  osf-swash-l1-t1   -L 40 -fonum -fpnum 
-    make_tfm "$1" ot1-swash osf-swash-l1-ot1  -L 40 -fonum -fpnum
-    make_tfm "$1" t1-swash  tlf-swash-l1-t1   -L 40 -flnum -ftnum 
-    make_tfm "$1" ot1-swash tlf-swash-l1-ot1  -L 40 -flnum -ftnum
-    make_tfm "$1" t1-swash  tosf-swash-l1-t1  -L 40 -fonum -ftnum 
-    make_tfm "$1" ot1-swash tosf-swash-l1-ot1 -L 40 -fonum -ftnum 
+    make_tfm "$1" swash-t1  lf-swash-l1-t1    -L 40 -flnum -fpnum 
+    make_tfm "$1" swash-ot1 lf-swash-l1-ot1   -L 40 -flnum -fpnum 
+    make_tfm "$1" swash-t1  osf-swash-l1-t1   -L 40 -fonum -fpnum 
+    make_tfm "$1" swash-ot1 osf-swash-l1-ot1  -L 40 -fonum -fpnum
+    make_tfm "$1" swash-t1  tlf-swash-l1-t1   -L 40 -flnum -ftnum 
+    make_tfm "$1" swash-ot1 tlf-swash-l1-ot1  -L 40 -flnum -ftnum
+    make_tfm "$1" swash-t1  tosf-swash-l1-t1  -L 40 -fonum -ftnum 
+    make_tfm "$1" swash-ot1 tosf-swash-l1-ot1 -L 40 -fonum -ftnum 
 
     echo " done." >&2
   fi
