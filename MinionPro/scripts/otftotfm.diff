@@ -1,6 +1,13 @@
+Only in .: automatic.o
+Only in .: .deps
+Only in .: dvipsencoding.o
+Only in .: glyphfilter.o
+Only in .: kpseinterface.o
+Only in .: Makefile
+Only in .: md5.o
 diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
---- ../otftotfm.orig/metrics.cc	2005-03-09 21:12:57.000000000 +0100
-+++ ./metrics.cc	2005-03-09 21:15:58.000000000 +0100
+--- ../otftotfm.orig/metrics.cc	2004-10-01 09:42:29.000000000 +0200
++++ ./metrics.cc	2005-03-11 19:50:39.000000000 +0100
 @@ -24,7 +24,7 @@
  #include <lcdf/straccum.hh>
  
@@ -20,8 +27,8 @@ diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
  	    return "<emptyslot>";
  	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
 diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
---- ../otftotfm.orig/metrics.hh	2005-03-09 21:12:57.000000000 +0100
-+++ ./metrics.hh	2005-03-09 21:15:49.000000000 +0100
+--- ../otftotfm.orig/metrics.hh	2004-08-10 09:27:30.000000000 +0200
++++ ./metrics.hh	2005-03-11 19:50:39.000000000 +0100
 @@ -31,6 +31,7 @@
      void check() const;
      
@@ -38,9 +45,11 @@ diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
      Glyph _emptyslot_glyph;
  
      Vector<Kern> _altselectors;
+Only in .: metrics.o
+Only in .: otftotfm
 diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
---- ../otftotfm.orig/otftotfm.cc	2005-03-09 21:12:57.000000000 +0100
-+++ ./otftotfm.cc	2005-03-09 21:15:37.000000000 +0100
+--- ../otftotfm.orig/otftotfm.cc	2005-03-04 20:25:54.000000000 +0100
++++ ./otftotfm.cc	2005-03-13 21:40:59.000000000 +0100
 @@ -94,6 +94,7 @@
  #define ALTERNATES_FILTER_OPT	336
  #define SPACE_FACTOR_OPT	337
@@ -246,7 +255,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	fclose(f);
      }
  
-@@ -1008,10 +1032,10 @@
+@@ -1008,30 +1032,26 @@
  	if (output_flags & G_BINARY) {
  	    String tfm = getodir(O_TFM, errh) + "/" + font_name + ".tfm";
  	    String vf = getodir(O_VF, errh) + "/" + font_name + ".vf";
@@ -259,20 +268,29 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  	    update_odir(O_VPL, outfile, errh);
  	}
  	metrics.make_base(257);
-@@ -1025,10 +1049,10 @@
+     }
+ 
+     // output metrics
+-    double save_minimum_kern = minimum_kern;
+-    if (need_virtual)
+-	minimum_kern = 100000;
+     if (!(output_flags & G_METRICS))
  	/* do nothing */;
      else if (output_flags & G_BINARY) {
  	String tfm = getodir(O_TFM, errh) + "/" + base_font_name + ".tfm";
 -	output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, String(), errh);
-+	output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, String(), !(output_flags & G_VMETRICS), errh);
++	output_tfm(metrics, ps_name, boundary_char, family_otf, family_cff, tfm, String(), !need_virtual, errh);
      } else {
  	String outfile = getodir(O_PL, errh) + "/" + base_font_name + ".pl";
 -	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, false, outfile, errh);
-+	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, false, !(output_flags & G_VMETRICS), outfile, errh);
++	output_pl(metrics, ps_name, boundary_char, family_otf, family_cff, false, !need_virtual, outfile, errh);
  	update_odir(O_PL, outfile, errh);
      }
-     minimum_kern = save_minimum_kern;
-@@ -1272,6 +1296,9 @@
+-    minimum_kern = save_minimum_kern;
+ 
+     // print DVIPS map line
+     if (errh->nerrors() == 0 && (output_flags & G_PSFONTSMAP)) {
+@@ -1272,6 +1292,9 @@
      // encode boundary glyph at 256; pretend its Unicode value is '\n'
      metrics.encode(256, '\n', metrics.boundary_glyph());
  
@@ -282,7 +300,7 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
      // maintain statistics about features
      HashMap<uint32_t, int> feature_usage(0);
  
-@@ -1326,15 +1353,28 @@
+@@ -1326,15 +1349,28 @@
      // apply math letterspacing, if any
      if (math_spacing) {
  	Transform font_xform;
@@ -312,3 +330,9 @@ diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
  		}
  	    }
  	}
+Binary files ../otftotfm.orig/.otftotfm.cc.swp and ./.otftotfm.cc.swp differ
+Only in .: otftotfm.diff
+Only in .: otftotfm.o
+Only in .: secondary.o
+Only in .: uniprop.o
+Only in .: util.o
