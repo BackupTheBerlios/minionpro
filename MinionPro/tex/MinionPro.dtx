@@ -148,14 +148,45 @@
 \SetSymbolFont{operators}{tabular}{OT1}{\Mn@Math@TFamily}{m}{n}
 \SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
 \SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
-
-%% figures
-
+%   \end{macrocode}
+%
+% \begin{macro}{figureversion}
+%
+%   The command |\figureversion| is used to select different figure (digit)
+%   styles. Valid figure styles, which can be specified in the argument to
+%   |\figureversion|, are:
+%   \begin{itemize}
+%     \item ``lf'' -- ordinary boring figure glyphs
+%     \item ``osf'' -- old style figures
+%     \item ``tabular'' -- tabular figures (figure glyphs all have the same width)
+%     \item ``proportional'' -- figures with proportional glyph widths
+%   \end{itemize}
+%
+%   \changes{v0.1}{2005/01/08}{added support for multiple keys, separated by
+%       commas, in the argument to |\figureversion|.}
+%   \changes{v0.0}{2005/01/01}{removed dependency on |\define@key|: using the
+%       |keyval| package causes problems together with the |hyperref| package
+%       whenever |\figureversion| is used in captions, et cetera.}
+%
+%   First, we need to set up some dummy definitions for keys we will
+%   later use for checking arguments against.
+%
+%   \begin{macrocode}
 \def\Mn@Key@lf{0}
 \def\Mn@Key@osf{1}
 \def\Mn@Key@tabular{2}
 \def\Mn@Key@proportional{3}
-
+%   \end{macrocode}
+%
+%   In principle, we simply iterate over the list of figure versions specified
+%   in the argument to |\figureversion|. For each item of this list we next check
+%   whether the given argument is the same as one of the predefined commands. This
+%   check is basically done by converting the item into a command sequence name,
+%   which will then be expanded by \TeX. Since we have defined command sequences
+%   (commands) for all valid items and assigned simple cardinals to it, we then
+%   can easily select the appropriate font family within a case clause.
+%
+%   \begin{macrocode}
 \def\figureversion#1{%
   \@for\@fv@arg:=#1\do{%
     \edef\@fv@arg{\expandafter\@firstofone\@fv@arg\@empty}%
@@ -177,6 +208,8 @@
   }%
   \fontfamily\Mn@Text@Family\selectfont
 }
+%   \end{macrocode}
+% \end{macro}
 
 \newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
 \newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
