@@ -1,0 +1,49 @@
+\ProvidesFile{t2bMinion-OsF.fd}[2004/08/08 font definitions for T2B/Minion-OsF.]
+\DeclareFontFamily{T2B}{Minion-OsF}{}
+\DeclareFontShape{T2B}{Minion-OsF}{m}{n}{
+    <-6>  MinionPro-SemiboldCapt-OSFL-6t
+   <6-8>  MinionPro-Capt-OSFL-6t
+   <8-9>  MinionPro-Capt-OSF-6t
+   <9-12> MinionPro-Regular-OSF-6t
+  <12-15> MinionPro-Subh-OSF-6t
+  <15->   MinionPro-Disp-OSF-6t}{\OTone@roman@protruding}
+\DeclareFontShape{T2B}{Minion-OsF}{m}{it}{
+    <-6>  MinionPro-SemiboldItCapt-OSFL-6t
+   <6-8>  MinionPro-ItCapt-OSFL-6t
+   <8-9>  MinionPro-ItCapt-OSF-6t
+   <9-12> MinionPro-It-OSF-6t
+  <12-15> MinionPro-ItSubh-OSF-6t
+  <15->   MinionPro-ItDisp-OSF-6t}{\OTone@italic@protruding}
+\DeclareFontShape{T2B}{Minion-OsF}{sb}{n}{
+    <-6>  MinionPro-BoldCapt-OSFL-6t
+   <6-8>  MinionPro-SemiboldCapt-OSFL-6t
+   <8-9>  MinionPro-SemiboldCapt-OSF-6t
+   <9-12> MinionPro-Semibold-OSF-6t
+  <12-15> MinionPro-SemiboldSubh-OSF-6t
+  <15->   MinionPro-SemiboldDisp-OSF-6t}{\OTone@roman@protruding}
+\DeclareFontShape{T2B}{Minion-OsF}{sb}{it}{
+    <-6>  MinionPro-BoldItCapt-OSFL-6t
+   <6-8>  MinionPro-SemiboldItCapt-OSFL-6t
+   <8-9>  MinionPro-SemiboldItCapt-OSF-6t
+   <9-12> MinionPro-SemiboldIt-OSF-6t
+  <12-15> MinionPro-SemiboldItSubh-OSF-6t
+  <15->   MinionPro-SemiboldItDisp-OSF-6t}{\OTone@italic@protruding}
+\DeclareFontShape{T2B}{Minion-OsF}{b}{n}{
+    <-8>  MinionPro-BoldCapt-OSFL-6t
+   <8-9>  MinionPro-BoldCapt-OSF-6t
+   <9-12> MinionPro-Bold-OSF-6t
+  <12-15> MinionPro-BoldSubh-OSF-6t
+  <15->   MinionPro-BoldDisp-OSF-6t}{\OTone@roman@protruding}
+\DeclareFontShape{T2B}{Minion-OsF}{b}{it}{
+    <-8>  MinionPro-BoldItCapt-OSFL-6t
+   <8-9>  MinionPro-BoldItCapt-OSF-6t
+   <9-12> MinionPro-BoldIt-OSF-6t
+  <12-15> MinionPro-BoldItSubh-OSF-6t
+  <15->   MinionPro-BoldItDisp-OSF-6t}{\OTone@italic@protruding}
+
+\DeclareFontShape{T2B}{Minion-OsF}{m} {sl}{<->ssub * Minion-OsF/m/it}{}
+\DeclareFontShape{T2B}{Minion-OsF}{sb}{sl}{<->ssub * Minion-OsF/sb/it}{}
+\DeclareFontShape{T2B}{Minion-OsF}{b} {sl}{<->ssub * Minion-OsF/b/it}{}
+
+\endinput
+% vim:set ft=tex:

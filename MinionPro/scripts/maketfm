@@ -1,0 +1,116 @@
+#!/bin/sh
+
+font=$1
+
+make_simple_tfm() {
+  echo -n " $2," >&2
+  afm2tfm afm/$font-$1.afm -T dvips/mn-$2.enc -v vpl/$font-$1-$3.vpl tfm/$font-$1-$3.tfm
+}
+make_spread_tfm() {
+  echo -n " $2," >&2
+  afm2tfm afm/$font-$1.afm -l $5 -T dvips/mn-$2.enc -v vpl/$font-$1-$3.vpl tfm/$font-$1-$4.tfm >/dev/null
+}
+
+make_metrics() {
+
+  echo -n "Processing font $font-$1 ..." >&2
+
+  make_simple_tfm "$1" lf-t1       8t
+  make_simple_tfm "$1" lf-ts1      8c
+  make_simple_tfm "$1" lf-ot1      7t
+  make_simple_tfm "$1" lf-oml      7m
+  make_simple_tfm "$1" lf-sc-t1    SC-8t
+  make_simple_tfm "$1" lf-sc-ot1   SC-7t
+  make_simple_tfm "$1" lf-t2a      6a
+  make_simple_tfm "$1" lf-t2b      6t
+  make_simple_tfm "$1" lf-t2c      6c
+  make_simple_tfm "$1" lf-x2       6x
+  make_simple_tfm "$1" osf-t1      OSF-8t
+  make_simple_tfm "$1" osf-ts1     OSF-8c
+  make_simple_tfm "$1" osf-ot1     OSF-7t
+  make_simple_tfm "$1" osf-oml     OSF-7m
+  make_simple_tfm "$1" osf-sc-t1   OSFSC-8t
+  make_simple_tfm "$1" osf-sc-ot1  OSFSC-7t
+  make_simple_tfm "$1" osf-t2a     OSF-6a
+  make_simple_tfm "$1" osf-t2b     OSF-6t
+  make_simple_tfm "$1" osf-t2c     OSF-6c
+  make_simple_tfm "$1" osf-x2      OSF-6x
+
+  make_spread_tfm "$1" lf-oml      L-7m      7m        20
+  make_spread_tfm "$1" lf-sc-t1    SSC-8t    SC-8t     40
+  make_spread_tfm "$1" lf-sc-ot1   SSC-7t    SC-7t     40
+  make_spread_tfm "$1" osf-oml     OSFL-7m   OSF-7m    20
+  make_spread_tfm "$1" osf-sc-t1   OSFSSC-8t OSFSC-8t  40
+  make_spread_tfm "$1" osf-sc-ot1  OSFSSC-7t OSFSC-7t  40
+  echo " done." >&2
+}
+
+make_spaced_metrics() {
+  echo -n "Processing font $font-$1 ..." >&2
+  make_spread_tfm "$1" lf-t1      L-8t      8t       20
+  make_spread_tfm "$1" lf-ts1     L-8c      8c       20
+  make_spread_tfm "$1" lf-ot1     L-7t      7t       20
+  make_spread_tfm "$1" lf-sc-t1   LSC-8t    SC-8t    20
+  make_spread_tfm "$1" lf-sc-ot1  LSC-7t    SC-7t    20
+  make_spread_tfm "$1" osf-t1     OSFL-8t   OSF-8t   20
+  make_spread_tfm "$1" osf-ot1    OSFL-7t   OSF-7t   20
+  make_spread_tfm "$1" osf-sc-t1  OSFLSC-8t OSFSC-8t 20
+  make_spread_tfm "$1" osf-sc-ot1 OSFLSC-7t OSFSC-7t 20
+  echo " done." >&2
+}
+
+make_swash_metrics() {
+  echo -n "Processing font $font-$1 ..." >&2
+  make_simple_tfm "$1" lf-swash-t1   Swash-8t
+  make_simple_tfm "$1" lf-swash-ot1  Swash-7t
+  make_simple_tfm "$1" osf-swash-t1  OSF-Swash-8t
+  make_simple_tfm "$1" osf-swash-ot1 OSF-Swash-7t
+  echo " done." >&2
+}
+
+make_spaced_swash_metrics() {
+  echo -n "Processing font $font-$1 ..." >&2
+  make_spread_tfm "$1" lf-swash-t1   L-Swash-8t    Swash-8t     20
+  make_spread_tfm "$1" lf-swash-ot1  L-Swash-7t    Swash-7t     20
+  make_spread_tfm "$1" osf-swash-t1  OSFL-Swash-8t OSF-Swash-8t 20
+  make_spread_tfm "$1" osf-swash-ot1 OSFL-Swash-7t OSF-Swash-7t 20
+  echo " done." >&2
+}
+
+make_series() {
+  series="$1"
+
+  for sub in "" Capt Disp Subh
+  do
+    if [ "x$series$sub" = "x" ]
+    then
+      make_metrics Regular
+    else
+      make_metrics "$series$sub"
+    fi
+  done
+
+  make_spaced_metrics "${series}Capt"
+}
+
+make_swash() {
+  series="$1"
+
+  for sub in "" Capt Disp Subh
+  do
+    make_swash_metrics "$series$sub"
+  done
+
+  make_spaced_swash_metrics "${series}Capt"
+}
+
+make_series "" #&
+make_series It
+make_swash  It
+make_series Semibold #&
+make_series SemiboldIt
+make_swash  SemiboldIt
+make_series Bold #&
+make_series BoldIt
+make_swash  BoldIt
+

@@ -1,0 +1,49 @@
+\ProvidesFile{x2Minion-LF.fd}[2004/08/08 font definitions for X2/Minion-LF.]
+\DeclareFontFamily{X2}{Minion-LF}{}
+\DeclareFontShape{X2}{Minion-LF}{m}{n}{
+    <-6>  MinionPro-SemiboldCapt-L-6x
+   <6-8>  MinionPro-Capt-L-6x
+   <8-9>  MinionPro-Capt-6x
+   <9-12> MinionPro-Regular-6x
+  <12-15> MinionPro-Subh-6x
+  <15->   MinionPro-Disp-6x}{}
+\DeclareFontShape{X2}{Minion-LF}{m}{it}{
+    <-6>  MinionPro-SemiboldItCapt-L-6x
+   <6-8>  MinionPro-ItCapt-L-6x
+   <8-9>  MinionPro-ItCapt-6x
+   <9-12> MinionPro-It-6x
+  <12-15> MinionPro-ItSubh-6x
+  <15->   MinionPro-ItDisp-6x}{}
+\DeclareFontShape{X2}{Minion-LF}{sb}{n}{
+    <-6>  MinionPro-BoldCapt-L-6x
+   <6-8>  MinionPro-SemiboldCapt-L-6x
+   <8-9>  MinionPro-SemiboldCapt-6x
+   <9-12> MinionPro-Semibold-6x
+  <12-15> MinionPro-SemiboldSubh-6x
+  <15->   MinionPro-SemiboldDisp-6x}{}
+\DeclareFontShape{X2}{Minion-LF}{sb}{it}{
+    <-6>  MinionPro-BoldItCapt-L-6x
+   <6-8>  MinionPro-SemiboldItCapt-L-6x
+   <8-9>  MinionPro-SemiboldItCapt-6x
+   <9-12> MinionPro-SemiboldIt-6x
+  <12-15> MinionPro-SemiboldItSubh-6x
+  <15->   MinionPro-SemiboldItDisp-6x}{}
+\DeclareFontShape{X2}{Minion-LF}{b}{n}{
+    <-8>  MinionPro-BoldCapt-L-6x
+   <8-9>  MinionPro-BoldCapt-6x
+   <9-12> MinionPro-Bold-6x
+  <12-15> MinionPro-BoldSubh-6x
+  <15->   MinionPro-BoldDisp-6x}{}
+\DeclareFontShape{X2}{Minion-LF}{b}{it}{
+    <-8>  MinionPro-BoldItCapt-L-6x
+   <8-9>  MinionPro-BoldItCapt-6x
+   <9-12> MinionPro-BoldIt-6x
+  <12-15> MinionPro-BoldItSubh-6x
+  <15->   MinionPro-BoldItDisp-6x}{}
+
+\DeclareFontShape{X2}{Minion-LF}{m} {sl}{<->ssub * Minion-LF/m/it}{}
+\DeclareFontShape{X2}{Minion-LF}{sb}{sl}{<->ssub * Minion-LF/sb/it}{}
+\DeclareFontShape{X2}{Minion-LF}{b} {sl}{<->ssub * Minion-LF/b/it}{}
+
+\endinput
+% vim:set ft=tex:

@@ -1,0 +1,35 @@
+\ProvidesFile{OMLMinion-LF-C.fd}[2004/08/08 font definitions for OML/Minion-LF-C.]
+\DeclareFontFamily{OML}{Minion-LF-C}{\skewchar\font=127}
+\DeclareFontShape{OML}{Minion-LF-C}{m}{n}{
+   <-6>  MinionPro-SemiboldCapt-L-7m
+   <6->  MinionPro-Capt-L-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{m}{it}{
+   <-6>  MinionPro-SemiboldItCapt-L-7m
+   <6->  MinionPro-ItCapt-L-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{m}{sc}{
+   <-6>  MinionPro-SemiboldItCapt-LSC-7m
+   <6->  MinionPro-Capt-LSC-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{sb}{n}{
+   <-6>  MinionPro-BoldCapt-L-7m
+   <6->  MinionPro-SemiboldCapt-L-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{sb}{it}{
+   <-6>  MinionPro-BoldItCapt-L-7m
+   <6->  MinionPro-SemiboldItCapt-L-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{sb}{sc}{
+   <-6>  MinionPro-BoldItCapt-LSC-7m
+   <6->  MinionPro-SemiboldCapt-LSC-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{b}{n}{
+    <->  MinionPro-BoldCapt-L-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{b}{it}{
+    <->  MinionPro-BoldItCapt-L-7m}{}
+\DeclareFontShape{OML}{Minion-LF-C}{b}{sc}{
+    <->  MinionPro-BoldCapt-LSC-7m}{}
+
+\DeclareFontShape{OML}{Minion-LF-C}{bx}{it}{<->ssub * minion/b/it}{}
+\DeclareFontShape{OML}{Minion-LF-C}{m} {sl}{<->ssub * minion/m/it}{}
+\DeclareFontShape{OML}{Minion-LF-C}{sb}{sl}{<->ssub * minion/sb/it}{}
+\DeclareFontShape{OML}{Minion-LF-C}{b} {sl}{<->ssub * minion/b/it}{}
+\DeclareFontShape{OML}{Minion-LF-C}{bx}{sl}{<->ssub * minion/b/it}{}
+
+\endinput
+% vim:set ft=tex:

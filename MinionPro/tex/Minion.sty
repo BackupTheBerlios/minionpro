@@ -1,0 +1,353 @@
+\ProvidesPackage{Minion}[2004/09/01 support for MinionPro]
+
+\RequirePackage{Minion-Protrude}
+
+\DeclareOption{protrude}{\enableprotruding}
+\DeclareOption{fleqn}{\PassOptionsToPackage{fleqn}{MnSymbol}}
+
+% figure style
+
+\def\Mn@Capt{}
+
+\DeclareOption{slides}{\def\Mn@Capt{-C}}
+\DeclareOption{textosf}{\def\Mn@Text@Fig{OsF}}
+\DeclareOption{textlf}{\def\Mn@Text@Fig{LF}}
+\DeclareOption{mathosf}{\def\Mn@Math@Fig{OsF}}
+\DeclareOption{mathlf}{\def\Mn@Math@Fig{LF}}
+\DeclareOption{osf}{\def\Mn@Text@Fig{OsF}\def\Mn@Math@Fig{OsF}}
+\DeclareOption{lf}{\def\Mn@Text@Fig{LF}\def\Mn@Math@Fig{LF}}
+
+% calligraphic fonts
+
+\def\Mn@load@cal{}
+
+\DeclareOption{mnsy}{\PassOptionsToPackage{mnsy}{MnSymbol}}
+\DeclareOption{cmsy}{\PassOptionsToPackage{cmsy}{MnSymbol}}
+\DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
+\DeclareOption{swash}{
+  \def\Mn@load@cal{
+    \DeclareMathAlphabet\mathcal  {T1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{sw}
+    \SetMathAlphabet\mathcal{bold}{T1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{sw}}
+}
+
+% greek letters
+
+\DeclareOption{romangreek}{\def\Mn@Greek@Shape{\Mn@Greek@Up}}
+\DeclareOption{mixedgreek}{\def\Mn@Greek@Shape{\Mn@Greek@Mix}}
+\DeclareOption{italicgreek}{\def\Mn@Greek@Shape{\Mn@Greek@It}}
+\def\Mn@Greek@Shape{\Mn@Greek@Mix}
+
+% bbold and fraktur fonts
+
+\def\Mn@load@amsbb{
+  \let\mathbb\undefined
+  \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}
+\def\Mn@load@pazobb{
+  \let\mathbb\undefined
+  \DeclareFontFamily{T1}{fplmbb}{}
+  \DeclareFontShape{T1}{fplmbb}{m}{n}{ <-> s*[0.92] fplmbb }{}
+  \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}}
+\let\Mn@load@bb\Mn@load@amsbb
+
+\def\Mn@load@wbfrak{
+  \let\mathfrak\undefined
+  \DeclareMathAlphabet{\mathfrak}{T1}{DS-Wartburg-Fraktur}{m}{n}
+  \SetMathAlphabet{\mathfrak}{bold}{T1}{DS-Wartburg-Fraktur}{b}{n}}
+\def\Mn@load@eufrak{
+  \RequirePackage{eufrak}}
+\let\Mn@load@frak\Mn@load@eufrak
+
+\DeclareOption{amsbb}{\let\Mn@load@bb\Mn@load@amsbb}
+\DeclareOption{pazobb}{\let\Mn@load@bb\Mn@load@pazobb}
+\DeclareOption{wbfrak}{\let\Mn@load@frak\Mn@load@wbfrak}
+\DeclareOption{eufrak}{\let\Mn@load@frak\Mn@load@eufrak}
+
+% integrals
+
+\def\Mn@Decl@Ints{}
+
+\DeclareOption{minionint}{\def\Mn@Decl@Ints{\Mn@Decl@Minion@Ints}}
+
+\ExecuteOptions{osf}
+\ProcessOptions\relax
+
+\Mn@load@bb
+\Mn@load@frak
+
+\RequirePackage{MnSymbol}
+
+\Mn@load@cal
+
+% declare the fonts
+
+\renewcommand\rmdefault{Minion-\Mn@Text@Fig\Mn@Capt}
+\renewcommand\bfdefault{sb}
+
+\DeclareSymbolFont{operators}   {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{n}
+\DeclareSymbolFont{letters}     {OML}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{it}
+\DeclareSymbolFont{rmletters}   {OML}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{n}
+\SetSymbolFont{operators} {bold}{OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{n}
+\SetSymbolFont{letters}   {bold}{OML}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{it}
+\SetSymbolFont{rmletters} {bold}{OML}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{n}
+\DeclareMathAlphabet\mathbf     {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{n}
+\DeclareMathAlphabet\mathit     {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{it}
+\SetMathAlphabet\mathit   {bold}{OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{it}
+
+\DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
+\DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
+\DeclareMathSymbol{\itTheta}     {\mathord}{letters}{"02}
+\DeclareMathSymbol{\itLambda}    {\mathord}{letters}{"03}
+\DeclareMathSymbol{\itXi}        {\mathord}{letters}{"04}
+\DeclareMathSymbol{\itPi}        {\mathord}{letters}{"05}
+\DeclareMathSymbol{\itSigma}     {\mathord}{letters}{"06}
+\DeclareMathSymbol{\itUpsilon}   {\mathord}{letters}{"07}
+\DeclareMathSymbol{\itPhi}       {\mathord}{letters}{"08}
+\DeclareMathSymbol{\itPsi}       {\mathord}{letters}{"09}
+\DeclareMathSymbol{\itOmega}     {\mathord}{letters}{"0A}
+\DeclareMathSymbol{\italpha}     {\mathord}{letters}{"0B}
+\DeclareMathSymbol{\itbeta}      {\mathord}{letters}{"0C}
+\DeclareMathSymbol{\itgamma}     {\mathord}{letters}{"0D}
+\DeclareMathSymbol{\itdelta}     {\mathord}{letters}{"0E}
+\DeclareMathSymbol{\itepsilon}   {\mathord}{letters}{"0F}
+\DeclareMathSymbol{\itzeta}      {\mathord}{letters}{"10}
+\DeclareMathSymbol{\iteta}       {\mathord}{letters}{"11}
+\DeclareMathSymbol{\ittheta}     {\mathord}{letters}{"12}
+\DeclareMathSymbol{\itiota}      {\mathord}{letters}{"13}
+\DeclareMathSymbol{\itkappa}     {\mathord}{letters}{"14}
+\DeclareMathSymbol{\itlambda}    {\mathord}{letters}{"15}
+\DeclareMathSymbol{\itmu}        {\mathord}{letters}{"16}
+\DeclareMathSymbol{\itnu}        {\mathord}{letters}{"17}
+\DeclareMathSymbol{\itxi}        {\mathord}{letters}{"18}
+\DeclareMathSymbol{\itpi}        {\mathord}{letters}{"19}
+\DeclareMathSymbol{\itrho}       {\mathord}{letters}{"1A}
+\DeclareMathSymbol{\itsigma}     {\mathord}{letters}{"1B}
+\DeclareMathSymbol{\ittau}       {\mathord}{letters}{"1C}
+\DeclareMathSymbol{\itupsilon}   {\mathord}{letters}{"1D}
+\DeclareMathSymbol{\itphi}       {\mathord}{letters}{"1E}
+\DeclareMathSymbol{\itchi}       {\mathord}{letters}{"1F}
+\DeclareMathSymbol{\itpsi}       {\mathord}{letters}{"20}
+\DeclareMathSymbol{\itomega}     {\mathord}{letters}{"21}
+\DeclareMathSymbol{\itvarepsilon}{\mathord}{letters}{"22}
+\DeclareMathSymbol{\itvartheta}  {\mathord}{letters}{"23}
+\DeclareMathSymbol{\itvarpi}     {\mathord}{letters}{"24}
+\DeclareMathSymbol{\itvarrho}    {\mathord}{letters}{"25}
+\DeclareMathSymbol{\itvarsigma}  {\mathord}{letters}{"26}
+\DeclareMathSymbol{\itvarphi}    {\mathord}{letters}{"27}
+\DeclareMathSymbol{\upGamma}     {\mathord}{rmletters}{"00}
+\DeclareMathSymbol{\upDelta}     {\mathord}{rmletters}{"01}
+\DeclareMathSymbol{\upTheta}     {\mathord}{rmletters}{"02}
+\DeclareMathSymbol{\upLambda}    {\mathord}{rmletters}{"03}
+\DeclareMathSymbol{\upXi}        {\mathord}{rmletters}{"04}
+\DeclareMathSymbol{\upPi}        {\mathord}{rmletters}{"05}
+\DeclareMathSymbol{\upSigma}     {\mathord}{rmletters}{"06}
+\DeclareMathSymbol{\upUpsilon}   {\mathord}{rmletters}{"07}
+\DeclareMathSymbol{\upPhi}       {\mathord}{rmletters}{"08}
+\DeclareMathSymbol{\upPsi}       {\mathord}{rmletters}{"09}
+\DeclareMathSymbol{\upOmega}     {\mathord}{rmletters}{"0A}
+\DeclareMathSymbol{\upalpha}     {\mathord}{rmletters}{"0B}
+\DeclareMathSymbol{\upbeta}      {\mathord}{rmletters}{"0C}
+\DeclareMathSymbol{\upgamma}     {\mathord}{rmletters}{"0D}
+\DeclareMathSymbol{\updelta}     {\mathord}{rmletters}{"0E}
+\DeclareMathSymbol{\upepsilon}   {\mathord}{rmletters}{"0F}
+\DeclareMathSymbol{\upzeta}      {\mathord}{rmletters}{"10}
+\DeclareMathSymbol{\upeta}       {\mathord}{rmletters}{"11}
+\DeclareMathSymbol{\uptheta}     {\mathord}{rmletters}{"12}
+\DeclareMathSymbol{\upiota}      {\mathord}{rmletters}{"13}
+\DeclareMathSymbol{\upkappa}     {\mathord}{rmletters}{"14}
+\DeclareMathSymbol{\uplambda}    {\mathord}{rmletters}{"15}
+\DeclareMathSymbol{\upmu}        {\mathord}{rmletters}{"16}
+\DeclareMathSymbol{\upnu}        {\mathord}{rmletters}{"17}
+\DeclareMathSymbol{\upxi}        {\mathord}{rmletters}{"18}
+\DeclareMathSymbol{\uppi}        {\mathord}{rmletters}{"19}
+\DeclareMathSymbol{\uprho}       {\mathord}{rmletters}{"1A}
+\DeclareMathSymbol{\upsigma}     {\mathord}{rmletters}{"1B}
+\DeclareMathSymbol{\uptau}       {\mathord}{rmletters}{"1C}
+\DeclareMathSymbol{\upupsilon}   {\mathord}{rmletters}{"1D}
+\DeclareMathSymbol{\upphi}       {\mathord}{rmletters}{"1E}
+\DeclareMathSymbol{\upchi}       {\mathord}{rmletters}{"1F}
+\DeclareMathSymbol{\uppsi}       {\mathord}{rmletters}{"20}
+\DeclareMathSymbol{\upomega}     {\mathord}{rmletters}{"21}
+\DeclareMathSymbol{\upvarepsilon}{\mathord}{rmletters}{"22}
+\DeclareMathSymbol{\upvartheta}  {\mathord}{rmletters}{"23}
+\DeclareMathSymbol{\upvarpi}     {\mathord}{rmletters}{"24}
+\DeclareMathSymbol{\upvarrho}    {\mathord}{rmletters}{"25}
+\DeclareMathSymbol{\upvarsigma}  {\mathord}{rmletters}{"26}
+\DeclareMathSymbol{\upvarphi}    {\mathord}{rmletters}{"27}
+
+\def\Mn@Greek@Rm{
+  \let\Gamma     \upGamma
+  \let\Delta     \upDelta
+  \let\Theta     \upTheta
+  \let\Lambda    \upLambda
+  \let\Xi        \upXi
+  \let\Pi        \upPi
+  \let\Sigma     \upSigma
+  \let\Upsilon   \upUpsilon
+  \let\Phi       \upPhi
+  \let\Psi       \upPsi
+  \let\Omega     \upOmega
+  \let\alpha     \upalpha
+  \let\beta      \upbeta
+  \let\gamma     \upgamma
+  \let\delta     \updelta
+  \let\epsilon   \upepsilon
+  \let\zeta      \upzeta
+  \let\eta       \upeta
+  \let\theta     \uptheta
+  \let\iota      \upiota
+  \let\kappa     \upkappa
+  \let\lambda    \uplambda
+  \let\mu        \upmu
+  \let\nu        \upnu
+  \let\xi        \upxi
+  \let\pi        \uppi
+  \let\rho       \uprho
+  \let\sigma     \upsigma
+  \let\tau       \uptau
+  \let\upsilon   \upupsilon
+  \let\phi       \upphi
+  \let\chi       \upchi
+  \let\psi       \uppsi
+  \let\omega     \upomega
+  \let\varepsilon\upvarepsilon
+  \let\vartheta  \upvartheta
+  \let\varpi     \upvarpi
+  \let\varrho    \upvarrho
+  \let\varsigma  \upvarsigma
+  \let\varphi    \upvarphi
+}
+\def\Mn@Greek@It{
+  \let\Gamma     \itGamma
+  \let\Delta     \itDelta
+  \let\Theta     \itTheta
+  \let\Lambda    \itLambda
+  \let\Xi        \itXi
+  \let\Pi        \itPi
+  \let\Sigma     \itSigma
+  \let\Upsilon   \itUpsilon
+  \let\Phi       \itPhi
+  \let\Psi       \itPsi
+  \let\Omega     \itOmega
+  \let\alpha     \italpha
+  \let\beta      \itbeta
+  \let\gamma     \itgamma
+  \let\delta     \itdelta
+  \let\epsilon   \itepsilon
+  \let\zeta      \itzeta
+  \let\eta       \iteta
+  \let\theta     \ittheta
+  \let\iota      \itiota
+  \let\kappa     \itkappa
+  \let\lambda    \itlambda
+  \let\mu        \itmu
+  \let\nu        \itnu
+  \let\xi        \itxi
+  \let\pi        \itpi
+  \let\rho       \itrho
+  \let\sigma     \itsigma
+  \let\tau       \ittau
+  \let\upsilon   \itupsilon
+  \let\phi       \itphi
+  \let\chi       \itchi
+  \let\psi       \itpsi
+  \let\omega     \itomega
+  \let\varepsilon\itvarepsilon
+  \let\vartheta  \itvartheta
+  \let\varpi     \itvarpi
+  \let\varrho    \itvarrho
+  \let\varsigma  \itvarsigma
+  \let\varphi    \itvarphi
+}
+\def\Mn@Greek@Mix{
+  \let\Gamma     \upGamma
+  \let\Delta     \upDelta
+  \let\Theta     \upTheta
+  \let\Lambda    \upLambda
+  \let\Xi        \upXi
+  \let\Pi        \upPi
+  \let\Sigma     \upSigma
+  \let\Upsilon   \upUpsilon
+  \let\Phi       \upPhi
+  \let\Psi       \upPsi
+  \let\Omega     \upOmega
+  \let\alpha     \italpha
+  \let\beta      \itbeta
+  \let\gamma     \itgamma
+  \let\delta     \itdelta
+  \let\epsilon   \itepsilon
+  \let\zeta      \itzeta
+  \let\eta       \iteta
+  \let\theta     \ittheta
+  \let\iota      \itiota
+  \let\kappa     \itkappa
+  \let\lambda    \itlambda
+  \let\mu        \itmu
+  \let\nu        \itnu
+  \let\xi        \itxi
+  \let\pi        \itpi
+  \let\rho       \itrho
+  \let\sigma     \itsigma
+  \let\tau       \ittau
+  \let\upsilon   \itupsilon
+  \let\phi       \itphi
+  \let\chi       \itchi
+  \let\psi       \itpsi
+  \let\omega     \itomega
+  \let\varepsilon\itvarepsilon
+  \let\vartheta  \itvartheta
+  \let\varpi     \itvarpi
+  \let\varrho    \itvarrho
+  \let\varsigma  \itvarsigma
+  \let\varphi    \itvarphi
+}
+
+\Mn@Greek@Shape
+
+% define additional symbols
+
+\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
+\DeclareMathSymbol{\hbar}{\mathord}{letters}{"81}
+
+\def\Mn@Decl@Minion@Ints{
+  \DeclareFontFamily{OML}{Minion-Integral-Text}{}
+  \DeclareFontFamily{OML}{Minion-Integral-Display}{}
+  \DeclareFontShape{OML}{Minion-Integral-Text}{m}{it}{
+      <-6>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+     <6-8>  s*[1.1] MinionPro-ItCapt-L-7m
+     <8-9>  s*[1.1] MinionPro-ItCapt-L-7m
+     <9-12> s*[1.1] MinionPro-It-L-7m
+    <12-15> s*[1.1] MinionPro-ItSubh-L-7m
+    <15->   s*[1.1] MinionPro-ItDisp-L-7m}{}
+  \DeclareFontShape{OML}{Minion-Integral-Text}{b}{it}{
+      <-8>  s*[1.1] MinionPro-BoldItCapt-L-7m
+     <8-9>  s*[1.1] MinionPro-BoldItCapt-L-7m
+     <9-12> s*[1.1] MinionPro-BoldIt-L-7m
+    <12-15> s*[1.1] MinionPro-BoldItSubh-L-7m
+    <15->   s*[1.1] MinionPro-BoldItDisp-L-7m}{}
+  \DeclareFontShape{OML}{Minion-Integral-Display}{m}{it}{
+      <-6>  s*[1.9] MinionPro-SemiboldIt-L-7m
+     <6-8>  s*[1.9] MinionPro-It-L-7m
+     <8-9>  s*[1.9] MinionPro-ItSubh-L-7m
+     <9->   s*[1.9] MinionPro-ItDisp-L-7m}{}
+  \DeclareFontShape{OML}{Minion-Integral-Display}{b}{it}{
+      <-8>  s*[1.9] MinionPro-BoldIt-L-7m
+     <8-9>  s*[1.9] MinionPro-BoldItSubh-L-7m
+     <9->   s*[1.9] MinionPro-BoldItDisp-L-7m}{}
+  \DeclareMathAlphabet\mathinttext  {OML}{Minion-Integral-Text}{m}{it}
+  \SetMathAlphabet\mathinttext{bold}{OML}{Minion-Integral-Text}{b}{it}
+  \DeclareMathAlphabet\mathintdisp  {OML}{Minion-Integral-Display}{m}{it}
+  \SetMathAlphabet\mathintdisp{bold}{OML}{Minion-Integral-Display}{b}{it}
+
+  \def\vartintop{\mathop{\mathinttext{\mathchar"7180}}}
+  \def\vardintop{\mathop{\mathintdisp{\mathchar"7180}}}
+
+  \def\intop{\mathop{\mathchoice{\vardintop}{\vartintop}{\vartintop}{\vartintop}}}
+}
+
+\Mn@Decl@Ints
+
+% make the changes take effect
+
+\normalfont\selectfont
+
+\endinput

@@ -1,0 +1,32 @@
+\ProvidesFile{t1Minion-LF-C.fd}[2004/08/08 font definitions for OT1/Minion-LF-C.]
+\DeclareFontFamily{T1}{Minion-LF-C}{}
+\DeclareFontShape{T1}{Minion-LF-C}{m}{n}{
+   <-6>  MinionPro-SemiboldCapt-8t
+   <6->  MinionPro-Capt-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{m}{it}{
+   <-6>  MinionPro-SemiboldItCapt-8t
+   <6->  MinionPro-ItCapt-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{m}{sc}{
+   <-6>  MinionPro-SemiboldCapt-SC-8t
+   <6->  MinionPro-Capt-SC-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{sb}{n}{
+   <-6>  MinionPro-BoldCapt-8t
+   <6->  MinionPro-SemiboldCapt-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{sb}{it}{
+   <-6>  MinionPro-BoldItCapt-8t
+   <6->  MinionPro-SemiboldItCapt-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{sb}{sc}{
+   <-6>  MinionPro-BoldCapt-SC-8t
+   <6->  MinionPro-SemiboldCapt-SC-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{b}{n}{
+    <->  MinionPro-BoldCapt-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{b}{it}{
+    <->  MinionPro-BoldItCapt-8t}{}
+\DeclareFontShape{T1}{Minion-LF-C}{b}{sc}{
+    <->  MinionPro-BoldCapt-SC-8t}{}
+%
+\DeclareFontShape{T1}{Minion-LF-C}{m} {sl}{<->ssub * Minion-LF-C/m/it}{}
+\DeclareFontShape{T1}{Minion-LF-C}{sb}{sl}{<->ssub * Minion-LF-C/sb/it}{}
+\DeclareFontShape{T1}{Minion-LF-C}{b} {sl}{<->ssub * Minion-LF-C/b/it}{}
+\endinput
+% vim:set ft=tex:

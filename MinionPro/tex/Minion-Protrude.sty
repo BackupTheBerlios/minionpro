@@ -1,0 +1,316 @@
+\ProvidesPackage{Minion-Protrude}[2004/08/27 support for margin kerning]
+
+\ifx\pdfprotrudechars\undefined
+
+\let\enableprotruding\relax
+\let\OTone@roman@protruding\relax
+\let\Tone@roman@protruding\relax
+\let\OTone@italic@protruding\relax
+\let\Tone@italic@protruding\relax
+
+\else
+
+\def\enableprotruding{\pdfprotrudechars=2}
+
+\def\set@protruding#1#2#3{%
+  \lpcode\font#1=#2%
+  \rpcode\font#1=#3}
+\def\inherit@protruding#1#2{%
+  \set@protruding{#1}{\lpcode\font#2}{\rpcode\font#2}}
+
+\def\OTone@roman@protruding{%
+  \set@protruding{`!}{020}{050}%
+  \set@protruding{`'}{100}{150}%
+  \set@protruding{``}{150}{100}%
+  \set@protruding{`(}{020}{010}%
+  \set@protruding{`)}{010}{020}%
+  \set@protruding{`[}{035}{055}%
+  \set@protruding{`]}{055}{035}%
+  \set@protruding{`,}{100}{160}%
+  \set@protruding{`-}{250}{250}%
+  \set@protruding{`.}{150}{160}%
+  \set@protruding{`:}{090}{110}%
+  \set@protruding{`;}{080}{100}%
+  \set@protruding{13}{160}{160}% quote single base
+  \set@protruding{14}{140}{100}% guillemot single left
+  \set@protruding{15}{100}{140}% guillemot single right
+  \set@protruding{16}{150}{100}% quote double left
+  \set@protruding{17}{100}{150}% qoute double right
+  \set@protruding{18}{160}{160}% qoute double base
+  \set@protruding{19}{140}{100}% guillemot left
+  \set@protruding{20}{100}{140}% guillemot right
+  \set@protruding{21}{200}{250}% en-dash
+  \set@protruding{22}{200}{250}% em-dash
+  \set@protruding{`A}{030}{030}%
+  \set@protruding{`F}{000}{030}%
+  \set@protruding{`J}{030}{000}%
+  \set@protruding{`K}{000}{030}%
+  \set@protruding{`L}{000}{030}%
+  \set@protruding{`T}{030}{030}%
+  \set@protruding{`V}{030}{030}%
+  \set@protruding{`W}{030}{030}%
+  \set@protruding{`X}{030}{030}%
+  \set@protruding{`Y}{030}{030}%
+  \set@protruding{`k}{000}{030}%
+  \set@protruding{`r}{000}{030}%
+  \set@protruding{`t}{000}{030}%
+  \set@protruding{`v}{030}{030}%
+  \set@protruding{`w}{030}{030}%
+  \set@protruding{`x}{030}{030}%
+  \set@protruding{`y}{030}{030}}
+
+\def\Tone@roman@protruding{%
+  \OTone@roman@protruding
+  \set@protruding{127}{220}{250}% hyphen
+  \set@protruding{128}{030}{030}% Abreve
+  \set@protruding{129}{030}{030}% Aogonek
+  \set@protruding{192}{030}{030}% Agrave
+  \set@protruding{193}{030}{030}% Aacute
+  \set@protruding{194}{030}{030}% Acircumflex
+  \set@protruding{195}{030}{030}% Atilde
+  \set@protruding{196}{030}{030}% Adieresis
+  \set@protruding{197}{030}{030}% Aring
+  \set@protruding{198}{030}{000}% AE
+  \set@protruding{136}{000}{030}% Lacute
+  \set@protruding{137}{000}{030}% Lcaron
+  \set@protruding{138}{000}{030}% Lslash
+  \set@protruding{141}{030}{030}% Th ligature
+  \set@protruding{148}{030}{030}% Tcaron
+  \set@protruding{152}{030}{030}% Ydieresis
+  \set@protruding{221}{030}{030}% Yacute
+  \set@protruding{173}{000}{030}% ffk ligature
+  \set@protruding{180}{000}{030}% fk ligature
+  \set@protruding{181}{000}{030}% fft ligature
+  \set@protruding{223}{000}{030}% ft ligature
+  \set@protruding{167}{000}{030}% racute
+  \set@protruding{168}{000}{030}% rcaron
+  \set@protruding{184}{030}{030}% ydieresis
+  \set@protruding{253}{030}{030}% yacute
+}
+
+\def\OTone@italic@protruding{%
+  \set@protruding{13}{ 50}{160}% quote single base
+  \set@protruding{14}{140}{050}% guillemot single left
+  \set@protruding{15}{100}{100}% guillemot single right
+  \set@protruding{16}{200}{050}% quote double left
+  \set@protruding{17}{200}{050}% qoute double right
+  \set@protruding{18}{050}{160}% qoute double base
+  \set@protruding{19}{140}{050}% guillemot left
+  \set@protruding{20}{100}{100}% guillemot right
+  \set@protruding{21}{200}{250}% en-dash
+  \set@protruding{22}{200}{250}% em-dash
+  \set@protruding{`!}{050}{010}%
+  \set@protruding{34}{200}{050}% quote double
+  \set@protruding{`'}{100}{050}%
+  \set@protruding{``}{150}{030}%
+  \set@protruding{`(}{030}{000}%
+  \set@protruding{`)}{030}{000}%
+  \set@protruding{`[}{030}{030}%
+  \set@protruding{`]}{040}{020}%
+  \set@protruding{`,}{050}{160}%
+  \set@protruding{`-}{250}{250}%
+  \set@protruding{`.}{150}{160}%
+  \set@protruding{`:}{090}{100}%
+  \set@protruding{`;}{000}{100}%
+  \set@protruding{`A}{080}{030}%
+  \set@protruding{`B}{050}{-30}%
+  \set@protruding{`C}{030}{-40}%
+  \set@protruding{`D}{050}{-20}%
+  \set@protruding{`E}{050}{-30}%
+  \set@protruding{`F}{050}{-20}%
+  \set@protruding{`G}{030}{-40}%
+  \set@protruding{`H}{050}{-30}%
+  \set@protruding{`I}{050}{-30}%
+  \set@protruding{`J}{080}{-40}%
+  \set@protruding{`K}{050}{-30}%
+  \set@protruding{`L}{050}{030}%
+  \set@protruding{`M}{050}{-30}%
+  \set@protruding{`N}{050}{-30}%
+  \set@protruding{`O}{050}{-20}%
+  \set@protruding{`P}{040}{-60}%
+  \set@protruding{`Q}{030}{-30}%
+  \set@protruding{`R}{050}{-30}%
+  \set@protruding{`S}{030}{-30}%
+  \set@protruding{`T}{080}{000}%
+  \set@protruding{`U}{050}{-30}%
+  \set@protruding{`V}{080}{020}%
+  \set@protruding{`W}{080}{020}%
+  \set@protruding{`X}{030}{000}%
+  \set@protruding{`Y}{100}{000}%
+  \set@protruding{`Z}{030}{-30}%
+  \set@protruding{`d}{030}{-30}%
+  \set@protruding{`f}{000}{-50}%
+  \set@protruding{27}{000}{-50}% ff ligature
+  \set@protruding{`g}{-30}{-30}%
+  \set@protruding{`i}{000}{-30}%
+  \set@protruding{25}{000}{-30}% dotlessi
+  \set@protruding{28}{000}{-30}% fi ligature
+  \set@protruding{30}{000}{-30}% ffi ligature
+  \set@protruding{`j}{-25}{-40}%
+  \set@protruding{`p}{-20}{000}%
+  \set@protruding{`r}{000}{030}%
+  \set@protruding{`t}{000}{030}%
+  \set@protruding{`v}{040}{000}%
+  \set@protruding{`w}{040}{005}%
+  \set@protruding{`x}{040}{000}}
+
+\def\Tone@italic@protruding{%
+  \OTone@italic@protruding
+  \set@protruding{127}{220}{250}% hyphen
+  \set@protruding{128}{080}{030}% Abreve
+  \set@protruding{129}{080}{030}% Aogonek
+  \set@protruding{192}{080}{030}% Agrave
+  \set@protruding{193}{080}{030}% Aacute
+  \set@protruding{194}{080}{030}% Acircumflex
+  \set@protruding{195}{080}{030}% Atilde
+  \set@protruding{196}{080}{030}% Adieresis
+  \set@protruding{197}{080}{030}% Aring
+  \set@protruding{198}{080}{-30}% AE
+  \set@protruding{130}{030}{-40}% Cacute
+  \set@protruding{131}{030}{-40}% Ccaron
+  \set@protruding{199}{030}{-40}% Ccedilla
+  \set@protruding{131}{050}{-20}% Dcaron
+  \set@protruding{132}{050}{-30}% Ecaron
+  \set@protruding{133}{050}{-30}% Eogonek
+  \set@protruding{200}{050}{-30}% Egrave
+  \set@protruding{201}{050}{-30}% Eacute
+  \set@protruding{202}{050}{-30}% Ecircumflex
+  \set@protruding{203}{050}{-30}% Edieresis
+  \set@protruding{135}{030}{-40}% Gbreve
+  \set@protruding{156}{050}{-40}% IJ
+  \set@protruding{157}{050}{-30}% Idotaccent
+  \set@protruding{204}{050}{-30}% Igrave
+  \set@protruding{205}{050}{-30}% Iacute
+  \set@protruding{206}{050}{-30}% Icircumflex
+  \set@protruding{207}{050}{-30}% Idieresis
+  \set@protruding{136}{050}{030}% Lacute
+  \set@protruding{137}{050}{030}% Lcaron
+  \set@protruding{138}{050}{030}% Lslash
+  \set@protruding{139}{050}{-30}% Nacute
+  \set@protruding{140}{050}{-30}% Ncaron
+  \set@protruding{209}{050}{-30}% Ntilde
+  \set@protruding{142}{050}{-20}% Ohungarumlaut
+  \set@protruding{210}{050}{-20}% Ograve
+  \set@protruding{211}{050}{-20}% Oacute
+  \set@protruding{212}{050}{-20}% Ocircumflex
+  \set@protruding{213}{050}{-20}% Otilde
+  \set@protruding{214}{050}{-20}% Odieresis
+  \set@protruding{215}{050}{-30}% OE
+  \set@protruding{216}{050}{-20}% Oslash
+  \set@protruding{143}{050}{-30}% Racute
+  \set@protruding{144}{050}{-30}% Rcaron
+  \set@protruding{145}{030}{-30}% Sacute
+  \set@protruding{146}{030}{-30}% Scaron
+  \set@protruding{147}{030}{-30}% Scedilla
+  \set@protruding{141}{080}{030}% Th ligature
+  \set@protruding{148}{080}{000}% Tcaron
+  \set@protruding{150}{050}{-30}% Uhungarumlaut
+  \set@protruding{151}{050}{-30}% Uring
+  \set@protruding{217}{050}{-30}% Ugrave
+  \set@protruding{218}{050}{-30}% Uacute
+  \set@protruding{219}{050}{-30}% Ucircumflex
+  \set@protruding{220}{050}{-30}% Udieresis
+  \set@protruding{152}{100}{000}% Ydieresis
+  \set@protruding{221}{100}{000}% Yacute
+  \set@protruding{153}{030}{-30}% Zacute
+  \set@protruding{154}{030}{-30}% Zcaron
+  \set@protruding{155}{030}{-30}% Zdotaccent
+  \set@protruding{164}{030}{-30}% dcaron
+  \set@protruding{173}{000}{030}% ffk ligature
+  \set@protruding{180}{000}{030}% fk ligature
+  \set@protruding{181}{000}{030}% fft ligature
+  \set@protruding{223}{000}{030}% ft ligature
+  \set@protruding{167}{-30}{-30}% gbreve
+  \set@protruding{188}{000}{-40}% ij
+  \set@protruding{236}{000}{-30}% igrave
+  \set@protruding{237}{000}{-30}% iacute
+  \set@protruding{238}{000}{-30}% icircumflex
+  \set@protruding{239}{000}{-30}% idieresis
+  \set@protruding{167}{000}{030}% racute
+  \set@protruding{168}{000}{030}% rcaron
+  \set@protruding{184}{030}{030}% ydieresis
+  \set@protruding{253}{030}{030}% yacute
+}
+
+%\def\mathprotruding{%
+%  \set@protruding{ 0}{700}{750}% Gamma
+%  \set@protruding{ 1}{000}{000}% Delta
+%  \set@protruding{ 2}{000}{000}% Theta
+%  \set@protruding{ 3}{000}{000}% Lambda
+%  \set@protruding{ 4}{000}{000}% Xi
+%  \set@protruding{ 5}{000}{000}% Pi
+%  \set@protruding{ 6}{000}{000}% Sigma
+%  \set@protruding{ 7}{000}{000}% Upsilon
+%  \set@protruding{ 8}{000}{000}% Phi
+%  \set@protruding{ 9}{000}{000}% Psi
+%  \set@protruding{10}{000}{000}% Omega
+%  \set@protruding{11}{000}{000}% alpha
+%  \set@protruding{12}{000}{000}% beta
+%  \set@protruding{13}{000}{000}% gamma
+%  \set@protruding{14}{000}{000}% delta
+%  \set@protruding{15}{000}{000}% epsilon
+%  \set@protruding{16}{000}{000}% zeta
+%  \set@protruding{17}{000}{000}% eta
+%  \set@protruding{18}{000}{000}% theta
+%  \set@protruding{19}{000}{000}% iota
+%  \set@protruding{20}{000}{000}% kappa
+%  \set@protruding{21}{000}{000}% lambda
+%  \set@protruding{22}{000}{000}% mu
+%  \set@protruding{23}{000}{000}% nu
+%  \set@protruding{24}{000}{000}% xi
+%  \set@protruding{25}{000}{000}% pi
+%  \set@protruding{26}{000}{000}% rho
+%  \set@protruding{27}{000}{000}% sigma
+%  \set@protruding{28}{000}{000}% tau
+%  \set@protruding{29}{000}{000}% upsilon
+%  \set@protruding{30}{000}{000}% phi
+%  \set@protruding{31}{000}{000}% chi
+%  \set@protruding{32}{000}{000}% psi
+%  \set@protruding{33}{000}{000}% omega
+%  \set@protruding{34}{000}{000}% varepsilon
+%  \set@protruding{35}{000}{000}% vartheta
+%  \set@protruding{36}{000}{000}% varpi
+%  \set@protruding{37}{000}{000}% varrho
+%  \set@protruding{38}{000}{000}% varsigma
+%  \set@protruding{39}{000}{000}% varphi
+%  \set@protruding{58}{050}{160}% period
+%  \set@protruding{59}{150}{160}% comma
+%  \set@protruding{`A}{080}{030}%
+%  \set@protruding{`B}{050}{-30}%
+%  \set@protruding{`C}{030}{-40}%
+%  \set@protruding{`D}{050}{-20}%
+%  \set@protruding{`E}{050}{-30}%
+%  \set@protruding{`F}{050}{-20}%
+%  \set@protruding{`G}{030}{-40}%
+%  \set@protruding{`H}{050}{-30}%
+%  \set@protruding{`I}{050}{-30}%
+%  \set@protruding{`J}{080}{-40}%
+%  \set@protruding{`K}{050}{-30}%
+%  \set@protruding{`L}{050}{030}%
+%  \set@protruding{`M}{050}{-30}%
+%  \set@protruding{`N}{050}{-30}%
+%  \set@protruding{`O}{050}{-20}%
+%  \set@protruding{`P}{040}{-60}%
+%  \set@protruding{`Q}{030}{-30}%
+%  \set@protruding{`R}{050}{-30}%
+%  \set@protruding{`S}{030}{-30}%
+%  \set@protruding{`T}{080}{000}%
+%  \set@protruding{`U}{050}{-30}%
+%  \set@protruding{`V}{080}{020}%
+%  \set@protruding{`W}{080}{020}%
+%  \set@protruding{`X}{030}{000}%
+%  \set@protruding{`Y}{100}{000}%
+%  \set@protruding{`Z}{030}{-30}%
+%  \set@protruding{`d}{030}{-30}%
+%  \set@protruding{`f}{000}{-50}%
+%  \set@protruding{`g}{-30}{-30}%
+%  \set@protruding{`i}{000}{-30}%
+%  \set@protruding{`j}{-25}{-40}%
+%  \set@protruding{`p}{-20}{000}%
+%  \set@protruding{`r}{000}{030}%
+%  \set@protruding{`t}{000}{030}%
+%  \set@protruding{`v}{040}{000}%
+%  \set@protruding{`w}{040}{005}%
+%  \set@protruding{`x}{040}{000}}
+\fi
+\endinput
