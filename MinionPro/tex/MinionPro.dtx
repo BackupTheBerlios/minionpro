@@ -107,7 +107,6 @@
 %   \rlap{amsbb}{\hphantom{mixedgreek*}}&     AMS blackboard fonts\\
 %   pazobb&    Pazo blackboard fonts\\
 %   eufrak*&    Euler fraktur\\
-%%   wbfrak&    Wartburg Fraktur
 % \end{tabular}
 %
 % \section{Miscellaneous options}
@@ -180,7 +179,7 @@
 % \medskip\noindent\hspace{3em}
 % \begin{tabular}{@{}ll@{}}
 %   latin&    \textsc{ot1}, \textsc{t1}, \textsc{ts1}, \textsc{ly1}\\
-%   cyrillic& \textsc{t2a}, \textsc{t2b}, \textsc{t2c}, \textsc{x2}\\
+%   cyrillic& \textsc{t2a}, \textsc{t2b}, \textsc{t2c}, \textsc{x2}, \textsc{ot2}\\
 %   greek&    \textsc{lgr} (to be used with babel, including polutonikogreek)
 % \end{tabular}
 %
@@ -1713,6 +1712,26 @@
 \input{MinionPro-FontDef.sty}%
 \MnDeclareSmallFontFamily{X2}{MinionPro-TOsF}{tosf}{x2}
 %</X2tosf>
+%<*OT2lf>
+\ProvidesFile{OT2MinionPro-LF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{OT2}{MinionPro-LF}{lf}{ot2}
+%</OT2lf>
+%<*OT2osf>
+\ProvidesFile{OT2MinionPro-OsF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{OT2}{MinionPro-OsF}{osf}{ot2}
+%</OT2osf>
+%<*OT2tlf>
+\ProvidesFile{OT2MinionPro-TLF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{OT2}{MinionPro-TLF}{tlf}{ot2}
+%</OT2tlf>
+%<*OT2tosf>
+\ProvidesFile{OT2MinionPro-TOsF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{OT2}{MinionPro-TOsF}{tosf}{ot2}
+%</OT2tosf>
 %    \end{macrocode}
 \endinput
 % vim:set ft=tex:
