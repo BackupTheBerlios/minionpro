@@ -1,25 +1,28 @@
---- otftotfm.cc.orig	Mon Jan 31 14:35:21 2005
-+++ otftotfm.cc	Thu Feb  3 10:59:55 2005
-@@ -87,6 +87,8 @@
- #define DEFAULT_LIGKERN_OPT	329
- #define NO_ECOMMAND_OPT		330
- #define LETTER_FEATURE_OPT	331
-+#define FILTER_OPT		332
-+#define SPACE_FACTOR_OPT        333
+--- otftotfm.cc.orig	2005-02-05 10:45:19.000000000 +0100
++++ otftotfm.cc	2005-02-05 14:35:14.000000000 +0100
+@@ -92,6 +92,8 @@
+ #define CLEAR_SUBS_OPT		334
+ #define SUBS_FILTER_OPT		335
+ #define ALTERNATES_FILTER_OPT	336
++#define SPACE_FACTOR_OPT	337
++#define MATH_FONT_OPT		338
  
  #define AUTOMATIC_OPT		341
  #define FONT_NAME_OPT		342
-@@ -125,6 +127,8 @@
-     { "feature", 'f', FEATURE_OPT, Clp_ArgString, 0 },
-     { "letter-feature", 0, LETTER_FEATURE_OPT, Clp_ArgString, 0 },
-     { "lf", 0, LETTER_FEATURE_OPT, Clp_ArgString, 0 },
-+    { "filter", 0, FILTER_OPT, Clp_ArgString, 0 },
+@@ -136,6 +138,8 @@
+     { "clear-substitutions", 0, CLEAR_SUBS_OPT, 0, 0 },
+     { "substitution-filter", 0, SUBS_FILTER_OPT, Clp_ArgString, 0 },
+     { "subs-filter", 0, SUBS_FILTER_OPT, Clp_ArgString, 0 },
 +    { "space-factor", 0, SPACE_FACTOR_OPT, Clp_ArgDouble, 0 },
++    { "math-font", 0, MATH_FONT_OPT, 0, 0 },
      { "encoding", 'e', ENCODING_OPT, Clp_ArgString, 0 },
      { "literal-encoding", 0, LITERAL_ENCODING_OPT, Clp_ArgString, 0 },
      { "extend", 'E', EXTEND_OPT, Clp_ArgDouble, 0 },
-@@ -216,7 +220,7 @@
+@@ -227,9 +231,10 @@
+ static double extend;
+ static double slant;
  static int letterspace;
++static bool math_font = false;
  static double design_size;
  static double minimum_kern = 2.0;
 -
@@ -27,17 +30,29 @@
  static String out_encoding_file;
  static String out_encoding_name;
  
-@@ -260,6 +264,9 @@
+@@ -273,15 +278,17 @@
    -s, --script=SCRIPT[.LANG]   Use features for script SCRIPT[.LANG] [latn].\n\
    -f, --feature=FEAT           Activate feature FEAT.\n\
    --lf, --letter-feature=FEAT  Activate feature FEAT for letters.\n\
-+      --filter=PROP            Restrict the following features to symbols\n\
-+                               having property PROP.\n\
-+  --space-factor=F             Scales the wordspace by a factor of F.\n\
+-      --subs-filter=PAT        Substitute only characters matching PAT.\n\
+-      --include-subs=PAT       Same, but cumulative.\n\
+-      --exclude-subs=PAT       Don't substitute characters matching PAT.\n\
+-      --clear-subs             Clear included/excluded substitutions.\n\
++   --substitution-filter=PAT   Substitute only characters matching PAT.\n\
++   --include-substitutions=PAT Same, but cumulative.\n\
++   --exclude-substitutions=PAT Don't substitute characters matching PAT.\n\
++   --clear-substitutions       Clear included/excluded substitutions.\n\
    -E, --extend=F               Widen characters by a factor of F.\n\
    -S, --slant=AMT              Oblique characters by AMT, generally <<1.\n\
    -L, --letterspacing=AMT      Letterspace each character by AMT units.\n\
-@@ -493,7 +500,7 @@
+   -k, --min-kern=N             Omit kerns with absolute value < N [2.0].\n\
++      --space-factor=F         Scales the wordspace by a factor of F.\n\
+       --design-size=SIZE       Set font design size to SIZE.\n\
++      --math-font              Adjust the letterspacing for use in math.\n\
+ \n");
+     printf("\
+ Encoding options:\n\
+@@ -513,7 +520,7 @@
      if (char_bounds(bounds, width, family_cff, cmap, ' ', font_xform)) {
  	// advance space width by letterspacing
  	width += letterspace;
@@ -46,57 +61,50 @@
  	if (family_cff->dict_value(Efont::Cff::oIsFixedPitch, 0, &val) && val) {
  	    // fixed-pitch: no space stretch or shrink
  	    fprint_real(f, "   (STRETCH", 0, du);
-@@ -962,9 +969,9 @@
+@@ -1345,6 +1352,29 @@
+ 	}
+     }
  
-     StringAccum command;
-     if (vpl)
--	command << "vptovf " << pl_filename << ' ' << vf_filename << ' ' << tfm_filename;
-+	command << "vptovf " << pl_filename << ' ' << vf_filename << ' ' << tfm_filename << " >&2";
-     else
--	command << "pltotf " << pl_filename << ' ' << tfm_filename;
-+	command << "pltotf " << pl_filename << ' ' << tfm_filename << " >&2";
-     
-     int status = mysystem(command.c_str(), errh);
- 
-@@ -1434,7 +1441,7 @@
-     Vector<String> unicoding;
-     bool no_ecommand = false, default_ligkern = false;
-     String codingscheme;
--
-+    GlyphFilter* current_gf = NULL;
-     GlyphFilter current_alternate_filter;
-     GlyphFilter* current_alternate_filter_ptr = &null_filter;
-     
-@@ -1461,6 +1468,17 @@
++    if (math_font) {
++	Transform font_xform;
++	CharstringBounds boundser(font_xform);
++	int bounds[4], width;
++	int left_sb, right_sb;
++	for (int code = 0; code < 256; code++) {
++	    int g = metrics.glyph(code);
++	    if (g != 0 && g != Metrics::VIRTUAL_GLYPH && code != dvipsenc.boundary_char()) {
++		if (char_bounds(bounds, width, font, cmap, code, font_xform)) {
++		    if (bounds[0] < 0)
++			left_sb = -bounds[0];
++		    else
++			left_sb = 0;
++		    if (bounds[2] > width)
++			right_sb = bounds[2] - width;
++		    else
++		        right_sb = 0;
++		    metrics.add_single_positioning(code, left_sb, 0, left_sb + right_sb);
++		}
++	    }
++	}
++    }
++
+     // reencode right components of boundary_glyph as boundary_char
+     int boundary_char = dvipsenc.boundary_char();
+     if (metrics.reencode_right_ligkern(256, boundary_char) > 0
+@@ -1482,6 +1512,16 @@
  	      break;
  	  }
  
-+          case SPACE_FACTOR_OPT : {
-+            space_factor = clp->val.d;
-+            break;
-+          }
++	  case SPACE_FACTOR_OPT: {
++	    space_factor = clp->val.d;
++	    break;
++	  }
 +
-+          case FILTER_OPT: {
-+              current_gf = new GlyphFilter;
-+              current_gf->add_substitution_filter(clp->arg, false, errh);
-+              break;
-+          }
++	  case MATH_FONT_OPT: {
++	    math_font = true;
++	    break;
++	  }
 +
  	  case FEATURE_OPT: {
  	      OpenType::Tag t(clp->arg);
  	      if (!t.valid())
-@@ -1471,7 +1489,13 @@
- 		  if (!current_alternate_filter_ptr)
- 		      current_alternate_filter_ptr = new GlyphFilter(current_alternate_filter);
- 		  interesting_features.push_back(t);
--		  feature_filters.insert(t, current_alternate_filter_ptr);
-+                  if (current_gf) {
-+                    GlyphFilter *gf = new GlyphFilter(*current_gf);
-+                    *gf += *current_alternate_filter_ptr;
-+		    feature_filters.insert(t, gf);
-+                  }
-+                  else
-+       		    feature_filters.insert(t, current_alternate_filter_ptr);
- 	      }
- 	      break;
- 	  }

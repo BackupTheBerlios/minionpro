@@ -7,9 +7,9 @@
 /afii10101   % this is not the right glyph but looks similar
 % 0x10
 /zeta /eta /theta /iota /kappa /lambda /mu /nu
-/xi /pi /rho /sigma /tau /upsilon /uni03D5 /chi
+/xi /pi /rho /sigma /tau /upsilon /phi /chi
 % 0x20
-/psi /omega /epsilon /uni03D1 /uni03D6 /rho /uni03C2 /phi
+/psi /omega /epsilon /uni03D1 /uni03D6 /rho /uni03C2 /phi1
 /arrowlefttophalf /arrowleftbothalf /arrowrighttophalf /arrowrightbothalf
 /arrowhookleft /arrowhookright /triangleright /triangleleft
 % 0x30

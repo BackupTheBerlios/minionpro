@@ -2,9 +2,9 @@
 \metrics
 
 \setglyph{dintegral}
-  \moveup{-80}
+  \moveup{-130}
   \glyph{intdint}{1750}
-  \moveup{80}
+  \moveup{130}
   \resetitalic{400}
   \resetwidth{\add{\width{dintegral}}{-100}}
 \endsetglyph
@@ -153,6 +153,16 @@
   \push
   \movert{-670}
   \glyph{dplcircleleftint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dmnsumint}
+  %\glyph{tcirclerightint}{1000}\movert{400}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-640}
+  \glyph{dpsumint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph

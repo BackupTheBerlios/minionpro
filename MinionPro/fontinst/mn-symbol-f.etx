@@ -84,6 +84,7 @@
 \setoperatorpair{lcirclerightint}
 \setoperatorpair{rcircleleftint}
 \setoperatorpair{lcircleleftint}
+\setoperatorpair{sumint}
 \setoperatorpair{pidotsint}
 \setoperatorpair{plandupint}
 \setoperatorpair{planddownint}
@@ -94,6 +95,7 @@
 \setoperatorpair{plcirclerightint}
 \setoperatorpair{prcircleleftint}
 \setoperatorpair{plcircleleftint}
+\setoperatorpair{psumint}
 
 \endencoding
 % vim:set ft=tex:

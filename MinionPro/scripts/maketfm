@@ -27,20 +27,20 @@ make_tfm() {
  tlf_flags="-flnum -ftnum"
 tosf_flags="-fonum -ftnum"
 
-  lf_ts_flags="-fpnum --filter=<Number> -fonum --filter=!<Number> -flnum"
- osf_ts_flags="-fpnum --filter=<Number> -flnum --filter=!<Number> -fonum"
- tlf_ts_flags="-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum"
-tosf_ts_flags="-ftnum --filter=<Number> -flnum --filter=!<Number> -fonum"
+  lf_ts_flags="-fpnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum"
+ osf_ts_flags="-fpnum --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum"
+ tlf_ts_flags="-ftnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum"
+tosf_ts_flags="-ftnum --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum"
 
-  lf_sc_flags="-flnum -fpnum --filter=<Letter> -fsmcp"
+  lf_sc_flags="-flnum -fpnum --subs-filter=<Letter> -fsmcp"
  osf_sc_flags="-fonum -fpnum -fsmcp"
- tlf_sc_flags="-flnum -ftnum --filter=<Letter> -fsmcp"
+ tlf_sc_flags="-flnum -ftnum --subs-filter=<Letter> -fsmcp"
 tosf_sc_flags="-fonum -ftnum -fsmcp"
 
-  lf_sc_ts_flags="-fpnum --filter=<Number> -fonum --filter=!<Number> -flnum --filter=<Letter> -fsmcp"
- osf_sc_ts_flags="-fpnum -fsmcp --filter=<Number> -flnum --filter=!<Number> -fonum"
- tlf_sc_ts_flags="-ftnum --filter=<Number> -fonum --filter=!<Number> -flnum --filter=<Letter> -fsmcp"
-tosf_sc_ts_flags="-ftnum -fsmcp --filter=<Number> -flnum --filter=!<Number> -fonum"
+  lf_sc_ts_flags="-fpnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum --subs-filter=<Letter> -fsmcp"
+ osf_sc_ts_flags="-fpnum -fsmcp --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum"
+ tlf_sc_ts_flags="-ftnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum --subs-filter=<Letter> -fsmcp"
+tosf_sc_ts_flags="-ftnum -fsmcp --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum"
 
 make_normal_metrics() {
 
@@ -70,11 +70,10 @@ make_normal_metrics() {
 
 make_oml_metrics() {
 
-  make_tfm "$1" oml $2-oml       "$3"
-  make_tfm "$1" oml $2-l1-oml    "-L 40 $3"
-  make_tfm "$1" integral $2-cn1-integral    "-E 0.85 $3"  # -E .90 ??
-  make_tfm "$1" integral $2-cn2-integral    "-E 0.75 -S 0.04 $3"  # -E .90 ??
-#  make_tfm "$1" integral $2-cn-l1-integral "-E 0.85 -L 40 $3"  # -E .90 ??
+  make_tfm "$1" oml      $2-oml          "--math-font $3"
+  make_tfm "$1" oml      $2-l1-oml       "--math-font -L 40 $3"
+  make_tfm "$1" integral $2-cn1-integral "-E 0.85 $3"
+  make_tfm "$1" integral $2-cn2-integral "-E 0.75 -S 0.04 $3"
 }
 
 make_spread_metrics() {

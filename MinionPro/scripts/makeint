@@ -1,14 +1,16 @@
 #!/bin/bash
 
-if [ ! -e MnSymbolF10.pl ]
-then
-  tftopl MnSymbolF10.tfm MnSymbolF10.pl
-fi
-
-if [ ! -e MnSymbolF-Bold10.pl ]
-then
-  tftopl MnSymbolF-Bold10.tfm MnSymbolF-Bold10.pl
-fi
+for s in 5 6 7 8 9 10 12
+do
+  if [ ! -e MnSymbolF$s.pl ]
+  then
+    tftopl MnSymbolF$s.tfm MnSymbolF$s.pl
+  fi
+  if [ ! -e MnSymbolF-Bold$s.pl ]
+  then
+    tftopl MnSymbolF-Bold$s.tfm MnSymbolF-Bold$s.pl
+  fi
+done
 
 tftopl ../tfm/MinionPro-It-osf-oml--base.tfm        MinionPro-It-osf-oml--base.pl
 tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm     MinionPro-It-osf-cn2-integral.pl
@@ -21,5 +23,6 @@ do
   vptovf $v
 done
 
-mv *.vf ../vf
+mv *.vf  ../vf
 mv *.tfm ../tfm
+
