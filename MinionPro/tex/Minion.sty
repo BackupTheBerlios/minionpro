@@ -15,6 +15,7 @@
 \def\Mn@Math@Fig{OsF}
 \def\Mn@Text@Family{Minion-\Mn@Text@Fig\Mn@Capt}
 \def\Mn@Math@Family{Minion-\Mn@Math@Fig\Mn@Capt}
+\def\Mn@Math@TFamily{Minion-T\Mn@Math@Fig\Mn@Capt}
 
 \DeclareOption{slides}{\def\Mn@Capt{-C}}
 \DeclareOption{textosf}{\def\Mn@Text@FigB{OsF}}
@@ -23,6 +24,7 @@
 \DeclareOption{mathlf}{\def\Mn@Math@Fig{LF}}
 \DeclareOption{osf}{\def\Mn@Text@FigB{OsF}\def\Mn@Math@Fig{OsF}}
 \DeclareOption{lf}{\def\Mn@Text@FigB{LF}\def\Mn@Math@Fig{LF}}
+\DeclareOption{mathtabular}{\let\Mn@Math@Family\Mn@Math@TFamily}
 
 % calligraphic fonts
 
@@ -90,15 +92,20 @@
 \renewcommand\rmdefault{\Mn@Text@Family}
 \renewcommand\bfdefault{sb}
 
-\DeclareSymbolFont{operators}   {OT1}{\Mn@Math@Family}{m}{n}
-\DeclareSymbolFont{letters}     {OML}{\Mn@Math@Family}{m}{it}
-\DeclareSymbolFont{rmletters}   {OML}{\Mn@Math@Family}{m}{n}
-\SetSymbolFont{operators} {bold}{OT1}{\Mn@Math@Family}{b}{n}
-\SetSymbolFont{letters}   {bold}{OML}{\Mn@Math@Family}{b}{it}
-\SetSymbolFont{rmletters} {bold}{OML}{\Mn@Math@Family}{b}{n}
-\DeclareMathAlphabet\mathbf     {OT1}{\Mn@Math@Family}{b}{n}
-\DeclareMathAlphabet\mathit     {OT1}{\Mn@Math@Family}{m}{it}
-\SetMathAlphabet\mathit   {bold}{OT1}{\Mn@Math@Family}{b}{it}
+\DeclareSymbolFont{operators}     {OT1}{\Mn@Math@Family} {m}{n}
+\DeclareSymbolFont{letters}       {OML}{\Mn@Math@Family} {m}{it}
+\DeclareSymbolFont{rmletters}     {OML}{\Mn@Math@Family} {m}{n}
+\SetSymbolFont{operators}{bold}   {OT1}{\Mn@Math@Family} {b}{n}
+\SetSymbolFont{letters}  {bold}   {OML}{\Mn@Math@Family} {b}{it}
+\SetSymbolFont{rmletters}{bold}   {OML}{\Mn@Math@Family} {b}{n}
+\DeclareMathAlphabet\mathbf       {OT1}{\Mn@Math@Family} {b}{n}
+\DeclareMathAlphabet\mathit       {OT1}{\Mn@Math@Family} {m}{it}
+\SetMathAlphabet\mathit  {bold}   {OT1}{\Mn@Math@Family} {b}{it}
+
+\DeclareMathVersion{tabular}
+\SetSymbolFont{operators}{tabular}{OT1}{\Mn@Math@TFamily}{m}{n}
+\SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
+\SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
 
 % figures
 
