@@ -2,7 +2,12 @@
 % LIGKERN f {L} b ; ff {L} b ; f {L} h ; ff {L} h 
 % LIGKERN uni015E.swash {L} h ; Tcaron.swash {L} h
 % LIGKERN Tcommaaccent.swash {L} h
-%
+% LIGKERN less less =: guillemotleft 	 
+% LIGKERN greater greater =: guillemotright 	 
+% LIGKERN question quoteleft =: questiondown ; exclam quoteleft =: exclamdown ; 	 
+% LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ; 	 
+% LIGKERN quoteleft quoteleft =: quotedblleft ; 	 
+% LIGKERN quoteright quoteright =: quotedblright ;
 %
 /MinionPro-T1SwashEncoding [          % now 256 chars follow
 %00
