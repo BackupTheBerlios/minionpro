@@ -39,8 +39,6 @@ make_tfm() {
   #otftotfm -E0.980 --no-dotlessj "$@" --clear-subs -fkern -e enc/mn-$enc.enc "otf/$font-$name.otf" "$font-$name-$spec"-20
 }
 
-}
-
 get_flags() {
   case $1 in
       lf) flags="-flnum -fpnum";;
