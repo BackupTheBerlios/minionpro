@@ -1,6 +1,7 @@
 #!/bin/sh
 
 font=$1
+options=$2
 
 if [ "x$font" = "x" ]
 then
@@ -25,19 +26,19 @@ make_tfm() {
   shift 3
 
   echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm.tmp
-  echo "otftotfm -k5 -q         --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'"    >>maketfm.tmp
+  echo "otftotfm -k5         --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'"    >>maketfm.tmp
 
 # expanded metrics for use with \usepackage[DVIoutput,expansion]{microtype}
-  echo "otftotfm -k5 -q -E1.020 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+20" >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E1.016 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+16" >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E1.012 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+12" >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E1.008 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+8"  >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E1.004 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+4"  >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E0.996 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-4"  >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E0.992 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-8"  >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E0.988 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-12" >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E0.984 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-16" >>maketfm_expanded.tmp
-  echo "otftotfm -k5 -q -E0.980 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' "otf/$font-$name.otf" "$font-$name-$spec"-20" >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E1.020 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+20" >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E1.016 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+16" >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E1.012 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+12" >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E1.008 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+8"  >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E1.004 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+4"  >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E0.996 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-4"  >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E0.992 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-8"  >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E0.988 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-12" >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E0.984 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-16" >>maketfm_expanded.tmp
+  echo "otftotfm -k5 -E0.980 --tfm-directory ./tfm --vf-directory ./vf --encoding-directory ./dvips --no-type1 --no-updmap --no-dotlessj -fkern $@ -e 'enc/mn-$enc.enc' "otf/$font-$name.otf" "$font-$name-$spec"-20" >>maketfm_expanded.tmp
 }
 
 get_flags() {
@@ -115,13 +116,23 @@ make_normal_metrics() {
 
   make_tfm "$1" t1     $2-t1        "-fliga $flags"
   make_tfm "$1" ot1    $2-ot1       "-fliga $it_ot1_flags $flags"
-  make_tfm "$1" ly1    $2-ly1       "-fliga $flags"
-  make_tfm "$1" lgr    $2-lgr       "       -sgrek $it_lgr_flags $fontversion_digamma_flags $flags"
-  make_tfm "$1" t2a    $2-t2a       "       -scyrl $flags"
-  make_tfm "$1" t2b    $2-t2b       "       -scyrl $flags"
-  make_tfm "$1" t2c    $2-t2c       "       -scyrl $flags"
-  make_tfm "$1" x2     $2-x2        "       -scyrl $flags"
-  make_tfm "$1" ot2    $2-ot2       "       -scyrl $flags"
+
+  case $options in
+    *completelatin*) 
+                    make_tfm "$1" ly1    $2-ly1       "-fliga $flags";;
+  esac
+  case $options in
+            *greek*) 
+                    make_tfm "$1" lgr    $2-lgr       "       -sgrek $it_lgr_flags $fontversion_digamma_flags $flags";;
+  esac
+  case $options in
+         *cyrillic*)
+                    make_tfm "$1" t2a    $2-t2a       "       -scyrl $flags"
+                    make_tfm "$1" t2b    $2-t2b       "       -scyrl $flags"
+                    make_tfm "$1" t2c    $2-t2c       "       -scyrl $flags"
+                    make_tfm "$1" x2     $2-x2        "       -scyrl $flags"
+                    make_tfm "$1" ot2    $2-ot2       "       -scyrl $flags";;
+  esac
 
   make_tfm "$1" ts1    $2-ts1       "       $ts_flags"
   make_tfm "$1" ts1    $2-sc-ts1    "       $sc_ts_flags"
@@ -153,13 +164,24 @@ make_spread_metrics() {
 
   make_tfm "$1" t1     $2-l1-t1     "-L 40        $flags"
   make_tfm "$1" ot1    $2-l1-ot1    "-L 40        $it_ot1_flags $flags"
-  make_tfm "$1" ly1    $2-l1-ly1    "-L 40        $flags"
-  make_tfm "$1" lgr    $2-l1-lgr    "-L 40 -sgrek $it_lgr_flags $fontversion_digamma_flags $flags"
-  make_tfm "$1" t2a    $2-l1-t2a    "-L 40 -scyrl $flags"
-  make_tfm "$1" t2b    $2-l1-t2b    "-L 40 -scyrl $flags"
-  make_tfm "$1" t2c    $2-l1-t2c    "-L 40 -scyrl $flags"
-  make_tfm "$1" x2     $2-l1-x2     "-L 40 -scyrl $flags"
-  make_tfm "$1" ot2    $2-l1-ot2    "-L 40 -scyrl $flags"
+  
+  case $options in
+    *completelatin*) 
+                    make_tfm "$1" ly1    $2-l1-ly1    "-L 40        $flags";;
+  esac
+  case $options in                  
+            *greek*)
+                    make_tfm "$1" lgr    $2-l1-lgr    "-L 40 -sgrek $it_lgr_flags $fontversion_digamma_flags $flags";;
+  esac
+  case $options in
+         *cyrillic*)
+                    make_tfm "$1" t2a    $2-l1-t2a    "-L 40 -scyrl $flags"
+                    make_tfm "$1" t2b    $2-l1-t2b    "-L 40 -scyrl $flags"
+                    make_tfm "$1" t2c    $2-l1-t2c    "-L 40 -scyrl $flags"
+                    make_tfm "$1" x2     $2-l1-x2     "-L 40 -scyrl $flags"
+                    make_tfm "$1" ot2    $2-l1-ot2    "-L 40 -scyrl $flags";;
+  esac
+  
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
   make_tfm "$1" ts1    $2-sc-l1-ts1 "-L 40        $sc_ts_flags"
   make_tfm "$1" t1     $2-sc-l1-t1  "-L 40 --unicoding 'germandbls =: SSsmall' $sc_flags"
@@ -301,9 +323,9 @@ do
   do
     make_series "$series$condensed"
     make_series "${series}${condensed}It"
-    if [ "$font" = "MinionPro" ]
+    if [ $font = "MinionPro" ]
     then
-      make_additional_italic  "${series}It"
+      make_additional_italic  "${series}${condensed}It"
     fi
   done
 done 

@@ -5,6 +5,8 @@ font=MinionPro
 
 dir=$1
 
+(cd tex; latex MinionPro.ins);
+
 if [ "x$dir" = x ]
 then
   dir=$(kpsewhich -expand-var='$TEXMFLOCAL')
@@ -47,6 +49,8 @@ do
   cp tfm/*$x*.tfm "$tfm_dir"
   cp vf/*$x*.vf   "$vf_dir"
 done
+
+cp tex/[^C]*   "$tex_dir"
 
 mktexlsr
 
