@@ -346,6 +346,20 @@
 
 \Mn@Decl@Ints
 
+% correct logos
+
+\def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
+\DeclareRobustCommand{\LaTeX}{L\kern-.32em%
+        {\sbox\z@ T%
+         \vbox to\ht\z@{\hbox{\check@mathfonts
+                              \fontsize\sf@size\z@
+                              \math@fontsfalse\selectfont
+                              A}%
+                        \vss}%
+        }%
+        \kern-.15em%
+        \TeX}
+
 % make the changes take effect
 
 \normalfont\selectfont
