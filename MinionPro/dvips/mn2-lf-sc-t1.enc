@@ -8,7 +8,7 @@
 % LIGKERN quoteright quoteright =: quotedblright ;
 % LIGKERN comma comma =: quotedblbase ; less less =: guillemotleft ;
 % LIGKERN greater greater =: guillemotright ;
-/SCT1Encoding [          % now 256 chars follow
+/MinionPro-SCT1Encoding [          % now 256 chars follow
 % 0x00
   /grave.sc /acute.sc /circumflex.sc /tilde.sc /dieresis.sc /hungarumlaut.sc /ring.sc /caron.sc
   /breve.sc /macron.sc /dotaccent.sc /cedilla.sc

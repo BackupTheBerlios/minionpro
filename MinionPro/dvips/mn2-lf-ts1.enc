@@ -1,6 +1,6 @@
 % TS1 Encoding
 %
-/TS1Encoding [          % now 256 chars follow
+/MinionPro-TS1Encoding [          % now 256 chars follow
 % 0x00
   /grave.cap /acute.cap
   /uniEFF7 /unitEFF5 % /capitalcircumflex /capitaltilde

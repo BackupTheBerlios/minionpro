@@ -14,7 +14,7 @@
 % LIGKERN seven {} * ; * {} seven ; eight {} * ; * {} eight ;
 % LIGKERN nine {} * ; * {} nine ;
 %
-/T2CAdobeEncoding [
+/MinionPro-T2CAdobeEncoding [
 % 0x00
 /grave
 /acute
