@@ -13,7 +13,7 @@
 % LIGKERN quoteright quoteright =: quotedblright ;
 % LIGKERN comma comma =: quotedblbase ; less less =: guillemotleft ;
 % LIGKERN greater greater =: guillemotright ;
-/SwashT1Encoding [          % now 256 chars follow
+/MinionPro-SwashT1Encoding [          % now 256 chars follow
 % 0x00
   /grave /acute /circumflex /tilde /dieresis /hungarumlaut /ring /caron
   /breve /macron /dotaccent /cedilla
