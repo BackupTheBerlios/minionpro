@@ -180,6 +180,7 @@ make_additional_italic() {
     make_math_metrics  "$1$sub-Cn"
   done
 
+  make_spaced_swash_metrics "$1"
   make_spaced_swash_metrics "$1Capt"
 }
 
