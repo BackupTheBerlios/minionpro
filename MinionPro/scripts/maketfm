@@ -38,30 +38,30 @@ make_metrics() {
   make_simple_tfm "$1" osf-t2c     OSF-6c
   make_simple_tfm "$1" osf-x2      OSF-6x
 
-  make_spread_tfm "$1" lf-oml      L-7m      7m        12
-  make_spread_tfm "$1" lf-sc-t1    SSC-8t    SC-8t     25
-  make_spread_tfm "$1" lf-sc-ts1   SSC-8c    SC-8c     25
-  make_spread_tfm "$1" lf-sc-ot1   SSC-7t    SC-7t     25
-  make_spread_tfm "$1" osf-oml     OSFL-7m   OSF-7m    12
-  make_spread_tfm "$1" osf-sc-t1   OSFSSC-8t OSFSC-8t  25
-  make_spread_tfm "$1" osf-sc-ts1  OSFSSC-8c OSFSC-8c  25
-  make_spread_tfm "$1" osf-sc-ot1  OSFSSC-7t OSFSC-7t  25
+  make_spread_tfm "$1" lf-oml      L-7m      7m        20
+  make_spread_tfm "$1" lf-sc-t1    SSC-8t    SC-8t     40
+  make_spread_tfm "$1" lf-sc-ts1   SSC-8c    SC-8c     40
+  make_spread_tfm "$1" lf-sc-ot1   SSC-7t    SC-7t     40
+  make_spread_tfm "$1" osf-oml     OSFL-7m   OSF-7m    20
+  make_spread_tfm "$1" osf-sc-t1   OSFSSC-8t OSFSC-8t  40
+  make_spread_tfm "$1" osf-sc-ts1  OSFSSC-8c OSFSC-8c  40
+  make_spread_tfm "$1" osf-sc-ot1  OSFSSC-7t OSFSC-7t  40
   echo " done." >&2
 }
 
 make_spaced_metrics() {
   echo -n "Processing font $font-$1 ..." >&2
-  make_spread_tfm "$1" lf-t1      L-8t      8t       12
-  make_spread_tfm "$1" lf-ts1     L-8c      8c       12
-  make_spread_tfm "$1" lf-ot1     L-7t      7t       12
-  make_spread_tfm "$1" lf-sc-t1   LSC-8t    SC-8t    12
-  make_spread_tfm "$1" lf-sc-ts1  LSC-8c    SC-8c    12
-  make_spread_tfm "$1" lf-sc-ot1  LSC-7t    SC-7t    12
-  make_spread_tfm "$1" osf-t1     OSFL-8t   OSF-8t   12
-  make_spread_tfm "$1" osf-ot1    OSFL-7t   OSF-7t   12
-  make_spread_tfm "$1" osf-sc-t1  OSFLSC-8t OSFSC-8t 12
-  make_spread_tfm "$1" osf-sc-ts1 OSFLSC-8c OSFSC-8c 12
-  make_spread_tfm "$1" osf-sc-ot1 OSFLSC-7t OSFSC-7t 12
+  make_spread_tfm "$1" lf-t1      L-8t      8t       20
+  make_spread_tfm "$1" lf-ts1     L-8c      8c       20
+  make_spread_tfm "$1" lf-ot1     L-7t      7t       20
+  make_spread_tfm "$1" lf-sc-t1   LSC-8t    SC-8t    20
+  make_spread_tfm "$1" lf-sc-ts1  LSC-8c    SC-8c    20
+  make_spread_tfm "$1" lf-sc-ot1  LSC-7t    SC-7t    20
+  make_spread_tfm "$1" osf-t1     OSFL-8t   OSF-8t   20
+  make_spread_tfm "$1" osf-ot1    OSFL-7t   OSF-7t   20
+  make_spread_tfm "$1" osf-sc-t1  OSFLSC-8t OSFSC-8t 20
+  make_spread_tfm "$1" osf-sc-ts1 OSFLSC-8c OSFSC-8c 20
+  make_spread_tfm "$1" osf-sc-ot1 OSFLSC-7t OSFSC-7t 20
   echo " done." >&2
 }
 
@@ -76,10 +76,10 @@ make_swash_metrics() {
 
 make_spaced_swash_metrics() {
   echo -n "Processing font $font-$1 ..." >&2
-  make_spread_tfm "$1" lf-swash-t1   L-Swash-8t    Swash-8t     12
-  make_spread_tfm "$1" lf-swash-ot1  L-Swash-7t    Swash-7t     12
-  make_spread_tfm "$1" osf-swash-t1  OSFL-Swash-8t OSF-Swash-8t 12
-  make_spread_tfm "$1" osf-swash-ot1 OSFL-Swash-7t OSF-Swash-7t 12
+  make_spread_tfm "$1" lf-swash-t1   L-Swash-8t    Swash-8t     20
+  make_spread_tfm "$1" lf-swash-ot1  L-Swash-7t    Swash-7t     20
+  make_spread_tfm "$1" osf-swash-t1  OSFL-Swash-8t OSF-Swash-8t 20
+  make_spread_tfm "$1" osf-swash-ot1 OSFL-Swash-7t OSF-Swash-7t 20
   echo " done." >&2
 }
 
