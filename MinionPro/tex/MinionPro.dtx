@@ -8,6 +8,7 @@
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
 \usepackage[minionint]{MinionPro}
+\usepackage{microtype}
 \usepackage[british]{babel}
 \usepackage{booktabs,pifont}
 \begin{document}
@@ -37,13 +38,20 @@
 % \section{Interference with other packages}
 %
 % The \textsf{MinionPro} package automatically loads the following packages\?:
-% \textsf{textcomp}, \textsf{amsmath}, \textsf{microtype} and
-% \textsf{MnSymbol}. If you want to pass options to these packages you can
+% \textsf{textcomp}, \textsf{amsmath}, and \textsf{MnSymbol}.
+% If you want to pass options to these packages you can
 % either put the corresponding |\usepackage| command before the
 % |\usepackage{MinionPro}| or you can include the options in the
 % |\documentclass| command. The \textsf{MinionPro} package is \emph{not}
 % compatible with \textsf{amssymb} and \textsf{amsfonts}. Please see also the
 % corresponding section in the \textsf{MnSymbol} documentation.
+%
+% The MinionPro package includes support files for the \textsf{microtype}
+% package. To enable character protrusion add the command
+% \begin{quote}
+%   |\usepackage{microtype}|
+% \end{quote}
+% \emph{after} the command |\usepackage{MinionPro}|.
 %
 % There is also a slight incompatibility with the \textsf{dcolumn} package
 % which expects all figures to have the same size. If you want to use this
@@ -299,7 +307,6 @@
 \ExecuteOptions{osf}
 \ProcessOptions\relax
 
-\@ifpackageloaded{microtype}{}{\RequirePackage{microtype}}
 \RequirePackage{MnSymbol,MinionPro-FontDef}
 
 %% declare the fonts
