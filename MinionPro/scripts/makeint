@@ -5,6 +5,11 @@ then
   tftopl MnSymbolF10.tfm MnSymbolF10.pl
 fi
 
+if [ ! -e MnSymbolF-Bold10.pl ]
+then
+  tftopl MnSymbolF-Bold10.tfm MnSymbolF-Bold10.pl
+fi
+
 tftopl ../tfm/MinionPro-It-osf-oml--base.tfm        MinionPro-It-osf-oml--base.pl
 tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm     MinionPro-It-osf-cn2-integral.pl
 tftopl ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm MinionPro-ItDisp-osf-cn1-integral.pl
