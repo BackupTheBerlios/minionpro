@@ -1,0 +1,56 @@
+\ProvidesFile{OT1Minion-TLF-C.fd}[2004/12/06 font definitions for OT1/Minion-TLF-C.]
+\DeclareFontFamily{OT1}{Minion-TLF-C}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{m}{n}{
+   <-6>  MinionPro-SemiboldCapt-TLF-7t
+   <6->  MinionPro-Capt-TLF-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{m}{it}{
+   <-6>  MinionPro-SemiboldItCapt-TLF-7t
+   <6->  MinionPro-ItCapt-TLF-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{m}{sc}{
+   <-6>  MinionPro-SemiboldCapt-TLFSC-7t
+   <6->  MinionPro-Capt-TLFSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{m}{ssc}{
+   <-6>  MinionPro-SemiboldCapt-TLFSSC-7t
+   <6->  MinionPro-Capt-TLFSSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{m}{scit}{
+   <-6>  MinionPro-SemiboldItCapt-TLFSC-7t
+   <6->  MinionPro-ItCapt-TLFSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{m}{sscit}{
+   <-6>  MinionPro-SemiboldItCapt-TLFSSC-7t
+   <6->  MinionPro-ItCapt-TLFSSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{n}{
+   <-6>  MinionPro-BoldCapt-TLF-7t
+   <6->  MinionPro-SemiboldCapt-TLF-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{it}{
+   <-6>  MinionPro-BoldItCapt-TLF-7t
+   <6->  MinionPro-SemiboldItCapt-TLF-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{sc}{
+   <-6>  MinionPro-BoldCapt-TLFSC-7t
+   <6->  MinionPro-SemiboldCapt-TLFSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{ssc}{
+   <-6>  MinionPro-BoldCapt-TLFSSC-7t
+   <6->  MinionPro-SemiboldCapt-TLFSSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{scit}{
+   <-6>  MinionPro-BoldItCapt-TLFSC-7t
+   <6->  MinionPro-SemiboldItCapt-TLFSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{sscit}{
+   <-6>  MinionPro-BoldItCapt-TLFSSC-7t
+   <6->  MinionPro-SemiboldItCapt-TLFSSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b}{n}{
+    <->  MinionPro-BoldCapt-TLF-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b}{it}{
+    <->  MinionPro-BoldItCapt-TLF-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b}{sc}{
+    <->  MinionPro-BoldCapt-TLFSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b}{ssc}{
+    <->  MinionPro-BoldCapt-TLFSSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b}{scit}{
+    <->  MinionPro-BoldItCapt-TLFSC-7t}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b}{sscit}{
+    <->  MinionPro-BoldItCapt-TLFSSC-7t}{}
+%
+\DeclareFontShape{OT1}{Minion-TLF-C}{m} {sl}{<->ssub * Minion-TLF-C/m/it}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{sb}{sl}{<->ssub * Minion-TLF-C/sb/it}{}
+\DeclareFontShape{OT1}{Minion-TLF-C}{b} {sl}{<->ssub * Minion-TLF-C/b/it}{}
+\endinput
+% vim:set ft=tex:

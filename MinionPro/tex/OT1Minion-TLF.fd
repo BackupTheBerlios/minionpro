@@ -1,0 +1,143 @@
+\ProvidesFile{OT1Minion-TLF.fd}[2004/12/06 font definitions for OT1/Minion-TLF.]
+\DeclareFontFamily{OT1}{Minion-TLF}{}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{n}{
+    <-6>  MinionPro-SemiboldCapt-TLFL-7t
+   <6-8>  MinionPro-Capt-TLFL-7t
+   <8-9>  MinionPro-Capt-TLF-7t
+   <9-12> MinionPro-Regular-TLF-7t
+  <12-15> MinionPro-Subh-TLF-7t
+  <15->   MinionPro-Disp-TLF-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{it}{
+    <-6>  MinionPro-SemiboldItCapt-TLFL-7t
+   <6-8>  MinionPro-ItCapt-TLFL-7t
+   <8-9>  MinionPro-ItCapt-TLF-7t
+   <9-12> MinionPro-It-TLF-7t
+  <12-15> MinionPro-ItSubh-TLF-7t
+  <15->   MinionPro-ItDisp-TLF-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{sc}{
+    <-6>  MinionPro-SemiboldCapt-TLFLSC-7t
+   <6-8>  MinionPro-Capt-TLFLSC-7t
+   <8-9>  MinionPro-Capt-TLF-SC-7t
+   <9-12> MinionPro-Regular-TLF-SC-7t
+  <12-15> MinionPro-Subh-TLF-SC-7t
+  <15->   MinionPro-Disp-TLF-SC-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{ssc}{
+    <-6>  MinionPro-SemiboldCapt-TLFSSC-7t
+   <6-9>  MinionPro-Capt-TLFSSC-7t
+   <9-12> MinionPro-Regular-TLFSSC-7t
+  <12-15> MinionPro-Subh-TLFSSC-7t
+  <15->   MinionPro-Disp-TLFSSC-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{scit}{
+    <-6>  MinionPro-SemiboldItCapt-TLFLSC-7t
+   <6-8>  MinionPro-ItCapt-TLFLSC-7t
+   <8-9>  MinionPro-ItCapt-TLF-SC-7t
+   <9-12> MinionPro-It-TLF-SC-7t
+  <12-15> MinionPro-ItSubh-TLF-SC-7t
+  <15->   MinionPro-ItDisp-TLF-SC-7t}{\Tone@smallcaps@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{sscit}{
+    <-6>  MinionPro-SemiboldItCapt-TLFSSC-7t
+   <6-9>  MinionPro-ItCapt-TLFSSC-7t
+   <9-12> MinionPro-It-TLFSSC-7t
+  <12-15> MinionPro-ItSubh-TLFSSC-7t
+  <15->   MinionPro-ItDisp-TLFSSC-7t}{\Tone@smallcaps@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{m}{sw}{
+    <-6>  MinionPro-SemiboldItCapt-TLFL-Swash-7t
+   <6-8>  MinionPro-ItCapt-TLFL-Swash-7t
+   <8-9>  MinionPro-ItCapt-TLF-Swash-7t
+   <9-12> MinionPro-It-TLF-Swash-7t
+  <12-15> MinionPro-ItSubh-TLF-Swash-7t
+  <15->   MinionPro-ItDisp-TLF-Swash-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{n}{
+    <-6>  MinionPro-BoldCapt-TLFL-7t
+   <6-8>  MinionPro-SemiboldCapt-TLFL-7t
+   <8-9>  MinionPro-SemiboldCapt-TLF-7t
+   <9-12> MinionPro-Semibold-TLF-7t
+  <12-15> MinionPro-SemiboldSubh-TLF-7t
+  <15->   MinionPro-SemiboldDisp-TLF-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{it}{
+    <-6>  MinionPro-BoldItCapt-TLFL-7t
+   <6-8>  MinionPro-SemiboldItCapt-TLFL-7t
+   <8-9>  MinionPro-SemiboldItCapt-TLF-7t
+   <9-12> MinionPro-SemiboldIt-TLF-7t
+  <12-15> MinionPro-SemiboldItSubh-TLF-7t
+  <15->   MinionPro-SemiboldItDisp-TLF-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{sc}{
+    <-6>  MinionPro-BoldCapt-TLFLSC-7t
+   <6-8>  MinionPro-SemiboldCapt-TLFLSC-7t
+   <8-9>  MinionPro-SemiboldCapt-TLF-SC-7t
+   <9-12> MinionPro-Semibold-TLF-SC-7t
+  <12-15> MinionPro-SemiboldSubh-TLF-SC-7t
+  <15->   MinionPro-SemiboldDisp-TLF-SC-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{ssc}{
+    <-6>  MinionPro-BoldCapt-TLFSSC-7t
+   <6-9>  MinionPro-SemiboldCapt-TLFSSC-7t
+   <9-12> MinionPro-Semibold-TLFSSC-7t
+  <12-15> MinionPro-SemiboldSubh-TLFSSC-7t
+  <15->   MinionPro-SemiboldDisp-TLFSSC-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{scit}{
+    <-6>  MinionPro-BoldItCapt-TLFLSC-7t
+   <6-8>  MinionPro-SemiboldItCapt-TLFLSC-7t
+   <8-9>  MinionPro-SemiboldItCapt-TLF-SC-7t
+   <9-12> MinionPro-SemiboldIt-TLF-SC-7t
+  <12-15> MinionPro-SemiboldItSubh-TLF-SC-7t
+  <15->   MinionPro-SemiboldItDisp-TLF-SC-7t}{\Tone@smallcaps@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{sscit}{
+    <-6>  MinionPro-BoldItCapt-TLFSSC-7t
+   <6-9>  MinionPro-SemiboldItCapt-TLFSSC-7t
+   <9-12> MinionPro-SemiboldIt-TLFSSC-7t
+  <12-15> MinionPro-SemiboldItSubh-TLFSSC-7t
+  <15->   MinionPro-SemiboldItDisp-TLFSSC-7t}{\Tone@smallcaps@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{sw}{
+    <-6>  MinionPro-BoldItCapt-TLFL-Swash-7t
+   <6-8>  MinionPro-SemiboldItCapt-TLFL-Swash-7t
+   <8-9>  MinionPro-SemiboldItCapt-TLF-Swash-7t
+   <9-12> MinionPro-SemiboldIt-TLF-Swash-7t
+  <12-15> MinionPro-SemiboldItSubh-TLF-Swash-7t
+  <15->   MinionPro-SemiboldItDisp-TLF-Swash-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{n}{
+    <-8>  MinionPro-BoldCapt-TLFL-7t
+   <8-9>  MinionPro-BoldCapt-TLF-7t
+   <9-12> MinionPro-Bold-TLF-7t
+  <12-15> MinionPro-BoldSubh-TLF-7t
+  <15->   MinionPro-BoldDisp-TLF-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{it}{
+    <-8>  MinionPro-BoldItCapt-TLFL-7t
+   <8-9>  MinionPro-BoldItCapt-TLF-7t
+   <9-12> MinionPro-BoldIt-TLF-7t
+  <12-15> MinionPro-BoldItSubh-TLF-7t
+  <15->   MinionPro-BoldItDisp-TLF-7t}{\Tone@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{sc}{
+    <-8>  MinionPro-BoldCapt-TLFLSC-7t
+   <8-9>  MinionPro-BoldCapt-TLF-SC-7t
+   <9-12> MinionPro-Bold-TLF-SC-7t
+  <12-15> MinionPro-BoldSubh-TLF-SC-7t
+  <15->   MinionPro-BoldDisp-TLF-SC-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{ssc}{
+    <-9>  MinionPro-BoldCapt-TLFSSC-7t
+   <9-12> MinionPro-Bold-TLFSSC-7t
+  <12-15> MinionPro-BoldSubh-TLFSSC-7t
+  <15->   MinionPro-BoldDisp-TLFSSC-7t}{\Tone@roman@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{scit}{
+    <-8>  MinionPro-BoldItCapt-TLFLSC-7t
+   <8-9>  MinionPro-BoldItCapt-TLF-SC-7t
+   <9-12> MinionPro-BoldIt-TLF-SC-7t
+  <12-15> MinionPro-BoldItSubh-TLF-SC-7t
+  <15->   MinionPro-BoldItDisp-TLF-SC-7t}{\Tone@smallcaps@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{sscit}{
+    <-9>  MinionPro-BoldItCapt-TLFSSC-7t
+   <9-12> MinionPro-BoldIt-TLFSSC-7t
+  <12-15> MinionPro-BoldItSubh-TLFSSC-7t
+  <15->   MinionPro-BoldItDisp-TLFSSC-7t}{\Tone@smallcaps@italic@protruding}
+\DeclareFontShape{OT1}{Minion-TLF}{b}{sw}{
+    <-8>  MinionPro-BoldItCapt-TLFL-Swash-7t
+   <8-9>  MinionPro-BoldItCapt-TLF-Swash-7t
+   <9-12> MinionPro-BoldIt-TLF-Swash-7t
+  <12-15> MinionPro-BoldItSubh-TLF-Swash-7t
+  <15->   MinionPro-BoldItDisp-TLF-Swash-7t}{\Tone@italic@protruding}
+
+\DeclareFontShape{OT1}{Minion-TLF}{m} {sl}{<->ssub * Minion-TLF/m/it}{}
+\DeclareFontShape{OT1}{Minion-TLF}{sb}{sl}{<->ssub * Minion-TLF/sb/it}{}
+\DeclareFontShape{OT1}{Minion-TLF}{b} {sl}{<->ssub * Minion-TLF/b/it}{}
+
+\endinput
+% vim:set ft=tex:
