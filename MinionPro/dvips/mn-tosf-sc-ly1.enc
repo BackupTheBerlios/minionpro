@@ -1,0 +1,50 @@
+/MinionPro-TeXnANSIEncodingSC [
+% 0x00
+/.notdef /Uni20AC /.notdef /.notdef /fraction /dotaccent /hungarumlaut /ogonek 
+/fl /.notdef /cwm /ff /fi /.notdef /ffi /ffl
+% 0x10
+/dotlessi /dotlessj /Gravesmall /Acutesmall /Caronsmall /Brevesmall /Macronsmall /Ringsmall
+/Cedillasmall /germandbls /Aesmall /Oesmall /oslash /AE /OE /Oslash
+% 0x20
+/space /exclamsmall /quotedbl /numbersign /dollar /percent /ampersandsmall /quoteright
+/parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
+% 0x30
+/uniF643 /uniF644 /uniF645 /uniF646 /uniF647 /uniF648 /uniF649 /uniF64A
+/uniF64B /uniF64C /colon /semicolon /less /equal /greater /question
+% 0x40
+/at /A /B /C /D /E /F /G
+/H /I /J /K /L /M /N /O
+% 0x50
+/P /Q /R /S /T /U /V /W
+/X /Y /Z /bracketleft /backslash /bracketright /Circumflexsmall /underscore
+% 0x60
+/quoteleft /Asmall /Bsmall /Csmall /Dsmall /Esmall /Fsmall /Gsmall
+/Hsmall /Ismall /Jsmall /Ksmall /Lsmall /Msmall /Nsmall /Osmall
+% 0x70
+/Psmall /Qsmall /Rsmall /Ssmall /Tsmall /Usmall /Vsmall /Wsmall
+/Xsmall /Ysmall /Zsmall /braceleft /bar /braceright /tilde /dieresis
+% 0x80
+/Lslash /quotesingle /quotesinglbase /florin /quotedblbase /ellipsis /dagger /daggerdbl
+/Circumflexsmall /perthousand /Scaron /guilsinglleft /OE /Zcaron /asciicircum /minus
+% 0x90
+/lslash /quoteleft /quoteright /quotedblleft /quotedblright /bullet /endash /emdash
+/tilde /trademark /scaron /guilsinglright /Oesmall /Zcaronsmall /asciitilde /Ydieresis
+% 0xA0
+/nbspace /Exclamdownsmall /cent /sterling /currency /yen /brokenbar /section
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /sfthyphen /registered /macron
+% 0xB0
+/degree /plusminus /twosuperior /threesuperior /Acutesmall /mu /paragraph /periodcentered
+/Cedillasmall /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /Questiondownsmall
+% 0xC0
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
+% 0xD0
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
+% 0xE0
+/Agravesmall /Aacutesmall /Acircumflexsmall /Atildesmall /Adieresissmall /Aringsmall /Aesmall /Ccedillasmall
+/Egravesmall /Eacutesmall /Ecircumflexsmall /Edieresissmall /Igravesmall /Iacutesmall /Icircumflexsmall /Idieresissmall
+% 0xF0
+/Ethsmall /Ntildesmall /Ogravesmall /Oacutesmall /Ocircumflexsmall /Otildesmall /Odieresissmall /divide
+/Oslashsmall /Ugravesmall /Uacutesmall /Ucircumflexsmall /Udieresissmall /Yacutesmall /Thornsmall /Ydieresissmall
+] def

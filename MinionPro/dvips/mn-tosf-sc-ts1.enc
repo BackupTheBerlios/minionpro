@@ -1,12 +1,12 @@
 % TS1 Encoding
 %
-/MinionPro-TS1Encoding [          % now 256 chars follow
+/MinionPro-SCTS1Encoding [          % now 256 chars follow
 % 0x00
-  /Grave /Acute
+  /Grave /Acutesmall
   /uniEFF7 /unitEFF5 % /capitalcircumflex /capitaltilde
-  /Dieresis /Hungarumlaut
+  /Dieresissmall /Hungarumlautsmall
   /uniEFF3 % /capitalring
-  /Caron /Macron
+  /Caronsmall /Macron
   /uniEFED % /capitaldotaccent
   /cedilla /ogonek
   /.notdef
@@ -24,7 +24,7 @@
 % 0x20
   /.notdef % /textblank
   /.notdef /.notdef /.notdef
-  /dollar
+  /uniF653
   /.notdef /.notdef
   /quotesingle
   /.notdef /.notdef
@@ -35,8 +35,8 @@
   /.notdef
   /fraction
 % 0x30
-  /uniF639 /uniF6DC /uniF63A /uniF63B /uniF63C
-  /uniF63D /uniF63E /uniF63F /uniF640 /uniF641
+  /uniF643 /uniF644 /uniF645 /uniF646 /uniF647
+  /uniF648 /uniF649 /uniF64A /uniF64B /uniF64C
   /.notdef /.notdef
   /.notdef % /textlangle
   /minus
@@ -77,16 +77,16 @@
   /perthousand
   /bullet
   /.notdef % /textcelsius
-  /dollaroldstyle
-  /centoldstyle
-  /florin.oldstyle
-  /colonmonetary.oldstyle
+  /uniF653
+  /uniF654
+  /uniF64F
+  /uniF64D
   /textwon
   /textnaira
 % 0x90
   /.notdef % /textguarani
   /peseta
-  /lira.oldstyle
+  /uniE041
   /.notdef /.notdef /.notdef /.notdef % /textrecipe /textinterrobang /textinterrobangdown /textdong
   /trademark
   /.notdef % /textpertenthousand
@@ -98,7 +98,7 @@
   /.notdef /.notdef % /textopenbullet /textservicemark
 % 0xA0
   /.notdef /.notdef % /textlquill /textrquill
-  /cent /sterling.oldstyle /currency /yen.oldstyle /brokenbar /section
+  /uniF654 /uniF651 /currency /uniF652 /brokenbar /section
   /dieresis
   /copyright /ordfeminine
   /.notdef % /textcopyleft
@@ -110,7 +110,7 @@
   /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph
   /periodcentered
   /.notdef % /referencemark
-  /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro.oldstyle
+  /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /uniF64E
 % 0xC0
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

@@ -35,8 +35,8 @@
   /.notdef
   /fraction
 % 0x30
-  /uniF639 /uniF6DC /uniF63A /uniF63B /uniF63C
-  /uniF63D /uniF63E /uniF63F /uniF640 /uniF641
+  /uniF643 /uniF644 /uniF645 /uniF646 /uniF647
+  /uniF648 /uniF649 /uniF64A /uniF64B /uniF64C
   /.notdef /.notdef
   /.notdef % /textlangle
   /minus
@@ -79,14 +79,14 @@
   /.notdef % /textcelsius
   /dollaroldstyle
   /centoldstyle
-  /florin.oldstyle
-  /colonmonetary.oldstyle
+  /florin
+  /colonmonetary
   /textwon
   /textnaira
 % 0x90
   /.notdef % /textguarani
   /peseta
-  /lira.oldstyle
+  /lira
   /.notdef /.notdef /.notdef /.notdef % /textrecipe /textinterrobang /textinterrobangdown /textdong
   /trademark
   /.notdef % /textpertenthousand
@@ -94,11 +94,11 @@
   /.notdef % /textbaht
   /afii61352 % /textnumero
   /.notdef % /textdiscount
-  /estimated.oldstyle
+  /estimated
   /.notdef /.notdef % /textopenbullet /textservicemark
 % 0xA0
   /.notdef /.notdef % /textlquill /textrquill
-  /cent /sterling.oldstyle /currency /yen.oldstyle /brokenbar /section
+  /cent /sterling /currency /yen /brokenbar /section
   /dieresis
   /copyright /ordfeminine
   /.notdef % /textcopyleft
@@ -110,7 +110,7 @@
   /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph
   /periodcentered
   /.notdef % /referencemark
-  /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro.oldstyle
+  /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro
 % 0xC0
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

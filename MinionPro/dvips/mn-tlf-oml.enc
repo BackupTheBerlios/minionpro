@@ -1,7 +1,7 @@
 % TeX math italic encoding.
 %
-/MinionPro-OSFOMLEncoding [          % now 256 chars follow
-% 0x00
+/MinionPro-OMLEncoding [          % now 256 chars follow
+% 0x0
 /Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon
 /Phi /Psi /Omega /alpha /beta /gamma /delta
 /afii10101   % this is not the right glyph but looks similar
@@ -13,9 +13,8 @@
 /arrowlefttophalf /arrowleftbothalf /arrowrighttophalf /arrowrightbothalf
 /arrowhookleft /arrowhookright /triangleright /triangleleft
 % 0x30
-/uniF643 /uniF644 /uniF645 /uniF646 /uniF647
-/uniF648 /uniF649 /uniF64A /uniF64B /uniF64C 
-/period /comma /less /slash /greater /star
+/uniF639 /uniF6DC /uniF63A /uniF63B /uniF63C
+/uniF63D /uniF63E /uniF63F /uniF640 /uniF641 
 % 0x40
 /partialdiff /A /B /C /D /E /F /G
 /H /I /J /K /L /M /N /O

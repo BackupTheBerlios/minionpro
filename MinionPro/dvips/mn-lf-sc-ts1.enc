@@ -35,8 +35,8 @@
   /.notdef
   /fraction
 % 0x30
-  /zero /one /two /three /four
-  /five /six /seven /eight /nine
+  /zerooldstyle /oneoldstyle /twooldstyle /threeoldstyle /fouroldstyle
+  /fiveoldstyle /sixoldstyle /sevenoldstyle /eightoldstyle /nineoldstyle
   /.notdef /.notdef
   /.notdef % /textlangle
   /minus
