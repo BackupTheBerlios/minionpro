@@ -9,14 +9,20 @@
 % figure style
 
 \def\Mn@Capt{}
+\def\Mn@Text@FigA{}
+\def\Mn@Text@FigB{OsF}
+\def\Mn@Text@Fig{\Mn@Text@FigA\Mn@Text@FigB}
+\def\Mn@Math@Fig{OsF}
+\def\Mn@Text@Family{Minion-\Mn@Text@Fig\Mn@Capt}
+\def\Mn@Math@Family{Minion-\Mn@Math@Fig\Mn@Capt}
 
 \DeclareOption{slides}{\def\Mn@Capt{-C}}
-\DeclareOption{textosf}{\def\Mn@Text@Fig{OsF}}
-\DeclareOption{textlf}{\def\Mn@Text@Fig{LF}}
+\DeclareOption{textosf}{\def\Mn@Text@FigB{OsF}}
+\DeclareOption{textlf}{\def\Mn@Text@FigB{LF}}
 \DeclareOption{mathosf}{\def\Mn@Math@Fig{OsF}}
 \DeclareOption{mathlf}{\def\Mn@Math@Fig{LF}}
-\DeclareOption{osf}{\def\Mn@Text@Fig{OsF}\def\Mn@Math@Fig{OsF}}
-\DeclareOption{lf}{\def\Mn@Text@Fig{LF}\def\Mn@Math@Fig{LF}}
+\DeclareOption{osf}{\def\Mn@Text@FigB{OsF}\def\Mn@Math@Fig{OsF}}
+\DeclareOption{lf}{\def\Mn@Text@FigB{LF}\def\Mn@Math@Fig{LF}}
 
 % calligraphic fonts
 
@@ -27,8 +33,8 @@
 \DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
 \DeclareOption{swash}{
   \def\Mn@load@cal{
-    \DeclareMathAlphabet\mathcal  {T1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{sw}
-    \SetMathAlphabet\mathcal{bold}{T1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{sw}}
+    \DeclareMathAlphabet\mathcal  {T1}{\Mn@Math@Family}{m}{sw}
+    \SetMathAlphabet\mathcal{bold}{T1}{\Mn@Math@Family}{b}{sw}}
 }
 
 % greek letters
@@ -81,31 +87,31 @@
 
 % declare the fonts
 
-\renewcommand\rmdefault{Minion-\Mn@Text@Fig\Mn@Capt}
+\renewcommand\rmdefault{\Mn@Text@Family}
 \renewcommand\bfdefault{sb}
 
-\DeclareSymbolFont{operators}   {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{n}
-\DeclareSymbolFont{letters}     {OML}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{it}
-\DeclareSymbolFont{rmletters}   {OML}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{n}
-\SetSymbolFont{operators} {bold}{OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{n}
-\SetSymbolFont{letters}   {bold}{OML}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{it}
-\SetSymbolFont{rmletters} {bold}{OML}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{n}
-\DeclareMathAlphabet\mathbf     {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{n}
-\DeclareMathAlphabet\mathit     {OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{m}{it}
-\SetMathAlphabet\mathit   {bold}{OT1}{Minion-\Mn@Math@Fig\Mn@Capt}{b}{it}
+\DeclareSymbolFont{operators}   {OT1}{\Mn@Math@Family}{m}{n}
+\DeclareSymbolFont{letters}     {OML}{\Mn@Math@Family}{m}{it}
+\DeclareSymbolFont{rmletters}   {OML}{\Mn@Math@Family}{m}{n}
+\SetSymbolFont{operators} {bold}{OT1}{\Mn@Math@Family}{b}{n}
+\SetSymbolFont{letters}   {bold}{OML}{\Mn@Math@Family}{b}{it}
+\SetSymbolFont{rmletters} {bold}{OML}{\Mn@Math@Family}{b}{n}
+\DeclareMathAlphabet\mathbf     {OT1}{\Mn@Math@Family}{b}{n}
+\DeclareMathAlphabet\mathit     {OT1}{\Mn@Math@Family}{m}{it}
+\SetMathAlphabet\mathit   {bold}{OT1}{\Mn@Math@Family}{b}{it}
 
 % figures
 
-\newcommand*\tabularfigures[1]{{\fontencoding{OML}\selectfont#1}}
-\newcommand*\liningfigures[1]{{\fontfamily{Minion-LF\Mn@Capt}\selectfont#1}}
-\newcommand*\textfigures[1]{{\fontfamily{Minion-OsF\Mn@Capt}\selectfont#1}}
+\define@key{figures}{osf}[]{\def\Mn@Text@FigB{OsF}}
+\define@key{figures}{lf}[]{\def\Mn@Text@FigB{LF}}
+\define@key{figures}{tabular}[]{\def\Mn@Text@FigA{T}}
+\define@key{figures}{proportional}[]{\def\Mn@Text@FigA{}}
 
-\define@key{figures}{osf}[]{\fontfamily{Minion-OsF\Mn@Capt}\selectfont}
-\define@key{figures}{lf}[]{\fontfamily{Minion-LF\Mn@Capt}\selectfont}
-\define@key{figures}{tabular}[]{\fontencoding{OML}\selectfont}
-\define@key{figures}{proportional}[]{\fontencoding\encodingdefault\selectfont}
+\newcommand*\figureversion[1]{\setkeys{figures}{#1}\fontfamily\Mn@Text@Family\selectfont}
 
-\newcommand*\figureversion[1]{\setkeys{figures}{#1}}
+\newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
+\newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
+\newcommand*\textfigures[1]{{\figureversion{tabular}#1}}
 
 \DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
 \DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
