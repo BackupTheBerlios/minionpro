@@ -1,11 +1,11 @@
 Brief installation instructions as of 2005-02-17
-- make a directory otf/ in the MinionPro directory
+- make a directory otf/ in the MyriadPro directory
 - copy all files with extension .otf into it.
 - run ./scripts/makeall
 - run ./scripts/install to copy the files to the localtexmf tree
                         or specify the target directory as parameter
 
-You need following programmes:
+You need the following programmes:
 - cfftot1, otftotfm (Part of LCDF tools, http://www.lcdf.org/~eddietwo/type/).
-  You need at least v2.20 or higher
-- a recent fontinst (the version shipped with debian testing does not suffice)
+  You need at least v2.25 or higher
+- fontinst v1.925 or higher

@@ -87,7 +87,7 @@ make_normal_metrics() {
     *It*) make_tfm "$1" ot1 $2-ot1       -fliga --unicoding 'dollar =: sterling' $flags
           make_tfm "$1" ot1 $2-sc-ot1    -fliga --unicoding 'dollar =: sterling' --unicoding 'germandbls =: SSsmall' $sc_flags
           make_tfm "$1" ot1 $2-sc-l2-ot1 -L 80  --unicoding 'dollar =: sterling' --unicoding 'germandbls =: SSsmall' $sc_flags
-          make_tfm "$1" lgr $2-lgr       -fliga -sgrek $flags --unicoding 'kappa =: uni03F0' --unicoding 'theta =: uni03D1';;
+          make_tfm "$1" lgr $2-lgr       -fliga -sgrek $flags --unicoding 'kappa =: kappasymbolgreek kappa' --unicoding 'theta =: theta1 theta';;
     *)    make_tfm "$1" ot1 $2-ot1       -fliga $flags
           make_tfm "$1" ot1 $2-sc-ot1    -fliga --unicoding 'germandbls =: SSsmall' $sc_flags
           make_tfm "$1" ot1 $2-sc-l2-ot1 -L 80  --unicoding 'germandbls =: SSsmall' $sc_flags
@@ -124,7 +124,7 @@ make_spread_metrics() {
   case "$1" in
     *It*) make_tfm "$1" ot1 $2-l1-ot1       -L 40 --unicoding 'dollar =: sterling' $flags
           make_tfm "$1" ot1 $2-sc-l1-ot1    -L 40 --unicoding 'dollar =: sterling' --unicoding 'germandbls =: SSsmall' $sc_flags
-          make_tfm "$1" lgr $2-l1-lgr       -L 40 -sgrek $flags --unicoding 'kappa =: uni03D1' --unicoding 'uni03D1 =: uni03D1';;
+          make_tfm "$1" lgr $2-l1-lgr       -L 40 -sgrek $flags --unicoding 'kappa =: kappasymbolgreek kappa' --unicoding 'theta =: theta1 theta';;
     *)    make_tfm "$1" ot1 $2-l1-ot1       -L 40 $flags
           make_tfm "$1" ot1 $2-sc-l1-ot1    -L 40 --unicoding 'germandbls =: SSsmall' $sc_flags
           make_tfm "$1" lgr $2-l1-lgr       -L 40 -sgrek $flags;;
