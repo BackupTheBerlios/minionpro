@@ -203,7 +203,10 @@
   \def\Mn@minionint@version{-NoOpticals}
   \def\Mn@minionintbold@version{Semibold-NoOpticals}}
 
-\DeclareOption{smallfamily}{\def\Mn@minionintbold@version{Bold-NoOpticals}\PassOptionsToPackage{smallfamily,noopticals}{MinionPro-FontDef}}
+\DeclareOption{smallfamily}{%
+  \def\Mn@minionint@version{-NoOpticals}
+  \def\Mn@minionintbold@version{Bold-NoOpticals}
+  \PassOptionsToPackage{smallfamily,noopticals}{MinionPro-FontDef}}
 \DeclareOption{medfamily}{\PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
 \DeclareOption{fullfamily}{\PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
 
