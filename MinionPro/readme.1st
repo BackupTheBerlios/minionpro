@@ -1,5 +1,5 @@
 Brief installation instructions as of 2005-02-17
-- make a directory otf/ in the MyriadPro directory
+- make a directory otf/ in the MinionPro directory
 - copy all files with extension .otf into it.
 - run ./scripts/makeall
 - run ./scripts/install to copy the files to the localtexmf tree
