@@ -11,7 +11,7 @@ fi
 
 make_tfm() {
   echo -n " $3," >&2
-  otftotfm --no-dotlessj -k5 -fliga -fkern $4 -e enc/mn-$2.enc otf/$font-$1.otf $font-$1-$3
+  otftotfm --no-dotlessj -fliga -fkern $4 -e enc/mn-$2.enc otf/$font-$1.otf $font-$1-$3
 }
 
 make_normal_metrics() {
@@ -43,8 +43,8 @@ make_oml_metrics() {
 
   make_tfm "$1" oml $2-oml       "$3"
   make_tfm "$1" oml $2-l1-oml    "-L 40 $3"
-  make_tfm "$1" integral $2-cn-integral    "-E 0.85 $3"
-#  make_tfm "$1" integral $2-cn-l1-oml "-E 0.85 -L 40 $3"
+  make_tfm "$1" integral $2-cn-integral    "-E 0.85 $3"  # -E .90 ??
+#  make_tfm "$1" integral $2-cn-l1-integral "-E 0.85 -L 40 $3"  # -E .90 ??
 }
 
 make_spread_metrics() {
@@ -76,15 +76,15 @@ make_metrics() {
   make_normal_metrics     "$1" osf  "-fonum -fpnum"
   make_normal_metrics     "$1" tosf "-fonum -ftnum"
 
-  make_normal_ts1_metrics "$1" lf   "-fpnum"
-  make_normal_ts1_metrics "$1" tlf  "-ftnum"
-  make_normal_ts1_metrics "$1" osf  "-fonum -fpnum"
-  make_normal_ts1_metrics "$1" tosf "-fonum -ftnum"
+  make_normal_ts1_metrics "$1" lf   "-fpnum"        # "-fonum -fpnum"
+  make_normal_ts1_metrics "$1" tlf  "-ftnum"        # "-fonum -ftnum"
+  make_normal_ts1_metrics "$1" osf  "-fonum -fpnum" # "-flnum -fpnum"
+  make_normal_ts1_metrics "$1" tosf "-fonum -ftnum" # "-flnum -ftnum"
 
-#  make_oml_metrics        "$1" lf   "-flnum -ftnum"
+  make_oml_metrics        "$1" lf   "-flnum -ftnum"
   make_oml_metrics        "$1" tlf  "-flnum -fpnum"
-#  make_oml_metrics        "$1" osf  "-fonum -ftnum"
-#  make_oml_metrics        "$1" tosf "-fonum -fpnum"
+  make_oml_metrics        "$1" osf  "-fonum -ftnum"
+  make_oml_metrics        "$1" tosf "-fonum -fpnum"
 
   make_tfm "$1" orn-u orn-u ""
 
@@ -100,10 +100,10 @@ make_spaced_metrics() {
   make_spread_metrics     "$1" osf  "-fonum -fpnum"
   make_spread_metrics     "$1" tosf "-fonum -ftnum"
 
-  make_spread_ts1_metrics "$1" lf   "-fpnum"
-  make_spread_ts1_metrics "$1" tlf  "-ftnum"
-  make_spread_ts1_metrics "$1" osf  "-fonum -fpnum"
-  make_spread_ts1_metrics "$1" tosf "-fonum -ftnum"
+  make_spread_ts1_metrics "$1" lf   "-fpnum"        # "-fonum -fpnum"
+  make_spread_ts1_metrics "$1" tlf  "-ftnum"        # "-fonum -ftnum"
+  make_spread_ts1_metrics "$1" osf  "-fonum -fpnum" # "-flnum -fpnum"
+  make_spread_ts1_metrics "$1" tosf "-fonum -ftnum" # "-flnum -ftnum"
 
   echo " done." >&2
 }
@@ -152,12 +152,12 @@ make_series() {
     fi
   done
 
-  if [ "x$1" = "x" ]
-  then 
-    make_spaced_metrics Regular
-  else
-    make_spaced_metrics "$1"
-  fi
+#  if [ "x$1" = "x" ]
+#  then 
+#    make_spaced_metrics Regular
+#  else
+#    make_spaced_metrics "$1"
+#  fi
   make_spaced_metrics "$1Capt"
 }
 

@@ -428,13 +428,12 @@
 
 %% define additional symbols
 
-\DeclareMathSymbol{\jmath}{\mathord}{letters}{"7C}
-\DeclareTextSymbol{\j}{OML}{"7C}
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\hbar}       {\mathord}{letters}{"81}
 \DeclareMathSymbol{\digamma}    {\mathord}{letters}{"82}
+\DeclareTextSymbol{\j}{OML}{"7C}
 \DeclareTextCommandDefault{\pounds}{\textsterling}
-\DeclareTextCommandDefault{\textcompwordmark}{\leavemode\kern\z@}
+%\DeclareTextCommandDefault{\textcompwordmark}{\leavemode\kern\z@}
 
 \DeclareFontFamily{OML}{MinionPro-Integral-Text}{}
 \DeclareFontFamily{OML}{MinionPro-Integral-Display}{}
@@ -1221,12 +1220,12 @@
 %<*OMLlf>
 \ProvidesFile{OMLMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-LF}{tlf}{oml}
+\MnDeclareMathFontFamily{OML}{MinionPro-LF}{lf}{oml}
 %</OMLlf>
 %<*OMLosf>
 \ProvidesFile{OMLMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-OsF}{tlf}{oml}
+\MnDeclareMathFontFamily{OML}{MinionPro-OsF}{osf}{oml}
 %</OMLosf>
 %<*OMLtlf>
 \ProvidesFile{OMLMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TLF.]
@@ -1236,7 +1235,7 @@
 %<*OMLtosf>
 \ProvidesFile{OMLMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-TOsF}{tlf}{oml}
+\MnDeclareMathFontFamily{OML}{MinionPro-TOsF}{tosf}{oml}
 %</OMLtosf>
 %<*OT1lf>
 \ProvidesFile{OT1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-LF.]

@@ -2,9 +2,10 @@
 %
 % LIGKERN f {L} b ; ff {L} b ; f {L} h ; ff {L} h ; f {L} k ; ff {L} k
 % LIGKERN Tcedilla {L} h ; Tcaron {L} h
-% LIGKERN less less =: guillemotleft ;
-% LIGKERN greater greater =: guillemotright ;
-
+% LIGKERN less less =: guillemotleft
+% LIGKERN greater greater =: guillemotright
+% LIGKERN ff {L} j
+%
 /MinionPro-T1Encoding [          % now 256 chars follow
 % 0x00
   /grave /acute /circumflex /tilde /dieresis /hungarumlaut /ring /caron
@@ -13,7 +14,7 @@
 % 0x10
   /quotedblleft /quotedblright /quotedblbase /guillemotleft 
   /guillemotright /endash /emdash
-  /.notdef %/compwordmark
+  /compwordmark
   /.notdef %/perthousandzero
   /dotlessi
   /.notdef %/dotlessj

@@ -34,10 +34,10 @@ do
 done
 
 mv a_*.enc    dvips
-#mv *.pl       pl
+mv *.pl       pl
 mv *.pfb      pfb
 mv *.vf       vf
-#mv *.vpl      vpl
+mv *.vpl      vpl
 mv *base*.tfm tfm   # Split this move in two parts as the arg. list is too large.
 mv *.tfm      tfm
 
