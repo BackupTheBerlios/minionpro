@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tftopl MnSymbolF10.tfm                              MnSymbolF10.pl
+#tftopl MnSymbolF10.tfm                              MnSymbolF10.pl
 tftopl ../tfm/MinionPro-It-osf-oml--base.tfm        MinionPro-It-osf-oml--base.pl
 tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm     MinionPro-It-osf-cn2-integral.pl
 tftopl ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm MinionPro-ItDisp-osf-cn1-integral.pl

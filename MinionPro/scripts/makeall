@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p pfb pl tfm vf vpl dvips
+mkdir -p pfb tfm vf dvips
 
 echo "Creating PostScript fonts ..."
 
@@ -35,11 +35,15 @@ echo "Creating TeX metrics ..."
 
 mv a_*.enc    dvips
 mv *.pfb      pfb
-mv *.vf       vf
-mv *base*.tfm tfm   # Split this move in two parts as the arg. list is too large.
-mv *.tfm      tfm
-#mv *.pl       pl
-#mv *.vpl      vpl
+mv *tosf*.vf  vf
+mv *osf*.vf   vf
+mv *tlf*.vf   vf
+mv *lf*.vf    vf
 
+mv *tosf*.tfm tfm
+mv *osf*.tfm  tfm
+mv *tlf*.tfm  tfm
+mv *lf*.tfm   tfm
+mv *.tfm      tfm
 (cd fontinst; ../scripts/makeint)
 

@@ -216,7 +216,7 @@ make_additional_italic() {
   make_spaced_swash_metrics "$1Capt"
 }
 
-for series in "" Semibold Bold
+for series in "" Medium Semibold Bold
 do
   make_series "$series" &
   make_series "${series}It"
