@@ -83,6 +83,18 @@ make_spaced_swash_metrics() {
   echo " done." >&2
 }
 
+make_math_metrics() {
+  echo -n "Processing font $font-$1 ..." >&2
+
+  make_simple_tfm "$1" lf-oml  7m
+  make_simple_tfm "$1" osf-oml OSF-7m
+
+  make_spread_tfm "$1" lf-oml  L-7m    7m     20
+  make_spread_tfm "$1" osf-oml OSFL-7m OSF-7m 20
+
+  echo " done." >&2
+}
+
 make_series() {
   series="$1"
 
@@ -99,24 +111,25 @@ make_series() {
   make_spaced_metrics "${series}Capt"
 }
 
-make_swash() {
+make_additional_italic() {
   series="$1"
 
   for sub in "" Capt Disp Subh
   do
     make_swash_metrics "$series$sub"
+    make_math_metrics  "$series$sub-Cn"
   done
 
   make_spaced_swash_metrics "${series}Capt"
 }
 
-make_series "" #&
+make_series "" &
 make_series It
-make_swash  It
-make_series Semibold #&
+make_additional_italic  It
+make_series Semibold &
 make_series SemiboldIt
-make_swash  SemiboldIt
-make_series Bold #&
+make_additional_italic  SemiboldIt
+make_series Bold &
 make_series BoldIt
-make_swash  BoldIt
+make_additional_italic  BoldIt
 
