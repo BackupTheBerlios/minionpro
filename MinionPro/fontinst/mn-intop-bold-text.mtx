@@ -11,12 +11,14 @@
 
 \setglyph{tmnint}
   %\glyph{tint}{1000}\movert{400}
+  \movert{80}
   \glyph{tintegral}{1000}
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
 \setglyph{tmniint}
   %\glyph{tiint}{1000}\movert{400}
+  \movert{80}
   \glyph{tintegral}{1000}\movert{-10}
   \glyph{tintegral}{1000}
   \resetitalic{\italic{tintegral}}
@@ -24,6 +26,7 @@
 
 \setglyph{tmniiint}
   %\glyph{tiiint}{1000}\movert{400}
+  \movert{80}
   \glyph{tintegral}{1000}\movert{-10}
   \glyph{tintegral}{1000}\movert{-10}
   \glyph{tintegral}{1000}
@@ -32,6 +35,7 @@
 
 \setglyph{tmniiiint}
   %\glyph{tiiiint}{1000}\movert{400}
+  \movert{80}
   \glyph{tintegral}{1000}\movert{-10}
   \glyph{tintegral}{1000}\movert{-10}
   \glyph{tintegral}{1000}\movert{-10}
@@ -41,6 +45,7 @@
 
 \setglyph{tmnidotsint}
   %\glyph{tidotsint}{1000}\movert{400}
+  \movert{80}
   \glyph{tintegral}{1000}
   \movert{510}
   \glyph{tintegral}{1000}
@@ -53,26 +58,33 @@
 
 \setglyph{tmnlandupint}
   %\glyph{tlandupint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \push
-  \movert{-520}
+  \movert{-540}
   \glyph{tplandupint}{1000}
   \pop
+  \movert{150}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-150}}
 \endsetglyph
 
 \setglyph{tmnlanddownint}
   %\glyph{tlanddownint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \push
   \movert{-500}
   \glyph{tplanddownint}{1000}
   \pop
+  \movert{150}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-150}}
 \endsetglyph
 
 \setglyph{tmnstrokedint}
   %\glyph{tstrokedint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \push
   \movert{-520}
@@ -83,73 +95,94 @@
 
 \setglyph{tmnoint}
   %\glyph{toint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \push
   \movert{-520}
   \glyph{tpoint}{1000}
   \pop
+  \movert{200}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-200}}
 \endsetglyph
 
 \setglyph{tmnoiint}
   %\glyph{toiint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \glyph{tintegral}{1000}
   \push
   \movert{-805}
   \glyph{tpoiint}{1000}
   \pop
+  \movert{250}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-250}}
 \endsetglyph
 
 \setglyph{tmnrcirclerightint}
   %\glyph{tcircleleftint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \push
   \movert{-505}
   \glyph{tprcirclerightint}{1000}
   \pop
+  \movert{250}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-250}}
 \endsetglyph
 
 \setglyph{tmnlcirclerightint}
   %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{130}
   \glyph{tintegral}{1000}
   \push
   \movert{-505}
   \glyph{tplcirclerightint}{1000}
   \pop
+  \movert{250}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-250}}
 \endsetglyph
 
 \setglyph{tmnrcircleleftint}
   %\glyph{tcircleleftint}{1000}\movert{400}
+  \movert{150}
   \glyph{tintegral}{1000}
   \push
   \movert{-515}
   \glyph{tprcircleleftint}{1000}
   \pop
+  \movert{200}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-200}}
 \endsetglyph
 
 \setglyph{tmnlcircleleftint}
   %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{150}
   \glyph{tintegral}{1000}
   \push
   \movert{-515}
   \glyph{tplcircleleftint}{1000}
   \pop
+  \movert{200}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-200}}
 \endsetglyph
 
 \setglyph{tmnsumint}
   %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{110}
   \glyph{tintegral}{1000}
   \push
   \movert{-500}
   \glyph{tpsumint}{1000}
   \pop
+    \movert{150}
   \resetitalic{\italic{tintegral}}
+  \resetitalic{\add{\italic{tintegral}}{-150}}
 \endsetglyph
 
 \endmetrics

@@ -11,14 +11,14 @@
 
 \setglyph{dmnint}
   %\glyph{dint}{1000}\movert{400}
-  \movert{150}
+  \movert{240}
   \glyph{dintegral}{1000}
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
 \setglyph{dmniint}
   %\glyph{diint}{1000}\movert{400}
-  \movert{150}
+  \movert{240}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}
   \resetitalic{\italic{dintegral}}
@@ -26,7 +26,7 @@
 
 \setglyph{dmniiint}
   %\glyph{diiint}{1000}\movert{400}
-  \movert{150}
+  \movert{240}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}
@@ -35,7 +35,7 @@
 
 \setglyph{dmniiiint}
   %\glyph{diiiint}{1000}\movert{400}
-  \movert{150}
+  \movert{240}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}\movert{10}
@@ -45,7 +45,7 @@
 
 \setglyph{dmnidotsint}
   %\glyph{didotsint}{1000}\movert{400}
-  \movert{150}
+  \movert{240}
   \glyph{dintegral}{1000}
   \movert{840}
   \glyph{dintegral}{1000}
@@ -102,7 +102,7 @@
 
 \setglyph{dmnoiint}
   %\glyph{doiint}{1000}\movert{400}
-  \movert{250}
+  \movert{320}
   \glyph{dintegral}{1000}
   \movert{-100}
   \glyph{dintegral}{1000}
@@ -137,7 +137,7 @@
 
 \setglyph{dmnrcircleleftint}
   %\glyph{dcirclelefttint}{1000}\movert{400}
-  \movert{250}
+  \movert{300}
   \glyph{dintegral}{1000}
   \push
   \movert{-655}
@@ -148,7 +148,7 @@
 
 \setglyph{dmnlcircleleftint}
   %\glyph{dcirclerightint}{1000}\movert{400}
-  \movert{250}
+  \movert{300}
   \glyph{dintegral}{1000}
   \push
   \movert{-655}
@@ -159,6 +159,7 @@
 
 \setglyph{dmnsumint}
   %\glyph{tcirclerightint}{1000}\movert{400}
+  \movert{290}
   \glyph{dintegral}{1000}
   \push
   \movert{-640}
