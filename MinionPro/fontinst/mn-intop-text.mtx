@@ -9,139 +9,138 @@
   \resetwidth{\add{\width{tintegral}}{-100}}
 \endsetglyph
 
-\setglyph{tint}
-  %\glyph{mntint}{1000}\movert{400}
+\setglyph{tmnint}
+  %\glyph{tint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tiint}
-  %\glyph{mntiint}{1000}\movert{400}
-  \glyph{tintegral}{1000}\movert{-30}
-  \glyph{tintegral}{1000}
-  \resetitalic{\italic{tintegral}}
-\endsetglyph
-
-\setglyph{tiiint}
-  %\glyph{mntiiint}{1000}\movert{400}
-  \glyph{tintegral}{1000}\movert{-30}
+\setglyph{tmniint}
+  %\glyph{tiint}{1000}\movert{400}
   \glyph{tintegral}{1000}\movert{-30}
   \glyph{tintegral}{1000}
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tiiiint}
-  %\glyph{mntiiiint}{1000}\movert{400}
-  \glyph{tintegral}{1000}\movert{-30}
+\setglyph{tmniiint}
+  %\glyph{tiiint}{1000}\movert{400}
   \glyph{tintegral}{1000}\movert{-30}
   \glyph{tintegral}{1000}\movert{-30}
   \glyph{tintegral}{1000}
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tidotsint}
-  %\glyph{mntidotsint}{1000}\movert{400}
-  \glyph{tintegral}{1000}
-  \moveup{420}
-  %\movert{-100}
-  \glyph{period}{1000}\movert{-20}
-  \glyph{period}{1000}\movert{-20}
-  \glyph{period}{1000}
-  \movert{-80}
-  \moveup{-420}
+\setglyph{tmniiiint}
+  %\glyph{tiiiint}{1000}\movert{400}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}\movert{-30}
+  \glyph{tintegral}{1000}\movert{-30}
   \glyph{tintegral}{1000}
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tlandupint}
-  %\glyph{mntlandupint}{1000}\movert{400}
+\setglyph{tmnidotsint}
+  %\glyph{tidotsint}{1000}\movert{400}
+  \glyph{tintegral}{1000}
+  \movert{480}
+  \glyph{tintegral}{1000}
+  \push
+  \movert{-1010}
+  \glyph{tpidotsint}{1000}
+  \pop
+  \resetitalic{\italic{tintegral}}
+\endsetglyph
+
+\setglyph{tmnlandupint}
+  %\glyph{tlandupint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-490}
-  \glyph{mnptlandupint}{1000}
+  \glyph{tplandupint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tlanddownint}
-  %\glyph{mntlanddownint}{1000}\movert{400}
+\setglyph{tmnlanddownint}
+  %\glyph{tlanddownint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptlanddownint}{1000}
+  \glyph{tplanddownint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tstrokedint}
-  %\glyph{mntstrokedint}{1000}\movert{400}
+\setglyph{tmnstrokedint}
+  %\glyph{tstrokedint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptstrokedint}{1000}
+  \glyph{tpstrokedint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{toint}
-  %\glyph{mntoint}{1000}\movert{400}
+\setglyph{tmnoint}
+  %\glyph{toint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptoint}{1000}
+  \glyph{tpoint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{toiint}
-  %\glyph{mntoiint}{1000}\movert{400}
+\setglyph{tmnoiint}
+  %\glyph{toiint}{1000}\movert{400}
   \glyph{tintegral}{1000}\movert{-30}
   \glyph{tintegral}{1000}
   \push
   \movert{-755}
-  \glyph{mnptoiint}{1000}
+  \glyph{tpoiint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{trcirclerightint}
-  %\glyph{mntcircleleftint}{1000}\movert{400}
+\setglyph{tmnrcirclerightint}
+  %\glyph{tcircleleftint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptrcirclerightint}{1000}
+  \glyph{tprcirclerightint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tlcirclerightint}
-  %\glyph{mntcirclerightint}{1000}\movert{400}
+\setglyph{tmnlcirclerightint}
+  %\glyph{tcirclerightint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptlcirclerightint}{1000}
+  \glyph{tplcirclerightint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{trcircleleftint}
-  %\glyph{mntcircleleftint}{1000}\movert{400}
+\setglyph{tmnrcircleleftint}
+  %\glyph{tcircleleftint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptrcircleleftint}{1000}
+  \glyph{tprcircleleftint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
-\setglyph{tlcircleleftint}
-  %\glyph{mntcirclerightint}{1000}\movert{400}
+\setglyph{tmnlcircleleftint}
+  %\glyph{tcirclerightint}{1000}\movert{400}
   \glyph{tintegral}{1000}
   \push
   \movert{-480}
-  \glyph{mnptlcircleleftint}{1000}
+  \glyph{tplcircleleftint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
 \endsetglyph
 
 \endmetrics
+% vim:set ft=tex:

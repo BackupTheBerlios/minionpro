@@ -6,11 +6,14 @@
 %</dtx>
 %<*driver>
 \documentclass{ltxdoc}
+\usepackage{MinionPro}
 \begin{document}
 \DocInput{MinionPro.dtx}
 \end{document}
 %</driver>
 %\fi
+%
+% \newcommand*\?{\kern0.08em}
 %
 % \title{MinionPro Support for \LaTeX}
 % \author{Achim Blumensath \and Michael Zedler}
@@ -21,6 +24,7 @@
 %
 % \section{The main style file}
 %
+% \figureversion{tabular}
 %    \begin{macrocode}
 %<*style>
 \ProvidesPackage{MinionPro}[2005/01/23 v2.0 support for MinionPro]
@@ -28,7 +32,6 @@
 \RequirePackage{MinionPro-Protrude}
 
 \DeclareOption{protrude}{\enableprotruding}
-\DeclareOption{fleqn}{\PassOptionsToPackage{fleqn}{MnSymbol}}
 
 \DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
 \DeclareOption{noopticals}{\PassOptionsToPackage{noopticals}{MinionPro-FontDef}}
@@ -151,45 +154,38 @@
 \SetSymbolFont{operators}{tabular}{OT1}{\Mn@Math@TFamily}{m}{n}
 \SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
 \SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
-%   \end{macrocode}
+%    \end{macrocode}
 %
 % \begin{macro}{figureversion}
+% The command |\figureversion| is used to select different figure (digit)
+% styles. Valid figure styles, which can be specified in the argument to
+% |\figureversion|, are\?:
+% \begin{description}
+% \item[lf] ordinary boring figure glyphs
+% \item[osf] old style figures
+% \item[tabular] tabular figures (figure glyphs all have the same width)
+% \item[proportional] figures with proportional glyph widths
+% \end{description}
 %
-%   The command |\figureversion| is used to select different figure (digit)
-%   styles. Valid figure styles, which can be specified in the argument to
-%   |\figureversion|, are:
-%   \begin{itemize}
-%     \item ``lf'' -- ordinary boring figure glyphs
-%     \item ``osf'' -- old style figures
-%     \item ``tabular'' -- tabular figures (figure glyphs all have the same width)
-%     \item ``proportional'' -- figures with proportional glyph widths
-%   \end{itemize}
+% First, we need to set up some dummy definitions for keys we will
+% later use for checking arguments against.
 %
-%   \changes{v0.1}{2005/01/08}{added support for multiple keys, separated by
-%       commas, in the argument to |\figureversion|.}
-%   \changes{v0.0}{2005/01/01}{removed dependency on |\define@key|: using the
-%       |keyval| package causes problems together with the |hyperref| package
-%       whenever |\figureversion| is used in captions, et cetera.}
-%
-%   First, we need to set up some dummy definitions for keys we will
-%   later use for checking arguments against.
-%
-%   \begin{macrocode}
+%    \begin{macrocode}
 \def\Mn@Key@lf{0}
 \def\Mn@Key@osf{1}
 \def\Mn@Key@tabular{2}
 \def\Mn@Key@proportional{3}
-%   \end{macrocode}
+%    \end{macrocode}
 %
-%   In principle, we simply iterate over the list of figure versions specified
-%   in the argument to |\figureversion|. For each item of this list we next check
-%   whether the given argument is the same as one of the predefined commands. This
-%   check is basically done by converting the item into a command sequence name,
-%   which will then be expanded by \TeX. Since we have defined command sequences
-%   (commands) for all valid items and assigned simple cardinals to it, we then
-%   can easily select the appropriate font family within a case clause.
+% In principle, we simply iterate over the list of figure versions specified
+% in the argument to |\figureversion|. For each item of this list we next check
+% whether the given argument is the same as one of the predefined commands. This
+% check is basically done by converting the item into a command sequence name,
+% which will then be expanded by \TeX. Since we have defined command sequences
+% (commands) for all valid items and assigned simple cardinals to it, we then
+% can easily select the appropriate font family within a case clause.
 %
-%   \begin{macrocode}
+%    \begin{macrocode}
 \def\figureversion#1{%
   \@for\@fv@arg:=#1\do{%
     \edef\@fv@arg{\expandafter\@firstofone\@fv@arg\@empty}%
@@ -211,14 +207,21 @@
   }%
   \fontfamily\Mn@Text@Family\selectfont
 }
-%   \end{macrocode}
+%    \end{macrocode}
 % \end{macro}
-
+%
+%    \begin{macrocode}
 \newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
 \newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
 \newcommand*\textfigures[1]{{\figureversion{osf}#1}}
 \let\oldstylenums\textfigures
-
+%    \end{macrocode}
+%
+% Greek letters. we provide math-mode commands for each greek letter, both italic and upright.
+% Furthermore, there are three commands to select the default version of the letters (all upright,
+% all italic, or capitals upright and lowercase italic).
+%
+%    \begin{macrocode}
 \DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
 \DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
 \DeclareMathSymbol{\itTheta}     {\mathord}{letters}{"02}
@@ -428,9 +431,11 @@
 }
 
 \Mn@Greek@Shape
-
-%% define additional symbols
-
+%    \end{macrocode}
+%
+% Some symbols missing from MnSymbol can be taken from MinionPro.
+%
+%    \begin{macrocode}
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\hbar}       {\mathord}{letters}{"81}
 \DeclareMathSymbol{\digamma}    {\mathord}{letters}{"82}
@@ -438,125 +443,119 @@
 \DeclareTextCommandDefault{\pounds}{\textsterling}
 \UndeclareTextCommand{\textvisiblespace}{T1}
 \UndeclareTextCommand{\textcompwordmark}{T1}
-
-\DeclareFontFamily{OML}{MinionPro-Integral-Text}{}
-\DeclareFontFamily{OML}{MinionPro-Integral-Display}{}
-\DeclareFontShape{OML}{MinionPro-Integral-Text}{m}{it}{
-    <-6>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
-   <6-8>  s*[1.1] MinionPro-ItCapt-L-7m
-   <8-9>  s*[1.1] MinionPro-ItCapt-L-7m
-   <9-12> s*[1.1] MinionPro-It-L-7m
-  <12-15> s*[1.1] MinionPro-ItSubh-L-7m
-  <15->   s*[1.1] MinionPro-ItDisp-L-7m}{}
-\DeclareFontShape{OML}{MinionPro-Integral-Text}{sb}{it}{
-    <-6>  s*[1.1] MinionPro-BoldItCapt-L-7m
-   <6-8>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
-   <8-9>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
-   <9-12> s*[1.1] MinionPro-SemiboldIt-L-7m
-  <12-15> s*[1.1] MinionPro-SemiboldItSubh-L-7m
-  <15->   s*[1.1] MinionPro-SemiboldItDisp-L-7m}{}
-\DeclareFontShape{OML}{MinionPro-Integral-Text}{b}{it}{
-    <-8>  s*[1.1] MinionPro-BoldItCapt-L-7m
-   <8-9>  s*[1.1] MinionPro-BoldItCapt-L-7m
-   <9-12> s*[1.1] MinionPro-BoldIt-L-7m
-  <12-15> s*[1.1] MinionPro-BoldItSubh-L-7m
-  <15->   s*[1.1] MinionPro-BoldItDisp-L-7m}{}
-\DeclareFontShape{OML}{MinionPro-Integral-Display}{m}{it}{
-    <-6>  s*[1.9] MinionPro-SemiboldIt-Cn-L-7m
-   <6-8>  s*[1.9] MinionPro-It-Cn-L-7m
-   <8-9>  s*[1.9] MinionPro-ItSubh-Cn-L-7m
-   <9->   s*[1.9] MinionPro-ItDisp-Cn-L-7m}{}
-\DeclareFontShape{OML}{MinionPro-Integral-Display}{sb}{it}{
-    <-6>  s*[1.9] MinionPro-BoldIt-Cn-L-7m
-   <6-8>  s*[1.9] MinionPro-SemiboldIt-Cn-L-7m
-   <8-9>  s*[1.9] MinionPro-SemiboldItSubh-Cn-L-7m
-   <9->   s*[1.9] MinionPro-SemiboldItDisp-Cn-L-7m}{}
-\DeclareFontShape{OML}{MinionPro-Integral-Display}{b}{it}{
-    <-8>  s*[1.9] MinionPro-BoldIt-Cn-L-7m
-   <8-9>  s*[1.9] MinionPro-BoldItSubh-Cn-L-7m
-   <9->   s*[1.9] MinionPro-BoldItDisp-Cn-L-7m}{}
-\DeclareMathAlphabet\mathinttext  {OML}{MinionPro-Integral-Text}{m}{it}
-\SetMathAlphabet\mathinttext{bold}{OML}{MinionPro-Integral-Text}{sb}{it}
-\DeclareMathAlphabet\mathintdisp  {OML}{MinionPro-Integral-Display}{m}{it}
-\SetMathAlphabet\mathintdisp{bold}{OML}{MinionPro-Integral-Display}{sb}{it}
-
-\def\centered@op#1#2{\mathop{\vcenter{\hbox{$\m@th#1\Mn@Text@With@MathVersion{#2}$}}}}
-\def\vartintop{\mathpalette\centered@op
-  {\fontencoding{OML}%
-   \fontfamily{MinionPro-Integral-Text}%
-   \fontshape{it}%
-   \selectfont
-   \char"80}}
-\def\vardintop{\mathpalette\centered@op
-  {\fontencoding{OML}%
-   \fontfamily{MinionPro-Integral-Display}%
-   \fontshape{it}%
-   \selectfont
-   \char"80}}
-\def\shiftedvarintkern@{\mkern-5mu\mathchoice{\mkern-2mu}{}{}{}}
-\def\varintkern@{\mkern-11.5mu\mathchoice{\mkern-6mu}{}{}{}}
-\def\varintdots@{\mkern-5mu%
-  \mathchoice{\mkern-1mu\@cdots\mkern-1mu}%
-  {{\cdotp}{\cdotp}{\cdotp}}%
-  {{\cdotp}{\cdotp}{\cdotp}}%
-  {{\cdotp}{\cdotp}{\cdotp}\mkern1mu}%
-  \mkern-6mu}
-
-\def\fake@int#1#2{\DOTSI\pre@int@kern\overstrike{#1}{#2}\ilimits@}
-\def\pre@int@kern{\mathchoice{\mkern0mu}{\mkern-1mu}{\mkern-1mu}{\mkern-1mu}}
-\def\shiftedvarintop{%
-  \mathop{%
-    \mathchoice
-      {\mkern2.5mu\vardintop\mkern-2.5mu}
-      {\mkern2.5mu\vartintop\mkern-2.5mu}
-      {\mkern2.75mu\vartintop\mkern-2.75mu}
-      {\mkern3mu\vartintop\mkern-3mu}}}
-
-\def\varintop{\overstrike\shiftedvarintop\partialvartint}
-
-\newcommand{\VarMultiIntegral}[1]{%
-  \edef\ints@c{\noexpand\varintop
-    \ifnum#1=\z@\noexpand\varintdots@\else\noexpand\varintkern@\fi
-    \ifnum#1>\tw@\noexpand\varintop\noexpand\varintkern@\fi
-    \ifnum#1>\thr@@\noexpand\varintop\noexpand\varintkern@\fi
-    \noexpand\varintop
-    \noexpand\ilimits@
-  }%
-  \futurelet\@let@token\ints@a
-}
-
-\def\varint{\fake@int\shiftedvarintop\partialvartint}
-\def\variint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{2}}
-\def\variiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{3}}
-\def\variiiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{4}}
-\def\varidotsint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{0}}
-
-\def\varlandupint{\fake@int\shiftedvarintop\partialvartlandupint}
-\def\varlanddownint{\fake@int\shiftedvarintop\partialvartlanddownint}
-\def\varstrokedint{\fake@int\shiftedvarintop\partialvartstrokedint}
-\def\varoint{\fake@int\shiftedvarintop\partialvartoint}
-\def\varoiint{\fake@int{\shiftedvarintop\shiftedvarintkern@\shiftedvarintop}\partialvartoiint}
-\def\varrcirclerightint{\fake@int\shiftedvarintop\partialvartrcirclerightint}
-\def\varlcirclerightint{\fake@int\shiftedvarintop\partialvartlcirclerightint}
-\def\varrcircleleftint{\fake@int\shiftedvarintop\partialvartrcircleleftint}
-\def\varlcircleleftint{\fake@int\shiftedvarintop\partialvartlcircleleftint}
-
+%    \end{macrocode}
+%
+% We can also replace the integral signs from MnSymbol by those of MinionPro.
+% The following definitions provide this as an option.
+%
+%    \begin{macrocode}
+%\DeclareMathAlphabet\mathinttext  {OML}{MinionPro-Integral-Text}{m}{it}
+%\SetMathAlphabet\mathinttext{bold}{OML}{MinionPro-Integral-Text}{sb}{it}
+%\DeclareMathAlphabet\mathintdisp  {OML}{MinionPro-Integral-Display}{m}{it}
+%\SetMathAlphabet\mathintdisp{bold}{OML}{MinionPro-Integral-Display}{sb}{it}
+%
+%\def\centered@op#1#2{\mathop{\vcenter{\hbox{$\m@th#1\Mn@Text@With@MathVersion{#2}$}}}}
+%\def\vartintop{\mathpalette\centered@op
+%  {\fontencoding{OML}%
+%   \fontfamily{MinionPro-Integral-Text}%
+%   \fontshape{it}%
+%   \selectfont
+%   \char"80}}
+%\def\vardintop{\mathpalette\centered@op
+%  {\fontencoding{OML}%
+%   \fontfamily{MinionPro-Integral-Display}%
+%   \fontshape{it}%
+%   \selectfont
+%   \char"80}}
+%\def\shiftedvarintkern@{\mkern-5mu\mathchoice{\mkern-2mu}{}{}{}}
+%\def\varintkern@{\mkern-11.5mu\mathchoice{\mkern-6mu}{}{}{}}
+%\def\varintdots@{\mkern-5mu%
+%  \mathchoice{\mkern-1mu\@cdots\mkern-1mu}%
+%  {{\cdotp}{\cdotp}{\cdotp}}%
+%  {{\cdotp}{\cdotp}{\cdotp}}%
+%  {{\cdotp}{\cdotp}{\cdotp}\mkern1mu}%
+%  \mkern-6mu}
+%
+%\def\fake@int#1#2{\DOTSI\pre@int@kern\overstrike{#1}{#2}\ilimits@}
+%\def\pre@int@kern{\mathchoice{\mkern0mu}{\mkern-1mu}{\mkern-1mu}{\mkern-1mu}}
+%\def\shiftedvarintop{%
+%  \mathop{%
+%    \mathchoice
+%      {\mkern2.5mu\vardintop\mkern-2.5mu}
+%      {\mkern2.5mu\vartintop\mkern-2.5mu}
+%      {\mkern2.75mu\vartintop\mkern-2.75mu}
+%      {\mkern3mu\vartintop\mkern-3mu}}}
+%
+%\def\varintop{\overstrike\shiftedvarintop\partialvartint}
+%
+%\newcommand{\VarMultiIntegral}[1]{%
+%  \edef\ints@c{\noexpand\varintop
+%    \ifnum#1=\z@\noexpand\varintdots@\else\noexpand\varintkern@\fi
+%    \ifnum#1>\tw@\noexpand\varintop\noexpand\varintkern@\fi
+%    \ifnum#1>\thr@@\noexpand\varintop\noexpand\varintkern@\fi
+%    \noexpand\varintop
+%    \noexpand\ilimits@
+%  }%
+%  \futurelet\@let@token\ints@a
+%}
+%
+%\def\varint{\fake@int\shiftedvarintop\partialvartint}
+%\def\variint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{2}}
+%\def\variiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{3}}
+%\def\variiiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{4}}
+%\def\varidotsint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{0}}
+%
+%\def\varlandupint{\fake@int\shiftedvarintop\partialvartlandupint}
+%\def\varlanddownint{\fake@int\shiftedvarintop\partialvartlanddownint}
+%\def\varstrokedint{\fake@int\shiftedvarintop\partialvartstrokedint}
+%\def\varoint{\fake@int\shiftedvarintop\partialvartoint}
+%\def\varoiint{\fake@int{\shiftedvarintop\shiftedvarintkern@\shiftedvarintop}\partialvartoiint}
+%\def\varrcirclerightint{\fake@int\shiftedvarintop\partialvartrcirclerightint}
+%\def\varlcirclerightint{\fake@int\shiftedvarintop\partialvartlcirclerightint}
+%\def\varrcircleleftint{\fake@int\shiftedvarintop\partialvartrcircleleftint}
+%\def\varlcircleleftint{\fake@int\shiftedvarintop\partialvartlcircleleftint}
+%
+%\def\Mn@Decl@Minion@Ints{%
+%  \let\intop\varintop
+%  \let\int\varint
+%  \let\iint\variint
+%  \let\iiint\variiint
+%  \let\iiiint\variiiint
+%  \let\idotsint\varidotsint
+%  \let\landupint\varlandupint
+%  \let\landdownint\varlanddownint
+%  \let\strokedint\varstrokedint
+%  \let\oint\varoint
+%  \let\oiint\varoiint
+%  \let\rcirclerightint\varrcirclerightint
+%  \let\lcirclerightint\varlcirclerightint
+%  \let\rcircleleftint\varrcircleleftint
+%  \let\lcircleleftint\varlcircleleftint
+%}
 \def\Mn@Decl@Minion@Ints{%
-  \let\intop\varintop
-  \let\int\varint
-  \let\iint\variint
-  \let\iiint\variiint
-  \let\iiiint\variiiint
-  \let\idotsint\varidotsint
-  \let\landupint\varlandupint
-  \let\landdownint\varlanddownint
-  \let\strokedint\varstrokedint
-  \let\oint\varoint
-  \let\oiint\varoiint
-  \let\rcirclerightint\varrcirclerightint
-  \let\lcirclerightint\varlcirclerightint
-  \let\rcircleleftint\varrcircleleftint
-  \let\lcircleleftint\varlcircleleftint
+% replace MnSymbolF by MnSymbolFI
+  \DeclareFontFamily{U}{MnSymbolFI}{}
+  \DeclareFontShape{U}{MnSymbolFI}{m}{it}{ <-> MnSymbolFI      }{}
+  \DeclareFontShape{U}{MnSymbolFI}{b}{it}{ <-> MnSymbolFI-Bold }{}
+  \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
+  \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
+% redeclare the integral commands
+  \DeclareMathSymbol\tint            \mathop{symbols}{110}
+  \DeclareMathSymbol\tiint           \mathop{symbols}{112}
+  \DeclareMathSymbol\tiiint          \mathop{symbols}{114}
+  \DeclareMathSymbol\tiiiint         \mathop{symbols}{116}
+  \DeclareMathSymbol\tidotsint       \mathop{symbols}{118}
+  \DeclareMathSymbol\tlandupint      \mathop{symbols}{120}
+  \DeclareMathSymbol\tlanddownint    \mathop{symbols}{122}
+  \DeclareMathSymbol\tstrokedint     \mathop{symbols}{124}
+  \DeclareMathSymbol\toint           \mathop{symbols}{126}
+  \DeclareMathSymbol\toiint          \mathop{symbols}{128}
+  \DeclareMathSymbol\trcirclerightint\mathop{symbols}{130}
+  \DeclareMathSymbol\tlcirclerightint\mathop{symbols}{132}
+  \DeclareMathSymbol\trcircleleftint \mathop{symbols}{134}
+  \DeclareMathSymbol\tlcircleleftint \mathop{symbols}{136}
+  \let\intop\tint
+  \let\ointop\toint
 }
 
 \Mn@Decl@Ints
@@ -611,7 +610,8 @@
 %    \begin{macrocode}
 %<*protruding>
 % We allow this file to be included multiple times.
-\ifx\enableprotruding\undefined
+\ifx\MinionProProtrudeLoaded\undefined
+\def\MinionProProtrudeLoaded{}
 \ProvidesFile{MinionPro-Protrude}[2005/01/23 v2.0 support for margin kerning]%
 %
 \newcommand*\ProtrudeCommand[4]{%

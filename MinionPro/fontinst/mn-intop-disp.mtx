@@ -9,152 +9,152 @@
   \resetwidth{\add{\width{dintegral}}{-100}}
 \endsetglyph
 
-\setglyph{dint}
-  %\glyph{mndint}{1000}\movert{400}
+\setglyph{dmnint}
+  %\glyph{dint}{1000}\movert{400}
   \movert{150}
   \glyph{dintegral}{1000}
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{diint}
-  %\glyph{mndiint}{1000}\movert{400}
+\setglyph{dmniint}
+  %\glyph{diint}{1000}\movert{400}
   \movert{150}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{diiint}
-  %\glyph{mndiiint}{1000}\movert{400}
+\setglyph{dmniiint}
+  %\glyph{diiint}{1000}\movert{400}
   \movert{150}
-  \glyph{dintegral}{1000}\movert{10}
-  \glyph{dintegral}{1000}\movert{10}
-  \glyph{dintegral}{1000}
-  \resetitalic{\italic{dintegral}}
-\endsetglyph
-
-\setglyph{diiiint}
-  %\glyph{mndiiiint}{1000}\movert{400}
-  \movert{150}
-  \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{didotsint}
-  %\glyph{mndidotsint}{1000}\movert{400}
+\setglyph{dmniiiint}
+  %\glyph{diiiint}{1000}\movert{400}
   \movert{150}
-  \glyph{dintegral}{1000}
-  \moveup{430}
-  \movert{100}
-  \glyph{period}{1000}
-  \glyph{period}{1000}
-  \glyph{period}{1000}
-  \moveup{-430}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}\movert{10}
+  \glyph{dintegral}{1000}\movert{10}
   \glyph{dintegral}{1000}
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{dlandupint}
-  %\glyph{mndlandupint}{1000}\movert{400}
+\setglyph{dmnidotsint}
+%  \glyph{didotsint}{1000}\movert{400}
+  \movert{150}
+  \glyph{dintegral}{1000}
+  \movert{840}
+  \glyph{dintegral}{1000}
+  \push
+  \movert{-1650}
+  \glyph{dpidotsint}{1000}
+  \pop
+  \resetitalic{\italic{dintegral}}
+\endsetglyph
+
+\setglyph{dmnlandupint}
+  %\glyph{dlandupint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-680}
-  \glyph{mnpdlandupint}{1000}
+  \glyph{dplandupint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{dlanddownint}
-  %\glyph{mndlanddownint}{1000}\movert{400}
+\setglyph{dmnlanddownint}
+  %\glyph{dlanddownint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-670}
-  \glyph{mnpdlanddownint}{1000}
+  \glyph{dplanddownint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{dstrokedint}
-  %\glyph{mndstrokedint}{1000}\movert{400}
+\setglyph{dmnstrokedint}
+  %\glyph{dstrokedint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-660}
-  \glyph{mnpdstrokedint}{1000}
+  \glyph{dpstrokedint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{doint}
-  %\glyph{mndoint}{1000}\movert{400}
+\setglyph{dmnoint}
+  %\glyph{doint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-670}
-  \glyph{mnpdoint}{1000}
+  \glyph{dpoint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{doiint}
-  %\glyph{mndoiint}{1000}\movert{400}
+\setglyph{dmnoiint}
+  %\glyph{doiint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \movert{-100}
   \glyph{dintegral}{1000}
   \push
   \movert{-1078}
-  \glyph{mnpdoiint}{1000}
+  \glyph{dpoiint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{drcirclerightint}
-  %\glyph{mndcirclelefttint}{1000}\movert{400}
+\setglyph{dmnrcirclerightint}
+  %\glyph{dcirclelefttint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-670}
-  \glyph{mnpdrcirclerightint}{1000}
+  \glyph{dprcirclerightint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{dlcirclerightint}
-  %\glyph{mndcirclerightint}{1000}\movert{400}
+\setglyph{dmnlcirclerightint}
+  %\glyph{dcirclerightint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-670}
-  \glyph{mnpdlcirclerightint}{1000}
+  \glyph{dplcirclerightint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{drcircleleftint}
-  %\glyph{mndcirclelefttint}{1000}\movert{400}
+\setglyph{dmnrcircleleftint}
+  %\glyph{dcirclelefttint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-670}
-  \glyph{mnpdrcircleleftint}{1000}
+  \glyph{dprcircleleftint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 
-\setglyph{dlcircleleftint}
-  %\glyph{mndcirclerightint}{1000}\movert{400}
+\setglyph{dmnlcircleleftint}
+  %\glyph{dcirclerightint}{1000}\movert{400}
   \movert{250}
   \glyph{dintegral}{1000}
   \push
   \movert{-670}
-  \glyph{mnpdlcircleleftint}{1000}
+  \glyph{dplcircleleftint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
 \endsetglyph
 \endmetrics
+% vim:set ft=tex:

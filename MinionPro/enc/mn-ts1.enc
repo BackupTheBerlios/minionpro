@@ -17,8 +17,8 @@
   /.notdef /.notdef /asterisk /.notdef
   /comma /hyphentwo /period /fraction
 % 0x30
-  /zerooldstyle /oneoldstyle /twooldstyle /threeoldstyle /fouroldstyle
-  /fiveoldstyle /sixoldstyle /sevenoldstyle /eightoldstyle /nineoldstyle
+  /zero /one /two /three /four
+  /five /six /seven /eight /nine
   /.notdef /.notdef
   /angleleft
   /minus
