@@ -60,6 +60,7 @@ make_metrics() {
   make_simple_tfm "$1" tosf-t2b    TOSF-6t
   make_simple_tfm "$1" tosf-t2c    TOSF-6c
   make_simple_tfm "$1" tosf-x2     TOSF-6x
+  make_simple_tfm "$1" U           U
 
   make_spread_tfm "$1" lf-oml      L-7m       7m        20
   make_spread_tfm "$1" lf-sc-t1    SSC-8t     SC-8t     40
