@@ -104,15 +104,13 @@
   <12-15> MinionPro-BoldSubh-OSFSSC-8c
   <15->   MinionPro-BoldDisp-OSFSSC-8c}{}
 \DeclareFontShape{TS1}{Minion-OsF}{b}{scit}{
-    <-6>  MinionPro-BoldItCapt-OSFLSC-8c
-   <6-8>  MinionPro-BoldItCapt-OSFLSC-8c
+    <-8>  MinionPro-BoldItCapt-OSFLSC-8c
    <8-9>  MinionPro-BoldItCapt-OSFSC-8c
    <9-12> MinionPro-BoldIt-OSFSC-8c
   <12-15> MinionPro-BoldItSubh-OSFSC-8c
   <15->   MinionPro-BoldItDisp-OSFSC-8c}{}
 \DeclareFontShape{TS1}{Minion-OsF}{b}{sscit}{
-    <-6>  MinionPro-BoldItCapt-OSFSSC-8c
-   <6-9>  MinionPro-BoldItCapt-OSFSSC-8c
+    <-9>  MinionPro-BoldItCapt-OSFSSC-8c
    <9-12> MinionPro-BoldIt-OSFSSC-8c
   <12-15> MinionPro-BoldItSubh-OSFSSC-8c
   <15->   MinionPro-BoldItDisp-OSFSSC-8c}{}

@@ -13,11 +13,11 @@
    <-6>  MinionPro-SemiboldCapt-SSC-8t
    <6->  MinionPro-Capt-SSC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{m}{scit}{
-    <-6>  MinionPro-SemiboldItCapt-SC-8t
+   <-6>  MinionPro-SemiboldItCapt-SC-8t
    <6->  MinionPro-ItCapt-SC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{m}{sscit}{
-    <-6>  MinionPro-SemiboldItCapt-SSC-8t
-   <6->  MinionPro-ItCapt-SSC-8t}{}   
+   <-6>  MinionPro-SemiboldItCapt-SSC-8t
+   <6->  MinionPro-ItCapt-SSC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{sb}{n}{
    <-6>  MinionPro-BoldCapt-8t
    <6->  MinionPro-SemiboldCapt-8t}{}
@@ -29,13 +29,13 @@
    <6->  MinionPro-SemiboldCapt-SC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{sb}{ssc}{
    <-6>  MinionPro-BoldCapt-SSC-8t
-   <6->  MinionPro-SemiboldCapt-SSC-8t}{}   
+   <6->  MinionPro-SemiboldCapt-SSC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{sb}{scit}{
-    <-6>  MinionPro-BoldItCapt-SC-8t
+   <-6>  MinionPro-BoldItCapt-SC-8t
    <6->  MinionPro-SemiboldItCapt-SC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{sb}{sscit}{
-    <-6>  MinionPro-BoldItCapt-SSC-8t
-   <6->  MinionPro-SemiboldItCapt-SSC-8t}{}   
+   <-6>  MinionPro-BoldItCapt-SSC-8t
+   <6->  MinionPro-SemiboldItCapt-SSC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{b}{n}{
     <->  MinionPro-BoldCapt-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{b}{it}{
@@ -43,13 +43,11 @@
 \DeclareFontShape{T1}{Minion-LF-C}{b}{sc}{
     <->  MinionPro-BoldCapt-SC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{b}{ssc}{
-    <->  MinionPro-BoldCapt-SSC-8t}{}    
+    <->  MinionPro-BoldCapt-SSC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{b}{scit}{
-    <-6>  MinionPro-BoldItCapt-SC-8t
-   <6->  MinionPro-BoldItCapt-SC-8t}{}
+    <->  MinionPro-BoldItCapt-SC-8t}{}
 \DeclareFontShape{T1}{Minion-LF-C}{b}{sscit}{
-    <-6>  MinionPro-BoldItCapt-SSC-8t
-   <6->  MinionPro-BoldItCapt-SSC-8t}{}   
+    <->  MinionPro-BoldItCapt-SSC-8t}{}
 %
 \DeclareFontShape{T1}{Minion-LF-C}{m} {sl}{<->ssub * Minion-LF-C/m/it}{}
 \DeclareFontShape{T1}{Minion-LF-C}{sb}{sl}{<->ssub * Minion-LF-C/sb/it}{}

@@ -1,4 +1,4 @@
-\ProvidesPackage{Minion-Protrude}[2004/08/27 support for margin kerning]
+\ProvidesPackage{Minion-Protrude}[2004/10/18 support for margin kerning]
 
 \ifx\pdfprotrudechars\undefined
 
@@ -7,6 +7,10 @@
 \let\Tone@roman@protruding\relax
 \let\OTone@italic@protruding\relax
 \let\Tone@italic@protruding\relax
+\let\OTone@smallcaps@protruding\relax
+\let\Tone@smallcaps@protruding\relax
+\let\OTone@smallcaps@italic@protruding\relax
+\let\Tone@smallcaps@italic@protruding\relax
 
 \else
 
@@ -231,6 +235,13 @@
   \set@protruding{184}{030}{030}% ydieresis
   \set@protruding{253}{030}{030}% yacute
 }
+
+% We have no protruding values for small caps yet.
+
+\def\OTone@smallcaps@protruding{}
+\def\Tone@smallcaps@protruding{}
+\def\OTone@smallcaps@italic@protruding{}
+\def\Tone@smallcaps@italic@protruding{}
 
 %\def\mathprotruding{%
 %  \set@protruding{ 0}{700}{750}% Gamma
