@@ -6,7 +6,10 @@
 %</dtx>
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{MinionPro}
+\usepackage[T1]{fontenc}
+\usepackage[protrude]{MinionPro}
+\usepackage[british]{babel}
+\usepackage{booktabs,pifont}
 \begin{document}
 \DocInput{MinionPro.dtx}
 \end{document}
@@ -148,7 +151,8 @@
 %
 % \medskip\noindent\hspace{3em}
 % \begin{tabular}{@{}rllrl@{}}
-% glyph number & glyph & &glyphnumber & glyph\\
+% \toprule
+% number & glyph & &number & glyph\\
 % \midrule
 % 0&\Pisymbol{MinionPro-Ornaments}{0} &  &     15&\Pisymbol{MinionPro-Ornaments}{15}\\
 % 1&\Pisymbol{MinionPro-Ornaments}{1} &  &     16&\Pisymbol{MinionPro-Ornaments}{16}\\
@@ -165,6 +169,7 @@
 % 12&\Pisymbol{MinionPro-Ornaments}{12} &&     27&\Pisymbol{MinionPro-Ornaments}{27}\\
 % 13&\Pisymbol{MinionPro-Ornaments}{13} &&     28&\Pisymbol{MinionPro-Ornaments}{28}\\
 % 14&\Pisymbol{MinionPro-Ornaments}{14} &&     29&\Pisymbol{MinionPro-Ornaments}{29}
+% \bottomrule
 % \end{tabular}
 %
 % \section{Language support}
