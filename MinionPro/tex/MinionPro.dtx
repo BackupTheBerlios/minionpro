@@ -291,12 +291,7 @@
 \ExecuteOptions{osf}
 \ProcessOptions\relax
 
-\Mn@load@bb
-\Mn@load@frak
-
 \RequirePackage{MnSymbol,MinionPro-FontDef}
-
-\Mn@load@cal
 
 %% declare the fonts
 
@@ -317,6 +312,10 @@
 \SetSymbolFont{operators}{tabular}{OT1}{\Mn@Math@TFamily}{m}{n}
 \SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
 \SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
+
+\Mn@load@bb
+\Mn@load@frak
+\Mn@load@cal
 %    \end{macrocode}
 %
 % \begin{macro}{figureversion}
