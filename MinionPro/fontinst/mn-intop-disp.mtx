@@ -107,7 +107,7 @@
   \movert{-100}
   \glyph{dintegral}{1000}
   \push
-  \movert{-1065}
+  \movert{-1055}
   \glyph{dpoiint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
