@@ -1018,7 +1018,70 @@
   }%
 }%
 %
-\newcommand*\MnFontDefinitionsOpticals{%
+\newcommand*\MnFontDefinitionsOpticalsFull{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {SemiboldCapt}{MediumCapt}{Regular}{Subh}{Disp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {SemiboldItCapt}{MediumItCapt}{It}{ItSubh}{ItDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {BoldCapt}{SemiboldCapt}{Semibold}{SemiboldSubh}{SemiboldDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldItCapt}{SemiboldItCapt}{SemiboldIt}{SemiboldItSubh}{SemiboldItDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {BoldCapt}{BoldCapt}{Bold}{BoldSubh}{BoldDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldItCapt}{BoldItCapt}{BoldIt}{BoldItSubh}{BoldItDisp}%
+}%
+%
+\newcommand*\MnFontDefinitionsNoOpticalsFull{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {Semibold}{Medium}{Regular}{Regular}{Regular}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {SemiboldIt}{MediumIt}{It}{It}{It}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {Bold}{Semibold}{Semibold}{Semibold}{Semibold}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {Bold}{Bold}{Bold}{Bold}{Bold}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
+}%
+%
+\newcommand*\MnFontDefinitionsSlidesFull{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {SemiboldCapt}{MediumCapt}{Capt}{Capt}{Capt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {SemiboldItCapt}{MediumItCapt}{ItCapt}{ItCapt}{ItCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {BoldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
+}%
+%
+\newcommand*\MnFontDefinitionsOpticalsMed{%
   \MnDefineFontDeclarationCommand
     \MnDeclareFontRegular
     {SemiboldCapt}{Capt}{Regular}{Subh}{Disp}%
@@ -1039,7 +1102,7 @@
     {BoldItCapt}{BoldItCapt}{BoldIt}{BoldItSubh}{BoldItDisp}%
 }%
 %
-\newcommand*\MnFontDefinitionsNoOpticals{%
+\newcommand*\MnFontDefinitionsNoOpticalsMed{%
   \MnDefineFontDeclarationCommand
     \MnDeclareFontRegular
     {Semibold}{Regular}{Regular}{Regular}{Regular}%
@@ -1058,6 +1121,69 @@
   \MnDefineFontDeclarationCommand
     \MnDeclareFontBoldItalic
     {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
+}%
+%
+\newcommand*\MnFontDefinitionsSlidesMed{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {SemiboldCapt}{Capt}{Capt}{Capt}{Capt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {SemiboldItCapt}{ItCapt}{ItCapt}{ItCapt}{ItCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {BoldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
+}%
+%
+\newcommand*\MnFontDefinitionsNoOpticalsSmall{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {Regular}{Regular}{Regular}{Regular}{Regular}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {It}{It}{It}{It}{It}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {Bold}{Bold}{Bold}{Bold}{Bold}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {Bold}{Bold}{Bold}{Bold}{Bold}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
+}%
+%
+\newcommand*\MnFontDefinitionsSlidesSmall{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {Capt}{Capt}{Capt}{Capt}{Capt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {ItCapt}{ItCapt}{ItCapt}{ItCapt}{ItCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
 }%
 %
 \newcommand*\MnDeclareLargeFontFamily[4]{%
@@ -1178,14 +1304,20 @@
 % If we are called in the preamble we provide package options.
 % Otherwise, the defaults are used.
 \ifx\@nodocument\relax
-  \newcommand*\MnFontDefinitions{\MnFontDefinitionsOpticals}%
+  \newcommand*\MnFontDefinitions{\MnFontDefinitionsOpticalsMed}%
 \else
-  \newcommand*\MnFontDefinitions{}%
+  \newcommand*\MnFontDefinitions{\csname MnFontDefinitions\MnOpticalsSwitch\MnFamilySwitch\endcsname}%
+  \newcommand*\MnOpticalsSwitch{Opticals}%
+  \newcommand*\MnFamilySwitch{Med}%
   %
-  \DeclareOption{opticals}{\let\MnFontDefinitions\MnFontDefinitionsOpticals}%
-  \DeclareOption{noopticals}{\let\MnFontDefinitions\MnFontDefinitionsNoOpticals}%
+  \DeclareOption{slides}{\renewcommand*\MnOpticalsSwitch{Slides}}%
+  \DeclareOption{opticals}{\renewcommand*\MnOpticalsSwitch{Opticals}}%
+  \DeclareOption{noopticals}{\renewcommand*\MnOpticalsSwitch{NoOpticals}}%
+  \DeclareOption{smallfamily}{\renewcommand*\MnFamilySwitch{Small}}%
+  \DeclareOption{medfamily}{\renewcommand*\MnFamilySwitch{Med}}%
+  \DeclareOption{fullfamily}{\renewcommand*\MnFamilySwitch{Full}}%
   %
-  \ExecuteOptions{opticals}%
+  \ExecuteOptions{medfamily,opticals}%
   \ProcessOptions
 \fi
 %
