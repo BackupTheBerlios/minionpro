@@ -14,9 +14,14 @@ done
 
 tftopl ../tfm/MinionPro-It-osf-oml--base.tfm        MinionPro-It-osf-oml--base.pl
 tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm     MinionPro-It-osf-cn2-integral.pl
-tftopl ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm MinionPro-ItDisp-osf-cn1-integral.pl
 
 tex make-MnSymbolFI.tex
+
+if [ -e ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm ]
+then
+  tftopl ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm MinionPro-ItDisp-osf-cn1-integral.pl
+  tex make-MnSymbolFI-opticals.tex
+fi
 
 for v in *.vpl
 do
