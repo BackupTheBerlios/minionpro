@@ -3,18 +3,25 @@
 /MinionPro-DingEncoding [          % now 256 chars follow
 /uniF638 /orn.001 /orn.002 /orn.003 /orn.004 /orn.005 /orn.006 /orn.007
 /orn.008 /orn.009 /orn.010 /orn.011 /orn.012 /orn.013 /orn.014 /orn.015
+% 0x10
 /orn.016 /orn.017 /orn.018 /orn.019 /orn.020 /orn.021 /orn.022 /orn.023
-/uni03D0 /uni03DA /uni03DE /uni03E0 /uni03F0 /uniEFD5 /.notdef /.notdef 
+/orn.032 /orn.033 /orn.024 /orn.025 /orn.028 /orn.029 /orn.030 /orn.031
+% 0x20
+/uniE0FD /uniE0FF /uniE0FC /uniE0FE /uni2190 /uni2192 /uni25C0 /uni25B6 
+/uni25C1 /uni25B7 /orn.035 /orn.036 /orn.037 /uni25C9 /orn.034 /uni25A0 
+% 0x30
+/uni25C6 /orn.038 /uni2610 /uni2611 /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+% 0x40
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+% 0x50
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+% 0x60
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+% 0x70
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 % 0x80
