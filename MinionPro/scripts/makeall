@@ -1,30 +1,43 @@
 #!/bin/bash
 
-mkdir -p afm pfb tfm vf vpl
+mkdir -p pfb pl tfm vf vpl dvips
 
-for f in otf/*.otf
+echo "Creating PostScript fonts ..."
+
+for font in otf/*.otf
 do
-  ./scripts/fonttopfb.pe $f
+  cfftot1 $font $(basename $font .otf).pfb
+done
+for font in *.pfb
+do
+  t1dotlessj $font $(basename $font .pfb)LCDFJ.pfb
 done
 
-for f in otf/*It*.otf
+echo "Creating TeX metrics ..."
+
+./scripts/maketfm MinionPro | sort | uniq >dvips/Minion.map
+
+for v in *.pl
 do
-  ./scripts/scalefont.ff 90 "-Cn" $f
+  if [ -e "$v" ]
+  then
+    pltotf "$v"
+  fi
 done
 
-mv otf/*.pfb pfb
-mv otf/*.afm afm
-
-./scripts/maketfm MinionPro | sed -e 's!dvips/!!g' -e 's!^[^ ]* \([^ ]*\) .*$!\0 <\1.pfb!' >dvips/Minion.map
-
-for v in vpl/*.vpl
+for v in *.vpl
 do
-  vptovf $v
+  if [ -e "$v" ]
+  then
+    vptovf "$v"
+  fi
 done
 
-mv *.tfm tfm
-
-# we only need the VF-files with increased letterspacing
-mv *L[^F]*.vf *SSC*.vf vf
-rm *.vf
+mv a_*.enc    dvips
+mv *.pl       pl
+mv *.pfb      pfb
+mv *.vf       vf
+mv *.vpl      vpl
+mv *base*.tfm tfm   # Split this move in two parts as the arg. list is too large.
+mv *.tfm      tfm
 

@@ -1,0 +1,1390 @@
+\def\filedate{2005/01/23}
+\def\fileversion{v2.0}
+%\iffalse
+%<*dtx>
+\ProvidesFile{MinionPro.dtx}[2005/01/23 v2.0 MinionPro support for LaTeX]
+%</dtx>
+%<*driver>
+\documentclass{ltxdoc}
+\begin{document}
+\DocInput{MinionPro.dtx}
+\end{document}
+%</driver>
+%\fi
+%
+% \title{MinionPro Support for \LaTeX}
+% \author{Achim Blumensath \and Michael Zedler}
+% \date{\filedate}
+% \maketitle
+%
+% \tableofcontents
+%
+% \section{The main style file}
+%
+%    \begin{macrocode}
+%<*style>
+\ProvidesPackage{MinionPro}[2005/01/23 v2.0 support for MinionPro]
+
+\RequirePackage{MinionPro-Protrude}
+
+\DeclareOption{protrude}{\enableprotruding}
+\DeclareOption{fleqn}{\PassOptionsToPackage{fleqn}{MnSymbol}}
+
+\DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
+\DeclareOption{noopticals}{\PassOptionsToPackage{noopticals}{MinionPro-FontDef}}
+
+%% figure style
+
+\def\Mn@Capt{}
+\def\Mn@Text@FigA{}
+\def\Mn@Text@FigB{OsF}
+\def\Mn@Text@Fig{\Mn@Text@FigA\Mn@Text@FigB}
+\def\Mn@Math@Fig{OsF}
+\def\Mn@Text@Family{MinionPro-\Mn@Text@Fig\Mn@Capt}
+\def\Mn@Math@Family{MinionPro-\Mn@Math@Fig\Mn@Capt}
+\def\Mn@Math@TFamily{MinionPro-T\Mn@Math@Fig\Mn@Capt}
+
+\DeclareOption{slides}{\def\Mn@Capt{-C}}
+\DeclareOption{textosf}{\def\Mn@Text@FigB{OsF}}
+\DeclareOption{textlf}{\def\Mn@Text@FigB{LF}}
+\DeclareOption{mathosf}{\def\Mn@Math@Fig{OsF}}
+\DeclareOption{mathlf}{\def\Mn@Math@Fig{LF}}
+\DeclareOption{osf}{\def\Mn@Text@FigB{OsF}\def\Mn@Math@Fig{OsF}}
+\DeclareOption{lf}{\def\Mn@Text@FigB{LF}\def\Mn@Math@Fig{LF}}
+\DeclareOption{mathtabular}{\let\Mn@Math@Family\Mn@Math@TFamily}
+
+%% calligraphic fonts
+
+\def\Mn@load@cal{}
+
+\DeclareOption{mnsy}{\PassOptionsToPackage{mnsy}{MnSymbol}}
+\DeclareOption{cmsy}{\PassOptionsToPackage{cmsy}{MnSymbol}}
+\DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
+\DeclareOption{swash}{
+  \def\Mn@load@cal{
+    \DeclareMathAlphabet\mathcal  {T1}{\Mn@Math@Family}{m}{sw}
+    \SetMathAlphabet\mathcal{bold}{T1}{\Mn@Math@Family}{b}{sw}}
+}
+
+%% greek letters
+
+\DeclareOption{romangreek}{\def\Mn@Greek@Shape{\Mn@Greek@Rm}}
+\DeclareOption{mixedgreek}{\def\Mn@Greek@Shape{\Mn@Greek@Mix}}
+\DeclareOption{italicgreek}{\def\Mn@Greek@Shape{\Mn@Greek@It}}
+\def\Mn@Greek@Shape{\Mn@Greek@Mix}
+
+%% bbold and fraktur fonts
+
+\def\Mn@load@amsbb{
+  \let\mathbb\undefined
+  \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}
+\def\Mn@load@pazobb{
+  \let\mathbb\undefined
+  \DeclareFontFamily{T1}{fplmbb}{}
+  \DeclareFontShape{T1}{fplmbb}{m}{n}{ <->s*[0.92] fplmbb }{}
+  \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}}
+\let\Mn@load@bb\Mn@load@amsbb
+
+\def\Mn@load@wbfrak{
+  \let\mathfrak\undefined
+  \DeclareMathAlphabet{\mathfrak}{T1}{DS-Wartburg-Fraktur}{m}{n}
+  \SetMathAlphabet{\mathfrak}{bold}{T1}{DS-Wartburg-Fraktur}{b}{n}}
+\def\Mn@load@eufrak{
+  \RequirePackage{eufrak}}
+\let\Mn@load@frak\Mn@load@eufrak
+
+\DeclareOption{amsbb}{\let\Mn@load@bb\Mn@load@amsbb}
+\DeclareOption{pazobb}{\let\Mn@load@bb\Mn@load@pazobb}
+\DeclareOption{wbfrak}{\let\Mn@load@frak\Mn@load@wbfrak}
+\DeclareOption{eufrak}{\let\Mn@load@frak\Mn@load@eufrak}
+
+%% integrals
+
+\def\Mn@Decl@Ints{}
+
+\DeclareOption{minionint}{\def\Mn@Decl@Ints{\Mn@Decl@Minion@Ints}}
+
+%\def\Mn@Suffix@Capt{Capt}
+%\def\Mn@Suffix@Subh{Subh}
+%\def\Mn@Suffix@Disp{Disp}
+%\def\Mn@Suffix@Capt@P{Capt}
+%\def\Mn@Suffix@Subh@P{Subh}
+%\def\Mn@Suffix@Disp@P{Disp}
+%
+%\DeclareOption{textonly}{
+%  \def\Mn@Suffix@Capt{Regular}
+%  \def\Mn@Suffix@Subh{Regular}
+%  \def\Mn@Suffix@Disp{Regular}
+%  \def\Mn@Suffix@Capt@P{}
+%  \def\Mn@Suffix@Subh@P{}
+%  \def\Mn@Suffix@Disp@P{}}
+
+\ExecuteOptions{osf}
+\ProcessOptions\relax
+
+\Mn@load@bb
+\Mn@load@frak
+
+\RequirePackage{MnSymbol,MinionPro-FontDef}
+
+\Mn@load@cal
+
+%% declare the fonts
+
+\renewcommand\rmdefault{\Mn@Text@Family}
+\renewcommand\bfdefault{sb}
+
+\DeclareSymbolFont{operators}     {OT1}{\Mn@Math@Family} {m}{n}
+\DeclareSymbolFont{letters}       {OML}{\Mn@Math@Family} {m}{it}
+\DeclareSymbolFont{rmletters}     {OML}{\Mn@Math@Family} {m}{n}
+\SetSymbolFont{operators}{bold}   {OT1}{\Mn@Math@Family} {b}{n}
+\SetSymbolFont{letters}  {bold}   {OML}{\Mn@Math@Family} {b}{it}
+\SetSymbolFont{rmletters}{bold}   {OML}{\Mn@Math@Family} {b}{n}
+\DeclareMathAlphabet\mathbf       {OT1}{\Mn@Math@Family} {b}{n}
+\DeclareMathAlphabet\mathit       {OT1}{\Mn@Math@Family} {m}{it}
+\SetMathAlphabet\mathit  {bold}   {OT1}{\Mn@Math@Family} {b}{it}
+
+\DeclareMathVersion{tabular}
+\SetSymbolFont{operators}{tabular}{OT1}{\Mn@Math@TFamily}{m}{n}
+\SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
+\SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
+
+%% figures
+
+\def\Mn@Key@lf{0}
+\def\Mn@Key@osf{1}
+\def\Mn@Key@tabular{2}
+\def\Mn@Key@proportional{3}
+
+\def\figureversion#1{%
+  \@for\@fv@arg:=#1\do{%
+    \edef\@fv@arg{\expandafter\@firstofone\@fv@arg\@empty}%
+    \expandafter\ifx\csname Mn@Key@\@fv@arg\endcsname\relax
+      \PackageWarning{minion}%
+      {Unknown figure style `\@fv@arg' specified as the argument to
+       \string\figureversion. Figure style not changed.}%
+    \else
+      \ifcase\csname Mn@Key@\@fv@arg\endcsname
+        \def\Mn@Text@FigB{LF}%
+      \or
+        \def\Mn@Text@FigB{OsF}%
+      \or
+        \def\Mn@Text@FigA{T}\mathversion{tabular}%
+      \or
+        \def\Mn@Text@FigA{}%
+      \fi
+    \fi
+  }%
+  \fontfamily\Mn@Text@Family\selectfont
+}
+
+\newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
+\newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
+\newcommand*\textfigures[1]{{\figureversion{osf}#1}}
+
+\DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
+\DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
+\DeclareMathSymbol{\itTheta}     {\mathord}{letters}{"02}
+\DeclareMathSymbol{\itLambda}    {\mathord}{letters}{"03}
+\DeclareMathSymbol{\itXi}        {\mathord}{letters}{"04}
+\DeclareMathSymbol{\itPi}        {\mathord}{letters}{"05}
+\DeclareMathSymbol{\itSigma}     {\mathord}{letters}{"06}
+\DeclareMathSymbol{\itUpsilon}   {\mathord}{letters}{"07}
+\DeclareMathSymbol{\itPhi}       {\mathord}{letters}{"08}
+\DeclareMathSymbol{\itPsi}       {\mathord}{letters}{"09}
+\DeclareMathSymbol{\itOmega}     {\mathord}{letters}{"0A}
+\DeclareMathSymbol{\italpha}     {\mathord}{letters}{"0B}
+\DeclareMathSymbol{\itbeta}      {\mathord}{letters}{"0C}
+\DeclareMathSymbol{\itgamma}     {\mathord}{letters}{"0D}
+\DeclareMathSymbol{\itdelta}     {\mathord}{letters}{"0E}
+\DeclareMathSymbol{\itepsilon}   {\mathord}{letters}{"0F}
+\DeclareMathSymbol{\itzeta}      {\mathord}{letters}{"10}
+\DeclareMathSymbol{\iteta}       {\mathord}{letters}{"11}
+\DeclareMathSymbol{\ittheta}     {\mathord}{letters}{"12}
+\DeclareMathSymbol{\itiota}      {\mathord}{letters}{"13}
+\DeclareMathSymbol{\itkappa}     {\mathord}{letters}{"14}
+\DeclareMathSymbol{\itlambda}    {\mathord}{letters}{"15}
+\DeclareMathSymbol{\itmu}        {\mathord}{letters}{"16}
+\DeclareMathSymbol{\itnu}        {\mathord}{letters}{"17}
+\DeclareMathSymbol{\itxi}        {\mathord}{letters}{"18}
+\DeclareMathSymbol{\itpi}        {\mathord}{letters}{"19}
+\DeclareMathSymbol{\itrho}       {\mathord}{letters}{"1A}
+\DeclareMathSymbol{\itsigma}     {\mathord}{letters}{"1B}
+\DeclareMathSymbol{\ittau}       {\mathord}{letters}{"1C}
+\DeclareMathSymbol{\itupsilon}   {\mathord}{letters}{"1D}
+\DeclareMathSymbol{\itphi}       {\mathord}{letters}{"1E}
+\DeclareMathSymbol{\itchi}       {\mathord}{letters}{"1F}
+\DeclareMathSymbol{\itpsi}       {\mathord}{letters}{"20}
+\DeclareMathSymbol{\itomega}     {\mathord}{letters}{"21}
+\DeclareMathSymbol{\itvarepsilon}{\mathord}{letters}{"22}
+\DeclareMathSymbol{\itvartheta}  {\mathord}{letters}{"23}
+\DeclareMathSymbol{\itvarpi}     {\mathord}{letters}{"24}
+\DeclareMathSymbol{\itvarrho}    {\mathord}{letters}{"25}
+\DeclareMathSymbol{\itvarsigma}  {\mathord}{letters}{"26}
+\DeclareMathSymbol{\itvarphi}    {\mathord}{letters}{"27}
+\DeclareMathSymbol{\upGamma}     {\mathord}{rmletters}{"00}
+\DeclareMathSymbol{\upDelta}     {\mathord}{rmletters}{"01}
+\DeclareMathSymbol{\upTheta}     {\mathord}{rmletters}{"02}
+\DeclareMathSymbol{\upLambda}    {\mathord}{rmletters}{"03}
+\DeclareMathSymbol{\upXi}        {\mathord}{rmletters}{"04}
+\DeclareMathSymbol{\upPi}        {\mathord}{rmletters}{"05}
+\DeclareMathSymbol{\upSigma}     {\mathord}{rmletters}{"06}
+\DeclareMathSymbol{\upUpsilon}   {\mathord}{rmletters}{"07}
+\DeclareMathSymbol{\upPhi}       {\mathord}{rmletters}{"08}
+\DeclareMathSymbol{\upPsi}       {\mathord}{rmletters}{"09}
+\DeclareMathSymbol{\upOmega}     {\mathord}{rmletters}{"0A}
+\DeclareMathSymbol{\upalpha}     {\mathord}{rmletters}{"0B}
+\DeclareMathSymbol{\upbeta}      {\mathord}{rmletters}{"0C}
+\DeclareMathSymbol{\upgamma}     {\mathord}{rmletters}{"0D}
+\DeclareMathSymbol{\updelta}     {\mathord}{rmletters}{"0E}
+\DeclareMathSymbol{\upepsilon}   {\mathord}{rmletters}{"0F}
+\DeclareMathSymbol{\upzeta}      {\mathord}{rmletters}{"10}
+\DeclareMathSymbol{\upeta}       {\mathord}{rmletters}{"11}
+\DeclareMathSymbol{\uptheta}     {\mathord}{rmletters}{"12}
+\DeclareMathSymbol{\upiota}      {\mathord}{rmletters}{"13}
+\DeclareMathSymbol{\upkappa}     {\mathord}{rmletters}{"14}
+\DeclareMathSymbol{\uplambda}    {\mathord}{rmletters}{"15}
+\DeclareMathSymbol{\upmu}        {\mathord}{rmletters}{"16}
+\DeclareMathSymbol{\upnu}        {\mathord}{rmletters}{"17}
+\DeclareMathSymbol{\upxi}        {\mathord}{rmletters}{"18}
+\DeclareMathSymbol{\uppi}        {\mathord}{rmletters}{"19}
+\DeclareMathSymbol{\uprho}       {\mathord}{rmletters}{"1A}
+\DeclareMathSymbol{\upsigma}     {\mathord}{rmletters}{"1B}
+\DeclareMathSymbol{\uptau}       {\mathord}{rmletters}{"1C}
+\DeclareMathSymbol{\upupsilon}   {\mathord}{rmletters}{"1D}
+\DeclareMathSymbol{\upphi}       {\mathord}{rmletters}{"1E}
+\DeclareMathSymbol{\upchi}       {\mathord}{rmletters}{"1F}
+\DeclareMathSymbol{\uppsi}       {\mathord}{rmletters}{"20}
+\DeclareMathSymbol{\upomega}     {\mathord}{rmletters}{"21}
+\DeclareMathSymbol{\upvarepsilon}{\mathord}{rmletters}{"22}
+\DeclareMathSymbol{\upvartheta}  {\mathord}{rmletters}{"23}
+\DeclareMathSymbol{\upvarpi}     {\mathord}{rmletters}{"24}
+\DeclareMathSymbol{\upvarrho}    {\mathord}{rmletters}{"25}
+\DeclareMathSymbol{\upvarsigma}  {\mathord}{rmletters}{"26}
+\DeclareMathSymbol{\upvarphi}    {\mathord}{rmletters}{"27}
+
+\def\Mn@Greek@Rm{
+  \let\Gamma     \upGamma
+  \let\Delta     \upDelta
+  \let\Theta     \upTheta
+  \let\Lambda    \upLambda
+  \let\Xi        \upXi
+  \let\Pi        \upPi
+  \let\Sigma     \upSigma
+  \let\Upsilon   \upUpsilon
+  \let\Phi       \upPhi
+  \let\Psi       \upPsi
+  \let\Omega     \upOmega
+  \let\alpha     \upalpha
+  \let\beta      \upbeta
+  \let\gamma     \upgamma
+  \let\delta     \updelta
+  \let\epsilon   \upepsilon
+  \let\zeta      \upzeta
+  \let\eta       \upeta
+  \let\theta     \uptheta
+  \let\iota      \upiota
+  \let\kappa     \upkappa
+  \let\lambda    \uplambda
+  \let\mu        \upmu
+  \let\nu        \upnu
+  \let\xi        \upxi
+  \let\pi        \uppi
+  \let\rho       \uprho
+  \let\sigma     \upsigma
+  \let\tau       \uptau
+  \let\upsilon   \upupsilon
+  \let\phi       \upphi
+  \let\chi       \upchi
+  \let\psi       \uppsi
+  \let\omega     \upomega
+  \let\varepsilon\upvarepsilon
+  \let\vartheta  \upvartheta
+  \let\varpi     \upvarpi
+  \let\varrho    \upvarrho
+  \let\varsigma  \upvarsigma
+  \let\varphi    \upvarphi
+}
+\def\Mn@Greek@It{
+  \let\Gamma     \itGamma
+  \let\Delta     \itDelta
+  \let\Theta     \itTheta
+  \let\Lambda    \itLambda
+  \let\Xi        \itXi
+  \let\Pi        \itPi
+  \let\Sigma     \itSigma
+  \let\Upsilon   \itUpsilon
+  \let\Phi       \itPhi
+  \let\Psi       \itPsi
+  \let\Omega     \itOmega
+  \let\alpha     \italpha
+  \let\beta      \itbeta
+  \let\gamma     \itgamma
+  \let\delta     \itdelta
+  \let\epsilon   \itepsilon
+  \let\zeta      \itzeta
+  \let\eta       \iteta
+  \let\theta     \ittheta
+  \let\iota      \itiota
+  \let\kappa     \itkappa
+  \let\lambda    \itlambda
+  \let\mu        \itmu
+  \let\nu        \itnu
+  \let\xi        \itxi
+  \let\pi        \itpi
+  \let\rho       \itrho
+  \let\sigma     \itsigma
+  \let\tau       \ittau
+  \let\upsilon   \itupsilon
+  \let\phi       \itphi
+  \let\chi       \itchi
+  \let\psi       \itpsi
+  \let\omega     \itomega
+  \let\varepsilon\itvarepsilon
+  \let\vartheta  \itvartheta
+  \let\varpi     \itvarpi
+  \let\varrho    \itvarrho
+  \let\varsigma  \itvarsigma
+  \let\varphi    \itvarphi
+}
+\def\Mn@Greek@Mix{
+  \let\Gamma     \upGamma
+  \let\Delta     \upDelta
+  \let\Theta     \upTheta
+  \let\Lambda    \upLambda
+  \let\Xi        \upXi
+  \let\Pi        \upPi
+  \let\Sigma     \upSigma
+  \let\Upsilon   \upUpsilon
+  \let\Phi       \upPhi
+  \let\Psi       \upPsi
+  \let\Omega     \upOmega
+  \let\alpha     \italpha
+  \let\beta      \itbeta
+  \let\gamma     \itgamma
+  \let\delta     \itdelta
+  \let\epsilon   \itepsilon
+  \let\zeta      \itzeta
+  \let\eta       \iteta
+  \let\theta     \ittheta
+  \let\iota      \itiota
+  \let\kappa     \itkappa
+  \let\lambda    \itlambda
+  \let\mu        \itmu
+  \let\nu        \itnu
+  \let\xi        \itxi
+  \let\pi        \itpi
+  \let\rho       \itrho
+  \let\sigma     \itsigma
+  \let\tau       \ittau
+  \let\upsilon   \itupsilon
+  \let\phi       \itphi
+  \let\chi       \itchi
+  \let\psi       \itpsi
+  \let\omega     \itomega
+  \let\varepsilon\itvarepsilon
+  \let\vartheta  \itvartheta
+  \let\varpi     \itvarpi
+  \let\varrho    \itvarrho
+  \let\varsigma  \itvarsigma
+  \let\varphi    \itvarphi
+}
+
+\Mn@Greek@Shape
+
+%% define additional symbols
+
+\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
+\DeclareMathSymbol{\hbar}       {\mathord}{letters}{"81}
+\DeclareMathSymbol{\digamma}    {\mathord}{letters}{"82}
+
+\DeclareFontFamily{OML}{MinionPro-Integral-Text}{}
+\DeclareFontFamily{OML}{MinionPro-Integral-Display}{}
+\DeclareFontShape{OML}{MinionPro-Integral-Text}{m}{it}{
+    <-6>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+   <6-8>  s*[1.1] MinionPro-ItCapt-L-7m
+   <8-9>  s*[1.1] MinionPro-ItCapt-L-7m
+   <9-12> s*[1.1] MinionPro-It-L-7m
+  <12-15> s*[1.1] MinionPro-ItSubh-L-7m
+  <15->   s*[1.1] MinionPro-ItDisp-L-7m}{}
+\DeclareFontShape{OML}{MinionPro-Integral-Text}{sb}{it}{
+    <-6>  s*[1.1] MinionPro-BoldItCapt-L-7m
+   <6-8>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+   <8-9>  s*[1.1] MinionPro-SemiboldItCapt-L-7m
+   <9-12> s*[1.1] MinionPro-SemiboldIt-L-7m
+  <12-15> s*[1.1] MinionPro-SemiboldItSubh-L-7m
+  <15->   s*[1.1] MinionPro-SemiboldItDisp-L-7m}{}
+\DeclareFontShape{OML}{MinionPro-Integral-Text}{b}{it}{
+    <-8>  s*[1.1] MinionPro-BoldItCapt-L-7m
+   <8-9>  s*[1.1] MinionPro-BoldItCapt-L-7m
+   <9-12> s*[1.1] MinionPro-BoldIt-L-7m
+  <12-15> s*[1.1] MinionPro-BoldItSubh-L-7m
+  <15->   s*[1.1] MinionPro-BoldItDisp-L-7m}{}
+\DeclareFontShape{OML}{MinionPro-Integral-Display}{m}{it}{
+    <-6>  s*[1.9] MinionPro-SemiboldIt-Cn-L-7m
+   <6-8>  s*[1.9] MinionPro-It-Cn-L-7m
+   <8-9>  s*[1.9] MinionPro-ItSubh-Cn-L-7m
+   <9->   s*[1.9] MinionPro-ItDisp-Cn-L-7m}{}
+\DeclareFontShape{OML}{MinionPro-Integral-Display}{sb}{it}{
+    <-6>  s*[1.9] MinionPro-BoldIt-Cn-L-7m
+   <6-8>  s*[1.9] MinionPro-SemiboldIt-Cn-L-7m
+   <8-9>  s*[1.9] MinionPro-SemiboldItSubh-Cn-L-7m
+   <9->   s*[1.9] MinionPro-SemiboldItDisp-Cn-L-7m}{}
+\DeclareFontShape{OML}{MinionPro-Integral-Display}{b}{it}{
+    <-8>  s*[1.9] MinionPro-BoldIt-Cn-L-7m
+   <8-9>  s*[1.9] MinionPro-BoldItSubh-Cn-L-7m
+   <9->   s*[1.9] MinionPro-BoldItDisp-Cn-L-7m}{}
+\DeclareMathAlphabet\mathinttext  {OML}{MinionPro-Integral-Text}{m}{it}
+\SetMathAlphabet\mathinttext{bold}{OML}{MinionPro-Integral-Text}{sb}{it}
+\DeclareMathAlphabet\mathintdisp  {OML}{MinionPro-Integral-Display}{m}{it}
+\SetMathAlphabet\mathintdisp{bold}{OML}{MinionPro-Integral-Display}{sb}{it}
+
+\def\centered@op#1#2{\mathop{\vcenter{\hbox{$\m@th#1\Mn@Text@With@MathVersion{#2}$}}}}
+\def\vartintop{\mathpalette\centered@op
+  {\fontencoding{OML}%
+   \fontfamily{MinionPro-Integral-Text}%
+   \fontshape{it}%
+   \selectfont
+   \char"80}}
+\def\vardintop{\mathpalette\centered@op
+  {\fontencoding{OML}%
+   \fontfamily{MinionPro-Integral-Display}%
+   \fontshape{it}%
+   \selectfont
+   \char"80}}
+\def\shiftedvarintkern@{\mkern-5mu\mathchoice{\mkern-2mu}{}{}{}}
+\def\varintkern@{\mkern-11.5mu\mathchoice{\mkern-6mu}{}{}{}}
+\def\varintdots@{\mkern-5mu%
+  \mathchoice{\mkern-1mu\@cdots\mkern-1mu}%
+  {{\cdotp}{\cdotp}{\cdotp}}%
+  {{\cdotp}{\cdotp}{\cdotp}}%
+  {{\cdotp}{\cdotp}{\cdotp}\mkern1mu}%
+  \mkern-6mu}
+
+\def\fake@int#1#2{\DOTSI\pre@int@kern\overstrike{#1}{#2}\ilimits@}
+\def\pre@int@kern{\mathchoice{\mkern0mu}{\mkern-1mu}{\mkern-1mu}{\mkern-1mu}}
+\def\shiftedvarintop{%
+  \mathop{%
+    \mathchoice
+      {\mkern2.5mu\vardintop\mkern-2.5mu}
+      {\mkern2.5mu\vartintop\mkern-2.5mu}
+      {\mkern2.75mu\vartintop\mkern-2.75mu}
+      {\mkern3mu\vartintop\mkern-3mu}}}
+
+\def\varintop{\overstrike\shiftedvarintop\partialvartint}
+
+\newcommand{\VarMultiIntegral}[1]{%
+  \edef\ints@c{\noexpand\varintop
+    \ifnum#1=\z@\noexpand\varintdots@\else\noexpand\varintkern@\fi
+    \ifnum#1>\tw@\noexpand\varintop\noexpand\varintkern@\fi
+    \ifnum#1>\thr@@\noexpand\varintop\noexpand\varintkern@\fi
+    \noexpand\varintop
+    \noexpand\ilimits@
+  }%
+  \futurelet\@let@token\ints@a
+}
+
+\def\varint{\fake@int\shiftedvarintop\partialvartint}
+\def\variint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{2}}
+\def\variiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{3}}
+\def\variiiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{4}}
+\def\varidotsint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{0}}
+
+\def\varlandupint{\fake@int\shiftedvarintop\partialvartlandupint}
+\def\varlanddownint{\fake@int\shiftedvarintop\partialvartlanddownint}
+\def\varstrokedint{\fake@int\shiftedvarintop\partialvartstrokedint}
+\def\varoint{\fake@int\shiftedvarintop\partialvartoint}
+\def\varoiint{\fake@int{\shiftedvarintop\shiftedvarintkern@\shiftedvarintop}\partialvartoiint}
+\def\varrcirclerightint{\fake@int\shiftedvarintop\partialvartrcirclerightint}
+\def\varlcirclerightint{\fake@int\shiftedvarintop\partialvartlcirclerightint}
+\def\varrcircleleftint{\fake@int\shiftedvarintop\partialvartrcircleleftint}
+\def\varlcircleleftint{\fake@int\shiftedvarintop\partialvartlcircleleftint}
+
+\def\Mn@Decl@Minion@Ints{%
+  \let\intop\varintop
+  \let\int\varint
+  \let\iint\variint
+  \let\iiint\variiint
+  \let\iiiint\variiiint
+  \let\idotsint\varidotsint
+  \let\landupint\varlandupint
+  \let\landdownint\varlanddownint
+  \let\strokedint\varstrokedint
+  \let\oint\varoint
+  \let\oiint\varoiint
+  \let\rcirclerightint\varrcirclerightint
+  \let\lcirclerightint\varlcirclerightint
+  \let\rcircleleftint\varrcircleleftint
+  \let\lcircleleftint\varlcircleleftint
+}
+
+\Mn@Decl@Ints
+
+%% correct logos
+
+\def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
+\DeclareRobustCommand{\LaTeX}{L\kern-.32em%
+        {\sbox\z@ T%
+         \vbox to\ht\z@{\hbox{\check@mathfonts
+                              \fontsize\sf@size\z@
+                              \math@fontsfalse\selectfont
+                              A}%
+                        \vss}%
+        }%
+        \kern-.15em%
+        \TeX}
+
+\def\textcelsius{\textdegree C}
+
+%% fix bug in amsmath.sty
+
+\def\macc@set@skewchar#1{%
+  \begingroup
+  \ifnum\mathgroup=\m@ne \let\@tempa\@ne
+  \else
+    \ifnum\skewchar\textfont\mathgroup=\m@ne \let\@tempa\@ne
+    \else \let\@tempa\mathgroup
+    \fi
+  \fi
+  \count@=\skewchar\textfont\@tempa
+  \ifnum\count@=\m@ne
+    \endgroup
+    \def\macc@skewchar{}
+  \else
+    \advance\count@"7100
+    \edef\@tempa{\endgroup
+      \mathchardef\noexpand\macc@skewchar=\number\count@\relax}%
+    \@tempa
+  \fi
+  #1%
+}
+
+%% make the changes take effect
+
+\normalfont\selectfont
+\endinput
+%</style>
+%    \end{macrocode}
+%
+% \section{Support for character protrusion}
+%
+%    \begin{macrocode}
+%<*protruding>
+% We allow this file to be included multiple times.
+\ifx\enableprotruding\undefined
+\ProvidesFile{MinionPro-Protrude}[2005/01/23 v2.0 support for margin kerning]%
+%
+\newcommand*\ProtrudeCommand[4]{%
+  \csname Protrude@#1@#2@#3@#4@\endcsname}
+\newcommand*\DefineProtrudeCommand[5]{%
+  \expandafter\newcommand\expandafter*\csname Protrude@#1@#2@#3@#4@\endcsname{}%
+  \expandafter\gdef\csname Protrude@#1@#2@#3@#4@\endcsname{#5}}
+%
+\ifx\pdfprotrudechars\undefined
+%
+\newcommand*\enableprotruding{}%
+\newcommand*\OToneRomanProtruding{}%
+\newcommand*\ToneRomanProtruding{}%
+\newcommand*\OToneItalicProtruding{}%
+\newcommand*\ToneItalicProtruding{}%
+\newcommand*\OToneSmallcapsProtruding{}%
+\newcommand*\ToneSmallcapsProtruding{}%
+\newcommand*\OToneSmallcapsItalicProtruding{}%
+\newcommand*\ToneSmallcapsItalicProtruding{}%
+%
+\else
+%
+\newcommand*\enableprotruding{\pdfprotrudechars=2}%
+%
+\newcommand*\SetProtruding[3]{%
+  \lpcode\font#1=#2%
+  \rpcode\font#1=#3}%
+\newcommand*\inheritProtruding[2]{%
+  \SetProtruding{#1}{\lpcode\font#2}{\rpcode\font#2}}%
+%
+\newcommand*\OToneRomanProtruding{%
+  \SetProtruding{`!}{020}{050}%
+  \SetProtruding{`'}{100}{150}%
+  \SetProtruding{``}{150}{100}%
+  \SetProtruding{`(}{020}{010}%
+  \SetProtruding{`)}{010}{020}%
+  \SetProtruding{`[}{035}{055}%
+  \SetProtruding{`]}{055}{035}%
+  \SetProtruding{`,}{100}{160}%
+  \SetProtruding{`-}{250}{250}%
+  \SetProtruding{`.}{150}{160}%
+  \SetProtruding{`:}{090}{110}%
+  \SetProtruding{`;}{080}{100}%
+  \SetProtruding{13}{160}{160}% quote single base
+  \SetProtruding{14}{140}{100}% guillemot single left
+  \SetProtruding{15}{100}{140}% guillemot single right
+  \SetProtruding{16}{150}{100}% quote double left
+  \SetProtruding{17}{100}{150}% qoute double right
+  \SetProtruding{18}{160}{160}% qoute double base
+  \SetProtruding{19}{140}{100}% guillemot left
+  \SetProtruding{20}{100}{140}% guillemot right
+  \SetProtruding{21}{200}{250}% en-dash
+  \SetProtruding{22}{200}{250}% em-dash
+  \SetProtruding{`A}{030}{030}%
+  \SetProtruding{`F}{000}{030}%
+  \SetProtruding{`J}{030}{000}%
+  \SetProtruding{`K}{000}{030}%
+  \SetProtruding{`L}{000}{030}%
+  \SetProtruding{`T}{030}{030}%
+  \SetProtruding{`V}{030}{030}%
+  \SetProtruding{`W}{030}{030}%
+  \SetProtruding{`X}{030}{030}%
+  \SetProtruding{`Y}{030}{030}%
+  \SetProtruding{`k}{000}{030}%
+  \SetProtruding{`r}{000}{030}%
+  \SetProtruding{`t}{000}{030}%
+  \SetProtruding{`v}{030}{030}%
+  \SetProtruding{`w}{030}{030}%
+  \SetProtruding{`x}{030}{030}%
+  \SetProtruding{`y}{030}{030}}%
+%
+\newcommand*\ToneRomanProtruding{%
+  \OToneRomanProtruding
+  \SetProtruding{127}{220}{250}% hyphen
+  \SetProtruding{128}{030}{030}% Abreve
+  \SetProtruding{129}{030}{030}% Aogonek
+  \SetProtruding{192}{030}{030}% Agrave
+  \SetProtruding{193}{030}{030}% Aacute
+  \SetProtruding{194}{030}{030}% Acircumflex
+  \SetProtruding{195}{030}{030}% Atilde
+  \SetProtruding{196}{030}{030}% Adieresis
+  \SetProtruding{197}{030}{030}% Aring
+  \SetProtruding{198}{030}{000}% AE
+  \SetProtruding{136}{000}{030}% Lacute
+  \SetProtruding{137}{000}{030}% Lcaron
+  \SetProtruding{138}{000}{030}% Lslash
+  \SetProtruding{141}{030}{030}% Th ligature
+  \SetProtruding{148}{030}{030}% Tcaron
+  \SetProtruding{152}{030}{030}% Ydieresis
+  \SetProtruding{221}{030}{030}% Yacute
+  \SetProtruding{173}{000}{030}% ffk ligature
+  \SetProtruding{180}{000}{030}% fk ligature
+  \SetProtruding{181}{000}{030}% fft ligature
+  \SetProtruding{223}{000}{030}% ft ligature
+  \SetProtruding{167}{000}{030}% racute
+  \SetProtruding{168}{000}{030}% rcaron
+  \SetProtruding{184}{030}{030}% ydieresis
+  \SetProtruding{253}{030}{030}% yacute
+}%
+%
+\newcommand*\OToneItalicProtruding{%
+  \SetProtruding{13}{ 50}{160}% quote single base
+  \SetProtruding{14}{140}{050}% guillemot single left
+  \SetProtruding{15}{100}{100}% guillemot single right
+  \SetProtruding{16}{200}{050}% quote double left
+  \SetProtruding{17}{200}{050}% qoute double right
+  \SetProtruding{18}{050}{160}% qoute double base
+  \SetProtruding{19}{140}{050}% guillemot left
+  \SetProtruding{20}{100}{100}% guillemot right
+  \SetProtruding{21}{200}{250}% en-dash
+  \SetProtruding{22}{200}{250}% em-dash
+  \SetProtruding{`!}{050}{010}%
+  \SetProtruding{34}{200}{050}% quote double
+  \SetProtruding{`'}{100}{050}%
+  \SetProtruding{``}{150}{030}%
+  \SetProtruding{`(}{030}{000}%
+  \SetProtruding{`)}{030}{000}%
+  \SetProtruding{`[}{030}{030}%
+  \SetProtruding{`]}{040}{020}%
+  \SetProtruding{`,}{050}{160}%
+  \SetProtruding{`-}{250}{250}%
+  \SetProtruding{`.}{150}{160}%
+  \SetProtruding{`:}{090}{100}%
+  \SetProtruding{`;}{000}{100}%
+  \SetProtruding{`A}{080}{030}%
+  \SetProtruding{`B}{050}{-30}%
+  \SetProtruding{`C}{030}{-40}%
+  \SetProtruding{`D}{050}{-20}%
+  \SetProtruding{`E}{050}{-30}%
+  \SetProtruding{`F}{050}{-20}%
+  \SetProtruding{`G}{030}{-40}%
+  \SetProtruding{`H}{050}{-30}%
+  \SetProtruding{`I}{050}{-30}%
+  \SetProtruding{`J}{080}{-40}%
+  \SetProtruding{`K}{050}{-30}%
+  \SetProtruding{`L}{050}{030}%
+  \SetProtruding{`M}{050}{-30}%
+  \SetProtruding{`N}{050}{-30}%
+  \SetProtruding{`O}{050}{-20}%
+  \SetProtruding{`P}{040}{-60}%
+  \SetProtruding{`Q}{030}{-30}%
+  \SetProtruding{`R}{050}{-30}%
+  \SetProtruding{`S}{030}{-30}%
+  \SetProtruding{`T}{080}{000}%
+  \SetProtruding{`U}{050}{-30}%
+  \SetProtruding{`V}{080}{020}%
+  \SetProtruding{`W}{080}{020}%
+  \SetProtruding{`X}{030}{000}%
+  \SetProtruding{`Y}{100}{000}%
+  \SetProtruding{`Z}{030}{-30}%
+  \SetProtruding{`d}{030}{-30}%
+  \SetProtruding{`f}{000}{-50}%
+  \SetProtruding{27}{000}{-50}% ff ligature
+  \SetProtruding{`g}{-30}{-30}%
+  \SetProtruding{`i}{000}{-30}%
+  \SetProtruding{25}{000}{-30}% dotlessi
+  \SetProtruding{28}{000}{-30}% fi ligature
+  \SetProtruding{30}{000}{-30}% ffi ligature
+  \SetProtruding{`j}{-25}{-40}%
+  \SetProtruding{`p}{-20}{000}%
+  \SetProtruding{`r}{000}{030}%
+  \SetProtruding{`t}{000}{030}%
+  \SetProtruding{`v}{040}{000}%
+  \SetProtruding{`w}{040}{005}%
+  \SetProtruding{`x}{040}{000}}%
+%
+\newcommand*\ToneItalicProtruding{%
+  \OToneItalicProtruding
+  \SetProtruding{127}{220}{250}% hyphen
+  \SetProtruding{128}{080}{030}% Abreve
+  \SetProtruding{129}{080}{030}% Aogonek
+  \SetProtruding{192}{080}{030}% Agrave
+  \SetProtruding{193}{080}{030}% Aacute
+  \SetProtruding{194}{080}{030}% Acircumflex
+  \SetProtruding{195}{080}{030}% Atilde
+  \SetProtruding{196}{080}{030}% Adieresis
+  \SetProtruding{197}{080}{030}% Aring
+  \SetProtruding{198}{080}{-30}% AE
+  \SetProtruding{130}{030}{-40}% Cacute
+  \SetProtruding{131}{030}{-40}% Ccaron
+  \SetProtruding{199}{030}{-40}% Ccedilla
+  \SetProtruding{131}{050}{-20}% Dcaron
+  \SetProtruding{132}{050}{-30}% Ecaron
+  \SetProtruding{133}{050}{-30}% Eogonek
+  \SetProtruding{200}{050}{-30}% Egrave
+  \SetProtruding{201}{050}{-30}% Eacute
+  \SetProtruding{202}{050}{-30}% Ecircumflex
+  \SetProtruding{203}{050}{-30}% Edieresis
+  \SetProtruding{135}{030}{-40}% Gbreve
+  \SetProtruding{156}{050}{-40}% IJ
+  \SetProtruding{157}{050}{-30}% Idotaccent
+  \SetProtruding{204}{050}{-30}% Igrave
+  \SetProtruding{205}{050}{-30}% Iacute
+  \SetProtruding{206}{050}{-30}% Icircumflex
+  \SetProtruding{207}{050}{-30}% Idieresis
+  \SetProtruding{136}{050}{030}% Lacute
+  \SetProtruding{137}{050}{030}% Lcaron
+  \SetProtruding{138}{050}{030}% Lslash
+  \SetProtruding{139}{050}{-30}% Nacute
+  \SetProtruding{140}{050}{-30}% Ncaron
+  \SetProtruding{209}{050}{-30}% Ntilde
+  \SetProtruding{142}{050}{-20}% Ohungarumlaut
+  \SetProtruding{210}{050}{-20}% Ograve
+  \SetProtruding{211}{050}{-20}% Oacute
+  \SetProtruding{212}{050}{-20}% Ocircumflex
+  \SetProtruding{213}{050}{-20}% Otilde
+  \SetProtruding{214}{050}{-20}% Odieresis
+  \SetProtruding{215}{050}{-30}% OE
+  \SetProtruding{216}{050}{-20}% Oslash
+  \SetProtruding{143}{050}{-30}% Racute
+  \SetProtruding{144}{050}{-30}% Rcaron
+  \SetProtruding{145}{030}{-30}% Sacute
+  \SetProtruding{146}{030}{-30}% Scaron
+  \SetProtruding{147}{030}{-30}% Scedilla
+  \SetProtruding{141}{080}{030}% Th ligature
+  \SetProtruding{148}{080}{000}% Tcaron
+  \SetProtruding{150}{050}{-30}% Uhungarumlaut
+  \SetProtruding{151}{050}{-30}% Uring
+  \SetProtruding{217}{050}{-30}% Ugrave
+  \SetProtruding{218}{050}{-30}% Uacute
+  \SetProtruding{219}{050}{-30}% Ucircumflex
+  \SetProtruding{220}{050}{-30}% Udieresis
+  \SetProtruding{152}{100}{000}% Ydieresis
+  \SetProtruding{221}{100}{000}% Yacute
+  \SetProtruding{153}{030}{-30}% Zacute
+  \SetProtruding{154}{030}{-30}% Zcaron
+  \SetProtruding{155}{030}{-30}% Zdotaccent
+  \SetProtruding{164}{030}{-30}% dcaron
+  \SetProtruding{173}{000}{030}% ffk ligature
+  \SetProtruding{180}{000}{030}% fk ligature
+  \SetProtruding{181}{000}{030}% fft ligature
+  \SetProtruding{223}{000}{030}% ft ligature
+  \SetProtruding{167}{-30}{-30}% gbreve
+  \SetProtruding{188}{000}{-40}% ij
+  \SetProtruding{236}{000}{-30}% igrave
+  \SetProtruding{237}{000}{-30}% iacute
+  \SetProtruding{238}{000}{-30}% icircumflex
+  \SetProtruding{239}{000}{-30}% idieresis
+  \SetProtruding{167}{000}{030}% racute
+  \SetProtruding{168}{000}{030}% rcaron
+  \SetProtruding{184}{030}{030}% ydieresis
+  \SetProtruding{253}{030}{030}% yacute
+}%
+%
+% We have no protruding values for small caps yet.
+%
+\newcommand*\OToneSmallcapsProtruding{}%
+\newcommand*\ToneSmallcapsProtruding{}%
+\newcommand*\OToneSmallcapsItalicProtruding{}%
+\newcommand*\ToneSmallcapsItalicProtruding{}%
+%
+%\newcommand*\mathprotruding{%
+%  \SetProtruding{ 0}{700}{750}% Gamma
+%  \SetProtruding{ 1}{000}{000}% Delta
+%  \SetProtruding{ 2}{000}{000}% Theta
+%  \SetProtruding{ 3}{000}{000}% Lambda
+%  \SetProtruding{ 4}{000}{000}% Xi
+%  \SetProtruding{ 5}{000}{000}% Pi
+%  \SetProtruding{ 6}{000}{000}% Sigma
+%  \SetProtruding{ 7}{000}{000}% Upsilon
+%  \SetProtruding{ 8}{000}{000}% Phi
+%  \SetProtruding{ 9}{000}{000}% Psi
+%  \SetProtruding{10}{000}{000}% Omega
+%  \SetProtruding{11}{000}{000}% alpha
+%  \SetProtruding{12}{000}{000}% beta
+%  \SetProtruding{13}{000}{000}% gamma
+%  \SetProtruding{14}{000}{000}% delta
+%  \SetProtruding{15}{000}{000}% epsilon
+%  \SetProtruding{16}{000}{000}% zeta
+%  \SetProtruding{17}{000}{000}% eta
+%  \SetProtruding{18}{000}{000}% theta
+%  \SetProtruding{19}{000}{000}% iota
+%  \SetProtruding{20}{000}{000}% kappa
+%  \SetProtruding{21}{000}{000}% lambda
+%  \SetProtruding{22}{000}{000}% mu
+%  \SetProtruding{23}{000}{000}% nu
+%  \SetProtruding{24}{000}{000}% xi
+%  \SetProtruding{25}{000}{000}% pi
+%  \SetProtruding{26}{000}{000}% rho
+%  \SetProtruding{27}{000}{000}% sigma
+%  \SetProtruding{28}{000}{000}% tau
+%  \SetProtruding{29}{000}{000}% upsilon
+%  \SetProtruding{30}{000}{000}% phi
+%  \SetProtruding{31}{000}{000}% chi
+%  \SetProtruding{32}{000}{000}% psi
+%  \SetProtruding{33}{000}{000}% omega
+%  \SetProtruding{34}{000}{000}% varepsilon
+%  \SetProtruding{35}{000}{000}% vartheta
+%  \SetProtruding{36}{000}{000}% varpi
+%  \SetProtruding{37}{000}{000}% varrho
+%  \SetProtruding{38}{000}{000}% varsigma
+%  \SetProtruding{39}{000}{000}% varphi
+%  \SetProtruding{58}{050}{160}% period
+%  \SetProtruding{59}{150}{160}% comma
+%  \SetProtruding{`A}{080}{030}%
+%  \SetProtruding{`B}{050}{-30}%
+%  \SetProtruding{`C}{030}{-40}%
+%  \SetProtruding{`D}{050}{-20}%
+%  \SetProtruding{`E}{050}{-30}%
+%  \SetProtruding{`F}{050}{-20}%
+%  \SetProtruding{`G}{030}{-40}%
+%  \SetProtruding{`H}{050}{-30}%
+%  \SetProtruding{`I}{050}{-30}%
+%  \SetProtruding{`J}{080}{-40}%
+%  \SetProtruding{`K}{050}{-30}%
+%  \SetProtruding{`L}{050}{030}%
+%  \SetProtruding{`M}{050}{-30}%
+%  \SetProtruding{`N}{050}{-30}%
+%  \SetProtruding{`O}{050}{-20}%
+%  \SetProtruding{`P}{040}{-60}%
+%  \SetProtruding{`Q}{030}{-30}%
+%  \SetProtruding{`R}{050}{-30}%
+%  \SetProtruding{`S}{030}{-30}%
+%  \SetProtruding{`T}{080}{000}%
+%  \SetProtruding{`U}{050}{-30}%
+%  \SetProtruding{`V}{080}{020}%
+%  \SetProtruding{`W}{080}{020}%
+%  \SetProtruding{`X}{030}{000}%
+%  \SetProtruding{`Y}{100}{000}%
+%  \SetProtruding{`Z}{030}{-30}%
+%  \SetProtruding{`d}{030}{-30}%
+%  \SetProtruding{`f}{000}{-50}%
+%  \SetProtruding{`g}{-30}{-30}%
+%  \SetProtruding{`i}{000}{-30}%
+%  \SetProtruding{`j}{-25}{-40}%
+%  \SetProtruding{`p}{-20}{000}%
+%  \SetProtruding{`r}{000}{030}%
+%  \SetProtruding{`t}{000}{030}%
+%  \SetProtruding{`v}{040}{000}%
+%  \SetProtruding{`w}{040}{005}%
+%  \SetProtruding{`x}{040}{000}}%
+\fi
+%
+% We might be called within a group, but these commands need to be global.
+%
+\global\let\enableprotruding\enableprotruding
+\global\let\ProtrudeCommand\ProtrudeCommand
+\global\let\DefineProtrudeCommand\DefineProtrudeCommand
+\global\let\SetProtruding\SetProtruding
+\global\let\OToneRomanProtruding\OToneRomanProtruding
+\global\let\ToneRomanProtruding\ToneRomanProtruding
+\global\let\OToneItalicProtruding\OToneItalicProtruding
+\global\let\ToneItalicProtruding\ToneItalicProtruding
+\global\let\OToneSmallcapsProtruding\OToneSmallcapsProtruding
+\global\let\ToneSmallcapsProtruding\ToneSmallcapsProtruding
+\global\let\OToneSmallcapsItalicProtruding\OToneSmallcapsItalicProtruding
+\global\let\ToneSmallcapsItalicProtruding\ToneSmallcapsItalicProtruding
+%
+\expandafter\newcommand\expandafter*\csname Mn@Encoding@OT1\endcsname{}%
+\expandafter\newcommand\expandafter*\csname Mn@Encoding@T1\endcsname{}%
+\expandafter\gdef\csname Mn@Encoding@OT1\endcsname{0}%
+\expandafter\gdef\csname Mn@Encoding@T1\endcsname{1}%
+%
+\newcommand*\ChooseProtruding[3]{%
+  \expandafter\ifx\csname Mn@Encoding@#1\endcsname\relax
+  \else
+    \ifcase\csname Mn@Encoding@#1\endcsname
+      #2%
+    \or #3%
+    \fi
+  \fi
+}%
+\newcommand*\RomanProtruding[1]{\ChooseProtruding{#1}\OToneRomanProtruding\ToneRomanProtruding}%
+\newcommand*\ItalicProtruding[1]{\ChooseProtruding{#1}\OToneItalicProtruding\ToneItalicProtruding}%
+\newcommand*\SmallcapsProtruding[1]{\ChooseProtruding{#1}\OToneSmallcapsProtruding\ToneSmallcapsProtruding}%
+\newcommand*\SmallcapsItalicProtruding[1]{\ChooseProtruding{#1}\OToneSmallcapsItalicProtruding\ToneSmallcapsItalicProtruding}%
+%
+\global\let\ChooseProtruding\ChooseProtruding
+\global\let\RomanProtruding\RomanProtruding
+\global\let\ItalicProtruding\ItalicProtruding
+\global\let\SmallcapsProtruding\SmallcapsProtruding
+\global\let\SmallcapsItalicProtruding\SmallcapsItalicProtruding
+%
+\fi
+\endinput
+%</protruding>
+%    \end{macrocode}
+%
+% \section{Font definition files}
+%
+% Since alle the font definitions look the same we introduce macros for the common tasks.
+% These macros are stored in the file \textsf{MinionPro-FontDef.sty} which is included
+% by every \textsc{fd}-file. Note that this file will be included several times and that
+% we do not know in which context the code is executed. Therefore, we cannot use the
+% \verb|@|~symbol in names and we have to define everything as global.
+%
+%    \begin{macrocode}
+%<*fontdef>
+% We allow this file to be included multiple times.
+\ifx\MnDeclareFont\undefined
+\ProvidesFile{MinionPro-FontDef}[2005/01/23 v2.0 font definition macros]%
+%
+\input{MinionPro-Protrude.sty}%
+%
+\newcommand*\MnDeclareFont[7]{
+    <-6>    MinionPro-#1-#6
+   <6-8>    MinionPro-#2-#6
+   <8-8.5>  MinionPro-#2-#7
+ <8.5-13.1> MinionPro-#3-#7
+<13.1-20>   MinionPro-#4-#7
+  <20->     MinionPro-#5-#7
+}%
+\newcommand*\MnDefineFontDeclarationCommand[6]{%
+  \newcommand*{#1}[6]{%
+    \DeclareFontShape{##1}{##2}{##3}{##4}{%
+      \MnDeclareFont{#2}{#3}{#4}{#5}{#6}{##5}{##6}%
+      }{\ProtrudeCommand{##1}{##2}{##3}{##4}}%
+  }%
+}%
+%
+\newcommand*\MnFontDefinitionsOpticals{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {SemiboldCapt}{Capt}{Regular}{Subh}{Disp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {SemiboldItCapt}{ItCapt}{It}{ItSubh}{ItDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {BoldCapt}{SemiboldCapt}{Semibold}{SemiboldSubh}{SemiboldDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldItCapt}{SemiboldItCapt}{SemiboldIt}{SemiboldItSubh}{SemiboldItDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {BoldCapt}{BoldCapt}{Bold}{BoldSubh}{BoldDisp}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldItCapt}{BoldItCapt}{BoldIt}{BoldItSubh}{BoldItDisp}%
+}%
+%
+\newcommand*\MnFontDefinitionsNoOpticals{%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontRegular
+    {Semibold}{Regular}{Regular}{Regular}{Regular}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontItalic
+    {SemiboldIt}{It}{It}{It}{It}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemibold
+    {Bold}{Semibold}{Semibold}{Semibold}{Semibold}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontSemiboldItalic
+    {BoldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBold
+    {Bold}{Bold}{Bold}{Bold}{Bold}%
+  \MnDefineFontDeclarationCommand
+    \MnDeclareFontBoldItalic
+    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
+}%
+%
+\newcommand*\MnDeclareLargeFontFamily[4]{%
+  \DeclareFontFamily{#1}{#2}{}%
+%
+  \DefineProtrudeCommand{#1}{#2}{m}{n}     {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{it}    {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{sc}    {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{ssc}   {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{scit}  {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{sscit} {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{sw}    {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{n}    {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{it}   {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{sc}   {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{ssc}  {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{scit} {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{sscit}{\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{sw}   {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{n}     {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{it}    {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{sc}    {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{ssc}   {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{scit}  {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{sscit} {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{sw}    {\ItalicProtruding{#1}}%
+%
+  \MnDeclareFontRegular       {#1}{#2}{m}{n}     {#3-l1-#4}      {#3-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{it}    {#3-l1-#4}      {#3-#4}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{sw}    {#3-swash-l1-#4}{#3-swash-#4}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}    {#3-l1-#4}      {#3-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}   {#3-l1-#4}      {#3-#4}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}   {#3-sc-l1-#4}   {#3-sc-#4}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{ssc}  {#3-sc-l2-#4}   {#3-sc-l2-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit} {#3-sc-l1-#4}   {#3-sc-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sscit}{#3-sc-l2-#4}   {#3-sc-l2-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sw}   {#3-swash-l1-#4}{#3-swash-#4}%
+  \MnDeclareFontBold          {#1}{#2}{b}{n}     {#3-l1-#4}      {#3-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}    {#3-l1-#4}      {#3-#4}%
+  \MnDeclareFontBold          {#1}{#2}{b}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}%
+  \MnDeclareFontBold          {#1}{#2}{b}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sw}    {#3-swash-l1-#4}{#3-swash-#4}%
+%
+  \DeclareFontShape{#1}{#2}{bx}{n} {<->ssub * #2/b/n}{}%
+  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{m} {sl}{<->ssub * #2/m/it}{}%
+  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub * #2/sb/it}{}%
+  \DeclareFontShape{#1}{#2}{b} {sl}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub * #2/b/it}{}%
+}%
+\newcommand*\MnDeclareSmallFontFamily[4]{%
+  \DeclareFontFamily{#1}{#2}{}%
+%
+  \DefineProtrudeCommand{#1}{#2}{m}{n}  {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{it} {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{n} {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{it}{\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{n}  {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{it} {\ItalicProtruding{#1}}%
+%
+  \MnDeclareFontRegular       {#1}{#2}{m}{n}  {#3-l1-#4}{#3-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{it} {#3-l1-#4}{#3-#4}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{n} {#3-l1-#4}{#3-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}{#3-l1-#4}{#3-#4}%
+  \MnDeclareFontBold          {#1}{#2}{b}{n}  {#3-l1-#4}{#3-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it} {#3-l1-#4}{#3-#4}%
+%
+  \DeclareFontShape{#1}{#2}{bx}{n} {<->ssub * #2/b/n}{}%
+  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{m} {sl}{<->ssub * #2/m/it}{}%
+  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub * #2/sb/it}{}%
+  \DeclareFontShape{#1}{#2}{b} {sl}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub * #2/b/it}{}%
+}%
+\newcommand*\MnDeclareMathFontFamily[4]{%
+  \DeclareFontFamily{#1}{#2}{}%
+%
+  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{it}   {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{sc}   {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{m}{scit} {\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{n}   {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{it}  {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{sc}  {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{sb}{scit}{\SmallcapsItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{n}    {\RomanProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{it}   {\ItalicProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{sc}   {\SmallcapsProtruding{#1}}%
+  \DefineProtrudeCommand{#1}{#2}{b}{scit} {\SmallcapsItalicProtruding{#1}}%
+%
+  \MnDeclareFontRegular       {#1}{#2}{m}{n}    {#3-l1-#4}   {#3-l1-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{it}   {#3-l1-#4}   {#3-l1-#4}%
+  \MnDeclareFontRegular       {#1}{#2}{m}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}%
+  \MnDeclareFontItalic        {#1}{#2}{m}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}   {#3-l1-#4}   {#3-l1-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}  {#3-l1-#4}   {#3-l1-#4}%
+  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}  {#3-sc-l1-#4}{#3-sc-l1-#4}%
+  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit}{#3-sc-l1-#4}{#3-sc-l1-#4}%
+  \MnDeclareFontBold          {#1}{#2}{b}{n}    {#3-l1-#4}   {#3-l1-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}   {#3-l1-#4}   {#3-l1-#4}%
+  \MnDeclareFontBold          {#1}{#2}{b}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}%
+  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}%
+%
+  \DeclareFontShape{#1}{#2}{bx}{n} {<->ssub * #2/b/n}{}%
+  \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{m} {sl}{<->ssub * #2/m/it}{}%
+  \DeclareFontShape{#1}{#2}{sb}{sl}{<->ssub * #2/sb/it}{}%
+  \DeclareFontShape{#1}{#2}{b} {sl}{<->ssub * #2/b/it}{}%
+  \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub * #2/b/it}{}%
+}%
+%
+% If we are called in the preamble we provide package options.
+% Otherwise, the defaults are used.
+\ifx\@nodocument\relax
+  \newcommand*\MnFontDefinitions{\MnFontDefinitionsOpticals}%
+\else
+  \newcommand*\MnFontDefinitions{}%
+  %
+  \DeclareOption{opticals}{\let\MnFontDefinitions\MnFontDefinitionsOpticals}%
+  \DeclareOption{noopticals}{\let\MnFontDefinitions\MnFontDefinitionsNoOpticals}%
+  %
+  \ExecuteOptions{opticals}%
+  \ProcessOptions
+\fi
+%
+\MnFontDefinitions
+%
+\fi
+\endinput
+%</fontdef>
+%    \end{macrocode}
+%
+% Using these macros the various \textsc{fd}-files become simple one-liners.
+%
+%    \begin{macrocode}
+%<*LGRlf>
+\ProvidesFile{LGRMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{LGR}{MinionPro-LF}{lf}{lgr}
+\endinput
+%</LGRlf>
+%<*LGRosf>
+\ProvidesFile{LGRMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{LGR}{MinionPro-OsF}{osf}{lgr}
+\endinput
+%</LGRosf>
+%<*LGRtlf>
+\ProvidesFile{LGRMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{LGR}{MinionPro-TLF}{tlf}{lgr}
+\endinput
+%</LGRtlf>
+%<*LGRtosf>
+\ProvidesFile{LGRMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{LGR}{MinionPro-TOsF}{tosf}{lgr}
+\endinput
+%</LGRtosf>
+%<*OMLlf>
+\ProvidesFile{OMLMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareMathFontFamily{OML}{MinionPro-LF}{lf}{oml}
+\endinput
+%</OMLlf>
+%<*OMLosf>
+\ProvidesFile{OMLMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareMathFontFamily{OML}{MinionPro-OsF}{osf}{oml}
+\endinput
+%</OMLosf>
+%<*OMLtlf>
+\ProvidesFile{OMLMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareMathFontFamily{OML}{MinionPro-TLF}{tlf}{oml}
+\endinput
+%</OMLtlf>
+%<*OMLtosf>
+\ProvidesFile{OMLMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareMathFontFamily{OML}{MinionPro-TOsF}{tosf}{oml}
+\endinput
+%</OMLtosf>
+%<*OT1lf>
+\ProvidesFile{OT1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{OT1}{MinionPro-LF}{lf}{ot1}
+\endinput
+%</OT1lf>
+%<*OT1osf>
+\ProvidesFile{OT1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-OsF.]%
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{OT1}{MinionPro-OsF}{osf}{ot1}%
+\endinput
+%</OT1osf>
+%<*OT1tlf>
+\ProvidesFile{OT1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{OT1}{MinionPro-TLF}{tlf}{ot1}
+\endinput
+%</OT1tlf>
+%<*OT1tosf>
+\ProvidesFile{OT1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{OT1}{MinionPro-TOsF}{tosf}{ot1}
+\endinput
+%</OT1tosf>
+%<*T1lf>
+\ProvidesFile{T1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{T1}{MinionPro-LF}{lf}{t1}
+\endinput
+%</T1lf>
+%<*T1osf>
+\ProvidesFile{T1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{T1}{MinionPro-OsF}{osf}{t1}
+\endinput
+%</T1osf>
+%<*T1tlf>
+\ProvidesFile{T1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{T1}{MinionPro-TLF}{tlf}{t1}
+\endinput
+%</T1tlf>
+%<*T1tosf>
+\ProvidesFile{T1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{T1}{MinionPro-TOsF}{tosf}{t1}
+\endinput
+%</T1tosf>
+%<*T2Alf>
+\ProvidesFile{T2AMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2A}{MinionPro-LF}{lf}{t2a}
+\endinput
+%</T2Alf>
+%<*T2Aosf>
+\ProvidesFile{T2AMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2A}{MinionPro-OsF}{osf}{t2a}
+\endinput
+%</T2Aosf>
+%<*T2Atlf>
+\ProvidesFile{T2AMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2A}{MinionPro-TLF}{tlf}{t2a}
+\endinput
+%</T2Atlf>
+%<*T2Atosf>
+\ProvidesFile{T2AMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2A}{MinionPro-TOsF}{tosf}{t2a}
+\endinput
+%</T2Atosf>
+%<*T2Blf>
+\ProvidesFile{T2BMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2B}{MinionPro-LF}{lf}{t2b}
+\endinput
+%</T2Blf>
+%<*T2Bosf>
+\ProvidesFile{T2BMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2B}{MinionPro-OsF}{osf}{t2b}
+\endinput
+%</T2Bosf>
+%<*T2Btlf>
+\ProvidesFile{T2BMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2B}{MinionPro-TLF}{tlf}{t2b}
+\endinput
+%</T2Btlf>
+%<*T2Btosf>
+\ProvidesFile{T2BMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2B}{MinionPro-TOsF}{tosf}{t2b}
+\endinput
+%</T2Btosf>
+%<*T2Clf>
+\ProvidesFile{T2CMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2C}{MinionPro-LF}{lf}{t2c}
+\endinput
+%</T2Clf>
+%<*T2Cosf>
+\ProvidesFile{T2CMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2C}{MinionPro-OsF}{osf}{t2c}
+\endinput
+%</T2Cosf>
+%<*T2Ctlf>
+\ProvidesFile{T2CMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2C}{MinionPro-TLF}{tlf}{t2c}
+\endinput
+%</T2Ctlf>
+%<*T2Ctosf>
+\ProvidesFile{T2CMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{T2C}{MinionPro-TOsF}{tosf}{t2c}
+\endinput
+%</T2Ctosf>
+%<*TS1lf>
+\ProvidesFile{TS1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{TS1}{MinionPro-LF}{lf}{ts1}
+\endinput
+%</TS1lf>
+%<*TS1osf>
+\ProvidesFile{TS1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{TS1}{MinionPro-OsF}{osf}{ts1}
+\endinput
+%</TS1osf>
+%<*TS1tlf>
+\ProvidesFile{TS1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{TS1}{MinionPro-TLF}{tlf}{ts1}
+\endinput
+%</TS1tlf>
+%<*TS1tosf>
+\ProvidesFile{TS1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareLargeFontFamily{TS1}{MinionPro-TOsF}{tosf}{ts1}
+\endinput
+%</TS1tosf>
+%<*Uorn>
+\ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{U}{MinionPro-Ornaments}{orn}{u}
+\endinput
+%</Uorn>
+%<*X2lf>
+\ProvidesFile{X2MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-LF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{X2}{MinionPro-LF}{lf}{x2}
+\endinput
+%</X2lf>
+%<*X2osf>
+\ProvidesFile{X2MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-OsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{X2}{MinionPro-OsF}{osf}{x2}
+\endinput
+%</X2osf>
+%<*X2tlf>
+\ProvidesFile{X2MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-TLF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{X2}{MinionPro-TLF}{tlf}{x2}
+\endinput
+%</X2tlf>
+%<*X2tosf>
+\ProvidesFile{X2MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-TOsF.]
+\input{MinionPro-FontDef.sty}%
+\MnDeclareSmallFontFamily{X2}{MinionPro-TOsF}{tosf}{x2}
+\endinput
+%</X2tosf>
+%    \end{macrocode}
+\endinput
+% vim:set ft=tex:

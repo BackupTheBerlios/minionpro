@@ -1,0 +1,103 @@
+% TS1 Encoding
+%
+/MinionPro-TS1Encoding [          % now 256 chars follow
+% 0x00
+  /Grave /Acute /circumflex /tilde
+  /Dieresis /Hungarumlaut /ring /Caron 
+  /breve /Macron /dotaccent /cedilla 
+  /ogonek /quotesinglbase /.notdef /.notdef
+% 0x10
+  /.notdef /.notdef /quotedblbase /.notdef 
+  /.notdef /threequartersemdash /threequartersemdash /capitalcompwordmark 
+  /arrowleft /arrowright /cyrflex /cyrFlex 
+  /cyrflex /cyrFlex /.notdef /ascendercompwordmark
+% 0x20
+  /notdef /.notdef /.notdef /.notdef
+  /dollar /.notdef /.notdef /quotesingle
+  /.notdef /.notdef /asterisk /.notdef
+  /comma /hyphentwo /period /fraction
+% 0x30
+  /zerooldstyle /oneoldstyle /twooldstyle /threeoldstyle /fouroldstyle
+  /fiveoldstyle /sixoldstyle /sevenoldstyle /eightoldstyle /nineoldstyle
+  /.notdef /.notdef
+  /angleleft
+  /minus
+  /angleright
+  /.notdef
+% 0x40
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef
+  /textmho
+  /.notdef
+  /circle
+% 0x50
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /Omega
+  /.notdef /.notdef /.notdef
+  /textlbrackdbl
+  /.notdef
+  /textrbrackdbl
+  /arrowup
+  /arrowdown
+% 0x60
+  /grave
+  /.notdef
+  /born
+  /divorced
+  /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /leaf /married /musicalnote
+  /.notdef
+% 0x70
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /asciitilde
+  /textdblhyphenchar
+% 0x80
+  /breve /caron /hungarumlaut /dblgrave 
+  /dagger /daggerdbl /bardbl /perthousand
+  /bullet /textcelsius /dollaroldstyle /centoldstyle
+  /florin /colonmonetary /won /textnaira
+% 0x90
+  /textguarani
+  /peseta
+  /lira
+  /textrecipe /textinterrobang /textinterrobangdown /textdong
+  /trademark
+  /pertenthousand
+  /paragraph
+  /bahtthai
+  /afii61352 %/numero
+  /textdiscount
+  /estimated
+  /bulletinverse /textservicemark
+% 0xA0
+  /textlquill /textrquill
+  /cent /sterling /currency /yen /brokenbar /section
+  /dieresis
+  /copyright /ordfeminine
+  /textcopyleft
+  /logicalnot
+  /textcircledP
+  /registered
+  /macron
+% 0xB0
+  /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph
+  /periodcentered
+  /referencemark
+  /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro
+% 0xC0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xD0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /multiply
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xE0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xF0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /divide
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+] def
