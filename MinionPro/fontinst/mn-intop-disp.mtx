@@ -72,7 +72,7 @@
   \movert{250}
   \glyph{dintegral}{1000}
   \push
-  \movert{-670}
+  \movert{-655}
   \glyph{dplanddownint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -94,7 +94,7 @@
   \movert{250}
   \glyph{dintegral}{1000}
   \push
-  \movert{-670}
+  \movert{-665}
   \glyph{dpoint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -107,7 +107,7 @@
   \movert{-100}
   \glyph{dintegral}{1000}
   \push
-  \movert{-1078}
+  \movert{-1065}
   \glyph{dpoiint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -118,7 +118,7 @@
   \movert{250}
   \glyph{dintegral}{1000}
   \push
-  \movert{-670}
+  \movert{-665}
   \glyph{dprcirclerightint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -129,7 +129,7 @@
   \movert{250}
   \glyph{dintegral}{1000}
   \push
-  \movert{-670}
+  \movert{-665}
   \glyph{dplcirclerightint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -140,7 +140,7 @@
   \movert{250}
   \glyph{dintegral}{1000}
   \push
-  \movert{-670}
+  \movert{-675}
   \glyph{dprcircleleftint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -151,7 +151,7 @@
   \movert{250}
   \glyph{dintegral}{1000}
   \push
-  \movert{-670}
+  \movert{-675}
   \glyph{dplcircleleftint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
