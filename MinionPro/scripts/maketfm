@@ -42,9 +42,9 @@ make_metrics() {
   make_simple_tfm "$1" tlf-ts1     TLF-8c
   make_simple_tfm "$1" tlf-ot1     TLF-7t
   make_simple_tfm "$1" tlf-oml     TLF-7m
-  make_simple_tfm "$1" tlf-sc-t1   TLF-SC-8t
-  make_simple_tfm "$1" tlf-sc-ts1  TLF-SC-8c
-  make_simple_tfm "$1" tlf-sc-ot1  TLF-SC-7t
+  make_simple_tfm "$1" tlf-sc-t1   TLFSC-8t
+  make_simple_tfm "$1" tlf-sc-ts1  TLFSC-8c
+  make_simple_tfm "$1" tlf-sc-ot1  TLFSC-7t
   make_simple_tfm "$1" tlf-t2a     TLF-6a
   make_simple_tfm "$1" tlf-t2b     TLF-6t
   make_simple_tfm "$1" tlf-t2c     TLF-6c
