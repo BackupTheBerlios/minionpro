@@ -111,14 +111,14 @@
 
 \define@key{figures}{osf}[]{\def\Mn@Text@FigB{OsF}}
 \define@key{figures}{lf}[]{\def\Mn@Text@FigB{LF}}
-\define@key{figures}{tabular}[]{\def\Mn@Text@FigA{T}}
+\define@key{figures}{tabular}[]{\def\Mn@Text@FigA{T}\mathversion{tabular}}
 \define@key{figures}{proportional}[]{\def\Mn@Text@FigA{}}
 
 \newcommand*\figureversion[1]{\setkeys{figures}{#1}\fontfamily\Mn@Text@Family\selectfont}
 
 \newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
 \newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
-\newcommand*\textfigures[1]{{\figureversion{tabular}#1}}
+\newcommand*\textfigures[1]{{\figureversion{osf}#1}}
 
 \DeclareMathSymbol{\itGamma}     {\mathord}{letters}{"00}
 \DeclareMathSymbol{\itDelta}     {\mathord}{letters}{"01}
