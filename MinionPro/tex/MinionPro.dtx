@@ -195,12 +195,15 @@
 \DeclareOption{protrude}{\enableprotruding}
 
 \def\Mn@minionint@version{}
+\def\Mn@minionintbold@version{Semibold}
 \DeclareOption{slides}{\PassOptionsToPackage{slides}{MinionPro-FontDef}}
 \DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
 \DeclareOption{noopticals}{%
   \PassOptionsToPackage{noopticals}{MinionPro-FontDef}%
-  \def\Mn@minionint@version{-NoOpticals}}
-\DeclareOption{smallfamily}{\PassOptionsToPackage{smallfamily}{MinionPro-FontDef}}
+  \def\Mn@minionint@version{-NoOpticals}
+  \def\Mn@minionintbold@version{Semibold-NoOpticals}}
+
+\DeclareOption{smallfamily}{\def\Mn@minionintbold@version{Bold-NoOpticals}\PassOptionsToPackage{smallfamily,noopticals}{MinionPro-FontDef}}
 \DeclareOption{medfamily}{\PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
 \DeclareOption{fullfamily}{\PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
 
@@ -710,13 +713,13 @@
   <10-12> MnSymbolFI\Mn@minionint@version10
   <12->   MnSymbolFI\Mn@minionint@version12}{}
 \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
-    <-6>  MnSymbolFI-Bold\Mn@minionint@version5
-   <6-7>  MnSymbolFI-Bold\Mn@minionint@version6
-   <7-8>  MnSymbolFI-Bold\Mn@minionint@version7
-   <8-9>  MnSymbolFI-Bold\Mn@minionint@version8
-   <9-10> MnSymbolFI-Bold\Mn@minionint@version9
-  <10-12> MnSymbolFI-Bold\Mn@minionint@version10
-  <12->   MnSymbolFI-Bold\Mn@minionint@version12}{}
+    <-6>  MnSymbolFI-\Mn@minionintbold@version5
+   <6-7>  MnSymbolFI-\Mn@minionintbold@version6
+   <7-8>  MnSymbolFI-\Mn@minionintbold@version7
+   <8-9>  MnSymbolFI-\Mn@minionintbold@version8
+   <9-10> MnSymbolFI-\Mn@minionintbold@version9
+  <10-12> MnSymbolFI-\Mn@minionintbold@version10
+  <12->   MnSymbolFI-\Mn@minionintbold@version12}{}
 
   \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
   \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
