@@ -1,0 +1,47 @@
+\input fontinst.sty
+
+\fontinstcc
+\def\metrics_given_encoding#1#2{
+   \x_cs\edef{s-afm-name}{#1-#2}
+   \if_file_exists{#1.pl}\then
+      \generalpltomtx{#1}{#1-#2}{pl}{#2}
+   \else
+      \if_file_exists{#1.vpl}\then
+         \generalpltomtx{#1}{#1-#2}{vpl}{#2}
+      \else
+         \unsetstr{afm-name}
+   \fi\fi
+}
+\normalcc
+
+\def\installnonopt#1#2{%
+  \installfont{#1}{%
+     MnSymbolF10                   encoding mn-symbol-f-partialints,%
+     #2                            encoding mn-symbol-f,%
+     MinionPro-It-osf-oml--base    encoding mn-tint scaled 1100,%
+     MinionPro-It-osf-cn2-integral encoding mn-dint scaled 1100,%
+     mn-intop-text,%
+     mn-intop-disp-noopt%
+  }{mn-symbol-fi}{}{}{}{}{}%
+}
+
+\installfonts
+
+  \installnonopt{MnSymbolFI-NoOpticals5}{MnSymbolF5}%
+  \installnonopt{MnSymbolFI-NoOpticals6}{MnSymbolF6}%
+  \installnonopt{MnSymbolFI-NoOpticals7}{MnSymbolF7}%
+  \installnonopt{MnSymbolFI-NoOpticals8}{MnSymbolF8}%
+  \installnonopt{MnSymbolFI-NoOpticals9}{MnSymbolF9}%
+  \installnonopt{MnSymbolFI-NoOpticals10}{MnSymbolF10}%
+  \installnonopt{MnSymbolFI-NoOpticals12}{MnSymbolF12}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals5}{MnSymbolF-Bold5}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals6}{MnSymbolF-Bold6}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals7}{MnSymbolF-Bold7}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals8}{MnSymbolF-Bold8}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals9}{MnSymbolF-Bold9}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals10}{MnSymbolF-Bold10}%
+  \installnonopt{MnSymbolFI-Bold-NoOpticals12}{MnSymbolF-Bold12}%
+
+\endinstallfonts
+
+\bye
