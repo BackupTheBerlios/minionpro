@@ -4,16 +4,18 @@ for s in 5 6 7 8 9 10 12
 do
   if [ ! -e MnSymbolF$s.pl ]
   then
+    mktextfm MnSymbolF$s
     tftopl MnSymbolF$s.tfm MnSymbolF$s.pl
   fi
   if [ ! -e MnSymbolF-Bold$s.pl ]
   then
+    mktextfm MnSymbolF-Bold$s
     tftopl MnSymbolF-Bold$s.tfm MnSymbolF-Bold$s.pl
   fi
 done
 
-tftopl ../tfm/MinionPro-It-osf-oml--base.tfm    MinionPro-It-osf-oml--base.pl
-tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm MinionPro-It-osf-cn2-integral.pl
+tftopl ../tfm/MinionPro-It-osf-oml--base.tfm        MinionPro-It-osf-oml--base.pl
+tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm     MinionPro-It-osf-cn2-integral.pl
 tftopl ../tfm/MinionPro-BoldIt-osf-oml--base.tfm    MinionPro-BoldIt-osf-oml--base.pl
 tftopl ../tfm/MinionPro-BoldIt-osf-cn2-integral.tfm MinionPro-BoldIt-osf-cn2-integral.pl
 
@@ -21,8 +23,9 @@ tex make-MnSymbolFI-noopt.tex
 
 if [ -e ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm ]
 then
-  tftopl ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm MinionPro-ItDisp-osf-cn1-integral.pl
+  tftopl ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm     MinionPro-ItDisp-osf-cn1-integral.pl
   tftopl ../tfm/MinionPro-BoldItDisp-osf-cn1-integral.tfm MinionPro-BoldItDisp-osf-cn1-integral.pl
+
   tex make-MnSymbolFI.tex
 fi
 
