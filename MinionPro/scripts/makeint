@@ -16,12 +16,19 @@ done
 
 tftopl ../tfm/MinionPro-It-osf-oml--base.tfm        MinionPro-It-osf-oml--base.pl
 tftopl ../tfm/MinionPro-It-osf-cn2-integral.tfm     MinionPro-It-osf-cn2-integral.pl
-tftopl ../tfm/MinionPro-SemiboldIt-osf-oml--base.tfm    MinionPro-SemiboldIt-osf-oml--base.pl
-tftopl ../tfm/MinionPro-SemiboldIt-osf-cn2-integral.tfm MinionPro-SemiboldIt-osf-cn2-integral.pl
 tftopl ../tfm/MinionPro-BoldIt-osf-oml--base.tfm    MinionPro-BoldIt-osf-oml--base.pl
 tftopl ../tfm/MinionPro-BoldIt-osf-cn2-integral.tfm MinionPro-BoldIt-osf-cn2-integral.pl
 
 tex make-MnSymbolFI-noopt.tex
+
+if [ -e ../tfm/MinionPro-SemiboldIt-osf-oml--base.tfm ]
+then
+  tftopl ../tfm/MinionPro-SemiboldIt-osf-oml--base.tfm    MinionPro-SemiboldIt-osf-oml--base.pl
+  tftopl ../tfm/MinionPro-SemiboldIt-osf-cn2-integral.tfm MinionPro-SemiboldIt-osf-cn2-integral.pl
+
+  tex make-MnSymbolFI-noopt-sb.tex
+fi
+
 
 if [ -e ../tfm/MinionPro-ItDisp-osf-cn1-integral.tfm ]
 then
