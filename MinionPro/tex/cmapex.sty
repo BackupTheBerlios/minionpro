@@ -1,0 +1,46 @@
+%%% cmap.sty imports cmaps on a per-encoding-basis.  This behaviour
+%%% renders the support of sepcial (family dependent) ligatures almost
+%%% impossible.  With this modifications cmap.sty first checks for the
+%%% presence of an encoding/family specific cmap
+%%% (e.g. T1Minion-OsF.cmap) and uses the encoding specific one as a
+%%% fallback.
+\ProvidesPackage{cmapex}[2004/09/11 v1.0 extended CMap support]
+
+\RequirePackage{cmap}
+
+\def\cmap@load{%
+  % first check for an encoding/family specific cmap
+  % if none is found use the encoding specific map as a fallback
+  \edef\reserved@f{\lowercase{\def\noexpand\reserved@f{\cmap@f@encoding@ex.cmap}}}%
+  \reserved@f
+  \typeout{Checking for character map \reserved@f}
+  \IfFileExists{\reserved@f}{%
+  }{%
+    \edef\reserved@f{\lowercase{\def\noexpand\reserved@f{\cmap@f@encoding.cmap}}}%
+    \reserved@f
+    \typeout{...not found.  Trying \reserved@f\space instead}
+  }%
+  \IfFileExists{\reserved@f}{%
+    \immediate\pdfobj stream
+      %attr {/Type /CIDFile}
+      file {\reserved@f}%
+    \expandafter\xdef\csname cmap@set@\cmap@f@encoding@ex\endcsname{%
+      \noexpand\expandafter\pdffontattr\noexpand\font@name{/ToUnicode \the\pdflastobj\space 0 R}}%
+    \typeout{...found}
+  }{%
+    \global\expandafter\let\csname cmap@set@\cmap@f@encoding\endcsname\empty
+    \typeout{...not found.  Searching the PDF might cause trouble.}
+  }%
+}
+\def\cmap@hook{%
+  \@ifundefined{CJK@plane}{%
+    \edef\cmap@f@encoding{\f@encoding}%
+  }{%
+    \edef\cmap@f@encoding{\f@encoding\CJK@plane}%
+  }%
+  \edef\cmap@f@encoding@ex{\cmap@f@encoding\f@family}%
+  \@ifundefined{cmap@set@\cmap@f@encoding@ex}{\cmap@load}\relax
+  \csname cmap@set@\cmap@f@encoding@ex\endcsname
+}
+
+\endinput
