@@ -1,10 +1,10 @@
 % TeX extra characters encoding.
 %
 /MinionPro-UEncoding [          % now 256 chars follow
-/uni03D0 /uni03DA /uni03DE /uni03E0 /uni03F0 /uniEFD5 /uniF638 /.notdef 
-/orn.001 /orn.002 /orn.003 /orn.004 /orn.005 /orn.006 /orn.007 /orn.008 
-/orn.009 /orn.010 /orn.011 /orn.012 /orn.013 /orn.014 /orn.015 /orn.016  
-/orn.017 /orn.018 /orn.019 /orn.020 /orn.021 /orn.022 /orn.023 /.notdef 
+/uniF638 /orn.001 /orn.002 /orn.003 /orn.004 /orn.005 /orn.006 /orn.007
+/orn.008 /orn.009 /orn.010 /orn.011 /orn.012 /orn.013 /orn.014 /orn.015
+/orn.016 /orn.017 /orn.018 /orn.019 /orn.020 /orn.021 /orn.022 /orn.023
+/uni03D0 /uni03DA /uni03DE /uni03E0 /uni03F0 /uniEFD5 /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
