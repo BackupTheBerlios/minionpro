@@ -1,14 +1,14 @@
---- otftotfm.cc.orig	2004-08-14 23:19:38.000000000 +0200
-+++ otftotfm.cc	2005-01-30 15:32:58.000000000 +0100
-@@ -83,6 +83,7 @@
- #define DEFAULT_LIGKERN_OPT	328
- #define NO_ECOMMAND_OPT		329
- #define LETTER_FEATURE_OPT	330
-+#define FILTER_OPT		331
+--- otftotfm.cc.orig	Mon Jan 31 14:35:21 2005
++++ otftotfm.cc	Mon Jan 31 12:04:29 2005
+@@ -87,6 +87,7 @@
+ #define DEFAULT_LIGKERN_OPT	329
+ #define NO_ECOMMAND_OPT		330
+ #define LETTER_FEATURE_OPT	331
++#define FILTER_OPT		332
  
  #define AUTOMATIC_OPT		341
  #define FONT_NAME_OPT		342
-@@ -120,6 +121,7 @@
+@@ -125,6 +126,7 @@
      { "feature", 'f', FEATURE_OPT, Clp_ArgString, 0 },
      { "letter-feature", 0, LETTER_FEATURE_OPT, Clp_ArgString, 0 },
      { "lf", 0, LETTER_FEATURE_OPT, Clp_ArgString, 0 },
@@ -16,16 +16,16 @@
      { "encoding", 'e', ENCODING_OPT, Clp_ArgString, 0 },
      { "literal-encoding", 0, LITERAL_ENCODING_OPT, Clp_ArgString, 0 },
      { "extend", 'E', EXTEND_OPT, Clp_ArgDouble, 0 },
-@@ -254,6 +256,8 @@
+@@ -260,6 +262,8 @@
    -s, --script=SCRIPT[.LANG]   Use features for script SCRIPT[.LANG] [latn].\n\
    -f, --feature=FEAT           Activate feature FEAT.\n\
    --lf, --letter-feature=FEAT  Activate feature FEAT for letters.\n\
-+      --filter=PROP            Restrict the following features to symbols
++      --filter=PROP            Restrict the following features to symbols\n\
 +                               having property PROP.\n\
    -E, --extend=F               Widen characters by a factor of F.\n\
    -S, --slant=AMT              Oblique characters by AMT, generally <<1.\n\
    -L, --letterspacing=AMT      Letterspace each character by AMT units.\n\
-@@ -947,9 +951,9 @@
+@@ -962,9 +966,9 @@
  
      StringAccum command;
      if (vpl)
@@ -37,15 +37,16 @@
      
      int status = mysystem(command.c_str(), errh);
  
-@@ -1413,6 +1417,7 @@
+@@ -1434,7 +1438,7 @@
      Vector<String> unicoding;
      bool no_ecommand = false, default_ligkern = false;
      String codingscheme;
+-
 +    GlyphFilter* current_gf = NULL;
+     GlyphFilter current_alternate_filter;
+     GlyphFilter* current_alternate_filter_ptr = &null_filter;
      
-     while (1) {
- 	int opt = Clp_Next(clp);
-@@ -1437,11 +1442,19 @@
+@@ -1461,6 +1465,12 @@
  	      break;
  	  }
  
@@ -57,13 +58,19 @@
 +
  	  case FEATURE_OPT: {
  	      OpenType::Tag t(clp->arg);
--	      if (t.valid())
-+	      if (t.valid()) {
+ 	      if (!t.valid())
+@@ -1471,7 +1481,13 @@
+ 		  if (!current_alternate_filter_ptr)
+ 		      current_alternate_filter_ptr = new GlyphFilter(current_alternate_filter);
  		  interesting_features.push_back(t);
--	      else
-+                  if (current_gf)
-+		    feature_filters.insert(t, current_gf);
-+              } else
- 		  usage_error(errh, "bad feature tag");
+-		  feature_filters.insert(t, current_alternate_filter_ptr);
++                  if (current_gf) {
++                    GlyphFilter *gf = new GlyphFilter(*current_gf);
++                    *gf += *current_alternate_filter_ptr;
++		    feature_filters.insert(t, gf);
++                  }
++                  else
++       		    feature_filters.insert(t, current_alternate_filter_ptr);
+ 	      }
  	      break;
  	  }
