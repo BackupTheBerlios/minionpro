@@ -68,13 +68,6 @@ make_normal_metrics() {
   make_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80 $sc_flags"
 }
 
-#make_normal_ts1_metrics() {
-#
-#  make_tfm "$1" ts1 $2-ts1       "$3"
-#  make_tfm "$1" ts1 $2-sc-ts1    "$3 -fsmcp"
-#  make_tfm "$1" ts1 $2-sc-l2-ts1 "-L 80 $3 -fsmcp"
-#}
-
 make_oml_metrics() {
 
   make_tfm "$1" oml $2-oml       "$3"
@@ -100,8 +93,8 @@ make_spread_metrics() {
   make_tfm "$1" x2     $2-l1-x2     "-L 40 -scyrl $flags"
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
   make_tfm "$1" ts1    $2-sc-l1-ts1 "-L 40        $sc_ts_flags"
-  make_tfm "$1" sc-t1  $2-sc-l1-t1  "-L 40        $sc_flags"
-  make_tfm "$1" sc-ot1 $2-sc-l1-ot1 "-L 40        $sc_flags"
+  make_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags"
+  make_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40        $sc_flags"
 }
 
 make_metrics() {
