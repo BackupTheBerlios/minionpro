@@ -1256,21 +1256,27 @@
 %
 % \section{Font definition files}
 %
-% Since alle the font definitions look the same we introduce macros for the common tasks.
-% These macros are stored in the file \textsf{MinionPro-FontDef.sty} which is included
-% by every \textsc{fd}-file. Note that this file will be included several times and that
-% we do not know in which context the code is executed. Therefore, we cannot use the
-% \verb|@|~symbol in names and we have to define everything as global.
+% Since alle the font definitions look the same we introduce macros for the
+% common tasks.  These macros are stored in the file
+% \textsf{MinionPro-FontDef.sty} which is included by every \textsc{fd}-file.
+% Note that this file will be included several times and that we do not know
+% in which context the code is executed. Therefore, we have to define
+% everything that is also needed later in the document as global.
 %
 %    \begin{macrocode}
 %<*fontdef>
 % We allow this file to be included multiple times.
-\ifx\MnDeclareFont\undefined
+\ifx\Mn@DeclareFont\undefined\else\endinput\fi
 \ProvidesFile{MinionPro-FontDef}[2005/01/23 v2.0 font definition macros]%
 %
 %\input{MinionPro-Protrude.sty}%
+% These are temporary definitions; they are only needed to construct the global
+% font definition macros.
 %
-\newcommand*\MnDeclareFont[7]{
+% Reset the escapechar so that newcommand does not break.
+\begingroup
+\escapechar`\\%
+\newcommand*\Mn@DeclareFont[7]{
     <-6>    MinionPro-#1-#6
    <6-8>    MinionPro-#2-#6
    <8-8.5>  MinionPro-#2-#7
@@ -1278,183 +1284,72 @@
 <13.1-20>   MinionPro-#4-#7
   <20->     MinionPro-#5-#7
 }%
-\newcommand*\MnDefineFontDeclarationCommand[6]{%
-  \newcommand*{#1}[7]{%
+% The font declaration commands must be global.
+\newcommand*\Mn@DefineFontDeclarationCommand[6]{%
+  \gdef#1##1##2##3##4##5##6##7{%
     \DeclareFontShape{##1}{##2}{##3}{##4}{%
-      \MnDeclareFont{#2}{#3}{#4}{#5}{#6}{##5}{##6}%
+      \Mn@DeclareFont{#2}{#3}{#4}{#5}{#6}{##5}{##6}%
        }{##7}%
   }%
 }%
 %
-\newcommand*\MnFontDefinitionsOpticalsFull{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {SemiboldCapt}{MediumCapt}{Regular}{Subh}{Disp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {SemiboldItCapt}{MediumItCapt}{It}{ItSubh}{ItDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {BoldCapt}{SemiboldCapt}{Semibold}{SemiboldSubh}{SemiboldDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldItCapt}{SemiboldItCapt}{SemiboldIt}{SemiboldItSubh}{SemiboldItDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {BoldCapt}{BoldCapt}{Bold}{BoldSubh}{BoldDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldItCapt}{BoldItCapt}{BoldIt}{BoldItSubh}{BoldItDisp}%
-}%
-%
-\newcommand*\MnFontDefinitionsNoOpticalsFull{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {Semibold}{Medium}{Regular}{Regular}{Regular}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {SemiboldIt}{MediumIt}{It}{It}{It}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {Bold}{Semibold}{Semibold}{Semibold}{Semibold}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {Bold}{Bold}{Bold}{Bold}{Bold}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
-}%
-%
-\newcommand*\MnFontDefinitionsSlidesFull{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {SemiboldCapt}{MediumCapt}{Capt}{Capt}{Capt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {SemiboldItCapt}{MediumItCapt}{ItCapt}{ItCapt}{ItCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {BoldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
-}%
-%
-\newcommand*\MnFontDefinitionsOpticalsMed{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {SemiboldCapt}{Capt}{Regular}{Subh}{Disp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {SemiboldItCapt}{ItCapt}{It}{ItSubh}{ItDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {BoldCapt}{SemiboldCapt}{Semibold}{SemiboldSubh}{SemiboldDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldItCapt}{SemiboldItCapt}{SemiboldIt}{SemiboldItSubh}{SemiboldItDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {BoldCapt}{BoldCapt}{Bold}{BoldSubh}{BoldDisp}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldItCapt}{BoldItCapt}{BoldIt}{BoldItSubh}{BoldItDisp}%
-}%
-%
-\newcommand*\MnFontDefinitionsNoOpticalsMed{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {Semibold}{Regular}{Regular}{Regular}{Regular}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {SemiboldIt}{It}{It}{It}{It}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {Bold}{Semibold}{Semibold}{Semibold}{Semibold}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}{SemiboldIt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {Bold}{Bold}{Bold}{Bold}{Bold}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
-}%
-%
-\newcommand*\MnFontDefinitionsSlidesMed{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {SemiboldCapt}{Capt}{Capt}{Capt}{Capt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {SemiboldItCapt}{ItCapt}{ItCapt}{ItCapt}{ItCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {BoldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}{SemiboldCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}{SemiboldItCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
-}%
-%
-\newcommand*\MnFontDefinitionsNoOpticalsSmall{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {Regular}{Regular}{Regular}{Regular}{Regular}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {It}{It}{It}{It}{It}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {Bold}{Bold}{Bold}{Bold}{Bold}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {Bold}{Bold}{Bold}{Bold}{Bold}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldIt}{BoldIt}{BoldIt}{BoldIt}{BoldIt}%
-}%
-%
-\newcommand*\MnFontDefinitionsSlidesSmall{%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontRegular
-    {Capt}{Capt}{Capt}{Capt}{Capt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontItalic
-    {ItCapt}{ItCapt}{ItCapt}{ItCapt}{ItCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemibold
-    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontSemiboldItalic
-    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBold
-    {BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}{BoldCapt}%
-  \MnDefineFontDeclarationCommand
-    \MnDeclareFontBoldItalic
-    {BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}{BoldItCapt}%
-}%
-%
-\newcommand*\MnDeclareLargeFontFamily[4]{%
+% optical size empty + weight empty + shape empty -> Regular
+\newcommand*\Mn@FontSuffix[1]{%
+  \if!#1!Regular\else #1\fi
+}
+\newcommand*\Mn@ifmatch[2]{%
+  \begingroup
+  \edef\@tempa{#1}%
+  \edef\@tempb{#2}%
+  \@tempswafalse
+  \ifx\@tempa\@tempb\@tempswatrue
+  \else\ifx\@tempb\@empty\@tempswatrue
+  \fi\fi
+  \expandafter\endgroup
+  \if@tempswa
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+\newcommand*\Mn@AppendOpticals[5]{}
+\newcommand*\Mn@SetOpticals[6][]{%
+  \Mn@ifmatch\Mn@OpticalsSwitch{#1}{%
+    \def\Mn@AppendOpticals##1##2##3##4##5{%
+      {\Mn@FontSuffix{##1#2}}%
+      {\Mn@FontSuffix{##2#3}}%
+      {\Mn@FontSuffix{##3#4}}%
+      {\Mn@FontSuffix{##4#5}}%
+      {\Mn@FontSuffix{##5#6}}%
+    }%
+  }\relax
+}
+\newcommand*\Mn@Italic[1]{%
+  \@ifundefined{Mn@Italic@#1}{#1Italic}{\@nameuse{Mn@Italic@#1}}%
+}
+\newcommand*\Mn@Italic@Regular{Italic}
+
+\newcommand*\Mn@SetWeights[7][]{%
+  \Mn@ifmatch\Mn@FamilySwitch{#1}{%
+    \edef\Mn@args{\Mn@AppendOpticals{#3}{#4}{#5}{#6}{#7}}%
+    \expandafter\Mn@DefineFontDeclarationCommand
+    \csname Mn@DeclareFont@#2\expandafter\endcsname\Mn@args
+    \edef\Mn@args{\Mn@AppendOpticals{#3It}{#4It}{#5It}{#6It}{#7It}}%
+    \expandafter\Mn@DefineFontDeclarationCommand
+    \csname Mn@DeclareFont@\Mn@Italic{#2}\expandafter\endcsname\Mn@args
+  }\relax
+}
+\newcommand*\Mn@SetException[8]{%
+  \Mn@ifmatch\Mn@OpticalsSwitch{#1}{%
+    \Mn@ifmatch\Mn@FamilySwitch{#2}{%
+      \expandafter\Mn@DefineFontDeclarationCommand
+      \csname Mn@DeclareFont@#3\endcsname{#4}{#5}{#6}{#7}{#8}%
+    }\relax
+  }\relax
+}
+
+\newcommand*\Mn@DeclareLargeFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
 %
 %  \DefineProtrudeCommand{#1}{#2}{m}{n}     {\RomanProtruding{#1}}%
@@ -1479,27 +1374,27 @@
 %  \DefineProtrudeCommand{#1}{#2}{b}{sscit} {\SmallcapsItalicProtruding{#1}}%
 %  \DefineProtrudeCommand{#1}{#2}{b}{sw}    {\ItalicProtruding{#1}}%
 %
-  \MnDeclareFontRegular       {#1}{#2}{m}{n}     {#3-l1-#4}      {#3-#4}        {}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{it}    {#3-l1-#4}      {#3-#4}        {}%
-  \MnDeclareFontRegular       {#1}{#2}{m}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}     {}%
-  \MnDeclareFontRegular       {#1}{#2}{m}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}     {}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{sw}    {#3-swash-l1-#4}{#3-swash-#4}  {}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}    {#3-l1-#4}      {#3-#4}        {}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}   {#3-l1-#4}      {#3-#4}        {}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}   {#3-sc-l1-#4}   {#3-sc-#4}     {}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{ssc}  {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit} {#3-sc-l1-#4}   {#3-sc-#4}     {}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sscit}{#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{sw}   {#3-swash-l1-#4}{#3-swash-#4}  {}%
-  \MnDeclareFontBold          {#1}{#2}{b}{n}     {#3-l1-#4}      {#3-#4}        {}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}    {#3-l1-#4}      {#3-#4}        {}%
-  \MnDeclareFontBold          {#1}{#2}{b}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}     {}%
-  \MnDeclareFontBold          {#1}{#2}{b}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}     {}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{sw}    {#3-swash-l1-#4}{#3-swash-#4}  {}%
+  \Mn@DeclareFont@Regular       {#1}{#2}{m}{n}     {#3-l1-#4}      {#3-#4}        {}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{it}    {#3-l1-#4}      {#3-#4}        {}%
+  \Mn@DeclareFont@Regular       {#1}{#2}{m}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \Mn@DeclareFont@Regular       {#1}{#2}{m}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{sw}    {#3-swash-l1-#4}{#3-swash-#4}  {}%
+  \Mn@DeclareFont@Semibold      {#1}{#2}{sb}{n}    {#3-l1-#4}      {#3-#4}        {}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{it}   {#3-l1-#4}      {#3-#4}        {}%
+  \Mn@DeclareFont@Semibold      {#1}{#2}{sb}{sc}   {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \Mn@DeclareFont@Semibold      {#1}{#2}{sb}{ssc}  {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{scit} {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{sscit}{#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{sw}   {#3-swash-l1-#4}{#3-swash-#4}  {}%
+  \Mn@DeclareFont@Bold          {#1}{#2}{b}{n}     {#3-l1-#4}      {#3-#4}        {}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{it}    {#3-l1-#4}      {#3-#4}        {}%
+  \Mn@DeclareFont@Bold          {#1}{#2}{b}{sc}    {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \Mn@DeclareFont@Bold          {#1}{#2}{b}{ssc}   {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{scit}  {#3-sc-l1-#4}   {#3-sc-#4}     {}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{sscit} {#3-sc-l2-#4}   {#3-sc-l2-#4}  {}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{sw}    {#3-swash-l1-#4}{#3-swash-#4}  {}%
 %
   \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
   \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
@@ -1508,7 +1403,7 @@
   \DeclareFontShape{#1}{#2}{b}{sl}{<->ssub*#2/b/it}{}%
   \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
-\newcommand*\MnDeclareSmallFontFamily[4]{%
+\newcommand*\Mn@DeclareSmallFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{}%
 %
 %  \DefineProtrudeCommand{#1}{#2}{m}{n}  {\RomanProtruding{#1}}%
@@ -1518,12 +1413,12 @@
 %  \DefineProtrudeCommand{#1}{#2}{b}{n}  {\RomanProtruding{#1}}%
 %  \DefineProtrudeCommand{#1}{#2}{b}{it} {\ItalicProtruding{#1}}%
 %
-  \MnDeclareFontRegular       {#1}{#2}{m}{n}  {#3-l1-#4}{#3-#4} {}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{it} {#3-l1-#4}{#3-#4} {}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{n} {#3-l1-#4}{#3-#4} {}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}{#3-l1-#4}{#3-#4} {}%
-  \MnDeclareFontBold          {#1}{#2}{b}{n}  {#3-l1-#4}{#3-#4} {}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it} {#3-l1-#4}{#3-#4} {}%
+  \Mn@DeclareFont@Regular       {#1}{#2}{m}{n}  {#3-l1-#4}{#3-#4} {}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{it} {#3-l1-#4}{#3-#4} {}%
+  \Mn@DeclareFont@Semibold      {#1}{#2}{sb}{n} {#3-l1-#4}{#3-#4} {}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{it}{#3-l1-#4}{#3-#4} {}%
+  \Mn@DeclareFont@Bold          {#1}{#2}{b}{n}  {#3-l1-#4}{#3-#4} {}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{it} {#3-l1-#4}{#3-#4} {}%
 %
   \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
   \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
@@ -1532,7 +1427,7 @@
   \DeclareFontShape{#1}{#2}{b}{sl}{<->ssub*#2/b/it}{}%
   \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
-\newcommand*\MnDeclareMathFontFamily[4]{%
+\newcommand*\Mn@DeclareMathFontFamily[4]{%
   \DeclareFontFamily{#1}{#2}{\skewchar\font=255}%
 %
 %  \DefineProtrudeCommand{#1}{#2}{m}{n}    {\RomanProtruding{#1}}%
@@ -1548,18 +1443,18 @@
 %  \DefineProtrudeCommand{#1}{#2}{b}{sc}   {\SmallcapsProtruding{#1}}%
 %  \DefineProtrudeCommand{#1}{#2}{b}{scit} {\SmallcapsItalicProtruding{#1}}%
 %
-  \MnDeclareFontRegular       {#1}{#2}{m}{n}    {#3-l1-#4}   {#3-l1-#4}   {}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{it}   {#3-l1-#4}   {#3-l1-#4}   {}%
-  \MnDeclareFontRegular       {#1}{#2}{m}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
-  \MnDeclareFontItalic        {#1}{#2}{m}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{n}   {#3-l1-#4}   {#3-l1-#4}   {}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{it}  {#3-l1-#4}   {#3-l1-#4}   {}%
-  \MnDeclareFontSemibold      {#1}{#2}{sb}{sc}  {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
-  \MnDeclareFontSemiboldItalic{#1}{#2}{sb}{scit}{#3-sc-l1-#4}{#3-sc-l1-#4}{}%
-  \MnDeclareFontBold          {#1}{#2}{b}{n}    {#3-l1-#4}   {#3-l1-#4}   {}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{it}   {#3-l1-#4}   {#3-l1-#4}   {}%
-  \MnDeclareFontBold          {#1}{#2}{b}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
-  \MnDeclareFontBoldItalic    {#1}{#2}{b}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
+  \Mn@DeclareFont@Regular       {#1}{#2}{m}{n}    {#3-l1-#4}   {#3-l1-#4}   {}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{it}   {#3-l1-#4}   {#3-l1-#4}   {}%
+  \Mn@DeclareFont@Regular       {#1}{#2}{m}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
+  \Mn@DeclareFont@Italic        {#1}{#2}{m}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
+  \Mn@DeclareFont@Semibold      {#1}{#2}{sb}{n}   {#3-l1-#4}   {#3-l1-#4}   {}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{it}  {#3-l1-#4}   {#3-l1-#4}   {}%
+  \Mn@DeclareFont@Semibold      {#1}{#2}{sb}{sc}  {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
+  \Mn@DeclareFont@SemiboldItalic{#1}{#2}{sb}{scit}{#3-sc-l1-#4}{#3-sc-l1-#4}{}%
+  \Mn@DeclareFont@Bold          {#1}{#2}{b}{n}    {#3-l1-#4}   {#3-l1-#4}   {}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{it}   {#3-l1-#4}   {#3-l1-#4}   {}%
+  \Mn@DeclareFont@Bold          {#1}{#2}{b}{sc}   {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
+  \Mn@DeclareFont@BoldItalic    {#1}{#2}{b}{scit} {#3-sc-l1-#4}{#3-sc-l1-#4}{}%
 %
   \DeclareFontShape{#1}{#2}{bx}{n}{<->ssub*#2/b/n}{}%
   \DeclareFontShape{#1}{#2}{bx}{it}{<->ssub*#2/b/it}{}%
@@ -1568,30 +1463,52 @@
   \DeclareFontShape{#1}{#2}{b}{sl}{<->ssub*#2/b/it}{}%
   \DeclareFontShape{#1}{#2}{bx}{sl}{<->ssub*#2/b/it}{}%
 }%
-%
+% All font declaration commands only need to be defined once; therefore we make
+% them global.
+\global\let\Mn@DeclareLargeFontFamily\Mn@DeclareLargeFontFamily
+\global\let\Mn@DeclareSmallFontFamily\Mn@DeclareSmallFontFamily
+\global\let\Mn@DeclareMathFontFamily\Mn@DeclareMathFontFamily
+\global\let\Mn@DeclareFont\Mn@DeclareFont
+
+% Later declarations override earlier ones.
+% We use providecommand to allow the experienced user to supply a different
+% configuration in advance.
+\providecommand*\Mn@FontDefinitions{
+  \Mn@SetOpticals[opticals]      {Capt}    {Capt}  {}      {Subh}  {Disp}
+  \Mn@SetOpticals[noopticals]    {}        {}      {}      {}      {}
+  \Mn@SetOpticals[slides]        {Capt}    {Capt}  {Capt}  {Capt}  {Capt}
+
+  \Mn@SetWeights[full] {Regular} {Semibold}{Medium}{}      {}      {}      
+  \Mn@SetWeights[med]  {Regular} {Semibold}{}      {}      {}      {} 
+  \Mn@SetWeights[small]{Regular} {}        {}      {}      {}      {} 
+
+  \Mn@SetWeights       {Semibold}{Bold}{Semibold}{Semibold}{Semibold}{Semibold}
+  \Mn@SetWeights[small]{Semibold}{Bold}    {Bold}  {Bold}  {Bold}  {Bold}
+
+  \Mn@SetWeights       {Bold}    {Bold}    {Bold}  {Bold}  {Bold}  {Bold}
+
+% \Mn@SetException{slides}{small}{BoldItalic}
+%                             {a}       {b}       {c}       {d}       {e}
+}
+
 % If we are called in the preamble we provide package options.
-% Otherwise, the defaults are used.
-\ifx\@nodocument\relax
-  \newcommand*\MnFontDefinitions{\MnFontDefinitionsOpticalsMed}%
-\else
-  \newcommand*\MnFontDefinitions{\csname MnFontDefinitions\MnOpticalsSwitch\MnFamilySwitch\endcsname}%
-  \newcommand*\MnOpticalsSwitch{Opticals}%
-  \newcommand*\MnFamilySwitch{Med}%
+% Otherwise, the following defaults are used.
+\providecommand*\Mn@OpticalsSwitch{opticals}%
+\providecommand*\Mn@FamilySwitch{med}%
+
+\ifx\@nodocument\relax\else
+  \DeclareOption{slides}{\renewcommand*\Mn@OpticalsSwitch{slides}}%
+  \DeclareOption{opticals}{\renewcommand*\Mn@OpticalsSwitch{opticals}}%
+  \DeclareOption{noopticals}{\renewcommand*\Mn@OpticalsSwitch{noopticals}}%
+  \DeclareOption{smallfamily}{\renewcommand*\Mn@FamilySwitch{small}}%
+  \DeclareOption{medfamily}{\renewcommand*\Mn@FamilySwitch{med}}%
+  \DeclareOption{fullfamily}{\renewcommand*\Mn@FamilySwitch{full}}%
   %
-  \DeclareOption{slides}{\renewcommand*\MnOpticalsSwitch{Slides}}%
-  \DeclareOption{opticals}{\renewcommand*\MnOpticalsSwitch{Opticals}}%
-  \DeclareOption{noopticals}{\renewcommand*\MnOpticalsSwitch{NoOpticals}}%
-  \DeclareOption{smallfamily}{\renewcommand*\MnFamilySwitch{Small}}%
-  \DeclareOption{medfamily}{\renewcommand*\MnFamilySwitch{Med}}%
-  \DeclareOption{fullfamily}{\renewcommand*\MnFamilySwitch{Full}}%
-  %
-  \ExecuteOptions{medfamily,opticals}%
   \ProcessOptions
 \fi
-%
-\MnFontDefinitions
-%
-\fi
+% Generate the font definition macros from the configuration.
+\Mn@FontDefinitions
+\endgroup
 %</fontdef>
 %    \end{macrocode}
 %
@@ -1601,207 +1518,207 @@
 %<*LGRlf>
 \ProvidesFile{LGRMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{LGR}{MinionPro-LF}{lf}{lgr}
+\Mn@DeclareSmallFontFamily{LGR}{MinionPro-LF}{lf}{lgr}
 %</LGRlf>
 %<*LGRosf>
 \ProvidesFile{LGRMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{LGR}{MinionPro-OsF}{osf}{lgr}
+\Mn@DeclareSmallFontFamily{LGR}{MinionPro-OsF}{osf}{lgr}
 %</LGRosf>
 %<*LGRtlf>
 \ProvidesFile{LGRMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{LGR}{MinionPro-TLF}{tlf}{lgr}
+\Mn@DeclareSmallFontFamily{LGR}{MinionPro-TLF}{tlf}{lgr}
 %</LGRtlf>
 %<*LGRtosf>
 \ProvidesFile{LGRMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{LGR}{MinionPro-TOsF}{tosf}{lgr}
+\Mn@DeclareSmallFontFamily{LGR}{MinionPro-TOsF}{tosf}{lgr}
 %</LGRtosf>
 %<*OMLlf>
 \ProvidesFile{OMLMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-LF}{lf}{oml}
+\Mn@DeclareMathFontFamily{OML}{MinionPro-LF}{lf}{oml}
 %</OMLlf>
 %<*OMLosf>
 \ProvidesFile{OMLMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-OsF}{osf}{oml}
+\Mn@DeclareMathFontFamily{OML}{MinionPro-OsF}{osf}{oml}
 %</OMLosf>
 %<*OMLtlf>
 \ProvidesFile{OMLMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-TLF}{tlf}{oml}
+\Mn@DeclareMathFontFamily{OML}{MinionPro-TLF}{tlf}{oml}
 %</OMLtlf>
 %<*OMLtosf>
 \ProvidesFile{OMLMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareMathFontFamily{OML}{MinionPro-TOsF}{tosf}{oml}
+\Mn@DeclareMathFontFamily{OML}{MinionPro-TOsF}{tosf}{oml}
 %</OMLtosf>
 %<*OT1lf>
 \ProvidesFile{OT1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{OT1}{MinionPro-LF}{lf}{ot1}
+\Mn@DeclareLargeFontFamily{OT1}{MinionPro-LF}{lf}{ot1}
 %</OT1lf>
 %<*OT1osf>
 \ProvidesFile{OT1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-OsF.]%
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{OT1}{MinionPro-OsF}{osf}{ot1}%
+\Mn@DeclareLargeFontFamily{OT1}{MinionPro-OsF}{osf}{ot1}%
 %</OT1osf>
 %<*OT1tlf>
 \ProvidesFile{OT1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{OT1}{MinionPro-TLF}{tlf}{ot1}
+\Mn@DeclareLargeFontFamily{OT1}{MinionPro-TLF}{tlf}{ot1}
 %</OT1tlf>
 %<*OT1tosf>
 \ProvidesFile{OT1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{OT1}{MinionPro-TOsF}{tosf}{ot1}
+\Mn@DeclareLargeFontFamily{OT1}{MinionPro-TOsF}{tosf}{ot1}
 %</OT1tosf>
 %<*T1lf>
 \ProvidesFile{T1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{T1}{MinionPro-LF}{lf}{t1}
+\Mn@DeclareLargeFontFamily{T1}{MinionPro-LF}{lf}{t1}
 %</T1lf>
 %<*T1osf>
 \ProvidesFile{T1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{T1}{MinionPro-OsF}{osf}{t1}
+\Mn@DeclareLargeFontFamily{T1}{MinionPro-OsF}{osf}{t1}
 %</T1osf>
 %<*T1tlf>
 \ProvidesFile{T1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{T1}{MinionPro-TLF}{tlf}{t1}
+\Mn@DeclareLargeFontFamily{T1}{MinionPro-TLF}{tlf}{t1}
 %</T1tlf>
 %<*T1tosf>
 \ProvidesFile{T1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T1/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{T1}{MinionPro-TOsF}{tosf}{t1}
+\Mn@DeclareLargeFontFamily{T1}{MinionPro-TOsF}{tosf}{t1}
 %</T1tosf>
 %<*T2Alf>
 \ProvidesFile{T2AMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2A}{MinionPro-LF}{lf}{t2a}
+\Mn@DeclareSmallFontFamily{T2A}{MinionPro-LF}{lf}{t2a}
 %</T2Alf>
 %<*T2Aosf>
 \ProvidesFile{T2AMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2A}{MinionPro-OsF}{osf}{t2a}
+\Mn@DeclareSmallFontFamily{T2A}{MinionPro-OsF}{osf}{t2a}
 %</T2Aosf>
 %<*T2Atlf>
 \ProvidesFile{T2AMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2A}{MinionPro-TLF}{tlf}{t2a}
+\Mn@DeclareSmallFontFamily{T2A}{MinionPro-TLF}{tlf}{t2a}
 %</T2Atlf>
 %<*T2Atosf>
 \ProvidesFile{T2AMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2A}{MinionPro-TOsF}{tosf}{t2a}
+\Mn@DeclareSmallFontFamily{T2A}{MinionPro-TOsF}{tosf}{t2a}
 %</T2Atosf>
 %<*T2Blf>
 \ProvidesFile{T2BMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2B}{MinionPro-LF}{lf}{t2b}
+\Mn@DeclareSmallFontFamily{T2B}{MinionPro-LF}{lf}{t2b}
 %</T2Blf>
 %<*T2Bosf>
 \ProvidesFile{T2BMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2B}{MinionPro-OsF}{osf}{t2b}
+\Mn@DeclareSmallFontFamily{T2B}{MinionPro-OsF}{osf}{t2b}
 %</T2Bosf>
 %<*T2Btlf>
 \ProvidesFile{T2BMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2B}{MinionPro-TLF}{tlf}{t2b}
+\Mn@DeclareSmallFontFamily{T2B}{MinionPro-TLF}{tlf}{t2b}
 %</T2Btlf>
 %<*T2Btosf>
 \ProvidesFile{T2BMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2B}{MinionPro-TOsF}{tosf}{t2b}
+\Mn@DeclareSmallFontFamily{T2B}{MinionPro-TOsF}{tosf}{t2b}
 %</T2Btosf>
 %<*T2Clf>
 \ProvidesFile{T2CMinionPro-LF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2C}{MinionPro-LF}{lf}{t2c}
+\Mn@DeclareSmallFontFamily{T2C}{MinionPro-LF}{lf}{t2c}
 %</T2Clf>
 %<*T2Cosf>
 \ProvidesFile{T2CMinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2C}{MinionPro-OsF}{osf}{t2c}
+\Mn@DeclareSmallFontFamily{T2C}{MinionPro-OsF}{osf}{t2c}
 %</T2Cosf>
 %<*T2Ctlf>
 \ProvidesFile{T2CMinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2C}{MinionPro-TLF}{tlf}{t2c}
+\Mn@DeclareSmallFontFamily{T2C}{MinionPro-TLF}{tlf}{t2c}
 %</T2Ctlf>
 %<*T2Ctosf>
 \ProvidesFile{T2CMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{T2C}{MinionPro-TOsF}{tosf}{t2c}
+\Mn@DeclareSmallFontFamily{T2C}{MinionPro-TOsF}{tosf}{t2c}
 %</T2Ctosf>
 %<*TS1lf>
 \ProvidesFile{TS1MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{TS1}{MinionPro-LF}{lf}{ts1}
+\Mn@DeclareLargeFontFamily{TS1}{MinionPro-LF}{lf}{ts1}
 %</TS1lf>
 %<*TS1osf>
 \ProvidesFile{TS1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{TS1}{MinionPro-OsF}{osf}{ts1}
+\Mn@DeclareLargeFontFamily{TS1}{MinionPro-OsF}{osf}{ts1}
 %</TS1osf>
 %<*TS1tlf>
 \ProvidesFile{TS1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{TS1}{MinionPro-TLF}{tlf}{ts1}
+\Mn@DeclareLargeFontFamily{TS1}{MinionPro-TLF}{tlf}{ts1}
 %</TS1tlf>
 %<*TS1tosf>
 \ProvidesFile{TS1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareLargeFontFamily{TS1}{MinionPro-TOsF}{tosf}{ts1}
+\Mn@DeclareLargeFontFamily{TS1}{MinionPro-TOsF}{tosf}{ts1}
 %</TS1tosf>
 %<*Uorn>
 \ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{U}{MinionPro-Ornaments}{orn}{u}
+\Mn@DeclareSmallFontFamily{U}{MinionPro-Ornaments}{orn}{u}
 %</Uorn>
 %<*X2lf>
 \ProvidesFile{X2MinionPro-LF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{X2}{MinionPro-LF}{lf}{x2}
+\Mn@DeclareSmallFontFamily{X2}{MinionPro-LF}{lf}{x2}
 %</X2lf>
 %<*X2osf>
 \ProvidesFile{X2MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{X2}{MinionPro-OsF}{osf}{x2}
+\Mn@DeclareSmallFontFamily{X2}{MinionPro-OsF}{osf}{x2}
 %</X2osf>
 %<*X2tlf>
 \ProvidesFile{X2MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{X2}{MinionPro-TLF}{tlf}{x2}
+\Mn@DeclareSmallFontFamily{X2}{MinionPro-TLF}{tlf}{x2}
 %</X2tlf>
 %<*X2tosf>
 \ProvidesFile{X2MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for X2/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{X2}{MinionPro-TOsF}{tosf}{x2}
+\Mn@DeclareSmallFontFamily{X2}{MinionPro-TOsF}{tosf}{x2}
 %</X2tosf>
 %<*OT2lf>
 \ProvidesFile{OT2MinionPro-LF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-LF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{OT2}{MinionPro-LF}{lf}{ot2}
+\Mn@DeclareSmallFontFamily{OT2}{MinionPro-LF}{lf}{ot2}
 %</OT2lf>
 %<*OT2osf>
 \ProvidesFile{OT2MinionPro-OsF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-OsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{OT2}{MinionPro-OsF}{osf}{ot2}
+\Mn@DeclareSmallFontFamily{OT2}{MinionPro-OsF}{osf}{ot2}
 %</OT2osf>
 %<*OT2tlf>
 \ProvidesFile{OT2MinionPro-TLF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-TLF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{OT2}{MinionPro-TLF}{tlf}{ot2}
+\Mn@DeclareSmallFontFamily{OT2}{MinionPro-TLF}{tlf}{ot2}
 %</OT2tlf>
 %<*OT2tosf>
 \ProvidesFile{OT2MinionPro-TOsF.fd}[2005/02/08 v2.0 font definitions for OT2/MinionPro-TOsF.]
 \input{MinionPro-FontDef.sty}%
-\MnDeclareSmallFontFamily{OT2}{MinionPro-TOsF}{tosf}{ot2}
+\Mn@DeclareSmallFontFamily{OT2}{MinionPro-TOsF}{tosf}{ot2}
 %</OT2tosf>
 %    \end{macrocode}
 \endinput
