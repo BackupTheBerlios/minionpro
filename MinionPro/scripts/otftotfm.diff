@@ -1,5 +1,46 @@
+diff -u ../otftotfm.orig/metrics.cc ./metrics.cc
+--- ../otftotfm.orig/metrics.cc	2004-10-06 01:16:09.000000000 +0200
++++ ./metrics.cc	2005-03-07 19:34:23.000000000 +0100
+@@ -24,7 +24,7 @@
+ #include <lcdf/straccum.hh>
+ 
+ Metrics::Metrics(Efont::CharstringProgram *font, int nglyphs)
+-    : _boundary_glyph(nglyphs), _emptyslot_glyph(nglyphs + 1),
++    : _boundary_glyph(nglyphs), _skew_glyph(nglyphs + 1), _emptyslot_glyph(nglyphs + 2),
+       _design_units(1000), _liveness_marked(false)
+ {
+     _encoding.assign(256, Char());
+@@ -97,6 +97,8 @@
+ 	    return ch.virtual_char->name;
+ 	else if (ch.glyph == _boundary_glyph)
+ 	    return "<boundary>";
++	else if (ch.glyph == _skew_glyph)
++	    return "<skew>";
+ 	else if (ch.glyph == _emptyslot_glyph)
+ 	    return "<emptyslot>";
+ 	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
+diff -u ../otftotfm.orig/metrics.hh ./metrics.hh
+--- ../otftotfm.orig/metrics.hh	2004-08-10 22:39:39.000000000 +0200
++++ ./metrics.hh	2005-03-07 19:34:36.000000000 +0100
+@@ -31,6 +31,7 @@
+     void check() const;
+     
+     Glyph boundary_glyph() const	{ return _boundary_glyph; }
++    Glyph skew_glyph() const		{ return _skew_glyph; }
+     Glyph emptyslot_glyph() const	{ return _emptyslot_glyph; }
+ 
+     String coding_scheme() const		{ return _coding_scheme; }
+@@ -147,6 +148,7 @@
+     mutable Vector<int> _emap;
+ 
+     Glyph _boundary_glyph;
++    Glyph _skew_glyph;
+     Glyph _emptyslot_glyph;
+ 
+     Vector<Kern> _altselectors;
+diff -u ../otftotfm.orig/otftotfm.cc ./otftotfm.cc
 --- ../otftotfm.orig/otftotfm.cc	2005-02-16 23:11:28.000000000 +0100
-+++ otftotfm.cc	2005-03-02 19:38:49.000000000 +0100
++++ ./otftotfm.cc	2005-03-07 19:40:49.000000000 +0100
 @@ -94,6 +94,7 @@
  #define ALTERNATES_FILTER_OPT	336
  #define SPACE_FACTOR_OPT	337
@@ -47,7 +88,7 @@
 +get_slant(const Cff::Font *family_cff)
 +{
 +    double val;
-+    (void) family_cff->dict_value(Efont::Cff::oItalicAngle, 0, &val);
++    (void) family_cff->dict_value(Efont::Cff::oItalicAngle, &val);
 +    return -tan(val * M_PI / 180.0);
 +};
 +
@@ -250,7 +291,7 @@
      // maintain statistics about features
      HashMap<uint32_t, int> feature_usage(0);
  
-@@ -1326,15 +1349,26 @@
+@@ -1326,15 +1349,28 @@
      // apply math letterspacing, if any
      if (math_spacing) {
  	Transform font_xform;
@@ -268,17 +309,19 @@
  		    int right_sb = (bounds[2] > width ? bounds[2] - width : 0);
  		    metrics.add_single_positioning(code, left_sb, 0, left_sb + right_sb);
 +
-+		    // compute accent skew
-+		    int height = bounds[3];
-+		    int x_height = get_x_height(font, cmap, font_xform);
-+		    int skew = (int)(height > x_height ? actual_slant * (height - x_height) : 0);
++		    if (skew_char >= 0) {
++		        // compute accent skew
++		        int height = bounds[3];
++		        int x_height = get_x_height(font, cmap, font_xform);
++		        int skew = (int)(height > x_height ? actual_slant * (height - x_height) : 0);
 +
-+                    if (skew != 0)
-+			metrics.add_kern(code, skew_char, skew);
++                        if (skew != 0)
++			    metrics.add_kern(code, skew_char, skew);
++                    }
  		}
  	    }
  	}
-@@ -1582,6 +1616,10 @@
+@@ -1582,6 +1618,10 @@
  	    default_ligkern = true;
  	    break;
  
