@@ -38,10 +38,10 @@ get_flags() {
 }
 get_ts_flags() {
   case $1 in
-      lf) ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -fpnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum";;
-     osf) ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -fpnum --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
-     tlf) ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -ftnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum";;
-    tosf) ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -ftnum --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
+      lf) ts_flags="-fpnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum";;
+     osf) ts_flags="-fpnum --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
+     tlf) ts_flags="-ftnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum";;
+    tosf) ts_flags="-ftnum --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
   esac
 }
 get_sc_flags() {
@@ -54,10 +54,10 @@ get_sc_flags() {
 }
 get_sc_ts_flags() {
   case $1 in
-      lf) sc_ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -fpnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum --subs-filter=<Letter> -fsmcp";;
-     osf) sc_ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -fpnum -fsmcp --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
-     tlf) sc_ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -ftnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum --subs-filter=<Letter> -fsmcp";;
-    tosf) sc_ts_flags="--include-subs=grave --include-subs=acute --include-subs=circumflex --include-subs=tilde --include-subs=dieresis --include-subs=hungarumlaut --include-subs=ring --include-subs=caron --include-subs=breve --include-subs=macron  --include-subs=dotaccent  --include-subs=cedilla  --include-subs=ogonek -fcase --clear-subs -ftnum -fsmcp --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
+      lf) sc_ts_flags="-fpnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum --subs-filter=<Letter> -fsmcp";;
+     osf) sc_ts_flags="-fpnum -fsmcp --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
+     tlf) sc_ts_flags="-ftnum --subs-filter=<Number> -fonum --subs-filter=!<Number> -flnum --subs-filter=<Letter> -fsmcp";;
+    tosf) sc_ts_flags="-ftnum -fsmcp --subs-filter=<Number> -flnum --subs-filter=!<Number> -fonum";;
   esac
 }
 

@@ -2,10 +2,10 @@
 %
 /MinionPro-TS1Encoding [          % now 256 chars follow
 % 0x00
-  /grave /acute /circumflex /tilde
-  /dieresis /hungarumlaut /ring /caron 
-  /breve /macron /dotaccent /cedilla 
-  /ogonek /quotesinglbase /.notdef /.notdef
+  /Grave /Acute /uniEFF7 /uniEFF5
+  /Dieresis /Hungarumlaut /uniEFF3 /Caron 
+  /uniEFEE /Macron /uniEFED /uniEFF2 
+  /uniEFF1 /quotesinglbase /.notdef /.notdef
 % 0x10
   /.notdef /.notdef /quotedblbase /.notdef 
   /.notdef /threequartersemdash /threequartersemdash /capitalcompwordmark 
