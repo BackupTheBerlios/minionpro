@@ -15,7 +15,7 @@
 % 0x30
 /zerooldstyle /oneoldstyle /twooldstyle /threeoldstyle /fouroldstyle
 /fiveoldstyle /sixoldstyle /sevenoldstyle /eightoldstyle /nineoldstyle 
-/comma /less /slash /greater /star
+/period /comma /less /slash /greater /star
 % 0x40
 /partialdiff /A /B /C /D /E /F /G
 /H /I /J /K /L /M /N /O
