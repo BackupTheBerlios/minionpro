@@ -43,10 +43,12 @@
   \let\mathbb\undefined
   \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}
 \def\Mn@load@pazobb{
-  \let\mathbb\undefined
+  \let\mathbb\relax
   \DeclareFontFamily{T1}{fplmbb}{}
-  \DeclareFontShape{T1}{fplmbb}{m}{n}{ <-> s*[0.92] fplmbb }{}
-  \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}}
+  \DeclareFontShape{T1}{fplmbb}{m}{n}{<->s*[.92]fplmbb}{}
+  \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}  
+  %
+  }
 \let\Mn@load@bb\Mn@load@amsbb
 
 \def\Mn@load@wbfrak{
@@ -397,10 +399,10 @@
       {\mkern0.75mu\vartintop\mkern-0.75mu}
       {\mkern0.75mu\vartintop\mkern-0.75mu}}}
 \def\varintop{\mathop{\mathchoice{\vardintop}{\vartintop}{\vartintop}{\vartintop}}}
-\def\varint{\DOTSI\overstrike\shiftedvarintop\partialvartint\ilimits@}
-\def\variint{\DOTSI\overstrike{\shiftedvarintop\intkern@\shiftedvarintop}%
+\def\varint{\mkern4mu\DOTSI\overstrike\shiftedvarintop\partialvartint\ilimits@}
+\def\variint{\mkern4mu\DOTSI\overstrike{\shiftedvarintop\intkern@\shiftedvarintop}%
                               {\mkern6mu\partialvartint}\ilimits@}
-\def\variiint{\DOTSI\overstrike{\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop}%
+\def\variiint{\mkern4mu\DOTSI\overstrike{\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop}%
                                {\mkern12mu\partialvartint}\ilimits@}
 \def\variiiint{\DOTSI\overstrike
   {\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop}%

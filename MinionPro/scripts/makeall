@@ -2,13 +2,13 @@
 
 mkdir -p afm pfb tfm vf vpl
 
-for f in otf/*.otf
-do
-  ./scripts/fonttopfb.pe $f
-done
-
-mv otf/*.pfb pfb
-mv otf/*.afm afm
+#for f in otf/*.otf
+#do
+#  ./scripts/fonttopfb.pe $f
+#done
+#
+#mv otf/*.pfb pfb
+#mv otf/*.afm afm
 
 ./scripts/maketfm MinionPro | sed -e 's!dvips/!!g' -e 's!^[^ ]* \([^ ]*\) .*$!\0 <\1.pfb!' >dvips/Minion.map
 
