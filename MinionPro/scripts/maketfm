@@ -62,21 +62,21 @@ make_metrics() {
   make_simple_tfm "$1" tosf-x2     TOSF-6x
 
   make_spread_tfm "$1" lf-oml      L-7m       7m        20
-  make_spread_tfm "$1" lf-sc-t1    SSC-8t     SC-8t     25
-  make_spread_tfm "$1" lf-sc-ts1   SSC-8c     SC-8c     25
-  make_spread_tfm "$1" lf-sc-ot1   SSC-7t     SC-7t     25
+  make_spread_tfm "$1" lf-sc-t1    SSC-8t     SC-8t     40
+  make_spread_tfm "$1" lf-sc-ts1   SSC-8c     SC-8c     40
+  make_spread_tfm "$1" lf-sc-ot1   SSC-7t     SC-7t     40
   make_spread_tfm "$1" osf-oml     OSFL-7m    OSF-7m    20
-  make_spread_tfm "$1" osf-sc-t1   OSFSSC-8t  OSFSC-8t  25
-  make_spread_tfm "$1" osf-sc-ts1  OSFSSC-8c  OSFSC-8c  25
-  make_spread_tfm "$1" osf-sc-ot1  OSFSSC-7t  OSFSC-7t  25
+  make_spread_tfm "$1" osf-sc-t1   OSFSSC-8t  OSFSC-8t  40
+  make_spread_tfm "$1" osf-sc-ts1  OSFSSC-8c  OSFSC-8c  40
+  make_spread_tfm "$1" osf-sc-ot1  OSFSSC-7t  OSFSC-7t  40
   make_spread_tfm "$1" tlf-oml     TLFL-7m    TLF-7m    20
-  make_spread_tfm "$1" tlf-sc-t1   TLFSSC-8t  TLFSC-8t  25
-  make_spread_tfm "$1" tlf-sc-ts1  TLFSSC-8c  TLFSC-8c  25
-  make_spread_tfm "$1" tlf-sc-ot1  TLFSSC-7t  TLFSC-7t  25
+  make_spread_tfm "$1" tlf-sc-t1   TLFSSC-8t  TLFSC-8t  40
+  make_spread_tfm "$1" tlf-sc-ts1  TLFSSC-8c  TLFSC-8c  40
+  make_spread_tfm "$1" tlf-sc-ot1  TLFSSC-7t  TLFSC-7t  40
   make_spread_tfm "$1" tosf-oml    TOSFL-7m   TOSF-7m   20
-  make_spread_tfm "$1" tosf-sc-t1  TOSFSSC-8t TOSFSC-8t 25
-  make_spread_tfm "$1" tosf-sc-ts1 TOSFSSC-8c TOSFSC-8c 25
-  make_spread_tfm "$1" tosf-sc-ot1 TOSFSSC-7t TOSFSC-7t 25
+  make_spread_tfm "$1" tosf-sc-t1  TOSFSSC-8t TOSFSC-8t 40
+  make_spread_tfm "$1" tosf-sc-ts1 TOSFSSC-8c TOSFSC-8c 40
+  make_spread_tfm "$1" tosf-sc-ot1 TOSFSSC-7t TOSFSC-7t 40
   echo " done." >&2
 }
 
