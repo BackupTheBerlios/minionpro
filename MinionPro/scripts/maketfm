@@ -2,6 +2,8 @@
 
 font=$1
 
+swash_flag=cswh  # change to "swsh" for version 1.001 fonts.
+
 if [ "x$font" = "x" ]
 then
   echo "No font specified!";
@@ -162,14 +164,14 @@ make_swash_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_tfm "$1" t1  lf-swash-t1    -flnum -fpnum -fswsh
-    make_tfm "$1" ot1 lf-swash-ot1   -flnum -fpnum -fswsh
-    make_tfm "$1" t1  osf-swash-t1   -fonum -fpnum -fswsh
-    make_tfm "$1" ot1 osf-swash-ot1  -fonum -fpnum -fswsh
-    make_tfm "$1" t1  tlf-swash-t1   -flnum -ftnum -fswsh
-    make_tfm "$1" ot1 tlf-swash-ot1  -flnum -ftnum -fswsh
-    make_tfm "$1" t1  tosf-swash-t1  -fonum -ftnum -fswsh
-    make_tfm "$1" ot1 tosf-swash-ot1 -fonum -ftnum -fswsh
+    make_tfm "$1" t1  lf-swash-t1    -flnum -fpnum -f$swash_flag
+    make_tfm "$1" ot1 lf-swash-ot1   -flnum -fpnum -f$swash_flag
+    make_tfm "$1" t1  osf-swash-t1   -fonum -fpnum -f$swash_flag
+    make_tfm "$1" ot1 osf-swash-ot1  -fonum -fpnum -f$swash_flag
+    make_tfm "$1" t1  tlf-swash-t1   -flnum -ftnum -f$swash_flag
+    make_tfm "$1" ot1 tlf-swash-ot1  -flnum -ftnum -f$swash_flag
+    make_tfm "$1" t1  tosf-swash-t1  -fonum -ftnum -f$swash_flag
+    make_tfm "$1" ot1 tosf-swash-ot1 -fonum -ftnum -f$swash_flag
 
     echo " done." >&2
   fi
@@ -181,14 +183,14 @@ make_spaced_swash_metrics() {
   then
     echo -n "Processing font $font-$1 ..." >&2
 
-    make_tfm "$1" t1  lf-swash-l1-t1    -L 40 -flnum -fpnum -fswsh
-    make_tfm "$1" ot1 lf-swash-l1-ot1   -L 40 -flnum -fpnum -fswsh
-    make_tfm "$1" t1  osf-swash-l1-t1   -L 40 -fonum -fpnum -fswsh
-    make_tfm "$1" ot1 osf-swash-l1-ot1  -L 40 -fonum -fpnum -fswsh
-    make_tfm "$1" t1  tlf-swash-l1-t1   -L 40 -flnum -ftnum -fswsh
-    make_tfm "$1" ot1 tlf-swash-l1-ot1  -L 40 -flnum -ftnum -fswsh
-    make_tfm "$1" t1  tosf-swash-l1-t1  -L 40 -fonum -ftnum -fswsh
-    make_tfm "$1" ot1 tosf-swash-l1-ot1 -L 40 -fonum -ftnum -fswsh
+    make_tfm "$1" t1  lf-swash-l1-t1    -L 40 -flnum -fpnum -f$swash_flag
+    make_tfm "$1" ot1 lf-swash-l1-ot1   -L 40 -flnum -fpnum -f$swash_flag
+    make_tfm "$1" t1  osf-swash-l1-t1   -L 40 -fonum -fpnum -f$swash_flag
+    make_tfm "$1" ot1 osf-swash-l1-ot1  -L 40 -fonum -fpnum -f$swash_flag
+    make_tfm "$1" t1  tlf-swash-l1-t1   -L 40 -flnum -ftnum -f$swash_flag
+    make_tfm "$1" ot1 tlf-swash-l1-ot1  -L 40 -flnum -ftnum -f$swash_flag
+    make_tfm "$1" t1  tosf-swash-l1-t1  -L 40 -fonum -ftnum -f$swash_flag
+    make_tfm "$1" ot1 tosf-swash-l1-ot1 -L 40 -fonum -ftnum -f$swash_flag
 
     echo " done." >&2
   fi
