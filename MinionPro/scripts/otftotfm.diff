@@ -1,5 +1,5 @@
 --- otftotfm.cc.orig	Mon Jan 31 14:35:21 2005
-+++ otftotfm.cc	Thu Feb  3 08:21:22 2005
++++ otftotfm.cc	Thu Feb  3 10:59:55 2005
 @@ -87,6 +87,8 @@
  #define DEFAULT_LIGKERN_OPT	329
  #define NO_ECOMMAND_OPT		330
@@ -42,7 +42,7 @@
  	// advance space width by letterspacing
  	width += letterspace;
 -	fprint_real(f, "   (SPACE", width, du);
-+	fprint_real(f, "   (SPACE", int(width * space_factor), du);
++	fprint_real(f, "   (SPACE", width * space_factor, du);
  	if (family_cff->dict_value(Efont::Cff::oIsFixedPitch, 0, &val) && val) {
  	    // fixed-pitch: no space stretch or shrink
  	    fprint_real(f, "   (STRETCH", 0, du);
