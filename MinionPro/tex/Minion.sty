@@ -1,4 +1,4 @@
-\ProvidesPackage{Minion}[2004/09/01 support for MinionPro]
+\ProvidesPackage{Minion}[2004/10/07 support for MinionPro]
 
 \RequirePackage{Minion-Protrude}
 
@@ -366,32 +366,33 @@
    \fontshape{it}%
    \selectfont
    \char"80}}
-\def\intkern@{\mkern-5mu\mathchoice{\mkern-2mu}{}{}{}}
-\def\intdots@{\mkern-5mu%
+\def\shiftedvarintkern@{\mkern-5mu\mathchoice{\mkern-2mu}{}{}{}}
+\def\varintkern@{\mkern-13mu\mathchoice{\mkern-6mu}{}{}{}}
+\def\varintdots@{\mkern-5mu%
   \mathchoice{\mkern-1mu\@cdots\mkern-1mu}%
   {{\cdotp}{\cdotp}{\cdotp}}%
   {{\cdotp}{\cdotp}{\cdotp}}%
   {{\cdotp}{\cdotp}{\cdotp}\mkern1mu}%
   \mkern-6mu}
 
-\def\vartlandupintop{\overstrike\vartintop\partialvartlandupint}
-\def\vardlandupintop{\overstrike\vardintop\partialvardlandupint}
-\def\vartlanddownintop{\overstrike\vartintop\partialvartlanddownint}
-\def\vardlanddownintop{\overstrike\vardintop\partialvardlanddownint}
-\def\vartstrokedintop{\overstrike\vartintop\partialvartstrokedint}
-\def\vardstrokedintop{\overstrike\vardintop\partialvardstrokedint}
-\def\vartointop{\overstrike\vartintop\partialvartoint}
-\def\vardointop{\overstrike\vardintop\partialvardoint}
-\def\vartoiintop{\overstrike{\vartintop\intkern@\vartintop}\partialvartoiint}
-\def\vardoiintop{\overstrike{\vardintop\intkern@\vardintop}\partialvardoiint}
-\def\vartrcirclerightintop{\overstrike\vartintop\partialvartrcirclerightint}
-\def\vardrcirclerightintop{\overstrike\vardintop\partialvardrcirclerightint}
-\def\vartlcirclerightintop{\overstrike\vartintop\partialvartlcirclerightint}
-\def\vardlcirclerightintop{\overstrike\vardintop\partialvardlcirclerightint}
-\def\vartrcircleleftintop{\overstrike\vartintop\partialvartrcircleleftint}
-\def\vardrcircleleftintop{\overstrike\vardintop\partialvardrcircleleftint}
-\def\vartlcircleleftintop{\overstrike\vartintop\partialvartlcircleleftint}
-\def\vardlcircleleftintop{\overstrike\vardintop\partialvardlcircleleftint}
+%\def\vartlandupintop{\overstrike\vartintop\partialvartlandupint}
+%\def\vardlandupintop{\overstrike\vardintop\partialvardlandupint}
+%\def\vartlanddownintop{\overstrike\vartintop\partialvartlanddownint}
+%\def\vardlanddownintop{\overstrike\vardintop\partialvardlanddownint}
+%\def\vartstrokedintop{\overstrike\vartintop\partialvartstrokedint}
+%\def\vardstrokedintop{\overstrike\vardintop\partialvardstrokedint}
+%\def\vartointop{\overstrike\vartintop\partialvartoint}
+%\def\vardointop{\overstrike\vardintop\partialvardoint}
+%\def\vartoiintop{\overstrike{\vartintop\varintkern@\vartintop}\partialvartoiint}
+%\def\vardoiintop{\overstrike{\vardintop\varintkern@\vardintop}\partialvardoiint}
+%\def\vartrcirclerightintop{\overstrike\vartintop\partialvartrcirclerightint}
+%\def\vardrcirclerightintop{\overstrike\vardintop\partialvardrcirclerightint}
+%\def\vartlcirclerightintop{\overstrike\vartintop\partialvartlcirclerightint}
+%\def\vardlcirclerightintop{\overstrike\vardintop\partialvardlcirclerightint}
+%\def\vartrcircleleftintop{\overstrike\vartintop\partialvartrcircleleftint}
+%\def\vardrcircleleftintop{\overstrike\vardintop\partialvardrcircleleftint}
+%\def\vartlcircleleftintop{\overstrike\vartintop\partialvartlcircleleftint}
+%\def\vardlcircleleftintop{\overstrike\vardintop\partialvardlcircleleftint}
 
 \def\fake@int#1#2{\DOTSI\pre@int@kern\overstrike{#1}{#2}\ilimits@}
 \def\pre@int@kern{\mathchoice{\mkern0mu}{\mkern-1mu}{\mkern-1mu}{\mkern-1mu}}
@@ -402,23 +403,41 @@
       {\mkern2.5mu\vartintop\mkern-2.5mu}
       {\mkern2.75mu\vartintop\mkern-2.75mu}
       {\mkern3mu\vartintop\mkern-3mu}}}
-\def\varintop{\mathop{\mathchoice{\vardintop}{\vartintop}{\vartintop}{\vartintop}}}
+
+\def\varintop{\overstrike\shiftedvarintop\partialvartint}
+
+\newcommand{\VarMultiIntegral}[1]{%
+  \edef\ints@c{\noexpand\varintop
+    \ifnum#1=\z@\noexpand\varintdots@\else\noexpand\varintkern@\fi
+    \ifnum#1>\tw@\noexpand\varintop\noexpand\varintkern@\fi
+    \ifnum#1>\thr@@\noexpand\varintop\noexpand\varintkern@\fi
+    \noexpand\varintop
+    \noexpand\ilimits@
+  }%
+  \futurelet\@let@token\ints@a
+}
 
 \def\varint{\fake@int\shiftedvarintop\partialvartint}
-\def\variint{\fake@int
-  {\shiftedvarintop\intkern@\shiftedvarintop}%
-  {\mathchoice{\mkern6mu}{\mkern6mu}{\mkern4mu}{\mkern4mu}\partialvartint}}
-\def\variiint{\fake@int
-  {\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop}%
-  {\mathchoice{\mkern12mu}{\mkern12mu}{\mkern8mu}{\mkern8mu}\partialvartint}}
-\def\variiiint{\fake@int
-  {\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop\intkern@\shiftedvarintop}%
-  {\mathchoice{\mkern18mu}{\mkern18mu}{\mkern12mu}{\mkern12mu}\partialvartint}}
+%\def\variint{\fake@int
+%  {\shiftedvarintop\varintkern@\shiftedvarintop}%
+%  {\mathchoice{\mkern6mu}{\mkern6mu}{\mkern4mu}{\mkern4mu}\partialvartint}}
+%\def\variiint{\fake@int
+%  {\shiftedvarintop\varintkern@\shiftedvarintop\varintkern@\shiftedvarintop}%
+%  {\mathchoice{\mkern12mu}{\mkern12mu}{\mkern8mu}{\mkern8mu}\partialvartint}}
+%\def\variiiint{\fake@int
+%  {\shiftedvarintop\varintkern@\shiftedvarintop\varintkern@\shiftedvarintop\varintkern@\shiftedvarintop}%
+%  {\mathchoice{\mkern18mu}{\mkern18mu}{\mkern12mu}{\mkern12mu}\partialvartint}}
+
+\def\variint{\DOTSI\protect\VarMultiIntegral{2}}
+\def\variiint{\DOTSI\protect\VarMultiIntegral{3}}
+\def\variiiint{\DOTSI\protect\VarMultiIntegral{4}}
+\def\varidotsint{\DOTSI\protect\VarMultiIntegral{0}}
+
 \def\varlandupint{\fake@int\shiftedvarintop\partialvartlandupint}
 \def\varlanddownint{\fake@int\shiftedvarintop\partialvartlanddownint}
 \def\varstrokedint{\fake@int\shiftedvarintop\partialvartstrokedint}
 \def\varoint{\fake@int\shiftedvarintop\partialvartoint}
-\def\varoiint{\fake@int{\shiftedvarintop\intkern@\shiftedvarintop}\partialvartoiint}
+\def\varoiint{\fake@int{\shiftedvarintop\shiftedvarintkern@\shiftedvarintop}\partialvartoiint}
 \def\varrcirclerightint{\fake@int\shiftedvarintop\partialvartrcirclerightint}
 \def\varlcirclerightint{\fake@int\shiftedvarintop\partialvartlcirclerightint}
 \def\varrcircleleftint{\fake@int\shiftedvarintop\partialvartrcircleleftint}
