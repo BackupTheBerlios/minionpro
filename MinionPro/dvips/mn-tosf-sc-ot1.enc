@@ -8,7 +8,7 @@
 % LIGKERN quoteright quoteright =: quotedblright ;
 % LIGKERN comma comma =: quotedblbase ; less less =: guillemotleft ;
 % LIGKERN greater greater =: guillemotright ;
-/MinionPro-OSFSCOT1Encoding [
+/MinionPro-TOSFSCOT1Encoding [
 % 0x00
   /Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon
   /Phi /Psi /Omega /ff /fi /fl /ffi /ffl

@@ -1,6 +1,6 @@
 % TS1 Encoding
 %
-/MinionPro-SCTS1Encoding [          % now 256 chars follow
+/MinionPro-TOSFSCTS1Encoding [          % now 256 chars follow
 % 0x00
   /Grave /Acutesmall
   /uniEFF7 /unitEFF5 % /capitalcircumflex /capitaltilde
