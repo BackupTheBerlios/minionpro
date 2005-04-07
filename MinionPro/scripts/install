@@ -50,7 +50,7 @@ do
   cp vf/*$x*.vf   "$vf_dir"
 done
 
-cp tex/[^C]*   "$tex_dir"
+cp tex/*.sty tex/*.cfg tex/*.fd tex/*.cmap "$tex_dir"
 
 mktexlsr
 
