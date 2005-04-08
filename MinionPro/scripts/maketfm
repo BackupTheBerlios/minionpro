@@ -360,8 +360,8 @@ for weight in Light "" Medium Semibold Bold Black
 do
   for width in Cond SemiCn "" SemiExt
   do
-#    make_series             "$weight$width"
-#    make_series             "$weight${width}It"
+    make_series             "$weight$width"
+    make_series             "$weight${width}It"
 
     make_additional_italic  "$weight${width}It"
   done
