@@ -1,15 +1,5 @@
 #!/bin/bash
 
-if [ "x$1" = "x" ]
-then
-  options="completelatin greek cyrillic"
-elif [ "$1" = "minimal" ] 
-then
-  options=""
-else
-  options="$1"
-fi
-
 mkdir -p pfb tfm vf dvips
 
 echo "Creating PostScript fonts ..."
@@ -25,9 +15,27 @@ done
 
 echo "Creating TeX metrics ..."
 
-./scripts/maketfm MinionPro "$options" | grep -v '^I had to' | sort -u >dvips/MinionPro.map
+./scripts/maketfm MinionPro "$*" | grep -v '^I had to' | sort -u >dvips/MinionPro.map
 
-mv *.pfb      pfb
+mv *.pfb pfb
+
+#for v in *.pl
+#do
+#  if [ -e "$v" ]
+#  then
+#    pltotf "$v"
+#  fi
+#done
+#
+#for v in *.vpl
+#do
+#  if [ -e "$v" ]
+#  then
+#    vptovf "$v"
+#  fi
+#done
 
 (cd fontinst; ../scripts/makeint MinionPro)
+
+(cd tex; latex MinionPro.ins)
 

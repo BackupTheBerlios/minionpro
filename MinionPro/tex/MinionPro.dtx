@@ -1,50 +1,58 @@
 %\iffalse meta-comment
 %<*driver>
-\ProvidesFile{MinionPro.dtx}
+\ProvidesFile{MinionPro.dtx}[2005/01/23 v2.0 MinionPro support for LaTeX]
 %</driver>
-%<style>\NeedsTeXFormat{LaTeX2e}
-%<style>\ProvidesPackage{MinionPro}
-%<mtcfg>\ProvidesFile{mt-MinionPro.cfg}
-%<fontdef>\ProvidesFile{MinionPro-FontDef}
-%<*style|driver>
-		[2005/01/23 v2.0 MinionPro support for LaTeX]
-%</style|driver>
-%<mtcfg>        [2005/02/07 v0.1 microtype config file for MinionPro]
-%<fontdef>      [2005/01/23 v2.0 font definition macros]%
-%<*fd>
-%<Uorn>\ProvidesFile{UMinionPro-Ornaments.fd}
-%<LGR> \ProvidesFile{LGR%
-%<OML> \ProvidesFile{OML%
-%<OT1> \ProvidesFile{OT1%
-%<T1>  \ProvidesFile{T1%
-%<T2A> \ProvidesFile{T2A%
-%<T2B> \ProvidesFile{T2B%
-%<T2C> \ProvidesFile{T2C%
-%<TS1> \ProvidesFile{TS1%
-%<X2>  \ProvidesFile{X2%
-%<OT2> \ProvidesFile{OT2%
-%<lf>    MinionPro-LF.fd}
-%<osf>   MinionPro-OsF.fd}
-%<tlf>   MinionPro-TLF.fd}
-%<tosf>  MinionPro-TOsF.fd}
-%<fd>           [2005/01/23 v2.0 font definitions 
-%<Uorn>  for U/MinionPro-Ornaments.%
-%<LGR>   for LGR/%
-%<OML>   for OML/%
-%<OT1>   for OT1/%
-%<T1>    for T1/%
-%<T2A>   for T2A/%
-%<T2B>   for T2B/%
-%<T2C>   for T2C/%
-%<TS1>   for TS1/%
-%<X2>    for X2/%
-%<OT2>   for OT2/%
-%<lf>    MinionPro-LF.%
-%<osf>   MinionPro-OsF.%
-%<tlf>   MinionPro-TLF.%
-%<tosf>  MinionPro-TOsF.%
-%<fd>           ]
-%</fd>
+%<*style>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{MinionPro}[2005/01/23 v2.0 MinionPro support for LaTeX]
+%</style>
+%<*mtcfg>
+\ProvidesFile{mt-MinionPro.cfg}[2005/02/07 v0.1 microtype config file for MinionPro]
+%</mtcfg>
+%<*fontdef>
+\ProvidesFile{MinionPro-FontDef}[2005/01/23 v2.0 font definition macros]
+%</fontdef>
+%<Uorn> \ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
+%<LGR&lf>  \ProvidesFile{LGRMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
+%<LGR&osf> \ProvidesFile{LGRMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for LGR/MinionPro-OsF.]
+%<LGR&tlf> \ProvidesFile{LGRMinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for LGR/MinionPro-TLF.]
+%<LGR&tosf>\ProvidesFile{LGRMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for LGR/MinionPro-TOsF.]
+%<OML&lf>  \ProvidesFile{OMLMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for OML/MinionPro-LF.]
+%<OML&osf> \ProvidesFile{OMLMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for OML/MinionPro-OsF.]
+%<OML&tlf> \ProvidesFile{OMLMinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for OML/MinionPro-TLF.]
+%<OML&tosf>\ProvidesFile{OMLMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OML/MinionPro-TOsF.]
+%<OT1&lf>  \ProvidesFile{OT1MinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for OT1/MinionPro-LF.]
+%<OT1&osf> \ProvidesFile{OT1MinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for OT1/MinionPro-OsF.]
+%<OT1&tlf> \ProvidesFile{OT1MinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for OT1/MinionPro-TLF.]
+%<OT1&tosf>\ProvidesFile{OT1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OT1/MinionPro-TOsF.]
+%<T1&lf>   \ProvidesFile{T1MinionPro-LF.fd}   [2005/01/23 v2.0 font definitions for T1/MinionPro-LF.]
+%<T1&osf>  \ProvidesFile{T1MinionPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T1/MinionPro-OsF.]
+%<T1&tlf>  \ProvidesFile{T1MinionPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T1/MinionPro-TLF.]
+%<T1&tosf> \ProvidesFile{T1MinionPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T1/MinionPro-TOsF.]
+%<T2A&lf>  \ProvidesFile{T2AMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for T2A/MinionPro-LF.]
+%<T2A&osf> \ProvidesFile{T2AMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for T2A/MinionPro-OsF.]
+%<T2A&tlf> \ProvidesFile{T2AMinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for T2A/MinionPro-TLF.]
+%<T2A&tosf>\ProvidesFile{T2AMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2A/MinionPro-TOsF.]
+%<T2B&lf>  \ProvidesFile{T2BMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for T2B/MinionPro-LF.]
+%<T2B&osf> \ProvidesFile{T2BMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for T2B/MinionPro-OsF.]
+%<T2B&tlf> \ProvidesFile{T2BMinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for T2B/MinionPro-TLF.]
+%<T2B&tosf>\ProvidesFile{T2BMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2B/MinionPro-TOsF.]
+%<T2C&lf>  \ProvidesFile{T2CMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for T2C/MinionPro-LF.]
+%<T2C&osf> \ProvidesFile{T2CMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for T2C/MinionPro-OsF.]
+%<T2C&tlf> \ProvidesFile{T2CMinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for T2C/MinionPro-TLF.]
+%<T2C&tosf>\ProvidesFile{T2CMinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for T2C/MinionPro-TOsF.]
+%<TS1&lf>  \ProvidesFile{TS1MinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for TS1/MinionPro-LF.]
+%<TS1&osf> \ProvidesFile{TS1MinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for TS1/MinionPro-OsF.]
+%<TS1&tlf> \ProvidesFile{TS1MinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for TS1/MinionPro-TLF.]
+%<TS1&tosf>\ProvidesFile{TS1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for TS1/MinionPro-TOsF.]
+%<X2&lf>   \ProvidesFile{X2MinionPro-LF.fd}   [2005/01/23 v2.0 font definitions for X2/MinionPro-LF.]
+%<X2&osf>  \ProvidesFile{X2MinionPro-OsF.fd}  [2005/01/23 v2.0 font definitions for X2/MinionPro-OsF.]
+%<X2&tlf>  \ProvidesFile{X2MinionPro-TLF.fd}  [2005/01/23 v2.0 font definitions for X2/MinionPro-TLF.]
+%<X2&tosf> \ProvidesFile{X2MinionPro-TOsF.fd} [2005/01/23 v2.0 font definitions for X2/MinionPro-TOsF.]
+%<OT2&lf>  \ProvidesFile{OT2MinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for OT2/MinionPro-LF.]
+%<OT2&osf> \ProvidesFile{OT2MinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for OT2/MinionPro-OsF.]
+%<OT2&tlf> \ProvidesFile{OT2MinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for OT2/MinionPro-TLF.]
+%<OT2&tosf>\ProvidesFile{OT2MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for OT2/MinionPro-TOsF.]
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
@@ -52,13 +60,14 @@
 \usepackage{microtype}
 \usepackage[british]{babel}
 \usepackage{array,ifthen,booktabs,pifont}
-\makeatletter
+
 \newcommand*\pkg[1]{\textsf{#1}}
 \newcommand*\file[1]{\textsf{#1}}
 \newcommand*\option[1]{\textsf{#1}}
 \newcommand*\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand*\?{\kern0.08em}
 \newlength\optionswidth
+
 \newenvironment{options}{%
   \par\medskip\noindent\hspace{2em}%
   \begin{tabular}{@{}p{\optionswidth}l@{}}%
@@ -66,7 +75,7 @@
   \end{tabular}%
   \par\medskip
 }
-\makeatother
+
 \begin{document}
 \DocInput{MinionPro.dtx}
 \end{document}
@@ -194,7 +203,7 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-%   ^^A\option{protrude} &    enable character protrusion with pdflatex\\
+%^^A   \option{protrude} &    enable character protrusion with pdflatex\\
 %   \option{minionint}
 %      & take the integral symbols from MinionPro instead of the MnSymbol\?:\\
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$
@@ -216,7 +225,7 @@
 % \end{options}
 %
 % \noindent
-% Swash capitals like {\fontshape{sw}\selectfont ``Canadian Mountain Holidays''} are acessed 
+% Swash capitals like {\fontshape{sw}\selectfont `Canadian Mountain Holidays'} are acessed 
 % via the |sw| fontshape.
 %
 % \medskip\noindent
@@ -757,11 +766,11 @@
 %    \end{macrocode}
 % archaic greek letters not provided by MinionPro
 %    \begin{macrocode}
-\def\Qoppa{\reflectbox{R}}
-\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
-\def\Stigma{\stigma} 
+%\def\Qoppa{\reflectbox{R}}
+%\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
+\let\Stigma\stigma
 %    \end{macrocode}
-% Make the changes take effect; this concludes the main style file.
+% Make the changes take effect\?; this concludes the main style file.
 %    \begin{macrocode}
 \normalfont\selectfont
 %</style>
@@ -1341,9 +1350,9 @@
 %<*fontdef>
 \ifx\Mn@DeclareFont\undefined\else\endinput\fi
 %
-% \input{MinionPro-Protrude.sty}%
+%\input{MinionPro-Protrude.sty}%
 %    \end{macrocode}
-% The following definitions are temporary; they are only needed to construct
+% The following definitions are temporary\?; they are only needed to construct
 % the global font definition macros.
 %
 % Reset the escapechar so that newcommand does not break.
@@ -1369,8 +1378,8 @@
   }%
 }%
 %    \end{macrocode}
-% The names of the fonts follow a simple pattern -- with a single exception:
-% If weight, shape and optical size are all empty (regular), ``Regular'' is
+% The names of the fonts follow a simple pattern -- with a single exception\?:
+% If weight, shape and optical size are all empty (regular), `Regular' is
 % used instead of their empty concatenation.
 %    \begin{macrocode}
 \newcommand*\Mn@FontSuffix[1]{%
@@ -1563,7 +1572,7 @@
 }%
 %    \end{macrocode}
 % All font declaration commands are needed later but only need to be defined
-% once; therefore we make them global.
+% once\?; therefore we make them global.
 %    \begin{macrocode}
 \global\let\Mn@DeclareLargeFontFamily\Mn@DeclareLargeFontFamily
 \global\let\Mn@DeclareSmallFontFamily\Mn@DeclareSmallFontFamily
@@ -1620,9 +1629,9 @@
 \Mn@FontDefinitions
 %    \end{macrocode}
 % We define font family aliases so that we can place all configurations for
-% the MinionPro family variants into one \pkg{microtype} file:
+% the MinionPro family variants into one \pkg{microtype} file\?:
 % \file{mt-MinionPro.cfg}. We use \pkg{microtype}'s hook if \pkg{microtype}
-% has not been loaded yet (which it should not have been); otherwise we can
+% has not been loaded yet (which it should not have been)\?; otherwise we can
 % execute the alias definitions directly.
 %    \begin{macrocode}
 \gdef\Mn@MicroType@Aliases{%

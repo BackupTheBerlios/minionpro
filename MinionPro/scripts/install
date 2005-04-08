@@ -5,8 +5,6 @@ font=MinionPro
 
 dir=$1
 
-(cd tex; latex MinionPro.ins);
-
 if [ "x$dir" = x ]
 then
   dir=$(kpsewhich -expand-var='$TEXMFLOCAL')
@@ -33,24 +31,23 @@ fi
 
 mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir"
 
-cp pfb/*.pfb         "$pfb_dir"
-cp dvips/*.enc       "$enc_dir"
-cp dvips/$font.map   "$map_dir"
+cp pfb/*.pfb               "$pfb_dir"
+cp dvips/*.enc             "$enc_dir"
+cp dvips/$font.map         "$map_dir"
+cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 
 # copy TFM and VF in several batches
 
 cp tfm/MnSymbol*.tfm "$tfm_dir"
 cp vf/MnSymbol*.vf   "$vf_dir"
 
-cp tfm/*orn*.tfm "$tfm_dir"
+cp tfm/*orn*.tfm     "$tfm_dir"
 
 for x in tosf tlf osf lf
 do
   cp tfm/*$x*.tfm "$tfm_dir"
   cp vf/*$x*.vf   "$vf_dir"
 done
-
-cp tex/*.sty tex/*.cfg tex/*.fd tex/*.cmap "$tex_dir"
 
 mktexlsr
 
