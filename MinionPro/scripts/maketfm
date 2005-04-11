@@ -42,11 +42,11 @@ do
 done
 
 ## Detect whether the full set of optical sizes is present.
-#opticals=1
+#opticals=true
 #
 #if [ ! -e "otf/$font-Capt.otf" ]
 #then
-#  opticals=0
+#  opticals=false
 #fi
 
 # Determine version of the fonts.
