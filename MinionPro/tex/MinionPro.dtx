@@ -23,6 +23,10 @@
 %<T1&osf>  \ProvidesFile{T1MinionPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T1/MinionPro-OsF.]
 %<T1&tlf>  \ProvidesFile{T1MinionPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T1/MinionPro-TLF.]
 %<T1&tosf> \ProvidesFile{T1MinionPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T1/MinionPro-TOsF.]
+%<LY1&lf>   \ProvidesFile{LY1MinionPro-LF.fd} [2005/01/23 v2.0 font definitions for LY1/MinionPro-LF.]
+%<LY1&osf>  \ProvidesFile{LY1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-OsF.]
+%<LY1&tlf>  \ProvidesFile{LY1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-TLF.]
+%<LY1&tosf> \ProvidesFile{LY1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-TOsF.]
 %<T2A&lf>  \ProvidesFile{T2AMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for T2A/MinionPro-LF.]
 %<T2A&osf> \ProvidesFile{T2AMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for T2A/MinionPro-OsF.]
 %<T2A&tlf> \ProvidesFile{T2AMinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for T2A/MinionPro-TLF.]
@@ -395,20 +399,31 @@
 \renewcommand\rmdefault{\Mn@Text@Family}
 \renewcommand\bfdefault{sb}
 
-\DeclareSymbolFont{operators}     {OT1}{\Mn@Math@Family} {m}{n}
+\DeclareSymbolFont{operators}      {T1}{\Mn@Math@Family} {m}{n}
 \DeclareSymbolFont{letters}       {OML}{\Mn@Math@Family} {m}{it}
 \DeclareSymbolFont{rmletters}     {OML}{\Mn@Math@Family} {m}{n}
-\SetSymbolFont{operators}{bold}   {OT1}{\Mn@Math@Family} {b}{n}
+\SetSymbolFont{operators}{bold}    {T1}{\Mn@Math@Family} {b}{n}
 \SetSymbolFont{letters}  {bold}   {OML}{\Mn@Math@Family} {b}{it}
 \SetSymbolFont{rmletters}{bold}   {OML}{\Mn@Math@Family} {b}{n}
-\DeclareMathAlphabet\mathbf       {OT1}{\Mn@Math@Family} {b}{n}
-\DeclareMathAlphabet\mathit       {OT1}{\Mn@Math@Family} {m}{it}
-\SetMathAlphabet\mathit  {bold}   {OT1}{\Mn@Math@Family} {b}{it}
+\DeclareMathAlphabet\mathbf        {T1}{\Mn@Math@Family} {b}{n}
+\DeclareMathAlphabet\mathit        {T1}{\Mn@Math@Family} {m}{it}
+\SetMathAlphabet\mathit  {bold}    {T1}{\Mn@Math@Family} {b}{it}
 
 \DeclareMathVersion{tabular}
-\SetSymbolFont{operators}{tabular}{OT1}{\Mn@Math@TFamily}{m}{n}
+\SetSymbolFont{operators}{tabular} {T1}{\Mn@Math@TFamily}{m}{n}
 \SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
 \SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
+
+\DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
+\DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
+\DeclareMathAccent{\hat}     {\mathalpha}{operators}{2}
+\DeclareMathAccent{\tilde}   {\mathalpha}{operators}{3}
+\DeclareMathAccent{\ddot}    {\mathalpha}{operators}{4}
+\DeclareMathAccent{\mathring}{\mathalpha}{operators}{6}
+\DeclareMathAccent{\check}   {\mathalpha}{operators}{7}
+\DeclareMathAccent{\breve}   {\mathalpha}{operators}{8}
+\DeclareMathAccent{\bar}     {\mathalpha}{operators}{9}
+\DeclareMathAccent{\dot}     {\mathalpha}{operators}{10}
 
 \Mn@load@bb
 \Mn@load@frak
@@ -491,6 +506,13 @@
       \let\figureversion\@gobble
     }%
   }{}%
+  \UndeclareTextCommand{\textvisiblespace}{T1}%
+  \UndeclareTextCommand{\textcompwordmark}{T1}%
+  \UndeclareTextCommand{\textsterling}{T1}%
+  \UndeclareTextCommand{\j}{T1}%
+  \UndeclareTextCommand{\j}{LY1}%
+  \DeclareTextSymbol{\textj}{TS1}{"FF}
+  \DeclareTextCommandDefault{\j}{\UseTextSymbol{TS1}\textj}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -608,14 +630,10 @@
 %    \begin{macrocode}
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\lozenge}    {\mathord}{letters}{"88}
-\DeclareTextSymbol{\j}{OML}{"7C}
-\DeclareTextCommandDefault{\pounds}{\textsterling}
-\UndeclareTextCommand{\textvisiblespace}{T1}
-\UndeclareTextCommand{\textcompwordmark}{T1}
 %    \end{macrocode}
 % Archaic greek letters not provided by MinionPro
 %    \begin{macrocode}
-%\def\Qoppa{\reflectbox{R}}
+%\def\Qoppa{\reflectbox{P}}
 %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
 \let\Stigma\stigma
 %    \end{macrocode}
@@ -1728,6 +1746,10 @@
 %<T1&osf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-OsF}{osf}{t1}
 %<T1&tlf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-TLF}{tlf}{t1}
 %<T1&tosf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-TOsF}{tosf}{t1}
+%<LY1&lf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-LF}{lf}{ly1}
+%<LY1&osf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-OsF}{osf}{ly1}
+%<LY1&tlf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-TLF}{tlf}{ly1}
+%<LY1&tosf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-TOsF}{tosf}{ly1}
 %<T2A&lf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-LF}{lf}{t2a}
 %<T2A&osf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-OsF}{osf}{t2a}
 %<T2A&tlf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-TLF}{tlf}{t2a}

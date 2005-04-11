@@ -126,10 +126,10 @@ get_sc_flags() {
 }
 get_sc_ts_flags() {
   case $1 in
-      lf) sc_ts_flags="-fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum --subs-filter='<Letter>' -fsmcp";;
-     osf) sc_ts_flags="-fpnum -fsmcp --subs-filter='<Number>' -flnum --subs-filter=!'<Number>' -fonum";;
-     tlf) sc_ts_flags="-ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum --subs-filter='<Letter>' -fsmcp";;
-    tosf) sc_ts_flags="-ftnum -fsmcp --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+      lf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum --subs-filter='<Letter>' -fsmcp";;
+     osf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum -fsmcp --subs-filter='<Number>' -flnum --subs-filter=!'<Number>' -fonum";;
+     tlf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum --subs-filter='<Letter>' -fsmcp";;
+    tosf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum -fsmcp --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
   esac
 }
 get_it_ot1_flags() {
@@ -177,10 +177,12 @@ make_normal_metrics() {
   make_tfm "$1" ts1    $2-sc-ts1    "       $sc_ts_flags"
   make_tfm "$1" ts1    $2-sc-l2-ts1 "-L 80  $sc_ts_flags"
 
-  make_tfm "$1" t1     $2-sc-t1     "      --unicoding='germandbls =: SSsmall' $sc_flags"
-  make_tfm "$1" ot1    $2-sc-ot1    "      --unicoding='germandbls =: SSsmall' $it_ot1_flags $sc_flags"
-  make_tfm "$1" t1     $2-sc-l2-t1  "-L 80 --unicoding='germandbls =: SSsmall' $sc_flags"
-  make_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80 --unicoding='germandbls =: SSsmall' $it_ot1_flags $sc_flags"
+  make_tfm "$1" t1     $2-sc-t1     "       $sc_flags               --unicoding='germandbls =: SSsmall'"
+  make_tfm "$1" ot1    $2-sc-ot1    "       $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ly1    $2-sc-ly1    "       $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" t1     $2-sc-l2-t1  "-L 80  $sc_flags               --unicoding='germandbls =: SSsmall'"
+  make_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80  $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ly1    $2-sc-l2-ly1 "-L 80  $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
 }
 
 make_oml_metrics() {
@@ -217,8 +219,9 @@ make_spread_metrics() {
 
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
   make_tfm "$1" ts1    $2-sc-l1-ts1 "-L 40        $sc_ts_flags"
-  make_tfm "$1" t1     $2-sc-l1-t1  "-L 40 --unicoding='germandbls =: SSsmall' $sc_flags"
-  make_tfm "$1" ot1    $2-sc-ot1    "-L 40 --unicoding='germandbls =: SSsmall' $it_ot1_flags $sc_flags"
+  make_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags               --unicoding='germandbls =: SSsmall'"
+  make_tfm "$1" ot1    $2-sc-ot1    "-L 40        $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ly1    $2-sc-l1-ly1 "-L 40        $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
 }
 
 make_integrals() {
