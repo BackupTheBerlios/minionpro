@@ -30,16 +30,18 @@ create_expanded=false
 for opt in $*
 do
   case $opt in
-    --greek)       create_greek=true;;
-    --nogreek)     create_greek=false;;
-    --cyrillic)    create_cyrillic=true;;
-    --nocyrillic)  create_cyrillic=false;;
-    --integrals)   create_integrals=true;;
-    --nointegrals) create_integrals=false;;
-    --swash)       create_swash=true;;
-    --noswash)     create_swash=false;;
-    --expanded)    create_expaned=true;;
-    --noexpanded)  create_expaned=false;;
+    --greek)        create_greek=true;;
+    --nogreek)      create_greek=false;;
+    --cyrillic)     create_cyrillic=true;;
+    --nocyrillic)   create_cyrillic=false;;
+    --vietnamese)   create_vietnamese=true;;
+    --novietnamese) create_vietnamese=false;;
+    --integrals)    create_integrals=true;;
+    --nointegrals)  create_integrals=false;;
+    --swash)        create_swash=true;;
+    --noswash)      create_swash=false;;
+    --expanded)     create_expaned=true;;
+    --noexpanded)   create_expaned=false;;
   esac
 done
 
