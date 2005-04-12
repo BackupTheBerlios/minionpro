@@ -140,9 +140,9 @@
 /T5Encoding [
 % 0x00
   /grave /acute /circumflex.spacing /tilde
-  /dieresis /dotbelowcomb.spacing /ring /caron
+  /dieresis /uniE188 /ring /caron
   /breve /macron /dotaccent /cedilla
-  /hookabovecomb.spacing /quotesinglbase /guilsinglleft /guilsinglright
+  /uniE189 /quotesinglbase /guilsinglleft /guilsinglright
 % 0x10
   /quotedblleft /quotedblright /quotedblbase /guillemotleft
   /guillemotright /endash /emdash /cwm
