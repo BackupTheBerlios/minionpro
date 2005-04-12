@@ -11,16 +11,18 @@ then
   echo "No font specified!\n";
   echo "USAGE: maketfm <font> [options]";
   echo "\nSupported options are:";
-  echo "--greek     | --nogreek"
-  echo "--cyrillic  | --nocyrillic"
-  echo "--integrals | --nointegrals"
-  echo "--swash     | --noswash"
-  echo "--expanded  | --noexpanded"
+  echo "--greek      | --nogreek"
+  echo "--cyrillic   | --nocyrillic"
+  echo "--vietnamese | --novietnamese"
+  echo "--integrals  | --nointegrals"
+  echo "--swash      | --noswash"
+  echo "--expanded   | --noexpanded"
   exit 1
 fi
 
 create_greek=true
 create_cyrillic=true
+create_vietnamese=true
 create_integrals=true
 create_swash=true
 create_expanded=false
@@ -67,6 +69,8 @@ if [ $version -ge 3 ]
 then
   digamma_flags="--unicoding 'uniEFD5 =: uni03DD'"
   ornaments_flags="--unicoding 'orn.014 =: uni2767' --unicoding 'orn.015 =: uni2766' --unicoding 'orn.029 =: uni27A2' --unicoding 'orn.035 =: uni2733' --unicoding 'orn.037 =: uni2734' --unicoding 'orn.038 =: uni2713'"
+else
+  create_vietnamese=false
 fi
 
 
@@ -172,6 +176,12 @@ make_normal_metrics() {
     make_tfm "$1" x2   $2-x2        "-scyrl $flags"
     make_tfm "$1" ot2  $2-ot2       "-scyrl $flags"
   fi
+  if $create_vietnamese
+  then
+    make_tfm "$1" t5   $2-t5        "       $flags"
+    make_tfm "$1" t5   $2-sc-t5     "       $sc_flags"
+    make_tfm "$1" t5   $2-sc-l2-t5  "-L 80  $sc_flags"
+  fi
 
   make_tfm "$1" ts1    $2-ts1       "       $ts_flags"
   make_tfm "$1" ts1    $2-sc-ts1    "       $sc_ts_flags"
@@ -215,6 +225,10 @@ make_spread_metrics() {
     make_tfm "$1" t2c  $2-l1-t2c    "-L 40 -scyrl $flags"
     make_tfm "$1" x2   $2-l1-x2     "-L 40 -scyrl $flags"
     make_tfm "$1" ot2  $2-l1-ot2    "-L 40 -scyrl $flags"
+  fi
+  if $create_vietnamese
+  then
+    make_tfm "$1" t5   $2-sc-l1-t5  "-L 40        $sc_flags"
   fi
 
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
