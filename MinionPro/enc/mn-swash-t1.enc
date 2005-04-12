@@ -14,10 +14,10 @@
   /grave /acute /circumflex /tilde /dieresis /hungarumlaut /ring /caron
   /breve /macron /dotaccent /cedilla /ogonek /quotesinglbase /guilsinglleft /guilsinglright
 %10
-  /quotedblleft /quotedblright /quotedblbase /guillemotleft /guillemotright /endash /emdash /.notdef
-  /.notdef /dotlessi /.notdef /ff /fi /fl /ffi /ffl
+  /quotedblleft /quotedblright /quotedblbase /guillemotleft /guillemotright /endash /emdash /f_f_t
+  /f_j /dotlessi /f_f_j /ff /fi /fl /ffi /ffl
 %20
-  /.notdef /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
+  /f_t /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
   /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
 %30
   /zero /one /two /three /four /five /six /seven

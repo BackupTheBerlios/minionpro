@@ -17,13 +17,13 @@
 % 0x10
   /quotedblleft /quotedblright /quotedblbase /guillemotleft 
   /guillemotright /endash /emdash
-  /.notdef %/compwordmark
-  /.notdef %/perthousandzero
+  /f_f_t %/compwordmark
+  /f_j %/perthousandzero
   /dotlessi
-  /.notdef %/dotlessj
+  /f_f_j %/dotlessj
   /ff /fi /fl /ffi /ffl
 % 0x20
-  /.notdef %/visualspace
+  /f_t %/visualspace
   /exclam /quotedbl /numbersign
   /dollar /percent /ampersand /quoteright
   /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
