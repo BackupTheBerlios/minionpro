@@ -13,6 +13,9 @@
 %   version 1.2 (01-May-2002):
 %     Use uni2423 instead uni2420.
 %
+%   version 1.3 (13-Apr-2005):
+%     Correct 0xFF, update to current Adobe Glyph naming
+%
 %
 % LIGKERN hyphen hyphen =: endash ;
 % LIGKERN endash hyphen =: emdash ;
@@ -139,7 +142,7 @@
 %
 /T5Encoding [
 % 0x00
-  /grave /acute /circumflex.spacing /tilde
+  /grave /acute /circumflex /tilde
   /dieresis /space_dotbelowcomb /ring /caron
   /breve /macron /dotaccent /cedilla
   /space_hookabovecomb /quotesinglbase /guilsinglleft /guilsinglright
@@ -217,7 +220,7 @@
   /uni1EDF /uni1EE3 /ugrave /uacute
   /utilde /uni1EE7 /uni1EE5 /uhorn
   /uni1EEB /uni1EE9 /uni1EEF /uni1EED
-  /uni1EF1 /ygrave /yacute /uni1EF8
+  /uni1EF1 /ygrave /yacute /uni1EF9
 ] def
 
 % end of t5.enc
