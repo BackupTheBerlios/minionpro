@@ -1,36 +1,67 @@
-%<*gobble>
-\errmessage{No printable documentation yet}
-%</gobble>
+% \iffalse
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{MinionPro-FontDef}
+\newcommand*\acro[1]{#1}
+\makeatletter
+\newcommand*\exampleconfig[2]{%
+  \begin{enumerate}%
+  \item{\ttfamily\expandafter\string\csname Mn@config@#1@#2\endcsname}
+  \item{\ttfamily\expandafter\expandafter
+  \expandafter\strip@prefix
+  \expandafter\meaning
+  \csname Mn@config@#1@#2\endcsname}
+  \item{\ttfamily\edef\@tempa{\Mn@UseConfig{#1}{#2}}%
+  \expandafter\strip@prefix\meaning\@tempa}
+  \end{enumerate}%
+}
+\makeatother
+\begin{document}
+\DocInput{MinionPro-FontDef.dtx}
+\end{document}
+%</driver>
 %<*fontdef>
-% trying to make this package loadable in an \acro{FD} file (not in the
-% preamble)
+% \fi
+% 
+% \GetFileInfo{MinionPro-FontDef.sty}
+% 
+% \title{MinionPro Font Definition}
+% \author{Achim Blumensath \and Andreas B\"uhmann \and Michael Zedler}
+% \date{\fileversion\ --\filedate}
+% \maketitle
+%
+% We try to make this package loadable in an \acro{FD} file, too (i.e., not in
+% the preamble); we start by using |\ProvidesFile| instead of
+% |\ProvidesPackage|.
 \ProvidesFile{MinionPro-FontDef.sty}
   [2005/04/13 v2.1 font definition macros]
 %
 % allow this file to be included multiple times
+%    \begin{macrocode}
 \ifx\Mn@DeclareFontShape\@undefined\else\endinput\fi
-
+%
 \ifx\@nodocument\relax
   \input{otfontdef.sty}
 \else
   \NeedsTeXFormat{LaTeX2e}
   \RequirePackage{otfontdef}
 \fi
-
+%    \end{macrocode}
 % Reset |\escapechar| (-1 in \acro{FD} files) to make |\newcommand| work. The
 % additional group does not harm then; we have to make the important things
-% global anyway. 
+% global anyway.
+%    \begin{macrocode}
 \ifx\@nodocument\relax
   \begingroup\escapechar`\\
 \fi
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand\Mn@option@opticals{opticals}
 \newcommand\Mn@option@family{medfamily}
 \newdimen\Mn@option@normalsize
 \global\Mn@option@normalsize10pt
-\otf@makeglobal{Mn@option@opticals}
-\otf@makeglobal{Mn@option@family}
-
+%
 \ifx\@nodocument\relax\else
   \DeclareOption{slides}     {\let\Mn@option@opticals\CurrentOption}
   \DeclareOption{opticals}   {\let\Mn@option@opticals\CurrentOption}
@@ -38,7 +69,7 @@
   \DeclareOption{smallfamily}{\let\Mn@option@family\CurrentOption}
   \DeclareOption{medfamily}  {\let\Mn@option@family\CurrentOption}
   \DeclareOption{fullfamily} {\let\Mn@option@family\CurrentOption}
-
+%
   \DeclareOption{normalsize} {%
     % idea stolen from microtype.dtx
     \begingroup
@@ -47,17 +78,28 @@
     \normalsize\@nil
     \endgroup
   }
-
-  \ExecuteOptions{fullfamily,opticals}
+%
+  \ExecuteOptions{medfamily,opticals}
   \ProcessOptions\relax
 \fi
-
+\otf@makeglobal{Mn@option@opticals}
+\otf@makeglobal{Mn@option@family}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcount\Mn@config@cnt
 \Mn@config@cnt=0
 \newcommand\Mn@curr@config{Mn@config@\romannumeral\Mn@config@cnt}
-
+%    \end{macrocode}
 % These commands help in setting up the configuration database; they do not
 % need to be global. But the config database itself does.
+%
+% Let us look at an example how the configuration database looks internally for
+% $(|shape|, |sw|)$, which is specified below in three steps. The following
+% lines show different depths of expansion of the macro |\Mn@config@shape@sw|,
+% which finally yields the complete configuration:
+% \exampleconfig{shape}{sw}
+%    \begin{macrocode}
 \newcommand\Mn@AddToConfig{%
   \begingroup
   \nfss@catcodes
@@ -68,7 +110,7 @@
   \advance\Mn@config@cnt\@ne
   \@namedef{\Mn@curr@config}{#3}%
   \otf@makeglobal{\Mn@curr@config}
-%  \expandafter\show\csname\Mn@curr@config\endcsname
+%<debug&show>\expandafter\show\csname\Mn@curr@config\endcsname
   \@for\Mn@tempa:=#2\do{%
     \@ifundefined{Mn@config@#1@\Mn@tempa}{%
       \@temptokena{}%
@@ -81,18 +123,20 @@
       \expandafter\noexpand\csname\Mn@curr@config\endcsname
     }%
     \otf@makeglobal{Mn@config@#1@\Mn@tempa}% perhaps defer to only execute once
-%    \expandafter\show\csname Mn@config@#1@\Mn@tempa\endcsname
+%<debug&show>\expandafter\show\csname Mn@config@#1@\Mn@tempa\endcsname
   }%
 }
-
+%    \end{macrocode}
 % This command is used in the Declare...Family commands
+%    \begin{macrocode}
 \newcommand\Mn@UseConfig[2]{%
   \@ifundefined{Mn@config@#1@#2}{}%
     {\@nameuse{Mn@config@#1@#2}}%
 }
 \otf@makeglobal{Mn@UseConfig}
-
+%    \end{macrocode}
 % Here comes the configuration.
+%    \begin{macrocode}
 \Mn@AddToConfig{opticals}{opticals}{
       <-8.5>  otf* [optical=Capt]
    <8.5-13.1> otf* [optical=Text]
@@ -105,7 +149,9 @@
 \Mn@AddToConfig{opticals}{slides}{
       <->     otf* [optical=Capt]
 }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \ifdim\Mn@option@normalsize<10.1pt
   \Mn@AddToConfig{family/weight}{fullfamily/m}{
         <-6>    otf* [weight=Semibold]
@@ -126,7 +172,7 @@
 \Mn@AddToConfig{family/weight}{smallfamily/m}{
       <->     otf* [weight=Regular]
 }
-
+%
 \Mn@AddToConfig{family/weight}{fullfamily/sb,medfamily/sb}{
       <-6>    otf* [weight=Bold]
      <6->     otf* [weight=Semibold]
@@ -134,11 +180,13 @@
 \Mn@AddToConfig{family/weight}{smallfamily/sb}{
       <->     otf* [weight=Bold]
 }
-
+%
 \Mn@AddToConfig{weight}{b}{
       <->     otf* [weight=Bold]
 }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \Mn@AddToConfig{shape}{ssc,sscit}{
       <->     otf* [spacing=l2]
 }
@@ -148,21 +196,25 @@
 \Mn@AddToConfig{shape/math}{n,it,sc,scit}{
       <->     otf* [spacing=l1]
 }
-
+%
 \Mn@AddToConfig{shape}{sc,ssc,scit,sscit}{
       <->     otf* [variant=sc]
 }
 \Mn@AddToConfig{shape}{sw}{
       <->     otf* [variant=swash]
 }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \Mn@AddToConfig{shape}{it,scit,sscit,sw}{
       <->     otf* MinionPro-It
 }
 \Mn@AddToConfig{shape}{n,sc,ssc}{
       <->     otf* MinionPro
 }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand\Mn@DeclareFontShape[6][]{%
   \DeclareFontShape{#2}{#3}{#4}{#5}{%
     \Mn@UseConfig{opticals}     {\Mn@option@opticals}%
@@ -174,8 +226,10 @@
 }
 \otf@makeglobal{Mn@DeclareFontShape}
 \otf@makeglobal{\string\Mn@DeclareFontShape}
-
-% #1 encoding #2 MinionPro-figures (#3/#4 only for backwards compatibility)
+%    \end{macrocode}
+% |#1| encoding |#2| MinionPro-figures (|#3|/|#4| only for backwards
+% compatibility)
+%    \begin{macrocode}
 \newcommand*\Mn@DeclareLargeFontFamily[4]{%
   \Mn@DeclareSmallFontFamily  {#1}{#2}{}{}%
   \DeclareFontFamily          {#1}{#2}{}%
@@ -196,7 +250,9 @@
   \Mn@DeclareFontShape        {#1}{#2}{b}{sw}    {}%
 }%
 \otf@makeglobal{Mn@DeclareLargeFontFamily}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand*\Mn@DeclareSmallFontFamily[4]{%
   \DeclareFontFamily          {#1}{#2}{}%
   \Mn@DeclareFontShape        {#1}{#2}{m}{n}    {}%
@@ -208,7 +264,9 @@
   \Mn@DeclareFontSubstitutions{#1}{#2}%
 }
 \otf@makeglobal{Mn@DeclareSmallFontFamily}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand*\Mn@DeclareMathFontFamily[4]{%
   \DeclareFontFamily          {#1}{#2}{\skewchar\font=255}%
   \Mn@DeclareFontShape[math]  {#1}{#2}{m}{n}    {}%
@@ -226,7 +284,9 @@
   \Mn@DeclareFontSubstitutions{#1}{#2}%
 }
 \otf@makeglobal{Mn@DeclareMathFontFamily}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand*\Mn@DeclareFontSubstitutions[2]{%
   \DeclareFontShape           {#1}{#2}{bx}{n}  {<->ssub*#2/b/n}  {}%
   \DeclareFontShape           {#1}{#2}{bx}{it} {<->ssub*#2/b/it} {}%
@@ -236,23 +296,38 @@
   \DeclareFontShape           {#1}{#2}{bx}{sl} {<->ssub*#2/b/it} {}%
 }
 \otf@makeglobal{Mn@DeclareFontSubstitutions}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \ifx\@nodocument\relax
   \endgroup
 \fi
+%    \end{macrocode}
+% \iffalse
 %</fontdef>
+% \fi
+%    \begin{macrocode}
 %<*debug>
-\iffalse
+\newcommand\old@DeclareFontFamily{}
+\let\old@DeclareFontFamily\DeclareFontFamily
 \renewcommand\DeclareFontFamily[3]{
+  \begingroup\escapechar`\\%
   \edef\@tempa{\noexpand\DeclareFontFamily{#1}{#2}}%
   \@temptokena\expandafter{\@tempa{#3}}%
   \message{\the\@temptokena}%
+  \endgroup
+  \old@DeclareFontFamily{#1}{#2}{#3}%
 }
+\newcommand\old@DeclareFontShape{}
+\let\old@DeclareFontShape\DeclareFontShape
 \renewcommand\DeclareFontShape[6]{
+  \begingroup\escapechar`\\%
   \edef\@tempa{\noexpand\DeclareFontShape{#1}{#2}{#3}{#4}{#5}}%
   \@temptokena\expandafter{\@tempa{#6}}%
   \message{\the\@temptokena}%
+  \endgroup
+  \old@DeclareFontShape{#1}{#2}{#3}{#4}{#5}{#6}%
 }
-\fi
 %</debug>
+%    \end{macrocode}
 \endinput
