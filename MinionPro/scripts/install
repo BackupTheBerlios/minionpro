@@ -41,13 +41,13 @@ cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 cp tfm/MnSymbol*.tfm "$tfm_dir"
 cp vf/MnSymbol*.vf   "$vf_dir"
 
-cp tfm/*orn*.tfm     "$tfm_dir"
+cp tfm/*-orn*.tfm     "$tfm_dir"
+cp tfm/*-integral*.tfm     "$tfm_dir"
 
 for x in tosf tlf osf lf
 do
-  cp tfm/*$x*.tfm "$tfm_dir"
-  cp vf/*$x*.vf   "$vf_dir"
+  cp tfm/*-$x-*.tfm "$tfm_dir"
+  cp vf/*-$x-*.vf   "$vf_dir"
 done
 
-mktexlsr
-
+mktexlsr "$dir"
