@@ -37,5 +37,5 @@ mv *.pfb pfb
 
 (cd fontinst; ../scripts/makeint MinionPro)
 
-(cd tex; latex MinionPro.ins)
+(cd tex; latex MinionPro.ins; latex otfontdef.ins)
 
