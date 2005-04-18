@@ -1,8 +1,5 @@
 % OT1 Encoding
 %
-% LIGKERN f {L} b ; ff {L} b ; f {L} h ; ff {L} h ; f {L} k ; ff {L} k
-% LIGKERN f {L} t ; ff {L} t ; f {L} j ; ff {L} j ; T {L} h
-%
 /MinionPro-OT1Encoding [
 % 0x00
   /Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon

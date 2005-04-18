@@ -1,11 +1,11 @@
 %\iffalse meta-comment
 %<*driver>
-\ProvidesFile{MinionPro.dtx}[2005/01/23 v2.0 MinionPro support for LaTeX]
+           \ProvidesFile{MinionPro.dtx}       [2005/01/23 v2.0 MinionPro support for LaTeX]
 %</driver>
-%<style>\NeedsTeXFormat{LaTeX2e}
-%<style>\ProvidesPackage{MinionPro}[2005/01/23 v2.0 MinionPro support for LaTeX]
-%<mtcfg>\ProvidesFile{mt-MinionPro.cfg}[2005/02/07 v0.1 microtype config file for MinionPro]
-%<fontdef>\ProvidesFile{MinionPro-FontDef}[2005/01/23 v2.0 font definition macros]
+%<style>   \NeedsTeXFormat{LaTeX2e}
+%<style>   \ProvidesPackage{MinionPro}        [2005/01/23 v2.0 MinionPro support for LaTeX]
+%<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}    [2005/02/07 v1.0 microtype config file for MinionPro]
+%<fontdef> \ProvidesFile{MinionPro-FontDef}   [2005/01/23 v2.0 font definition macros]
 %<Uorn> \ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
 %<LGR&lf>  \ProvidesFile{LGRMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
 %<LGR&osf> \ProvidesFile{LGRMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for LGR/MinionPro-OsF.]
@@ -23,10 +23,10 @@
 %<T1&osf>  \ProvidesFile{T1MinionPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T1/MinionPro-OsF.]
 %<T1&tlf>  \ProvidesFile{T1MinionPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T1/MinionPro-TLF.]
 %<T1&tosf> \ProvidesFile{T1MinionPro-TOsF.fd} [2005/01/23 v2.0 font definitions for T1/MinionPro-TOsF.]
-%<LY1&lf>   \ProvidesFile{LY1MinionPro-LF.fd} [2005/01/23 v2.0 font definitions for LY1/MinionPro-LF.]
-%<LY1&osf>  \ProvidesFile{LY1MinionPro-OsF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-OsF.]
-%<LY1&tlf>  \ProvidesFile{LY1MinionPro-TLF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-TLF.]
-%<LY1&tosf> \ProvidesFile{LY1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-TOsF.]
+%<LY1&lf>  \ProvidesFile{LY1MinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for LY1/MinionPro-LF.]
+%<LY1&osf> \ProvidesFile{LY1MinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for LY1/MinionPro-OsF.]
+%<LY1&tlf> \ProvidesFile{LY1MinionPro-TLF.fd} [2005/01/23 v2.0 font definitions for LY1/MinionPro-TLF.]
+%<LY1&tosf>\ProvidesFile{LY1MinionPro-TOsF.fd}[2005/01/23 v2.0 font definitions for LY1/MinionPro-TOsF.]
 %<T5&lf>   \ProvidesFile{T5MinionPro-LF.fd}   [2005/01/23 v2.0 font definitions for T5/MinionPro-LF.]
 %<T5&osf>  \ProvidesFile{T5MinionPro-OsF.fd}  [2005/01/23 v2.0 font definitions for T5/MinionPro-OsF.]
 %<T5&tlf>  \ProvidesFile{T5MinionPro-TLF.fd}  [2005/01/23 v2.0 font definitions for T5/MinionPro-TLF.]
@@ -213,12 +213,6 @@
 %
 % In addition to the normal small caps shape |sc| there is a letterspaced version called~|ssc|.
 % It is accessible via the commands |\sscshape| and |\textssc|.
-% \iffalse
-% It can be used by issuing the commands
-% \begin{quote}
-%   |\fontshape{ssc}\selectfont|
-% \end{quote}
-% \fi
 % In order to use the |ssc| shape throughout your document specify
 % |\renewcommand{\scdefault}{ssc}| in the preamble of your document.
 %
@@ -354,7 +348,6 @@
 \DeclareOption{romangreek}{\def\Mn@Greek@Shape{\Mn@Greek@Rm}}
 \DeclareOption{mixedgreek}{\def\Mn@Greek@Shape{\Mn@Greek@Mix}}
 \DeclareOption{italicgreek}{\def\Mn@Greek@Shape{\Mn@Greek@It}}
-\ExecuteOptions{mixedgreek}
 %    \end{macrocode}
 %
 % \subsection{Blackbord bold and fraktur fonts}
@@ -381,7 +374,6 @@
 \DeclareOption{pazobb}{\let\Mn@load@bb\Mn@load@pazobb}
 \DeclareOption{wbfrak}{\let\Mn@load@frak\Mn@load@wbfrak}
 \DeclareOption{eufrak}{\let\Mn@load@frak\Mn@load@eufrak}
-\ExecuteOptions{amsbb,eufrak}
 %    \end{macrocode}
 %
 % \subsection{Integrals}
@@ -391,7 +383,7 @@
 
 \DeclareOption{minionint}{\def\Mn@Decl@Ints{\Mn@Decl@Minion@Ints}}
 
-\ExecuteOptions{osf}
+\ExecuteOptions{osf,mixedgreek,amsbb,eufrak}
 \ProcessOptions\relax
 
 \RequirePackage{MnSymbol,MinionPro-FontDef}
@@ -442,11 +434,11 @@
 \newcommand\swdefault{sw}
 \newcommand\sscdefault{ssc}
 \DeclareRobustCommand\swshape
-        {\not@math@alphabet\swshape\relax
-         \fontshape\swdefault\selectfont}
+  {\not@math@alphabet\swshape\relax
+   \fontshape\swdefault\selectfont}
 \DeclareRobustCommand\sscshape
-        {\not@math@alphabet\sscshape\relax
-         \fontshape\sscdefault\selectfont}
+  {\not@math@alphabet\sscshape\relax
+   \fontshape\sscdefault\selectfont}
 \DeclareTextFontCommand{\textsw}{\swshape}
 \DeclareTextFontCommand{\textssc}{\sscshape}
 %    \end{macrocode}
@@ -553,53 +545,53 @@
     Mn@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
   \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
 }
-\Mn@greek@letter{Gamma}     {"00}
-\Mn@greek@letter{Delta}     {"01}
-\Mn@greek@letter{Theta}     {"02}
-\Mn@greek@letter{Lambda}    {"03}
-\Mn@greek@letter{Xi}        {"04}
-\Mn@greek@letter{Pi}        {"05}
-\Mn@greek@letter{Sigma}     {"06}
-\Mn@greek@letter{Upsilon}   {"07}
-\Mn@greek@letter{Phi}       {"08}
-\Mn@greek@letter{Psi}       {"09}
-\Mn@greek@letter{Omega}     {"0A}
-\Mn@greek@letter{alpha}     {"0B}
-\Mn@greek@letter{beta}      {"0C}
-\Mn@greek@letter{gamma}     {"0D}
-\Mn@greek@letter{delta}     {"0E}
-\Mn@greek@letter{epsilon}   {"0F}
-\Mn@greek@letter{zeta}      {"10}
-\Mn@greek@letter{eta}       {"11}
-\Mn@greek@letter{theta}     {"12}
-\Mn@greek@letter{iota}      {"13}
-\Mn@greek@letter{kappa}     {"14}
-\Mn@greek@letter{lambda}    {"15}
-\Mn@greek@letter{mu}        {"16}
-\Mn@greek@letter{nu}        {"17}
-\Mn@greek@letter{xi}        {"18}
-\Mn@greek@letter{pi}        {"19}
-\Mn@greek@letter{rho}       {"1A}
-\Mn@greek@letter{sigma}     {"1B}
-\Mn@greek@letter{tau}       {"1C}
-\Mn@greek@letter{upsilon}   {"1D}
-\Mn@greek@letter{phi}       {"1E}
-\Mn@greek@letter{chi}       {"1F}
-\Mn@greek@letter{psi}       {"20}
-\Mn@greek@letter{omega}     {"21}
-\Mn@greek@letter{varepsilon}{"22}
-\Mn@greek@letter{vartheta}  {"23}
-\Mn@greek@letter{varpi}     {"24}
-\Mn@greek@letter{varrho}    {"25}
-\Mn@greek@letter{varsigma}  {"26}
-\Mn@greek@letter{varphi}    {"27}
-\Mn@greek@letter{hbar}      {"81}
-\Mn@greek@letter{digamma}   {"82}
-\Mn@greek@letter{varkappa}  {"83}
-\Mn@greek@letter{varbeta}   {"84}
-\Mn@greek@letter{backepsilon}{"85}
+\Mn@greek@letter{Gamma}         {"00}
+\Mn@greek@letter{Delta}         {"01}
+\Mn@greek@letter{Theta}         {"02}
+\Mn@greek@letter{Lambda}        {"03}
+\Mn@greek@letter{Xi}            {"04}
+\Mn@greek@letter{Pi}            {"05}
+\Mn@greek@letter{Sigma}         {"06}
+\Mn@greek@letter{Upsilon}       {"07}
+\Mn@greek@letter{Phi}           {"08}
+\Mn@greek@letter{Psi}           {"09}
+\Mn@greek@letter{Omega}         {"0A}
+\Mn@greek@letter{alpha}         {"0B}
+\Mn@greek@letter{beta}          {"0C}
+\Mn@greek@letter{gamma}         {"0D}
+\Mn@greek@letter{delta}         {"0E}
+\Mn@greek@letter{epsilon}       {"0F}
+\Mn@greek@letter{zeta}          {"10}
+\Mn@greek@letter{eta}           {"11}
+\Mn@greek@letter{theta}         {"12}
+\Mn@greek@letter{iota}          {"13}
+\Mn@greek@letter{kappa}         {"14}
+\Mn@greek@letter{lambda}        {"15}
+\Mn@greek@letter{mu}            {"16}
+\Mn@greek@letter{nu}            {"17}
+\Mn@greek@letter{xi}            {"18}
+\Mn@greek@letter{pi}            {"19}
+\Mn@greek@letter{rho}           {"1A}
+\Mn@greek@letter{sigma}         {"1B}
+\Mn@greek@letter{tau}           {"1C}
+\Mn@greek@letter{upsilon}       {"1D}
+\Mn@greek@letter{phi}           {"1E}
+\Mn@greek@letter{chi}           {"1F}
+\Mn@greek@letter{psi}           {"20}
+\Mn@greek@letter{omega}         {"21}
+\Mn@greek@letter{varepsilon}    {"22}
+\Mn@greek@letter{vartheta}      {"23}
+\Mn@greek@letter{varpi}         {"24}
+\Mn@greek@letter{varrho}        {"25}
+\Mn@greek@letter{varsigma}      {"26}
+\Mn@greek@letter{varphi}        {"27}
+\Mn@greek@letter{hbar}          {"81}
+\Mn@greek@letter{digamma}       {"82}
+\Mn@greek@letter{varkappa}      {"83}
+\Mn@greek@letter{varbeta}       {"84}
+\Mn@greek@letter{backepsilon}   {"85}
 \Mn@greek@letter{varbackepsilon}{"86}
-\Mn@greek@letter{eth}       {"87}
+\Mn@greek@letter{eth}           {"87}
 %    \end{macrocode}
 % Go through a list of greek letters |#2| and |\let| them be their
 % |#1|-prefixed variants.

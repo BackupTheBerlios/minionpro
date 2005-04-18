@@ -19,7 +19,6 @@
 % UNICODING textguarani =: blacksquare ;
 % UNICODING textrecipe =: blacksquare ;
 % UNICODING textdong =: blacksquare ;
-% UNICODING pilcrow =: blacksquare ;
 % UNICODING bahtthai =: blacksquare ;
 % UNICODING textdiscount =: blacksquare ;
 % UNICODING bulletinverse =: blacksquare ;
@@ -32,18 +31,18 @@
 %
 /MinionPro-TS1Encoding [          % now 256 chars follow
 % 0x00
-  /Grave /Acute /uniEFF7 /uniEFF5 /Dieresis /Hungarumlaut /uniEFF3 /Caron 
+  /Grave /Acute /uniEFF7 /uniEFF5 /Dieresis /Hungarumlaut /uniEFF3 /Caron
   /uniEFEE /Macron /uniEFED /uniEFF2 /uniEFF1 /quotesinglbase /.notdef /.notdef
 % 0x10
-  /.notdef /.notdef /quotedblbase /.notdef 
-  /.notdef /twelveudash /threequartersemdash /capitalcompwordmark 
-  /arrowleft /arrowright /cyrflex /cyrFlex 
+  /.notdef /.notdef /quotedblbase /.notdef
+  /.notdef /twelveudash /threequartersemdash /capitalcompwordmark
+  /arrowleft /arrowright /cyrflex /cyrFlex
   /cyrflex /cyrFlex /.notdef /ascendercompwordmark
 % 0x20
   /blank /.notdef /.notdef /.notdef /dollar /.notdef /.notdef /quotesingle
   /.notdef /.notdef /asteriskcentered /.notdef /comma /hyphendbl /period /fraction
 % 0x30
-  /zero /one /two /three /four /five /six /seven 
+  /zero /one /two /three /four /five /six /seven
   /eight /nine /.notdef /.notdef /angleleft /minus /angleright /.notdef
 % 0x40
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
@@ -52,7 +51,7 @@
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /Omega
   /.notdef /.notdef /.notdef /textlbrackdbl /.notdef /textrbrackdbl /arrowup /arrowdown
 % 0x60
-  /grave /.notdef /born /divorced /died /.notdef /.notdef /.notdef 
+  /grave /.notdef /born /divorced /died /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /leaf /married /musicalnote /.notdef
 % 0x70
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
@@ -61,22 +60,21 @@
   /breve /caron /hungarumlaut /dblgrave /dagger /daggerdbl /bardbl /perthousand
   /bullet /centigrade /dollaroldstyle /centoldstyle /florin /colonmonetary /won /textnaira
 % 0x90
-  /textguarani /peseta /lira /textrecipe 
+  /textguarani /peseta /lira /textrecipe
   /interrobang /interrobangdown /textdong /trademark
-  /pertenthousand /pilcrow /bahtthai /numero 
+  /pertenthousand /paragraph /bahtthai /numero
   /textdiscount /estimated /bulletinverse /textservicemark
 % 0xA0
   /textlquill /textrquill /cent /sterling /currency /yen /brokenbar /section
-  /dieresis /copyright /ordfeminine /textcopyleft 
-  /logicalnot /textcircledP /registered /macron
+  /dieresis /copyright /ordfeminine /textcopyleft /logicalnot /textcircledP /registered /macron
 % 0xB0
-  /celsius /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
+  /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
   /referencemark /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro
 % 0xC0
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xD0
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /multiply /.notdef 
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /multiply /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xE0
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
