@@ -5,7 +5,7 @@
 %<style>   \NeedsTeXFormat{LaTeX2e}
 %<style>   \ProvidesPackage{MinionPro}        [2005/01/23 v2.0 MinionPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}    [2005/02/07 v1.0 microtype config file for MinionPro]
-%<fontdef> \ProvidesFile{MinionPro-FontDef}   [2005/01/23 v2.0 font definition macros]
+%<fontdef>\ProvidesFile{MinionPro-FontDef.sty}[2005/04/13 v2.1 font definition macros]
 %<Uorn> \ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
 %<LGR&lf>  \ProvidesFile{LGRMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
 %<LGR&osf> \ProvidesFile{LGRMinionPro-OsF.fd} [2005/01/23 v2.0 font definitions for LGR/MinionPro-OsF.]
@@ -1409,16 +1409,328 @@
 %
 % \section{Font definition files}
 %
-% Since alle the font definitions look the same we introduce macros for the
-% common tasks.  These macros are stored in the file
+% Since alle the font definitions look the same we introduce macros to ease
+% the configuration. These macros are stored in the file
 % \file{MinionPro-FontDef.sty} which is included by every \acro{FD}-file.
 % Note that this file will be included several times and that we do not know
 % in which context the code is executed. Therefore, we have to define
 % everything that is also needed later in the document as global.
+% 
+% \makeatletter
+% \newcommand*\exampleconfig[2]{%
+%   \begin{enumerate}%
+%   \item{\ttfamily\expandafter\string\csname Mn@config@#1@#2\endcsname}
+%   \item{\ttfamily\expandafter\expandafter
+%   \expandafter\strip@prefix
+%   \expandafter\meaning
+%   \csname Mn@config@#1@#2\endcsname}
+%   \item{\ttfamily\edef\@tempa{\Mn@UseConfig{#1}{#2}}%
+%   \expandafter\strip@prefix\meaning\@tempa}
+%   \end{enumerate}%
+% }%
+% \makeatother
 %
-% We allow this file to be included multiple times.
+% We try to make this package loadable in an \acro{FD} file, too (i.e., not in
+% the preamble)\?; therefore, we have used |\ProvidesFile| instead of
+% |\ProvidesPackage|.
+%
+% Allow this file to be included multiple times
 %    \begin{macrocode}
 %<*fontdef>
+\ifx\Mn@DeclareFontShape\@undefined\else\endinput\fi
+%
+\ifx\@nodocument\relax
+  \input{otfontdef.sty}
+\else
+  \NeedsTeXFormat{LaTeX2e}
+  \RequirePackage{otfontdef}
+\fi
+%    \end{macrocode}
+% Reset |\escapechar| ($-1$ in \acro{FD} files) to make |\newcommand| work.
+% The additional group does not harm then\?; we have to make the important
+% things global anyway.
+%    \begin{macrocode}
+\ifx\@nodocument\relax
+  \begingroup\escapechar`\\
+\fi
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\Mn@option@opticals{opticals}
+\newcommand\Mn@option@family{medfamily}
+\newdimen\Mn@option@normalsize
+\global\Mn@option@normalsize10pt
+%
+\ifx\@nodocument\relax\else
+  \DeclareOption{slides}     {\let\Mn@option@opticals\CurrentOption}
+  \DeclareOption{opticals}   {\let\Mn@option@opticals\CurrentOption}
+  \DeclareOption{noopticals} {\let\Mn@option@opticals\CurrentOption}
+  \DeclareOption{smallfamily}{\let\Mn@option@family\CurrentOption}
+  \DeclareOption{medfamily}  {\let\Mn@option@family\CurrentOption}
+  \DeclareOption{fullfamily} {\let\Mn@option@family\CurrentOption}
+%
+  \DeclareOption{normalsize} {%
+    % idea stolen from microtype.dtx
+    \begingroup
+    \def\set@fontsize#1#2#3#4\@nil{%
+      \@defaultunits\global\Mn@option@normalsize#2pt\relax\@nnil}%
+    \normalsize\@nil
+    \endgroup
+  }
+%
+  \ExecuteOptions{medfamily,opticals}
+  \ProcessOptions\relax
+\fi
+\otf@makeglobal{Mn@option@opticals}
+\otf@makeglobal{Mn@option@family}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcount\Mn@config@cnt
+\Mn@config@cnt=0
+\newcommand\Mn@curr@config{Mn@config@\romannumeral\Mn@config@cnt}
+%    \end{macrocode}
+% These commands help in setting up the configuration database\?; they do not
+% need to be global. But the config database itself does.
+%
+% Let us look at an example how the configuration database looks internally for
+% $(|shape|, |sw|)$, which is specified below in three steps. The following
+% lines show different depths of expansion of the macro |\Mn@config@shape@sw|,
+% which finally yields the complete configuration\?:
+% \exampleconfig{shape}{sw}
+%    \begin{macrocode}
+\newcommand\Mn@AddToConfig{%
+  \begingroup
+  \nfss@catcodes
+  \expandafter\endgroup
+  \Mn@AddToConfig@
+}
+\newcommand\Mn@AddToConfig@[3]{%
+  \advance\Mn@config@cnt\@ne
+  \@namedef{\Mn@curr@config}{#3}%
+  \otf@makeglobal{\Mn@curr@config}
+%<debug&show>\expandafter\show\csname\Mn@curr@config\endcsname
+  \@for\Mn@tempa:=#2\do{%
+    \@ifundefined{Mn@config@#1@\Mn@tempa}{%
+      \@temptokena{}%
+    }{%
+      \@temptokena\expandafter\expandafter\expandafter
+        {\csname Mn@config@#1@\Mn@tempa\endcsname}%
+    }%
+    \@expandtwoargs\@namedef{Mn@config@#1@\Mn@tempa}{%
+      \the\@temptokena
+      \expandafter\noexpand\csname\Mn@curr@config\endcsname
+    }%
+    \otf@makeglobal{Mn@config@#1@\Mn@tempa}% perhaps defer to only execute once
+%<debug&show>\expandafter\show\csname Mn@config@#1@\Mn@tempa\endcsname
+  }%
+}
+%    \end{macrocode}
+% This command is used in the |Declare...Family| commands
+%    \begin{macrocode}
+\newcommand\Mn@UseConfig[2]{%
+  \@ifundefined{Mn@config@#1@#2}{}%
+    {\@nameuse{Mn@config@#1@#2}}%
+}
+\otf@makeglobal{Mn@UseConfig}
+%    \end{macrocode}
+% Here comes the configuration.
+%    \begin{macrocode}
+\Mn@AddToConfig{opticals}{opticals}{
+      <-8.5>  otf* [optical=Capt]
+   <8.5-13.1> otf* [optical=Text]
+  <13.1-20>   otf* [optical=Subh]
+    <20->     otf* [optical=Disp]
+}
+\Mn@AddToConfig{opticals}{noopticals}{
+      <->     otf* [optical=Text]
+}
+\Mn@AddToConfig{opticals}{slides}{
+      <->     otf* [optical=Capt]
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ifdim\Mn@option@normalsize<10.1pt
+  \Mn@AddToConfig{family/weight}{fullfamily/m}{
+        <-6>    otf* [weight=Semibold]
+       <6-8.5>  otf* [weight=Medium]
+     <8.5->     otf* [weight=Regular]
+  }
+\else
+  \Mn@AddToConfig{family/weight}{fullfamily/m}{
+        <-6>    otf* [weight=Semibold]
+       <6-10.1> otf* [weight=Medium]
+    <10.1->     otf* [weight=Regular]
+  }
+\fi
+\Mn@AddToConfig{family/weight}{medfamily/m}{
+      <-6>    otf* [weight=Semibold]
+     <6->     otf* [weight=Regular]
+}
+\Mn@AddToConfig{family/weight}{smallfamily/m}{
+      <->     otf* [weight=Regular]
+}
+%
+\Mn@AddToConfig{family/weight}{fullfamily/sb,medfamily/sb}{
+      <-6>    otf* [weight=Bold]
+     <6->     otf* [weight=Semibold]
+}
+\Mn@AddToConfig{family/weight}{smallfamily/sb}{
+      <->     otf* [weight=Bold]
+}
+%
+\Mn@AddToConfig{weight}{b}{
+      <->     otf* [weight=Bold]
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\Mn@AddToConfig{shape}{ssc,sscit}{
+      <->     otf* [spacing=l2]
+}
+\Mn@AddToConfig{shape}{n,it,sw,sc,scit}{
+      <-8>    otf* [spacing=l1]
+}
+\Mn@AddToConfig{shape/math}{n,it,sc,scit}{
+      <->     otf* [spacing=l1]
+}
+%
+\Mn@AddToConfig{shape}{sc,ssc,scit,sscit}{
+      <->     otf* [variant=sc]
+}
+\Mn@AddToConfig{shape}{sw}{
+      <->     otf* [variant=swash]
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\Mn@AddToConfig{shape}{it,scit,sscit,sw}{
+      <->     otf* MinionPro-It
+}
+\Mn@AddToConfig{shape}{n,sc,ssc}{
+      <->     otf* MinionPro
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\Mn@DeclareFontShape[6][]{%
+  \DeclareFontShape{#2}{#3}{#4}{#5}{%
+    \Mn@UseConfig{opticals}     {\Mn@option@opticals}%
+    \Mn@UseConfig{family/weight}{\Mn@option@family/#4}%
+    \Mn@UseConfig{weight}       {#4}%
+    \Mn@UseConfig{shape}        {#5}%
+    \Mn@UseConfig{shape/#1}     {#5}%
+  }{#6}%
+}
+\otf@makeglobal{Mn@DeclareFontShape}
+\otf@makeglobal{\string\Mn@DeclareFontShape}
+%    \end{macrocode}
+% |#1| encoding |#2| MinionPro-figures (|#3|/|#4| only for backwards
+% compatibility)
+%    \begin{macrocode}
+\newcommand*\Mn@DeclareLargeFontFamily[4]{%
+  \Mn@DeclareSmallFontFamily  {#1}{#2}{}{}%
+  \DeclareFontFamily          {#1}{#2}{}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{sc}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{ssc}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{scit}  {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{sscit} {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{sw}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{sc}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{ssc}  {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{scit} {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{sscit}{}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{sw}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{sc}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{ssc}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{scit}  {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{sscit} {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{sw}    {}%
+}%
+\otf@makeglobal{Mn@DeclareLargeFontFamily}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand*\Mn@DeclareSmallFontFamily[4]{%
+  \DeclareFontFamily          {#1}{#2}{}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{n}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{it}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{n}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{it}  {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{n}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{it}   {}%
+  \Mn@DeclareFontSubstitutions{#1}{#2}%
+}
+\otf@makeglobal{Mn@DeclareSmallFontFamily}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand*\Mn@DeclareMathFontFamily[4]{%
+  \DeclareFontFamily          {#1}{#2}{\skewchar\font=255}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{n}    {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{it}   {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{sc}   {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{scit} {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{n}   {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{it}  {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{sc}  {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{scit}{}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{n}    {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{it}   {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{sc}   {}%
+  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{scit} {}%
+  \Mn@DeclareFontSubstitutions{#1}{#2}%
+}
+\otf@makeglobal{Mn@DeclareMathFontFamily}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand*\Mn@DeclareFontSubstitutions[2]{%
+  \DeclareFontShape           {#1}{#2}{bx}{n}  {<->ssub*#2/b/n}  {}%
+  \DeclareFontShape           {#1}{#2}{bx}{it} {<->ssub*#2/b/it} {}%
+  \DeclareFontShape           {#1}{#2}{m}{sl}  {<->ssub*#2/m/it} {}%
+  \DeclareFontShape           {#1}{#2}{sb}{sl} {<->ssub*#2/sb/it}{}%
+  \DeclareFontShape           {#1}{#2}{b}{sl}  {<->ssub*#2/b/it} {}%
+  \DeclareFontShape           {#1}{#2}{bx}{sl} {<->ssub*#2/b/it} {}%
+}
+\otf@makeglobal{Mn@DeclareFontSubstitutions}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ifx\@nodocument\relax
+  \endgroup
+\fi
+%    \end{macrocode}
+%    \begin{macrocode}
+%<*debug>
+\newcommand\old@DeclareFontFamily{}
+\let\old@DeclareFontFamily\DeclareFontFamily
+\renewcommand\DeclareFontFamily[3]{
+  \begingroup\escapechar`\\%
+  \edef\@tempa{\noexpand\DeclareFontFamily{#1}{#2}}%
+  \@temptokena\expandafter{\@tempa{#3}}%
+  \message{\the\@temptokena}%
+  \endgroup
+  \old@DeclareFontFamily{#1}{#2}{#3}%
+}
+\newcommand\old@DeclareFontShape{}
+\let\old@DeclareFontShape\DeclareFontShape
+\renewcommand\DeclareFontShape[6]{
+  \begingroup\escapechar`\\%
+  \edef\@tempa{\noexpand\DeclareFontShape{#1}{#2}{#3}{#4}{#5}}%
+  \@temptokena\expandafter{\@tempa{#6}}%
+  \message{\the\@temptokena}%
+  \endgroup
+  \old@DeclareFontShape{#1}{#2}{#3}{#4}{#5}{#6}%
+}
+%</debug>
+%    \end{macrocode}
+%
+% \iffalse old fontdef code
+%<*obsolete>
+% We allow this file to be included multiple times.
+%    \begin{macrocode}
 \ifx\Mn@DeclareFont\undefined\else\endinput\fi
 %
 %\input{MinionPro-Protrude.sty}%
@@ -1699,6 +2011,9 @@
 %    \begin{macrocode}
 \Mn@FontDefinitions
 %    \end{macrocode}
+%</obsolete>
+% old fontdef code \fi
+%
 % We define font family aliases so that we can place all configurations for
 % the MinionPro family variants into one \pkg{microtype} file\?:
 % \file{mt-MinionPro.cfg}. We use \pkg{microtype}'s hook if \pkg{microtype}
@@ -1717,7 +2032,7 @@
   \g@addto@macro\MicroType@Hook{\Mn@MicroType@Aliases}%
 }%
 \@ifundefined{DeclareMicroTypeAlias}{}{\Mn@MicroType@Aliases}%
-\endgroup
+%\endgroup
 %</fontdef>
 %    \end{macrocode}
 %
