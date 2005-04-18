@@ -177,7 +177,7 @@ make_normal_metrics() {
       *Bold*)       if [ -e enc/lgr-b.kern ];then echo 'cat enc/lgr-b.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
       *Semibold*)   if [ -e enc/lgr-s.kern ];then echo 'cat enc/lgr-s.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
       *Medium*)     if [ -e enc/lgr-m.kern ];then echo 'cat enc/lgr-m.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
-      *)            if [ -e enc/lgr-r.kern ];then echo 'cat enc/lgr-r.kpx   >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
+      *)            if [ -e enc/lgr-r.kern ];then echo 'cat enc/lgr-r.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
     esac
     make_tfm "$1" lgrkern $2-lgr    "-sgrek $it_lgr_flags $digamma_flags $flags"
   fi
