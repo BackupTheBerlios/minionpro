@@ -21,14 +21,14 @@
 % 
 % \GetFileInfo{otfontdef.dtx}
 % 
-% \title{OpenType font definition}
+% \title{OpenType Font Definition}
 % \author{Andreas B\"uhmann}
 % \date{\fileversion\ -- \filedate}
 % \maketitle
 %
 % \begin{macro}{\otf@disable@preamblecmds}
-% In a second we need to temporarily disable all commands that can be used in
-% the preamble only (and that occur in the current version of keyval).
+%   In a second we need to temporarily disable all commands that can be used
+%   in the preamble only (and that occur in the current version of keyval).
 %    \begin{macrocode}
 \newcommand\otf@disable@preamblecmds{%
   \def\@gobble@optional{%
@@ -43,7 +43,8 @@
 }
 %    \end{macrocode}
 % \end{macro}
-% Try hard to also work when loaded from inside an \acro{FD} file.
+% Try hard to also work when loaded from inside an \acro{FD} file. We use
+% |\space| because literal spaces are ignored.
 %    \begin{macrocode}
 \ifx\@nodocument\relax
   \PackageWarningNoLine{otfontdef}{Please\space load\space me\space
@@ -75,22 +76,24 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\otf@makeglobal}
-% We have to make definitions global to allow this package to be used from
-% inside \acro{FD} files,
+%   We have to make definitions global to allow this package to be used from
+%   inside \acro{FD} files,
 %    \begin{macrocode}
 \newcommand\otf@makeglobal[1]{
   \global\expandafter\let\csname #1\expandafter\endcsname
   \csname #1\endcsname
 }
-% but we need not when loaded as a normal package 
+%    \end{macrocode}
+% but we need not when loaded as a normal package.
+%    \begin{macrocode}
 \ifx\@nodocument\relax\else
   \let\otf@makeglobal\@gobble
 \fi
 %    \end{macrocode}
 % \end{macro}
-%
+% 
 % \begin{macro}{\ifotf@options}
-% whether we are looking for options or not
+%   Whether we are looking for options or not
 %    \begin{macrocode}
 \newif\ifotf@options
 \otf@optionsfalse
@@ -99,9 +102,11 @@
 \otf@makeglobal{otf@optionsfalse}
 %    \end{macrocode}
 % \end{macro}
-%
+% 
 % \begin{macro}{\otf@keys}
 % \begin{macro}{\otf@definekey}
+%   Only the first occurrence of a key sets the associated value; other
+%   occurrences are ignored.
 %    \begin{macrocode}
 \newcommand\otf@keys{}
 \newcommand\otf@definekey[1]{%
@@ -111,8 +116,7 @@
     }{}%
   }%
   \expandafter\let\csname otf@@#1\endcsname\relax
-  \@temptokena\expandafter{\otf@keys}%
-  \edef\otf@keys{\the\@temptokena\noexpand\do{#1}}%
+  \g@addto@macro\otf@keys{\do{#1}}%
   \otf@makeglobal{otf@@#1}%
   \otf@makeglobal{KV@otf@#1}%
 }
@@ -132,7 +136,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-%
+% Define all font attributes
 %    \begin{macrocode}
 \otf@definekey{family}
 \otf@definekey{weight}
@@ -144,7 +148,9 @@
 \otf@definekey{encoding}
 \otf@definekey{size}
 \otf@makeglobal{otf@keys}
-%
+%    \end{macrocode}
+% and how their defaults are determined (if at all).
+%    \begin{macrocode}
 \otf@definedefault{weight}
   {\expandafter\KV@otf@weight\expandafter{\otf@Regular}}
 \otf@definedefault{optical}
@@ -161,10 +167,11 @@
   {\expandafter\KV@otf@shape\expandafter{\otf@Regular}}
 \otf@makeglobal{otf@default@keys}
 %    \end{macrocode}
-%
+% 
 % \begin{macro}{\otf@Regular}
 % \begin{macro}{\otf@Text} 
-% All characters of these strings must have catcode 12
+%   All characters of these strings must have catcode 12 (other). They will be
+%   matched against substrings of |\DeclareFontShape| configurations.
 %    \begin{macrocode}
 \newcommand*\otf@Regular{Regular}
 \newcommand*\otf@Text{Text}
@@ -178,7 +185,12 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-%
+% We register a new size function |otf|, which can then be used in \acro{FD}
+% files. We procede in two phases when building the configuration for a
+% requested font: In the first phase, we ignore all |otf| entries that give
+% only options (no |\mandatory@arg|); from the first entry that has a
+% mandatory argument we start into the second phase, where we rescan the
+% configuration looking for options.
 %    \begin{macrocode}
 \ifx\@nodocument\relax
   \begingroup
@@ -233,16 +245,24 @@
 % \end{macro}
 %
 % \begin{macro}{\otf@get@external@font}
+%   This is the master macro that coordinates the processing. We first
+%   determine family and (possibly) shape from the mandatory argument.
 %    \begin{macrocode}
 \newcommand\otf@get@external@font{%
   \expandafter\otf@splitname@ext\mandatory@arg--\@empty
+%    \end{macrocode}
+% We can then rescan the current configuration for further options.
+%    \begin{macrocode}
   \otf@optionstrue
   \try@size@range
 %    \end{macrocode}
-% set defaults
+% If any attribute has not received a value, we use its default.
 %    \begin{macrocode}
   \@expandtwoargs\setkeys{otf}{\otf@default@keys}%
-  %
+%    \end{macrocode}
+% After having informed the user about the values we have collected, we build
+% the external font name by applying the appropriate naming pattern.
+%    \begin{macrocode}
   \begingroup
   \def\do##1{\otf@showoption{##1}\MessageBreak}%
   \PackageInfo{otfontdef}{Using\space configuration\MessageBreak
@@ -257,7 +277,7 @@
 % \end{macro}
 % 
 % \begin{macro}{\otf@pattern@default}
-% This is the font naming pattern used for in the MinionPro project.
+%   This is the font naming pattern used in the MinionPro project.
 %    \begin{macrocode}
 \newcommand\otf@head{}
 \newcommand\otf@tail{}
@@ -294,8 +314,8 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\DeclareFontNamingPattern}
-% We do not make this declaration command global. The who wants to use it
-% should really load the package in preamble.
+%   We do not make this declaration command global. The who wants to use it
+%   should really load the package in preamble.
 %    \begin{macrocode}
 \newcommand*\DeclareFontNamingPattern[1]{%
   \@namedef{otf@pattern@@#1}%
@@ -304,12 +324,16 @@
 % \end{macro}
 %
 % \begin{macro}{\otf@opt}
-% \begin{macro}{\otf@showoption}
-% optional component
+%   An optional name component, separated from other by a hyphen.
 %    \begin{macrocode}
 \newcommand*\otf@opt[1]{%
   \ifx\relax#1\@empty\else\if\@empty#1\@empty\else#1-\fi\fi
 }
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\otf@showoption}
+%   Format an option and its current value for displaying it.
+%    \begin{macrocode}
 \newcommand*\otf@showoption[1]{%
   \@spaces #1\space=\space\@ifundefined{otf@@#1}{<undefined>}{%
     \expandafter\expandafter\expandafter\strip@prefix
@@ -318,7 +342,6 @@
 \otf@makeglobal{otf@opt}
 \otf@makeglobal{otf@showoption}
 %    \end{macrocode}
-% \end{macro}
 % \end{macro}
 % \iffalse
 %</otfd>
