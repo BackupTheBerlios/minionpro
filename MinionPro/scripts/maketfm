@@ -170,10 +170,10 @@ make_normal_metrics() {
   then
     echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc' >>maketfm.tmp
     case "$1" in
-      *BoldIt*)     if [ -e enc/lgr-bi.kern];then echo 'cat enc/lgr-bi.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
-      *SemiboldIt*) if [ -e enc/lgr-si.kern];then echo 'cat enc/lgr-si.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
-      *MediumIt*)   if [ -e enc/lgr-mi.kern];then echo 'cat enc/lgr-mi.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
-      *It*)         if [ -e enc/lgr-ri.kern];then echo 'cat enc/lgr-ri.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
+      *BoldIt*)     if [ -e enc/lgr-bi.kern ];then echo 'cat enc/lgr-bi.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
+      *SemiboldIt*) if [ -e enc/lgr-si.kern ];then echo 'cat enc/lgr-si.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
+      *MediumIt*)   if [ -e enc/lgr-mi.kern ];then echo 'cat enc/lgr-mi.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
+      *It*)         if [ -e enc/lgr-ri.kern ];then echo 'cat enc/lgr-ri.kern >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
       *Bold*)       if [ -e enc/lgr-b.kern ];then echo 'cat enc/lgr-b.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
       *Semibold*)   if [ -e enc/lgr-s.kern ];then echo 'cat enc/lgr-s.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
       *Medium*)     if [ -e enc/lgr-m.kern ];then echo 'cat enc/lgr-m.kern  >>enc/mn-lgrkern.enc' >>maketfm.tmp;fi;;
