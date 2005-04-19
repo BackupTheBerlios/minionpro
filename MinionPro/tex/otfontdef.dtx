@@ -6,12 +6,13 @@
 %<otfd>  {\ProvidesFile{otfontdef.sty}}
 %<otfd>  {\NeedsTeXFormat{LaTeX2e}\ProvidesPackage{otfontdef}}
 %<*otfd|driver>
-  [2005/04/13 v0.1 OpenType font definition]
+  [2005/04/19 v0.1a OpenType font definition]
 %</otfd|driver>
 %<*driver>
 \documentclass{ltxdoc}
 \newcommand\pkg[1]{\textsf{#1}}
 \newcommand\acro[1]{#1}
+\RecordChanges
 \begin{document}
 \DocInput{otfontdef.dtx}
 \end{document}
@@ -91,7 +92,22 @@
 \fi
 %    \end{macrocode}
 % \end{macro}
-% 
+% \begin{macro}{\otf@info}
+% We only show information on chosen configurations when asked to do so.
+% \changes{v0.2}{2005/04/19}{Introduce trace option}
+%    \begin{macrocode}
+\newif\ifotf@trace\otf@tracefalse
+\newcommand*\otf@info[1]{}
+\ifx\@nodocument\relax\else
+  \DeclareOption{trace}{\otf@tracetrue}
+  \ProcessOptions\relax
+  \ifotf@trace
+    \def\otf@info#1{\PackageInfo{otfontdef}{#1}}
+  \fi
+\fi
+\otf@makeglobal{otf@info}
+%    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\ifotf@options}
 %   Whether we are looking for options or not
 %    \begin{macrocode}
@@ -265,12 +281,14 @@
 %    \begin{macrocode}
   \begingroup
   \def\do##1{\otf@showoption{##1}\MessageBreak}%
-  \PackageInfo{otfontdef}{Using\space configuration\MessageBreak
-    \otf@keys for\space font\space \curr@fontshape/\f@size}%
+  \otf@info{Using\space configuration\MessageBreak
+    \otf@keys for\space font\space\font@name}%
   \endgroup
   \@ifundefined{otf@pattern@@\otf@@family}{\otf@pattern@default}{%
     \@nameuse{otf@pattern@@\otf@@family}%
   }%
+  \otf@info{Trying\space to\space load\space external\space font\MessageBreak
+    `\external@font'}%
 }
 \otf@makeglobal{otf@get@external@font}
 %    \end{macrocode}
@@ -298,7 +316,7 @@
   \else
     \edef\otf@head{\otf@@family-\otf@head}%
   \fi
-  \edef\external@font{\otf@head-\otf@tail\space at\otf@@size pt}%
+  \edef\external@font{\otf@head-\otf@tail\space at\space\otf@@size pt}%
 }
 \otf@makeglobal{otf@pattern@default}
 \newcommand\otf@format@shape[1]{%
@@ -343,6 +361,7 @@
 \otf@makeglobal{otf@showoption}
 %    \end{macrocode}
 % \end{macro}
+% \PrintChanges
 % \iffalse
 %</otfd>
 % \fi
