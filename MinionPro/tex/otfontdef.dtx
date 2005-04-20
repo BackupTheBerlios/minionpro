@@ -6,7 +6,7 @@
 %<otfd>  {\ProvidesFile{otfontdef.sty}}
 %<otfd>  {\NeedsTeXFormat{LaTeX2e}\ProvidesPackage{otfontdef}}
 %<*otfd|driver>
-  [2005/04/19 v0.1a OpenType font definition]
+  [2005/04/20 v0.1b OpenType font definition]
 %</otfd|driver>
 %<*driver>
 \documentclass{ltxdoc}
@@ -26,6 +26,79 @@
 % \author{Andreas B\"uhmann}
 % \date{\fileversion\ -- \filedate}
 % \maketitle
+% 
+% \begin{abstract}
+%   The package \pkg{otfontdef} provides a simple but powerful key-value-based interface for
+%   font definition files. It enables you to vary multiple font
+%   attributes according to the font size separately from each other.
+% \end{abstract}
+%
+% \section{Motivation}
+%
+% Writing font definition files for professional OpenType fonts is tedious.
+% You have many different aspects like optical size, weight, and letterspacing
+% at your disposal that you might want to vary according to the font size but
+% each one independently of the other. To achieve this with ordinary means
+% involves intersecting size intervals, copying unchanged parts, etc., which
+% leads to a lot of repetition and, in turn, to decreased maintainability.
+% 
+% As an example, imagine that you are about to map the font
+% |T1/MinionPro-OsF/m/it| to external fonts in a font definition file. This is
+% easy if there is exactly one external font:
+% \begin{verbatim}
+% \DeclareFontShape{T1}{MinionPro-OsF}{m}{it}{
+%       <->     MinionPro-It-osf-t1
+% }{}
+% \end{verbatim}
+% But let us assume that you have access to multiple optical sizes of that
+% font and that you would like to use them (for simplicity, let us use only
+% two optical sizes, Caption and Text):
+% \begin{verbatim}
+%       <-8.5>  MinionPro-ItCapt-osf-t1
+%    <8.5->     MinionPro-It-osf-t1
+% \end{verbatim}
+% You then decide that it would be nice to increase the weights at small
+% sizes; for instance, use Medium for sizes less than 8\,pt and Semibold for
+% sizes less than 6\,pt. This implies having to split the first interval
+% twice:
+% \begin{verbatim}
+%       <-6>    MinionPro-SemiboldItCapt-osf-t1
+%      <6-8>    MinionPro-MediumItCapt-osf-t1
+%      <8-8.5>  MinionPro-ItCapt-osf-t1
+% \end{verbatim}
+% If you finally come up with the idea of using a letterspaced version of your
+% font at small sizes (less than 7\,pt), you will arrive at this
+% configuration, where each of your design decisions is scattered over up to
+% five lines:
+% \begin{verbatim}
+% \DeclareFontShape{T1}{MinionPro-OsF}{m}{it}{
+%       <-6>    MinionPro-SemiboldItCapt-osf-l1-t1
+%      <6-7>    MinionPro-MediumItCapt-osf-l1-t1
+%      <6-8>    MinionPro-MediumItCapt-osf-t1
+%      <8-8.5>  MinionPro-ItCapt-osf-t1
+%    <8.5->     MinionPro-It-osf-t1
+% }{}
+% \end{verbatim}
+% This package enables you to specify these decisions directly.
+% \begin{verbatim}
+% \DeclareFontShape{T1}{MinionPro-OsF}{m}{it}{
+%       <->     otf* MinionPro-It
+%       <-8.5>  otf* [optical=Capt]
+%       <-6>    otf* [weight=Semibold]
+%      <6-8>    otf* [weight=Medium]
+%       <-7>    otf* [spacing=l1]
+% }{}
+% \end{verbatim}
+% The package will then analyze your specifications, combine them, and
+% generate the correct external font names according to some naming scheme.
+%
+% \section{Usage}
+% 
+% \dots
+%
+% \StopEventually{}
+%
+% \section{Implementation}
 %
 % \begin{macro}{\otf@disable@preamblecmds}
 %   In a second we need to temporarily disable all commands that can be used
@@ -109,7 +182,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\ifotf@options}
-%   Whether we are looking for options or not
+%   Whether we are looking for options or not when scanning the configuration.
 %    \begin{macrocode}
 \newif\ifotf@options
 \otf@optionsfalse
@@ -225,6 +298,7 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\otf@get@options}
+%   Simply process all key-value pairs given in the optional argument.
 %    \begin{macrocode}
 \newcommand\otf@get@options{%
   \@expandtwoargs\setkeys{otf}{\optional@arg}%
@@ -277,15 +351,15 @@
   \@expandtwoargs\setkeys{otf}{\otf@default@keys}%
 %    \end{macrocode}
 % After having informed the user about the values we have collected, we build
-% the external font name by applying the appropriate naming pattern.
+% the external font name by applying the appropriate naming scheme.
 %    \begin{macrocode}
   \begingroup
   \def\do##1{\otf@showoption{##1}\MessageBreak}%
   \otf@info{Using\space configuration\MessageBreak
     \otf@keys for\space font\space\font@name}%
   \endgroup
-  \@ifundefined{otf@pattern@@\otf@@family}{\otf@pattern@default}{%
-    \@nameuse{otf@pattern@@\otf@@family}%
+  \@ifundefined{otf@scheme@@\otf@@family}{\otf@scheme@default}{%
+    \@nameuse{otf@scheme@@\otf@@family}%
   }%
   \otf@info{Trying\space to\space load\space external\space font\MessageBreak
     `\external@font'}%
@@ -294,14 +368,15 @@
 %    \end{macrocode}
 % \end{macro}
 % 
-% \begin{macro}{\otf@pattern@default}
-%   This is the font naming pattern used in the MinionPro project.
+% \begin{macro}{\otf@scheme@default}
+%   This is the font naming scheme used in the MinionPro project.
+%   \changes{v0.2}{2005/04/20}{Improve grouping}
 %    \begin{macrocode}
 \newcommand\otf@head{}
 \newcommand\otf@tail{}
-\newcommand\otf@pattern@default{%
+\newcommand\otf@scheme@default{%
   \begingroup
-  \edef\@tempa{\endgroup\lowercase{\noexpand\def\noexpand\otf@tail{%
+  \edef\@tempa{\lowercase{\def\noexpand\otf@tail{%
     \otf@opt\otf@@figures
     \otf@opt\otf@@variant
     \otf@opt\otf@@spacing
@@ -316,9 +391,11 @@
   \else
     \edef\otf@head{\otf@@family-\otf@head}%
   \fi
-  \edef\external@font{\otf@head-\otf@tail\space at\space\otf@@size pt}%
+  \edef\@tempa{\endgroup\def\noexpand\external@font{%
+    \otf@head-\otf@tail\space at\space\otf@@size pt}}%
+  \@tempa
 }
-\otf@makeglobal{otf@pattern@default}
+\otf@makeglobal{otf@scheme@default}
 \newcommand\otf@format@shape[1]{%
   \@ifundefined{otf@format@shape@#1}{}{\@nameuse{otf@format@shape@#1}}%
 }
@@ -331,18 +408,19 @@
 \otf@makeglobal{otf@format@shape@It}
 %    \end{macrocode}
 % \end{macro}
-% \begin{macro}{\DeclareFontNamingPattern}
+% \begin{macro}{\DeclareFontNamingScheme}
 %   We do not make this declaration command global. The who wants to use it
 %   should really load the package in preamble.
+%   \changes{v0.2}{2005/04/20}{Use the term `scheme' instead of `pattern'}
 %    \begin{macrocode}
-\newcommand*\DeclareFontNamingPattern[1]{%
-  \@namedef{otf@pattern@@#1}%
+\newcommand*\DeclareFontNamingScheme[1]{%
+  \@namedef{otf@scheme@@#1}%
 }
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\otf@opt}
-%   An optional name component, separated from other by a hyphen.
+%   An optional name component, separated from the following ones by a hyphen.
 %    \begin{macrocode}
 \newcommand*\otf@opt[1]{%
   \ifx\relax#1\@empty\else\if\@empty#1\@empty\else#1-\fi\fi
@@ -361,7 +439,10 @@
 \otf@makeglobal{otf@showoption}
 %    \end{macrocode}
 % \end{macro}
+%
 % \PrintChanges
+% \Finale
+%
 % \iffalse
 %</otfd>
 % \fi
