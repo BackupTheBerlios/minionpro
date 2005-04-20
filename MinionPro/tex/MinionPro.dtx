@@ -76,7 +76,9 @@
 }{%
   \end{tabular}%
   \par\medskip
-}
+} 
+\renewcommand\theCodelineNo{%
+  \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
 
 \begin{document}
 \DocInput{MinionPro.dtx}
@@ -277,8 +279,6 @@
 % \StopEventually{}
 %
 % \section{The main style file}
-%
-% \figureversion{tabular}
 %
 % \subsection{Options}
 %
