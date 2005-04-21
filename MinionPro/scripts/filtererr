@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+# Summarize maketfm's errors/warnings
+#
+# [r] I had to round some heights/depths (pltotf, vptovf); maxima at end
+# [b] warning: no boundary character (otftotfm)
+use strict;
+use warnings;
+use List::Util qw(max);
+
+my %errors = ();
+
+sub flush_errors {
+    print "]" if keys %errors;
+    %errors = ();
+}
+sub print_literal {
+    my $literal = shift;
+    flush_errors() if length $literal;
+    print $literal;
+}
+sub print_error {
+    my $e = shift;
+    print "[" unless keys %errors;
+    if (!exists $errors{$e}) {
+	print $e;
+	$errors{$e}++;
+    }
+    return "";
+}
+
+$| = 1;
+
+my %rounded = (
+    heights => 0,
+    depths => 0,
+);
+
+while (<STDIN>) {
+    s{(.*?)I had to round some (\w+) by ([\d.]+) units\.\n}[
+	$rounded{$2} = max $rounded{$2}, $3;
+	print_literal($1);
+	print_error("r");
+    ]e;
+    s{(.*?)otftotfm: warning: no boundary character.*?\n}[
+	print_literal($1);
+        print_error("b");
+    ]e;
+    s{(.*?)otftotfm: \(You may want to try.*?\)\n}[
+	print_literal($1);
+        print_error("b");
+    ]e;
+    print_literal($_);
+}
+flush_errors();
+
+foreach (sort keys %rounded) {
+    printf "I had to round some $_ by %.7f units.\n", $rounded{$_};
+}

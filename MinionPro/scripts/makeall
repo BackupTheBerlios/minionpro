@@ -6,18 +6,15 @@ echo "Creating PostScript fonts ..."
 
 for font in otf/*.otf
 do
-  cfftot1 $font $(basename $font .otf).pfb
-done
-for font in *.pfb
-do
-  t1dotlessj $font $(basename $font .pfb)LCDFJ.pfb
+  base=$(basename $font .otf)
+  cfftot1 $font pfb/$base.pfb
+  t1dotlessj pfb/$base.pfb pfb/${base}LCDFJ.pfb
 done
 
 echo "Creating TeX metrics ..."
 
-./scripts/maketfm MinionPro "$*" | grep -v '^I had to' | sort -u >dvips/MinionPro.map
-
-mv *.pfb pfb
+(./scripts/maketfm MinionPro "$@" | sort -u > dvips/MinionPro.map) 2>&1 |
+(perl scripts/filtererr || cat)
 
 #for v in *.pl
 #do

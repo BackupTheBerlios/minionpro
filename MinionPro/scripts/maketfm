@@ -40,8 +40,8 @@ do
     --nointegrals)  create_integrals=false;;
     --swash)        create_swash=true;;
     --noswash)      create_swash=false;;
-    --expanded)     create_expaned=true;;
-    --noexpanded)   create_expaned=false;;
+    --expanded)     create_expanded=true;;
+    --noexpanded)   create_expanded=false;;
   esac
 done
 
@@ -55,7 +55,7 @@ done
 
 # Determine version of the fonts.
 
-case $(strings $font-Regular.pfb | grep "^/version") in
+case $(strings pfb/$font-Regular.pfb | grep "^/version") in
   *\(001.000\)*) version=1;;
   *\(001.001\)*) version=2;;
   *\(002.000\)*) version=3;;
@@ -90,7 +90,7 @@ make_tfm() {
 
   # expanded metrics for pdftex's font expansion
 
-  if $create_expaned
+  if $create_expanded
   then
     echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm-expanded.tmp
     echo "otftotfm -E1.020 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+20" >>maketfm-expanded.tmp
@@ -246,7 +246,7 @@ make_spread_metrics() {
 
 make_integrals() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     if $create_integrals
     then
@@ -263,7 +263,7 @@ make_integrals() {
 
 make_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -285,7 +285,7 @@ make_metrics() {
 
 make_spaced_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -300,7 +300,7 @@ make_spaced_metrics() {
 
 make_swash_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -321,7 +321,7 @@ make_swash_metrics() {
 
 make_spaced_swash_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
