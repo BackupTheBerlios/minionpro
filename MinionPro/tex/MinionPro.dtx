@@ -337,7 +337,8 @@
   \def\Mn@load@cal{
     \DeclareMathAlphabet\mathcal     {T1}{\Mn@Math@Family} {m}{sw}
     \SetMathAlphabet\mathcal{bold}   {T1}{\Mn@Math@Family} {b}{sw}
-    \SetMathAlphabet\mathcal{tabular}{T1}{\Mn@Math@TFamily}{m}{sw}}
+    \SetMathAlphabet\mathcal{tabular}{T1}{\Mn@Math@TFamily}{m}{sw}
+    \SetMathAlphabet\mathcal{boldtabular}{T1}{\Mn@Math@TFamily}{b}{sw}}
 }
 %    \end{macrocode}
 %
@@ -366,7 +367,8 @@
   \let\mathfrak\undefined
   \DeclareMathAlphabet\mathfrak     {T1}{DS-Wartburg-Fraktur}{m}{n}
   \SetMathAlphabet\mathfrak{bold}   {T1}{DS-Wartburg-Fraktur}{b}{n}
-  \SetMathAlphabet\mathfrak{tabular}{T1}{DS-Wartburg-Fraktur}{m}{n}}
+  \SetMathAlphabet\mathfrak{tabular}{T1}{DS-Wartburg-Fraktur}{m}{n}
+  \SetMathAlphabet\mathfrak{boldtabular}{T1}{DS-Wartburg-Fraktur}{b}{n}}
 \newcommand\Mn@load@eufrak{
   \RequirePackage{eufrak}}
 
@@ -409,6 +411,11 @@
 \SetSymbolFont{operators}{tabular} {T1}{\Mn@Math@TFamily}{m}{n}
 \SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
 \SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
+\DeclareMathVersion{boldtabular}
+\SetSymbolFont{operators}{boldtabular} {T1}{\Mn@Math@TFamily}{b}{n}
+\SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@TFamily}{b}{it}
+\SetSymbolFont{rmletters}{boldtabular}{OML}{\Mn@Math@TFamily}{b}{n}
+\SetMathAlphabet\mathit  {boldtabular} {T1}{\Mn@Math@TFamily}{b}{it}
 
 \DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
 \DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
@@ -1647,6 +1654,18 @@
   \Mn@DeclareFontShape        {#1}{#2}{b}{scit}  {}%
   \Mn@DeclareFontShape        {#1}{#2}{b}{sscit} {}%
   \Mn@DeclareFontShape        {#1}{#2}{b}{sw}    {}%
+  \DeclareFontShape           {#1}{#2}{m}{scsl}   {<->ssub*#2/m/scit}  {}%
+  \DeclareFontShape           {#1}{#2}{m}{scsw}   {<->sub*#2/m/scit}   {}%
+  \DeclareFontShape           {#1}{#2}{sb}{scsl}  {<->ssub*#2/sb/scit} {}%
+  \DeclareFontShape           {#1}{#2}{sb}{scsw}  {<->sub*#2/sb/scit}  {}%
+  \DeclareFontShape           {#1}{#2}{b}{scsl}   {<->ssub*#2/b/scit}  {}%
+  \DeclareFontShape           {#1}{#2}{b}{scsw}   {<->sub*#2/b/scit}   {}%
+  \DeclareFontShape           {#1}{#2}{m}{sscsl}  {<->ssub*#2/m/sscit} {}%
+  \DeclareFontShape           {#1}{#2}{m}{sscsw}  {<->sub*#2/m/sscit}  {}%
+  \DeclareFontShape           {#1}{#2}{sb}{sscsl} {<->ssub*#2/sb/sscit}{}%
+  \DeclareFontShape           {#1}{#2}{sb}{sscsw} {<->sub*#2/sb/sscit} {}%
+  \DeclareFontShape           {#1}{#2}{b}{sscsl}  {<->ssub*#2/b/sscit} {}%
+  \DeclareFontShape           {#1}{#2}{b}{sscsw}  {<->sub*#2/b/sscit}  {}%
 }%
 \otf@makeglobal{Mn@DeclareLargeFontFamily}
 %    \end{macrocode}
@@ -1681,6 +1700,12 @@
   \Mn@DeclareFontShape[math]  {#1}{#2}{b}{sc}   {}%
   \Mn@DeclareFontShape[math]  {#1}{#2}{b}{scit} {}%
   \Mn@DeclareFontSubstitutions{#1}{#2}%
+  \DeclareFontShape           {#1}{#2}{m}{scsl}  {<->ssub*#2/m/scit}{}%
+  \DeclareFontShape           {#1}{#2}{m}{scsw}  {<->sub*#2/m/scit}{}%
+  \DeclareFontShape           {#1}{#2}{sb}{scsl} {<->ssub*#2/sb/scit}{}%
+  \DeclareFontShape           {#1}{#2}{sb}{scsw} {<->sub*#2/sb/scit}{}%
+  \DeclareFontShape           {#1}{#2}{b}{scsl}  {<->ssub*#2/b/scit}{}%
+  \DeclareFontShape           {#1}{#2}{b}{scsw}  {<->sub*#2/b/scit}{}%
 }
 \otf@makeglobal{Mn@DeclareMathFontFamily}
 %    \end{macrocode}
