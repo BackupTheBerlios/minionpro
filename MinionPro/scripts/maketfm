@@ -92,7 +92,7 @@ make_enckern() {
       local enc=$(basename $e .enc)
       enc=${enc#mn-}
 
-      if [ -e "kerning/$1-$enc" ]
+      if [ -e "kerning/$1-$enc.kern" ]
       then
         cat $e "kerning/$1-$enc.kern" >enc/mn-$1-$enc.enckern
       else
