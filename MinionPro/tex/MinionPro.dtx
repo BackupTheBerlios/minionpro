@@ -68,6 +68,7 @@
 \newcommand*\option[1]{\textsf{#1}}
 \newcommand*\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand*\?{\kern0.08em}
+
 \newlength\optionswidth
 
 \newenvironment{options}{%
@@ -76,7 +77,7 @@
 }{%
   \end{tabular}%
   \par\medskip
-} 
+}
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
 
@@ -184,7 +185,7 @@
 % \begin{options}
 %   \option{amsbb}*  & use the AMS blackboard font\\
 %   \option{pazobb}  & use the Pazo blackboard font (does not fit very well to MinionPro)\\
-%   \option{eufrak}* & use the Euler fraktur font\\
+%   \option{eufrak}* & use the Euler fraktur font
 % \end{options}
 %
 % \subsubsection*{Greek letters}
@@ -213,9 +214,9 @@
 %
 % \section{Additional font shapes and symbols}
 %
-% In addition to the normal small caps shape |sc| there is a letterspaced version called~|ssc|.
-% It is accessible via the commands |\sscshape| and |\textssc|.
-% In order to use the |ssc| shape throughout your document specify
+% In addition to the normal small caps shape |sc| there is a letterspaced
+% version called~|ssc|. It is accessible via the commands |\sscshape| and
+% |\textssc|. In order to use the |ssc| shape throughout your document specify
 % |\renewcommand{\scdefault}{ssc}| in the preamble of your document.
 %
 % Swash capitals like \textsw{`Canadian Mountain Holidays'} are acessed
@@ -224,7 +225,7 @@
 % \begin{options}
 %   |sc|  & \textsc {This is a Sample Text}\\
 %   |ssc| & \textssc{This is a Sample Text}\\
-%   |sw|  & \textsw {This is a Sample Text}\\
+%   |sw|  & \textsw {This is a Sample Text}
 % \end{options}
 %
 % \noindent
@@ -234,16 +235,17 @@
 % The \pkg{MinionPro} package provides all symbols from the \pkg{MnSymbol} package.
 % Additionally, the following math symbols are made availabe\?:
 % |\digamma|, |\varkappa|, |\varbeta|, |\backepsilon|, |\varbackepsilon|, |\hbar|,
-% |\jmath|, |\eth|, |\lozenge|.
+% |\jmath|, |\eth|, |\lozenge|, |\slashedzero|.
 %
 % Ornaments can be accessed via the \pkg{pifont} package using the command
 % \begin{quote}
-%   |\Pisymbol{MinionPro-Ornaments}|\marg{int}.
+%   |\Pisymbol{MinionPro-Ornaments}|\marg{int}
 % \end{quote}
 % The available glyphs are listed in the table below. Version 1.000 of the
 % MinionPro font provides only ornaments 1--23.
 %
-% \medskip\noindent{\centering\figureversion{tabular}\relax
+% \medskip\noindent
+% {\figureversion{tabular}\centering
 % \newcommand*\sym[1]{\Pisymbol{MinionPro-Ornaments}{#1}}\relax
 % \begin{tabular}{@{}*{3}{rl@{\qquad}}rl@{}}
 % \toprule
@@ -294,12 +296,12 @@
 \DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
 \DeclareOption{noopticals}{%
   \PassOptionsToPackage{noopticals}{MinionPro-FontDef}%
-  \def\Mn@minionint@version{-NoOpticals}
+  \def\Mn@minionint@version{-NoOpticals}%
   \def\Mn@minionintbold@version{Semibold-NoOpticals}}
 
 \DeclareOption{smallfamily}{%
-  \def\Mn@minionint@version{-NoOpticals}
-  \def\Mn@minionintbold@version{Bold-NoOpticals}
+  \def\Mn@minionint@version{-NoOpticals}%
+  \def\Mn@minionintbold@version{Bold-NoOpticals}%
   \PassOptionsToPackage{smallfamily,noopticals}{MinionPro-FontDef}}
 \DeclareOption{medfamily}{\PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
 \DeclareOption{fullfamily}{\PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
@@ -434,7 +436,7 @@
 %    \end{macrocode}
 %
 % \subsection{Font selection}
-% 
+%
 % \subsubsection{Additional shapes}
 %
 %    \begin{macrocode}
@@ -477,11 +479,11 @@
 \Mn@fv@newoption{tabular}     {\def\Mn@Text@FigA{T}\mathversion{tabular}}
 \Mn@fv@newoption{proportional}{\def\Mn@Text@FigA{}}
 %    \end{macrocode}
-% Second, we simply iterate over the list of figure versions specified
-% in the argument to |\figureversion|. For each item of this list we next check
-% whether the given argument is the same as one of the predefined commands. This
-% check is basically done by converting the item into a command sequence name,
-% which will then be expanded by \TeX.
+% Then we iterate over the list of figure versions specified in the argument to
+% |\figureversion|. For each item of this list we next check whether the given
+% argument is the same as one of the predefined commands. This check is
+% basically done by converting the item into a command sequence name which
+% will then be expanded by \TeX.
 %    \begin{macrocode}
 \newcommand\Mn@fv@list{}
 \newcommand\Mn@fv{}
@@ -500,7 +502,7 @@
 }
 %    \end{macrocode}
 % We have made |\figureversion| robust to protect it in moving arguments (e.g.,
-% section titles). Additionally, we want it to simply be ignored when hyperref
+% section titles). Additionally, we want it to be ignored when hyperref
 % is building \acro{PDF} strings (e.g., for bookmarks).
 %    \begin{macrocode}
 \AtBeginDocument{
@@ -520,6 +522,7 @@
 %    \end{macrocode}
 % \end{macro}
 %
+% We define various short hands.
 %    \begin{macrocode}
 \newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
 \newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
@@ -530,12 +533,12 @@
 % \subsection{Greek letters}
 %
 % We provide math-mode commands for each greek letter, both italic and upright.
-% Furthermore, there are three commands to select the default version of the letters (all upright,
-% all italic, or capitals upright and lowercase italic).
+% Furthermore, there are three commands to select the default version of the
+% letters (all upright, all italic, or capitals upright and lowercase italic).
 %
-% While delaring the greek letters, we collect two lists of uppercase and
-% lowercase ones (distinguished by the first letter of their name). These are
-% useful for selecting different versions.
+% While delaring the greek letters we collect the uppercase and lowercase letters
+% in two lists. (We can distinguish them by the first letter of their name.)
+% These lists are used to select the different versions.
 %    \begin{macrocode}
 \newcommand\Mn@greek@list@upper{}
 \newcommand\Mn@greek@list@lower{}
@@ -633,6 +636,9 @@
 %    \begin{macrocode}
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\lozenge}    {\mathord}{letters}{"88}
+\DeclareMathSymbol{\slashedzero}{\mathord}{rmletters}{"89}
+
+\def\textcelsius{\textdegree C}
 %    \end{macrocode}
 % Archaic greek letters not provided by MinionPro
 %    \begin{macrocode}
@@ -647,92 +653,9 @@
 % The following definitions provide this as an option.
 %
 %    \begin{macrocode}
-%\DeclareMathAlphabet\mathinttext  {OML}{MinionPro-Integral-Text}{m}{it}
-%\SetMathAlphabet\mathinttext{bold}{OML}{MinionPro-Integral-Text}{sb}{it}
-%\DeclareMathAlphabet\mathintdisp  {OML}{MinionPro-Integral-Display}{m}{it}
-%\SetMathAlphabet\mathintdisp{bold}{OML}{MinionPro-Integral-Display}{sb}{it}
-%
-%\def\centered@op#1#2{\mathop{\vcenter{\hbox{$\m@th#1\Mn@Text@With@MathVersion{#2}$}}}}
-%\def\vartintop{\mathpalette\centered@op
-%  {\fontencoding{OML}%
-%   \fontfamily{MinionPro-Integral-Text}%
-%   \fontshape{it}%
-%   \selectfont
-%   \char"80}}
-%\def\vardintop{\mathpalette\centered@op
-%  {\fontencoding{OML}%
-%   \fontfamily{MinionPro-Integral-Display}%
-%   \fontshape{it}%
-%   \selectfont
-%   \char"80}}
-%\def\shiftedvarintkern@{\mkern-5mu\mathchoice{\mkern-2mu}{}{}{}}
-%\def\varintkern@{\mkern-11.5mu\mathchoice{\mkern-6mu}{}{}{}}
-%\def\varintdots@{\mkern-5mu%
-%  \mathchoice{\mkern-1mu\@cdots\mkern-1mu}%
-%  {{\cdotp}{\cdotp}{\cdotp}}%
-%  {{\cdotp}{\cdotp}{\cdotp}}%
-%  {{\cdotp}{\cdotp}{\cdotp}\mkern1mu}%
-%  \mkern-6mu}
-%
-%\def\fake@int#1#2{\DOTSI\pre@int@kern\overstrike{#1}{#2}\ilimits@}
-%\def\pre@int@kern{\mathchoice{\mkern0mu}{\mkern-1mu}{\mkern-1mu}{\mkern-1mu}}
-%\def\shiftedvarintop{%
-%  \mathop{%
-%    \mathchoice
-%      {\mkern2.5mu\vardintop\mkern-2.5mu}
-%      {\mkern2.5mu\vartintop\mkern-2.5mu}
-%      {\mkern2.75mu\vartintop\mkern-2.75mu}
-%      {\mkern3mu\vartintop\mkern-3mu}}}
-%
-%\def\varintop{\overstrike\shiftedvarintop\partialvartint}
-%
-%\newcommand{\VarMultiIntegral}[1]{%
-%  \edef\ints@c{\noexpand\varintop
-%    \ifnum#1=\z@\noexpand\varintdots@\else\noexpand\varintkern@\fi
-%    \ifnum#1>\tw@\noexpand\varintop\noexpand\varintkern@\fi
-%    \ifnum#1>\thr@@\noexpand\varintop\noexpand\varintkern@\fi
-%    \noexpand\varintop
-%    \noexpand\ilimits@
-%  }%
-%  \futurelet\@let@token\ints@a
-%}
-%
-%\def\varint{\fake@int\shiftedvarintop\partialvartint}
-%\def\variint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{2}}
-%\def\variiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{3}}
-%\def\variiiint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{4}}
-%\def\varidotsint{\DOTSI\pre@int@kern\protect\VarMultiIntegral{0}}
-%
-%\def\varlandupint{\fake@int\shiftedvarintop\partialvartlandupint}
-%\def\varlanddownint{\fake@int\shiftedvarintop\partialvartlanddownint}
-%\def\varstrokedint{\fake@int\shiftedvarintop\partialvartstrokedint}
-%\def\varoint{\fake@int\shiftedvarintop\partialvartoint}
-%\def\varoiint{\fake@int{\shiftedvarintop\shiftedvarintkern@\shiftedvarintop}\partialvartoiint}
-%\def\varrcirclerightint{\fake@int\shiftedvarintop\partialvartrcirclerightint}
-%\def\varlcirclerightint{\fake@int\shiftedvarintop\partialvartlcirclerightint}
-%\def\varrcircleleftint{\fake@int\shiftedvarintop\partialvartrcircleleftint}
-%\def\varlcircleleftint{\fake@int\shiftedvarintop\partialvartlcircleleftint}
-%
-%\def\Mn@Decl@Minion@Ints{%
-%  \let\intop\varintop
-%  \let\int\varint
-%  \let\iint\variint
-%  \let\iiint\variiint
-%  \let\iiiint\variiiint
-%  \let\idotsint\varidotsint
-%  \let\landupint\varlandupint
-%  \let\landdownint\varlanddownint
-%  \let\strokedint\varstrokedint
-%  \let\oint\varoint
-%  \let\oiint\varoiint
-%  \let\rcirclerightint\varrcirclerightint
-%  \let\lcirclerightint\varlcirclerightint
-%  \let\rcircleleftint\varrcircleleftint
-%  \let\lcircleleftint\varlcircleleftint
-%}
 \newcommand\Mn@Decl@Minion@Ints{%
 %    \end{macrocode}
-% replace MnSymbolF by MnSymbolFI
+% Replace |MnSymbolF| by |MnSymbolFI|.
 %    \begin{macrocode}
   \DeclareFontFamily{U}{MnSymbolFI}{}
 
@@ -756,7 +679,7 @@
   \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
   \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
 %    \end{macrocode}
-% make MnSymbol integrals available as |\var|\dots
+% Make the original integral symbols available as |\var|\dots.
 %    \begin{macrocode}
   \let\varint\tint
   \let\variint\tiint
@@ -774,7 +697,7 @@
   \let\varlcircleleftint\tlcircleleftint
   \let\varsumint\tsumint
 %    \end{macrocode}
-% redeclare the integral commands
+% Replace the symbols with the new integrals.
 %    \begin{macrocode}
   \DeclareMathSymbol\tint            \mathop{symbols}{112}
   \DeclareMathSymbol\tiint           \mathop{symbols}{114}
@@ -813,13 +736,12 @@
         }%
         \kern-.15em%
         \TeX}
-
-\def\textcelsius{\textdegree C}
 %    \end{macrocode}
 %
 % \subsection{AMS}
 %
-% fix bug in \pkg{amsmath.sty}.
+% Fix a bug in \pkg{amsmath.sty} which does not support
+% math fonts without skew char.
 %    \begin{macrocode}
 \def\macc@set@skewchar#1{%
   \begingroup
@@ -842,7 +764,7 @@
   #1%
 }
 %    \end{macrocode}
-% Make the changes take effect\?; this concludes the main style file.
+% Make the changes take effect. This concludes the main style file.
 %    \begin{macrocode}
 \normalfont
 %</style>
@@ -1363,7 +1285,7 @@
   {
     023 = {  ,40}, % fft ligature
     032 = {  ,50}, % ft ligature
-    191 = {80,30}, % Th ligature 
+    191 = {80,30}, % Th ligature
     127 = {660,750}, % hyphen
     \AE = {90,-40}, % AE
     131 = {80,-30}, % Dcaron
@@ -1416,13 +1338,13 @@
 %
 % \section{Font definition files}
 %
-% Since alle the font definitions look the same we introduce macros to ease
-% the configuration. These macros are stored in the file
-% \file{MinionPro-FontDef.sty} which is included by every \acro{FD}-file.
-% Note that this file will be included several times and that we do not know
-% in which context the code is executed. Therefore, we have to define
-% everything that is also needed later in the document as global.
-% 
+% Since alle the font definitions look the same we introduce macros to ease the
+% configuration. These macros are stored in the file
+% \file{MinionPro-FontDef.sty} which is included by every \acro{FD} file.
+% Note that \file{MinionPro-FontDef.sty} will be included several times and
+% that we do not know in which context the code is executed. Therefore, we have
+% to define all non-private commands as globals.
+%
 % \makeatletter
 % \newcommand*\exampleconfig[2]{%
 %   \begin{enumerate}%
@@ -1437,11 +1359,12 @@
 % }%
 % \makeatother
 %
-% We try to make this package loadable in an \acro{FD} file, too (i.e., not in
-% the preamble)\?; therefore, we have used |\ProvidesFile| instead of
-% |\ProvidesPackage|.
+% Since this package should be loadable in an \acro{FD} file we have to
+% avoid all |\preambleonly| commands.
+% Therefore, we use |\ProvidesFile| instead of |\ProvidesPackage|.
 %
-% Allow this file to be included multiple times
+% We add a guard so that this file is executed only once even if it is included
+% multiple times.
 %    \begin{macrocode}
 %<*fontdef>
 \ifx\Mn@DeclareFontShape\@undefined\else\endinput\fi
@@ -1453,9 +1376,9 @@
   \RequirePackage{otfontdef}
 \fi
 %    \end{macrocode}
-% Reset |\escapechar| ($-1$ in \acro{FD} files) to make |\newcommand| work.
-% The additional group does not harm then\?; we have to make the important
-% things global anyway.
+% Reset |\escapechar| (which is set to $-1$ in \acro{FD} files) to make
+% |\newcommand| work. The additional group does not harm then\?; we have to
+% make the important commands global anyway.
 %    \begin{macrocode}
 \ifx\@nodocument\relax
   \begingroup\escapechar`\\
@@ -1465,6 +1388,7 @@
 %    \begin{macrocode}
 \newcommand\Mn@option@opticals{opticals}
 \newcommand\Mn@option@family{medfamily}
+%
 \newdimen\Mn@option@normalsize
 \global\Mn@option@normalsize10pt
 %
@@ -1476,7 +1400,7 @@
   \DeclareOption{medfamily}  {\let\Mn@option@family\CurrentOption}
   \DeclareOption{fullfamily} {\let\Mn@option@family\CurrentOption}
 %
-  \DeclareOption{normalsize} {%
+  \DeclareOption{normalsize}{%
     % idea stolen from microtype.dtx
     \begingroup
     \def\set@fontsize#1#2#3#4\@nil{%
@@ -1497,8 +1421,8 @@
 \Mn@config@cnt=0
 \newcommand\Mn@curr@config{Mn@config@\romannumeral\Mn@config@cnt}
 %    \end{macrocode}
-% These commands help in setting up the configuration database\?; they do not
-% need to be global. But the config database itself does.
+% These commands help in setting up the configuration database. They do not
+% need to be global. But the config database itself has to be.
 %
 % Let us look at an example how the configuration database looks internally for
 % $(|shape|, |sw|)$, which is specified below in three steps. The following
@@ -1533,7 +1457,7 @@
   }%
 }
 %    \end{macrocode}
-% This command is used in the |Declare...Family| commands
+% This command is used in the |Declare...Family| commands.
 %    \begin{macrocode}
 \newcommand\Mn@UseConfig[2]{%
   \@ifundefined{Mn@config@#1@#2}{}%
@@ -1599,9 +1523,6 @@
 \Mn@AddToConfig{shape}{n,it,sw,sc,scit}{
       <-8>    otf* [spacing=l1]
 }
-\Mn@AddToConfig{shape/math}{n,it,sc,scit}{
-      <->     otf* [spacing=l1]
-}
 %
 \Mn@AddToConfig{shape}{sc,ssc,scit,sscit}{
       <->     otf* [variant=sc]
@@ -1633,8 +1554,8 @@
 \otf@makeglobal{Mn@DeclareFontShape}
 \otf@makeglobal{\string\Mn@DeclareFontShape}
 %    \end{macrocode}
-% |#1| encoding |#2| MinionPro-figures (|#3|/|#4| only for backwards
-% compatibility)
+% |#1| contains the encoding, |#2| the figure version.
+% |#3|~and~|#4| are only needed for backwards compatibility.
 %    \begin{macrocode}
 \newcommand*\Mn@DeclareLargeFontFamily[4]{%
   \Mn@DeclareSmallFontFamily  {#1}{#2}{}{}%
@@ -1687,18 +1608,18 @@
 %    \begin{macrocode}
 \newcommand*\Mn@DeclareMathFontFamily[4]{%
   \DeclareFontFamily          {#1}{#2}{\skewchar\font=255}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{n}    {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{it}   {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{sc}   {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{m}{scit} {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{n}   {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{it}  {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{sc}  {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{sb}{scit}{}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{n}    {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{it}   {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{sc}   {}%
-  \Mn@DeclareFontShape[math]  {#1}{#2}{b}{scit} {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{n}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{it}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{sc}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{m}{scit} {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{n}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{it}  {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{sc}  {}%
+  \Mn@DeclareFontShape        {#1}{#2}{sb}{scit}{}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{n}    {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{it}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{sc}   {}%
+  \Mn@DeclareFontShape        {#1}{#2}{b}{scit} {}%
   \Mn@DeclareFontSubstitutions{#1}{#2}%
   \DeclareFontShape           {#1}{#2}{m}{scsl}  {<->ssub*#2/m/scit}{}%
   \DeclareFontShape           {#1}{#2}{m}{scsw}  {<->sub*#2/m/scit}{}%
@@ -1752,10 +1673,35 @@
 %</debug>
 %    \end{macrocode}
 %
-% \iffalse old fontdef code
-%<*obsolete>
+% We define font family aliases so that we can place all configurations for
+% the MinionPro family variants into one \pkg{microtype} file\?:
+% \file{mt-MinionPro.cfg}. We use \pkg{microtype}'s hook if \pkg{microtype}
+% has not been loaded yet (which it should not have been)\?; otherwise we can
+% execute the alias definitions directly.
+%    \begin{macrocode}
+\gdef\Mn@MicroType@Aliases{%
+  \DeclareMicroTypeAlias{MinionPro-LF}{MinionPro}%
+  \DeclareMicroTypeAlias{MinionPro-OsF}{MinionPro}%
+  \DeclareMicroTypeAlias{MinionPro-TLF}{MinionPro}%
+  \DeclareMicroTypeAlias{MinionPro-TOsF}{MinionPro}%
+}
+\@ifundefined{MicroType@Hook}{%
+  \global\let\MicroType@Hook\Mn@MicroType@Aliases
+}{%
+  \g@addto@macro\MicroType@Hook{\Mn@MicroType@Aliases}%
+}%
+\@ifundefined{DeclareMicroTypeAlias}{}{\Mn@MicroType@Aliases}%
+%\endgroup
+%</fontdef>
+%    \end{macrocode}
+%
+% \subsection{The old font definition package}
+%
+% This is the old \pkg{MinionPro-FontDef} package. This code will go away eventually.
+%
 % We allow this file to be included multiple times.
 %    \begin{macrocode}
+%<*oldfontdef>
 \ifx\Mn@DeclareFont\undefined\else\endinput\fi
 %
 %\input{MinionPro-Protrude.sty}%
@@ -2036,8 +1982,6 @@
 %    \begin{macrocode}
 \Mn@FontDefinitions
 %    \end{macrocode}
-%</obsolete>
-% old fontdef code \fi
 %
 % We define font family aliases so that we can place all configurations for
 % the MinionPro family variants into one \pkg{microtype} file\?:
@@ -2058,62 +2002,62 @@
 }%
 \@ifundefined{DeclareMicroTypeAlias}{}{\Mn@MicroType@Aliases}%
 %\endgroup
-%</fontdef>
+%</oldfontdef>
 %    \end{macrocode}
 %
-% Using these macros the various \acro{FD}-files become simple one-liners.
+% Using these macros the various \acro{FD} files become simple one-liners.
 %
 %    \begin{macrocode}
 %<*fd>
 \input{MinionPro-FontDef.sty}%
-%<LGR&lf>\Mn@DeclareSmallFontFamily{LGR}{MinionPro-LF}{lf}{lgr}
-%<LGR&osf>\Mn@DeclareSmallFontFamily{LGR}{MinionPro-OsF}{osf}{lgr}
-%<LGR&tlf>\Mn@DeclareSmallFontFamily{LGR}{MinionPro-TLF}{tlf}{lgr}
+%<LGR&lf>  \Mn@DeclareSmallFontFamily{LGR}{MinionPro-LF}{lf}{lgr}
+%<LGR&osf> \Mn@DeclareSmallFontFamily{LGR}{MinionPro-OsF}{osf}{lgr}
+%<LGR&tlf> \Mn@DeclareSmallFontFamily{LGR}{MinionPro-TLF}{tlf}{lgr}
 %<LGR&tosf>\Mn@DeclareSmallFontFamily{LGR}{MinionPro-TOsF}{tosf}{lgr}
-%<OML&lf>\Mn@DeclareMathFontFamily{OML}{MinionPro-LF}{lf}{oml}
-%<OML&osf>\Mn@DeclareMathFontFamily{OML}{MinionPro-OsF}{osf}{oml}
-%<OML&tlf>\Mn@DeclareMathFontFamily{OML}{MinionPro-TLF}{tlf}{oml}
+%<OML&lf>  \Mn@DeclareMathFontFamily{OML}{MinionPro-LF}{lf}{oml}
+%<OML&osf> \Mn@DeclareMathFontFamily{OML}{MinionPro-OsF}{osf}{oml}
+%<OML&tlf> \Mn@DeclareMathFontFamily{OML}{MinionPro-TLF}{tlf}{oml}
 %<OML&tosf>\Mn@DeclareMathFontFamily{OML}{MinionPro-TOsF}{tosf}{oml}
-%<OT1&lf>\Mn@DeclareLargeFontFamily{OT1}{MinionPro-LF}{lf}{ot1}
-%<OT1&osf>\Mn@DeclareLargeFontFamily{OT1}{MinionPro-OsF}{osf}{ot1}
-%<OT1&tlf>\Mn@DeclareLargeFontFamily{OT1}{MinionPro-TLF}{tlf}{ot1}
+%<OT1&lf>  \Mn@DeclareLargeFontFamily{OT1}{MinionPro-LF}{lf}{ot1}
+%<OT1&osf> \Mn@DeclareLargeFontFamily{OT1}{MinionPro-OsF}{osf}{ot1}
+%<OT1&tlf> \Mn@DeclareLargeFontFamily{OT1}{MinionPro-TLF}{tlf}{ot1}
 %<OT1&tosf>\Mn@DeclareLargeFontFamily{OT1}{MinionPro-TOsF}{tosf}{ot1}
-%<T1&lf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-LF}{lf}{t1}
-%<T1&osf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-OsF}{osf}{t1}
-%<T1&tlf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-TLF}{tlf}{t1}
-%<T1&tosf>\Mn@DeclareLargeFontFamily{T1}{MinionPro-TOsF}{tosf}{t1}
-%<LY1&lf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-LF}{lf}{ly1}
-%<LY1&osf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-OsF}{osf}{ly1}
-%<LY1&tlf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-TLF}{tlf}{ly1}
+%<T1&lf>   \Mn@DeclareLargeFontFamily{T1}{MinionPro-LF}{lf}{t1}
+%<T1&osf>  \Mn@DeclareLargeFontFamily{T1}{MinionPro-OsF}{osf}{t1}
+%<T1&tlf>  \Mn@DeclareLargeFontFamily{T1}{MinionPro-TLF}{tlf}{t1}
+%<T1&tosf> \Mn@DeclareLargeFontFamily{T1}{MinionPro-TOsF}{tosf}{t1}
+%<LY1&lf>  \Mn@DeclareLargeFontFamily{LY1}{MinionPro-LF}{lf}{ly1}
+%<LY1&osf> \Mn@DeclareLargeFontFamily{LY1}{MinionPro-OsF}{osf}{ly1}
+%<LY1&tlf> \Mn@DeclareLargeFontFamily{LY1}{MinionPro-TLF}{tlf}{ly1}
 %<LY1&tosf>\Mn@DeclareLargeFontFamily{LY1}{MinionPro-TOsF}{tosf}{ly1}
-%<T5&lf>\Mn@DeclareLargeFontFamily{T5}{MinionPro-LF}{lf}{t5}
-%<T5&osf>\Mn@DeclareLargeFontFamily{T5}{MinionPro-OsF}{osf}{t5}
-%<T5&tlf>\Mn@DeclareLargeFontFamily{T5}{MinionPro-TLF}{tlf}{t5}
-%<T5&tosf>\Mn@DeclareLargeFontFamily{T5}{MinionPro-TOsF}{tosf}{t5}
-%<T2A&lf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-LF}{lf}{t2a}
-%<T2A&osf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-OsF}{osf}{t2a}
-%<T2A&tlf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-TLF}{tlf}{t2a}
+%<T5&lf>   \Mn@DeclareLargeFontFamily{T5}{MinionPro-LF}{lf}{t5}
+%<T5&osf>  \Mn@DeclareLargeFontFamily{T5}{MinionPro-OsF}{osf}{t5}
+%<T5&tlf>  \Mn@DeclareLargeFontFamily{T5}{MinionPro-TLF}{tlf}{t5}
+%<T5&tosf> \Mn@DeclareLargeFontFamily{T5}{MinionPro-TOsF}{tosf}{t5}
+%<T2A&lf>  \Mn@DeclareSmallFontFamily{T2A}{MinionPro-LF}{lf}{t2a}
+%<T2A&osf> \Mn@DeclareSmallFontFamily{T2A}{MinionPro-OsF}{osf}{t2a}
+%<T2A&tlf> \Mn@DeclareSmallFontFamily{T2A}{MinionPro-TLF}{tlf}{t2a}
 %<T2A&tosf>\Mn@DeclareSmallFontFamily{T2A}{MinionPro-TOsF}{tosf}{t2a}
-%<T2B&lf>\Mn@DeclareSmallFontFamily{T2B}{MinionPro-LF}{lf}{t2b}
-%<T2B&osf>\Mn@DeclareSmallFontFamily{T2B}{MinionPro-OsF}{osf}{t2b}
-%<T2B&tlf>\Mn@DeclareSmallFontFamily{T2B}{MinionPro-TLF}{tlf}{t2b}
+%<T2B&lf>  \Mn@DeclareSmallFontFamily{T2B}{MinionPro-LF}{lf}{t2b}
+%<T2B&osf> \Mn@DeclareSmallFontFamily{T2B}{MinionPro-OsF}{osf}{t2b}
+%<T2B&tlf> \Mn@DeclareSmallFontFamily{T2B}{MinionPro-TLF}{tlf}{t2b}
 %<T2B&tosf>\Mn@DeclareSmallFontFamily{T2B}{MinionPro-TOsF}{tosf}{t2b}
-%<T2C&lf>\Mn@DeclareSmallFontFamily{T2C}{MinionPro-LF}{lf}{t2c}
-%<T2C&osf>\Mn@DeclareSmallFontFamily{T2C}{MinionPro-OsF}{osf}{t2c}
-%<T2C&tlf>\Mn@DeclareSmallFontFamily{T2C}{MinionPro-TLF}{tlf}{t2c}
+%<T2C&lf>  \Mn@DeclareSmallFontFamily{T2C}{MinionPro-LF}{lf}{t2c}
+%<T2C&osf> \Mn@DeclareSmallFontFamily{T2C}{MinionPro-OsF}{osf}{t2c}
+%<T2C&tlf> \Mn@DeclareSmallFontFamily{T2C}{MinionPro-TLF}{tlf}{t2c}
 %<T2C&tosf>\Mn@DeclareSmallFontFamily{T2C}{MinionPro-TOsF}{tosf}{t2c}
-%<TS1&lf>\Mn@DeclareLargeFontFamily{TS1}{MinionPro-LF}{lf}{ts1}
-%<TS1&osf>\Mn@DeclareLargeFontFamily{TS1}{MinionPro-OsF}{osf}{ts1}
-%<TS1&tlf>\Mn@DeclareLargeFontFamily{TS1}{MinionPro-TLF}{tlf}{ts1}
+%<TS1&lf>  \Mn@DeclareLargeFontFamily{TS1}{MinionPro-LF}{lf}{ts1}
+%<TS1&osf> \Mn@DeclareLargeFontFamily{TS1}{MinionPro-OsF}{osf}{ts1}
+%<TS1&tlf> \Mn@DeclareLargeFontFamily{TS1}{MinionPro-TLF}{tlf}{ts1}
 %<TS1&tosf>\Mn@DeclareLargeFontFamily{TS1}{MinionPro-TOsF}{tosf}{ts1}
-%<Uorn>\Mn@DeclareSmallFontFamily{U}{MinionPro-Ornaments}{orn}{u}
-%<X2&lf>\Mn@DeclareSmallFontFamily{X2}{MinionPro-LF}{lf}{x2}
-%<X2&osf>\Mn@DeclareSmallFontFamily{X2}{MinionPro-OsF}{osf}{x2}
-%<X2&tlf>\Mn@DeclareSmallFontFamily{X2}{MinionPro-TLF}{tlf}{x2}
-%<X2&tosf>\Mn@DeclareSmallFontFamily{X2}{MinionPro-TOsF}{tosf}{x2}
-%<OT2&lf>\Mn@DeclareSmallFontFamily{OT2}{MinionPro-LF}{lf}{ot2}
-%<OT2&osf>\Mn@DeclareSmallFontFamily{OT2}{MinionPro-OsF}{osf}{ot2}
-%<OT2&tlf>\Mn@DeclareSmallFontFamily{OT2}{MinionPro-TLF}{tlf}{ot2}
+%<Uorn>    \Mn@DeclareSmallFontFamily{U}{MinionPro-Ornaments}{orn}{u}
+%<X2&lf>   \Mn@DeclareSmallFontFamily{X2}{MinionPro-LF}{lf}{x2}
+%<X2&osf>  \Mn@DeclareSmallFontFamily{X2}{MinionPro-OsF}{osf}{x2}
+%<X2&tlf>  \Mn@DeclareSmallFontFamily{X2}{MinionPro-TLF}{tlf}{x2}
+%<X2&tosf> \Mn@DeclareSmallFontFamily{X2}{MinionPro-TOsF}{tosf}{x2}
+%<OT2&lf>  \Mn@DeclareSmallFontFamily{OT2}{MinionPro-LF}{lf}{ot2}
+%<OT2&osf> \Mn@DeclareSmallFontFamily{OT2}{MinionPro-OsF}{osf}{ot2}
+%<OT2&tlf> \Mn@DeclareSmallFontFamily{OT2}{MinionPro-TLF}{tlf}{ot2}
 %<OT2&tosf>\Mn@DeclareSmallFontFamily{OT2}{MinionPro-TOsF}{tosf}{ot2}
 %</fd>
 %    \end{macrocode}

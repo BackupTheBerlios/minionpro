@@ -70,39 +70,70 @@ ornaments_flags=""
 if [ $version -ge 3 ]
 then
   digamma_flags="--unicoding 'uniEFD5 =: uni03DD'"
-  ornaments_flags="--unicoding 'orn.014 =: uni2767' --unicoding 'orn.015 =: uni2766' --unicoding 'orn.029 =: uni27A2' --unicoding 'orn.035 =: uni2733' --unicoding 'orn.037 =: uni2734' --unicoding 'orn.038 =: uni2713'"
+  ornaments_flags="--unicoding 'orn.014 =: uni2767'"
+  ornaments_flags="$ornaments_flags --unicoding 'orn.015 =: uni2766'"
+  ornaments_flags="$ornaments_flags --unicoding 'orn.029 =: uni27A2'"
+  ornaments_flags="$ornaments_flags --unicoding 'orn.035 =: uni2733'"
+  ornaments_flags="$ornaments_flags --unicoding 'orn.037 =: uni2734'"
+  ornaments_flags="$ornaments_flags --unicoding 'orn.038 =: uni2713'"
 else
   create_vietnamese=false
 fi
 
 
+make_enckern() {
+
+  if [ -e "pfb/$font-$1.pfb" ]
+  then
+    local e
+
+    for e in enc/mn-*.enc
+    do
+      local enc=$(basename $e .enc)
+      enc=${enc#mn-}
+
+      if [ -e "kerning/$1-$enc" ]
+      then
+        cat $e "kerning/$1-$enc.kern" >enc/mn-$1-$enc.enckern
+      else
+        if [ -e "kerning/$1.kern" ]
+        then
+          cat $e "kerning/$1.kern" >enc/mn-$1-$enc.enckern
+        else
+          cp $e enc/mn-$1-$enc.enckern
+        fi
+      fi
+    done
+  fi
+}
+
 make_tfm() {
 
-  name="$1"
-  enc="$2"
-  spec="$3"
+  local name="$1"
+  local enc="$2"
+  local spec="$3"
   shift 3
 
   common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -fkern"
 
   echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm.tmp
-  echo "otftotfm           $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'"    >>maketfm.tmp
+  echo "otftotfm           $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'"    >>maketfm.tmp
 
   # expanded metrics for pdftex's font expansion
 
   if $create_expanded
   then
     echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm-expanded.tmp
-    echo "otftotfm -E1.020 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+20" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.016 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+16" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.012 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+12" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.008 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E1.004 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'+4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.996 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.992 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.988 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-12" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.984 $common_flags $@ -e 'enc/mn-$enc.enc' 'otf/$font-$name.otf' '$font-$name-$spec'-16" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.980 $common_flags $@ -e 'enc/mn-$enc.enc' "otf/$font-$name.otf" "$font-$name-$spec"-20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.020 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.016 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+16" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.012 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+12" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.008 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E1.004 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.996 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.992 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.988 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-12" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.984 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-16" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.980 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' "otf/$font-$name.otf" "$font-$name-$spec"-20" >>maketfm-expanded.tmp
   fi
 }
 
@@ -124,18 +155,40 @@ get_ts_flags() {
 }
 get_sc_flags() {
   case $1 in
-      lf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot' --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot' --unicoding='ffl =: emptyslot' -flnum -fpnum --subs-filter='<Letter>' -fsmcp";;
-     osf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot' --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot' --unicoding='ffl =: emptyslot' -fonum -fpnum -fsmcp";;
-     tlf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot' --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot' --unicoding='ffl =: emptyslot' -flnum -ftnum --subs-filter='<Letter>' -fsmcp";;
-    tosf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot' --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot' --unicoding='ffl =: emptyslot' -fonum -ftnum -fsmcp";;
+      lf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
+          sc_flags="$sc_flags -flnum -fpnum --subs-filter='<Letter>' -fsmcp";;
+     osf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
+          sc_flags="$sc_flags -fonum -fpnum -fsmcp";;
+     tlf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
+          sc_flags="$sc_flags -flnum -ftnum --subs-filter='<Letter>' -fsmcp";;
+    tosf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
+          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
+          sc_flags="$sc_flags -fonum -ftnum -fsmcp";;
   esac
 }
 get_sc_ts_flags() {
   case $1 in
-      lf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum --subs-filter='<Letter>' -fsmcp";;
-     osf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum -fsmcp --subs-filter='<Number>' -flnum --subs-filter=!'<Number>' -fonum";;
-     tlf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum --subs-filter='<Letter>' -fsmcp";;
-    tosf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum -fsmcp --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+      lf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
+     osf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum -fsmcp"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter=!'<Number>' -fonum";;
+     tlf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
+    tosf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum -fsmcp"
+          sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
+          sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -fonum";;
   esac
 }
 get_it_ot1_flags() {
@@ -168,9 +221,10 @@ make_normal_metrics() {
 
   if $create_greek
   then
-    echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc'              >> maketfm.tmp
-    echo 'cat kerning/lgr-'"$1"'.kern >> enc/mn-lgrkern.enc' >> maketfm.tmp
-    make_tfm "$1" lgrkern $2-lgr    "-sgrek $it_lgr_flags $digamma_flags $flags"
+#    echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc'              >> maketfm.tmp
+#    echo 'cat kerning/lgr-'"$1"'.kern >> enc/mn-lgrkern.enc' >> maketfm.tmp
+#    make_tfm "$1" lgrkern $2-lgr    "-sgrek $it_lgr_flags $digamma_flags $flags"
+    make_tfm "$1" lgr  $2-lgr       "-sgrek $it_lgr_flags $digamma_flags $flags"
   fi
   if $create_cyrillic
   then
@@ -199,11 +253,6 @@ make_normal_metrics() {
   make_tfm "$1" ly1    $2-sc-l2-ly1 "-L 80  $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
 }
 
-make_oml_metrics() {
-
-  make_tfm "$1" oml $2-l1-oml "--math-spacing --skew-char=255 -L 40 $3 $digamma_flags"
-}
-
 make_spread_metrics() {
 
   get_flags       $2
@@ -220,9 +269,10 @@ make_spread_metrics() {
 
   if $create_greek
   then
-    echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc'   >> maketfm.tmp
-    echo 'cat kerning/lgr-'"$1"'.kern|sed s/[{}]//g|gawk '\'{print \"% LIGKERN \"\$3\" {\"\$4-40\"} \"\$5}\''>>enc/mn-lgrkern.enc'>>maketfm.tmp
-    make_tfm "$1" lgrkern $2-l1-lgr "-L 40 -sgrek $it_lgr_flags $digamma_flags $flags"
+#    echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc'   >> maketfm.tmp
+#    echo 'cat kerning/lgr-'"$1"'.kern|sed s/[{}]//g|gawk '\'{print \"% LIGKERN \"\$3\" {\"\$4-40\"} \"\$5}\''>>enc/mn-lgrkern.enc'>>maketfm.tmp
+#    make_tfm "$1" lgrkern $2-l1-lgr "-L 40 -sgrek $it_lgr_flags $digamma_flags $flags"
+    make_tfm "$1" lgr  $2-l1-lgr    "-L 40 -sgrek $it_lgr_flags $digamma_flags $flags"
   fi
   if $create_cyrillic
   then
@@ -240,7 +290,7 @@ make_spread_metrics() {
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
   make_tfm "$1" ts1    $2-sc-l1-ts1 "-L 40        $sc_ts_flags"
   make_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags               --unicoding='germandbls =: SSsmall'"
-  make_tfm "$1" ot1    $2-sc-ot1    "-L 40        $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40        $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
   make_tfm "$1" ly1    $2-sc-l1-ly1 "-L 40        $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
 }
 
@@ -272,12 +322,12 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_oml_metrics    "$1" lf   "-flnum -ftnum"
-    make_oml_metrics    "$1" tlf  "-flnum -fpnum"
-    make_oml_metrics    "$1" osf  "-fonum -ftnum"
-    make_oml_metrics    "$1" tosf "-fonum -fpnum"
+    make_tfm "$1" oml   lf-oml   "--math-spacing -L 40 -flnum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tlf-oml  "--math-spacing -L 40 -flnum -fpnum $digamma_flags"
+    make_tfm "$1" oml   osf-oml  "--math-spacing -L 40 -fonum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tosf-oml "--math-spacing -L 40 -fonum -fpnum $digamma_flags"
 
-    make_tfm     "$1" orn-u orn-u "$ornaments_flags"
+    make_tfm "$1" orn-u orn-u    "$ornaments_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
@@ -293,6 +343,11 @@ make_spaced_metrics() {
     make_spread_metrics     "$1" tlf
     make_spread_metrics     "$1" osf
     make_spread_metrics     "$1" tosf
+
+    make_tfm "$1" oml   lf-l1-oml   "--math-spacing -L 80 -flnum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tlf-l1-oml  "--math-spacing -L 80 -flnum -fpnum $digamma_flags"
+    make_tfm "$1" oml   osf-l1-oml  "--math-spacing -L 80 -fonum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tosf-l1-oml "--math-spacing -L 80 -fonum -fpnum $digamma_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
@@ -342,12 +397,16 @@ make_spaced_swash_metrics() {
 
 make_series() {
 
+  local sub
+
   for sub in "" Capt Disp Subh
   do
     if [ "x$1$sub" = "x" ]
     then
+      make_enckern Regular
       make_metrics Regular
     else
+      make_enckern "$1$sub"
       make_metrics "$1$sub"
     fi
   done
@@ -363,6 +422,8 @@ make_series() {
 }
 
 make_additional_italic() {
+
+  local sub
 
   for sub in "" Capt Disp Subh
   do

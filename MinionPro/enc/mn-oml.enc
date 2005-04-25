@@ -30,20 +30,20 @@
 /p /q /r /s /t /u /v /w
 /x /y /z /dotlessi /dotlessj /weierstrass /vector /cyrflex
 % 0x80
-/integral /hbar /uniEFD5 /kappasymbolgreek /betasymbolgreek /afii10095 /afii10073 /eth 
-/lozenge /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef ./notdef
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/integral /hbar /uniEFD5 /kappasymbolgreek /betasymbolgreek /afii10095 /afii10073 /eth
+/lozenge /uniF638 /.notdef /.notdef /.notdef /.notdef /.notdef ./notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 ] def
