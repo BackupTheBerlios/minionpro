@@ -175,18 +175,18 @@ get_sc_flags() {
 }
 get_sc_ts_flags() {
   case $1 in
-      lf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum"
+      lf) sc_ts_flags="-fpnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
-     osf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -fpnum -fsmcp"
+     osf) sc_ts_flags="-fpnum -fsmcp"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter=!'<Number>' -fonum";;
-     tlf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum"
+     tlf) sc_ts_flags="-ftnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
-    tosf) sc_ts_flags="--unicoding='dotlessj =: Jsmall' -ftnum -fsmcp"
+    tosf) sc_ts_flags="-ftnum -fsmcp"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -fonum";;
   esac
