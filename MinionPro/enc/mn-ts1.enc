@@ -3,11 +3,11 @@
 % otftotfm doesn't fake glyphs yet, so set them to blacksquare
 % UNICODING capitalcompwordmark =: blacksquare ;
 % UNICODING ascendercompwordmark =: blacksquare ;
-% UNICODING asteristcentered =: blacksquare ;
+% UNICODING asteriskcentered =: blacksquare ;
 % UNICODING twelveudash =: blacksquare ;
 % UNICODING threequartersemdash =: blacksquare ;
-% UNICODING lbrackdbl =: blacksquare ;
-% UNICODING rbrackdbl =: blacksquare ;
+% UNICODING dblbracketleft =: blacksquare ;
+% UNICODING dblbracketright =: blacksquare ;
 % UNICODING bardbl =: blacksquare ;
 % UNICODING degree =: blacksquare ;
 % UNICODING interrobang =: blacksquare ;
@@ -67,7 +67,7 @@
   /.notdef /.notdef /.notdef /.notdef /.notdef /textmho /.notdef /circle
 % 0x50
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /Omega
-  /.notdef /.notdef /.notdef /textlbrackdbl /.notdef /textrbrackdbl /arrowup /arrowdown
+  /.notdef /.notdef /.notdef /dblbracketleft /.notdef /dblbracketright /arrowup /arrowdown
 % 0x60
   /grave /.notdef /born /divorced /died /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /leaf /married /musicalnote /.notdef
