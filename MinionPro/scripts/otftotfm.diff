@@ -1,8 +1,7 @@
-Only in otftotfm: automatic.o
-Only in otftotfm: .deps
-diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
---- otftotfm.orig/dvipsencoding.cc	2005-03-11 03:41:56.000000000 +0100
-+++ otftotfm/dvipsencoding.cc	2005-04-24 16:04:46.000000000 +0200
+Only in otftotfm: .viminfo
+diff -u otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
+--- otftotfm.orig/dvipsencoding.cc	Tue Apr 26 10:29:19 2005
++++ otftotfm/dvipsencoding.cc	Tue Apr 26 10:30:30 2005
 @@ -136,7 +136,7 @@
  
  
@@ -21,13 +20,14 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
      else if (!encoding_required || slot < 0)
  	return -1;
    use_slot:
-@@ -301,9 +303,29 @@
+@@ -301,9 +303,30 @@
      for (int i = 0; ligkern_ops[i].s; i++)
  	if (ligkern_ops[i].s == s)
  	    return ligkern_ops[i].v;
 +
-+    if (s[0] == '{' && s.back() == '}') {
-+        for (int i = 1; i < s.length() - 1; i++)
++    if (s[0] == '{' && s.back() == '}' &&
++        (s[1] == '-' || isdigit(s[1]))) {
++        for (int i = 2; i < s.length() - 1; i++)
 +            if (!isdigit(s[i]))
 +                return -1;
 +        return DvipsEncoding::J_KERN;
@@ -51,7 +51,7 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
  inline bool
  operator==(const DvipsEncoding::Ligature& l1, const DvipsEncoding::Ligature& l2)
  {
-@@ -334,6 +356,14 @@
+@@ -334,6 +357,14 @@
  		return 0;
  	    else
  		return errh->error("parse error in altselector character assignment");
@@ -66,7 +66,7 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
  	} else if ((l = strtol(v[0].c_str(), &endptr, 0)) && endptr == v[0].end() && v[1] == "=") {
  	    if (l >= 0 && l < 256) {
  		if (override > 0 || !_e[l])
-@@ -349,6 +379,10 @@
+@@ -349,6 +380,10 @@
  	    if (bv < 0)
  		return errh->warning("'%s' has no encoding, ignoring %s", v[2].c_str(), nokern_names[op - J_NOKERN]);
  	    Ligature lig = { av, bv, op, 0 };
@@ -77,7 +77,7 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
  	    Ligature *what = std::find(_lig.begin(), _lig.end(), lig);
  	    if (override > 0 && what < _lig.end())
  		*what = lig;
-@@ -591,6 +625,8 @@
+@@ -591,6 +626,8 @@
  	// the altselector character has its own glyph name
  	if (code == _altselector_char && !literal)
  	    chname = "altselector";
@@ -86,7 +86,7 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
  
  	// common case: skip .notdef
  	if (chname == dot_notdef)
-@@ -637,6 +673,8 @@
+@@ -637,6 +674,8 @@
  	// the altselector character has its own glyph name
  	if (code == _altselector_char && !literal)
  	    chname = "altselector";
@@ -95,7 +95,7 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
  
  	// find all Unicodes
  	Vector<uint32_t> unicodes;
-@@ -670,6 +708,10 @@
+@@ -670,6 +709,10 @@
  	/* all set */;
      }
  
@@ -106,7 +106,7 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
      // final pass: complain
      for (int code = 0; code < _e.size(); code++)
  	if (_e[code] != dot_notdef && metrics.glyph(code) <= 0)
-@@ -698,6 +740,10 @@
+@@ -698,6 +741,10 @@
  	} else if (l.join == J_CLIG) {
  	    metrics.remove_ligatures(l.c1, l.c2);
  	    metrics.add_ligature(l.c1, l.c2, metrics.pair_code(l.c1, l.d));
@@ -117,9 +117,9 @@ diff -ru otftotfm.orig/dvipsencoding.cc otftotfm/dvipsencoding.cc
  	} else {
  	    static int complex_join_warning = 0;
  	    if (!complex_join_warning) {
-diff -ru otftotfm.orig/dvipsencoding.hh otftotfm/dvipsencoding.hh
---- otftotfm.orig/dvipsencoding.hh	2005-03-11 03:41:07.000000000 +0100
-+++ otftotfm/dvipsencoding.hh	2005-04-10 14:13:25.000000000 +0200
+diff -u otftotfm.orig/dvipsencoding.hh otftotfm/dvipsencoding.hh
+--- otftotfm.orig/dvipsencoding.hh	Tue Apr 26 10:29:19 2005
++++ otftotfm/dvipsencoding.hh	Tue Apr 26 10:29:32 2005
 @@ -18,6 +18,7 @@
      const String &name() const			{ return _name; }
      const String &filename() const		{ return _filename; }
@@ -145,14 +145,9 @@ diff -ru otftotfm.orig/dvipsencoding.hh otftotfm/dvipsencoding.hh
  
      Vector<Ligature> _lig;
      HashMap<PermString, int> _unicoding_map;
-Only in otftotfm: dvipsencoding.o
-Only in otftotfm: glyphfilter.o
-Only in otftotfm: kpseinterface.o
-Only in otftotfm: Makefile
-Only in otftotfm: md5.o
-diff -ru otftotfm.orig/metrics.cc otftotfm/metrics.cc
---- otftotfm.orig/metrics.cc	2005-04-03 04:25:04.000000000 +0200
-+++ otftotfm/metrics.cc	2005-04-05 19:04:04.000000000 +0200
+diff -u otftotfm.orig/metrics.cc otftotfm/metrics.cc
+--- otftotfm.orig/metrics.cc	Tue Apr 26 10:29:19 2005
++++ otftotfm/metrics.cc	Tue Apr 26 10:29:32 2005
 @@ -24,7 +24,7 @@
  #include <lcdf/straccum.hh>
  
@@ -171,9 +166,9 @@ diff -ru otftotfm.orig/metrics.cc otftotfm/metrics.cc
  	else if (ch.glyph == _emptyslot_glyph)
  	    return "<emptyslot>";
  	else if (ch.glyph >= 0 && ch.glyph < _mapped_fonts[0]->nglyphs())
-diff -ru otftotfm.orig/metrics.hh otftotfm/metrics.hh
---- otftotfm.orig/metrics.hh	2004-08-10 09:27:30.000000000 +0200
-+++ otftotfm/metrics.hh	2005-04-05 19:04:04.000000000 +0200
+diff -u otftotfm.orig/metrics.hh otftotfm/metrics.hh
+--- otftotfm.orig/metrics.hh	Tue Apr 26 10:29:19 2005
++++ otftotfm/metrics.hh	Tue Apr 26 10:29:32 2005
 @@ -31,6 +31,7 @@
      void check() const;
      
@@ -190,11 +185,9 @@ diff -ru otftotfm.orig/metrics.hh otftotfm/metrics.hh
      Glyph _emptyslot_glyph;
  
      Vector<Kern> _altselectors;
-Only in otftotfm: metrics.o
-Only in otftotfm: otftotfm
-diff -ru otftotfm.orig/otftotfm.1 otftotfm/otftotfm.1
---- otftotfm.orig/otftotfm.1	2005-04-03 02:28:50.000000000 +0200
-+++ otftotfm/otftotfm.1	2005-04-05 19:42:25.000000000 +0200
+diff -u otftotfm.orig/otftotfm.1 otftotfm/otftotfm.1
+--- otftotfm.orig/otftotfm.1	Tue Apr 26 10:29:19 2005
++++ otftotfm/otftotfm.1	Tue Apr 26 10:29:32 2005
 @@ -431,6 +431,13 @@
  such feature.
  .PD
@@ -209,10 +202,11 @@ diff -ru otftotfm.orig/otftotfm.1 otftotfm/otftotfm.1
  '
  .SS Encoding Options
  '
-@@ -604,6 +611,18 @@
+@@ -603,6 +610,18 @@
+ .nf
      \fBotftotfm\fR \fB\-f\fRsalt \fB\-\-include\-alternates\fR='*.end' \fB\-f\fRaalt \.\.\.
  .fi
- '
++'
 +.Sp
 +.TP 5
 +.BI \-\-skew\-char= char
@@ -224,13 +218,12 @@ diff -ru otftotfm.orig/otftotfm.1 otftotfm/otftotfm.1
 +option. You can use the
 +.B \-\-extra\-skew
 +option to further modify the accent positions.
-+'
+ '
  .PD
  '
- '
-diff -ru otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
---- otftotfm.orig/otftotfm.cc	2005-04-03 04:25:24.000000000 +0200
-+++ otftotfm/otftotfm.cc	2005-04-24 16:04:02.000000000 +0200
+diff -u otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
+--- otftotfm.orig/otftotfm.cc	Tue Apr 26 10:29:19 2005
++++ otftotfm/otftotfm.cc	Tue Apr 26 10:29:32 2005
 @@ -94,6 +94,8 @@
  #define ALTERNATES_FILTER_OPT	336
  #define SPACE_FACTOR_OPT	337
@@ -549,19 +542,14 @@ diff -ru otftotfm.orig/otftotfm.cc otftotfm/otftotfm.cc
  	  case MATH_SPACING_OPT:
  	    math_spacing = !clp->negated;
  	    break;
-@@ -1590,6 +1636,10 @@
- 	    ligkern.push_back(String("^^ = ") + String(clp->val.i));
- 	    break;
+@@ -1588,6 +1634,10 @@
  
-+	  case SKEW_CHAR_OPT:
-+	    ligkern.push_back(String("<skew> = ") + String(clp->val.i));
+ 	  case ALTSELECTOR_CHAR_OPT:
+ 	    ligkern.push_back(String("^^ = ") + String(clp->val.i));
 +	    break;
 +
++	  case SKEW_CHAR_OPT:
++	    ligkern.push_back(String("<skew> = ") + String(clp->val.i));
+ 	    break;
+ 
  	  case ALTSELECTOR_FEATURE_OPT: {
- 	      OpenType::Tag t(clp->arg);
- 	      if (!t.valid())
-Only in otftotfm: otftotfm.o
-Only in otftotfm: secondary.o
-Only in otftotfm: uniprop.o
-Only in otftotfm: util.o
-Only in otftotfm: .viminfo
