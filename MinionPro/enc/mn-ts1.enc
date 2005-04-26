@@ -89,13 +89,14 @@
   /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
   /referencemark /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro
 % 0xC0
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
-% 0xD0
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /multiply /.notdef
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /uniF661 /uniF662 /uniF663 /uniF664 /uniF665 /uniF666 /uniF667 /uniF668 /uniF669 /uniF66A % numerator:   figures
+  /uniF655 /uniF656 /uniF657 /uniF658 /uniF659 /uniF65A /uniF65B /uniF65C /uniF65D /uniF65E % denominator: figures
+  /.notdef /.notdef /multiply /.notdef
+  /uniF66B /uniF66C /uniF631 /uniF632                                                       % numerator:   comma, period, parenleft, parenright
+  /uniF65F /uniF660 /uniF62C /uniF62D                                                       % denominator: comma, period, parenleft, parenright
 % 0xE0
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /onethird /twothirds /oneeighth /threeeighths /fiveeighths /seveneighths                  % split fractions
+  /.notdef /.notdef 
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xF0
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /divide  /.notdef

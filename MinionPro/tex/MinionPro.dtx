@@ -237,6 +237,14 @@
 % |\digamma|, |\varkappa|, |\varbeta|, |\backepsilon|, |\varbackepsilon|, |\hbar|,
 % |\jmath|, |\eth|, |\lozenge|, |\slashedzero|.
 %
+% \begin{sloppypar}
+% Split fractions can be typeset either using |\text|\textit{$\langle$number$\rangle$}|numerator|, 
+% |\text|\textit{$\langle$number$\rangle$}|denominator| and |\textfractionsolidus| or using the pre-composed 
+% fractions |\textonehalf|, |\textonequarter|, |\textthreequarters|, 
+% |\textonethird|, |\texttwothirds|, |\textoneeighth|, 
+% |\textthreeeighths|, |\textfiveeighths|, |\textseveneighths|.
+% \end{sloppypar}
+%
 % Ornaments can be accessed via the \pkg{pifont} package using the command
 % \begin{quote}
 %   |\Pisymbol{MinionPro-Ornaments}|\marg{int}
@@ -516,8 +524,6 @@
   \UndeclareTextCommand{\textsterling}{T1}%
   \UndeclareTextCommand{\j}{T1}%
   \UndeclareTextCommand{\j}{LY1}%
-  %\DeclareTextSymbol{\textj}{TS1}{"FF}
-  %\DeclareTextCommandDefault{\j}{\UseTextSymbol{TS1}\textj}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -639,6 +645,40 @@
 \DeclareMathSymbol{\slashedzero}{\mathord}{rmletters}{"89}
 
 \def\textcelsius{\textdegree C}
+\DeclareTextSymbol{\textzeronumerator}   {TS1}{192}
+\DeclareTextSymbol{\textonenumerator}    {TS1}{193}
+\DeclareTextSymbol{\texttwonumerator}    {TS1}{194}
+\DeclareTextSymbol{\textthreenumerator}  {TS1}{195}
+\DeclareTextSymbol{\textfournumerator}   {TS1}{196}
+\DeclareTextSymbol{\textfivenumerator}   {TS1}{197}
+\DeclareTextSymbol{\textsixnumerator}    {TS1}{198}
+\DeclareTextSymbol{\textsevennumerator}  {TS1}{199}
+\DeclareTextSymbol{\texteightnumerator}  {TS1}{200}
+\DeclareTextSymbol{\textninenumerator}   {TS1}{201}
+\DeclareTextSymbol{\textzerodenominator} {TS1}{202}
+\DeclareTextSymbol{\textonedenominator}  {TS1}{203}
+\DeclareTextSymbol{\texttwodenominator}  {TS1}{204}
+\DeclareTextSymbol{\textthreedenominator}{TS1}{205}
+\DeclareTextSymbol{\textfourdenominator} {TS1}{206}
+\DeclareTextSymbol{\textfivedenominator} {TS1}{207}
+\DeclareTextSymbol{\textsixdenominator}  {TS1}{208}
+\DeclareTextSymbol{\textsevendenominator}{TS1}{209}
+\DeclareTextSymbol{\texteightdenominator}{TS1}{210}
+\DeclareTextSymbol{\textninedenominator} {TS1}{211}
+\DeclareTextSymbol{\textcommanumerator}       {TS1}{216}
+\DeclareTextSymbol{\textperiodnumerator}      {TS1}{217}
+\DeclareTextSymbol{\textparenleftnumerator}   {TS1}{218}
+\DeclareTextSymbol{\textparenrightnumerator}  {TS1}{219}
+\DeclareTextSymbol{\textcommadenominator}     {TS1}{220}
+\DeclareTextSymbol{\textperioddenominator}    {TS1}{221}
+\DeclareTextSymbol{\textparenleftdenominator} {TS1}{222}
+\DeclareTextSymbol{\textparenrightdenominator}{TS1}{223}
+\DeclareTextSymbol{\textonethird}        {TS1}{224}
+\DeclareTextSymbol{\texttwothirds}       {TS1}{225}
+\DeclareTextSymbol{\textoneeighth}       {TS1}{226}
+\DeclareTextSymbol{\textthreeeighths}    {TS1}{227}
+\DeclareTextSymbol{\textfiveeighths}     {TS1}{228}
+\DeclareTextSymbol{\textseveneighths}    {TS1}{229}
 %    \end{macrocode}
 % Archaic greek letters not provided by MinionPro
 %    \begin{macrocode}
