@@ -1,6 +1,6 @@
 % TeX math italic encoding.
 %
-% LIGKERN <skew> = 255 ;
+% LIGKERN 255 = skew ;
 %
 /MinionPro-OMLEncoding [          % now 256 chars follow
 % 0x0

@@ -322,10 +322,10 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml   lf-oml   "--math-spacing -L 40 -flnum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tlf-oml  "--math-spacing -L 40 -flnum -fpnum $digamma_flags"
-    make_tfm "$1" oml   osf-oml  "--math-spacing -L 40 -fonum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tosf-oml "--math-spacing -L 40 -fonum -fpnum $digamma_flags"
+    make_tfm "$1" oml   lf-oml   "--math-spacing=255 -L 40 -flnum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tlf-oml  "--math-spacing=255 -L 40 -flnum -fpnum $digamma_flags"
+    make_tfm "$1" oml   osf-oml  "--math-spacing=255 -L 40 -fonum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tosf-oml "--math-spacing=255 -L 40 -fonum -fpnum $digamma_flags"
 
     make_tfm "$1" orn-u orn-u    "$ornaments_flags"
 
@@ -344,10 +344,10 @@ make_spaced_metrics() {
     make_spread_metrics     "$1" osf
     make_spread_metrics     "$1" tosf
 
-    make_tfm "$1" oml   lf-l1-oml   "--math-spacing -L 80 -flnum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tlf-l1-oml  "--math-spacing -L 80 -flnum -fpnum $digamma_flags"
-    make_tfm "$1" oml   osf-l1-oml  "--math-spacing -L 80 -fonum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tosf-l1-oml "--math-spacing -L 80 -fonum -fpnum $digamma_flags"
+    make_tfm "$1" oml   lf-l1-oml   "--math-spacing=255 -L 80 -flnum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tlf-l1-oml  "--math-spacing=255 -L 80 -flnum -fpnum $digamma_flags"
+    make_tfm "$1" oml   osf-l1-oml  "--math-spacing=255 -L 80 -fonum -ftnum $digamma_flags"
+    make_tfm "$1" oml   tosf-l1-oml "--math-spacing=255 -L 80 -fonum -fpnum $digamma_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
