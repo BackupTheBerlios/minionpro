@@ -1,11 +1,11 @@
-% \CheckSum{674}
+% \CheckSum{690}
 %\iffalse
 %<*driver>
 \ProvidesFile{fontaxes.dtx}
 %</driver>
 %<package>\ProvidesPackage{fontaxes}
 %<*driver|package>
-[2005/04/24 v0.1 Font selection axes]
+[2005/04/28 v0.1a Font selection axes]
 %</driver|package>
 %<*driver>
 \documentclass[draft]{ltxdoc}
@@ -100,9 +100,8 @@
 % \acro{NFSS} axes do.)
 %
 % For choosing the figure versions to be used in math mode you can use the
-% corresponding axis \axis{math figure alignment} (provided that suitable math
-% versions have been set up). Note, there currently is no means for changing
-% the figure style used in math.
+% corresponding axis \axis{math figure alignment}. Note, there currently is no
+% means for changing the figure style used in math.
 % 
 % \subsection{Math version}
 %
@@ -117,7 +116,9 @@
 % A second axis \axis{math figure alignment} is introduced that allows you to
 % switch between |tabular| and |proportional| figures using |\tabularmath| and
 % |\proportionalmath|. (This assumes the presence of additional math versions
-% |tabular| and |boldtabular|.)
+% |tabular| and |boldtabular|. \pkg{fontaxes} will copy the setups of math
+% versions |normal| and |bold| at the end of the preamble in case you do not
+% provide your own declarations.)
 %
 % \DescribeMacro\mathweight %
 % \DescribeMacro\mathfigurealignment %
@@ -198,11 +199,12 @@
 % \begin{tabular}{@{}ll@{}}
 % option & effect \\
 % \nextaxis
-% |oldstyle|, |osf| & |\oldstylefigures| \\
+% |text|, |oldstyle|, |osf|\footnotemark & |\oldstylefigures| \\
 % |lining|, |lf|    & |\liningfigures| \\
 % |tabular|         & |\tabularfigures \tabularmath| \\
 % |proportional|    & |\proportionalfigures \proportionalmath| \\
 % \end{tabular}
+% \footnotetext{Which names to choose is still being discussed.}
 % 
 % \section{Naming conventions}
 %
@@ -305,6 +307,7 @@
 % \end{macro}
 %
 % \begin{macro}{\figureversion}
+% \changes{v0.2}{2005/04/28}{Alternative option |text| (same as |oldstyle|)}
 % This code originally appeared in the package \pkg{MinionPro}. I have adapted
 % it to work within \pkg{fontaxes}' framework and also changed some option
 % names.
@@ -316,6 +319,7 @@
 \fa@fv@newoption{lf}          {\liningfigures}
 \fa@fv@newoption{oldstyle}    {\oldstylefigures}
 \fa@fv@newoption{osf}         {\oldstylefigures}
+\fa@fv@newoption{text}        {\oldstylefigures}
 \fa@fv@newoption{tabular}     {\tabularfigures\tabularmath}
 \fa@fv@newoption{proportional}{\proportionalfigures\proportionalmath}
 %    \end{macrocode}
@@ -814,6 +818,36 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
+% 
+% \subsection{Compatibility}
+%
+% If no math versions |tabular| and |boldtabular| are defined in the preamble,
+% we provide defaults by copying the states of |normal| and |bold| (assuming,
+% in turn, that these two exist).
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \fa@provide@mv@copy{tabular}{normal}%
+  \fa@provide@mv@copy{boldtabular}{bold}%
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\fa@provide@mv@copy}
+% \changes{v0.2}{2005/04/28}{Provide default math versions by copy}
+% Declare math version |#1| to be a copy of math version |#2| if |#1| does not
+% exist already. To accomplish this we have to know that a math version's
+% configuration is basically stored in a macro |\mv@|\meta{name} (which makes
+% us dependent on the NFSS implementation; sigh \dots). 
+%    \begin{macrocode}
+\newcommand*\fa@provide@mv@copy[2]{%
+  \@ifundefined{mv@#1}{%
+    \DeclareMathVersion{#1}%
+    \expandafter\let\csname mv@#1\expandafter\endcsname
+      \csname mv@#2\endcsname
+  }{}%
+}
+%    \end{macrocode}
+% \end{macro}
+% 
 %
 % \subsection{Tools}
 %
