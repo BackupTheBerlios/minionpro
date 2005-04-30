@@ -6,11 +6,9 @@ font=$1
 
 shift
 
-if [ "x$font" = "x" ]
-then
-  echo "No font specified!\n";
-  echo "USAGE: maketfm <font> [options]";
-  echo "\nSupported options are:";
+usage() {
+  echo "USAGE: maketfm <font> [options]"
+  echo "\nSupported options are:"
   echo "--greek      | --nogreek"
   echo "--cyrillic   | --nocyrillic"
   echo "--vietnamese | --novietnamese"
@@ -18,6 +16,12 @@ then
   echo "--swash      | --noswash"
   echo "--expanded   | --noexpanded"
   exit 1
+}
+
+if [ "x$font" = "x" ]
+then
+  echo "No font specified!\n"
+  usage
 fi
 
 create_greek=true
@@ -42,6 +46,7 @@ do
     --noswash)      create_swash=false;;
     --expanded)     create_expanded=true;;
     --noexpanded)   create_expanded=false;;
+    *)              echo "Unknown option $opt\n"; usage;;
   esac
 done
 
@@ -114,26 +119,27 @@ make_tfm() {
   local spec="$3"
   shift 3
 
-  common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -fkern"
+  local texname="$font-$name-$spec"
+  local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -fkern"
 
   echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm.tmp
-  echo "otftotfm           $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'"    >>maketfm.tmp
+  echo "otftotfm           $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'"    >>maketfm.tmp
 
   # expanded metrics for pdftex's font expansion
 
   if $create_expanded
   then
     echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm-expanded.tmp
-    echo "otftotfm -E1.020 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+20" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.016 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+16" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.012 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+12" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.008 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E1.004 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'+4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.996 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.992 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.988 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-12" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.984 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$font-$name-$spec'-16" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.980 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' "otf/$font-$name.otf" "$font-$name-$spec"-20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.020 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'+20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.016 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'+16" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.012 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'+12" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.008 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'+8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E1.004 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'+4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.996 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'-4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.992 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'-8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.988 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'-12" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.984 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$texname'-16" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.980 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' "otf/$font-$name.otf" "$texname"-20" >>maketfm-expanded.tmp
   fi
 }
 
