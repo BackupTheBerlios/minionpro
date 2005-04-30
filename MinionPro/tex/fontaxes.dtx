@@ -1,11 +1,11 @@
-% \CheckSum{690}
+% \CheckSum{702}
 %\iffalse
 %<*driver>
 \ProvidesFile{fontaxes.dtx}
 %</driver>
 %<package>\ProvidesPackage{fontaxes}
 %<*driver|package>
-[2005/04/28 v0.1a Font selection axes]
+[2005/04/30 v0.1b Font selection axes]
 %</driver|package>
 %<*driver>
 \documentclass[draft]{ltxdoc}
@@ -40,8 +40,8 @@
 % 
 % \subsection{Shape}
 %
-% This package splits \LaTeX's single shape axis in two: the primary shape
-% axis (|n|, |it|, etc.) and the secondary shape axis (|nosc|, |sc|,
+% \pkg{fontaxes} splits \LaTeX's single shape axis into two ones: the primary
+% shape axis (|n|, |it|, etc.) and the secondary shape axis (|nosc|, |sc|,
 % etc.)\footnote{Still lacking better names.}.
 %
 % \DescribeMacro\upshape %
@@ -77,16 +77,17 @@
 %
 % Different figure versions are often implemented as additional families
 % (e.g., |MinionPro|$\{|-OsF|, |-LF|, |-TOsF|, |-TLF|\}$; or |pplj|, |pplx|).
-% This package splits off the axes \axis{figure style} and \axis{figure
+% \pkg{fontaxes} splits off the axes \axis{figure style} and \axis{figure
 %   alignment}, which leaves the \axis{base family} (|MinionPro| or |ppl|).
 % 
-% \DescribeMacro\oldstylefigures %
-% \DescribeMacro\liningfigures %
-% \DescribeMacro\tabularfigures %
-% \DescribeMacro\proportionalfigures %
-% The package knows two figure styles, accessible via |\oldstylefigures| and
-% |\liningfigures|, and two modes of figure alignment, accessible via the
-% switches |\tabularfigures| and |\proportionalfigures|.
+% \DescribeMacro\oldstylefig %
+% \DescribeMacro\textfig %
+% \DescribeMacro\liningfig %
+% \DescribeMacro\tabularfig %
+% \DescribeMacro\proportionalfig %
+% \pkg{fontaxes} knows two figure styles, accessible via |\oldstylefig| (or
+% |\textfig|) and |\liningfig|, and two modes of figure alignment, accessible
+% via the switches |\tabularfig| and |\proportionalfig|.
 % 
 % \DescribeMacro\fontfigurestyle %
 % \DescribeMacro\fontfigurealignment %
@@ -108,8 +109,9 @@
 % \DescribeMacro\boldmath %
 % \DescribeMacro\unboldmath %
 % By default, \LaTeX\ provides two math versions, |normal| and |bold|, as well
-% as commands |\boldmath| and |\unboldmath| for switching between them. This
-% package redefines these commands to operate on the axis \axis{math weight}.
+% as commands |\boldmath| and |\unboldmath| for switching between them.
+% \pkg{fontaxes} redefines these commands to operate on the axis \axis{math
+% weight}.
 % 
 % \DescribeMacro\tabularmath %
 % \DescribeMacro\proportionalmath %
@@ -142,11 +144,12 @@
 % |\scshape|   &                       & |\scdefault| \\
 % |\sscshape|  &                       & |\sscdefault| \\
 % \midrule
-% |\oldstylefigures| & |\fontfigurestyle|     & |oldstyle| \\  
-% |\liningfigures|   &                        & |lining| \\
+% |\oldstylefig| & |\fontfigurestyle|     & |oldstyle| \\  
+% |\textfig|     &                        & |oldstyle| \\
+% |\liningfig|   &                        & |lining| \\
 % \nextaxis
-% |\tabularfigures|  & |\fontfigurealignment| & |tabular| \\
-% |\proportionalfigures| &                    & |proportional| \\
+% |\tabularfig|  & |\fontfigurealignment| & |tabular| \\
+% |\proportionalfig| &                    & |proportional| \\
 % \nextaxis
 % ---                & |\fontbasefamily| \\
 % \midrule
@@ -166,10 +169,11 @@
 % \DescribeMacro\textsw %
 % \DescribeMacro\textssc %
 % \DescribeMacro\textnosc %
-% \DescribeMacro\figoldstyle %
-% \DescribeMacro\figlining %
-% \DescribeMacro\figtabular %
-% \DescribeMacro\figproportional %
+% \DescribeMacro\oldstylefigures %
+% \DescribeMacro\textfigures %
+% \DescribeMacro\liningfigures %
+% \DescribeMacro\tabularfigures %
+% \DescribeMacro\proportionalfigures %
 % Similar to the well-known |\textit|, |\textsc|, etc., this package provides
 % the following commands that apply the font change to their argument only.
 % For example, |\textsw|\marg{text} is roughly equivalent to |{\swshape|
@@ -183,10 +187,11 @@
 % |\textssc|          & |\sscshape| \\
 % |\textnosc|         & |\noscshape| \\
 % \nextaxis
-% |\figoldstyle|     & |\oldstylefigures| \\
-% |\figlining|       & |\liningfigures| \\
-% |\figtabular|      & |\tabularfigures \tabularmath| \\
-% |\figproportional| & |\proportionalfigures \proportionalmath| \\
+% |\oldstylefigures|     & |\oldstylefig| \\
+% |\textfigures|         & |\oldstylefig| \\
+% |\liningfigures|       & |\liningfig| \\
+% |\tabularfigures|      & |\tabularfig \tabularmath| \\
+% |\proportionalfigures| & |\proportionalfig \proportionalmath| \\
 % \end{tabular}
 % 
 % \medskip %
@@ -199,10 +204,10 @@
 % \begin{tabular}{@{}ll@{}}
 % option & effect \\
 % \nextaxis
-% |text|, |oldstyle|, |osf|\footnotemark & |\oldstylefigures| \\
-% |lining|, |lf|    & |\liningfigures| \\
-% |tabular|         & |\tabularfigures \tabularmath| \\
-% |proportional|    & |\proportionalfigures \proportionalmath| \\
+% |text|, |oldstyle|, |osf|\footnotemark & |\oldstylefig| \\
+% |lining|, |lf|    & |\liningfig| \\
+% |tabular|         & |\tabularfig \tabularmath| \\
+% |proportional|    & |\proportionalfig \proportionalmath| \\
 % \end{tabular}
 % \footnotetext{Which names to choose is still being discussed.}
 % 
@@ -282,25 +287,29 @@
 %
 % \subsubsection{Figure version}
 %
-% \begin{macro}{\oldstylefigures}
-% \begin{macro}{\liningfigures}
+% \begin{macro}{\oldstylefig}
+% \begin{macro}{\textfig}
+% \begin{macro}{\liningfig}
 %   Axis 1: figure style
 %    \begin{macrocode}
-\def\oldstylefigures{\@nomath\oldstylefigures
+\def\oldstylefig{\@nomath\oldstylefig
   \fontfigurestyle{oldstyle}\selectfont}
-\def\liningfigures{\@nomath\liningfigures
+\def\textfig{\@nomath\textfig
+  \fontfigurestyle{oldstyle}\selectfont}
+\def\liningfig{\@nomath\liningfig
   \fontfigurestyle{lining}\selectfont}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
+% \end{macro}
 %
-% \begin{macro}{\tabularfigures}
-% \begin{macro}{\proportionalfigures}
+% \begin{macro}{\tabularfig}
+% \begin{macro}{\proportionalfig}
 %   Axis 2: figure alignment
 %    \begin{macrocode}
-\def\tabularfigures{\@nomath\tabularfigures
+\def\tabularfig{\@nomath\tabularfig
   \fontfigurealignment{tabular}\selectfont}
-\def\proportionalfigures{\@nomath\proportionalfigures
+\def\proportionalfig{\@nomath\proportionalfig
    \fontfigurealignment{proportional}\selectfont}
 %    \end{macrocode}
 % \end{macro}
@@ -315,13 +324,13 @@
 \newcommand\fa@fv@prefix{fa@fv@switch@}
 \newcommand*\fa@fv@newoption[1]
   {\expandafter\newcommand\csname\fa@fv@prefix #1\endcsname}
-\fa@fv@newoption{lining}      {\liningfigures}
-\fa@fv@newoption{lf}          {\liningfigures}
-\fa@fv@newoption{oldstyle}    {\oldstylefigures}
-\fa@fv@newoption{osf}         {\oldstylefigures}
-\fa@fv@newoption{text}        {\oldstylefigures}
-\fa@fv@newoption{tabular}     {\tabularfigures\tabularmath}
-\fa@fv@newoption{proportional}{\proportionalfigures\proportionalmath}
+\fa@fv@newoption{lining}      {\liningfig}
+\fa@fv@newoption{lf}          {\liningfig}
+\fa@fv@newoption{oldstyle}    {\oldstylefig}
+\fa@fv@newoption{osf}         {\oldstylefig}
+\fa@fv@newoption{text}        {\oldstylefig}
+\fa@fv@newoption{tabular}     {\tabularfig\tabularmath}
+\fa@fv@newoption{proportional}{\proportionalfig\proportionalmath}
 %    \end{macrocode}
 % We simply iterate over the list of figure versions specified in the argument
 % to |\figureversion| and check if we have specified a matching option.
@@ -351,10 +360,11 @@
   \@ifpackageloaded{hyperref}{%
     \pdfstringdefDisableCommands{%
       \let\figureversion\@gobble
-      \let\figoldstyle\@firstofone
-      \let\figlining\@firstofone
-      \let\figtabular\@firstofone
-      \let\figproportional\@firstofone
+      \let\oldstylefigures\@firstofone
+      \let\textfigures\@firstofone
+      \let\liningfigures\@firstofone
+      \let\tabularfigures\@firstofone
+      \let\proportionalfigures\@firstofone
       \let\textsw\@firstofone
       \let\textssc\@firstofone
       \let\textnosc\@firstofone
@@ -366,17 +376,21 @@
 %
 % \noindent Axis 3: base family |\fontbasefamily{...}|
 %
-% \begin{macro}{\figoldstyle}
-% \begin{macro}{\figlining}
-% \begin{macro}{\figtabular}
-% \begin{macro}{\figproportional}
+% \changes{v0.2}{2005/04/30}{Align command names with MinionPro.sty}
+% \begin{macro}{\oldstylefigures}
+% \begin{macro}{\textfigures}
+% \begin{macro}{\liningfigures}
+% \begin{macro}{\tabularfigures}
+% \begin{macro}{\proportionalfigures}
 %    \begin{macrocode}
-\DeclareTextFontCommand{\figoldstyle}{\oldstylefigures}
-\DeclareTextFontCommand{\figlining}{\liningfigures}
-\DeclareTextFontCommand{\figtabular}{\tabularfigures\tabularmath}
-\DeclareTextFontCommand{\figproportional}
-  {\proportionalfigures\proportionalmath}
+\DeclareTextFontCommand{\oldstylefigures}{\oldstylefig}
+\DeclareTextFontCommand{\textfigures}{\oldstylefig}
+\DeclareTextFontCommand{\liningfigures}{\liningfig}
+\DeclareTextFontCommand{\tabularfigures}{\tabularfig\tabularmath}
+\DeclareTextFontCommand{\proportionalfigures}
+  {\proportionalfig\proportionalmath}
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -438,9 +452,9 @@
 % \begin{macro}{\fontbasefamily}
 %    \begin{macrocode}
 \DeclareRobustCommand\fontfigurestyle[1]{%
-  \fa@get@family \edef\fa@family@style{#1}\fa@set@family}
+  \fa@get@family \edef\fa@figure@style{#1}\fa@set@family}
 \DeclareRobustCommand\fontfigurealignment[1]{%
-  \fa@get@family \edef\fa@family@align{#1}\fa@set@family}
+  \fa@get@family \edef\fa@figure@align{#1}\fa@set@family}
 \DeclareRobustCommand\fontbasefamily[1]{%
   \fa@get@family \edef\fa@family@base{#1}\fa@set@family}
 %    \end{macrocode}
@@ -469,8 +483,8 @@
 % \begin{macro}{\fa@math@weight}
 % \begin{macro}{\fa@math@align}
 % \begin{macro}{\fa@family@base}
-% \begin{macro}{\fa@family@style}
-% \begin{macro}{\fa@family@align}
+% \begin{macro}{\fa@figure@style}
+% \begin{macro}{\fa@figure@align}
 % \begin{macro}{\fa@shape@one}
 % \begin{macro}{\fa@shape@two}
 %   The macros that hold the current values of the axes (here with some
@@ -480,8 +494,8 @@
 \newcommand*\fa@math@weight{normal}
 \newcommand*\fa@math@align{proportional}
 \newcommand*\fa@family@base{MinionPro}
-\newcommand*\fa@family@style{oldstyle}
-\newcommand*\fa@family@align{proportional}
+\newcommand*\fa@figure@style{oldstyle}
+\newcommand*\fa@figure@align{proportional}
 \newcommand*\fa@shape@one{n}
 \newcommand*\fa@shape@two{nosc}
 %    \end{macrocode}
@@ -553,7 +567,7 @@
         \edef\fa@family@base{\f@family}%
       \else
         \edef\fa@family@base{\fa@split@prefix}%
-        \edef\fa@family@style{\expandafter\@firstoftwo\fa@edoc}%
+        \edef\fa@figure@style{\expandafter\@firstoftwo\fa@edoc}%
 %    \end{macrocode}
 % Do not overwrite align (does not occur in alternative naming scheme)
 %    \begin{macrocode}
@@ -563,8 +577,8 @@
 % Store values
 %    \begin{macrocode}
       \edef\fa@family@base{\fa@split@prefix}%
-      \edef\fa@family@style{\expandafter\@firstoftwo\fa@edoc}%
-      \edef\fa@family@align{\expandafter\@secondoftwo\fa@edoc}%
+      \edef\fa@figure@style{\expandafter\@firstoftwo\fa@edoc}%
+      \edef\fa@figure@align{\expandafter\@secondoftwo\fa@edoc}%
     \fi
   }{}%
 }
@@ -606,7 +620,7 @@
 %    \begin{macrocode}
 \newcommand*\fa@encode@family{%
   \fa@encode@{family}
-    {{\fa@family@base}{\fa@family@style}{\fa@family@align}}%
+    {{\fa@family@base}{\fa@figure@style}{\fa@figure@align}}%
 }
 %    \end{macrocode}
 % Try different naming conventions
@@ -628,23 +642,23 @@
 %
 %    \begin{macrocode}
 \newcommand*\fa@encode@figures{%
-  \fa@encode@{figures}{{\fa@family@style}{\fa@family@align}}%
+  \fa@encode@{figures}{{\fa@figure@style}{\fa@figure@align}}%
 }
 \newcommand*\fa@encode@figures@default{%
   \edef\fa@code{OsF}%
   \PackageWarning{fontaxes}{Unknown figure version 
-    `\fa@family@style\space + \fa@family@align'\MessageBreak
+    `\fa@figure@style\space + \fa@figure@align'\MessageBreak
     Encoding to `\fa@code'}%
 }
 %    \end{macrocode}
 %
 %    \begin{macrocode}
 \newcommand*\fa@encode@figuresalt{%
-  \fa@encode@{figuresalt}{{\fa@family@style}{\fa@family@align}}%
+  \fa@encode@{figuresalt}{{\fa@figure@style}{\fa@figure@align}}%
 }
 \newcommand*\fa@encode@figuresalt@default{%
   \PackageWarning{fontaxes}{Unknown figure version 
-    `\fa@family@style\space + \fa@family@align'\MessageBreak
+    `\fa@figure@style\space + \fa@figure@align'\MessageBreak
     Encoding to `\fa@code'}%
   \edef\fa@code{j}%
 }
@@ -722,8 +736,8 @@
 % Detect if |\mathversion|, |\fontshape|, |\fontfamily| have been used not
 % under control of this package.
 %
-% \begin{macro}{\fa@family@style@domain}
-% \begin{macro}{\fa@family@align@domain}
+% \begin{macro}{\fa@figure@style@domain}
+% \begin{macro}{\fa@figure@align@domain}
 % \begin{macro}{\fa@shape@one@domain}
 % \begin{macro}{\fa@shape@two@domain}
 % \begin{macro}{\fa@math@weight@domain}
@@ -732,8 +746,8 @@
 %   when we know the function's domain. To do: Warn if decoding entries are
 %   overwritten (if the function is not injective).
 %    \begin{macrocode}
-\newcommand*\fa@family@style@domain{oldstyle,lining}
-\newcommand*\fa@family@align@domain{proportional,tabular}
+\newcommand*\fa@figure@style@domain{oldstyle,lining}
+\newcommand*\fa@figure@align@domain{proportional,tabular}
 %    \end{macrocode}
 %    \begin{macrocode}
 \newcommand*\fa@shape@one@domain{n,it,sl,sw}
@@ -775,8 +789,8 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\fa@create@decode@table{figures}{family@style}{family@align}
-\fa@create@decode@table{figuresalt}{family@style}{family@align}
+\fa@create@decode@table{figures}{figure@style}{figure@align}
+\fa@create@decode@table{figuresalt}{figure@style}{figure@align}
 \fa@create@decode@table{shape}{shape@one}{shape@two}
 \fa@create@decode@table{math}{math@weight}{math@align}
 %    \end{macrocode}
@@ -923,7 +937,7 @@
 % \subsection{Tests}
 % 
 % The file |test-fontaxes.tex| (docstrip target |test|) exercises some
-% features of the package. Since it is rather ad-hoc code, it is not shown
+% features of \pkg{fontaxes}. Since it is rather ad-hoc code, it is not shown
 % here. (It also requires the package \pkg{MinionPro}.)
 %
 % \Finale
@@ -1024,36 +1038,36 @@ Am \visible{\textssc{Anfang \textit{war}}} das Wort\\
 
 \tracingmacros=2
 \begin{tabular}{lll}
-\visible\oldstylefigures 12345 \visible\liningfigures 67890\\
-\visible\oldstylefigures 12345 \visible\tabularfigures 67890\\
-\visible\oldstylefigures 12345 \visible\proportionalfigures 67890\\
-\visible\oldstylefigures 12345 \visible\oldstylefigures 67890\\
-\visible\liningfigures 12345 \visible\liningfigures 67890\\
-\visible\liningfigures 12345 \visible\tabularfigures 67890\\
-\visible\liningfigures 12345 \visible\proportionalfigures 67890\\
-\visible\liningfigures 12345 \visible\oldstylefigures 67890\\
-\visible\tabularfigures 12345 \visible\liningfigures 67890\\
-\visible\tabularfigures 12345 \visible\tabularfigures 67890\\
-\visible\tabularfigures 12345 \visible\proportionalfigures 67890\\
-\visible\tabularfigures 12345 \visible\oldstylefigures 67890\\
-\visible{\tabularfigures\liningfigures}12345 
-  \visible\liningfigures 67890\\
-\visible{\tabularfigures\liningfigures}12345 
-  \visible\tabularfigures 67890\\
-\visible{\tabularfigures\liningfigures}12345 
-  \visible\proportionalfigures 67890\\
-\visible{\tabularfigures\liningfigures}12345 
-  \visible\oldstylefigures 67890\\
+\visible\oldstylefig 12345 \visible\liningfig 67890\\
+\visible\oldstylefig 12345 \visible\tabularfig 67890\\
+\visible\oldstylefig 12345 \visible\proportionalfig 67890\\
+\visible\oldstylefig 12345 \visible\oldstylefig 67890\\
+\visible\liningfig 12345 \visible\liningfig 67890\\
+\visible\liningfig 12345 \visible\tabularfig 67890\\
+\visible\liningfig 12345 \visible\proportionalfig 67890\\
+\visible\liningfig 12345 \visible\oldstylefig 67890\\
+\visible\tabularfig 12345 \visible\liningfig 67890\\
+\visible\tabularfig 12345 \visible\tabularfig 67890\\
+\visible\tabularfig 12345 \visible\proportionalfig 67890\\
+\visible\tabularfig 12345 \visible\oldstylefig 67890\\
+\visible{\tabularfig\liningfig}12345 
+  \visible\liningfig 67890\\
+\visible{\tabularfig\liningfig}12345 
+  \visible\tabularfig 67890\\
+\visible{\tabularfig\liningfig}12345 
+  \visible\proportionalfig 67890\\
+\visible{\tabularfig\liningfig}12345 
+  \visible\oldstylefig 67890\\
 \end{tabular}
 
 \subsection{Switch base family}
 
 \begingroup
 \def\nums{1234567890\par}
-\oldstylefigures MinionPro \nums
+\oldstylefig MinionPro \nums
 \fontbasefamily{ppl}\selectfont 
 Palatino \nums
-\liningfigures
+\liningfig
 lining \nums
 \fontbasefamily{MinionPro}\selectfont
 MinionPro \nums
@@ -1061,7 +1075,7 @@ MinionPro \nums
 lining and tabular \nums
 \fontbasefamily{ppl}\selectfont
 Palatino \nums
-\oldstylefigures
+\oldstylefig
 oldstyle \nums
 \fontbasefamily{MinionPro}\selectfont
 MinionPro again, should be oldstyle \emph{and tabular} \nums
@@ -1071,25 +1085,25 @@ MinionPro again, should be oldstyle \emph{and tabular} \nums
 
 \def\nums{t123 $m123$}
 \begin{tabular}{lll}
-\nums\quad\visible{(\figoldstyle{\nums})}\quad \nums\\
-\nums\quad\visible{(\figlining{\nums})}\quad \nums\\
-\nums\quad\visible{(\figtabular{\nums})}\quad \nums\\
-\nums\quad\visible{(\figproportional{\nums})}\quad \nums\\
-\nums\quad\visible{(\figtabular{\figlining{\nums}})}\quad \nums\\
+\nums\quad\visible{(\oldstylefigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\liningfigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\tabularfigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\proportionalfigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\tabularfigures{\liningfigures{\nums}})}\quad \nums\\
 \end{tabular}
 
 \begingroup Same but start from lining tabular figures\par
-\liningfigures\tabularfigures
+\liningfig\tabularfig
 \begin{tabular}{lll}
-\nums\quad\visible{(\figoldstyle{\nums})}\quad \nums\\
-\nums\quad\visible{(\figlining{\nums})}\quad \nums\\
-\nums\quad\visible{(\figtabular{\nums})}\quad \nums\\
-\nums\quad\visible{(\figproportional{\nums})}\quad \nums\\
-\nums\quad\visible{(\figtabular{\figlining{\nums}})}\quad \nums\\
+\nums\quad\visible{(\oldstylefigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\liningfigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\tabularfigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\proportionalfigures{\nums})}\quad \nums\\
+\nums\quad\visible{(\tabularfigures{\liningfigures{\nums}})}\quad \nums\\
 \end{tabular}
 \endgroup
 
-\subsection{In moving argument: o123 \figlining{l456} \figtabular{t789}
+\subsection{In moving argument: o123 \liningfigures{l456} \tabularfigures{t789}
 \figureversion{oldstyle,oldstyle,lining,oldstyle,proportional}op012
 \textsw{Swash} \textssc{Spaced \textnosc{Small} Caps}}
 
@@ -1142,19 +1156,19 @@ MinionPro again, should be oldstyle \emph{and tabular} \nums
 \bigskip
 \begingroup
 \fontfamily{MinionPro-LF}\selectfont selecting MinionPro-LF explicitly \showfont\par
-\tabularfigures tabularfigures 1234 \showfont\par
+\tabularfig tabularfigures 1234 \showfont\par
 \endgroup
 
 \bigskip
 \begingroup
-\tabularfigures tabularfigures 1234 \showfont\par
+\tabularfig tabularfigures 1234 \showfont\par
 \fontfamily{pplx}\selectfont selecting pplx explicitly \showfont\par
-\oldstylefigures oldstylefigures 1234 \showfont\par
+\oldstylefig oldstylefigures 1234 \showfont\par
 \fontbasefamily{MinionPro}\selectfont 
 Back to MinionPro (is tabular still there?) 1234 \showfont\par
 \fontfamily{ptm}\selectfont selecting ptm explicitly \showfont\par
-\liningfigures liningfigures 1234 \showfont\par
-\tabularfigures tabularfigures 1234 \showfont\par
+\liningfig liningfigures 1234 \showfont\par
+\tabularfig tabularfigures 1234 \showfont\par
 \fontbasefamily{MinionPro}\selectfont Back \dots 1234 \showfont\par
 \endgroup
 
