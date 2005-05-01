@@ -81,8 +81,10 @@ then
   ornaments_flags="$ornaments_flags --unicoding 'orn.035 =: uni2733'"
   ornaments_flags="$ornaments_flags --unicoding 'orn.037 =: uni2734'"
   ornaments_flags="$ornaments_flags --unicoding 'orn.038 =: uni2713'"
+  dong_flags=""
 else
   create_vietnamese=false
+  dong_flags="--unicoding 'dong =: blacksquare'"
 fi
 
 
@@ -158,6 +160,7 @@ get_ts_flags() {
      tlf) ts_flags="-ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
     tosf) ts_flags="-ftnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
   esac
+  ts_flags="$ts_flags $dong_flags"
 }
 get_sc_flags() {
   case $1 in
@@ -196,6 +199,7 @@ get_sc_ts_flags() {
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -fonum";;
   esac
+  sc_ts_flags="$sc_ts_flags $dong_flags"
 }
 get_it_ot1_flags() {
   case "$1" in

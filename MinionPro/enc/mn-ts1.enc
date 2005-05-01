@@ -36,7 +36,6 @@
 % UNICODING textnaira =: blacksquare ;
 % UNICODING textguarani =: blacksquare ;
 % UNICODING textrecipe =: blacksquare ;
-% UNICODING textdong =: blacksquare ;
 % UNICODING bahtthai =: blacksquare ;
 % UNICODING textdiscount =: blacksquare ;
 % UNICODING bulletinverse =: blacksquare ;
@@ -79,7 +78,7 @@
   /bullet /centigrade /dollaroldstyle /centoldstyle /florin /colonmonetary /won /textnaira
 % 0x90
   /textguarani /peseta /lira /textrecipe
-  /interrobang /interrobangdown /textdong /trademark
+  /interrobang /interrobangdown /dong /trademark
   /pertenthousand /paragraph /bahtthai /numero
   /textdiscount /estimated /bulletinverse /textservicemark
 % 0xA0
