@@ -15,6 +15,7 @@ usage() {
   echo "--integrals  | --nointegrals"
   echo "--swash      | --noswash"
   echo "--expanded   | --noexpanded"
+  echo "--kern       | --nokern"
   exit 1
 }
 
@@ -30,6 +31,7 @@ create_vietnamese=true
 create_integrals=true
 create_swash=true
 create_expanded=false
+create_kerned=true
 
 for opt in $*
 do
@@ -46,7 +48,10 @@ do
     --noswash)      create_swash=false;;
     --expanded)     create_expanded=true;;
     --noexpanded)   create_expanded=false;;
-    *)              echo "Unknown option $opt\n"; usage;;
+    --kern)         create_kerned=true;;
+    --nokern)       create_kerned=false;;
+    *)              echo "Unknown option $opt\n";
+                    usage;;
   esac
 done
 
@@ -99,16 +104,21 @@ make_enckern() {
       local enc=$(basename $e .enc)
       enc=${enc#mn-}
 
-      if [ -e "kerning/$1-$enc.kern" ]
+      if $create_kerned
       then
-        cat $e "kerning/$1-$enc.kern" >enc/mn-$1-$enc.enckern
-      else
-        if [ -e "kerning/$1.kern" ]
+        if [ -e "kerning/$1-$enc.kern" ]
         then
-          cat $e "kerning/$1.kern" >enc/mn-$1-$enc.enckern
+          cat $e "kerning/$1-$enc.kern" >enc/mn-$1-$enc.enckern
         else
-          cp $e enc/mn-$1-$enc.enckern
+          if [ -e "kerning/$1.kern" ]
+          then
+            cat $e "kerning/$1.kern" >enc/mn-$1-$enc.enckern
+          else
+            cp $e enc/mn-$1-$enc.enckern
+          fi
         fi
+      else
+        cp $e enc/mn-$1-$enc.enckern
       fi
     done
   fi
@@ -155,12 +165,11 @@ get_flags() {
 }
 get_ts_flags() {
   case $1 in
-      lf) ts_flags="-fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
-     osf) ts_flags="-fpnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
-     tlf) ts_flags="-ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
-    tosf) ts_flags="-ftnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+      lf) ts_flags="-fpnum $dong_flags --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
+     osf) ts_flags="-fpnum $dong_flags --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+     tlf) ts_flags="-ftnum $dong_flags --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
+    tosf) ts_flags="-ftnum $dong_flags --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
   esac
-  ts_flags="$ts_flags $dong_flags"
 }
 get_sc_flags() {
   case $1 in
@@ -184,22 +193,21 @@ get_sc_flags() {
 }
 get_sc_ts_flags() {
   case $1 in
-      lf) sc_ts_flags="-fpnum"
+      lf) sc_ts_flags="-fpnum $dong_flags"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
-     osf) sc_ts_flags="-fpnum -fsmcp"
+     osf) sc_ts_flags="-fpnum -fsmcp $dong_flags"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter=!'<Number>' -fonum";;
-     tlf) sc_ts_flags="-ftnum"
+     tlf) sc_ts_flags="-ftnum $dong_flags"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
-    tosf) sc_ts_flags="-ftnum -fsmcp"
+    tosf) sc_ts_flags="-ftnum -fsmcp $dong_flags"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -fonum";;
   esac
-  sc_ts_flags="$sc_ts_flags $dong_flags"
 }
 get_it_ot1_flags() {
   case "$1" in

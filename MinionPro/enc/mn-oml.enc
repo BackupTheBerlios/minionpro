@@ -1,7 +1,5 @@
 % TeX math italic encoding.
 %
-% LIGKERN 255 = skew ;
-%
 /MinionPro-OMLEncoding [          % now 256 chars follow
 % 0x0
 /Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon
@@ -31,7 +29,7 @@
 /x /y /z /dotlessi /dotlessj /weierstrass /vector /cyrflex
 % 0x80
 /integral /hbar /uniEFD5 /kappasymbolgreek /betasymbolgreek /afii10095 /afii10073 /eth
-/lozenge /uniF638 /.notdef /.notdef /.notdef /.notdef /.notdef ./notdef
+/lozenge /uniF638 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
@@ -45,5 +43,5 @@
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /space
 ] def
