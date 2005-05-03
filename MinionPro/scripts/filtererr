@@ -3,6 +3,7 @@
 #
 # [r] I had to round some heights/depths (pltotf, vptovf); maxima at end
 # [b] warning: no boundary character (otftotfm)
+# [e] has no encoding, ignoring kern removal; summary of characters at end
 use strict;
 use warnings;
 use List::Util qw(max);
@@ -34,6 +35,7 @@ my %rounded = (
     heights => 0,
     depths => 0,
 );
+my %no_encoding = ();
 
 while (<STDIN>) {
     s{(.*?)I had to round some (\w+) by ([\d.]+) units\.\n}[
@@ -49,10 +51,20 @@ while (<STDIN>) {
 	print_literal($1);
         print_error("b");
     ]e;
+    s{(.*?)otftotfm: (\./enc/[\w-]+\.enckern):\d+: warning: '(\w+)' has no encoding, ignoring kern removal\n}[
+	print_literal($1);
+	$no_encoding{$2}{$3}++;
+	print_error("e");
+    ]e;
     print_literal($_);
 }
 flush_errors();
 
 foreach (sort keys %rounded) {
     printf "I had to round some $_ by %.7f units.\n", $rounded{$_};
+}
+foreach my $enc_file (sort keys %no_encoding) {
+    print "$enc_file: warning: The following glyphs had no encoding: ";
+    print join ", ", sort keys %{$no_encoding{$enc_file}};
+    print ".\n";
 }
