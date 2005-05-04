@@ -1,11 +1,11 @@
-% \CheckSum{705}
+% \CheckSum{714}
 %\iffalse
 %<*driver>
 \ProvidesFile{fontaxes.dtx}
 %</driver>
 %<package>\ProvidesPackage{fontaxes}
 %<*driver|package>
-[2005/05/04 v0.1c Font selection axes]
+[2005/05/04 v0.1d Font selection axes]
 %</driver|package>
 %<*driver>
 \documentclass[draft]{ltxdoc}
@@ -132,7 +132,8 @@
 % \bigskip %
 % Table~\ref{tab:cmds} summarizes which commands set which values on which
 % axes.\par
-% \newcommand\nextaxis{\addlinespace[1\jot]}% %\begin{table}%
+% \newcommand\nextaxis{\addlinespace[1\jot]}%
+% \begin{table}\centering
 % \begin{tabular}{@{}lll@{}}
 % \toprule
 % command & axis & value\\
@@ -320,11 +321,14 @@
 \newcommand\fa@fv@prefix{fa@fv@switch@}
 \newcommand*\fa@fv@newoption[1]
   {\expandafter\newcommand\csname\fa@fv@prefix #1\endcsname}
+\fa@fv@newoption{text}        {\txfigures}
+\fa@fv@newoption{osf}         {\txfigures}
 \fa@fv@newoption{lining}      {\lnfigures}
 \fa@fv@newoption{lf}          {\lnfigures}
-\fa@fv@newoption{text}        {\txfigures}
 \fa@fv@newoption{tabular}     {\tbfigures\tabularmath}
+\fa@fv@newoption{tab}         {\tbfigures\tabularmath}
 \fa@fv@newoption{proportional}{\prfigures\proportionalmath}
+\fa@fv@newoption{prop}        {\prfigures\proportionalmath}
 %    \end{macrocode}
 % We simply iterate over the list of figure versions specified in the argument
 % to |\figureversion| and check if we have specified a matching option.
@@ -336,8 +340,9 @@
   \@for\fa@fv:=\fa@fv@list\do{%
     \@ifundefined{\fa@fv@prefix\fa@fv}{%
       \PackageWarning{fontaxes}%
-      {Unknown figure style `\fa@fv' specified as the argument to
-       \string\figureversion.\MessageBreak Figure style not changed.}%
+      {Unknown figure style `\fa@fv'\MessageBreak 
+       specified as the argument to \string\figureversion.\MessageBreak
+       Figure style not changed}%
     }{%
       \@nameuse{\fa@fv@prefix\fa@fv}%
     }%
@@ -1070,6 +1075,11 @@ Am \visible{\textssc{Anfang \textit{war}}} das Wort\\
 \visible{\tbfigures\lnfigures}12345 
   \visible\txfigures 67890\\
 \end{tabular}
+
+\begingroup
+\figureversion{osf,lf,tab,prop,  tabular,proportional   ,  text  ,lining,
+non-existent}
+\endgroup
 
 \subsection{Switch base family}
 
