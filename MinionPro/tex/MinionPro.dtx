@@ -137,7 +137,7 @@
 % The following options specify which version of the fonts you want to use.
 % The default settings are marked with a asterisk*.
 %
-% \settowidth{\optionswidth}{\option{mixedgreek}*}\relax
+% \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
 % \begin{options}
 %   \option{smallfamily} & use only regular and bold face\\
 %   \option{medfamily}* &  use semibold face in addition to \option{smallfamily} \\
@@ -164,10 +164,10 @@
 % different figure versions. Possible parameters are\?:
 %
 % \begin{options}
-%   \option{osf}          & textstyle figures\\
-%   \option{lf}           & lining figures\\
-%   \option{tabular}      & tabular figures\\
-%   \option{proportional} & proportional figures
+%   \option{text}, \option{osf}          & textstyle figures\\
+%   \option{lining}, \option{lf}         & lining figures\\
+%   \option{tabular}, \option{tab}       & tabular figures\\
+%   \option{proportional}, \option{prop} & proportional figures
 % \end{options}
 %
 % \subsubsection*{Calligraphic Fonts}
@@ -445,94 +445,16 @@
 %
 % \subsection{Font selection}
 %
-% \subsubsection{Additional shapes}
+% The font selection commands such as |\figureversion|, |\textsw|, and
+% |\textssc| are provided by the companion package \pkg{fontaxes}, which may be
+% useful for other font families as well.
 %
 %    \begin{macrocode}
-\newcommand\swdefault{sw}
-\newcommand\sscdefault{ssc}
-\DeclareRobustCommand\swshape
-  {\not@math@alphabet\swshape\relax
-   \fontshape\swdefault\selectfont}
-\DeclareRobustCommand\sscshape
-  {\not@math@alphabet\sscshape\relax
-   \fontshape\sscdefault\selectfont}
-\DeclareTextFontCommand{\textsw}{\swshape}
-\DeclareTextFontCommand{\textssc}{\sscshape}
+\RequirePackage{fontaxes}[2005/05/04]
 %    \end{macrocode}
 %
-% \subsubsection{Figure styles}
-%
-% \begin{macro}{\figureversion}
-% The command |\figureversion| is used to select different figure (digit)
-% styles. Valid figure styles that can be specified in the argument to
-% |\figureversion| are\?:
-%
-% \medskip\noindent
-% \begin{tabular}{ll}
-%   |lf|           & lining figures \\
-%   |osf|          & text figures \\
-%   |tabular|      & tabular figures (all glyphs have the same width, only useful for tables) \\
-%   |proportional| & proportional figures
-% \end{tabular}
-%
-% \medskip
-% First, we define what should be done when a specific argument to
-% |\figureversion| occurs.
+% We define additional short hands.
 %    \begin{macrocode}
-\newcommand\Mn@fv@prefix{Mn@fv@switch@}
-\newcommand*\Mn@fv@newoption[1]
-  {\expandafter\newcommand\csname\Mn@fv@prefix #1\endcsname}
-\Mn@fv@newoption{lf}          {\def\Mn@Text@FigB{LF}}
-\Mn@fv@newoption{osf}         {\def\Mn@Text@FigB{OsF}}
-\Mn@fv@newoption{tabular}     {\def\Mn@Text@FigA{T}\mathversion{tabular}}
-\Mn@fv@newoption{proportional}{\def\Mn@Text@FigA{}}
-%    \end{macrocode}
-% Then we iterate over the list of figure versions specified in the argument to
-% |\figureversion|. For each item of this list we next check whether the given
-% argument is the same as one of the predefined commands. This check is
-% basically done by converting the item into a command sequence name which
-% will then be expanded by \TeX.
-%    \begin{macrocode}
-\newcommand\Mn@fv@list{}
-\newcommand\Mn@fv{}
-\DeclareRobustCommand*\figureversion[1]{%
-  \edef\Mn@fv@list{\zap@space#1 \@empty}%
-  \@for\Mn@fv:=\Mn@fv@list\do{%
-    \@ifundefined{\Mn@fv@prefix\Mn@fv}{%
-      \PackageWarning{MinionPro}%
-      {Unknown figure style `\Mn@fv' specified as the argument to
-       \string\figureversion. Figure style not changed.}%
-    }{%
-      \@nameuse{\Mn@fv@prefix\Mn@fv}%
-    }%
-  }%
-  \fontfamily\Mn@Text@Family\selectfont
-}
-%    \end{macrocode}
-% We have made |\figureversion| robust to protect it in moving arguments (e.g.,
-% section titles). Additionally, we want it to be ignored when hyperref
-% is building \acro{PDF} strings (e.g., for bookmarks).
-%    \begin{macrocode}
-\AtBeginDocument{
-  \@ifpackageloaded{hyperref}{%
-    \pdfstringdefDisableCommands{%
-      \let\figureversion\@gobble
-    }%
-  }{}%
-  \UndeclareTextCommand{\textvisiblespace}{T1}%
-  \UndeclareTextCommand{\textcompwordmark}{T1}%
-  \UndeclareTextCommand{\textsterling}{T1}%
-  \UndeclareTextCommand{\j}{T1}%
-  \UndeclareTextCommand{\j}{LY1}%
-}
-%    \end{macrocode}
-% \end{macro}
-%
-% We define various short hands.
-%    \begin{macrocode}
-\newcommand*\tabularfigures[1]{{\figureversion{tabular}#1}}
-\newcommand*\liningfigures[1]{{\figureversion{lf}#1}}
-\newcommand*\textfigures[1]{{\figureversion{osf}#1}}
 \let\oldstylenums\textfigures
 %    \end{macrocode}
 %
@@ -685,6 +607,13 @@
 %\def\Qoppa{\reflectbox{P}}
 %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
 \let\Stigma\stigma
+\AtBeginDocument{
+  \UndeclareTextCommand{\textvisiblespace}{T1}%
+  \UndeclareTextCommand{\textcompwordmark}{T1}%
+  \UndeclareTextCommand{\textsterling}{T1}%
+  \UndeclareTextCommand{\j}{T1}%
+  \UndeclareTextCommand{\j}{LY1}%
+}
 %    \end{macrocode}
 %
 % \subsection{Integral symbols}
