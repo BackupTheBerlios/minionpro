@@ -238,8 +238,9 @@
 % |\jmath|, |\eth|, |\lozenge|, |\slashedzero|.
 %
 % \begin{sloppypar}
-% Split fractions can be typeset either using |\text|\textit{$\langle$number$\rangle$}|numerator|, 
-% |\text|\textit{$\langle$number$\rangle$}|denominator| and |\textfractionsolidus| or using the pre-composed 
+% Split fractions can be typeset either using |\text|\meta{number}|numerator|, 
+% |\text|\meta{number}|denominator| and |\textfractionsolidus| or using the
+% pre-composed 
 % fractions |\textonehalf|, |\textonequarter|, |\textthreequarters|, 
 % |\textonethird|, |\texttwothirds|, |\textoneeighth|, 
 % |\textthreeeighths|, |\textfiveeighths|, |\textseveneighths|.
@@ -1356,7 +1357,7 @@
 %
 %    \begin{macrocode}
 \newcommand\Mn@option@opticals{opticals}
-\newcommand\Mn@option@family{medfamily}
+\newcommand\Mn@option@fontset{medfamily}
 %
 \newdimen\Mn@option@normalsize
 \global\Mn@option@normalsize10pt
@@ -1365,9 +1366,9 @@
   \DeclareOption{slides}     {\let\Mn@option@opticals\CurrentOption}
   \DeclareOption{opticals}   {\let\Mn@option@opticals\CurrentOption}
   \DeclareOption{noopticals} {\let\Mn@option@opticals\CurrentOption}
-  \DeclareOption{smallfamily}{\let\Mn@option@family\CurrentOption}
-  \DeclareOption{medfamily}  {\let\Mn@option@family\CurrentOption}
-  \DeclareOption{fullfamily} {\let\Mn@option@family\CurrentOption}
+  \DeclareOption{smallfamily}{\let\Mn@option@fontset\CurrentOption}
+  \DeclareOption{medfamily}  {\let\Mn@option@fontset\CurrentOption}
+  \DeclareOption{fullfamily} {\let\Mn@option@fontset\CurrentOption}
 %
   \DeclareOption{normalsize}{%
     % idea stolen from microtype.dtx
@@ -1382,7 +1383,7 @@
   \ProcessOptions\relax
 \fi
 \otf@makeglobal{Mn@option@opticals}
-\otf@makeglobal{Mn@option@family}
+\otf@makeglobal{Mn@option@fontset}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -1426,13 +1427,18 @@
   }%
 }
 %    \end{macrocode}
-% This command is used in the |Declare...Family| commands.
+% These commands are used in the |Declare...Family| commands. They must be
+% expandable. |#3| is the default configuration.
 %    \begin{macrocode}
 \newcommand\Mn@UseConfig[2]{%
-  \@ifundefined{Mn@config@#1@#2}{}%
+  \Mn@UseConfigOrDefault{#1}{#2}{}%
+}
+\newcommand\Mn@UseConfigOrDefault[3]{%
+  \@ifundefined{Mn@config@#1@#2}{#3}%
     {\@nameuse{Mn@config@#1@#2}}%
 }
 \otf@makeglobal{Mn@UseConfig}
+\otf@makeglobal{Mn@UseConfigOrDefault}
 %    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
@@ -1452,31 +1458,31 @@
 %
 %    \begin{macrocode}
 \ifdim\Mn@option@normalsize<10.1pt
-  \Mn@AddToConfig{family/weight}{fullfamily/m}{
+  \Mn@AddToConfig{fontset/weight}{fullfamily/m}{
         <-6>    otf* [weight=Semibold]
        <6-8.5>  otf* [weight=Medium]
      <8.5->     otf* [weight=Regular]
   }
 \else
-  \Mn@AddToConfig{family/weight}{fullfamily/m}{
+  \Mn@AddToConfig{fontset/weight}{fullfamily/m}{
         <-6>    otf* [weight=Semibold]
        <6-10.1> otf* [weight=Medium]
     <10.1->     otf* [weight=Regular]
   }
 \fi
-\Mn@AddToConfig{family/weight}{medfamily/m}{
+\Mn@AddToConfig{fontset/weight}{medfamily/m}{
       <-6>    otf* [weight=Semibold]
      <6->     otf* [weight=Regular]
 }
-\Mn@AddToConfig{family/weight}{smallfamily/m}{
+\Mn@AddToConfig{fontset/weight}{smallfamily/m}{
       <->     otf* [weight=Regular]
 }
 %
-\Mn@AddToConfig{family/weight}{fullfamily/sb,medfamily/sb}{
+\Mn@AddToConfig{fontset/weight}{fullfamily/sb,medfamily/sb}{
       <-6>    otf* [weight=Bold]
      <6->     otf* [weight=Semibold]
 }
-\Mn@AddToConfig{family/weight}{smallfamily/sb}{
+\Mn@AddToConfig{fontset/weight}{smallfamily/sb}{
       <->     otf* [weight=Bold]
 }
 %
@@ -1509,107 +1515,76 @@
       <->     otf* MinionPro
 }
 %    \end{macrocode}
+%    
+%    \begin{macrocode}
+\Mn@AddToConfig{series-sub}{bx}{b}
+\Mn@AddToConfig{shape-sub}{sl}{it}
+\Mn@AddToConfig{shape-sub}{scsl}{scit}
+\Mn@AddToConfig{shape-sub}{sscsl}{sscit}
+\Mn@AddToConfig{shape-sub}{scsw}{scit}
+\Mn@AddToConfig{shape-sub}{sscsw}{sscit}
+%    \end{macrocode}
 %
 %    \begin{macrocode}
-\newcommand\Mn@DeclareFontShape[6][]{%
-  \DeclareFontShape{#2}{#3}{#4}{#5}{%
-    \Mn@UseConfig{opticals}     {\Mn@option@opticals}%
-    \Mn@UseConfig{family/weight}{\Mn@option@family/#4}%
-    \Mn@UseConfig{weight}       {#4}%
-    \Mn@UseConfig{shape}        {#5}%
-    \Mn@UseConfig{shape/#1}     {#5}%
-  }{#6}%
+\newcommand\Mn@DeclareFontShape[5][]{%
+  \edef\@tempa{%
+    \Mn@UseConfig{series-sub}{#4}\Mn@UseConfig{shape-sub}{#5}}%
+  \ifx\@tempa\@empty
+    \DeclareFontShape{#2}{#3}{#4}{#5}{%
+      \Mn@UseConfig{opticals}      {\Mn@option@opticals}%
+      \Mn@UseConfig{fontset/weight}{\Mn@option@fontset/#4}%
+      \Mn@UseConfig{weight}        {#4}%
+      \Mn@UseConfig{shape}         {#5}%
+    }{}%
+  \else
+    \DeclareFontShape{#2}{#3}{#4}{#5}{%
+      <->ssub*#3%
+      /\Mn@UseConfigOrDefault{series-sub}{#4}{#4}%
+      /\Mn@UseConfigOrDefault{shape-sub}{#5}{#5}%
+    }{}%
+  \fi
 }
 \otf@makeglobal{Mn@DeclareFontShape}
 \otf@makeglobal{\string\Mn@DeclareFontShape}
 %    \end{macrocode}
-% |#1| contains the encoding, |#2| the figure version.
+% |#1| contains the encoding, |#2| the family and figure version.
 % |#3|~and~|#4| are only needed for backwards compatibility.
 %    \begin{macrocode}
 \newcommand*\Mn@DeclareLargeFontFamily[4]{%
-  \Mn@DeclareSmallFontFamily  {#1}{#2}{}{}%
-  \DeclareFontFamily          {#1}{#2}{}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{sc}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{ssc}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{scit}  {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{sscit} {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{sw}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{sc}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{ssc}  {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{scit} {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{sscit}{}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{sw}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{sc}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{ssc}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{scit}  {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{sscit} {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{sw}    {}%
-  \DeclareFontShape           {#1}{#2}{m}{scsl}   {<->ssub*#2/m/scit}  {}%
-  \DeclareFontShape           {#1}{#2}{m}{scsw}   {<->sub*#2/m/scit}   {}%
-  \DeclareFontShape           {#1}{#2}{sb}{scsl}  {<->ssub*#2/sb/scit} {}%
-  \DeclareFontShape           {#1}{#2}{sb}{scsw}  {<->sub*#2/sb/scit}  {}%
-  \DeclareFontShape           {#1}{#2}{b}{scsl}   {<->ssub*#2/b/scit}  {}%
-  \DeclareFontShape           {#1}{#2}{b}{scsw}   {<->sub*#2/b/scit}   {}%
-  \DeclareFontShape           {#1}{#2}{m}{sscsl}  {<->ssub*#2/m/sscit} {}%
-  \DeclareFontShape           {#1}{#2}{m}{sscsw}  {<->sub*#2/m/sscit}  {}%
-  \DeclareFontShape           {#1}{#2}{sb}{sscsl} {<->ssub*#2/sb/sscit}{}%
-  \DeclareFontShape           {#1}{#2}{sb}{sscsw} {<->sub*#2/sb/sscit} {}%
-  \DeclareFontShape           {#1}{#2}{b}{sscsl}  {<->ssub*#2/b/sscit} {}%
-  \DeclareFontShape           {#1}{#2}{b}{sscsw}  {<->sub*#2/b/sscit}  {}%
+  \DeclareFontFamily   {#1}{#2}{}%
+  \Mn@DeclareFontShapes{#1}{#2}
+    {m,sb,b,bx} {n,it,sc,ssc,scit,sscit,sw,scsl,scsw,sscsl,sscsw,sl}%
 }%
 \otf@makeglobal{Mn@DeclareLargeFontFamily}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
 \newcommand*\Mn@DeclareSmallFontFamily[4]{%
-  \DeclareFontFamily          {#1}{#2}{}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{n}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{it}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{n}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{it}  {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{n}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{it}   {}%
-  \Mn@DeclareFontSubstitutions{#1}{#2}%
+  \DeclareFontFamily   {#1}{#2}{}%
+  \Mn@DeclareFontShapes{#1}{#2}
+    {m,sb,b,bx} {n,it,sl}%
 }
 \otf@makeglobal{Mn@DeclareSmallFontFamily}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
 \newcommand*\Mn@DeclareMathFontFamily[4]{%
-  \DeclareFontFamily          {#1}{#2}{\skewchar\font=255}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{n}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{it}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{sc}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{m}{scit} {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{n}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{it}  {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{sc}  {}%
-  \Mn@DeclareFontShape        {#1}{#2}{sb}{scit}{}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{n}    {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{it}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{sc}   {}%
-  \Mn@DeclareFontShape        {#1}{#2}{b}{scit} {}%
-  \Mn@DeclareFontSubstitutions{#1}{#2}%
-  \DeclareFontShape           {#1}{#2}{m}{scsl}  {<->ssub*#2/m/scit}{}%
-  \DeclareFontShape           {#1}{#2}{m}{scsw}  {<->sub*#2/m/scit}{}%
-  \DeclareFontShape           {#1}{#2}{sb}{scsl} {<->ssub*#2/sb/scit}{}%
-  \DeclareFontShape           {#1}{#2}{sb}{scsw} {<->sub*#2/sb/scit}{}%
-  \DeclareFontShape           {#1}{#2}{b}{scsl}  {<->ssub*#2/b/scit}{}%
-  \DeclareFontShape           {#1}{#2}{b}{scsw}  {<->sub*#2/b/scit}{}%
+  \DeclareFontFamily   {#1}{#2}{\skewchar\font=255}%
+  \Mn@DeclareFontShapes{#1}{#2}
+    {m,sb,b,bx} {n,it,sc,scit,scsl,scsw,sl}%
 }
 \otf@makeglobal{Mn@DeclareMathFontFamily}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\newcommand*\Mn@DeclareFontSubstitutions[2]{%
-  \DeclareFontShape           {#1}{#2}{bx}{n}  {<->ssub*#2/b/n}  {}%
-  \DeclareFontShape           {#1}{#2}{bx}{it} {<->ssub*#2/b/it} {}%
-  \DeclareFontShape           {#1}{#2}{m}{sl}  {<->ssub*#2/m/it} {}%
-  \DeclareFontShape           {#1}{#2}{sb}{sl} {<->ssub*#2/sb/it}{}%
-  \DeclareFontShape           {#1}{#2}{b}{sl}  {<->ssub*#2/b/it} {}%
-  \DeclareFontShape           {#1}{#2}{bx}{sl} {<->ssub*#2/b/it} {}%
+\newcommand*\Mn@DeclareFontShapes[4]{%
+  \@for\Mn@series:=#3\do{%
+    \@for\Mn@shape:=#4\do{%
+      \Mn@DeclareFontShape{#1}{#2}{\Mn@series}{\Mn@shape}%
+    }%
+  }%
 }
-\otf@makeglobal{Mn@DeclareFontSubstitutions}
+\otf@makeglobal{Mn@DeclareFontShapes}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
