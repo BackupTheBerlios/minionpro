@@ -6,7 +6,7 @@
 %<otfd>  {\ProvidesFile{otfontdef.sty}}
 %<otfd>  {\NeedsTeXFormat{LaTeX2e}\ProvidesPackage{otfontdef}}
 %<*otfd|driver>
-  [2005/04/20 v0.1b OpenType font definition]
+  [2005/05/05 v0.1c OpenType font definition]
 %</otfd|driver>
 %<*driver>
 \documentclass{ltxdoc}
@@ -309,6 +309,7 @@
 %
 % \begin{macro}{\otf@splitname@ext}
 % \begin{macro}{\otf@splitname@int}
+% \changes{v0.2}{2005/05/05}{Remove erroneous space token}
 %    \begin{macrocode}
 \newcommand\otf@splitname@ext{}
 \def\otf@splitname@ext#1-#2-#3\@empty{%
@@ -323,7 +324,7 @@
   \KV@otf@family{#1}%
   \def\@tempa{#2}%
   \ifx\@tempa\otf@Ornaments
-    \KV@otf@variant{orn}
+    \KV@otf@variant{orn}%
   \else
     \KV@otf@figures{#2}%
   \fi
