@@ -63,16 +63,21 @@
 \usepackage[british]{babel}
 \usepackage{array,ifthen,booktabs,pifont}
 
-\newcommand*\pkg[1]{\textsf{#1}}
+\newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}
-\newcommand*\option[1]{\textsf{#1}}
+\makeatletter
+\newcommand*\option{\@ifstar\option@default\option@}
+\newcommand*\option@default[1]{\option@{#1}*}
+\newcommand*\option@[1]{\textsf{#1}}
+\makeatother
 \newcommand*\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand*\?{\kern0.08em}
 
 \newlength\optionswidth
 
+\newcommand\tabindent{\noindent\hspace{2em}}
 \newenvironment{options}{%
-  \par\medskip\noindent\hspace{2em}%
+  \par\medskip\tabindent
   \begin{tabular}{@{}p{\optionswidth}l@{}}%
 }{%
   \end{tabular}%
@@ -80,6 +85,9 @@
 }
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
 
 \begin{document}
 \DocInput{MinionPro.dtx}
@@ -96,7 +104,7 @@
 %
 % \tableofcontents
 %
-% \section{Overview}
+% \section{Features}
 %
 % The \pkg{MinionPro} package provides support for the MinionPro
 % font family from Adobe.
@@ -105,7 +113,185 @@
 %   |\usepackage{MinionPro}|
 % \end{quote}
 %
+% \subsection{Options}
+%
+% \subsubsection{Selection of the fonts to be used}
+%
+% The following options specify which version of the fonts you want to use.
+% The default settings are marked with a asterisk*.
+%
+% \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
+% \begin{options}
+%   \option{smallfamily} & use only regular and bold face\\
+%   \option*{medfamily} &  use semibold face in addition to \option{smallfamily} \\
+%   \option{fullfamily} &  use medium face in addition to \option{medfamily}\\
+%   \option*{opticals}  &  use the optical sizes Caption/Subhead/Display\\
+%   \option{noopticals} &  use only the Text optical size\\
+%   \option{slides}     &  use only the Caption optical shape (useful for slides)
+% \end{options}
+%
+% \subsubsection{Figure selection}
+%
+% \begin{options}
+%   \option{textosf}     & use text figures in text mode\\
+%   \option{mathosf}     & use text figures in math mode\\
+%   \option*{osf}        & use text figures in text and math mode\\
+%   \option{textlf}      & use lining figures in text mode\\
+%   \option{mathlf}      & use lining figures in math mode\\
+%   \option{lf}          & use lining figures in text and math mode\\
+%   \option{mathtabular} & tabular figures in math mode
+% \end{options}
+%
+% \noindent
+% Inside the document the |\figureversion| command can be used to switch between
+% different figure versions. Possible parameters are\?:
+%
+% \begin{options}
+%   \option{text}, \option{osf}          & textstyle figures\\
+%   \option{lining}, \option{lf}         & lining figures\\
+%   \option{tabular}, \option{tab}       & tabular figures\\
+%   \option{proportional}, \option{prop} & proportional figures
+% \end{options}
+%
+% \subsubsection{Calligraphic Fonts}
+%
+% \begin{options}
+%   \option*{mnsy} & use the calligraphic font from MnSymbol\\
+%   \option{cmsy}  & take the calligraphic symbols from Computer Modern\\
+%   \option{swash} & use the swash captials from MinionPro\\
+%   \option{abx}   & use the calligraphic symbols provided by mathabx\?; \\
+%                  & this font contains also lower case letters, but it is not quite finished.
+% \end{options}
+%
+% \subsubsection{Blackboard and fraktur letters}
+%
+% \begin{options}
+%   \option*{amsbb}  & use the AMS blackboard font\\
+%   \option{pazobb}  & use the Pazo blackboard font (does not fit very well to MinionPro)\\
+%   \option{eufrak}* & use the Euler fraktur font
+% \end{options}
+%
+% \subsubsection{Greek letters}
+%
+% The following options specify whether you want to use upright or italic Greek
+% letters in math mode.
+%
+% \begin{options}
+%   \option*{mixedgreek} & uppercase Greek upright, lowercase Greek italic\\
+%   \option{romangreek}  & all Greek letters upright\\
+%   \option{italicgreek} & all Greek letters italic
+% \end{options}
+%
+% \noindent
+% Upright and italic greek letters are also directly accessible via the commands
+% |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
+%
+% \subsubsection{Miscellaneous options}
+%
+% \begin{options}
+% \iffalse  \option{protrude} &    enable character protrusion with pdflatex\\ \fi
+%   \option{minionint}
+%      & take the integral symbols from MinionPro, not from MnSymbol\?:\\
+%      & $\displaystyle\int$ instead of $\displaystyle\varint$
+% \end{options}
+%
+% \subsection{Additional font shapes and symbols}
+%
+% In addition to the normal small caps shape |sc| there is a letterspaced
+% version called~|ssc|. It is accessible via the commands |\sscshape| and
+% |\textssc|. In order to use the |ssc| shape throughout your document specify
+% |\renewcommand{\scdefault}{ssc}| in the preamble of your document.
+%
+% Swash capitals like \textsw{`Canadian Mountain Holidays'} are acessed
+% via the |sw| fontshape and the commands |\swshape| and |\textsw|.
+%
+% \begin{options}
+%   |sc|  & \textsc {This is a Sample Text}\\
+%   |ssc| & \textssc{This is a Sample Text}\\
+%   |sw|  & \textsw {This is a Sample Text}
+% \end{options}
+%
+% \noindent
+% \iffalse In order to make non-standard ligatures searchable in the \acro{PDF} generated by pdflatex,
+% \file{cmapex.sty} needs to be loaded before \file{fontenc.sty}.
+% \fi
+% The \pkg{MinionPro} package provides all symbols from the \pkg{MnSymbol} package.
+% Additionally, the following math symbols are made available\?:
+% 
+% \medskip\tabindent
+% \begingroup
+% \newcommand*\sym[1]{$#1$ & \ttfamily\string#1}%
+% \begin{tabular}{@{}*2{ll@{\qquad}}ll@{}}
+%   \sym\digamma & \sym\varkappa & \sym\varbeta \\
+%   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
+%   \sym\jmath & \sym\eth & \sym\lozenge \\
+%   \sym\slashedzero \\
+% \end{tabular}
+% \endgroup
+% \par\medskip
+%
+% \noindent
+% Split fractions can be typeset either using the individual glyphs
+% |\text|\meta{number}|numerator|, |\text|\meta{number}|denominator|, and
+% |\textfractionsolidus| or using the following pre-composed fractions:
+%
+% \medskip\tabindent
+% \begingroup
+% \newcommand*\sym[1]{\fontencoding{TS1}\selectfont#1 & \ttfamily\string#1}%
+% \begin{tabular}{@{}*1{ll@{\qquad}}ll@{}}
+% \sym\textonehalf & \sym\textonethird \\
+% \sym\texttwothirds & \sym\textonequarter \\
+% \sym\textthreequarters & \sym\textoneeighth \\ 
+% \sym\textthreeeighths & \sym\textfiveeighths \\
+% \sym\textseveneighths \\
+% \end{tabular}
+% \endgroup
+% \par\medskip
+%
+% \noindent
+% Ornaments can be accessed via the \pkg{pifont} package using the command
+% \begin{quote}
+%   |\Pisymbol{MinionPro-Ornaments}|\marg{int}
+% \end{quote}
+% The available glyphs are listed in the table below. Version 1.000 of the
+% MinionPro font provides only ornaments 1--23.
+%
+% \medskip\noindent
+% {\figureversion{tabular}\centering
+% \newcommand*\orn[1]{#1 & \Pisymbol{MinionPro-Ornaments}{#1}}\relax
+% \begin{tabular}{@{}*{3}{rl@{\qquad}}rl@{}}
+% \toprule
+%  number & glyph & number & glyph & number & glyph & number & glyph\\
+% \midrule
+% \orn{1}  & \orn{14} & \orn{27} & \orn{40}\\
+% \orn{2}  & \orn{15} & \orn{28} & \orn{41}\\
+% \orn{3}  & \orn{16} & \orn{29} & \orn{42}\\
+% \orn{4}  & \orn{17} & \orn{30} & \orn{43}\\
+% \orn{5}  & \orn{18} & \orn{31} & \orn{44}\\
+% \orn{6}  & \orn{19} & \orn{32} & \orn{45}\\
+% \orn{7}  & \orn{20} & \orn{33} & \orn{46}\\
+% \orn{8}  & \orn{21} & \orn{34} & \orn{47}\\
+% \orn{9}  & \orn{22} & \orn{35} & \orn{48}\\
+% \orn{10} & \orn{23} & \orn{36} & \orn{49}\\
+% \orn{11} & \orn{24} & \orn{37} & \orn{50}\\
+% \orn{12} & \orn{25} & \orn{38} & \orn{51}\\
+% \orn{13} & \orn{26} & \orn{39} & \\
+% \bottomrule
+% \end{tabular}\par}
+%
+% \subsection{Language support}
+%
+% The following encodings are supported\?:
+%
+% \medskip\tabindent
+% \begin{tabular}{@{}ll@{}}
+%   latin    & \acro{OT1}, \acro{T1}, \acro{TS1}, \acro{LY1}, \acro{T5}\\
+%   cyrillic & \acro{T2A}, \acro{T2B}, \acro{T2C}, \acro{X2}, \acro{OT2}\\
+%   greek    & \acro{LGR} (to be used with babel, including polutonikogreek)
+% \end{tabular}
+%
 % \section{Interference with other packages}
+% \label{sec:dcolumn}
 %
 % The \pkg{MinionPro} package automatically loads the following packages\?:
 % \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol}.
@@ -130,193 +316,44 @@
 % |\figureversion{tabular}| command to switch to tabular figures in front of
 % every table (much better, but also more work).
 %
-% \section{Options}
-%
-% \subsubsection*{Selection of the fonts to be used}
-%
-% The following options specify which version of the fonts you want to use.
-% The default settings are marked with a asterisk*.
-%
-% \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
-% \begin{options}
-%   \option{smallfamily} & use only regular and bold face\\
-%   \option{medfamily}* &  use semibold face in addition to \option{smallfamily} \\
-%   \option{fullfamily} &  use medium face in addition to \option{medfamily}\\
-%   \option{opticals}*  &  use the optical sizes Caption/Subhead/Display\\
-%   \option{noopticals} &  use only the Text optical size\\
-%   \option{slides}     &  use only the Caption optical shape (useful for slides)
-% \end{options}
-%
-% \subsubsection*{Figure selection}
-%
-% \begin{options}
-%   \option{textosf}     & use text figures in text mode\\
-%   \option{mathosf}     & use text figures in math mode\\
-%   \option{osf}*        & use text figures in text and math mode\\
-%   \option{textlf}      & use lining figures in text mode\\
-%   \option{mathlf}      & use lining figures in math mode\\
-%   \option{lf}          & use lining figures in text and math mode\\
-%   \option{mathtabular} & tabular figures in math mode
-% \end{options}
-%
-% \noindent
-% Inside the document the |\figureversion| command can be used to switch between
-% different figure versions. Possible parameters are\?:
-%
-% \begin{options}
-%   \option{text}, \option{osf}          & textstyle figures\\
-%   \option{lining}, \option{lf}         & lining figures\\
-%   \option{tabular}, \option{tab}       & tabular figures\\
-%   \option{proportional}, \option{prop} & proportional figures
-% \end{options}
-%
-% \subsubsection*{Calligraphic Fonts}
-%
-% \begin{options}
-%   \option{mnsy}* & use the calligraphic font from MnSymbol\\
-%   \option{cmsy}  & take the calligraphic symbols from Computer Modern\\
-%   \option{swash} & use the swash captials from MinionPro\\
-%   \option{abx}   & use the calligraphic symbols provided by mathabx\?; \\
-%                  & this font contains also lower case letters, but it is not quite finished.
-% \end{options}
-%
-% \subsubsection*{Blackboard and fraktur letters}
-%
-% \begin{options}
-%   \option{amsbb}*  & use the AMS blackboard font\\
-%   \option{pazobb}  & use the Pazo blackboard font (does not fit very well to MinionPro)\\
-%   \option{eufrak}* & use the Euler fraktur font
-% \end{options}
-%
-% \subsubsection*{Greek letters}
-%
-% The following options specify whether you want to use upright or italic Greek
-% letters in math mode.
-%
-% \begin{options}
-%   \option{mixedgreek}* & uppercase Greek upright, lowercase Greek italic\\
-%   \option{romangreek}  & all Greek letters upright\\
-%   \option{italicgreek} & all Greek letters italic
-% \end{options}
-%
-% \noindent
-% Upright and italic greek letters are also directly accessible via the commands
-% |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
-%
-% \subsubsection*{Miscellaneous options}
-%
-% \begin{options}
-% \iffalse  \option{protrude} &    enable character protrusion with pdflatex\\ \fi
-%   \option{minionint}
-%      & take the integral symbols from MinionPro instead of the MnSymbol\?:\\
-%      & $\displaystyle\int$ instead of $\displaystyle\varint$
-% \end{options}
-%
-% \section{Additional font shapes and symbols}
-%
-% In addition to the normal small caps shape |sc| there is a letterspaced
-% version called~|ssc|. It is accessible via the commands |\sscshape| and
-% |\textssc|. In order to use the |ssc| shape throughout your document specify
-% |\renewcommand{\scdefault}{ssc}| in the preamble of your document.
-%
-% Swash capitals like \textsw{`Canadian Mountain Holidays'} are acessed
-% via the |sw| fontshape and the commands |\swshape| and |\textsw|.
-%
-% \begin{options}
-%   |sc|  & \textsc {This is a Sample Text}\\
-%   |ssc| & \textssc{This is a Sample Text}\\
-%   |sw|  & \textsw {This is a Sample Text}
-% \end{options}
-%
-% \noindent
-% \iffalse In order to make non-standard ligatures searchable in the \acro{PDF} generated by pdflatex,
-% \file{cmapex.sty} needs to be loaded before \file{fontenc.sty}.
-% \fi
-% The \pkg{MinionPro} package provides all symbols from the \pkg{MnSymbol} package.
-% Additionally, the following math symbols are made availabe\?:
-% |\digamma|, |\varkappa|, |\varbeta|, |\backepsilon|, |\varbackepsilon|, |\hbar|,
-% |\jmath|, |\eth|, |\lozenge|, |\slashedzero|.
-%
-% \begin{sloppypar}
-% Split fractions can be typeset either using |\text|\meta{number}|numerator|, 
-% |\text|\meta{number}|denominator| and |\textfractionsolidus| or using the
-% pre-composed 
-% fractions |\textonehalf|, |\textonequarter|, |\textthreequarters|, 
-% |\textonethird|, |\texttwothirds|, |\textoneeighth|, 
-% |\textthreeeighths|, |\textfiveeighths|, |\textseveneighths|.
-% \end{sloppypar}
-%
-% Ornaments can be accessed via the \pkg{pifont} package using the command
-% \begin{quote}
-%   |\Pisymbol{MinionPro-Ornaments}|\marg{int}
-% \end{quote}
-% The available glyphs are listed in the table below. Version 1.000 of the
-% MinionPro font provides only ornaments 1--23.
-%
-% \medskip\noindent
-% {\figureversion{tabular}\centering
-% \newcommand*\sym[1]{\Pisymbol{MinionPro-Ornaments}{#1}}\relax
-% \begin{tabular}{@{}*{3}{rl@{\qquad}}rl@{}}
-% \toprule
-%  number & glyph & number & glyph & number & glyph & number & glyph\\
-% \midrule
-%  1 & \sym{1}  & 14 & \sym{14} & 27 & \sym{27} & 40 & \sym{40}\\
-%  2 & \sym{2}  & 15 & \sym{15} & 28 & \sym{28} & 41 & \sym{41}\\
-%  3 & \sym{3}  & 16 & \sym{16} & 29 & \sym{29} & 42 & \sym{42}\\
-%  4 & \sym{4}  & 17 & \sym{17} & 30 & \sym{30} & 43 & \sym{43}\\
-%  5 & \sym{5}  & 18 & \sym{18} & 31 & \sym{31} & 44 & \sym{44}\\
-%  6 & \sym{6}  & 19 & \sym{19} & 32 & \sym{32} & 45 & \sym{45}\\
-%  7 & \sym{7}  & 20 & \sym{20} & 33 & \sym{33} & 46 & \sym{46}\\
-%  8 & \sym{8}  & 21 & \sym{21} & 34 & \sym{34} & 47 & \sym{47}\\
-%  9 & \sym{9}  & 22 & \sym{22} & 35 & \sym{35} & 48 & \sym{48}\\
-% 10 & \sym{10} & 23 & \sym{23} & 36 & \sym{36} & 49 & \sym{49}\\
-% 11 & \sym{11} & 24 & \sym{24} & 37 & \sym{37} & 50 & \sym{50}\\
-% 12 & \sym{12} & 25 & \sym{25} & 38 & \sym{38} & 51 & \sym{51}\\
-% 13 & \sym{13} & 26 & \sym{26} & 39 & \sym{39} & \\
-% \bottomrule
-% \end{tabular}\par}
-%
-% \section{Language support}
-%
-% The following encodings are supported\?:
-%
-% \medskip\noindent\hspace{3em}
-% \begin{tabular}{@{}ll@{}}
-%   latin    & \acro{OT1}, \acro{T1}, \acro{TS1}, \acro{LY1}, \acro{T5}\\
-%   cyrillic & \acro{T2A}, \acro{T2B}, \acro{T2C}, \acro{X2}, \acro{OT2}\\
-%   greek    & \acro{LGR} (to be used with babel, including polutonikogreek)
-% \end{tabular}
-%
 % \StopEventually{}
 %
 % \section{The main style file}
-%
-% \subsection{Options}
 %
 %    \begin{macrocode}
 %<*style>
 %\RequirePackage{MinionPro-Protrude}
 %
 %\DeclareOption{protrude}{\enableprotruding}
-
-\newcommand\Mn@minionint@version{}
-\newcommand\Mn@minionintbold@version{Semibold}
+%    \end{macrocode}
+%
+% \subsection{Options}
+%
+% \subsubsection{Font sets}
+% The package \pkg{MinionPro-FontDef} adapts the font definitions to the
+% requested font set. So we simply pass on the relevant options\?; only
+% MinionPro integrals are handled here in \pkg{MinionPro}.
+%    \begin{macrocode}
+\newcommand\Mn@minionint@opticals{}
+\newcommand\Mn@minionint@bold{-Semibold}
 \DeclareOption{slides}{\PassOptionsToPackage{slides}{MinionPro-FontDef}}
 \DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
 \DeclareOption{noopticals}{%
   \PassOptionsToPackage{noopticals}{MinionPro-FontDef}%
-  \def\Mn@minionint@version{-NoOpticals}%
-  \def\Mn@minionintbold@version{Semibold-NoOpticals}}
-
+  \def\Mn@minionint@opticals{-NoOpticals}}%
 \DeclareOption{smallfamily}{%
-  \def\Mn@minionint@version{-NoOpticals}%
-  \def\Mn@minionintbold@version{Bold-NoOpticals}%
-  \PassOptionsToPackage{smallfamily,noopticals}{MinionPro-FontDef}}
+%    \end{macrocode}
+% In the case of \option{smallfamily} it is unlikely that opticals are
+% available.
+%    \begin{macrocode}
+  \ExecuteOptions{noopticals}%
+  \def\Mn@minionint@bold{-Bold}%
+  \PassOptionsToPackage{smallfamily}{MinionPro-FontDef}}
 \DeclareOption{medfamily}{\PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
 \DeclareOption{fullfamily}{\PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
 %    \end{macrocode}
 %
-% \subsection{Figure style}
+% \subsubsection{Figure style}
 %
 %    \begin{macrocode}
 \newcommand\Mn@Text@FigA{}
@@ -326,24 +363,29 @@
 \newcommand\Mn@Text@Family{MinionPro-\Mn@Text@Fig}
 \newcommand\Mn@Math@Family{MinionPro-\Mn@Math@Fig}
 \newcommand\Mn@Math@TFamily{MinionPro-T\Mn@Math@Fig}
-
+%    \end{macrocode}
+% 
+%    \begin{macrocode}
 \DeclareOption{textosf}{\def\Mn@Text@FigB{OsF}}
-\DeclareOption{textlf}{\def\Mn@Text@FigB{LF}}
+\DeclareOption{textlf} {\def\Mn@Text@FigB{LF}}
 \DeclareOption{mathosf}{\def\Mn@Math@Fig{OsF}}
-\DeclareOption{mathlf}{\def\Mn@Math@Fig{LF}}
-\DeclareOption{osf}{\def\Mn@Text@FigB{OsF}\def\Mn@Math@Fig{OsF}}
-\DeclareOption{lf}{\def\Mn@Text@FigB{LF}\def\Mn@Math@Fig{LF}}
+\DeclareOption{mathlf} {\def\Mn@Math@Fig{LF}}
+\DeclareOption{osf}{\ExecuteOptions{textosf,mathosf}}
+\DeclareOption{lf} {\ExecuteOptions{textlf,mathlf}}
 \DeclareOption{mathtabular}{\let\Mn@Math@Family\Mn@Math@TFamily}
 %    \end{macrocode}
 %
-% \subsection{Calligraphic fonts}
+% \subsubsection{Calligraphic fonts}
 %
+% Most options are handled by \pkg{MnSymbol}.
 %    \begin{macrocode}
-\newcommand\Mn@load@cal{}
-
 \DeclareOption{mnsy}{\PassOptionsToPackage{mnsy}{MnSymbol}}
 \DeclareOption{cmsy}{\PassOptionsToPackage{cmsy}{MnSymbol}}
 \DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
+%    \end{macrocode}
+% This hook is going to be executed once the math versions have been set up.
+%    \begin{macrocode}
+\newcommand\Mn@load@cal{}
 \DeclareOption{swash}{
   \def\Mn@load@cal{
     \DeclareMathAlphabet\mathcal     {T1}{\Mn@Math@Family} {m}{sw}
@@ -353,8 +395,10 @@
 }
 %    \end{macrocode}
 %
-% \subsection{Greek letters}
+% \subsubsection{Greek letters}
 %
+% |\Mn@Greek@Rm|, |\Mn@Greek@Mix|, and |\Mn@Greek@It| are defined below in
+% section~\ref{sec:greek} before |\Mn@Greek@Shape| is executed.
 %    \begin{macrocode}
 \newcommand\Mn@Greek@Shape{}
 \DeclareOption{romangreek}{\def\Mn@Greek@Shape{\Mn@Greek@Rm}}
@@ -362,7 +406,7 @@
 \DeclareOption{italicgreek}{\def\Mn@Greek@Shape{\Mn@Greek@It}}
 %    \end{macrocode}
 %
-% \subsection{Blackbord bold and fraktur fonts}
+% \subsubsection{Blackbord bold and fraktur fonts}
 %
 %    \begin{macrocode}
 \newcommand\Mn@load@amsbb{
@@ -373,7 +417,9 @@
   \DeclareFontFamily{T1}{fplmbb}{}
   \DeclareFontShape{T1}{fplmbb}{m}{n}{ <->s*[0.92] fplmbb }{}
   \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \newcommand\Mn@load@wbfrak{
   \let\mathfrak\undefined
   \DeclareMathAlphabet\mathfrak     {T1}{DS-Wartburg-Fraktur}{m}{n}
@@ -382,32 +428,46 @@
   \SetMathAlphabet\mathfrak{boldtabular}{T1}{DS-Wartburg-Fraktur}{b}{n}}
 \newcommand\Mn@load@eufrak{
   \RequirePackage{eufrak}}
-
-\DeclareOption{amsbb}{\let\Mn@load@bb\Mn@load@amsbb}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\DeclareOption{amsbb} {\let\Mn@load@bb\Mn@load@amsbb}
 \DeclareOption{pazobb}{\let\Mn@load@bb\Mn@load@pazobb}
 \DeclareOption{wbfrak}{\let\Mn@load@frak\Mn@load@wbfrak}
 \DeclareOption{eufrak}{\let\Mn@load@frak\Mn@load@eufrak}
 %    \end{macrocode}
 %
-% \subsection{Integrals}
+% \subsubsection{Integrals}
 %
 %    \begin{macrocode}
-\newcommand\Mn@Decl@Ints{}
-
-\DeclareOption{minionint}{\def\Mn@Decl@Ints{\Mn@Decl@Minion@Ints}}
-
+\newcommand\Mn@load@integrals{}
+\DeclareOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
+%    \end{macrocode}
+% 
+% \subsubsection{Defaults}
+%
+%    \begin{macrocode}
 \ExecuteOptions{osf,mixedgreek,amsbb,eufrak}
 \ProcessOptions\relax
-
-\RequirePackage{MnSymbol,MinionPro-FontDef}
 %    \end{macrocode}
 %
 % \subsection{Font declarations}
 %
 %    \begin{macrocode}
+\RequirePackage{MnSymbol,MinionPro-FontDef}
+%    \end{macrocode}
+% By default, we use |sb| for the bold series. If |MinionPro-Semibold| is not
+% available this might internally be mapped to |MinionPro-Bold| (see
+% \pkg{MinionPro-FontDef}). 
+%    \begin{macrocode}
 \renewcommand\rmdefault{\Mn@Text@Family}
 \renewcommand\bfdefault{sb}
-
+%    \end{macrocode}
+%
+% \subsubsection{Math versions}
+%
+% Redefine the standard math versions |normal| and |bold|.
+%    \begin{macrocode}
 \DeclareSymbolFont{operators}      {T1}{\Mn@Math@Family} {m}{n}
 \DeclareSymbolFont{letters}       {OML}{\Mn@Math@Family} {m}{it}
 \DeclareSymbolFont{rmletters}     {OML}{\Mn@Math@Family} {m}{n}
@@ -417,7 +477,11 @@
 \DeclareMathAlphabet\mathbf        {T1}{\Mn@Math@Family} {b}{n}
 \DeclareMathAlphabet\mathit        {T1}{\Mn@Math@Family} {m}{it}
 \SetMathAlphabet\mathit  {bold}    {T1}{\Mn@Math@Family} {b}{it}
-
+%    \end{macrocode}
+% Extra math versions |tabular| and |boldtabular|, which use tabular figures
+% instead of proportional ones. These math versions can be useful in tables
+% (cf.\ section~\ref{sec:dcolumn}).
+%    \begin{macrocode}
 \DeclareMathVersion{tabular}
 \SetSymbolFont{operators}{tabular} {T1}{\Mn@Math@TFamily}{m}{n}
 \SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
@@ -427,7 +491,9 @@
 \SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@TFamily}{b}{it}
 \SetSymbolFont{rmletters}{boldtabular}{OML}{\Mn@Math@TFamily}{b}{n}
 \SetMathAlphabet\mathit  {boldtabular} {T1}{\Mn@Math@TFamily}{b}{it}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
 \DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
 \DeclareMathAccent{\hat}     {\mathalpha}{operators}{2}
@@ -438,7 +504,9 @@
 \DeclareMathAccent{\breve}   {\mathalpha}{operators}{8}
 \DeclareMathAccent{\bar}     {\mathalpha}{operators}{9}
 \DeclareMathAccent{\dot}     {\mathalpha}{operators}{10}
-
+%    \end{macrocode}
+% Execute the hooks set up above to load the various math alphabets.
+%    \begin{macrocode}
 \Mn@load@bb
 \Mn@load@frak
 \Mn@load@cal
@@ -453,26 +521,29 @@
 %    \begin{macrocode}
 \RequirePackage{fontaxes}[2005/05/04]
 %    \end{macrocode}
-%
-% We define additional short hands.
+% We define an additional short hand.
 %    \begin{macrocode}
 \let\oldstylenums\textfigures
 %    \end{macrocode}
 %
 % \subsection{Greek letters}
+% \label{sec:greek}
 %
 % We provide math-mode commands for each greek letter, both italic and upright.
 % Furthermore, there are three commands to select the default version of the
 % letters (all upright, all italic, or capitals upright and lowercase italic).
 %
 % While delaring the greek letters we collect the uppercase and lowercase letters
-% in two lists. (We can distinguish them by the first letter of their name.)
+% in two lists. (We distinguish them by the first letter of their name.)
 % These lists are used to select the different versions.
 %    \begin{macrocode}
 \newcommand\Mn@greek@list@upper{}
 \newcommand\Mn@greek@list@lower{}
 \let\Mn@greek@list@upper\@gobble
 \let\Mn@greek@list@lower\@gobble
+%    \end{macrocode}
+% This macro holds one of the two list names. 
+%    \begin{macrocode}
 \newcommand\Mn@greek@list{}
 \newcommand*\Mn@greek@letter[2]{%
   \expandafter\DeclareMathSymbol
@@ -484,6 +555,9 @@
     Mn@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
   \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
 }
+%    \end{macrocode}
+% We can now declare the greek letters.
+%    \begin{macrocode}
 \Mn@greek@letter{Gamma}         {"00}
 \Mn@greek@letter{Delta}         {"01}
 \Mn@greek@letter{Theta}         {"02}
@@ -524,6 +598,10 @@
 \Mn@greek@letter{varrho}        {"25}
 \Mn@greek@letter{varsigma}      {"26}
 \Mn@greek@letter{varphi}        {"27}
+%    \end{macrocode}
+% Some of the following symbols are not really greek letters but are treated in
+% the same way.
+%    \begin{macrocode}
 \Mn@greek@letter{hbar}          {"81}
 \Mn@greek@letter{digamma}       {"82}
 \Mn@greek@letter{varkappa}      {"83}
@@ -554,7 +632,9 @@
   \Mn@greek@select{up}{upper}%
   \Mn@greek@select{it}{lower}%
 }
-
+%    \end{macrocode}
+% Finally initialize the greek letters.
+%    \begin{macrocode}
 \Mn@Greek@Shape
 %    \end{macrocode}
 %
@@ -566,8 +646,9 @@
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
 \DeclareMathSymbol{\lozenge}    {\mathord}{letters}{"88}
 \DeclareMathSymbol{\slashedzero}{\mathord}{rmletters}{"89}
-
-\def\textcelsius{\textdegree C}
+%    \end{macrocode}
+%    \begin{macrocode}
+\DeclareTextCommand{\textcelsius}{TS1}{\textdegree C}
 \DeclareTextSymbol{\textzeronumerator}   {TS1}{192}
 \DeclareTextSymbol{\textonenumerator}    {TS1}{193}
 \DeclareTextSymbol{\texttwonumerator}    {TS1}{194}
@@ -621,31 +702,33 @@
 %
 % We can also replace the integral signs from MnSymbol by those of MinionPro.
 % The following definitions provide this as an option.
-%
 %    \begin{macrocode}
 \newcommand\Mn@Decl@Minion@Ints{%
 %    \end{macrocode}
 % Replace |MnSymbolF| by |MnSymbolFI|.
 %    \begin{macrocode}
   \DeclareFontFamily{U}{MnSymbolFI}{}
-
   \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
-      <-6>  MnSymbolFI\Mn@minionint@version5
-     <6-7>  MnSymbolFI\Mn@minionint@version6
-     <7-8>  MnSymbolFI\Mn@minionint@version7
-     <8-9>  MnSymbolFI\Mn@minionint@version8
-     <9-10> MnSymbolFI\Mn@minionint@version9
-    <10-12> MnSymbolFI\Mn@minionint@version10
-    <12->   MnSymbolFI\Mn@minionint@version12}{}
+      <-6>  MnSymbolFI\Mn@minionint@opticals5
+     <6-7>  MnSymbolFI\Mn@minionint@opticals6
+     <7-8>  MnSymbolFI\Mn@minionint@opticals7
+     <8-9>  MnSymbolFI\Mn@minionint@opticals8
+     <9-10> MnSymbolFI\Mn@minionint@opticals9
+    <10-12> MnSymbolFI\Mn@minionint@opticals10
+    <12->   MnSymbolFI\Mn@minionint@opticals12
+  }{}
   \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
-      <-6>  MnSymbolFI-\Mn@minionintbold@version5
-     <6-7>  MnSymbolFI-\Mn@minionintbold@version6
-     <7-8>  MnSymbolFI-\Mn@minionintbold@version7
-     <8-9>  MnSymbolFI-\Mn@minionintbold@version8
-     <9-10> MnSymbolFI-\Mn@minionintbold@version9
-    <10-12> MnSymbolFI-\Mn@minionintbold@version10
-    <12->   MnSymbolFI-\Mn@minionintbold@version12}{}
-
+      <-6>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals5
+     <6-7>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals6
+     <7-8>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals7
+     <8-9>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals8
+     <9-10> MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals9
+    <10-12> MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals10
+    <12->   MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals12
+  }{}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
   \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
   \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
 %    \end{macrocode}
@@ -687,13 +770,15 @@
   \let\intop\tint
   \let\ointop\toint
 }
-
-\Mn@Decl@Ints
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\Mn@load@integrals
 %    \end{macrocode}
 %
 % \subsection{Logos}
 %
-% correct logos
+% Correct logos
 %    \begin{macrocode}
 \def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
 \DeclareRobustCommand{\LaTeX}{L\kern-.32em%
@@ -711,7 +796,7 @@
 % \subsection{AMS}
 %
 % Fix a bug in \pkg{amsmath.sty} which does not support
-% math fonts without skew char.
+% math fonts without a skew char.
 %    \begin{macrocode}
 \def\macc@set@skewchar#1{%
   \begingroup
@@ -1130,7 +1215,7 @@
 % \subsection{\pkg{microtype} support}
 %
 % The \pkg{microtype} configuration. All four MinionPro families use the same
-% file.
+% file (cf.\ section~\ref{sec:fontdef}).
 %    \begin{macrocode}
 %<*mtcfg>
 \SetProtrusion
@@ -1168,7 +1253,9 @@
     \textquotedblleft = {380,250},  \textquotedblright = {250,380},
     \textquoteleft    = {670,450},  \textquoteright    = {450,670},
   }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \SetProtrusion
   [ name     = MinionPro-T1-Roman,
     load     = MinionPro-OT1-Roman ]
@@ -1185,7 +1272,9 @@
     \guilsinglleft  = {500,360},  \guilsinglright = {360,500},
     \guillemotleft  = {320,230},  \guillemotright = {230,320},
   }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \SetProtrusion
   [ name     = MinionPro-OT1-Italic]
   { encoding = OT1,
@@ -1245,7 +1334,9 @@
     \textendash       = {400,500},  \textemdash        = {220,280},
     \textquotedblleft = {520,130},  \textquotedblright = {520,130},
   }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \SetProtrusion
   [ name     = MinionPro-T1-Italic,
     load     = MinionPro-OT1-Italic ]
@@ -1271,7 +1362,8 @@
   }
 %    \end{macrocode}
 %
-% We have no protruding values for small caps yet.
+% We have no protruding values for small caps yet. The following stubs are
+% unnecessary at the moment, but they are here as a reminder.
 %
 %    \begin{macrocode}
 \SetProtrusion
@@ -1280,7 +1372,9 @@
     family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
     shape    = {sc,ssc} }
   {}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \SetProtrusion
   [ name     = MinionPro-T1-Smallcaps,
     load     = MinionPro-OT1-Smallcaps ]
@@ -1288,14 +1382,18 @@
     family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
     shape    = {sc,ssc} }
   {}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \SetProtrusion
   [ name     = MinionPro-OT1-SmallcapsItalic ]
   { encoding = OT1,
     family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
     shape    = {scit,sscit} }
   {}
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \SetProtrusion
   [ name     = MinionPro-T1-SmallcapsItalic,
     load     = MinionPro-OT1-SmallcapsItalic ]
@@ -1315,17 +1413,18 @@
 % that we do not know in which context the code is executed. Therefore, we have
 % to define all non-private commands as globals.
 %
+% \subsection{The rewritten font definition package}
+% \label{sec:fontdef}
+%
 % \makeatletter
 % \newcommand*\exampleconfig[2]{%
-%   \begin{enumerate}%
-%   \item{\ttfamily\expandafter\string\csname Mn@config@#1@#2\endcsname}
-%   \item{\ttfamily\expandafter\expandafter
-%   \expandafter\strip@prefix
-%   \expandafter\meaning
-%   \csname Mn@config@#1@#2\endcsname}
-%   \item{\ttfamily\edef\@tempa{\Mn@UseConfig{#1}{#2}}%
-%   \expandafter\strip@prefix\meaning\@tempa}
-%   \end{enumerate}%
+%   \begin{quote}\ttfamily
+%   \expandafter\string\csname Mn@config@#1@#2\endcsname\par
+%   \expandafter\expandafter\expandafter\strip@prefix
+%   \expandafter\meaning\csname Mn@config@#1@#2\endcsname\par
+%   \edef\@tempa{\Mn@UseConfig{#1}{#2}}%
+%   \expandafter\strip@prefix\meaning\@tempa
+%   \end{quote}%
 % }%
 % \makeatother
 %
@@ -1338,7 +1437,10 @@
 %    \begin{macrocode}
 %<*fontdef>
 \ifx\Mn@DeclareFontShape\@undefined\else\endinput\fi
-%
+%    \end{macrocode}
+% We distinguish between being loaded directly or via |\usepackage| in the
+% preamble by checking |\@nodocument|.
+%    \begin{macrocode}
 \ifx\@nodocument\relax
   \input{otfontdef.sty}
 \else
@@ -1347,21 +1449,22 @@
 \fi
 %    \end{macrocode}
 % Reset |\escapechar| (which is set to $-1$ in \acro{FD} files) to make
-% |\newcommand| work. The additional group does not harm then\?; we have to
+% |\newcommand| work. The additional group does not harm\?; we have to
 % make the important commands global anyway.
 %    \begin{macrocode}
 \ifx\@nodocument\relax
   \begingroup\escapechar`\\
 \fi
 %    \end{macrocode}
-%
+% These are the default values if it is impossible to process options.
 %    \begin{macrocode}
 \newcommand\Mn@option@opticals{opticals}
 \newcommand\Mn@option@fontset{medfamily}
-%
 \newdimen\Mn@option@normalsize
 \global\Mn@option@normalsize10pt
+%    \end{macrocode}
 %
+%    \begin{macrocode}
 \ifx\@nodocument\relax\else
   \DeclareOption{slides}     {\let\Mn@option@opticals\CurrentOption}
   \DeclareOption{opticals}   {\let\Mn@option@opticals\CurrentOption}
@@ -1369,22 +1472,29 @@
   \DeclareOption{smallfamily}{\let\Mn@option@fontset\CurrentOption}
   \DeclareOption{medfamily}  {\let\Mn@option@fontset\CurrentOption}
   \DeclareOption{fullfamily} {\let\Mn@option@fontset\CurrentOption}
-%
+%    \end{macrocode}
+% The method to determine the main font size is inspired by \pkg{microtype}'s
+% implementation.
+%    \begin{macrocode}
   \DeclareOption{normalsize}{%
-    % idea stolen from microtype.dtx
     \begingroup
     \def\set@fontsize#1#2#3#4\@nil{%
       \@defaultunits\global\Mn@option@normalsize#2pt\relax\@nnil}%
     \normalsize\@nil
     \endgroup
   }
-%
   \ExecuteOptions{medfamily,opticals}
   \ProcessOptions\relax
 \fi
+%    \end{macrocode}
+% We use |\otf@makeglobal| from \pkg{otfontdef} to ``export'' the definitions
+% that are needed globally.
+%    \begin{macrocode}
 \otf@makeglobal{Mn@option@opticals}
 \otf@makeglobal{Mn@option@fontset}
 %    \end{macrocode}
+% 
+% \subsubsection{Configuration database}
 %
 %    \begin{macrocode}
 \newcount\Mn@config@cnt
@@ -1394,11 +1504,8 @@
 % These commands help in setting up the configuration database. They do not
 % need to be global. But the config database itself has to be.
 %
-% Let us look at an example how the configuration database looks internally for
-% $(|shape|, |sw|)$, which is specified below in three steps. The following
-% lines show different depths of expansion of the macro |\Mn@config@shape@sw|,
-% which finally yields the complete configuration\?:
-% \exampleconfig{shape}{sw}
+% |#3| is added to all instances listed in |#2| of configuration class |#1|.
+% |#3| is read with \acro{NFSS} catcodes.
 %    \begin{macrocode}
 \newcommand\Mn@AddToConfig{%
   \begingroup
@@ -1427,8 +1534,15 @@
   }%
 }
 %    \end{macrocode}
-% These commands are used in the |Declare...Family| commands. They must be
-% expandable. |#3| is the default configuration.
+% Let us look at an example how the configuration database looks internally for
+% $(|shape|, |sw|)$, which is specified below in three steps. The following
+% lines show different depths of expansion of the macro |\Mn@config@shape@sw|,
+% which finally yields the complete configuration\?:
+% \exampleconfig{shape}{sw}
+% 
+% The following commands are used in the |Declare...Family| commands to access
+% the previously built configuration database. They must be expandable. |#3| is
+% used as a default if no entry is found in the database.
 %    \begin{macrocode}
 \newcommand\Mn@UseConfig[2]{%
   \Mn@UseConfigOrDefault{#1}{#2}{}%
@@ -1524,21 +1638,23 @@
 \Mn@AddToConfig{shape-sub}{scsw}{scit}
 \Mn@AddToConfig{shape-sub}{sscsw}{sscit}
 %    \end{macrocode}
+% 
+% \subsubsection{Declaration of font families and shapes}
 %
 %    \begin{macrocode}
-\newcommand\Mn@DeclareFontShape[5][]{%
+\newcommand\Mn@DeclareFontShape[6][]{%
   \edef\@tempa{%
     \Mn@UseConfig{series-sub}{#4}\Mn@UseConfig{shape-sub}{#5}}%
   \ifx\@tempa\@empty
-    \DeclareFontShape{#2}{#3}{#4}{#5}{%
+    \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
       \Mn@UseConfig{opticals}      {\Mn@option@opticals}%
       \Mn@UseConfig{fontset/weight}{\Mn@option@fontset/#4}%
       \Mn@UseConfig{weight}        {#4}%
       \Mn@UseConfig{shape}         {#5}%
     }{}%
   \else
-    \DeclareFontShape{#2}{#3}{#4}{#5}{%
-      <->ssub*#3%
+    \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
+      <->ssub*#3-#6%
       /\Mn@UseConfigOrDefault{series-sub}{#4}{#4}%
       /\Mn@UseConfigOrDefault{shape-sub}{#5}{#5}%
     }{}%
@@ -1547,40 +1663,51 @@
 \otf@makeglobal{Mn@DeclareFontShape}
 \otf@makeglobal{\string\Mn@DeclareFontShape}
 %    \end{macrocode}
-% |#1| contains the encoding, |#2| the family and figure version.
-% |#3|~and~|#4| are only needed for backwards compatibility.
+% |#2| contains the encoding, |#3| the family, and |#1| a list of figure
+% versions (or |Ornament|).
 %    \begin{macrocode}
-\newcommand*\Mn@DeclareLargeFontFamily[4]{%
-  \DeclareFontFamily   {#1}{#2}{}%
-  \Mn@DeclareFontShapes{#1}{#2}
+\newcommand*\Mn@DeclareLargeFontFamily[3][LF,OsF,TLF,TOsF]{%
+  \Mn@DeclareFontFamily{#1}{#2}{#3}
     {m,sb,b,bx} {n,it,sc,ssc,scit,sscit,sw,scsl,scsw,sscsl,sscsw,sl}%
-}%
-\otf@makeglobal{Mn@DeclareLargeFontFamily}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\newcommand*\Mn@DeclareSmallFontFamily[4]{%
-  \DeclareFontFamily   {#1}{#2}{}%
-  \Mn@DeclareFontShapes{#1}{#2}
+}
+\newcommand*\Mn@DeclareSmallFontFamily[3][LF,OsF,TLF,TOsF]{%
+  \Mn@DeclareFontFamily{#1}{#2}{#3}
     {m,sb,b,bx} {n,it,sl}%
 }
-\otf@makeglobal{Mn@DeclareSmallFontFamily}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\newcommand*\Mn@DeclareMathFontFamily[4]{%
-  \DeclareFontFamily   {#1}{#2}{\skewchar\font=255}%
-  \Mn@DeclareFontShapes{#1}{#2}
+\newcommand*\Mn@DeclareMathFontFamily[3][LF,OsF,TLF,TOsF]{%
+  \Mn@DeclareFontFamily{#1}{#2}{#3}
     {m,sb,b,bx} {n,it,sc,scit,scsl,scsw,sl}%
 }
+%    \end{macrocode}
+% An additional macro |\\foo| is generated by |\newcommand| for processing an
+% optional argument of |\foo|.
+%    \begin{macrocode}
+\otf@makeglobal{Mn@DeclareLargeFontFamily}
+\otf@makeglobal{\string\Mn@DeclareLargeFontFamily}
+\otf@makeglobal{Mn@DeclareSmallFontFamily}
+\otf@makeglobal{\string\Mn@DeclareSmallFontFamily}
 \otf@makeglobal{Mn@DeclareMathFontFamily}
+\otf@makeglobal{\string\Mn@DeclareMathFontFamily}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\newcommand*\Mn@DeclareFontShapes[4]{%
+\newcommand*\Mn@DeclareFontFamily[5]{%
+  \@for\Mn@variant:=#1\do{%
+    \DeclareFontFamily {#2}{#3-\Mn@variant}{}%
+  }%
+  \Mn@DeclareFontShapes{#2}{#3}
+    {#4} {#5} {#1}%
+}
+\otf@makeglobal{Mn@DeclareFontFamily}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand*\Mn@DeclareFontShapes[5]{%
   \@for\Mn@series:=#3\do{%
     \@for\Mn@shape:=#4\do{%
-      \Mn@DeclareFontShape{#1}{#2}{\Mn@series}{\Mn@shape}%
+      \@for\Mn@variant:=#5\do{%
+	\Mn@DeclareFontShape{#1}{#2}{\Mn@series}{\Mn@shape}{\Mn@variant}%
+      }%
     }%
   }%
 }
@@ -1635,7 +1762,6 @@
   \g@addto@macro\MicroType@Hook{\Mn@MicroType@Aliases}%
 }%
 \@ifundefined{DeclareMicroTypeAlias}{}{\Mn@MicroType@Aliases}%
-%\endgroup
 %</fontdef>
 %    \end{macrocode}
 %
@@ -1954,6 +2080,22 @@
 %    \begin{macrocode}
 %<*fd>
 \input{MinionPro-FontDef.sty}%
+%<Uorn> \Mn@DeclareSmallFontFamily[Ornaments]{U}{MinionPro}
+%<LGR>  \Mn@DeclareSmallFontFamily{LGR}{MinionPro}
+%<OML>  \Mn@DeclareMathFontFamily{OML}{MinionPro}
+%<OT1>  \Mn@DeclareLargeFontFamily{OT1}{MinionPro}
+%<T1>   \Mn@DeclareLargeFontFamily{T1}{MinionPro}
+%<LY1>  \Mn@DeclareLargeFontFamily{LY1}{MinionPro}
+%<T5>   \Mn@DeclareLargeFontFamily{T5}{MinionPro}
+%<T2A>  \Mn@DeclareSmallFontFamily{T2A}{MinionPro}
+%<T2B>  \Mn@DeclareSmallFontFamily{T2B}{MinionPro}
+%<T2C>  \Mn@DeclareSmallFontFamily{T2C}{MinionPro}
+%<TS1>  \Mn@DeclareLargeFontFamily{TS1}{MinionPro}
+%<X2>   \Mn@DeclareSmallFontFamily{X2}{MinionPro}
+%<OT2>  \Mn@DeclareSmallFontFamily{OT2}{MinionPro}
+%</fd>
+%<*oldfd>
+\input{MinionPro-FontDef.sty}%
 %<LGR&lf>  \Mn@DeclareSmallFontFamily{LGR}{MinionPro-LF}{lf}{lgr}
 %<LGR&osf> \Mn@DeclareSmallFontFamily{LGR}{MinionPro-OsF}{osf}{lgr}
 %<LGR&tlf> \Mn@DeclareSmallFontFamily{LGR}{MinionPro-TLF}{tlf}{lgr}
@@ -2003,7 +2145,7 @@
 %<OT2&osf> \Mn@DeclareSmallFontFamily{OT2}{MinionPro-OsF}{osf}{ot2}
 %<OT2&tlf> \Mn@DeclareSmallFontFamily{OT2}{MinionPro-TLF}{tlf}{ot2}
 %<OT2&tosf>\Mn@DeclareSmallFontFamily{OT2}{MinionPro-TOsF}{tosf}{ot2}
-%</fd>
+%</oldfd>
 %    \end{macrocode}
 %
 % \CheckSum{0}
