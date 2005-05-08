@@ -1,8 +1,6 @@
 % TS1 Encoding
 %
 % otftotfm doesn't fake glyphs yet, so set them to blacksquare
-% UNICODING capitalcompwordmark =: blacksquare ;
-% UNICODING ascendercompwordmark =: blacksquare ;
 % UNICODING asteriskcentered =: blacksquare ;
 % UNICODING twelveudash =: blacksquare ;
 % UNICODING threequartersemdash =: blacksquare ;
@@ -53,7 +51,7 @@
 % 0x10
   /.notdef /.notdef /quotedblbase /.notdef
   /.notdef /twelveudash /threequartersemdash /capitalcompwordmark
-  /arrowleft /arrowright /cyrflex /cyrFlex
+  /uniE0FC /uniE0FE /cyrflex /cyrFlex
   /cyrflex /cyrFlex /.notdef /ascendercompwordmark
 % 0x20
   /blank /.notdef /.notdef /.notdef /dollar /.notdef /.notdef /quotesingle
