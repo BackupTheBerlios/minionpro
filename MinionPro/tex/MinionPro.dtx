@@ -104,7 +104,7 @@
 %
 % \tableofcontents
 %
-% \section{Features}
+% \section{Overview}
 %
 % The \pkg{MinionPro} package provides support for the MinionPro
 % font family from Adobe.
@@ -113,9 +113,35 @@
 %   |\usepackage{MinionPro}|
 % \end{quote}
 %
-% \subsection{Options}
+% \section{Interference with other packages}
+% \label{sec:dcolumn}
 %
-% \subsubsection{Selection of the fonts to be used}
+% The \pkg{MinionPro} package automatically loads the following packages\?:
+% \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol}.
+% If you want to pass options to these packages you can
+% either put the corresponding |\usepackage| command before the
+% |\usepackage{MinionPro}| or you can include the options in the
+% |\documentclass| command. The \pkg{MinionPro} package is \emph{not}
+% compatible with \pkg{amssymb} and \pkg{amsfonts}. Please see also the
+% corresponding section in the \pkg{MnSymbol} documentation.
+%
+% The MinionPro package includes support files for the \pkg{microtype}
+% package. To enable character protrusion add the command
+% \begin{quote}
+%   |\usepackage{microtype}|
+% \end{quote}
+% \emph{after} the command |\usepackage{MinionPro}|.
+%
+% There is also a slight incompatibility with the \pkg{dcolumn} package
+% which expects all figures to have the same size. If you want to use this
+% package you either have to specify the \option{mathtabular} option (this is
+% the brute force solution, not recommended), or you can use the
+% |\figureversion{tabular}| command to switch to tabular figures in front of
+% every table (much better, but also more work).
+%
+% \section{Options}
+%
+% \subsubsection*{Selection of the fonts to be used}
 %
 % The following options specify which version of the fonts you want to use.
 % The default settings are marked with an asterisk*.
@@ -130,7 +156,7 @@
 %   \option{slides}     &  use only the Caption optical shape (useful for slides)
 % \end{options}
 %
-% \subsubsection{Figure selection}
+% \subsubsection*{Figure selection}
 %
 % \begin{options}
 %   \option{textosf}     & use text figures in text mode\\
@@ -153,7 +179,7 @@
 %   \option{proportional}, \option{prop} & proportional figures
 % \end{options}
 %
-% \subsubsection{Calligraphic Fonts}
+% \subsubsection*{Calligraphic Fonts}
 %
 % \begin{options}
 %   \option*{mnsy} & use the calligraphic font from MnSymbol\\
@@ -163,7 +189,7 @@
 %                  & this font contains also lower case letters, but it is not quite finished.
 % \end{options}
 %
-% \subsubsection{Blackboard and fraktur letters}
+% \subsubsection*{Blackboard and fraktur letters}
 %
 % \begin{options}
 %   \option*{amsbb}  & use the AMS blackboard font\\
@@ -171,7 +197,7 @@
 %   \option{eufrak}* & use the Euler fraktur font
 % \end{options}
 %
-% \subsubsection{Greek letters}
+% \subsubsection*{Greek letters}
 %
 % The following options specify whether you want to use upright or italic Greek
 % letters in math mode.
@@ -186,7 +212,7 @@
 % Upright and italic greek letters are also directly accessible via the commands
 % |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
 %
-% \subsubsection{Miscellaneous options}
+% \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
 % \iffalse  \option{protrude} &    enable character protrusion with pdflatex\\ \fi
@@ -195,7 +221,7 @@
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$
 % \end{options}
 %
-% \subsection{Additional font shapes and symbols}
+% \section{Additional font shapes and symbols}
 %
 % In addition to the normal small caps shape |sc| there is a letterspaced
 % version called~|ssc|. It is accessible via the commands |\sscshape| and
@@ -233,7 +259,7 @@
 % \noindent
 % Split fractions can be typeset either using the individual glyphs
 % |\text|\meta{number}|numerator|, |\text|\meta{number}|denominator|, and
-% |\textfractionsolidus| or using the following pre-composed fractions:
+% |\textfractionsolidus| or using the following pre-composed fractions\?:
 %
 % \medskip\tabindent
 % \begingroup
@@ -279,7 +305,7 @@
 % \bottomrule
 % \end{tabular}\par}
 %
-% \subsection{Language support}
+% \section{Language support}
 %
 % The following encodings are supported\?:
 %
@@ -289,32 +315,6 @@
 %   cyrillic & \acro{T2A}, \acro{T2B}, \acro{T2C}, \acro{X2}, \acro{OT2}\\
 %   greek    & \acro{LGR} (to be used with babel, including polutonikogreek)
 % \end{tabular}
-%
-% \section{Interference with other packages}
-% \label{sec:dcolumn}
-%
-% The \pkg{MinionPro} package automatically loads the following packages\?:
-% \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol}.
-% If you want to pass options to these packages you can
-% either put the corresponding |\usepackage| command before the
-% |\usepackage{MinionPro}| or you can include the options in the
-% |\documentclass| command. The \pkg{MinionPro} package is \emph{not}
-% compatible with \pkg{amssymb} and \pkg{amsfonts}. Please see also the
-% corresponding section in the \pkg{MnSymbol} documentation.
-%
-% The MinionPro package includes support files for the \pkg{microtype}
-% package. To enable character protrusion add the command
-% \begin{quote}
-%   |\usepackage{microtype}|
-% \end{quote}
-% \emph{after} the command |\usepackage{MinionPro}|.
-%
-% There is also a slight incompatibility with the \pkg{dcolumn} package
-% which expects all figures to have the same size. If you want to use this
-% package you either have to specify the \option{mathtabular} option (this is
-% the brute force solution, not recommended), or you can use the
-% |\figureversion{tabular}| command to switch to tabular figures in front of
-% every table (much better, but also more work).
 %
 % \StopEventually{}
 %
@@ -521,7 +521,7 @@
 %    \begin{macrocode}
 \RequirePackage{fontaxes}[2005/05/04]
 %    \end{macrocode}
-% We define an additional short hand.
+% We define an additional short hand for compatabilities sake.
 %    \begin{macrocode}
 \let\oldstylenums\textfigures
 %    \end{macrocode}
@@ -778,7 +778,7 @@
 %
 % \subsection{Logos}
 %
-% Correct logos
+% Correct logos.
 %    \begin{macrocode}
 \def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
 \DeclareRobustCommand{\LaTeX}{L\kern-.32em%
