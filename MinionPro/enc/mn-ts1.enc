@@ -5,7 +5,7 @@
 % UNICODING twelveudash =: blacksquare ;
 % UNICODING threequartersemdash =: blacksquare ;
 % UNICODING bardbl =: blacksquare ;
-% UNICODING degree =: blacksquare ;
+% UNICODING centigrade =: blacksquare ;
 % UNICODING interrobang =: blacksquare ;
 % UNICODING interrobangdown =: blacksquare ;
 % UNICODING pertenthousand =: blacksquare ;
