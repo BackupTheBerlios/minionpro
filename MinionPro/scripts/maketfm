@@ -16,6 +16,7 @@ usage() {
   echo "--swash      | --noswash"
   echo "--expanded   | --noexpanded"
   echo "--kern       | --nokern"
+  echo "--open-g     | --closed-g"
   exit 1
 }
 
@@ -32,6 +33,7 @@ create_integrals=true
 create_swash=true
 create_expanded=false
 create_kerned=true
+open_g=false
 
 for opt in $*
 do
@@ -50,6 +52,8 @@ do
     --noexpanded)   create_expanded=false;;
     --kern)         create_kerned=true;;
     --nokern)       create_kerned=false;;
+    --open-g)       open_g=true;;
+    --closed-g)     open_g=false;;
     *)              echo "Unknown option $opt\n";
                     usage;;
   esac
@@ -76,6 +80,8 @@ esac
 
 digamma_flags=""
 ornaments_flags=""
+dong_flags=""
+oml_flags=""
 
 if [ $version -ge 3 ]
 then
@@ -86,12 +92,15 @@ then
   ornaments_flags="$ornaments_flags --unicoding 'orn.035 =: uni2733'"
   ornaments_flags="$ornaments_flags --unicoding 'orn.037 =: uni2734'"
   ornaments_flags="$ornaments_flags --unicoding 'orn.038 =: uni2713'"
-  dong_flags=""
 else
   create_vietnamese=false
   dong_flags="--unicoding 'dong =: blacksquare'"
 fi
 
+if $open_g
+then
+  oml_flags="--unicoding g =: afii10192 afii10069.ital g"
+fi
 
 make_enckern() {
 
@@ -239,9 +248,6 @@ make_normal_metrics() {
 
   if $create_greek
   then
-#    echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc'              >> maketfm.tmp
-#    echo 'cat kerning/lgr-'"$1"'.kern >> enc/mn-lgrkern.enc' >> maketfm.tmp
-#    make_tfm "$1" lgrkern $2-lgr    "-sgrek $it_lgr_flags $digamma_flags $flags"
     make_tfm "$1" lgr  $2-lgr       "-sgrek $it_lgr_flags $digamma_flags $flags"
   fi
   if $create_cyrillic
@@ -287,9 +293,6 @@ make_spread_metrics() {
 
   if $create_greek
   then
-#    echo 'cp enc/mn-lgr.enc enc/mn-lgrkern.enc'   >> maketfm.tmp
-#    echo 'cat kerning/lgr-'"$1"'.kern|sed s/[{}]//g|gawk '\'{print \"% LIGKERN \"\$3\" {\"\$4-40\"} \"\$5}\''>>enc/mn-lgrkern.enc'>>maketfm.tmp
-#    make_tfm "$1" lgrkern $2-l1-lgr "-L 40 -sgrek $it_lgr_flags $digamma_flags $flags"
     make_tfm "$1" lgr  $2-l1-lgr    "-L 40 -sgrek $it_lgr_flags $digamma_flags $flags"
   fi
   if $create_cyrillic
@@ -340,10 +343,10 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml   lf-oml   "--math-spacing=255 -L 40 -flnum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tlf-oml  "--math-spacing=255 -L 40 -flnum -fpnum $digamma_flags"
-    make_tfm "$1" oml   osf-oml  "--math-spacing=255 -L 40 -fonum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tosf-oml "--math-spacing=255 -L 40 -fonum -fpnum $digamma_flags"
+    make_tfm "$1" oml   lf-oml   "--math-spacing=255 -L 40 -flnum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   tlf-oml  "--math-spacing=255 -L 40 -flnum -fpnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   osf-oml  "--math-spacing=255 -L 40 -fonum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   tosf-oml "--math-spacing=255 -L 40 -fonum -fpnum $digamma_flags $oml_flags"
 
     make_tfm "$1" orn-u orn-u    "$ornaments_flags"
 
@@ -362,10 +365,10 @@ make_spaced_metrics() {
     make_spread_metrics     "$1" osf
     make_spread_metrics     "$1" tosf
 
-    make_tfm "$1" oml   lf-l1-oml   "--math-spacing=255 -L 80 -flnum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tlf-l1-oml  "--math-spacing=255 -L 80 -flnum -fpnum $digamma_flags"
-    make_tfm "$1" oml   osf-l1-oml  "--math-spacing=255 -L 80 -fonum -ftnum $digamma_flags"
-    make_tfm "$1" oml   tosf-l1-oml "--math-spacing=255 -L 80 -fonum -fpnum $digamma_flags"
+    make_tfm "$1" oml   lf-l1-oml   "--math-spacing=255 -L 80 -flnum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   tlf-l1-oml  "--math-spacing=255 -L 80 -flnum -fpnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   osf-l1-oml  "--math-spacing=255 -L 80 -fonum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   tosf-l1-oml "--math-spacing=255 -L 80 -fonum -fpnum $digamma_flags $oml_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
