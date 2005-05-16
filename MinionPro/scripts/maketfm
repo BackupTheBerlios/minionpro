@@ -117,11 +117,11 @@ make_enckern() {
       then
         if [ -e "kerning/$1-$enc.kern" ]
         then
-          cat $e "kerning/$1-$enc.kern" >enc/mn-$1-$enc.enckern
+          cat $e "kerning/$1-$enc.kern"|egrep -v "uni0037|uniF735" >enc/mn-$1-$enc.enckern
         else
           if [ -e "kerning/$1.kern" ]
           then
-            cat $e "kerning/$1.kern" >enc/mn-$1-$enc.enckern
+            cat $e "kerning/$1.kern"|egrep -v "uni0037|uniF735" >enc/mn-$1-$enc.enckern
           else
             cp $e enc/mn-$1-$enc.enckern
           fi
@@ -165,9 +165,19 @@ make_tfm() {
 }
 
 get_flags() {
-  case $1 in
-      lf) flags="-flnum -fpnum";;
-     osf) flags="-fonum -fpnum";;
+  case $2 in
+      lf) flags="-flnum -fpnum"
+          if [ -e "kerning/$1.kern" ]
+          then
+                    flags="$flags `cat kerning/$1.kern |grep uni0037|gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}'|xargs|sed s/uni0037/seven/g|sed s/XXX/\'/g`"
+          fi;;
+     osf) flags="-fonum -fpnum"
+          if [ -e "kerning/$1.kern" ]
+          then
+            case $1 in
+              *It*) flags="$flags `cat kerning/$1.kern |grep uniF735|gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}'|xargs|sed s/uniF735/five/g|sed s/XXX/\'/g`";;
+            esac
+          fi;;
      tlf) flags="-flnum -ftnum";;
     tosf) flags="-fonum -ftnum";;
   esac
@@ -234,7 +244,7 @@ get_it_lgr_flags() {
 
 make_normal_metrics() {
 
-  get_flags       $2
+  get_flags       "$1" "$2"
   get_ts_flags    $2
   get_sc_flags    $2
   get_sc_ts_flags $2
@@ -279,7 +289,7 @@ make_normal_metrics() {
 
 make_spread_metrics() {
 
-  get_flags       $2
+  get_flags       "$1" "$2"
   get_ts_flags    $2
   get_sc_flags    $2
   get_sc_ts_flags $2
