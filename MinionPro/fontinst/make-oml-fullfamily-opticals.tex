@@ -1,0 +1,37 @@
+\input fontinst.sty
+
+\fontinstcc
+\def\metrics_given_encoding#1#2{
+   \x_cs\edef{s-afm-name}{#1-#2}
+   \if_file_exists{#1.pl}\then
+      \generalpltomtx{#1}{#1-#2}{pl}{#2}
+   \else
+      \if_file_exists{#1.vpl}\then
+         \generalpltomtx{#1}{#1-#2}{vpl}{#2}
+      \else
+         \unsetstr{afm-name}
+   \fi\fi
+}
+\normalcc
+
+\def\installopt#1#2{%
+  \installfont{MinionPro-MediumIt#1-l1-oml}{%
+     MnSymbolA#2                       encoding mn-symbol-a,%
+     MnSymbolC#2                       encoding mn-symbol-c,%
+     MnSymbolD#2                       encoding mn-symbol-d,%
+     MnSymbolE#2                       encoding mn-symbol-e,%
+     MinionPro-Medium#1-tosf-oml       encoding mn-oml-up,%
+     MinionPro-MediumIt#1-tosf-oml     encoding mn-oml-it,%
+%     haxmnoml-It,%
+     arrowhooks%
+  }{mn-oml}{}{}{}{}{}%
+}
+
+\installfonts
+\setint{letterspacing}{40}
+  \installopt{Capt}{7}
+  \installopt{Subh}{12}
+  \installopt{Disp}{12}
+\endinstallfonts
+
+\bye
