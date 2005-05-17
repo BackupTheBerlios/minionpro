@@ -9,9 +9,4 @@
       \glyphrule{500}{500}
 \endsetglyph
 
-\setslot{hookrightchar}
-   \comment{The building block for `$\hookrightarrow$',
-       named `arrowhookleft' in MathTime and Lucida New Math.}
-\endsetslot
-
 \endmetrics
