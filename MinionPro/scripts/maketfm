@@ -117,11 +117,11 @@ make_enckern() {
       then
         if [ -e "kerning/$1-$enc.kern" ]
         then
-          cat $e "kerning/$1-$enc.kern"|egrep -v "uni0037|uniF735" >enc/mn-$1-$enc.enckern
+          cat $e "kerning/$1-$enc.kern"|egrep -v "uni003[0-9]|uniF735" >enc/mn-$1-$enc.enckern
         else
           if [ -e "kerning/$1.kern" ]
           then
-            cat $e "kerning/$1.kern"|egrep -v "uni0037|uniF735" >enc/mn-$1-$enc.enckern
+            cat $e "kerning/$1.kern"|egrep -v "uni003[0-9]|uniF735" >enc/mn-$1-$enc.enckern
           else
             cp $e enc/mn-$1-$enc.enckern
           fi
@@ -169,7 +169,7 @@ get_flags() {
       lf) flags="-flnum -fpnum"
           if [ -e "kerning/$1.kern" ]
           then
-                    flags="$flags `cat kerning/$1.kern |grep uni0037|gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}'|xargs|sed s/uni0037/seven/g|sed s/XXX/\'/g`"
+                    flags="$flags `cat kerning/$1.kern |grep uni003[0-9]|gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}'|xargs|sed s/uni0030/zero/g|sed s/uni0031/one/g|sed s/uni0034/four/g|sed s/uni0037/seven/g|sed s/uni0039/nine/g|sed s/XXX/\'/g`"
           fi;;
      osf) flags="-fonum -fpnum"
           if [ -e "kerning/$1.kern" ]
