@@ -5,7 +5,7 @@ font=$1
 if [ "x$font" = "x" ]
 then
   echo "No font specified!";
-  echo "USAGE: maketfm <font>";
+  echo "USAGE: makeint <font>";
   exit 1
 fi
 

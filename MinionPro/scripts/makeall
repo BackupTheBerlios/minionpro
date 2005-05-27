@@ -7,32 +7,15 @@ echo "Creating PostScript fonts ..."
 for font in otf/*.otf
 do
   base=$(basename $font .otf)
-  cfftot1 $font pfb/$base.pfb
+  cfftot1    $font         pfb/$base.pfb
   t1dotlessj pfb/$base.pfb pfb/${base}LCDFJ.pfb
 done
 
 echo "Creating TeX metrics ..."
 
-(./scripts/maketfm MinionPro "$@" | sort -u > dvips/MinionPro.map) 2>&1 |
-(perl scripts/filtererr || cat)
+(./scripts/maketfm MinionPro "$@" | sort -u > dvips/MinionPro.map) 2>&1 | (perl scripts/filtererr || cat)
 
-#for v in *.pl
-#do
-#  if [ -e "$v" ]
-#  then
-#    pltotf "$v"
-#  fi
-#done
-#
-#for v in *.vpl
-#do
-#  if [ -e "$v" ]
-#  then
-#    vptovf "$v"
-#  fi
-#done
-
-(cd fontinst; ../scripts/makeint MinionPro)
+(cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
 (cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins)
 

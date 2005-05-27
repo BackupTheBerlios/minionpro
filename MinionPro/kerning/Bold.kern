@@ -3,8 +3,8 @@
 % LIGKERN hyphen {-34} A
 % LIGKERN hyphen {-28} T
 % LIGKERN period {-82} question
-% LIGKERN uni0037 {-126} period
-% LIGKERN uni0037 {-94} comma
+% LIGKERN #lf#seven {-126} period
+% LIGKERN #lf#seven {-94} comma
 % LIGKERN A {-34} guillemotleft
 % LIGKERN A {-34} guilsinglleft
 % LIGKERN A {-34} less

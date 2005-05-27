@@ -1,7 +1,6 @@
 \relax
 \encoding
 
-
 \nextslot{72}
 \setslot{triangleright}
    \comment{The triangle symbol `$\triangleright$'.}
@@ -11,7 +10,6 @@
 \setslot{triangleleft}
    \comment{The triangle symbol `$\triangleleft$'.}
 \endsetslot
-
 
 \nextslot{134}
 \setslot{star}

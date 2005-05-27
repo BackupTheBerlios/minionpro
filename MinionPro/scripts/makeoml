@@ -5,7 +5,7 @@ font=$1
 if [ "x$font" = "x" ]
 then
   echo "No font specified!";
-  echo "USAGE: maketfm <font>";
+  echo "USAGE: makeoml <font>";
   exit 1
 fi
 
@@ -27,7 +27,7 @@ do
 done
 
 for s in Regular It Bold BoldIt
-do 
+do
   vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
 done
 
@@ -36,7 +36,7 @@ tex make-oml-smallfamily.tex
 if [ -e ../tfm/$font-Semibold-tosf-oml.tfm ]
 then
   for s in Semibold SemiboldIt
-  do 
+  do
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-medfamily.tex
@@ -45,7 +45,7 @@ fi
 if [ -e ../tfm/$font-Medium-tosf-oml.tfm ]
 then
   for s in Medium MediumIt
-  do 
+  do
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-fullfamily.tex
@@ -54,7 +54,7 @@ fi
 if [ -e ../tfm/$font-Capt-tosf-oml.tfm ]
 then
   for s in Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
-  do 
+  do
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-medfamily-opticals.tex
@@ -63,7 +63,7 @@ fi
 if [ -e ../tfm/$font-MediumCapt-tosf-oml.tfm ]
 then
   for s in MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
-  do 
+  do
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-fullfamily-opticals.tex

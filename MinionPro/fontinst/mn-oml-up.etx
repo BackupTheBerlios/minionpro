@@ -1,56 +1,15 @@
-%%% ====================================================================
-%%%  @TeX-font-encoding-file{
-%%%     author          = "Alan Jeffrey and Ulrik Vieth and 
-%%%                        Lars Hellstr{\"o}m",
-%%%     version         = "1.921",
-%%%     date            = "2004-11-24",
-%%%     time            = "18:25:42 +01:00",
-%%%     filename        = "oml.etx",
-%%%     email           = "fontinst@cogs.susx.ac.uk",
-%%%     URL             = "http://www.tug.org/applications/fontinst/index.html",
-%%%     checksum        = "",
-%%%     codetable       = "ISO/ASCII",
-%%%     keywords        = "encoding, math, TeX, PostScript",
-%%%     supported       = "yes",
-%%%     abstract        = "This is the old math italic encoding as a TeX
-%%%                        font encoding file, for use with the fontinst
-%%%                        utility.",
-%%%     package         = "fontinst",
-%%%     dependencies    = "fontinst.sty, fontdoc.sty",
-%%%  }
-%%% ====================================================================
 \relax
-
-\documentclass[twocolumn]{article}
-\usepackage{fontdoc}[1999/11/04]
-
-\title{The \TeX\ math italic encoding vector}
-\author{Alan Jeffrey, Ulrik Vieth, Lars Hellstr\"om}
-\date{27 July 2002\\Version 1.921}
-
-\begin{document}
-\maketitle
-
-\section{Introduction}
-
-This document describes the \TeX\ math italic (OML) encoding.
-
-\showbranches
 \encoding
 
 \needsfontinstversion{1.917}
-
-\begincomment
-\section{Default values}
-\endcomment
 
 \setstr{codingscheme}{TEX MATH ITALIC}
 \setstr{encodingname}{TeXMathItalicEncoding}
 
 \setint{italicslant}{0}
-\setint{interword}{0}                 % interword space
-\setint{stretchword}{0}               % interword stretch
-\setint{shrinkword}{0}                % interword shrink
+\setint{interword}{0}            % interword space
+\setint{stretchword}{0}          % interword stretch
+\setint{shrinkword}{0}           % interword shrink
 
 \ifisglyph{x}\then
    \setint{xheight}{\height{x}}
@@ -58,12 +17,8 @@ This document describes the \TeX\ math italic (OML) encoding.
    \setint{xheight}{500}
 \Fi
 
-\setint{quad}{1000}                   % quad
-\setint{extraspace}{0}                % extra space after .
-
-\begincomment
-\section{Font dimensions}
-\endcomment
+\setint{quad}{1000}              % quad
+\setint{extraspace}{0}           % extra space after .
 
 \setfontdimen{1}{italicslant}    % italic slant
 \setfontdimen{2}{interword}      % interword space
@@ -73,12 +28,6 @@ This document describes the \TeX\ math italic (OML) encoding.
 \setfontdimen{6}{quad}           % quad
 \setfontdimen{7}{extraspace}     % extra space after .
 
-
-
-\begincomment
-\section{The encoding}
-There are 128 glyphs in this encoding.
-\endcomment
 
 \setslot{UPGamma}
    \comment{The greek letter `$\Gamma$'.}
@@ -634,30 +583,4 @@ There are 128 glyphs in this encoding.
 \endsetslot
 
 \endencoding
-
-\section{Changes}
-
-
-29 Dec 1993, v\,1.30:  Created file.
-
-03 Jan 1994, v\,1.301: Moved from ltugboat class to article.
-
-09 Jan 1994, v\,1.305: Renamed some glyphs to use the same glyph names
-                     as Lucida New Math.
-
-10 Jun 1998, v\,1.800: Really use the same names as Lucida New Math.
-                     Correct ordering of `flat', `natural', `sharp'.
-
-03 Oct 2000, v\,1.915: Minor markup changes (LH).
-
-06 Oct 2000, v\,1.915: Added \texttt{encodingname} (same as in 
-                     \texttt{texmital.enc}). (LH)
-
-27 Jul 2002, v\,1.921: Using \verb"\setfontdimen" for specifying
-                     fontdimens. (LH)
-
-24 Nov 2004: Corrected typo (extra right brace). (LH)
-
-\end{document}
-
 % vim:set ft=tex:
