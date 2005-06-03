@@ -6,7 +6,7 @@
 %<otfd>  {\ProvidesFile{otfontdef.sty}}
 %<otfd>  {\NeedsTeXFormat{LaTeX2e}\ProvidesPackage{otfontdef}}
 %<*otfd|driver>
-  [2005/05/05 v0.1c OpenType font definition]
+  [2005/06/03 v0.1d OpenType font definition]
 %</otfd|driver>
 %<*driver>
 \documentclass{ltxdoc}
@@ -398,7 +398,7 @@
 }
 \otf@makeglobal{otf@scheme@default}
 \newcommand\otf@format@shape[1]{%
-  \@ifundefined{otf@format@shape@#1}{}{\@nameuse{otf@format@shape@#1}}%
+  \@ifundefined{otf@format@shape@#1}{#1}{\@nameuse{otf@format@shape@#1}}%
 }
 \newcommand\otf@format@shape@Regular{}%
 \newcommand\otf@format@shape@Italic{It}%
