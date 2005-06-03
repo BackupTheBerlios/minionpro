@@ -58,7 +58,7 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
-\usepackage[smallfamily,minionint]{MinionPro}
+\usepackage[minionint]{MinionPro}
 \usepackage{microtype}
 \usepackage[british]{babel}
 \usepackage{array,ifthen,booktabs,pifont}
@@ -148,12 +148,12 @@
 %
 % \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
 % \begin{options}
-%   \option{smallfamily} & use only regular and bold face\\
-%   \option*{medfamily} &  use semibold face in addition to \option{smallfamily} \\
-%   \option{fullfamily} &  use medium face in addition to \option{medfamily}\\
-%   \option*{opticals}  &  use the optical sizes Caption/Subhead/Display\\
-%   \option{noopticals} &  use only the Text optical size\\
-%   \option{slides}     &  use only the Caption optical shape (useful for slides)
+%   \option*{smallfamily} & use only regular and bold face\\
+%   \option{medfamily}    & use semibold face in addition to \option{smallfamily} \\
+%   \option{fullfamily}   & use medium face in addition to \option{medfamily}\\
+%   \option*{noopticals}  & use only the Text optical size\\
+%   \option{opticals}     & use the optical sizes Caption/Subhead/Display\\
+%   \option{slides}       & use only the Caption optical shape (useful for slides)
 % \end{options}
 %
 % \subsubsection*{Figure selection}
@@ -334,23 +334,26 @@
 % requested font set. So we simply pass on the relevant options\?; only
 % MinionPro integrals are handled here in \pkg{MinionPro}.
 %    \begin{macrocode}
-\newcommand\Mn@minionint@opticals{}
+\newcommand\Mn@minionint@opticals{-NoOpticals}
 \newcommand\Mn@minionint@bold{-Semibold}
-\DeclareOption{slides}{\PassOptionsToPackage{slides}{MinionPro-FontDef}}
-\DeclareOption{opticals}{\PassOptionsToPackage{opticals}{MinionPro-FontDef}}
+\DeclareOption{slides}{%
+  \def\Mn@minionint@opticals{-NoOpticals}%
+  \PassOptionsToPackage{slides}{MinionPro-FontDef}}
 \DeclareOption{noopticals}{%
-  \PassOptionsToPackage{noopticals}{MinionPro-FontDef}%
-  \def\Mn@minionint@opticals{-NoOpticals}}%
+  \def\Mn@minionint@opticals{-NoOpticals}%
+  \PassOptionsToPackage{noopticals}{MinionPro-FontDef}}
+\DeclareOption{opticals}{%
+  \def\Mn@minionint@opticals{}%
+  \PassOptionsToPackage{opticals}{MinionPro-FontDef}}
 \DeclareOption{smallfamily}{%
-%    \end{macrocode}
-% In the case of \option{smallfamily} it is unlikely that opticals are
-% available.
-%    \begin{macrocode}
-  \ExecuteOptions{noopticals}%
   \def\Mn@minionint@bold{-Bold}%
   \PassOptionsToPackage{smallfamily}{MinionPro-FontDef}}
-\DeclareOption{medfamily}{\PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
-\DeclareOption{fullfamily}{\PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
+\DeclareOption{medfamily}{%
+  \def\Mn@minionint@bold{-Semibold}%
+  \PassOptionsToPackage{medfamily}{MinionPro-FontDef}}
+\DeclareOption{fullfamily}{%
+  \def\Mn@minionint@bold{-Semibold}%
+  \PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
 %    \end{macrocode}
 %
 % \subsubsection{Figure style}
@@ -1465,8 +1468,8 @@
 %    \end{macrocode}
 % These are the default values if it is impossible to process options.
 %    \begin{macrocode}
-\newcommand\Mn@option@opticals{opticals}
-\newcommand\Mn@option@fontset{medfamily}
+\newcommand\Mn@option@opticals{noopticals}
+\newcommand\Mn@option@fontset{smallfamily}
 \newdimen\Mn@option@normalsize
 \global\Mn@option@normalsize10pt
 %    \end{macrocode}
@@ -1490,7 +1493,7 @@
     \normalsize\@nil
     \endgroup
   }
-  \ExecuteOptions{medfamily,opticals}
+  \ExecuteOptions{smallfamily,noopticals}
   \ProcessOptions\relax
 \fi
 %    \end{macrocode}
