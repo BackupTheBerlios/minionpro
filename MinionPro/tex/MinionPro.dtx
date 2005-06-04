@@ -62,6 +62,11 @@
 \usepackage{microtype}
 \usepackage[british]{babel}
 \usepackage{array,ifthen,booktabs,pifont}
+\IfFileExists{lmodern.sty}{%
+\renewcommand{\sfdefault}{lmss}%
+\renewcommand{\ttdefault}{lmtt}%
+\DeclareMathAlphabet\mathsf    {T1}{lmss}{m}{n}%
+}{}
 
 \newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}

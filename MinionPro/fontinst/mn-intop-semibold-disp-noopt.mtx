@@ -52,6 +52,7 @@
   \glyph{dintegral}{1000}
   \push
   \movert{-1655}
+  \movert{-28}
   \glyph{dpidotsint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -64,6 +65,7 @@
   \push
   \movert{-660}
   \movert{25}
+  \movert{-28}
   \glyph{dplandupint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -76,6 +78,7 @@
   \push
   \movert{-640}
   \movert{25}
+  \movert{-28}
   \glyph{dplanddownint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -88,6 +91,7 @@
   \push
   \movert{-655}
   \movert{35}
+  \movert{-28}
   \glyph{dpstrokedint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -100,6 +104,7 @@
   \push
   \movert{-660}
   \movert{35}
+  \movert{-28}
   \glyph{dpoint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -115,6 +120,7 @@
   \push
   \movert{-1160}
   \movert{75}
+  \movert{-28}
   \glyph{dpoiint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -127,6 +133,7 @@
   \push
   \movert{-685}
   \movert{80}
+  \movert{-28}
   \glyph{dprcirclerightint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -139,6 +146,7 @@
   \push
   \movert{-685}
   \movert{80}
+  \movert{-28}
   \glyph{dplcirclerightint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -151,6 +159,7 @@
   \push
   \movert{-695}
   \movert{60}
+  \movert{-28}
   \glyph{dprcircleleftint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -163,6 +172,7 @@
   \push
   \movert{-695}
   \movert{60}
+  \movert{-28}
   \glyph{dplcircleleftint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}
@@ -175,6 +185,7 @@
   \push
   \movert{-640}
   \movert{35}
+  \movert{-28}
   \glyph{dpsumint}{1000}
   \pop
   \resetitalic{\italic{dintegral}}

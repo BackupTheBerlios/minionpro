@@ -51,6 +51,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-1100}
+  \movert{-28}
   \glyph{tpidotsint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
@@ -62,6 +63,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-540}
+  \movert{-28}
   \glyph{tplandupint}{1000}
   \pop
   \movert{150}
@@ -75,6 +77,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-500}
+  \movert{-28}
   \glyph{tplanddownint}{1000}
   \pop
   \movert{150}
@@ -88,6 +91,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-520}
+  \movert{-28}
   \glyph{tpstrokedint}{1000}
   \pop
   \resetitalic{\italic{tintegral}}
@@ -99,6 +103,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-520}
+  \movert{-28}
   \glyph{tpoint}{1000}
   \pop
   \movert{200}
@@ -113,6 +118,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-805}
+  \movert{-28}
   \glyph{tpoiint}{1000}
   \pop
   \movert{250}
@@ -126,6 +132,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-505}
+  \movert{-28}
   \glyph{tprcirclerightint}{1000}
   \pop
   \movert{250}
@@ -139,6 +146,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-505}
+  \movert{-28}
   \glyph{tplcirclerightint}{1000}
   \pop
   \movert{250}
@@ -152,6 +160,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-515}
+  \movert{-28}
   \glyph{tprcircleleftint}{1000}
   \pop
   \movert{200}
@@ -165,6 +174,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-515}
+  \movert{-28}
   \glyph{tplcircleleftint}{1000}
   \pop
   \movert{200}
@@ -178,6 +188,7 @@
   \glyph{tintegral}{1000}
   \push
   \movert{-500}
+  \movert{-28}
   \glyph{tpsumint}{1000}
   \pop
     \movert{150}
