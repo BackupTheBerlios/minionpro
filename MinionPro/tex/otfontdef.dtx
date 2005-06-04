@@ -6,7 +6,7 @@
 %<otfd>  {\ProvidesFile{otfontdef.sty}}
 %<otfd>  {\NeedsTeXFormat{LaTeX2e}\ProvidesPackage{otfontdef}}
 %<*otfd|driver>
-  [2005/06/03 v0.1d OpenType font definition]
+  [2005/06/04 v0.1e OpenType font definition]
 %</otfd|driver>
 %<*driver>
 \documentclass{ltxdoc}
@@ -226,6 +226,7 @@
 % \end{macro}
 % \end{macro}
 % Define all font attributes
+% \changes{v0.2}{2005/06/04}{New key |scale|}
 %    \begin{macrocode}
 \otf@definekey{family}
 \otf@definekey{weight}
@@ -236,6 +237,7 @@
 \otf@definekey{spacing}
 \otf@definekey{encoding}
 \otf@definekey{size}
+\otf@definekey{scale}
 \otf@makeglobal{otf@keys}
 %    \end{macrocode}
 % and how their defaults are determined (if at all).
@@ -347,7 +349,7 @@
   \otf@optionstrue
   \try@size@range
 %    \end{macrocode}
-% If any attribute has not received a value, we use its default.
+% If any attribute has not received a value yet, we use its default.
 %    \begin{macrocode}
   \@expandtwoargs\setkeys{otf}{\otf@default@keys}%
 %    \end{macrocode}
@@ -392,8 +394,17 @@
   \else
     \edef\otf@head{\otf@@family-\otf@head}%
   \fi
+%    \end{macrocode}
+% Scale the font size if a factor is supplied. Perhaps this should
+% already be done in |\otf@get@external@font| and not in each naming
+% scheme.
+%    \begin{macrocode}
+  \@tempdimb\otf@@size\p@
+  \@ifundefined{otf@@scale}{}{%
+    \@tempdimb \otf@@scale\@tempdimb
+  }%
   \edef\@tempa{\endgroup\def\noexpand\external@font{%
-    \otf@head-\otf@tail\space at\space\otf@@size pt}}%
+    \otf@head-\otf@tail\space at\space\the\@tempdimb}}%
   \@tempa
 }
 \otf@makeglobal{otf@scheme@default}
