@@ -1473,6 +1473,12 @@
 \newdimen\Mn@option@normalsize
 \global\Mn@option@normalsize10pt
 %    \end{macrocode}
+% Whether we should adapt the configuration to the |\normalsize| of the
+% document. This switch is only needed locally.
+%    \begin{macrocode}
+\newif\ifMn@option@normalsize
+\Mn@option@normalsizetrue
+%    \end{macrocode}
 %
 %    \begin{macrocode}
 \ifx\@nodocument\relax\else
@@ -1482,19 +1488,21 @@
   \DeclareOption{smallfamily}{\let\Mn@option@fontset\CurrentOption}
   \DeclareOption{medfamily}  {\let\Mn@option@fontset\CurrentOption}
   \DeclareOption{fullfamily} {\let\Mn@option@fontset\CurrentOption}
+  \DeclareOption{normalsize}  {\Mn@option@normalsizetrue}
+  \DeclareOption{nonormalsize}{\Mn@option@normalsizefalse}
+  \ExecuteOptions{medfamily,opticals,normalsize}
+  \ProcessOptions\relax
+\fi
 %    \end{macrocode}
 % The method to determine the main font size is inspired by \pkg{microtype}'s
 % implementation.
 %    \begin{macrocode}
-  \DeclareOption{normalsize}{%
-    \begingroup
-    \def\set@fontsize#1#2#3#4\@nil{%
-      \@defaultunits\global\Mn@option@normalsize#2pt\relax\@nnil}%
-    \normalsize\@nil
-    \endgroup
-  }
-  \ExecuteOptions{smallfamily,noopticals}
-  \ProcessOptions\relax
+\ifMn@option@normalsize
+  \begingroup
+  \def\set@fontsize#1#2#3#4\@nil{%
+    \@defaultunits\global\Mn@option@normalsize#2pt\relax\@nnil}%
+  \normalsize\@nil
+  \endgroup
 \fi
 %    \end{macrocode}
 % We use |\otf@makeglobal| from \pkg{otfontdef} to ``export'' the definitions
@@ -1502,6 +1510,11 @@
 %    \begin{macrocode}
 \otf@makeglobal{Mn@option@opticals}
 \otf@makeglobal{Mn@option@fontset}
+\ifx\@nodocument\relax\else
+  \PackageInfo{MinionPro-FontDef}{%
+    Configuration:\space\Mn@option@fontset,\space\Mn@option@opticals,\space
+    normalsize=\the\Mn@option@normalsize}%
+\fi
 %    \end{macrocode}
 % 
 % \subsubsection{Configuration database}
