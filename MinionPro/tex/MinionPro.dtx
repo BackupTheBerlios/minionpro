@@ -85,6 +85,13 @@
 }
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
+\newcommand\origtableofcontents{}
+\let\origtableofcontents\tableofcontents
+\renewcommand\tableofcontents{\begingroup
+  \figureversion{tabular}%
+  \renewcommand\familydefault{MinionPro-TOsF}%
+  \origtableofcontents
+\endgroup}
 
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
@@ -102,10 +109,7 @@
 % \date{\fileversion\ -- \filedate}
 % \maketitle
 %
-% \let\orignormalfont\normalfont
-% \renewcommand{\normalfont}{}\figureversion{tabular}
 % \tableofcontents
-% \renewcommand{\normalfont}{\orignormalfont}\figureversion{proportional}
 %
 % \section{Overview}
 %
