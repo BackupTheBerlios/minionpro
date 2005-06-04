@@ -17,5 +17,5 @@ echo "Creating TeX metrics ..."
 
 (cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
-#(cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins)
+(cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins)
 
