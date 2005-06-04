@@ -718,6 +718,12 @@
   \UndeclareTextCommand{\j}{LY1}%
 }
 %    \end{macrocode}
+% make vdots available in textmode
+%    \begin{macrocode}
+\newcommand\origvdots{}
+\let\origvdots\vdots
+\renewcommand{\vdots}{\ensuremath{\origvdots}}
+%    \end{macrocode}
 %
 % \subsection{Integral symbols}
 %
