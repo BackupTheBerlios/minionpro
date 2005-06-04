@@ -102,7 +102,10 @@
 % \date{\fileversion\ -- \filedate}
 % \maketitle
 %
+% \let\orignormalfont\normalfont
+% \renewcommand{\normalfont}{}\figureversion{tabular}
 % \tableofcontents
+% \renewcommand{\normalfont}{\orignormalfont}\figureversion{proportional}
 %
 % \section{Overview}
 %
@@ -651,7 +654,6 @@
 \DeclareMathSymbol{\slashedzero}{\mathord}{rmletters}{"89}
 %    \end{macrocode}
 %    \begin{macrocode}
-\DeclareTextCommand{\textcelsius}{TS1}{\textdegree C}
 
 \newcommand*\Mn@fraction[2]{%
   \DeclareTextSymbol       {#1}{TS1}{#2}%

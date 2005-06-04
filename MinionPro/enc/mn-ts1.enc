@@ -1,16 +1,5 @@
 % TS1 Encoding
 %
-% otftotfm doesn't fake all fakable glyphs yet, so set them to blacksquare
-% UNICODING asteriskcentered =: blacksquare ;
-% UNICODING twelveudash =: blacksquare ;
-% UNICODING threequartersemdash =: blacksquare ;
-% UNICODING bardbl =: blacksquare ;
-% UNICODING centigrade =: blacksquare ;
-% UNICODING interrobang =: blacksquare ;
-% UNICODING interrobangdown =: blacksquare ;
-% UNICODING pertenthousand =: blacksquare ;
-%
-%
 % unfakable glyphs
 %
 % UNICODING blank =: blacksquare ;
