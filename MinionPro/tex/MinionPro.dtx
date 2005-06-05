@@ -470,6 +470,8 @@
 % \subsection{Font declarations}
 %
 %    \begin{macrocode}
+\newcommand\origvdots{}
+\let\origvdots\vdots
 \RequirePackage{MnSymbol,MinionPro-FontDef}
 %    \end{macrocode}
 % By default, we use |sb| for the bold series. If |MinionPro-Semibold| is not
@@ -735,9 +737,9 @@
 %    \end{macrocode}
 % make vdots available in textmode
 %    \begin{macrocode}
-\newcommand\origvdots{}
-\let\origvdots\vdots
-\renewcommand{\vdots}{\ensuremath{\origvdots}}
+\newcommand\Mnvdots{}
+\let\Mnvdots\vdots
+\renewcommand{\vdots}{\ifmmode\Mnvdots\else\origvdots\fi}
 %    \end{macrocode}
 %
 % \subsection{Integral symbols}
@@ -1678,7 +1680,8 @@
 %
 %    \begin{macrocode}
 \Mn@AddToConfig{encoding}{OML}{
-      <->     otf* [shape=Mixed,figures=,spacing=] MinionPro
+      <-8>    otf* [shape=Mixed,figures=,spacing=l1] MinionPro
+      <8->    otf* [shape=Mixed,figures=,spacing=]   MinionPro
 }
 \Mn@AddToConfig{shape}{it,scit,sscit,sw}{
       <->     otf* MinionPro-It

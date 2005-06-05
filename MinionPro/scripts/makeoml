@@ -32,6 +32,9 @@ do
 done
 
 tex make-oml-smallfamily.tex
+rm ${font}*.mtx MnSymbol*mtx
+tex make-l1-oml-smallfamily.tex
+rm ${font}*.mtx MnSymbol*mtx
 
 if [ -e ../tfm/$font-Semibold-tosf-oml.tfm ]
 then
@@ -40,6 +43,9 @@ then
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-medfamily.tex
+  rm ${font}*.mtx MnSymbol*mtx
+  tex make-l1-oml-medfamily.tex
+  rm ${font}*.mtx MnSymbol*mtx
 fi
 
 if [ -e ../tfm/$font-Medium-tosf-oml.tfm ]
@@ -49,6 +55,9 @@ then
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-fullfamily.tex
+  rm ${font}*.mtx MnSymbol*mtx
+  tex make-l1-oml-fullfamily.tex
+  rm ${font}*.mtx MnSymbol*mtx
 fi
 
 if [ -e ../tfm/$font-Capt-tosf-oml.tfm ]
@@ -58,6 +67,9 @@ then
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-medfamily-opticals.tex
+  rm ${font}*.mtx MnSymbol*mtx
+  tex make-l1-oml-medfamily-opticals.tex
+  rm ${font}*.mtx MnSymbol*mtx
 fi
 
 if [ -e ../tfm/$font-MediumCapt-tosf-oml.tfm ]
@@ -67,6 +79,9 @@ then
     vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-fullfamily-opticals.tex
+  rm ${font}*.mtx MnSymbol*mtx
+  tex make-l1-oml-fullfamily-opticals.tex
+  rm ${font}*.mtx MnSymbol*mtx
 fi
 
 for v in *.vpl
