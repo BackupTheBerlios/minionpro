@@ -378,6 +378,7 @@
 \newcommand\Mn@Text@Family{MinionPro-\Mn@Text@Fig}
 \newcommand\Mn@Math@Family{MinionPro-\Mn@Math@Fig}
 \newcommand\Mn@Math@TFamily{MinionPro-T\Mn@Math@Fig}
+\newcommand\Mn@Math@GenericFamily{MinionPro-TOsF}
 %    \end{macrocode}
 % 
 %    \begin{macrocode}
@@ -484,11 +485,9 @@
 % Redefine the standard math versions |normal| and |bold|.
 %    \begin{macrocode}
 \DeclareSymbolFont{operators}      {T1}{\Mn@Math@Family} {m}{n}
-\DeclareSymbolFont{letters}       {OML}{\Mn@Math@Family} {m}{it}
-\DeclareSymbolFont{rmletters}     {OML}{\Mn@Math@Family} {m}{n}
+\DeclareSymbolFont{letters}       {OML}{\Mn@Math@GenericFamily} {m}{it}
 \SetSymbolFont{operators}{bold}    {T1}{\Mn@Math@Family} {b}{n}
-\SetSymbolFont{letters}  {bold}   {OML}{\Mn@Math@Family} {b}{it}
-\SetSymbolFont{rmletters}{bold}   {OML}{\Mn@Math@Family} {b}{n}
+\SetSymbolFont{letters}  {bold}   {OML}{\Mn@Math@GenericFamily} {b}{it}
 \DeclareMathAlphabet\mathbf        {T1}{\Mn@Math@Family} {b}{n}
 \DeclareMathAlphabet\mathit        {T1}{\Mn@Math@Family} {m}{it}
 \SetMathAlphabet\mathit  {bold}    {T1}{\Mn@Math@Family} {b}{it}
@@ -499,12 +498,10 @@
 %    \begin{macrocode}
 \DeclareMathVersion{tabular}
 \SetSymbolFont{operators}{tabular} {T1}{\Mn@Math@TFamily}{m}{n}
-\SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@TFamily}{m}{it}
-\SetSymbolFont{rmletters}{tabular}{OML}{\Mn@Math@TFamily}{m}{n}
+\SetSymbolFont{letters}  {tabular}{OML}{\Mn@Math@GenericFamily}{m}{it}
 \DeclareMathVersion{boldtabular}
 \SetSymbolFont{operators}{boldtabular} {T1}{\Mn@Math@TFamily}{b}{n}
-\SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@TFamily}{b}{it}
-\SetSymbolFont{rmletters}{boldtabular}{OML}{\Mn@Math@TFamily}{b}{n}
+\SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@GenericFamily}{b}{it}
 \SetMathAlphabet\mathit  {boldtabular} {T1}{\Mn@Math@TFamily}{b}{it}
 %    \end{macrocode}
 %
@@ -560,70 +557,72 @@
 % This macro holds one of the two list names. 
 %    \begin{macrocode}
 \newcommand\Mn@greek@list{}
-\newcommand*\Mn@greek@letter[2]{%
+\newcommand*\Mn@greek@letter[3]{%
   \expandafter\DeclareMathSymbol
   \expandafter{\csname it#1\endcsname}{\mathord}{letters}{#2}%
   \expandafter\DeclareMathSymbol
-  \expandafter{\csname up#1\endcsname}{\mathord}{rmletters}{#2}%
+  \expandafter{\csname up#1\endcsname}{\mathord}{letters}{#3}%
   \edef\@tempa{`\@car#1\@nil}%
   \edef\Mn@greek@list{\expandafter\noexpand\csname
     Mn@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
   \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
 }
 %    \end{macrocode}
-% We can now declare the greek letters.
+% We can now declare the greek letters. (left italic, right upright)
 %    \begin{macrocode}
-\Mn@greek@letter{Gamma}         {"00}
-\Mn@greek@letter{Delta}         {"01}
-\Mn@greek@letter{Theta}         {"02}
-\Mn@greek@letter{Lambda}        {"03}
-\Mn@greek@letter{Xi}            {"04}
-\Mn@greek@letter{Pi}            {"05}
-\Mn@greek@letter{Sigma}         {"06}
-\Mn@greek@letter{Upsilon}       {"07}
-\Mn@greek@letter{Phi}           {"08}
-\Mn@greek@letter{Psi}           {"09}
-\Mn@greek@letter{Omega}         {"0A}
-\Mn@greek@letter{alpha}         {"0B}
-\Mn@greek@letter{beta}          {"0C}
-\Mn@greek@letter{gamma}         {"0D}
-\Mn@greek@letter{delta}         {"0E}
-\Mn@greek@letter{epsilon}       {"0F}
-\Mn@greek@letter{zeta}          {"10}
-\Mn@greek@letter{eta}           {"11}
-\Mn@greek@letter{theta}         {"12}
-\Mn@greek@letter{iota}          {"13}
-\Mn@greek@letter{kappa}         {"14}
-\Mn@greek@letter{lambda}        {"15}
-\Mn@greek@letter{mu}            {"16}
-\Mn@greek@letter{nu}            {"17}
-\Mn@greek@letter{xi}            {"18}
-\Mn@greek@letter{pi}            {"19}
-\Mn@greek@letter{rho}           {"1A}
-\Mn@greek@letter{sigma}         {"1B}
-\Mn@greek@letter{tau}           {"1C}
-\Mn@greek@letter{upsilon}       {"1D}
-\Mn@greek@letter{phi}           {"1E}
-\Mn@greek@letter{chi}           {"1F}
-\Mn@greek@letter{psi}           {"20}
-\Mn@greek@letter{omega}         {"21}
-\Mn@greek@letter{varepsilon}    {"22}
-\Mn@greek@letter{vartheta}      {"23}
-\Mn@greek@letter{varpi}         {"24}
-\Mn@greek@letter{varrho}        {"25}
-\Mn@greek@letter{varsigma}      {"26}
-\Mn@greek@letter{varphi}        {"27}
+\Mn@greek@letter{Gamma}         {"80}{"00}
+\Mn@greek@letter{Delta}         {"81}{"01}
+\Mn@greek@letter{Theta}         {"82}{"02}
+\Mn@greek@letter{Lambda}        {"83}{"03}
+\Mn@greek@letter{Xi}            {"84}{"04}
+\Mn@greek@letter{Pi}            {"85}{"05}
+\Mn@greek@letter{Sigma}         {"86}{"06}
+\Mn@greek@letter{Upsilon}       {"87}{"07}
+\Mn@greek@letter{Phi}           {"88}{"08}
+\Mn@greek@letter{Psi}           {"89}{"09}
+\Mn@greek@letter{Omega}         {"8A}{"0A}
+\Mn@greek@letter{alpha}         {"0B}{"8B}
+\Mn@greek@letter{beta}          {"0C}{"8C}
+\Mn@greek@letter{gamma}         {"0D}{"8D}
+\Mn@greek@letter{delta}         {"0E}{"8E}
+\Mn@greek@letter{epsilon}       {"0F}{"8F}
+\Mn@greek@letter{zeta}          {"10}{"90}
+\Mn@greek@letter{eta}           {"11}{"91}
+\Mn@greek@letter{theta}         {"12}{"92}
+\Mn@greek@letter{iota}          {"13}{"93}
+\Mn@greek@letter{kappa}         {"14}{"94}
+\Mn@greek@letter{lambda}        {"15}{"95}
+\Mn@greek@letter{mu}            {"16}{"96}
+\Mn@greek@letter{nu}            {"17}{"97}
+\Mn@greek@letter{xi}            {"18}{"98}
+\Mn@greek@letter{pi}            {"19}{"99}
+\Mn@greek@letter{rho}           {"1A}{"9A}
+\Mn@greek@letter{sigma}         {"1B}{"9B}
+\Mn@greek@letter{tau}           {"1C}{"9C}
+\Mn@greek@letter{upsilon}       {"1D}{"9D}
+\Mn@greek@letter{phi}           {"1E}{"9E}
+\Mn@greek@letter{chi}           {"1F}{"9F}
+\Mn@greek@letter{psi}           {"20}{"A0}
+\Mn@greek@letter{omega}         {"21}{"A1}
+\Mn@greek@letter{varepsilon}    {"22}{"A2}
+\Mn@greek@letter{vartheta}      {"23}{"A3}
+\Mn@greek@letter{varpi}         {"24}{"A4}
+\Mn@greek@letter{varrho}        {"25}{"A5}
+\Mn@greek@letter{varsigma}      {"26}{"A6}
+\Mn@greek@letter{varphi}        {"27}{"A7}
 %    \end{macrocode}
 % Some of the following symbols are not really greek letters but are treated in
 % the same way.
 %    \begin{macrocode}
-\Mn@greek@letter{hbar}          {"81}
-\Mn@greek@letter{digamma}       {"82}
-\Mn@greek@letter{varkappa}      {"83}
-\Mn@greek@letter{varbeta}       {"84}
-\Mn@greek@letter{backepsilon}   {"85}
-\Mn@greek@letter{varbackepsilon}{"86}
-\Mn@greek@letter{eth}           {"87}
+\Mn@greek@letter{varbeta}       {"B0}{"A8}
+\Mn@greek@letter{varkappa}      {"B1}{"A9}
+\Mn@greek@letter{backepsilon}   {"B2}{"AA}
+\Mn@greek@letter{varbackepsilon}{"B3}{"AB}
+\Mn@greek@letter{digamma}       {"B4}{"AC}
+\Mn@greek@letter{hbar}          {"B5}{"AD}
+\Mn@greek@letter{eth}           {"B6}{"AE}
+\Mn@greek@letter{partial}       {"40}{"C0}
+\Mn@greek@letter{ell}           {"60}{"E0}
 %    \end{macrocode}
 % Go through a list of greek letters |#2| and |\let| them be their
 % |#1|-prefixed variants.
@@ -658,17 +657,15 @@
 % Some symbols missing from MnSymbol can be taken from MinionPro.
 %
 %    \begin{macrocode}
-\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"80}
-\DeclareMathSymbol{\lozenge}    {\mathord}{rmletters}{"88}
-\DeclareMathSymbol{\slashedzero}{\mathord}{rmletters}{"89}
+\DeclareMathSymbol{\slashedzero}{\mathord}{letters}{"AF}
+\DeclareMathSymbol{\lozenge}    {\mathord}{letters}{"FD}
+\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"FE}
 %    \end{macrocode}
 %    \begin{macrocode}
-
 \newcommand*\Mn@fraction[2]{%
   \DeclareTextSymbol       {#1}{TS1}{#2}%
   \DeclareTextSymbolDefault{#1}{TS1}%
 }
-
 \Mn@fraction{\textzeronumerator}        {192}
 \Mn@fraction{\textonenumerator}         {193}
 \Mn@fraction{\texttwonumerator}         {194}
@@ -703,7 +700,6 @@
 \Mn@fraction{\textthreeeighths}         {227}
 \Mn@fraction{\textfiveeighths}          {228}
 \Mn@fraction{\textseveneighths}         {229}
-
 %    \end{macrocode}
 % Archaic greek letters not provided by MinionPro
 %    \begin{macrocode}
@@ -717,6 +713,25 @@
   \UndeclareTextCommand{\j}{T1}%
   \UndeclareTextCommand{\j}{LY1}%
 }
+%    \end{macrocode}
+% For testing purposes (new OML fonts)
+%    \begin{macrocode}
+\@for\Mn@alpha:=%
+  a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z%
+\do{%
+  \expandafter\DeclareMathSymbol\expandafter{\csname it\Mn@alpha\endcsname}
+    {\mathalpha}{letters}{\expandafter`\Mn@alpha}%
+  \@tempcnta=\expandafter`\Mn@alpha
+  \advance\@tempcnta 128
+  \edef\Mn@tempa{\the\@tempcnta}%
+  \expandafter\DeclareMathSymbol\expandafter{\csname up\Mn@alpha\endcsname}
+    {\mathalpha}{letters}{\Mn@tempa}%
+}
+\DeclareMathSymbol{\itimath}{\mathord}{letters}{"7B}
+\DeclareMathSymbol{\upimath}{\mathord}{letters}{"FB}
+\DeclareMathSymbol{\itjmath}{\mathord}{letters}{"7C}
+\DeclareMathSymbol{\upjmath}{\mathord}{letters}{"FC}
 %    \end{macrocode}
 % make vdots available in textmode
 %    \begin{macrocode}
@@ -1662,6 +1677,9 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
+\Mn@AddToConfig{encoding}{OML}{
+      <->     otf* [shape=Mixed,figures=,spacing=] MinionPro
+}
 \Mn@AddToConfig{shape}{it,scit,sscit,sw}{
       <->     otf* MinionPro-It
 }
@@ -1688,6 +1706,7 @@
   \ifx\@tempa\@empty
     \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
       \Mn@UseConfig{opticals}      {\Mn@option@opticals}%
+      \Mn@UseConfig{encoding}      {#2}%
       \Mn@UseConfig{fontset/weight}{\Mn@option@fontset/#4}%
       \Mn@UseConfig{weight}        {#4}%
       \Mn@UseConfig{shape}         {#5}%
@@ -1714,9 +1733,9 @@
   \Mn@DeclareFontFamily{#1}{#2}{#3}
     {m,sb,b,bx} {n,it,sl}%
 }
-\newcommand*\Mn@DeclareMathFontFamily[3][LF,OsF,TLF,TOsF]{%
+\newcommand*\Mn@DeclareMathFontFamily[3][TOsF]{%
   \Mn@DeclareFontFamily{#1}{#2}{#3}
-    {m,sb,b,bx} {n,it,sc,scit,scsl,scsw,sl}%
+    {m,sb,b,bx} {it}%
 }
 %    \end{macrocode}
 % An additional macro |\\foo| is generated by |\newcommand| for processing an
