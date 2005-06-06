@@ -90,13 +90,6 @@
 }
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
-\newcommand\origtableofcontents{}
-\let\origtableofcontents\tableofcontents
-\renewcommand\tableofcontents{\begingroup
-  \figureversion{tabular}%
-  \renewcommand\familydefault{MinionPro-TOsF}%
-  \origtableofcontents
-\endgroup}
 
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
@@ -114,7 +107,11 @@
 % \date{\fileversion\ -- \filedate}
 % \maketitle
 %
+% \begingroup
+% \figureversion{tabular}%
+% \renewcommand\familydefault{MinionPro-TOsF}%
 % \tableofcontents
+% \endgroup
 %
 % \section{Overview}
 %
@@ -169,6 +166,24 @@
 % \end{options}
 %
 % \subsubsection*{Figure selection}
+%
+% MinionPro offers four different figure version. One can choose between
+% \emph{text figures} (i.e., lowercase figures) and \emph{lining figures} (i.e., uppercase figures)
+% and one can choose between \emph{proportional} figures (figures have different widths)
+% and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
+%
+% \medskip
+% \begin{tabular}{lll}
+% \toprule
+%                  & proportional & tabular \\
+% \midrule
+%   text figures   & {\figureversion{text}0123456789}   & {\figureversion{text,tabular}0123456789} \\
+%   lining figures & {\figureversion{lining}0123456789} & {\figureversion{lining,tabular}0123456789} \\
+% \bottomrule
+% \end{tabular}
+%
+% \medskip\noindent
+% The default version can be selected by the following options\?:
 %
 % \begin{options}
 %   \option{textosf}     & use text figures in text mode\\
