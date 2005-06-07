@@ -1105,6 +1105,38 @@
 % \section{Font definition files}
 % \label{sec:fontdef}
 %
+% \begin{table}
+%   \let\>\\%
+%   \centering
+%   \begin{tabular}{@{}>{\figureversion{lining}}p{5em}p{10em}lp{9em}@{}}
+%     \toprule 
+%     encoding & family & series & shape \\
+%     \midrule
+%     \raggedright OT1, T1, TS1, LY1, T5 &
+%     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
+%     m, sb, b (bx) &
+%     n, it (sl), sw,\> sc, scit (scsl, scsw),\> ssc, sscit (sscsl, sscsw) \\
+%     \addlinespace
+%     \raggedright LGR, T2A, T2B, T2C, X2, OT2 &
+%     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
+%     m, sb, b (bx) &
+%     n, it (sl) \\
+%     \addlinespace
+%     OML &
+%     MinionPro-TOsF &
+%     m, sb, b (bx) &
+%     n, it \\
+%     \addlinespace
+%     U &
+%     MinionPro-Ornaments &
+%     m, sb, b (bx) &
+%     n, it (sl) \\
+%     \bottomrule
+%   \end{tabular}
+%   \caption{\acro{NFSS} classification (Parenthesized combinations are
+%     provided via substitutions.)}
+% \end{table}
+%
 % Since alle the font definitions look the same we introduce macros to ease the
 % configuration. These macros are stored in the file
 % \file{MinionPro-FontDef.sty} which is included by every \acro{FD} file.
