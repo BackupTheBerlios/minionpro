@@ -230,9 +230,9 @@
 % letters in math mode.
 %
 % \begin{options}
-%   \option*{uprightGreek} & uppercase Greek upright, lowercase Greek italic\\
-%   \option{slantedGreek}  & all Greek letters italic\\
-%   \option{upright}       & all Greek letters upright, uppercase Roman upright
+%   \option*{mixedgreek} & uppercase Greek upright, lowercase Greek italic\\
+%   \option{italicgreek} & all Greek letters italic\\
+%   \option{frenchmath}  & all Greek and uppercase Roman letters upright
 % \end{options}
 %
 % \noindent
@@ -433,15 +433,15 @@
 %    \begin{macrocode}
 \newcommand\Mn@Greek@Shape{}
 \newcommand\Mn@Math@letters@shape{it}
-\DeclareOption{upright}{%
+\DeclareOption{frenchmath}{%
   \def\Mn@Greek@Shape{\Mn@Greek@Rm}%
   \def\Mn@Math@letters@shape{n}%
 }
-\DeclareOption{uprightGreek}{%
+\DeclareOption{mixedgreek}{%
   \def\Mn@Greek@Shape{\Mn@Greek@Mix}%
   \def\Mn@Math@letters@shape{it}%
 }
-\DeclareOption{slantedGreek}{%
+\DeclareOption{italicgreek}{%
   \def\Mn@Greek@Shape{\Mn@Greek@It}%
   \def\Mn@Math@letters@shape{it}%
 }
@@ -488,7 +488,7 @@
 % \subsubsection{Defaults}
 %
 %    \begin{macrocode}
-\ExecuteOptions{osf,uprightGreek,amsbb,eufrak}
+\ExecuteOptions{osf,mixedgreek,amsbb,eufrak}
 \ProcessOptions\relax
 %    \end{macrocode}
 %
