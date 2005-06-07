@@ -364,7 +364,7 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml   tosf-oml "--math-spacing=255 -L 40 -fonum -fpnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml   tosf-oml "--math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
     make_tfm "$1" orn-u orn-u    "$ornaments_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
