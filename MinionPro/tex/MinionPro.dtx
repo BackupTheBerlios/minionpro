@@ -66,7 +66,7 @@
   \renewcommand{\ttdefault}{lmtt}%
   \DeclareMathAlphabet\mathsf    {T1}{lmss}{m}{n}%
 }{}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 
 \newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}
@@ -195,7 +195,7 @@
 %   \option{mathtabular} & tabular figures in math mode\\
 %   \option{opticalfootnotes} & use optical figures for footnotemarks, \\
 %                        & i.\?e. example\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont6,9\selectfont\endgroup\ 
-%                          instead of example\textsuperscript{\figureversion{lf}6,9}. This Option can\\
+%                          instead of example\textsuperscript{\figureversion{lf}6,9}. This option can\\
 %                        & be used if \emph{only} figures are used as footnotemarks.
 % \end{options}
 %
@@ -210,7 +210,7 @@
 %   \option{proportional}, \option{prop} & proportional figures
 % \end{options}
 %
-% \subsubsection*{Calligraphic Fonts}
+% \subsubsection*{Calligraphic fonts}
 %
 % \begin{options}
 %   \option*{mnsy} & use the calligraphic font from MnSymbol\\
@@ -220,7 +220,7 @@
 %                  & this font contains also lower case letters, but it is not quite finished.
 % \end{options}
 %
-% \subsubsection*{Blackboard and fraktur letters}
+% \subsubsection*{Blackboard and Fraktur letters}
 %
 % \begin{options}
 %   \option*{amsbb}  & use the AMS blackboard font\\
@@ -240,7 +240,7 @@
 % \end{options}
 %
 % \noindent
-% Upright and italic greek letters are also directly accessible via the commands
+% Upright and italic Greek letters are also directly accessible via the commands
 % |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
 %
 % \subsubsection*{Miscellaneous options}
@@ -340,12 +340,43 @@
 %
 % The following encodings are supported\?:
 %
-% \medskip\tabindent
+% \medskip\tabindent\figureversion{lining}
 % \begin{tabular}{@{}ll@{}}
-%   latin    & \acro{OT1}, \acro{T1}, \acro{TS1}, \acro{LY1}, \acro{T5}\\
-%   cyrillic & \acro{T2A}, \acro{T2B}, \acro{T2C}, \acro{X2}, \acro{OT2}\\
-%   greek    & \acro{LGR} (to be used with babel, including polutonikogreek)
-% \end{tabular}
+%   Latin    & OT1, T1, TS1, LY1, T5\\
+%   Cyrillic & T2A, T2B, T2C, X2, OT2\\
+%   Greek    & LGR (to be used with \pkg{babel}, including polutonikogreek)
+% \end{tabular}\figureversion{osf}
+%
+%
+% \section{NFSS classification}
+% Parenthesized combinations are provided via substitutions.\par\medskip\noindent
+% {\centering\figureversion{lining}\let\>\\%
+%   \begin{tabular}{@{}p{5em}p{9em}lp{9em}@{}}
+%     \toprule 
+%     encoding & family & series & shape \\
+%     \midrule
+%     \raggedright OT1, T1, TS1, LY1, T5 &
+%     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
+%     m, sb, b (bx) &
+%     n, it (sl), sw,\> sc, scit (scsl, scsw),\> ssc, sscit (sscsl, sscsw) \\
+%     \addlinespace
+%     \raggedright LGR, T2A, T2B, T2C, X2, OT2 &
+%     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
+%     m, sb, b (bx) &
+%     n, it (sl) \\
+%     \addlinespace
+%     OML &
+%     MinionPro-TOsF &
+%     m, sb, b (bx) &
+%     n, it \\
+%     \addlinespace
+%     U &
+%     MinionPro-Ornaments &
+%     m, sb, b (bx) &
+%     n, it (sl) \\
+%     \bottomrule
+%   \end{tabular}
+% }
 %
 % \StopEventually{}
 %
@@ -451,7 +482,7 @@
 }
 %    \end{macrocode}
 %
-% \subsubsection{Blackbord bold and fraktur fonts}
+% \subsubsection{Blackbord bold and Fraktur fonts}
 %
 %    \begin{macrocode}
 \newcommand\Mn@load@amsbb{
@@ -488,7 +519,7 @@
 \newcommand\Mn@load@integrals{}
 \DeclareOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
 %    \end{macrocode}
-% \subsection{optical footnotemarks}
+% \subsection{Optical footnotemarks}
 %    \begin{macrocode}
 \DeclareOption{opticalfootnotes}{%
   \def\@makefnmark{\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont\@thefnmark\endgroup}%
@@ -582,11 +613,11 @@
 % \subsection{Greek letters}
 % \label{sec:greek}
 %
-% We provide math-mode commands for each greek letter, both italic and upright.
+% We provide math-mode commands for each Greek letter, both italic and upright.
 % Furthermore, there are three commands to select the default version of the
 % letters (all upright, all italic, or capitals upright and lowercase italic).
 %
-% While delaring the greek letters we collect the uppercase and lowercase letters
+% While delaring the Greek letters we collect the uppercase and lowercase letters
 % in two lists. (We distinguish them by the first letter of their name.)
 % These lists are used to select the different versions.
 %    \begin{macrocode}
@@ -609,7 +640,7 @@
   \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
 }
 %    \end{macrocode}
-% We can now declare the greek letters. (left italic, right upright)
+% We can now declare the Greek letters. (left italic, right upright)
 %    \begin{macrocode}
 \Mn@greek@letter{Gamma}         {"80}{"00}
 \Mn@greek@letter{Delta}         {"81}{"01}
@@ -688,7 +719,7 @@
   \Mn@greek@select{it}{lower}%
 }
 %    \end{macrocode}
-% Finally initialize the greek letters.
+% Finally initialise the Greek letters.
 %    \begin{macrocode}
 \Mn@Greek@Shape
 %    \end{macrocode}
@@ -742,7 +773,7 @@
 \Mn@fraction{\textfiveeighths}          {228}
 \Mn@fraction{\textseveneighths}         {229}
 %    \end{macrocode}
-% Archaic greek letters not provided by MinionPro
+% Archaic Greek letters not provided by MinionPro
 %    \begin{macrocode}
 %\def\Qoppa{\reflectbox{P}}
 %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
@@ -909,8 +940,6 @@
 %    \end{macrocode}
 %
 % \section{Support for character protrusion}
-%
-% \subsection{\pkg{microtype} support}
 %
 % The \pkg{microtype} configuration. All four MinionPro families use the same
 % file (cf.\ section~\ref{sec:fontdef}).
@@ -1104,38 +1133,6 @@
 %
 % \section{Font definition files}
 % \label{sec:fontdef}
-%
-% \begin{table}
-%   \let\>\\%
-%   \centering
-%   \begin{tabular}{@{}>{\figureversion{lining}}p{5em}p{10em}lp{9em}@{}}
-%     \toprule 
-%     encoding & family & series & shape \\
-%     \midrule
-%     \raggedright OT1, T1, TS1, LY1, T5 &
-%     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
-%     m, sb, b (bx) &
-%     n, it (sl), sw,\> sc, scit (scsl, scsw),\> ssc, sscit (sscsl, sscsw) \\
-%     \addlinespace
-%     \raggedright LGR, T2A, T2B, T2C, X2, OT2 &
-%     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
-%     m, sb, b (bx) &
-%     n, it (sl) \\
-%     \addlinespace
-%     OML &
-%     MinionPro-TOsF &
-%     m, sb, b (bx) &
-%     n, it \\
-%     \addlinespace
-%     U &
-%     MinionPro-Ornaments &
-%     m, sb, b (bx) &
-%     n, it (sl) \\
-%     \bottomrule
-%   \end{tabular}
-%   \caption{\acro{NFSS} classification (Parenthesized combinations are
-%     provided via substitutions.)}
-% \end{table}
 %
 % Since alle the font definitions look the same we introduce macros to ease the
 % configuration. These macros are stored in the file
@@ -1430,7 +1427,7 @@
     {m,sb,b,bx} {n,it}%
 }
 %    \end{macrocode}
-% An additional macro |\\foo| is generated by |\newcommand| for processing an
+% An additional macro |\foo| is generated by |\newcommand| for processing an
 % optional argument of |\foo|.
 %    \begin{macrocode}
 \otf@makeglobal{Mn@DeclareLargeFontFamily}
