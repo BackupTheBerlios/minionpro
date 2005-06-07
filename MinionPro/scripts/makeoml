@@ -89,6 +89,6 @@ do
   vptovf $v
 done
 
-mv *.vf  ../vf
-mv *.tfm ../tfm
+mv *Mixed*.vf  ../vf
+mv *Mixed*.tfm ../tfm
 
