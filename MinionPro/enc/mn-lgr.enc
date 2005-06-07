@@ -25,7 +25,6 @@
 % LIGKERN uni1FBD omega =: uni1F60 ;
 % LIGKERN uni1FBD rho =: uni1FE4 ; 
 % LIGKERN uni1FBD Alpha =: uni1F08 ;
-% LIGKERN uni1FBD Omega =: uni1F68 ; 
 
 % <
 % LIGKERN uni1FFE tonos =: uni1FDE ; 
@@ -40,7 +39,6 @@
 % LIGKERN uni1FFE omega =: uni1F61 ;
 % LIGKERN uni1FFE rho =: uni1FE5 ;
 % LIGKERN uni1FFE Alpha =: uni1F09 ; 
-% LIGKERN uni1FFE Omega =: uni1F69 ;
 
 % >\
 % LIGKERN uni1FCD alpha =: uni1F02 ; 
@@ -51,7 +49,6 @@
 % LIGKERN uni1FCD upsilon =: uni1F52 ; 
 % LIGKERN uni1FCD omega =: uni1F62 ; 
 % LIGKERN uni1FCD Alpha =: uni1F0A ; 
-% LIGKERN uni1FCD Omega =: uni1F6A ; 
 
 % <\
 % LIGKERN uni1FDD alpha =: uni1F03 ; 
@@ -62,7 +59,6 @@
 % LIGKERN uni1FDD upsilon =: uni1F53 ; 
 % LIGKERN uni1FDD omega =: uni1F63 ; 
 % LIGKERN uni1FDD Alpha =: uni1F0B ; 
-% LIGKERN uni1FDD Omega =: uni1F6B ; 
 
 % >/
 % LIGKERN uni1FCE alpha =: uni1F04 ; 
@@ -73,7 +69,6 @@
 % LIGKERN uni1FCE upsilon =: uni1F54 ; 
 % LIGKERN uni1FCE omega =: uni1F64 ; 
 % LIGKERN uni1FCE Alpha =: uni1F0C ; 
-% LIGKERN uni1FCE Omega =: uni1F6C ; 
 
 % </
 % LIGKERN uni1FDE alpha =: uni1F05 ; 
@@ -84,7 +79,6 @@
 % LIGKERN uni1FDE upsilon =: uni1F55 ; 
 % LIGKERN uni1FDE omega =: uni1F65 ; 
 % LIGKERN uni1FDE Alpha =: uni1F0D ; 
-% LIGKERN uni1FDE Omega =: uni1F6D ; 
 
 % ~>
 % LIGKERN uni1FCF alpha =: uni1F06 ; 
@@ -93,7 +87,6 @@
 % LIGKERN uni1FCF upsilon =: uni1F56 ; 
 % LIGKERN uni1FCF omega =: uni1F66 ; 
 % LIGKERN uni1FCF Alpha =: uni1F0E ; 
-% LIGKERN uni1FCF Omega =: uni1F6E ; 
 
 % <~
 % LIGKERN uni1FDF alpha =: uni1F07 ; 
@@ -102,7 +95,6 @@
 % LIGKERN uni1FDF upsilon =: uni1F57 ;
 % LIGKERN uni1FDF omega =: uni1F67 ; 
 % LIGKERN uni1FDF Alpha =: uni1F0F ; 
-% LIGKERN uni1FDF Omega =: uni1F6F ; 
 
 % ~
 % LIGKERN tilde uni1FBD =: uni1FCF ; 
@@ -125,7 +117,6 @@
 % LIGKERN grave upsilon =: uni1F7A ;
 % LIGKERN grave omega =: uni1F7C ; 
 % LIGKERN grave Alpha =: uni1FBA ; 
-% LIGKERN grave Omega =: uni1FFA ; 
 
 % /
 % LIGKERN tonos dieresis =: dieresistonos
@@ -165,16 +156,6 @@
 % LIGKERN uni1F0E uni1FBE |=: iota ;
 % LIGKERN uni1F0F uni1FBE |=: iota ;
 % LIGKERN uni1FBA uni1FBE |=: iota ;
-
-% LIGKERN uni1F68 uni1FBE |=: iota ;
-% LIGKERN uni1F69 uni1FBE |=: iota ;
-% LIGKERN uni1F6A uni1FBE |=: iota ;
-% LIGKERN uni1F6B uni1FBE |=: iota ;
-% LIGKERN uni1F6C uni1FBE |=: iota ;
-% LIGKERN uni1F6D uni1FBE |=: iota ;
-% LIGKERN uni1F6E uni1FBE |=: iota ;
-% LIGKERN uni1F6F uni1FBE |=: iota ;
-% LIGKERN uni1FFA uni1FBE |=: iota ;
 
 % LIGKERN Alpha uni1FBE |=: iota ;
 % LIGKERN Eta uni1FBE |=: iota ;
