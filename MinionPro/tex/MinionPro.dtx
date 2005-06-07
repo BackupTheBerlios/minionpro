@@ -142,7 +142,7 @@
 % \emph{after} the command |\usepackage{MinionPro}|.
 %
 % There is also a slight incompatibility with the \pkg{dcolumn} package
-% which expects all figures to have the same size. If you want to use this
+% which expects all figures to have the same width. If you want to use this
 % package you either have to specify the \option{mathtabular} option (this is
 % the brute force solution, not recommended), or you can use the
 % |\figureversion{tabular}| command to switch to tabular figures in front of
@@ -192,7 +192,11 @@
 %   \option{textlf}      & use lining figures in text mode\\
 %   \option{mathlf}      & use lining figures in math mode\\
 %   \option{lf}          & use lining figures in text and math mode\\
-%   \option{mathtabular} & tabular figures in math mode
+%   \option{mathtabular} & tabular figures in math mode\\
+%   \option{opticalfootnotes} & use optical figures for footnotemarks, \\
+%                        & i.\?e. example\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont6,9\selectfont\endgroup\ 
+%                          instead of example\textsuperscript{\figureversion{lf}6,9}. This Option can\\
+%                        & be used if \emph{only} figures are used as footnotemarks.
 % \end{options}
 %
 % \noindent
@@ -483,6 +487,12 @@
 %    \begin{macrocode}
 \newcommand\Mn@load@integrals{}
 \DeclareOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
+%    \end{macrocode}
+% \subsection{optical footnotemarks}
+%    \begin{macrocode}
+\DeclareOption{opticalfootnotes}{%
+  \def\@makefnmark{\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont\@thefnmark\endgroup}%
+}
 %    \end{macrocode}
 % 
 % \subsubsection{Defaults}
