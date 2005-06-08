@@ -140,7 +140,7 @@
 %
 %     0xFF  uni1EF9  y tilde
 %
-/MinionPro-T5Encoding [
+/MinionPro-T5SwashEncoding [
 % 0x00
   /grave /acute /circumflex /tilde
   /dieresis /space_dotbelowcomb /ring /caron
@@ -149,8 +149,8 @@
 % 0x10
   /quotedblleft /quotedblright /quotedblbase /guillemotleft
   /guillemotright /endash /emdash /cwm
-  /zeroinferior /dotlessi /uni1EF6 /uni1EF7
-  /uni1EF4 /uni1EF5 /Dcroat /dcroat
+  /zeroinferior /dotlessi /uni1EF6.swash /uni1EF7
+  /uni1EF4.swash /uni1EF5 /Dcroat.swash /dcroat
 % 0x20
   /visualspace /exclam /quotedbl /numbersign
   /dollar /percent /ampersand /quoteright
@@ -162,19 +162,19 @@
   /eight /nine /colon /semicolon
   /less /equal /greater /question
 % 0x40
-  /at /A /B /C
-  /D /E /F /G
-  /H /I /J /K
-  /L /M /N /O
+  /at /A.swash /B.swash /C.swash
+  /D.swash /E.swash /F.swash /G.swash
+  /H.swash /I.swash /J.swash /K.swash
+  /L.swash /M.swash /N.swash /O.swash
 % 0x50
-  /P /Q /R /S
-  /T /U /V /W
-  /X /Y /Z /bracketleft
+  /P.swash /Q.swash /R.swash /S.swash
+  /T.swash /U.swash /V.swash /W.swash
+  /X.swash /Y.swash /Z.swash /bracketleft
   /backslash /bracketright /asciicircum /underscore
 % 0x60
   /quoteleft /a /b /c
   /d /e /f /g
-  /h /i /j /k
+  /h /i /j /k.alt
   /l /m /n /o
 % 0x70
   /p /q /r /s
@@ -182,15 +182,15 @@
   /x /y /z /braceleft
   /bar /braceright /asciitilde /hyphen
 % 0x80
-  /Agrave /Aacute /Atilde /uni1EA2
-  /uni1EA0 /Acircumflex /uni1EA6 /uni1EA4
-  /uni1EAA /uni1EA8 /uni1EAC /Abreve
-  /uni1EB0 /uni1EAE /uni1EB4 /uni1EB2
+  /Agrave.swash /Aacute.swash /Atilde.swash /uni1EA2.swash
+  /uni1EA0.swash /Acircumflex.swash /uni1EA6.swash /uni1EA4.swash
+  /uni1EAA.swash /uni1EA8.swash /uni1EAC.swash /Abreve.swash
+  /uni1EB0.swash /uni1EAE.swash /uni1EB4.swash /uni1EB2.swash
 % 0x90
-  /uni1EB6 /Egrave /Eacute /Etilde
-  /uni1EBA /uni1EB8 /Ecircumflex /uni1EC0
-  /uni1EBE /uni1EC4 /uni1EC2 /uni1EC6
-  /Igrave /Iacute /Itilde /uni1EC8
+  /uni1EB6.swash /Egrave.swash /Eacute.swash /uni1EBC.swash
+  /uni1EBA.swash /uni1EB8.swash /Ecircumflex.swash /uni1EC0.swash
+  /uni1EBE.swash /uni1EC4.swash /uni1EC2.swash /uni1EC6.swash
+  /Igrave.swash /Iacute.swash /Itilde.swash /uni1EC8.swash
 % 0xA0
   /agrave /aacute /atilde /uni1EA3
   /uni1EA1 /acircumflex /uni1EA7 /uni1EA5
@@ -202,15 +202,15 @@
   /uni1EBF /uni1EC5 /uni1EC3 /uni1EC7
   /igrave /iacute /itilde /uni1EC9
 % 0xC0
-  /uni1ECA /Ograve /Oacute /Otilde
-  /uni1ECE /uni1ECC /Ocircumflex /uni1ED2
-  /uni1ED0 /uni1ED6 /uni1ED4 /uni1ED8
-  /Ohorn /uni1EDC /uni1EDA /uni1EE0
+  /uni1ECA.swash /Ograve.swash /Oacute.swash /Otilde.swash
+  /uni1ECE.swash /uni1ECC.swash /Ocircumflex.swash /uni1ED2.swash
+  /uni1ED0.swash /uni1ED6.swash /uni1ED4.swash /uni1ED8.swash
+  /Ohorn.swash /uni1EDC.swash /uni1EDA.swash /uni1EE0.swash
 % 0xD0
-  /uni1EDE /uni1EE2 /Ugrave /Uacute
-  /Utilde /uni1EE6 /uni1EE4 /Uhorn
-  /uni1EEA /uni1EE8 /uni1EEE /uni1EEC
-  /uni1EF0 /Ygrave /Yacute /uni1EF8
+  /uni1EDE.swash /uni1EE2.swash /Ugrave.swash /Uacute.swash
+  /Utilde.swash /uni1EE6.swash /uni1EE4.swash /Uhorn.swash
+  /uni1EEA.swash /uni1EE8.swash /uni1EEE.swash /uni1EEC.swash
+  /uni1EF0.swash /Ygrave.swash /Yacute.swash /uni1EF8.swash
 % 0xE0
   /uni1ECB /ograve /oacute /otilde
   /uni1ECF /uni1ECD /ocircumflex /uni1ED3
