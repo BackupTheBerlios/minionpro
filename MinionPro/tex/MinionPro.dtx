@@ -192,11 +192,7 @@
 %   \option{textlf}      & use lining figures in text mode\\
 %   \option{mathlf}      & use lining figures in math mode\\
 %   \option{lf}          & use lining figures in text and math mode\\
-%   \option{mathtabular} & tabular figures in math mode\\
-%   \option{opticalfootnotes} & use optical figures for footnotemarks, \\
-%                        & i.\?e. example\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont6,9\selectfont\endgroup\ 
-%                          instead of example\textsuperscript{\figureversion{lf}6,9}. This option can\\
-%                        & be used if \emph{only} figures are used as footnotemarks.
+%   \option{mathtabular} & use tabular figures in math mode\\
 % \end{options}
 %
 % \noindent
@@ -220,7 +216,7 @@
 %                  & this font contains also lower case letters, but it is not quite finished.
 % \end{options}
 %
-% \subsubsection*{Blackboard and Fraktur letters}
+% \subsubsection*{Blackboard and fraktur letters}
 %
 % \begin{options}
 %   \option*{amsbb}  & use the AMS blackboard font\\
@@ -246,10 +242,15 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-% \iffalse  \option{protrude} &    enable character protrusion with pdflatex\\ \fi
 %   \option{minionint}
 %      & take the integral symbols from MinionPro, not from MnSymbol\?:\\
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$
+%   \option{opticalfootnotes}
+%      & use optical figures for footnotemarks, \\
+%      & i.e., example\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont
+%        6,9\selectfont\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
+%        This option can\\
+%      & be used if \emph{only} figures are used as footnotemarks.
 % \end{options}
 %
 % \section{Additional font shapes and symbols}
@@ -340,37 +341,39 @@
 %
 % The following encodings are supported\?:
 %
-% \medskip\tabindent\figureversion{lining}
+% \medskip\tabindent
 % \begin{tabular}{@{}ll@{}}
-%   Latin    & OT1, T1, TS1, LY1, T5\\
-%   Cyrillic & T2A, T2B, T2C, X2, OT2\\
-%   Greek    & LGR (to be used with \pkg{babel}, including polutonikogreek)
-% \end{tabular}\figureversion{osf}
+%   Latin    & \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5}\\
+%   Cyrillic & \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2}\\
+%   Greek    & \acro{LGR} (to be used with \pkg{babel}, including polutonikogreek)
+% \end{tabular}
 %
+% \section{\acro{NFSS} classification}
 %
-% \section{NFSS classification}
-% Parenthesized combinations are provided via substitutions.\par\medskip\noindent
-% {\centering\figureversion{lining}\let\>\\%
+% Parenthesised combinations are provided via substitutions.
+%
+% \medskip\noindent
+% {\centering\let\>=\\%
 %   \begin{tabular}{@{}p{5em}p{9.5em}lp{9em}@{}}
 %     \toprule 
 %     encoding & family & series & shape \\
 %     \midrule
-%     \raggedright OT1, T1, TS1, LY1, T5 &
+%     \raggedright \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5} &
 %     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
 %     m, sb, b (bx) &
 %     n, it (sl), sw,\> sc, scit (scsl, scsw),\> ssc, sscit (sscsl, sscsw) \\
 %     \addlinespace
-%     \raggedright LGR, T2A, T2B, T2C, X2, OT2 &
+%     \raggedright \acro{LGR,} \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2} &
 %     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
 %     m, sb, b (bx) &
 %     n, it (sl) \\
 %     \addlinespace
-%     OML &
+%     \acro{OML} &
 %     MinionPro-TOsF &
 %     m, sb, b (bx) &
 %     n, it \\
 %     \addlinespace
-%     U &
+%     \acro{U} &
 %     MinionPro-Ornaments &
 %     m, sb, b (bx) &
 %     n, it (sl) \\
@@ -482,7 +485,7 @@
 }
 %    \end{macrocode}
 %
-% \subsubsection{Blackbord bold and Fraktur fonts}
+% \subsubsection{Blackbord bold and fraktur fonts}
 %
 %    \begin{macrocode}
 \newcommand\Mn@load@amsbb{
@@ -519,11 +522,16 @@
 \newcommand\Mn@load@integrals{}
 \DeclareOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
 %    \end{macrocode}
-% \subsection{Optical footnotemarks}
+%
+% \subsection{Optical footnote marks}
+%
 %    \begin{macrocode}
 \DeclareOption{opticalfootnotes}{%
-  \def\@makefnmark{\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont\@thefnmark\endgroup}%
-}
+  \def\@makefnmark{%
+    \begingroup
+    \fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont
+    \@thefnmark
+    \endgroup}}
 %    \end{macrocode}
 % 
 % \subsubsection{Defaults}
@@ -640,7 +648,7 @@
   \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
 }
 %    \end{macrocode}
-% We can now declare the Greek letters. (left italic, right upright)
+% We can now declare the Greek letters (left italic, right upright).
 %    \begin{macrocode}
 \Mn@greek@letter{Gamma}         {"80}{"00}
 \Mn@greek@letter{Delta}         {"81}{"01}
