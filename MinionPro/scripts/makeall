@@ -13,9 +13,18 @@ done
 
 echo "Creating TeX metrics ..."
 
-(./scripts/maketfm MinionPro "$@" | sort -u > dvips/MinionPro.map) 2>&1 | (perl scripts/filtererr || cat)
+function maketfm() (
+  local family="$1"; shift
+  set -o pipefail
+  { scripts/maketfm $family "$@" | sort -u > dvips/$family.map; } 2>&1 |
+  { perl scripts/filtererr || cat; }
+)
+
+if ! maketfm MinionPro "$@"; then
+  echo maketfm failed, exiting ...
+  exit 1
+fi
 
 (cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
 (cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins)
-
