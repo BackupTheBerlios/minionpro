@@ -1393,6 +1393,7 @@
 \Mn@AddToConfig{shape-sub}{sscsl}{sscit}
 \Mn@AddToConfig{shape-sub}{scsw}{scit}
 \Mn@AddToConfig{shape-sub}{sscsw}{sscit}
+\Mn@AddToConfig{encoding/shape-sub}{TS1/sw}{it}
 %    \end{macrocode}
 % 
 % \subsubsection{Declaration of font families and shapes}
@@ -1400,7 +1401,10 @@
 %    \begin{macrocode}
 \newcommand\Mn@DeclareFontShape[6][]{%
   \edef\@tempa{%
-    \Mn@UseConfig{series-sub}{#4}\Mn@UseConfig{shape-sub}{#5}}%
+    \Mn@UseConfig{series-sub}{#4}%
+    \Mn@UseConfigOrDefault{encoding/shape-sub}{#2/#5}{%
+      \Mn@UseConfig{shape-sub}{#5}}%
+  }%
   \ifx\@tempa\@empty
     \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
       \Mn@UseConfig{opticals}      {\Mn@option@opticals}%
@@ -1413,7 +1417,8 @@
     \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
       <->ssub*#3-#6%
       /\Mn@UseConfigOrDefault{series-sub}{#4}{#4}%
-      /\Mn@UseConfigOrDefault{shape-sub}{#5}{#5}%
+      /\Mn@UseConfigOrDefault{encoding/shape-sub}{#2/#5}{%
+        \Mn@UseConfigOrDefault{shape-sub}{#5}{#5}}%
     }{}%
   \fi
 }
