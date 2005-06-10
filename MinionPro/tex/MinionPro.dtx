@@ -1300,8 +1300,14 @@
   \@ifundefined{Mn@config@#1@#2}{#3}%
     {\@nameuse{Mn@config@#1@#2}}%
 }
+\newcommand\Mn@TheConfig[2]{%
+  \@ifundefined{Mn@config@#1@#2}{}{%
+    \expandafter\noexpand\csname Mn@config@#1@#2\endcsname
+  }%
+}
 \otf@makeglobal{Mn@UseConfig}
 \otf@makeglobal{Mn@UseConfigOrDefault}
+\otf@makeglobal{Mn@TheConfig}
 %    \end{macrocode}
 % Here comes the configuration.
 %    \begin{macrocode}
@@ -1387,40 +1393,60 @@
       <->     otf* MinionPro
 }
 %    \end{macrocode}
-%    
+% Substitutions   
 %    \begin{macrocode}
-\Mn@AddToConfig{series-sub}{bx}{b}
-\Mn@AddToConfig{shape-sub}{sl}{it}
-\Mn@AddToConfig{shape-sub}{scsl}{scit}
-\Mn@AddToConfig{shape-sub}{sscsl}{sscit}
-\Mn@AddToConfig{shape-sub}{scsw}{scit}
-\Mn@AddToConfig{shape-sub}{sscsw}{sscit}
-\Mn@AddToConfig{encoding/shape-sub}{TS1/sw}{it}
+\Mn@AddToConfig{sub:series} {bx}    {b}
+\Mn@AddToConfig{sub:shape}  {sl}    {it}
+\Mn@AddToConfig{sub:shape}  {scsl}  {scit}
+\Mn@AddToConfig{sub:shape}  {sscsl} {sscit}
+\Mn@AddToConfig{sub:shape}  {scsw}  {scit}
+\Mn@AddToConfig{sub:shape}  {sscsw} {sscit}
+\Mn@AddToConfig{sub:encoding/shape}{TS1/sw}{it}
+%    \end{macrocode}
+% Code for the last argument of |\DeclareFontShape|
+%    \begin{macrocode}
+\Mn@AddToConfig{code:shape}{sw}{
+  \skewchar\font=255
+}
 %    \end{macrocode}
 % 
 % \subsubsection{Declaration of font families and shapes}
 %
 %    \begin{macrocode}
 \newcommand\Mn@DeclareFontShape[6][]{%
+%    \end{macrocode}
+% Check if any substitutions are specified.
+%    \begin{macrocode}
   \edef\@tempa{%
-    \Mn@UseConfig{series-sub}{#4}%
-    \Mn@UseConfigOrDefault{encoding/shape-sub}{#2/#5}{%
-      \Mn@UseConfig{shape-sub}{#5}}%
+    \Mn@UseConfig{sub:series}{#4}%
+    \Mn@UseConfigOrDefault{sub:encoding/shape}{#2/#5}{%
+      \Mn@UseConfig{sub:shape}{#5}}%
   }%
   \ifx\@tempa\@empty
-    \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
-      \Mn@UseConfig{opticals}      {\Mn@option@opticals}%
-      \Mn@UseConfig{fontset/weight}{\Mn@option@fontset/#4}%
-      \Mn@UseConfig{weight}        {#4}%
-      \Mn@UseConfig{encoding/shape}{#2/#5}%
-      \Mn@UseConfig{shape}         {#5}%
-    }{}%
+%    \end{macrocode}
+% Collect the configuration and declare the font shape. |\DeclareFontShape|
+% fully expands its fifth argument (with our macros |\Mn@UseConfig| in it), but
+% we have to retrieve the code for the sixth argument ourselves.
+%    \begin{macrocode}
+    \@temptokena={%
+      \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
+        \Mn@UseConfig{opticals}      {\Mn@option@opticals}%
+        \Mn@UseConfig{fontset/weight}{\Mn@option@fontset/#4}%
+        \Mn@UseConfig{weight}        {#4}%
+        \Mn@UseConfig{encoding/shape}{#2/#5}%
+        \Mn@UseConfig{shape}         {#5}%
+      }}%
+    \edef\@tempa{\the\@temptokena{\Mn@TheConfig{code:shape}{#5}}}%
+    \@tempa
   \else
+%    \end{macrocode}
+% Generate the substitution. (All substitutions are silent at the moment.)
+%    \begin{macrocode}
     \DeclareFontShape{#2}{#3-#6}{#4}{#5}{%
       <->ssub*#3-#6%
-      /\Mn@UseConfigOrDefault{series-sub}{#4}{#4}%
-      /\Mn@UseConfigOrDefault{encoding/shape-sub}{#2/#5}{%
-        \Mn@UseConfigOrDefault{shape-sub}{#5}{#5}}%
+      /\Mn@UseConfigOrDefault{sub:series}{#4}{#4}%
+      /\Mn@UseConfigOrDefault{sub:encoding/shape}{#2/#5}{%
+        \Mn@UseConfigOrDefault{sub:shape}{#5}{#5}}%
     }{}%
   \fi
 }
@@ -1471,7 +1497,7 @@
   \@for\Mn@series:=#3\do{%
     \@for\Mn@shape:=#4\do{%
       \@for\Mn@variant:=#5\do{%
-	\Mn@DeclareFontShape{#1}{#2}{\Mn@series}{\Mn@shape}{\Mn@variant}%
+        \Mn@DeclareFontShape{#1}{#2}{\Mn@series}{\Mn@shape}{\Mn@variant}%
       }%
     }%
   }%
