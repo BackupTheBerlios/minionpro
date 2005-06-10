@@ -1412,8 +1412,22 @@
 \Mn@AddToConfig{code:shape}{sw}{
   \skewchar\font=255
 }
+\Mn@AddToConfig{code:shape}{ssc,sscit}{
+  \Mn@adjust@fontdimen2{\Mn@interword@fct} % interword space
+  \Mn@adjust@fontdimen3{\Mn@interword@fct} % interword stretch
+  \Mn@adjust@fontdimen4{\Mn@interword@fct} % interword shrink
+  \Mn@adjust@fontdimen7{\Mn@interword@fct} % extra space
+}
 %    \end{macrocode}
-% 
+% This function is currently used to scale all four components of interword
+% space: space, stretch, shrink, and extra space.
+%    \begin{macrocode}
+\newcommand*\Mn@interword@fct{%
+  \Mn@fontdimen=1.15\Mn@fontdimen
+}
+\otf@makeglobal{Mn@interword@fct}
+%    \end{macrocode}
+%
 % \subsubsection{Declaration of font families and shapes}
 %
 %    \begin{macrocode}
@@ -1507,6 +1521,18 @@
   }%
 }
 \otf@makeglobal{Mn@DeclareFontShapes}
+%    \end{macrocode}
+% Adjust font dimension |#1| of the current font. The function in |#2| should
+% replace the old value in dimen |\Mn@fontdimen| with a new one (which may
+% depend on other parameters like |\f@size|).
+%    \begin{macrocode}
+\newdimen\Mn@fontdimen
+\newcommand*\Mn@adjust@fontdimen[2]{%
+  \Mn@fontdimen=\fontdimen#1\font
+  #2%
+  \fontdimen#1\font=\Mn@fontdimen
+}
+\otf@makeglobal{Mn@adjust@fontdimen}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
