@@ -77,6 +77,10 @@
 \makeatother
 \newcommand*\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand*\?{\kern0.08em}
+\useshorthands{:}
+\defineshorthand{:}{\?\string:}
+\useshorthands{;}
+\defineshorthand{;}{\?\string;}
 
 \newlength\optionswidth
 
@@ -125,7 +129,7 @@
 % \section{Interference with other packages}
 % \label{sec:dcolumn}
 %
-% The \pkg{MinionPro} package automatically loads the following packages\?:
+% The \pkg{MinionPro} package automatically loads the following packages:
 % \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol}.
 % If you want to pass options to these packages you can
 % either put the corresponding |\usepackage| command before the
@@ -183,7 +187,7 @@
 % \end{tabular}
 %
 % \medskip\noindent
-% The default version can be selected by the following options\?:
+% The default version can be selected by the following options:
 %
 % \begin{options}
 %   \option{textosf}     & use text figures in text mode\\
@@ -197,7 +201,7 @@
 %
 % \noindent
 % Inside the document the |\figureversion| command can be used to switch between
-% different figure versions. Possible parameters are\?:
+% different figure versions. Possible parameters are:
 %
 % \begin{options}
 %   \option{text}, \option{osf}          & textstyle figures\\
@@ -212,7 +216,7 @@
 %   \option*{mnsy} & use the calligraphic font from MnSymbol\\
 %   \option{cmsy}  & take the calligraphic symbols from Computer Modern\\
 %   \option{swash} & use the swash captials from MinionPro\\
-%   \option{abx}   & use the calligraphic symbols provided by mathabx\?; \\
+%   \option{abx}   & use the calligraphic symbols provided by mathabx; \\
 %                  & this font contains also lower case letters, but it is not quite finished.
 % \end{options}
 %
@@ -243,7 +247,7 @@
 %
 % \begin{options}
 %   \option{minionint}
-%      & take the integral symbols from MinionPro, not from MnSymbol\?:\\
+%      & take the integral symbols from MinionPro, not from MnSymbol:\\
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
 %   \option{opticalfootnotes}
 %      & use optical figures for footnotemarks, \\
@@ -274,7 +278,7 @@
 % \file{cmapex.sty} needs to be loaded before \file{fontenc.sty}.
 % \fi
 % The \pkg{MinionPro} package provides all symbols from the \pkg{MnSymbol} package.
-% Additionally, the following math symbols are made available\?:
+% Additionally, the following math symbols are made available:
 % 
 % \medskip\tabindent
 % \begingroup
@@ -291,7 +295,7 @@
 % \noindent
 % Split fractions can be typeset either using the individual glyphs
 % |\text|\meta{number}|numerator|, |\text|\meta{number}|denominator|, and
-% |\textfractionsolidus| or using the following pre-composed fractions\?:
+% |\textfractionsolidus| or using the following pre-composed fractions:
 %
 % \medskip\tabindent
 % \begingroup
@@ -339,7 +343,7 @@
 %
 % \section{Language support}
 %
-% The following encodings are supported\?:
+% The following encodings are supported:
 %
 % \medskip\tabindent
 % \begin{tabular}{@{}ll@{}}
@@ -398,7 +402,7 @@
 %
 % \subsubsection{Font sets}
 % The package \pkg{MinionPro-FontDef} adapts the font definitions to the
-% requested font set. So we simply pass on the relevant options\?; only
+% requested font set. So we simply pass on the relevant options; only
 % MinionPro integrals are handled here in \pkg{MinionPro}.
 %    \begin{macrocode}
 \newcommand\Mn@minionint@opticals{-NoOpticals}
@@ -1185,7 +1189,7 @@
 \fi
 %    \end{macrocode}
 % Reset |\escapechar| (which is set to $-1$ in \acro{FD} files) to make
-% |\newcommand| work. The additional group does not harm\?; we have to
+% |\newcommand| work. The additional group does not harm; we have to
 % make the important commands global anyway.
 %    \begin{macrocode}
 \ifx\@nodocument\relax
@@ -1286,7 +1290,7 @@
 % Let us look at an example how the configuration database looks internally for
 % $(|shape|, |sw|)$, which is specified below in three steps. The following
 % lines show different depths of expansion of the macro |\Mn@config@shape@sw|,
-% which finally yields the complete configuration\?:
+% which finally yields the complete configuration:
 % \exampleconfig{shape}{sw}
 % 
 % The following commands are used in the |Declare...Family| commands to access
@@ -1536,9 +1540,9 @@
 %    \end{macrocode}
 %
 % We define font family aliases so that we can place all configurations for
-% the MinionPro family variants into one \pkg{microtype} file\?:
+% the MinionPro family variants into one \pkg{microtype} file:
 % \file{mt-MinionPro.cfg}. We use \pkg{microtype}'s hook if \pkg{microtype}
-% has not been loaded yet (which it should not have been)\?; otherwise we can
+% has not been loaded yet (which it should not have been); otherwise we can
 % execute the alias definitions directly.
 %    \begin{macrocode}
 \gdef\Mn@MicroType@Aliases{%
