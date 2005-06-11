@@ -25,7 +25,7 @@
 % LIGKERN sigma parenright =:| uni03C2 ; sigma period =:| uni03C2 ;
 % LIGKERN sigma comma =:| uni03C2 ; sigma exclam =:| uni03C2 ; 
 % LIGKERN sigma semicolon =:| uni03C2 ; sigma anoteleia =:| uni03C2 ;
-% LIGKERN sigma plus =: uni03E0;
+% LIGKERN sigma colon =:| uni03C2 ; sigma plus =: uni03E0;
 
 % LIGKERN iota plus =: iotadieresis;
 % LIGKERN upsilon plus =: upsilondieresis;

@@ -5,7 +5,7 @@
 %<style>   \NeedsTeXFormat{LaTeX2e}
 %<style>   \ProvidesPackage{MinionPro}        [2005/01/23 v2.0 MinionPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}    [2005/02/07 v1.0 microtype config file for MinionPro]
-%<ibycus>  \ProvidesFile{ibycusMinionPro.ldf} [2005/06/11 v1.0 Ibycus for MinionPro]
+%<ibycus>  \ProvidesFile{ibycusMinionPro.ldf} [2005/06/11 v1.0 Ibycus transliteration for MinionPro]
 %<fontdef>\ProvidesFile{MinionPro-FontDef.sty}[2005/04/13 v2.1 font definition macros]
 %<Uorn> \ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
 %<LGR&lf>  \ProvidesFile{LGRMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
@@ -355,8 +355,15 @@
 %   Latin    & \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5}\\
 %   Cyrillic & \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2}\\
 %   Greek    & \acro{LGR} (to be used with \pkg{babel}, including polutonikogreek),\\
-%            & \acro{U} (\acro{Ibycus} transliteration scheme)
+%            & \acro{U} (\pkg{Ibycus} transliteration scheme)
 % \end{tabular}
+% \medskip\par\noindent
+% In order to typeset Greek text with the \pkg{Ibycus} transliteration scheme, specify
+% \begin{quote}
+%   |\usepackage[ibycusMinionPro,|\meta{otherlanguages}|]{babel}|
+% \end{quote}
+% in the preamble and consult the documentation given in |ibycus-babel.pdf| 
+% on \acro{CTAN}. ``Dot below letter'' accents and |\setgreekfontsize| and are not supported. 
 %
 % \section{\acro{NFSS} classification}
 %
@@ -695,27 +702,27 @@
 \Mn@greek@letter{upsilon}       {"1D}{"9D}
 \Mn@greek@letter{phi}           {"1E}{"9E}
 \Mn@greek@letter{chi}           {"1F}{"9F}
-\Mn@greek@letter{psi}           {"20}{"A0}
-\Mn@greek@letter{omega}         {"21}{"A1}
-\Mn@greek@letter{varepsilon}    {"22}{"A2}
-\Mn@greek@letter{vartheta}      {"23}{"A3}
-\Mn@greek@letter{varpi}         {"24}{"A4}
-\Mn@greek@letter{varrho}        {"25}{"A5}
-\Mn@greek@letter{varsigma}      {"26}{"A6}
-\Mn@greek@letter{varphi}        {"27}{"A7}
+\Mn@greek@letter{psi}           {"20}{'240}
+\Mn@greek@letter{omega}         {"21}{'241}
+\Mn@greek@letter{varepsilon}    {"22}{'242}
+\Mn@greek@letter{vartheta}      {"23}{'243}
+\Mn@greek@letter{varpi}         {"24}{'244}
+\Mn@greek@letter{varrho}        {"25}{'245}
+\Mn@greek@letter{varsigma}      {"26}{'246}
+\Mn@greek@letter{varphi}        {"27}{'247}
 %    \end{macrocode}
 % Some of the following symbols are not really greek letters but are treated in
 % the same way.
 %    \begin{macrocode}
-\Mn@greek@letter{varbeta}       {"B0}{"A8}
-\Mn@greek@letter{varkappa}      {"B1}{"A9}
-\Mn@greek@letter{backepsilon}   {"B2}{"AA}
-\Mn@greek@letter{varbackepsilon}{"B3}{"AB}
-\Mn@greek@letter{digamma}       {"B4}{"AC}
-\Mn@greek@letter{hbar}          {"B5}{"AD}
-\Mn@greek@letter{eth}           {"B6}{"AE}
-\Mn@greek@letter{partial}       {"40}{"C0}
-\Mn@greek@letter{ell}           {"60}{"E0}
+\Mn@greek@letter{varbeta}       {'260}{'250}
+\Mn@greek@letter{varkappa}      {'261}{'251}
+\Mn@greek@letter{backepsilon}   {'262}{'252}
+\Mn@greek@letter{varbackepsilon}{'263}{'253}
+\Mn@greek@letter{digamma}       {'264}{'254}
+\Mn@greek@letter{hbar}          {'265}{'255}
+\Mn@greek@letter{eth}           {'266}{'256}
+\Mn@greek@letter{partial}       {"40}{'300}
+\Mn@greek@letter{ell}           {"60}{'340}
 %    \end{macrocode}
 % Go through a list of greek letters |#2| and |\let| them be their
 % |#1|-prefixed variants.
@@ -750,9 +757,9 @@
 % Some symbols missing from MnSymbol can be taken from MinionPro.
 %
 %    \begin{macrocode}
-\DeclareMathSymbol{\slashedzero}{\mathord}{letters}{"AF}
-\DeclareMathSymbol{\lozenge}    {\mathord}{letters}{"FD}
-\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{"FE}
+\DeclareMathSymbol{\slashedzero}{\mathord}{letters}{'257}
+\DeclareMathSymbol{\lozenge}    {\mathord}{letters}{'375}
+\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{'376}
 %    \end{macrocode}
 %    \begin{macrocode}
 \newcommand*\Mn@fraction[2]{%
@@ -822,9 +829,9 @@
     {\mathalpha}{letters}{\Mn@tempa}%
 }
 \DeclareMathSymbol{\itimath}{\mathord}{letters}{"7B}
-\DeclareMathSymbol{\upimath}{\mathord}{letters}{"FB}
+\DeclareMathSymbol{\upimath}{\mathord}{letters}{'373}
 \DeclareMathSymbol{\itjmath}{\mathord}{letters}{"7C}
-\DeclareMathSymbol{\upjmath}{\mathord}{letters}{"FC}
+\DeclareMathSymbol{\upjmath}{\mathord}{letters}{'374}
 %    \end{macrocode}
 % make vdots available in textmode
 %    \begin{macrocode}
@@ -960,71 +967,40 @@
 %</style>
 %    \end{macrocode}
 % \subsection{Ibycus support}
-% from ibycus-babel, ftp://ftp.dante.de/tex-archive/fonts/greek/package-babel/ibycus-babel/ibycus-babel.dtx
+% The Ibycus babel definition is an adaptation of the 
+% \pkg{ibycus-babel} package.
 % \begin{macrocode}
 %<*ibycus>
 \ifx\eTeXversion\@undefined
-  \PackageError{ibycus-babel}{%
+  \PackageError{ibycusMinionPro-babel}{%
     The TeX engine used by LaTeX \MessageBreak
     does not provide the eTeX extensions.\MessageBreak
     This may cause wrong hyphenation\MessageBreak
     in mixed Latin/Greek paragraphs}
     {Proceed, with fingers crossed...}
-\fi    
-%    \end{macrocode}
-%
-%  The macro |\LdfInit| takes care of preventing that this file is
-%  loaded more than once:
-%    \begin{macrocode}
-\LdfInit{ibycusMinionPro}{captionsibycusMinionPro}
-%    \end{macrocode}
-%  When this file is read as an option, i.e., by the |\usepackage|
-%  command, \texttt{ibycus} could be an `unknown' language in
-%  which case we have to make it known.  So we check for the
-%  existence of |\l@ibycus| to see whether we have to do
-%  something here:
-%    \begin{macrocode}
-\ifx\undefined\l@ibycusMinionPro
+\fi
+\LdfInit{ibycus}{captionsibycus}
+\ifx\undefined\l@ibycus
   \@nopatterns{Ibycus}
-  \adddialect\l@ibycusMinionPro0\fi
-%    \end{macrocode}
-%
-% We declare a command |\ibygr| and an environment |ibycus| to make
-% entering of Greek text easier, as compared with Babel's macros:
-%    \begin{macrocode}
+  \adddialect\l@ibycus0\fi
 \DeclareRobustCommand{\ibygr}[1]{\foreignlanguage{ibycus}{#1}}
 \newenvironment{ibycus}%
   {\begin{otherlanguage}{ibycus}}{\end{otherlanguage}}%
-%    \end{macrocode}
-%
-%
-% All text-editor symbols of the old package |ibycus4| are provided.
-% However, |\dagger| is named |\sdagger| now.
-%    \begin{macrocode}
 \newcommand{\braceleft}{%
-  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'333}}
+  {\fontencoding{U}\fontfamily{\rmdefault}\selectfont\char'333}}
 \newcommand{\braceright}{%
-  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'337}}
+  {\fontencoding{U}\fontfamily{\rmdefault}\selectfont\char'337}}
 \newcommand{\bracketleftbt}{%
-  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'363}}
+  {\fontencoding{U}\fontfamily{\rmdefault}\selectfont\char'363}}
 \newcommand{\bracketrightbt}{%
-  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'367}}
+  {\fontencoding{U}\fontfamily{\rmdefault}\selectfont\char'367}}
 \newcommand{\sdagger}{%
-  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'375}}
+  {\fontencoding{U}\fontfamily{\rmdefault}\selectfont\char'375}}
 \newcommand{\dbldagger}{%
-  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'376}}
-%    \end{macrocode}
-%
-% Finally, the code to integrate the pseudo-language Ibycus into Babel.
-% We start with the default values of |\lefthyphenmin| and |\righthyphenmin|.
-%    \begin{macrocode}
+  {\fontencoding{U}\fontfamily{\rmdefault}\selectfont\char'376}}
 \providehyphenmins{ibycus}{\@ne\tw@}
 \def\captionsibycus{}
 \def\dateibycus{}
-%    \end{macrocode}
-% Should we save and  restore the actual family name, 
-% instead of simply forcing |\rmdefault|?
-%    \begin{macrocode}
 \DeclareRobustCommand{\ibycustext}{%
   \fontencoding{U}\fontfamily{\rmdefault}\selectfont
   \def\encodingdefault{U}}
@@ -1039,9 +1015,9 @@
   \babel@savevariable{\lccode`\`}\lccode`\`=`\`%
   \babel@savevariable{\lccode`\'}\lccode`\'=`\'%
   \babel@savevariable{\lccode`\+}\lccode`\+=`\+}
-\ldf@finish{ibycusMinionPro}
+\ldf@finish{ibycus}
 %</ibycus>
-% \end{macrocode}
+%    \end{macrocode}
 %
 % \section{Support for character protrusion}
 %
@@ -1232,6 +1208,42 @@
     family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
     shape    = {scit,sscit} }
   {}
+\SetProtrusion
+  [ name     = MinionPro-other-Roman ]
+  { encoding = {LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+    family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
+    shape    = n }
+  {
+      ! = {70,180},
+      ( = {60,30},    ) = {30,60},
+      [ = {100,160},  ] = {160,100},
+    {,} = {440,700},
+      . = {660,700},
+      : = {400,480},
+      ; = {350,440},
+      - = {700,700},
+    \textendash       = {390,480},  \textemdash        = {220,270},
+    \textquotedblleft = {380,250},  \textquotedblright = {250,380},
+    \textquoteleft    = {670,450},  \textquoteright    = {450,670},  
+  }
+\SetProtrusion
+  [ name     = MinionPro-other-Italic ]
+  { encoding = {LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+    family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
+    shape    = {it,sl,sw} }
+  {
+      ! = {190,40},
+      ( = {90,  },    ) = {90,  },
+      [ = {90,90},    ] = {120,60},
+    {,} = {210,680},
+      . = {640,680},
+      : = {380,430},
+      ; = {   ,430},
+      - = {750,750},
+    \textquoteleft    = {690,140},  \textquoteright    = {470,230},
+    \textendash       = {400,500},  \textemdash        = {220,280},
+    \textquotedblleft = {520,130},  \textquotedblright = {520,130},
+  }
 %</mtcfg>
 %    \end{macrocode}
 %
