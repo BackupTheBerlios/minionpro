@@ -1,4 +1,4 @@
-% Ibycus encoding: Untested!!!
+% Ibycus encoding
 
 % UNICODING epsilonasperperispomene =: blacksquare ;
 % UNICODING epsilonlenisperispomene =: blacksquare ;
@@ -49,7 +49,7 @@
 % LIGKERN upsilondieresis quoteright =: uni1FE2 ;
 
 % `
-% LIGKERN quoteleft Alpha =:| grave ; 
+% LIGKERN quoteleft Alpha =: uni1FBA  ; 
 % LIGKERN quoteleft Epsilon =:| grave ; 
 % LIGKERN quoteleft Eta =:| grave ; 
 % LIGKERN quoteleft Iota =:| grave ; 
@@ -75,12 +75,13 @@
 % LIGKERN omicron equal =: otilde ;
 
 % (
-% LIGKERN parenleft Alpha =:| uni1FFE ;
+% LIGKERN parenleft Alpha =: uni1F09  ;
 % LIGKERN parenleft Epsilon =:| uni1FFE ;
 % LIGKERN parenleft Eta =:| uni1FFE ;
 % LIGKERN parenleft Iota =:| uni1FFE ;
 % LIGKERN parenleft Omega =:| uni1FFE ;
 % LIGKERN parenleft Omicron =:| uni1FFE ;
+% LIGKERN parenleft Upsilon =:| uni1FFE ;
 % LIGKERN parenleft quoteleft =: uni1FDD ;
 % LIGKERN parenleft quoteright =: uni1FDE ;
 % LIGKERN parenleft equal =: uni1FDF ;
@@ -94,6 +95,7 @@
 % LIGKERN rho parenleft =: uni1FE5 ;
 
 % ('
+% LIGKERN uni1FDE Alpha =: uni1F0D ;
 % LIGKERN uni1F01 quoteright =: uni1F05 ; 
 % LIGKERN uni1F11 quoteright =: uni1F15 ; 
 % LIGKERN uni1F21 quoteright =: uni1F25 ; 
@@ -103,6 +105,7 @@
 % LIGKERN uni1F61 quoteright =: uni1F65 ; 
 
 % (`
+% LIGKERN uni1FDD Alpha =: uni1F0B ;
 % LIGKERN uni1F01 quoteleft =: uni1F03 ; 
 % LIGKERN uni1F11 quoteleft =: uni1F13 ;
 % LIGKERN uni1F21 quoteleft =: uni1F23 ; 
@@ -112,6 +115,7 @@
 % LIGKERN uni1F61 quoteleft =: uni1F63 ; 
 
 % (=
+% LIGKERN uni1FDF Alpha =: uni1F0F ;
 % LIGKERN uni1F01 equal =: uni1F07 ; 
 % LIGKERN uni1F21 equal =: uni1F27 ; 
 % LIGKERN uni1F31 equal =: uni1F37 ;
@@ -119,12 +123,13 @@
 % LIGKERN uni1F61 equal =: uni1F67 ; 
 
 % )
-% LIGKERN parenright Alpha =:| uni1FBD ;
+% LIGKERN parenright Alpha =: uni1F08  ;
 % LIGKERN parenright Epsilon =:| uni1FBD ;
 % LIGKERN parenright Eta =:| uni1FBD ;
 % LIGKERN parenright Iota =:| uni1FBD ;
 % LIGKERN parenright Omega =:| uni1FBD ;
 % LIGKERN parenright Omicron =:| uni1FBD ;
+% LIGKERN parenright Upsilon =:| uni1FBD ;
 % LIGKERN parenright quoteleft =: uni1FCD ;
 % LIGKERN parenright quoteright =: uni1FCE ;
 % LIGKERN parenright equal =: uni1FCF ;
@@ -138,6 +143,7 @@
 % LIGKERN rho parenright =: uni1FE4 ; 
 
 % )'
+% LIGKERN uni1FCE Alpha =: uni1F0C ; 
 % LIGKERN uni1F00 quoteright =: uni1F04 ; 
 % LIGKERN uni1F10 quoteright =: uni1F14 ; 
 % LIGKERN uni1F20 quoteright =: uni1F24 ; 
@@ -147,6 +153,7 @@
 % LIGKERN uni1F60 quoteright =: uni1F64 ; 
 
 % )`
+% LIGKERN uni1FCD Alpha =: uni1F0A ; 
 % LIGKERN uni1F00 quoteleft =: uni1F02 ; 
 % LIGKERN uni1F10 quoteleft =: uni1F12 ; 
 % LIGKERN uni1F20 quoteleft =: uni1F22 ; 
@@ -156,6 +163,7 @@
 % LIGKERN uni1F60 quoteleft =: uni1F62 ; 
 
 % )=
+% LIGKERN uni1FCF Alpha =: uni1F0E ;
 % LIGKERN uni1F00 equal =: uni1F06 ; 
 % LIGKERN uni1F20 equal =: uni1F26 ; 
 % LIGKERN uni1F30 equal =: uni1F36 ; 
@@ -271,3 +279,4 @@
 /.notdef /.notdef /.notdef /uni1FE5
 /uni1FE4 /dagger /daggerdbl /h
 ] def
+

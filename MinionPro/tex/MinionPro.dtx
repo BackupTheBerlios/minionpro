@@ -5,6 +5,7 @@
 %<style>   \NeedsTeXFormat{LaTeX2e}
 %<style>   \ProvidesPackage{MinionPro}        [2005/01/23 v2.0 MinionPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}    [2005/02/07 v1.0 microtype config file for MinionPro]
+%<ibycus>  \ProvidesFile{ibycusMinionPro.ldf} [2005/06/11 v1.0 Ibycus for MinionPro]
 %<fontdef>\ProvidesFile{MinionPro-FontDef.sty}[2005/04/13 v2.1 font definition macros]
 %<Uorn> \ProvidesFile{UMinionPro-Ornaments.fd}[2005/01/23 v2.0 font definitions for U/MinionPro-Ornaments.]
 %<LGR&lf>  \ProvidesFile{LGRMinionPro-LF.fd}  [2005/01/23 v2.0 font definitions for LGR/MinionPro-LF.]
@@ -373,7 +374,7 @@
 %     n, it (sl), sw\footnotemark,\> 
 %     sc, scit (scsl, scsw),\> ssc, sscit (sscsl, sscsw) \\
 %     \addlinespace
-%     \raggedright \acro{LGR,} \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2} &
+%     \raggedright \acro{LGR,} \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2,} \acro{U} &
 %     MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
 %     m, sb, b (bx) &
 %     n, it (sl) \\
@@ -958,6 +959,89 @@
 \normalfont
 %</style>
 %    \end{macrocode}
+% \subsection{Ibycus support}
+% from ibycus-babel, ftp://ftp.dante.de/tex-archive/fonts/greek/package-babel/ibycus-babel/ibycus-babel.dtx
+% \begin{macrocode}
+%<*ibycus>
+\ifx\eTeXversion\@undefined
+  \PackageError{ibycus-babel}{%
+    The TeX engine used by LaTeX \MessageBreak
+    does not provide the eTeX extensions.\MessageBreak
+    This may cause wrong hyphenation\MessageBreak
+    in mixed Latin/Greek paragraphs}
+    {Proceed, with fingers crossed...}
+\fi    
+%    \end{macrocode}
+%
+%  The macro |\LdfInit| takes care of preventing that this file is
+%  loaded more than once:
+%    \begin{macrocode}
+\LdfInit{ibycusMinionPro}{captionsibycusMinionPro}
+%    \end{macrocode}
+%  When this file is read as an option, i.e., by the |\usepackage|
+%  command, \texttt{ibycus} could be an `unknown' language in
+%  which case we have to make it known.  So we check for the
+%  existence of |\l@ibycus| to see whether we have to do
+%  something here:
+%    \begin{macrocode}
+\ifx\undefined\l@ibycusMinionPro
+  \@nopatterns{Ibycus}
+  \adddialect\l@ibycusMinionPro0\fi
+%    \end{macrocode}
+%
+% We declare a command |\ibygr| and an environment |ibycus| to make
+% entering of Greek text easier, as compared with Babel's macros:
+%    \begin{macrocode}
+\DeclareRobustCommand{\ibygr}[1]{\foreignlanguage{ibycus}{#1}}
+\newenvironment{ibycus}%
+  {\begin{otherlanguage}{ibycus}}{\end{otherlanguage}}%
+%    \end{macrocode}
+%
+%
+% All text-editor symbols of the old package |ibycus4| are provided.
+% However, |\dagger| is named |\sdagger| now.
+%    \begin{macrocode}
+\newcommand{\braceleft}{%
+  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'333}}
+\newcommand{\braceright}{%
+  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'337}}
+\newcommand{\bracketleftbt}{%
+  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'363}}
+\newcommand{\bracketrightbt}{%
+  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'367}}
+\newcommand{\sdagger}{%
+  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'375}}
+\newcommand{\dbldagger}{%
+  {\fontencoding{U}\fontfamily{MinionPro-LF}\selectfont\char'376}}
+%    \end{macrocode}
+%
+% Finally, the code to integrate the pseudo-language Ibycus into Babel.
+% We start with the default values of |\lefthyphenmin| and |\righthyphenmin|.
+%    \begin{macrocode}
+\providehyphenmins{ibycus}{\@ne\tw@}
+\def\captionsibycus{}
+\def\dateibycus{}
+%    \end{macrocode}
+% Should we save and  restore the actual family name, 
+% instead of simply forcing |\rmdefault|?
+%    \begin{macrocode}
+\DeclareRobustCommand{\ibycustext}{%
+  \fontencoding{U}\fontfamily{\rmdefault}\selectfont
+  \def\encodingdefault{U}}
+\DeclareRobustCommand{\textibycus}[1]{\leavevmode{\ibycustext #1}}
+\addto\extrasibycus{\ibycustext}
+\addto\noextrasibycus{\latintext}
+\addto\extrasibycus{%
+  \babel@savevariable{\lccode`\(}\lccode`\(=`\(%
+  \babel@savevariable{\lccode`\)}\lccode`\)=`\)%
+  \babel@savevariable{\lccode`\=}\lccode`\==`\=%
+  \babel@savevariable{\lccode`\|}\lccode`\|=`\|%
+  \babel@savevariable{\lccode`\`}\lccode`\`=`\`%
+  \babel@savevariable{\lccode`\'}\lccode`\'=`\'%
+  \babel@savevariable{\lccode`\+}\lccode`\+=`\+}
+\ldf@finish{ibycusMinionPro}
+%</ibycus>
+% \end{macrocode}
 %
 % \section{Support for character protrusion}
 %

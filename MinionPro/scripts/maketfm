@@ -115,9 +115,15 @@ make_enckern() {
 
       if $create_kerned
       then
-        if [ -e "kerning/$1-$enc.kern" ]
+        if [ "$enc" = "iby" ]
         then
-          cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1-$enc.enckern
+          kernsrc="lgr"
+        else
+          kernsrc=$enc;
+        fi
+        if [ -e "kerning/$1-$kernsrc.kern" ]
+        then
+          cat $e "kerning/$1-$kernsrc.kern" | grep -v "#" >enc/mn-$1-$enc.enckern
         else
           if [ -e "kerning/$1.kern" ]
           then
