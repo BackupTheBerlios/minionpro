@@ -270,6 +270,7 @@ make_normal_metrics() {
   if $create_greek
   then
     make_tfm "$1" lgr  $2-lgr       "-sgrek $lgr_flags $digamma_flags $flags"
+    make_tfm "$1" iby  $2-iby       "-sgrek $lgr_flags $digamma_flags $flags"
   fi
   if $create_cyrillic
   then
@@ -315,6 +316,7 @@ make_spread_metrics() {
   if $create_greek
   then
     make_tfm "$1" lgr  $2-l1-lgr    "-L 40 -sgrek $lgr_flags $digamma_flags $flags"
+    make_tfm "$1" iby  $2-l1-iby    "-L 40 -sgrek $lgr_flags $digamma_flags $flags"
   fi
   if $create_cyrillic
   then
