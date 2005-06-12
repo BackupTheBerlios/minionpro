@@ -62,7 +62,7 @@ while (<STDIN>) {
 	    |--ligkern\ command    # on the command line
 	)
 	(?::\d+)? # ignore line number
-	:\ warning:\ '(\w+)'\ has\ no\ encoding,\ ignoring\ (.*)\n
+	:\ warning:\ '([\w.]+)'\ has\ no\ encoding,\ ignoring\ (.*)\n
     }[
 	my ($where, $glyph, $ignoring) = ($2, $3, $4);
 	print_literal($1);
