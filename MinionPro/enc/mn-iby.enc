@@ -46,7 +46,7 @@
 % LIGKERN upsilon quoteright =: uni1F7B ;
 % LIGKERN omega quoteright =: uni1F7D ;
 % LIGKERN iotadieresis quoteright =: uni1FD3 ;
-% LIGKERN upsilondieresis quoteright =: uni1FE2 ;
+% LIGKERN upsilondieresis quoteright =: uni1FE3 ;
 
 % `
 % LIGKERN quoteleft Alpha =: uni1FBA  ; 
@@ -64,7 +64,7 @@
 % LIGKERN upsilon quoteleft =: uni1F7A ;
 % LIGKERN omega quoteleft =: uni1F7C ; 
 % LIGKERN iotadieresis quoteleft =: uni1FD2 ;
-% LIGKERN upsilondieresis quoteleft =: uni1FE3 ;
+% LIGKERN upsilondieresis quoteleft =: uni1FE2 ;
 
 % ~
 % LIGKERN alpha equal =: uni1FB6 ; 
