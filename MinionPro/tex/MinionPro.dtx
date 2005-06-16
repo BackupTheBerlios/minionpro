@@ -169,14 +169,15 @@
 %   \option*{smallfamily} & use only regular and bold face\\
 %   \option{medfamily}    & use semibold face in addition to \option{smallfamily} \\
 %   \option{fullfamily}   & use medium face in addition to \option{medfamily}\\
-%   \option*{noopticals}  & use only the Text optical size\\
-%   \option{opticals}     & use the optical sizes Caption/Subhead/Display\\
-%   \option{slides}       & use only the Caption optical shape (useful for slides)
+%   \option*{noopticals}  & use only the optical size Text\\
+%   \option{opticals}     & use the optical sizes Caption, Text, Subhead, and
+%   Display\\
+%   \option{slides}       & use only the optical shape Caption (useful for slides)
 % \end{options}
 %
 % \subsubsection*{Figure selection}
 %
-% MinionPro offers four different figure version. One can choose between
+% MinionPro offers four different figure versions. One can choose between
 % \emph{text figures} (i.e., lowercase figures) and \emph{lining figures} (i.e., uppercase figures)
 % and one can choose between \emph{proportional} figures (figures have different widths)
 % and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
@@ -209,7 +210,7 @@
 % different figure versions. Possible parameters are:
 %
 % \begin{options}
-%   \option{text}, \option{osf}          & textstyle figures\\
+%   \option{text}, \option{osf}          & text figures\\
 %   \option{lining}, \option{lf}         & lining figures\\
 %   \option{tabular}, \option{tab}       & tabular figures\\
 %   \option{proportional}, \option{prop} & proportional figures
@@ -220,7 +221,7 @@
 % \begin{options}
 %   \option*{mnsy} & use the calligraphic font from MnSymbol\\
 %   \option{cmsy}  & take the calligraphic symbols from Computer Modern\\
-%   \option{swash} & use the swash captials from MinionPro\\
+%   \option{swash} & use the swash capitals from MinionPro\\
 %   \option{abx}   & use the calligraphic symbols provided by mathabx; \\
 %                  & this font contains also lower case letters, but it is not quite finished.
 % \end{options}
@@ -255,11 +256,11 @@
 %      & take the integral symbols from MinionPro, not from MnSymbol:\\
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
 %   \option{opticalfootnotes}
-%      & use optical figures for footnotemarks, \\
+%      & use optical figures for footnote marks, \\
 %      & i.e., example\begingroup\fontfamily{MinionPro-Ornaments}\fontencoding{U}\selectfont
 %        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
 %        This option can\\
-%      & be used if \emph{only} figures are used as footnotemarks.
+%      & be used if \emph{only} figures are used as footnote marks.
 % \end{options}
 %
 % \section{Additional font shapes and symbols}
@@ -354,15 +355,16 @@
 % \begin{tabular}{@{}ll@{}}
 %   Latin    & \acro{OT1,} \acro{T1,} \acro{TS1,} \acro{LY1,} \acro{T5}\\
 %   Cyrillic & \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2}\\
-%   Greek    & \acro{LGR} (to be used with \pkg{babel}, including polutonikogreek),\\
+%   Greek    & \acro{LGR} (to be used with \pkg{babel}, including
+%   \option{polutonikogreek}),\\
 %            & \acro{U} (\pkg{Ibycus} transliteration scheme)
 % \end{tabular}
 % \medskip\par\noindent
 % In order to typeset Greek text with the \pkg{Ibycus} transliteration scheme, specify
 % \begin{quote}
-%   |\usepackage[ibycusMinionPro,|\meta{otherlanguages}|]{babel}|
+%   |\usepackage[ibycusMinionPro,|\meta{other languages}|]{babel}|
 % \end{quote}
-% in the preamble and consult the documentation given in |ibycus-babel.pdf| 
+% in the preamble and consult the documentation given in \file{ibycus-babel.pdf} 
 % on \acro{CTAN}. ``Dot below letter'' accents and |\setgreekfontsize| and are not supported. 
 %
 % \section{\acro{NFSS} classification}
@@ -404,20 +406,15 @@
 %
 % \section{The main style file}
 %
-%    \begin{macrocode}
-%<*style>
-%\RequirePackage{MinionPro-Protrude}
-%
-%\DeclareOption{protrude}{\enableprotruding}
-%    \end{macrocode}
-%
 % \subsection{Options}
 %
 % \subsubsection{Font sets}
 % The package \pkg{MinionPro-FontDef} adapts the font definitions to the
-% requested font set. So we simply pass on the relevant options; only
-% MinionPro integrals are handled here in \pkg{MinionPro}.
+% requested font set (see section~\ref{sec:fontdef}). So we simply pass on the
+% relevant options; only MinionPro integrals are handled here in
+% \pkg{MinionPro}.
 %    \begin{macrocode}
+%<*style>
 \newcommand\Mn@minionint@opticals{-NoOpticals}
 \newcommand\Mn@minionint@bold{-Semibold}
 \DeclareOption{slides}{%
@@ -465,15 +462,25 @@
 %
 % \subsubsection{Calligraphic fonts}
 %
-% Most options are handled by \pkg{MnSymbol}.
-%    \begin{macrocode}
-\DeclareOption{mnsy}{\PassOptionsToPackage{mnsy}{MnSymbol}}
-\DeclareOption{cmsy}{\PassOptionsToPackage{cmsy}{MnSymbol}}
-\DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
-%    \end{macrocode}
 % This hook is going to be executed once the math versions have been set up.
 %    \begin{macrocode}
 \newcommand\Mn@load@cal{}
+%    \end{macrocode}
+% Most options are handled by \pkg{MnSymbol}.
+%    \begin{macrocode}
+\DeclareOption{mnsy}{
+  \PassOptionsToPackage{mnsy}{MnSymbol}
+  \def\Mn@load@cal{
+    \SetMathAlphabet\mathcal{boldtabular}{OMS}{MnSymbolS}{b}{n}
+  }
+}
+\DeclareOption{cmsy}{
+  \PassOptionsToPackage{cmsy}{MnSymbol}
+  \def\Mn@load@cal{
+    \SetMathAlphabet\mathcal{boldtabular}{OMS}{cmsy}{b}{n}
+  }
+}
+\DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
 \DeclareOption{swash}{
   \def\Mn@load@cal{
     \DeclareMathAlphabet\mathcal     {T1}{\Mn@Math@Family} {m}{sw}
@@ -564,12 +571,12 @@
 % \subsection{Font declarations}
 %
 %    \begin{macrocode}
-\newcommand\origvdots{}
-\let\origvdots\vdots
+\newcommand\Mn@origvdots{}
+\let\Mn@origvdots\vdots
 \RequirePackage{MnSymbol,MinionPro-FontDef}
 %    \end{macrocode}
 % By default, we use |sb| for the bold series. If |MinionPro-Semibold| is not
-% available this might internally be mapped to |MinionPro-Bold| (see
+% available, this might internally be mapped to |MinionPro-Bold| (see
 % \pkg{MinionPro-FontDef}). 
 %    \begin{macrocode}
 \renewcommand\rmdefault{\Mn@Text@Family}
@@ -633,7 +640,7 @@
 %    \begin{macrocode}
 \RequirePackage{fontaxes}[2005/05/04]
 %    \end{macrocode}
-% We define an additional short hand for compatabilities sake.
+% We define an additional short hand for compatibility's sake.
 %    \begin{macrocode}
 \let\oldstylenums\textfigures
 %    \end{macrocode}
@@ -645,9 +652,9 @@
 % Furthermore, there are three commands to select the default version of the
 % letters (all upright, all italic, or capitals upright and lowercase italic).
 %
-% While delaring the Greek letters we collect the uppercase and lowercase letters
-% in two lists. (We distinguish them by the first letter of their name.)
-% These lists are used to select the different versions.
+% While declaring the Greek letters we collect the uppercase and lowercase
+% letters in two lists. (We distinguish them by the first letter of their
+% name.) These lists are then used to select the different versions.
 %    \begin{macrocode}
 \newcommand\Mn@greek@list@upper{}
 \newcommand\Mn@greek@list@lower{}
@@ -724,7 +731,7 @@
 \Mn@greek@letter{partial}       {"40}{'300}
 \Mn@greek@letter{ell}           {"60}{'340}
 %    \end{macrocode}
-% Go through a list of greek letters |#2| and |\let| them be their
+% Go through a list |#2| of greek letters and |\let| them be their
 % |#1|-prefixed variants.
 %    \begin{macrocode}
 \newcommand*\Mn@greek@select[2]{%
@@ -814,30 +821,11 @@
   \UndeclareTextCommand{\j}{LY1}%
 }
 %    \end{macrocode}
-% For testing purposes (new OML fonts)
-%    \begin{macrocode}
-\@for\Mn@alpha:=%
-  a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
-  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z%
-\do{%
-  \expandafter\DeclareMathSymbol\expandafter{\csname it\Mn@alpha\endcsname}
-    {\mathalpha}{letters}{\expandafter`\Mn@alpha}%
-  \@tempcnta=\expandafter`\Mn@alpha
-  \advance\@tempcnta 128
-  \edef\Mn@tempa{\the\@tempcnta}%
-  \expandafter\DeclareMathSymbol\expandafter{\csname up\Mn@alpha\endcsname}
-    {\mathalpha}{letters}{\Mn@tempa}%
-}
-\DeclareMathSymbol{\itimath}{\mathord}{letters}{"7B}
-\DeclareMathSymbol{\upimath}{\mathord}{letters}{'373}
-\DeclareMathSymbol{\itjmath}{\mathord}{letters}{"7C}
-\DeclareMathSymbol{\upjmath}{\mathord}{letters}{'374}
-%    \end{macrocode}
 % make vdots available in textmode
 %    \begin{macrocode}
-\newcommand\Mnvdots{}
-\let\Mnvdots\vdots
-\renewcommand{\vdots}{\ifmmode\Mnvdots\else\origvdots\fi}
+\newcommand\Mn@vdots{}
+\let\Mn@vdots\vdots
+\renewcommand\vdots{\ifmmode\Mn@vdots\else\Mn@origvdots\fi}
 %    \end{macrocode}
 %
 % \subsection{Integral symbols}
