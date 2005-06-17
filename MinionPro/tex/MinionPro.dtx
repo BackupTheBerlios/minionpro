@@ -517,6 +517,10 @@
 %
 % \subsubsection{Blackbord bold and fraktur fonts}
 %
+% We have to undefine |\mathfrak| and |\mathbb| before redefining them, because
+% they might be defined in such a way that |\DeclareMathAlphabet| does not
+% recognize them as math alphabets and refuses to overwrite their definitions
+% (e.g., package \pkg{eufrak} uses |\newcommand{\mathfrak}{\EuFrak}|).
 %    \begin{macrocode}
 \newcommand\Mn@load@amsbb{
   \let\mathbb\undefined
@@ -533,10 +537,10 @@
   \let\mathfrak\undefined
   \DeclareMathAlphabet\mathfrak     {T1}{DS-Wartburg-Fraktur}{m}{n}
   \SetMathAlphabet\mathfrak{bold}   {T1}{DS-Wartburg-Fraktur}{b}{n}
-  \SetMathAlphabet\mathfrak{tabular}{T1}{DS-Wartburg-Fraktur}{m}{n}
   \SetMathAlphabet\mathfrak{boldtabular}{T1}{DS-Wartburg-Fraktur}{b}{n}}
 \newcommand\Mn@load@eufrak{
-  \RequirePackage{eufrak}}
+  \RequirePackage{eufrak}
+  \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
