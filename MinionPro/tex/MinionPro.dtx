@@ -178,8 +178,8 @@
 % \subsubsection*{Figure selection}
 %
 % MinionPro offers four different figure versions. One can choose between
-% \emph{text figures} (i.e., lowercase figures) and \emph{lining figures} (i.e., uppercase figures)
-% and one can choose between \emph{proportional} figures (figures have different widths)
+% \emph{text figures} (i.e., lower-case figures) and \emph{lining figures} (i.e., upper-case figures)
+% and one can choose between \emph{proportional} figures (figures with different widths)
 % and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
 %
 % \medskip
@@ -225,7 +225,7 @@
 %   \option{cmsy}  & take the calligraphic symbols from Computer Modern\\
 %   \option{swash} & use the swash capitals from MinionPro\\
 %   \option{abx}   & use the calligraphic symbols provided by mathabx; \\
-%                  & this font contains also lower case letters, but it is not quite finished.
+%                  & this font contains also lower-case letters, but is not quite finished.
 % \end{options}
 %
 % \subsubsection*{Blackboard and fraktur letters}
@@ -242,9 +242,9 @@
 % letters in math mode.
 %
 % \begin{options}
-%   \option*{mixedgreek} & uppercase Greek upright, lowercase Greek italic\\
+%   \option*{mixedgreek} & upper-case Greek upright, lower-case Greek italic\\
 %   \option{italicgreek} & all Greek letters italic\\
-%   \option{frenchmath}  & all Greek and uppercase Roman letters upright
+%   \option{frenchmath}  & all Greek and upper-case Roman letters upright
 % \end{options}
 %
 % \noindent
@@ -272,7 +272,7 @@
 % |\textssc|. In order to use the |ssc| shape throughout your document specify
 % |\renewcommand{\scdefault}{ssc}| in the preamble of your document.
 %
-% Swash capitals like \textsw{`Canadian Mountain Holidays'} are acessed
+% Swash capitals like \textsw{`Canadian Mountain Holidays'} are accessed
 % via the |sw| fontshape and the commands |\swshape| and |\textsw|.
 %
 % \begin{options}
@@ -286,7 +286,7 @@
 % \file{cmapex.sty} needs to be loaded before \file{fontenc.sty}.
 % \fi
 % The \pkg{MinionPro} package provides all symbols from the \pkg{MnSymbol} package.
-% Additionally, the following math symbols are made available:
+% Additionally, the following math symbols are available:
 %
 % \medskip\tabindent
 % \begingroup
@@ -361,15 +361,13 @@
 %            & \acro{LGI} (\pkg{Ibycus} transliteration scheme)
 % \end{tabular}
 %
-% \iffalse
 % \medskip\noindent
 % In order to typeset Greek text with the \pkg{Ibycus} transliteration scheme, specify
 % \begin{quote}
-%   |\usepackage[ibycusMinionPro,|\meta{otherlanguages}|]{babel}|
+%   |\usepackage[ibycus,|\meta{otherlanguages}|]{babel}|
 % \end{quote}
 % in the preamble and consult the documentation given in |ibycus-babel.pdf|
-% on \acro{CTAN}. ``Dot below letter'' accents and |\setgreekfontsize| and are not supported.
-% \fi
+% on \acro{CTAN}. ``Dot below letter'' accents and |\setgreekfontsize| are not supported.
 %
 % \section{\acro{NFSS} classification}
 %
@@ -466,7 +464,7 @@
 %
 % \subsubsection{Calligraphic fonts}
 %
-% These hooks are going to be executed once the math versions have been set up.
+% These hooks are executed once the math versions have been set up.
 %    \begin{macrocode}
 \newcommand\Mn@load@cal{}
 \newcommand\Mn@load@bb{}
@@ -517,7 +515,7 @@
 }
 %    \end{macrocode}
 %
-% \subsubsection{Blackbord bold and fraktur fonts}
+% \subsubsection{Blackboard bold and fraktur fonts}
 %
 % We have to undefine |\mathfrak| and |\mathbb| before redefining them, because
 % they might be defined in such a way that |\DeclareMathAlphabet| does not
@@ -657,9 +655,9 @@
 %
 % We provide math-mode commands for each Greek letter, both italic and upright.
 % Furthermore, there are three commands to select the default version of the
-% letters (all upright, all italic, or capitals upright and lowercase italic).
+% letters (all upright, all italic, or capitals upright and lower-case italic).
 %
-% While declaring the Greek letters we collect the uppercase and lowercase
+% While declaring the Greek letters we collect the upper-case and lower-case
 % letters in two lists. (We distinguish them by the first letter of their
 % name.) These lists are then used to select the different versions.
 %    \begin{macrocode}
@@ -725,7 +723,7 @@
 \Mn@greek@letter{varsigma}      {"26}{'246}
 \Mn@greek@letter{varphi}        {"27}{'247}
 %    \end{macrocode}
-% Some of the following symbols are not really greek letters but are treated in
+% Some of the following symbols are not really Greek letters but are treated in
 % the same way.
 %    \begin{macrocode}
 \Mn@greek@letter{varbeta}       {'260}{'250}
@@ -738,7 +736,7 @@
 \Mn@greek@letter{partial}       {"40}{'300}
 \Mn@greek@letter{ell}           {"60}{'340}
 %    \end{macrocode}
-% Go through a list |#2| of greek letters and |\let| them be their
+% Go through a list |#2| of Greek letters and |\let| them be their
 % |#1|-prefixed variants.
 %    \begin{macrocode}
 \newcommand*\Mn@greek@select[2]{%
@@ -774,6 +772,10 @@
 \DeclareMathSymbol{\slashedzero}{\mathord}{letters}{'257}
 \DeclareMathSymbol{\lozenge}    {\mathord}{letters}{'375}
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{'376}
+\DeclareMathSymbol{\itimath}    {\mathord}{letters}{"7B}
+\DeclareMathSymbol{\itjmath}    {\mathord}{letters}{"7C}
+\DeclareMathSymbol{\upimath}    {\mathord}{letters}{'373}
+\DeclareMathSymbol{\upjmath}    {\mathord}{letters}{'374}
 %    \end{macrocode}
 %    \begin{macrocode}
 \newcommand*\Mn@fraction[2]{%
@@ -1241,7 +1243,7 @@
 % \section{Font definition files}
 % \label{sec:fontdef}
 %
-% Since alle the font definitions look the same we introduce macros to ease the
+% As all the font definitions look the same we introduce macros to ease the
 % configuration. These macros are stored in the file
 % \file{MinionPro-FontDef.sty} which is included by every \acro{FD} file.
 % Note that \file{MinionPro-FontDef.sty} will be included several times and
@@ -1260,7 +1262,7 @@
 % }%
 % \makeatother
 %
-% Since this package should be loadable in an \acro{FD} file we have to
+% Since this package should be loadable in a \acro{FD} file we have to
 % avoid all |\preambleonly| commands.
 % Therefore, we use |\ProvidesFile| instead of |\ProvidesPackage|.
 %
@@ -1379,7 +1381,7 @@
   }%
 }
 %    \end{macrocode}
-% Let us look at an example how the configuration database looks internally for
+% Let us look at an example of how the configuration database looks internally for
 % $(|shape|, |sw|)$, which is specified below in three steps. The following
 % lines show different depths of expansion of the macro |\Mn@config@shape@sw|,
 % which finally yields the complete configuration:
@@ -1660,7 +1662,7 @@
 % We define font family aliases so that we can place all configurations for
 % the MinionPro family variants into one \pkg{microtype} file:
 % \file{mt-MinionPro.cfg}. We use \pkg{microtype}'s hook if \pkg{microtype}
-% has not been loaded yet (which it should not have been); otherwise we can
+% has not been loaded yet (which should be the case); otherwise we can
 % execute the alias definitions directly.
 %    \begin{macrocode}
 \gdef\Mn@MicroType@Aliases{%
