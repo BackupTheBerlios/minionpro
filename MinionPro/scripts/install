@@ -10,8 +10,6 @@ then
   dir=$(kpsewhich -expand-var='$TEXMFLOCAL')
 fi
 
-if [ -d "$dir/fonts/enc" ]
-then
   # new directory layout
   enc_dir="$dir/fonts/enc/dvips/$font"
   map_dir="$dir/fonts/map/dvips/$font"
@@ -19,15 +17,6 @@ then
   tfm_dir="$dir/fonts/tfm/$vendor/$font"
   vf_dir="$dir/fonts/vf/$vendor/$font"
   tex_dir="$dir/tex/latex/$font"
-else
-  # old directory layout
-  enc_dir="$dir/dvips/$font"
-  map_dir="$dir/dvips/$font"
-  pfb_dir="$dir/fonts/type1/$vendor/$font"
-  tfm_dir="$dir/fonts/tfm/$vendor/$font"
-  vf_dir="$dir/fonts/vf/$vendor/$font"
-  tex_dir="$dir/tex/latex/$font"
-fi
 
 mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir"
 
