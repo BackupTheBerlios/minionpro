@@ -317,6 +317,24 @@
 % \endgroup
 %
 % \medskip\noindent
+% Numerical fractions are useful for typesetting 
+% e.\,g.\ $\cos\mathonehalf(x+y)$ or $\Gamma(\mathonethird x+\mathtwothirds)$
+% and can be accessed in math mode using
+%
+% \medskip\tabindent
+% \begingroup
+% \newcommand*\sym[1]{\ensuremath{#1} & \ttfamily\string#1}%
+% \begin{tabular}{@{}*1{ll@{\qquad}}ll@{}}
+% \sym\mathonehalf       & \sym\mathtwofifths \\
+% \sym\mathonethird      & \sym\mathonesixth \\
+% \sym\mathtwothirds     & \sym\mathoneeighth \\
+% \sym\mathonequarter    & \sym\maththreeeighths \\
+% \sym\maththreequarters & \sym\mathfiveeighths\\
+% \sym\mathonefifth      & \sym\mathseveneighths\\
+% \end{tabular}
+% \endgroup
+%
+% \medskip\noindent
 % Ornaments can be accessed via the \pkg{pifont} package using the command
 % \begin{quote}
 %   |\Pisymbol{MinionPro-Ornaments}|\marg{number}
@@ -682,46 +700,46 @@
 %    \end{macrocode}
 % We can now declare the Greek letters (left italic, right upright).
 %    \begin{macrocode}
-\Mn@greek@letter{Gamma}         {"80}{"00}
-\Mn@greek@letter{Delta}         {"81}{"01}
-\Mn@greek@letter{Theta}         {"82}{"02}
-\Mn@greek@letter{Lambda}        {"83}{"03}
-\Mn@greek@letter{Xi}            {"84}{"04}
-\Mn@greek@letter{Pi}            {"85}{"05}
-\Mn@greek@letter{Sigma}         {"86}{"06}
-\Mn@greek@letter{Upsilon}       {"87}{"07}
-\Mn@greek@letter{Phi}           {"88}{"08}
-\Mn@greek@letter{Psi}           {"89}{"09}
-\Mn@greek@letter{Omega}         {"8A}{"0A}
-\Mn@greek@letter{alpha}         {"0B}{"8B}
-\Mn@greek@letter{beta}          {"0C}{"8C}
-\Mn@greek@letter{gamma}         {"0D}{"8D}
-\Mn@greek@letter{delta}         {"0E}{"8E}
-\Mn@greek@letter{epsilon}       {"0F}{"8F}
-\Mn@greek@letter{zeta}          {"10}{"90}
-\Mn@greek@letter{eta}           {"11}{"91}
-\Mn@greek@letter{theta}         {"12}{"92}
-\Mn@greek@letter{iota}          {"13}{"93}
-\Mn@greek@letter{kappa}         {"14}{"94}
-\Mn@greek@letter{lambda}        {"15}{"95}
-\Mn@greek@letter{mu}            {"16}{"96}
-\Mn@greek@letter{nu}            {"17}{"97}
-\Mn@greek@letter{xi}            {"18}{"98}
-\Mn@greek@letter{pi}            {"19}{"99}
-\Mn@greek@letter{rho}           {"1A}{"9A}
-\Mn@greek@letter{sigma}         {"1B}{"9B}
-\Mn@greek@letter{tau}           {"1C}{"9C}
-\Mn@greek@letter{upsilon}       {"1D}{"9D}
-\Mn@greek@letter{phi}           {"1E}{"9E}
-\Mn@greek@letter{chi}           {"1F}{"9F}
-\Mn@greek@letter{psi}           {"20}{'240}
-\Mn@greek@letter{omega}         {"21}{'241}
-\Mn@greek@letter{varepsilon}    {"22}{'242}
-\Mn@greek@letter{vartheta}      {"23}{'243}
-\Mn@greek@letter{varpi}         {"24}{'244}
-\Mn@greek@letter{varrho}        {"25}{'245}
-\Mn@greek@letter{varsigma}      {"26}{'246}
-\Mn@greek@letter{varphi}        {"27}{'247}
+\Mn@greek@letter{Gamma}         {'200}{'000}
+\Mn@greek@letter{Delta}         {'201}{'001}
+\Mn@greek@letter{Theta}         {'202}{'002}
+\Mn@greek@letter{Lambda}        {'203}{'003}
+\Mn@greek@letter{Xi}            {'204}{'004}
+\Mn@greek@letter{Pi}            {'205}{'005}
+\Mn@greek@letter{Sigma}         {'206}{'006}
+\Mn@greek@letter{Upsilon}       {'207}{'007}
+\Mn@greek@letter{Phi}           {'210}{'010}
+\Mn@greek@letter{Psi}           {'211}{'011}
+\Mn@greek@letter{Omega}         {'212}{'012}
+\Mn@greek@letter{alpha}         {'013}{'213}
+\Mn@greek@letter{beta}          {'014}{'214}
+\Mn@greek@letter{gamma}         {'015}{'215}
+\Mn@greek@letter{delta}         {'016}{'216}
+\Mn@greek@letter{epsilon}       {'017}{'217}
+\Mn@greek@letter{zeta}          {'020}{'220}
+\Mn@greek@letter{eta}           {'021}{'221}
+\Mn@greek@letter{theta}         {'022}{'222}
+\Mn@greek@letter{iota}          {'023}{'223}
+\Mn@greek@letter{kappa}         {'024}{'224}
+\Mn@greek@letter{lambda}        {'025}{'225}
+\Mn@greek@letter{mu}            {'026}{'226}
+\Mn@greek@letter{nu}            {'027}{'227}
+\Mn@greek@letter{xi}            {'030}{'230}
+\Mn@greek@letter{pi}            {'031}{'231}
+\Mn@greek@letter{rho}           {'032}{'232}
+\Mn@greek@letter{sigma}         {'033}{'233}
+\Mn@greek@letter{tau}           {'034}{'234}
+\Mn@greek@letter{upsilon}       {'035}{'235}
+\Mn@greek@letter{phi}           {'036}{'236}
+\Mn@greek@letter{chi}           {'037}{'237}
+\Mn@greek@letter{psi}           {'040}{'240}
+\Mn@greek@letter{omega}         {'041}{'241}
+\Mn@greek@letter{varepsilon}    {'042}{'242}
+\Mn@greek@letter{vartheta}      {'043}{'243}
+\Mn@greek@letter{varpi}         {'044}{'244}
+\Mn@greek@letter{varrho}        {'045}{'245}
+\Mn@greek@letter{varsigma}      {'046}{'246}
+\Mn@greek@letter{varphi}        {'047}{'247}
 %    \end{macrocode}
 % Some of the following symbols are not really Greek letters but are treated in
 % the same way.
@@ -733,8 +751,8 @@
 \Mn@greek@letter{digamma}       {'264}{'254}
 \Mn@greek@letter{hbar}          {'265}{'255}
 \Mn@greek@letter{eth}           {'266}{'256}
-\Mn@greek@letter{partial}       {"40}{'300}
-\Mn@greek@letter{ell}           {"60}{'340}
+\Mn@greek@letter{partial}       {'100}{'300}
+\Mn@greek@letter{ell}           {'140}{'340}
 %    \end{macrocode}
 % Go through a list |#2| of Greek letters and |\let| them be their
 % |#1|-prefixed variants.
@@ -772,10 +790,22 @@
 \DeclareMathSymbol{\slashedzero}{\mathord}{letters}{'257}
 \DeclareMathSymbol{\lozenge}    {\mathord}{letters}{'375}
 \DeclareMathSymbol{\varsmallint}{\mathord}{letters}{'376}
-\DeclareMathSymbol{\itimath}    {\mathord}{letters}{"7B}
-\DeclareMathSymbol{\itjmath}    {\mathord}{letters}{"7C}
+\DeclareMathSymbol{\itimath}    {\mathord}{letters}{'173}
+\DeclareMathSymbol{\itjmath}    {\mathord}{letters}{'174}
 \DeclareMathSymbol{\upimath}    {\mathord}{letters}{'373}
 \DeclareMathSymbol{\upjmath}    {\mathord}{letters}{'374}
+\DeclareMathSymbol{\mathonehalf}      {\mathord}{letters}{'270}
+\DeclareMathSymbol{\mathonethird}     {\mathord}{letters}{'271}
+\DeclareMathSymbol{\mathtwothirds}    {\mathord}{letters}{'272}
+\DeclareMathSymbol{\mathonequarter}   {\mathord}{letters}{'273}
+\DeclareMathSymbol{\maththreequarters}{\mathord}{letters}{'274}
+\DeclareMathSymbol{\mathonefifth}     {\mathord}{letters}{'275}
+\DeclareMathSymbol{\mathtwofifths}    {\mathord}{letters}{'276}
+\DeclareMathSymbol{\mathonesixth}     {\mathord}{letters}{'277}
+\DeclareMathSymbol{\mathoneeighth}    {\mathord}{letters}{'333}
+\DeclareMathSymbol{\maththreeeighths} {\mathord}{letters}{'334}
+\DeclareMathSymbol{\mathfiveeighths}  {\mathord}{letters}{'335}
+\DeclareMathSymbol{\mathseveneighths} {\mathord}{letters}{'336}
 %    \end{macrocode}
 %    \begin{macrocode}
 \newcommand*\Mn@fraction[2]{%

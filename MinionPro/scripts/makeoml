@@ -28,7 +28,8 @@ done
 
 for s in Regular It Bold BoldIt
 do
-  vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
+  cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
+  vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
 done
 
 tex make-oml-smallfamily.tex
@@ -40,7 +41,8 @@ if [ -e ../tfm/$font-Semibold-tosf-oml.tfm ]
 then
   for s in Semibold SemiboldIt
   do
-    vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
+    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
+    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-medfamily.tex
   rm ${font}*.mtx MnSymbol*mtx
@@ -52,7 +54,8 @@ if [ -e ../tfm/$font-Medium-tosf-oml.tfm ]
 then
   for s in Medium MediumIt
   do
-    vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
+    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
+    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-fullfamily.tex
   rm ${font}*.mtx MnSymbol*mtx
@@ -64,7 +67,8 @@ if [ -e ../tfm/$font-Capt-tosf-oml.tfm ]
 then
   for s in Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
   do
-    vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
+    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
+    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-medfamily-opticals.tex
   rm ${font}*.mtx MnSymbol*mtx
@@ -76,7 +80,8 @@ if [ -e ../tfm/$font-MediumCapt-tosf-oml.tfm ]
 then
   for s in MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
   do
-    vftovp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
+    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
+    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
   done
   tex make-oml-fullfamily-opticals.tex
   rm ${font}*.mtx MnSymbol*mtx
@@ -89,6 +94,6 @@ do
   vptovf $v
 done
 
-mv *Mixed*.vf  ../vf
-mv *Mixed*.tfm ../tfm
+cp *Mixed*.vf  ../vf
+cp *Mixed*.tfm ../tfm
 

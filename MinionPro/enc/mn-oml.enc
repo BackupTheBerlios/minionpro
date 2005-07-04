@@ -30,9 +30,14 @@
 % 0x80
 /integral /hbar /uniEFD5 /kappasymbolgreek /betasymbolgreek /afii10095 /afii10073 /eth
 /lozenge /uniF638 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0x90
+/zerosuperior /onesuperior /twosuperior /threesuperior 
+/foursuperior /fivesuperior /sixsuperior /sevensuperior
+/eightsuperior /ninesuperior /zeroinferior /oneinferior 
+/twoinferior /threeinferior /fourinferior /fiveinferior 
+% 0xA0
+/sixinferior /seveninferior /eightinferior /nineinferior
+/.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

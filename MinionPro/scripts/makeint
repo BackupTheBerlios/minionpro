@@ -53,6 +53,6 @@ do
   vptovf $v
 done
 
-mv *.vf  ../vf
-mv *.tfm ../tfm
+cp MnSymbolFI*.vf  ../vf
+cp MnSymbolFI*.tfm ../tfm
 
