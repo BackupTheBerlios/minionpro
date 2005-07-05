@@ -3,204 +3,205 @@
 
 \setglyph{numfraconehalf}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPonesuperior}{1000}
       \pop
       \push
       \glyph{UPtwoinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfraconethird}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPonesuperior}{1000}
       \pop
       \push
       \glyph{UPthreeinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfractwothirds}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPtwosuperior}{1000}
       \pop
       \push
       \glyph{UPthreeinferior}{1000}
       \pop
+      \movert{-5}
       \moveup{310}
-      \glyphrule{330}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfraconequarter}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPonesuperior}{1000}
       \pop
       \push
       \glyph{UPfourinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfracthreequarters}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPthreesuperior}{1000}
       \pop
       \push
       \glyph{UPfourinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfraconefifth}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPonesuperior}{1000}
       \pop
       \push
       \glyph{UPfiveinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfractwofifths}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPtwosuperior}{1000}
       \pop
       \push
       \glyph{UPfiveinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfraconesixth}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPonesuperior}{1000}
       \pop
       \push
       \glyph{UPsixinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfraconeeighth}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPonesuperior}{1000}
       \pop
       \push
       \glyph{UPeightinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfracthreeeighths}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPthreesuperior}{1000}
       \pop
       \push
       \glyph{UPeightinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfracfiveeighths}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPfivesuperior}{1000}
       \pop
       \push
       \glyph{UPeightinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{40}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 
 \setglyph{numfracseveneighths}
       \moveup{-70}
-      \movert{40}
+      \movert{90}
       \push
       \glyph{UPsevensuperior}{1000}
       \pop
       \push
       \glyph{UPeightinferior}{1000}
       \pop
-      \movert{20}
+      \movert{-5}
       \moveup{310}
-      \glyphrule{290}{30}
+      \glyphrule{350}{30}
       \moveup{-310}
-      \movert{20}
+      \movert{90}
       \moveup{70}
 \endsetglyph
 

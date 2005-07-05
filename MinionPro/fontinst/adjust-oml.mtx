@@ -188,7 +188,7 @@
 \adjustmetrics{ITiota}{0}{20}{0}{50}{25}
 \adjustmetrics{ITkappa}{-15}{20}{0}{35}{25}
 \adjustmetrics{ITlambda}{20}{0}{00}{0}{10}
-\adjustmetrics{ITmu}{10}{10}{0}{40}{25}
+\adjustmetrics{ITmu}{30}{10}{0}{60}{25}
 \adjustmetrics{ITnu}{-10}{10}{0}{60}{25}
 \adjustmetrics{ITxi}{30}{-10}{0}{90}{10}
 \adjustmetrics{ITpi}{0}{10}{0}{40}{25}
