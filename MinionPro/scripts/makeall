@@ -7,25 +7,28 @@ echo "Creating PostScript fonts ..."
 for font in otf/*.otf
 do
   base=$(basename $font .otf)
-  cfftot1    $font         pfb/$base.pfb
-  t1dotlessj pfb/$base.pfb pfb/${base}LCDFJ.pfb
+  cfftot1    $font     $base.pfb
+  t1dotlessj $base.pfb ${base}LCDFJ.pfb
 done
-cp pfb/*.pfb .
 
 echo "Creating TeX metrics ..."
 
-function maketfm() (
-  local family="$1"; shift
+maketfm() {
+  local family="$1"
+  shift
+
   set -o pipefail
   { scripts/maketfm $family "$@" | sort -u > dvips/$family.map; } 2>&1 |
   { perl scripts/filtererr || cat; }
-)
+}
 
-if ! maketfm MinionPro "$@"; then
-  echo maketfm failed, exiting ...
+if ! maketfm MinionPro "$@"
+then
+  echo "maketfm failed, exiting ..."
   exit 1
 fi
-rm *.pfb
+
+mv *.pfb pfb
 
 (cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
