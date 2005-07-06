@@ -5,9 +5,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPonesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPtwoinferior}{1000}
       \pop
       \movert{-5}
@@ -22,9 +24,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPonesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPthreeinferior}{1000}
       \pop
       \movert{-5}
@@ -39,9 +43,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPtwosuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPthreeinferior}{1000}
       \pop
       \movert{-5}
@@ -56,9 +62,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPonesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPfourinferior}{1000}
       \pop
       \movert{-5}
@@ -73,9 +81,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPthreesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPfourinferior}{1000}
       \pop
       \movert{-5}
@@ -90,9 +100,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPonesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPfiveinferior}{1000}
       \pop
       \movert{-5}
@@ -107,9 +119,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPtwosuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPfiveinferior}{1000}
       \pop
       \movert{-5}
@@ -124,9 +138,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPonesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPsixinferior}{1000}
       \pop
       \movert{-5}
@@ -141,9 +157,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPonesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
@@ -158,9 +176,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPthreesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
@@ -175,9 +195,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPfivesuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
@@ -192,9 +214,11 @@
       \moveup{-70}
       \movert{90}
       \push
+      \moveup{39}
       \glyph{UPsevensuperior}{1000}
       \pop
       \push
+      \moveup{-39}
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
