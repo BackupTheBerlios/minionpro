@@ -10,6 +10,7 @@ do
   cfftot1    $font         pfb/$base.pfb
   t1dotlessj pfb/$base.pfb pfb/${base}LCDFJ.pfb
 done
+cp pfb/*.pfb .
 
 echo "Creating TeX metrics ..."
 
@@ -24,6 +25,7 @@ if ! maketfm MinionPro "$@"; then
   echo maketfm failed, exiting ...
   exit 1
 fi
+rm *.pfb
 
 (cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
