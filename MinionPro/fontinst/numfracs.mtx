@@ -13,9 +13,9 @@
       \glyph{UPtwoinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -32,9 +32,9 @@
       \glyph{UPthreeinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -51,9 +51,9 @@
       \glyph{UPthreeinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -70,9 +70,9 @@
       \glyph{UPfourinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -89,9 +89,9 @@
       \glyph{UPfourinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -108,9 +108,9 @@
       \glyph{UPfiveinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -127,9 +127,9 @@
       \glyph{UPfiveinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -146,9 +146,9 @@
       \glyph{UPsixinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -165,9 +165,9 @@
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -184,9 +184,9 @@
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -203,9 +203,9 @@
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
@@ -222,9 +222,9 @@
       \glyph{UPeightinferior}{1000}
       \pop
       \movert{-5}
-      \moveup{310}
-      \glyphrule{350}{30}
-      \moveup{-310}
+      \moveup{304}
+      \glyphrule{350}{40}
+      \moveup{-304}
       \movert{90}
       \moveup{70}
 \endsetglyph
