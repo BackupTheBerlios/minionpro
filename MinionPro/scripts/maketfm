@@ -68,9 +68,8 @@ done
 #fi
 
 # Determine version of the fonts.
-pfb_dir=.
 
-case $(strings $pfb_dir/$font-Regular.pfb | grep "^/version") in
+case $(strings $font-Regular.pfb | grep "^/version") in
   *\(001.000\)*) version=1;;
   *\(001.001\)*) version=2;;
   *\(002.000\)*) version=3;;
@@ -105,7 +104,7 @@ fi
 
 make_enckern() {
 
-  if [ -e "$pfb_dir/$font-$1.pfb" ]
+  if [ -e "$font-$1.pfb" ]
   then
     local e
 
@@ -346,7 +345,7 @@ make_spread_metrics() {
 
 make_integrals() {
 
-  if [ -e "$pfb_dir/$font-$1.pfb" ]
+  if [ -e "$font-$1.pfb" ]
   then
     if $create_integrals
     then
@@ -363,7 +362,7 @@ make_integrals() {
 
 make_metrics() {
 
-  if [ -e "$pfb_dir/$font-$1.pfb" ]
+  if [ -e "$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -381,7 +380,7 @@ make_metrics() {
 
 make_spaced_metrics() {
 
-  if [ -e "$pfb_dir/$font-$1.pfb" ]
+  if [ -e "$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -396,7 +395,7 @@ make_spaced_metrics() {
 
 make_swash_metrics() {
 
-  if [ -e "$pfb_dir/$font-$1.pfb" ]
+  if [ -e "$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -429,7 +428,7 @@ make_swash_metrics() {
 
 make_spaced_swash_metrics() {
 
-  if [ -e "$pfb_dir/$font-$1.pfb" ]
+  if [ -e "$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
