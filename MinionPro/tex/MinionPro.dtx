@@ -557,8 +557,13 @@
   \SetMathAlphabet\mathfrak{bold}   {T1}{DS-Wartburg-Fraktur}{b}{n}
   \SetMathAlphabet\mathfrak{boldtabular}{T1}{DS-Wartburg-Fraktur}{b}{n}}
 \newcommand\Mn@load@eufrak{
-  \RequirePackage{eufrak}
-  \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}
+%    \end{macrocode}
+% We cannot load \pkg{eufrak} if \pkg{amsfonts} is already loaded.
+%    \begin{macrocode}
+  \@ifpackageloaded{amsfonts}
+    {\SetMathAlphabet\mathfrak{boldtabular}{U}{euf}{b}{n}}%
+    {\RequirePackage{eufrak}%
+     \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
