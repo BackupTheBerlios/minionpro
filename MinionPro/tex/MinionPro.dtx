@@ -505,10 +505,10 @@
 \DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
 \DeclareOption{swash}{
   \def\Mn@load@cal{
-    \DeclareMathAlphabet\mathcal     {T1}{\Mn@Math@Family} {m}{sw}
-    \SetMathAlphabet\mathcal{bold}   {T1}{\Mn@Math@Family} {b}{sw}
-    \SetMathAlphabet\mathcal{tabular}{T1}{\Mn@Math@TFamily}{m}{sw}
-    \SetMathAlphabet\mathcal{boldtabular}{T1}{\Mn@Math@TFamily}{b}{sw}}
+    \DeclareMathAlphabet\mathcal         {T1}{\Mn@Math@Family} {m} {sw}
+    \SetMathAlphabet\mathcal{bold}       {T1}{\Mn@Math@Family} {eb}{sw}
+    \SetMathAlphabet\mathcal{tabular}    {T1}{\Mn@Math@TFamily}{m} {sw}
+    \SetMathAlphabet\mathcal{boldtabular}{T1}{\Mn@Math@TFamily}{eb}{sw}}
 }
 %    \end{macrocode}
 %
@@ -617,13 +617,13 @@
 %
 % Redefine the standard math versions |normal| and |bold|.
 %    \begin{macrocode}
-\DeclareSymbolFont{operators}   {T1}{\Mn@Math@Family}       {m}{n}
-\DeclareSymbolFont{letters}    {OML}{\Mn@Math@GenericFamily}{m}{\Mn@Math@letters@shape}
-\SetSymbolFont{operators}{bold} {T1}{\Mn@Math@Family}       {b}{n}
-\SetSymbolFont{letters}  {bold}{OML}{\Mn@Math@GenericFamily}{b}{\Mn@Math@letters@shape}
-\DeclareMathAlphabet\mathbf     {T1}{\Mn@Math@Family}       {b}{n}
-\DeclareMathAlphabet\mathit     {T1}{\Mn@Math@Family}       {m}{it}
-\SetMathAlphabet\mathit  {bold} {T1}{\Mn@Math@Family}       {b}{it}
+\DeclareSymbolFont{operators}   {T1}{\Mn@Math@Family}       {m} {n}
+\DeclareSymbolFont{letters}    {OML}{\Mn@Math@GenericFamily}{m} {\Mn@Math@letters@shape}
+\SetSymbolFont{operators}{bold} {T1}{\Mn@Math@Family}       {eb}{n}
+\SetSymbolFont{letters}  {bold}{OML}{\Mn@Math@GenericFamily}{eb}{\Mn@Math@letters@shape}
+\DeclareMathAlphabet\mathbf     {T1}{\Mn@Math@Family}       {eb}{n}
+\DeclareMathAlphabet\mathit     {T1}{\Mn@Math@Family}       {m} {it}
+\SetMathAlphabet\mathit  {bold} {T1}{\Mn@Math@Family}       {eb}{it}
 %    \end{macrocode}
 % Extra math versions |tabular| and |boldtabular|, which use tabular figures
 % instead of proportional ones. These math versions can be useful in tables
@@ -632,12 +632,12 @@
 \DeclareMathVersion{tabular}
 \SetSymbolFont{operators}{tabular}     {T1}{\Mn@Math@TFamily}      {m}{n}
 \SetSymbolFont{letters}  {tabular}    {OML}{\Mn@Math@GenericFamily}{m}{\Mn@Math@letters@shape}
-\SetMathAlphabet\mathit  {tabular}     {T1}{\Mn@Math@TFamily}      {b}{it}
+\SetMathAlphabet\mathit  {tabular}     {T1}{\Mn@Math@TFamily}      {m}{it}
 
 \DeclareMathVersion{boldtabular}
-\SetSymbolFont{operators}{boldtabular} {T1}{\Mn@Math@TFamily}      {b}{n}
-\SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@GenericFamily}{b}{\Mn@Math@letters@shape}
-\SetMathAlphabet\mathit  {boldtabular} {T1}{\Mn@Math@TFamily}      {b}{it}
+\SetSymbolFont{operators}{boldtabular} {T1}{\Mn@Math@TFamily}      {eb}{n}
+\SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@GenericFamily}{eb}{\Mn@Math@letters@shape}
+\SetMathAlphabet\mathit  {boldtabular} {T1}{\Mn@Math@TFamily}      {eb}{it}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
