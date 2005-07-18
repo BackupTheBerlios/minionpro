@@ -1,27 +1,27 @@
 % UNICODING asterisksuperior =: blacksquare ;
 % UNICODING plussuperior =: blacksquare ;
-% UNICODING slashsuperior =: blacksquare ;
 % UNICODING colonsuperior =: blacksquare ;
 % UNICODING semicolonsuperior =: blacksquare ;
 %
 % TeX extra characters encoding.
 %
-/MinionPro-OrnEncoding [          % now 256 chars follow
-/uniF661 /uniF662 /uniF663 /uniF664 /uniF665 /uniF666 /uniF667 /uniF668 /uniF669 /uniF66A % numerator:   figures
-/uniF66B /uniF66C /uniF631 /uniF632 /.notdef /.notdef                                     % numerator:   comma, period, parenleft, parenright
+/MinionPro-ExtraEncoding [          % now 256 chars follow
+% 0x00
+/uniF661 /uniF662 /uniF663 /uniF664 /uniF665 /uniF666 /uniF667 /uniF668
+/uniF669 /uniF66A /uniF66B /uniF66C /uniF631 /uniF632 /.notdef /.notdef
 % 0x10
-/uniF655 /uniF656 /uniF657 /uniF658 /uniF659 /uniF65A /uniF65B /uniF65C /uniF65D /uniF65E % denominator: figures
-/uniF65F /uniF660 /uniF62C /uniF62D /.notdef /.notdef                                     % denominator: comma, period, parenleft, parenright
+/uniF655 /uniF656 /uniF657 /uniF658 /uniF659 /uniF65A /uniF65B /uniF65C
+/uniF65D /uniF65E /uniF65F /uniF660 /uniF62C /uniF62D /.notdef /.notdef
 % 0x20
-/onethird /twothirds /oneeighth /threeeighths /fiveeighths /seveneighths /.notdef /.notdef% split fractions              
-/parenleftsuperior /parenrightsuperior /asterisksuperior /plussuperior 
-/commasuperior /hyphensuperior /periodsuperior /slashsuperior
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/parenleftsuperior /parenrightsuperior /asterisksuperior /plussuperior
+/commasuperior /hyphensuperior /periodsuperior /fraction
 % 0x30
 /zerosuperior /onesuperior /twosuperior /threesuperior /foursuperior /fivesuperior /sixsuperior /sevensuperior
 /eightsuperior /ninesuperior /colonsuperior /semicolonsuperior /.notdef /.notdef /.notdef /.notdef
 % 0x40
-/zeroinferior /oneinferior /twoinferior /threeinferior /fourinferior /fiveinferior /sixinferior /seveninferior /eightinferior /nineinferior
-/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/zeroinferior /oneinferior /twoinferior /threeinferior /fourinferior /fiveinferior /sixinferior /seveninferior
+/eightinferior /nineinferior /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0x50
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

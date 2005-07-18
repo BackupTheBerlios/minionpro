@@ -36,10 +36,8 @@
   /Grave /Acute /uniEFF7 /uniEFF5 /Dieresis /Hungarumlaut /uniEFF3 /Caron
   /uniEFEE /Macron /uniEFED /uniEFF2 /uniEFF1 /quotesinglbase /.notdef /.notdef
 % 0x10
-  /.notdef /.notdef /quotedblbase /.notdef
-  /.notdef /twelveudash /threequartersemdash /capitalcompwordmark
-  /uniE0FC /uniE0FE /cyrflex /cyrFlex
-  /cyrflex /cyrFlex /.notdef /ascendercompwordmark
+  /.notdef /.notdef /quotedblbase /.notdef /.notdef /twelveudash /threequartersemdash /capitalcompwordmark
+  /uniE0FC /uniE0FE /cyrflex /cyrFlex /cyrflex /cyrFlex /.notdef /ascendercompwordmark
 % 0x20
   /blank /.notdef /.notdef /.notdef /dollar /.notdef /.notdef /quotesingle
   /.notdef /.notdef /asteriskcentered /.notdef /comma /hyphendbl /period /fraction
@@ -62,10 +60,8 @@
   /breve /caron /hungarumlaut /dblgrave /dagger /daggerdbl /bardbl /perthousand
   /bullet /centigrade /dollaroldstyle /centoldstyle /florin /colonmonetary /won /textnaira
 % 0x90
-  /textguarani /peseta /lira /textrecipe
-  /interrobang /interrobangdown /dong /trademark
-  /pertenthousand /paragraph /bahtthai /numero
-  /textdiscount /estimated /bulletinverse /textservicemark
+  /textguarani /peseta /lira /textrecipe /interrobang /interrobangdown /dong /trademark
+  /pertenthousand /paragraph /bahtthai /numero /textdiscount /estimated /bulletinverse /textservicemark
 % 0xA0
   /textlquill /textrquill /cent /sterling /currency /yen /brokenbar /section
   /dieresis /copyright /ordfeminine /textcopyleft /logicalnot /textcircledP /registered /macron
@@ -73,14 +69,13 @@
   /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
   /referencemark /onesuperior /ordmasculine /radical /onequarter /onehalf /threequarters /Euro
 % 0xC0
-  /uniF661 /uniF662 /uniF663 /uniF664 /uniF665 /uniF666 /uniF667 /uniF668 /uniF669 /uniF66A % numerator:   figures
-  /uniF655 /uniF656 /uniF657 /uniF658 /uniF659 /uniF65A /uniF65B /uniF65C /uniF65D /uniF65E % denominator: figures
-  /.notdef /.notdef /multiply /.notdef
-  /uniF66B /uniF66C /uniF631 /uniF632                                                       % numerator:   comma, period, parenleft, parenright
-  /uniF65F /uniF660 /uniF62C /uniF62D                                                       % denominator: comma, period, parenleft, parenright
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+% 0xD0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /multiply /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xE0
-  /onethird /twothirds /oneeighth /threeeighths /fiveeighths /seveneighths                  % split fractions
-  /.notdef /.notdef 
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0xF0
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /divide  /.notdef

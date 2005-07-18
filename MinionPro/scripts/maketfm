@@ -79,19 +79,19 @@ esac
 # Newer versions have different glyph names.
 
 digamma_flags=""
-ornaments_flags=""
+extra_flags=""
 dong_flags=""
 oml_flags=""
 
 if [ $version -ge 3 ]
 then
   digamma_flags="--unicoding 'uniEFD5 =: uni03DD'"
-  ornaments_flags="--unicoding 'orn.014 =: uni2767'"
-  ornaments_flags="$ornaments_flags --unicoding 'orn.015 =: uni2766'"
-  ornaments_flags="$ornaments_flags --unicoding 'orn.029 =: uni27A2'"
-  ornaments_flags="$ornaments_flags --unicoding 'orn.035 =: uni2733'"
-  ornaments_flags="$ornaments_flags --unicoding 'orn.037 =: uni2734'"
-  ornaments_flags="$ornaments_flags --unicoding 'orn.038 =: uni2713'"
+  extra_flags="--unicoding 'orn.014 =: uni2767'"
+  extra_flags="$extra_flags --unicoding 'orn.015 =: uni2766'"
+  extra_flags="$extra_flags --unicoding 'orn.029 =: uni27A2'"
+  extra_flags="$extra_flags --unicoding 'orn.035 =: uni2733'"
+  extra_flags="$extra_flags --unicoding 'orn.037 =: uni2734'"
+  extra_flags="$extra_flags --unicoding 'orn.038 =: uni2713'"
 else
   create_vietnamese=false
   dong_flags="--unicoding 'dong =: blacksquare'"
@@ -371,8 +371,8 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml   tosf-oml "--math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
-    make_tfm "$1" orn-u orn-u    "$ornaments_flags"
+    make_tfm "$1" oml     tosf-oml "--math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" extra-u extra-u  "$extra_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi

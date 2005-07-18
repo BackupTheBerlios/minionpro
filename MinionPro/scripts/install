@@ -41,7 +41,7 @@ cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 cp tfm/MnSymbol*.tfm "$tfm_dir"
 cp vf/MnSymbol*.vf   "$vf_dir"
 
-cp tfm/*-orn*.tfm          "$tfm_dir"
+cp tfm/*-extra*.tfm        "$tfm_dir"
 cp tfm/*-integral*.tfm     "$tfm_dir"
 cp tfm/*Mixed*-oml.tfm     "$tfm_dir"
 cp vf/*Mixed*-oml.vf       "$vf_dir"
