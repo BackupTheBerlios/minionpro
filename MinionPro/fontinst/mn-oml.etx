@@ -28,47 +28,47 @@
 \setfontdimen{7}{extraspace}     % extra space after .
 
 
-\setslot{UPGamma}
+\setslot{ITGamma}
    \comment{The greek letter `$\Gamma$'.}
 \endsetslot
 
-\setslot{UPDelta}
+\setslot{ITDelta}
    \comment{The greek letter `$\Delta$'.}
 \endsetslot
 
-\setslot{UPTheta}
+\setslot{ITTheta}
    \comment{The greek letter `$\Theta$'.}
 \endsetslot
 
-\setslot{UPLambda}
+\setslot{ITLambda}
    \comment{The greek letter `$\Lambda$'.}
 \endsetslot
 
-\setslot{UPXi}
+\setslot{ITXi}
    \comment{The greek letter `$\Xi$'.}
 \endsetslot
 
-\setslot{UPPi}
+\setslot{ITPi}
    \comment{The greek letter `$\Pi$'.}
 \endsetslot
 
-\setslot{UPSigma}
+\setslot{ITSigma}
    \comment{The greek letter `$\Sigma$'.}
 \endsetslot
 
-\setslot{UPUpsilon}
+\setslot{ITUpsilon}
    \comment{The greek letter `$\Upsilon$' named `Upsilon1' by Adobe.}
 \endsetslot
 
-\setslot{UPPhi}
+\setslot{ITPhi}
    \comment{The greek letter `$\Phi$'.}
 \endsetslot
 
-\setslot{UPPsi}
+\setslot{ITPsi}
    \comment{The greek letter `$\Psi$'.}
 \endsetslot
 
-\setslot{UPOmega}
+\setslot{ITOmega}
    \comment{The greek letter `$\Omega$'.}
 \endsetslot
 
@@ -551,47 +551,47 @@
 
 
 
-\setslot{ITGamma}
+\setslot{UPGamma}
    \comment{The greek letter `$\Gamma$'.}
 \endsetslot
 
-\setslot{ITDelta}
+\setslot{UPDelta}
    \comment{The greek letter `$\Delta$'.}
 \endsetslot
 
-\setslot{ITTheta}
+\setslot{UPTheta}
    \comment{The greek letter `$\Theta$'.}
 \endsetslot
 
-\setslot{ITLambda}
+\setslot{UPLambda}
    \comment{The greek letter `$\Lambda$'.}
 \endsetslot
 
-\setslot{ITXi}
+\setslot{UPXi}
    \comment{The greek letter `$\Xi$'.}
 \endsetslot
 
-\setslot{ITPi}
+\setslot{UPPi}
    \comment{The greek letter `$\Pi$'.}
 \endsetslot
 
-\setslot{ITSigma}
+\setslot{UPSigma}
    \comment{The greek letter `$\Sigma$'.}
 \endsetslot
 
-\setslot{ITUpsilon}
+\setslot{UPUpsilon}
    \comment{The greek letter `$\Upsilon$' named `Upsilon1' by Adobe.}
 \endsetslot
 
-\setslot{ITPhi}
+\setslot{UPPhi}
    \comment{The greek letter `$\Phi$'.}
 \endsetslot
 
-\setslot{ITPsi}
+\setslot{UPPsi}
    \comment{The greek letter `$\Psi$'.}
 \endsetslot
 
-\setslot{ITOmega}
+\setslot{UPOmega}
    \comment{The greek letter `$\Omega$'.}
 \endsetslot
 
@@ -757,6 +757,7 @@
 \setslot{ITeth}
 \endsetslot
 
+% remove:
 \setslot{ITslashedzero}
 \endsetslot
 
@@ -894,6 +895,7 @@
    \comment{The letter `$\mathnormal{Z}$'.}
 \endsetslot
 
+% remove:
 \setslot{numfraconeeighth}
 \endsetslot
 

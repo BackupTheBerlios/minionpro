@@ -718,17 +718,17 @@
 %    \end{macrocode}
 % We can now declare the Greek letters (left italic, right upright).
 %    \begin{macrocode}
-\Mn@greek@letter{Gamma}         {'200}{'000}
-\Mn@greek@letter{Delta}         {'201}{'001}
-\Mn@greek@letter{Theta}         {'202}{'002}
-\Mn@greek@letter{Lambda}        {'203}{'003}
-\Mn@greek@letter{Xi}            {'204}{'004}
-\Mn@greek@letter{Pi}            {'205}{'005}
-\Mn@greek@letter{Sigma}         {'206}{'006}
-\Mn@greek@letter{Upsilon}       {'207}{'007}
-\Mn@greek@letter{Phi}           {'210}{'010}
-\Mn@greek@letter{Psi}           {'211}{'011}
-\Mn@greek@letter{Omega}         {'212}{'012}
+\Mn@greek@letter{Gamma}         {'000}{'200}
+\Mn@greek@letter{Delta}         {'001}{'201}
+\Mn@greek@letter{Theta}         {'002}{'202}
+\Mn@greek@letter{Lambda}        {'003}{'203}
+\Mn@greek@letter{Xi}            {'004}{'204}
+\Mn@greek@letter{Pi}            {'005}{'205}
+\Mn@greek@letter{Sigma}         {'006}{'206}
+\Mn@greek@letter{Upsilon}       {'007}{'207}
+\Mn@greek@letter{Phi}           {'010}{'210}
+\Mn@greek@letter{Psi}           {'011}{'211}
+\Mn@greek@letter{Omega}         {'012}{'212}
 \Mn@greek@letter{alpha}         {'013}{'213}
 \Mn@greek@letter{beta}          {'014}{'214}
 \Mn@greek@letter{gamma}         {'015}{'215}
@@ -767,10 +767,7 @@
 \Mn@greek@letter{backepsilon}   {'262}{'252}
 \Mn@greek@letter{varbackepsilon}{'263}{'253}
 \Mn@greek@letter{digamma}       {'264}{'254}
-\Mn@greek@letter{hbar}          {'265}{'255}
 \Mn@greek@letter{eth}           {'266}{'256}
-\Mn@greek@letter{partial}       {'100}{'300}
-\Mn@greek@letter{ell}           {'140}{'340}
 %    \end{macrocode}
 % Go through a list |#2| of Greek letters and |\let| them be their
 % |#1|-prefixed variants.
@@ -934,13 +931,20 @@
 % Some symbols missing from MnSymbol can be taken from MinionPro.
 %
 %    \begin{macrocode}
-\DeclareMathSymbol{\slashedzero}{\mathord}{letters}{'257}
-\DeclareMathSymbol{\lozenge}    {\mathord}{letters}{'375}
-\DeclareMathSymbol{\varsmallint}{\mathord}{letters}{'376}
-\DeclareMathSymbol{\itimath}    {\mathord}{letters}{'173}
-\DeclareMathSymbol{\itjmath}    {\mathord}{letters}{'174}
-\DeclareMathSymbol{\upimath}    {\mathord}{letters}{'373}
-\DeclareMathSymbol{\upjmath}    {\mathord}{letters}{'374}
+\DeclareMathSymbol{\hbar}             {\mathord}{letters}{'265}
+\DeclareMathSymbol{\uphbar}           {\mathord}{letters}{'255}
+\DeclareMathSymbol{\partial}          {\mathord}{letters}{'100}
+\DeclareMathSymbol{\uppartial}        {\mathord}{letters}{'300}
+\DeclareMathSymbol{\ell}              {\mathord}{letters}{'140}
+\DeclareMathSymbol{\upell}            {\mathord}{letters}{'340}
+\DeclareMathSymbol{\slashedzero}      {\mathord}{letters}{'257}
+\DeclareMathSymbol{\upimath}          {\mathord}{letters}{'373}
+\DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
+\DeclareMathSymbol{\lozenge}          {\mathord}{letters}{'375}
+\DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
+% The following will be removed:
+\DeclareMathSymbol{\itimath}          {\mathord}{letters}{'173}
+\DeclareMathSymbol{\itjmath}          {\mathord}{letters}{'174}
 \DeclareMathSymbol{\mathonehalf}      {\mathord}{letters}{'270}
 \DeclareMathSymbol{\mathonethird}     {\mathord}{letters}{'271}
 \DeclareMathSymbol{\mathtwothirds}    {\mathord}{letters}{'272}
@@ -953,46 +957,6 @@
 \DeclareMathSymbol{\maththreeeighths} {\mathord}{letters}{'334}
 \DeclareMathSymbol{\mathfiveeighths}  {\mathord}{letters}{'335}
 \DeclareMathSymbol{\mathseveneighths} {\mathord}{letters}{'336}
-%    \end{macrocode}
-%    \begin{macrocode}
-%\newcommand*\Mn@fraction[2]{%
-%  \DeclareTextSymbol       {#1}{TS1}{#2}%
-%  \DeclareTextSymbolDefault{#1}{TS1}%
-%}
-%\Mn@fraction{\textzeronumerator}        {192}
-%\Mn@fraction{\textonenumerator}         {193}
-%\Mn@fraction{\texttwonumerator}         {194}
-%\Mn@fraction{\textthreenumerator}       {195}
-%\Mn@fraction{\textfournumerator}        {196}
-%\Mn@fraction{\textfivenumerator}        {197}
-%\Mn@fraction{\textsixnumerator}         {198}
-%\Mn@fraction{\textsevennumerator}       {199}
-%\Mn@fraction{\texteightnumerator}       {200}
-%\Mn@fraction{\textninenumerator}        {201}
-%\Mn@fraction{\textzerodenominator}      {202}
-%\Mn@fraction{\textonedenominator}       {203}
-%\Mn@fraction{\texttwodenominator}       {204}
-%\Mn@fraction{\textthreedenominator}     {205}
-%\Mn@fraction{\textfourdenominator}      {206}
-%\Mn@fraction{\textfivedenominator}      {207}
-%\Mn@fraction{\textsixdenominator}       {208}
-%\Mn@fraction{\textsevendenominator}     {209}
-%\Mn@fraction{\texteightdenominator}     {210}
-%\Mn@fraction{\textninedenominator}      {211}
-%\Mn@fraction{\textcommanumerator}       {216}
-%\Mn@fraction{\textperiodnumerator}      {217}
-%\Mn@fraction{\textparenleftnumerator}   {218}
-%\Mn@fraction{\textparenrightnumerator}  {219}
-%\Mn@fraction{\textcommadenominator}     {220}
-%\Mn@fraction{\textperioddenominator}    {221}
-%\Mn@fraction{\textparenleftdenominator} {222}
-%\Mn@fraction{\textparenrightdenominator}{223}
-%\Mn@fraction{\textonethird}             {224}
-%\Mn@fraction{\texttwothirds}            {225}
-%\Mn@fraction{\textoneeighth}            {226}
-%\Mn@fraction{\textthreeeighths}         {227}
-%\Mn@fraction{\textfiveeighths}          {228}
-%\Mn@fraction{\textseveneighths}         {229}
 %    \end{macrocode}
 % Archaic Greek letters not provided by MinionPro
 %    \begin{macrocode}
@@ -1630,20 +1594,20 @@
 \Mn@AddToConfig{code:shape}{sw}{
   \skewchar\font=223
 }
-\Mn@AddToConfig{code:shape}{ssc,sscit}{
-  \Mn@adjust@fontdimen2{\Mn@interword@fct} % interword space
-  \Mn@adjust@fontdimen3{\Mn@interword@fct} % interword stretch
-  \Mn@adjust@fontdimen4{\Mn@interword@fct} % interword shrink
-  \Mn@adjust@fontdimen7{\Mn@interword@fct} % extra space
-}
+%\Mn@AddToConfig{code:shape}{ssc,sscit}{
+%  \Mn@adjust@fontdimen2{\Mn@interword@fct} % interword space
+%  \Mn@adjust@fontdimen3{\Mn@interword@fct} % interword stretch
+%  \Mn@adjust@fontdimen4{\Mn@interword@fct} % interword shrink
+%  \Mn@adjust@fontdimen7{\Mn@interword@fct} % extra space
+%}
 %    \end{macrocode}
 % This function is currently used to scale all four components of interword
 % space: space, stretch, shrink, and extra space.
 %    \begin{macrocode}
-\newcommand*\Mn@interword@fct{%
-  \Mn@fontdimen=1.15\Mn@fontdimen
-}
-\otf@makeglobal{Mn@interword@fct}
+%\newcommand*\Mn@interword@fct{%
+%  \Mn@fontdimen=1.15\Mn@fontdimen
+%}
+%\otf@makeglobal{Mn@interword@fct}
 %    \end{macrocode}
 %
 % \subsubsection{Declaration of font families and shapes}
