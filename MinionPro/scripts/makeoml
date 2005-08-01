@@ -26,72 +26,53 @@ do
   done
 done
 
-for s in Regular It Bold BoldIt
-do
-  cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
-  vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
-  rm $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm
-done
+make_vpl() {
+  cp ../vf/$font-$1-tosf$2-oml.vf ../tfm/$font-$1-tosf$2-oml*.tfm .
+  vftovp $font-$1-tosf$2-oml.vf $font-$1-tosf$2-oml.tfm $font-$1-tosf$2-oml.vpl
+  rm $font-$1-tosf$2-oml.vf $font-$1-tosf$2-oml.tfm
+}
 
-tex make-oml-smallfamily.tex
-rm ${font}*.mtx MnSymbol*mtx
-tex make-l1-oml-smallfamily.tex
-rm ${font}*.mtx MnSymbol*mtx
+run_fontinst() {
+  local tex_file
+  tex_file=make-oml-$1.tex
+
+  shift
+
+  for s in $*
+  do
+    make_vpl "$s" ""
+
+    case $s in
+      *Disp) ;;
+      *Subh) ;;
+      *)     make_vpl "$s" "-l1"
+    esac
+  done
+
+  tex $tex_file
+  rm $font*.mtx MnSymbol*mtx
+}
+
+run_fontinst smallfamily Regular It Bold BoldIt
 
 if [ -e ../tfm/$font-Semibold-tosf-oml.tfm ]
 then
-  for s in Semibold SemiboldIt
-  do
-    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
-    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
-    rm $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm
-  done
-  tex make-oml-medfamily.tex
-  rm ${font}*.mtx MnSymbol*mtx
-  tex make-l1-oml-medfamily.tex
-  rm ${font}*.mtx MnSymbol*mtx
+  run_fontinst medfamily Semibold SemiboldIt
 fi
 
 if [ -e ../tfm/$font-Medium-tosf-oml.tfm ]
 then
-  for s in Medium MediumIt
-  do
-    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
-    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
-    rm $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm
-  done
-  tex make-oml-fullfamily.tex
-  rm ${font}*.mtx MnSymbol*mtx
-  tex make-l1-oml-fullfamily.tex
-  rm ${font}*.mtx MnSymbol*mtx
+  run_fontinst fullfamily Medium MediumIt
 fi
 
 if [ -e ../tfm/$font-Capt-tosf-oml.tfm ]
 then
-  for s in Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
-  do
-    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
-    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
-    rm $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm
-  done
-  tex make-oml-medfamily-opticals.tex
-  rm ${font}*.mtx MnSymbol*mtx
-  tex make-l1-oml-medfamily-opticals.tex
-  rm ${font}*.mtx MnSymbol*mtx
+  run_fontinst medfamily-opticals Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
 fi
 
 if [ -e ../tfm/$font-MediumCapt-tosf-oml.tfm ]
 then
-  for s in MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
-  do
-    cp ../vf/$font-$s-tosf-oml.vf ../tfm/$font-$s-tosf-oml*.tfm .
-    vftovp $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm $font-$s-tosf-oml.vpl
-    rm $font-$s-tosf-oml.vf $font-$s-tosf-oml.tfm
-  done
-  tex make-oml-fullfamily-opticals.tex
-  rm ${font}*.mtx MnSymbol*mtx
-  tex make-l1-oml-fullfamily-opticals.tex
-  rm ${font}*.mtx MnSymbol*mtx
+  run_fontinst fullfamily-opticals MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
 fi
 
 for v in *.vpl
@@ -99,6 +80,8 @@ do
   vptovf $v
 done
 
-cp *Mixed*.vf  ../vf
-cp *Mixed*.tfm ../tfm
+cp *Mixed*.vf   ../vf
+cp *French*.vf  ../vf
+cp *Mixed*.tfm  ../tfm
+cp *French*.tfm ../tfm
 

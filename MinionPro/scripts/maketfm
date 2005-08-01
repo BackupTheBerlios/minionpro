@@ -371,8 +371,8 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml     tosf-oml "--math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
-    make_tfm "$1" extra-u extra-u  "$extra_flags"
+    make_tfm "$1" oml     tosf-oml    "-L 40 --math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" extra-u extra-u     "$extra_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
@@ -384,10 +384,12 @@ make_spaced_metrics() {
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
-    make_spread_metrics     "$1" lf
-    make_spread_metrics     "$1" tlf
-    make_spread_metrics     "$1" osf
-    make_spread_metrics     "$1" tosf
+    make_spread_metrics "$1" lf
+    make_spread_metrics "$1" tlf
+    make_spread_metrics "$1" osf
+    make_spread_metrics "$1" tosf
+
+    make_tfm "$1" oml tosf-l1-oml "-L 80 --math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi

@@ -1,49 +1,51 @@
 \input fontinst-macros.tex
 
-\def\installopt#1#2#3{%
-  \installfont{MinionPro-Mixed#3#1-oml}{%
+\def\installopt#1#2#3#4{%
+  \installfont{MinionPro-#3#1-#4oml}{%
      MnSymbolA#2                       encoding mn-symbol-a,%
      MnSymbolC#2                       encoding mn-symbol-c,%
      MnSymbolD#2                       encoding mn-symbol-d,%
      MnSymbolE#2                       encoding mn-symbol-e,%
-     MinionPro-#1-tosf-oml             encoding mn-oml-up,%
-     MinionPro-It#1-tosf-oml           encoding mn-oml-it,%
+     MinionPro-#1-tosf-#4oml           encoding mn-oml-up,%
+     MinionPro-It#1-tosf-#4oml         encoding mn-oml-it,%
      adjust-oml,%
      numfracs,%
      arrowhooks%
-  }{mn-oml#3}{}{}{}{}{}%
-  \installfont{MinionPro-SemiboldMixed#3#1-oml}{%
+  }{mn-oml-#3}{}{}{}{}{}%
+  \installfont{MinionPro-Semibold#3#1-#4oml}{%
      MnSymbolA-Bold#2                  encoding mn-symbol-a,%
      MnSymbolC-Bold#2                  encoding mn-symbol-c,%
      MnSymbolD-Bold#2                  encoding mn-symbol-d,%
      MnSymbolE-Bold#2                  encoding mn-symbol-e,%
-     MinionPro-Semibold#1-tosf-oml     encoding mn-oml-up,%
-     MinionPro-SemiboldIt#1-tosf-oml   encoding mn-oml-it,%
+     MinionPro-Semibold#1-tosf-#4oml   encoding mn-oml-up,%
+     MinionPro-SemiboldIt#1-tosf-#4oml encoding mn-oml-it,%
      adjust-oml,%
      numfracs,%
      arrowhooks%
-  }{mn-oml#3}{}{}{}{}{}%
-  \installfont{MinionPro-BoldMixed#3#1-oml}{%
+  }{mn-oml-#3}{}{}{}{}{}%
+  \installfont{MinionPro-Bold#3#1-#4oml}{%
      MnSymbolA-Bold#2                  encoding mn-symbol-a,%
      MnSymbolC-Bold#2                  encoding mn-symbol-c,%
      MnSymbolD-Bold#2                  encoding mn-symbol-d,%
      MnSymbolE-Bold#2                  encoding mn-symbol-e,%
-     MinionPro-Bold#1-tosf-oml         encoding mn-oml-up,%
-     MinionPro-BoldIt#1-tosf-oml       encoding mn-oml-it,%
+     MinionPro-Bold#1-tosf-#4oml       encoding mn-oml-up,%
+     MinionPro-BoldIt#1-tosf-#4oml     encoding mn-oml-it,%
      adjust-oml,%
      numfracs,%
      arrowhooks%
-  }{mn-oml#3}{}{}{}{}{}%
+  }{mn-oml-#3}{}{}{}{}{}%
 }
 
 \installfonts
-\setint{letterspacing}{40}
-  \installopt{Capt}{7}{}
-  \installopt{Subh}{12}{}
-  \installopt{Disp}{12}{}
-  \installopt{Capt}{7}{Up}
-  \installopt{Subh}{12}{Up}
-  \installopt{Disp}{12}{Up}  
+%\setint{letterspacing}{40}
+  \installopt{Capt}{7}{Mixed}{l1-}
+  \installopt{Capt}{7}{Mixed}{}
+  \installopt{Subh}{12}{Mixed}{}
+  \installopt{Disp}{12}{Mixed}{}
+  \installopt{Capt}{7}{French}{l1-}
+  \installopt{Capt}{7}{French}{}
+  \installopt{Subh}{12}{French}{}
+  \installopt{Disp}{12}{French}{}
 \endinstallfonts
 
 \bye

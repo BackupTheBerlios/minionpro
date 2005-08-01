@@ -1,7 +1,7 @@
 \input fontinst-macros.tex
 
 \def\installopt#1{%
-  \installfont{MinionPro-MediumMixed#1-oml}{%
+  \installfont{MinionPro-Medium#1-oml}{%
      MnSymbolA10                       encoding mn-symbol-a,%
      MnSymbolC10                       encoding mn-symbol-c,%
      MnSymbolD10                       encoding mn-symbol-d,%
@@ -11,13 +11,13 @@
      adjust-oml,%
      numfracs,%
      arrowhooks%
-  }{mn-oml#1}{}{}{}{}{}%
+  }{mn-oml-#1}{}{}{}{}{}%
 }
 
 \installfonts
-  \setint{letterspacing}{40}
-  \installopt{}
-  \installopt{Up}
+%  \setint{letterspacing}{40}
+  \installopt{Mixed}
+  \installopt{French}
 \endinstallfonts
 
 \bye

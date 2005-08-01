@@ -229,7 +229,7 @@
 % \begin{options}
 %   \option*{amsbb}  & use the AMS blackboard font\\
 %   \option{pazobb}  & use the Pazo blackboard font (does not fit very well to MinionPro)\\
-%   \option{eufrak}* & use the Euler fraktur font
+%   \option*{eufrak} & use the Euler fraktur font
 % \end{options}
 %
 % \subsubsection*{Greek letters}
@@ -422,7 +422,7 @@
 %   m, b (sb, bx), eb &
 %   n, it (sl) \\
 %   \addlinespace
-%   \acro{OML} &
+%   \acro{OML,} \acro{OMLfrench} &
 %   MinionPro-TOsF &
 %   m, b (sb, bx), eb &
 %   n, it \\
@@ -530,20 +530,15 @@
 % |\Mn@greek@Upright|, |\Mn@greek@Mixed|, and |\Mn@greek@Italic| are defined below in
 % section~\ref{sec:greek} before |\Mn@load@greek| is executed.
 %    \begin{macrocode}
-\newcommand\Mn@load@greek{}
-\newcommand\Mn@Math@letters@shape{it}
+\newcommand\Mn@load@greek{\Mn@greek@Mixed}
+\newcommand\Mn@Math@French{}
 \DeclareOption{frenchmath}{%
   \def\Mn@load@greek{\Mn@greek@Upright}%
-  \def\Mn@Math@letters@shape{n}%
-}
+  \def\Mn@Math@French{french}}
 \DeclareOption{mixedgreek}{%
-  \def\Mn@load@greek{\Mn@greek@Mixed}%
-  \def\Mn@Math@letters@shape{it}%
-}
+  \def\Mn@load@greek{\Mn@greek@Mixed}}
 \DeclareOption{italicgreek}{%
-  \def\Mn@load@greek{\Mn@greek@Italic}%
-  \def\Mn@Math@letters@shape{it}%
-}
+  \def\Mn@load@greek{\Mn@greek@Italic}}
 %    \end{macrocode}
 %
 % \subsubsection{Blackboard bold and fraktur fonts}
@@ -608,7 +603,7 @@
 % \subsubsection{Defaults}
 %
 %    \begin{macrocode}
-\ExecuteOptions{osf,mixedgreek,amsbb,eufrak}
+\ExecuteOptions{amsbb,eufrak}
 \ProcessOptions\relax
 %    \end{macrocode}
 %
@@ -630,27 +625,27 @@
 %
 % Redefine the standard math versions |normal| and |bold|.
 %    \begin{macrocode}
-\DeclareSymbolFont{operators}   {T1}{\Mn@Math@Family}       {m} {n}
-\DeclareSymbolFont{letters}    {OML}{\Mn@Math@GenericFamily}{m} {\Mn@Math@letters@shape}
-\SetSymbolFont{operators}{bold} {T1}{\Mn@Math@Family}       {eb}{n}
-\SetSymbolFont{letters}  {bold}{OML}{\Mn@Math@GenericFamily}{eb}{\Mn@Math@letters@shape}
-\DeclareMathAlphabet\mathbf     {T1}{\Mn@Math@Family}       {eb}{n}
-\DeclareMathAlphabet\mathit     {T1}{\Mn@Math@Family}       {m} {it}
-\SetMathAlphabet\mathit  {bold} {T1}{\Mn@Math@Family}       {eb}{it}
+\DeclareSymbolFont{operators}  {T1}                {\Mn@Math@Family}       {m} {n}
+\DeclareSymbolFont{letters}    {OML\Mn@Math@French}{\Mn@Math@GenericFamily}{m} {it}
+\SetSymbolFont{operators}{bold}{T1}                {\Mn@Math@Family}       {eb}{n}
+\SetSymbolFont{letters}  {bold}{OML\Mn@Math@French}{\Mn@Math@GenericFamily}{eb}{it}
+\DeclareMathAlphabet\mathbf    {T1}                {\Mn@Math@Family}       {eb}{n}
+\DeclareMathAlphabet\mathit    {T1}                {\Mn@Math@Family}       {m} {it}
+\SetMathAlphabet\mathit  {bold}{T1}                {\Mn@Math@Family}       {eb}{it}
 %    \end{macrocode}
 % Extra math versions |tabular| and |boldtabular|, which use tabular figures
 % instead of proportional ones. These math versions can be useful in tables
 % (cf.\ section~\ref{sec:dcolumn}).
 %    \begin{macrocode}
 \DeclareMathVersion{tabular}
-\SetSymbolFont{operators}{tabular}     {T1}{\Mn@Math@TFamily}      {m}{n}
-\SetSymbolFont{letters}  {tabular}    {OML}{\Mn@Math@GenericFamily}{m}{\Mn@Math@letters@shape}
-\SetMathAlphabet\mathit  {tabular}     {T1}{\Mn@Math@TFamily}      {m}{it}
+\SetSymbolFont{operators}{tabular}    {T1}                {\Mn@Math@TFamily}      {m}{n}
+\SetSymbolFont{letters}  {tabular}    {OML\Mn@Math@French}{\Mn@Math@GenericFamily}{m}{it}
+\SetMathAlphabet\mathit  {tabular}    {T1}                {\Mn@Math@TFamily}      {m}{it}
 
 \DeclareMathVersion{boldtabular}
-\SetSymbolFont{operators}{boldtabular} {T1}{\Mn@Math@TFamily}      {eb}{n}
-\SetSymbolFont{letters}  {boldtabular}{OML}{\Mn@Math@GenericFamily}{eb}{\Mn@Math@letters@shape}
-\SetMathAlphabet\mathit  {boldtabular} {T1}{\Mn@Math@TFamily}      {eb}{it}
+\SetSymbolFont{operators}{boldtabular}{T1}                {\Mn@Math@TFamily}      {eb}{n}
+\SetSymbolFont{letters}  {boldtabular}{OML\Mn@Math@French}{\Mn@Math@GenericFamily}{eb}{it}
+\SetMathAlphabet\mathit  {boldtabular}{T1}                {\Mn@Math@TFamily}      {eb}{it}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -1565,11 +1560,11 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\Mn@AddToConfig{encoding/shape}{OML/it}{
+\Mn@AddToConfig{encoding}{OML}{
       <->     otf* [shape=Mixed, figures=] MinionPro
 }
-\Mn@AddToConfig{encoding/shape}{OML/n}{
-      <->     otf* [shape=MixedUp, figures=] MinionPro
+\Mn@AddToConfig{encoding}{OMLfrench}{
+      <->     otf* [shape=French, figures=] MinionPro
 }
 \Mn@AddToConfig{shape}{it,scit,sscit,sw}{
       <->     otf* MinionPro-It
@@ -1592,7 +1587,7 @@
 % Code for the last argument of |\DeclareFontShape|
 %    \begin{macrocode}
 \Mn@AddToConfig{code:shape}{sw}{
-  \skewchar\font=223
+  \skewchar\font='337
 }
 %\Mn@AddToConfig{code:shape}{ssc,sscit}{
 %  \Mn@adjust@fontdimen2{\Mn@interword@fct} % interword space
@@ -1666,7 +1661,7 @@
 }
 \newcommand*\Mn@DeclareMathFontFamily[3][TOsF]{%
   \Mn@DeclareFontFamily[\skewchar\font=255]{#1}{#2}{#3}
-    {m,sb,b,bx,eb} {n,it}%
+    {m,sb,b,bx,eb} {it}%
 }
 %    \end{macrocode}
 % An additional macro |\csname\string\foo\endcsname| is generated by
