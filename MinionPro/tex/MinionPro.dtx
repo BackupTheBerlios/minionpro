@@ -906,18 +906,21 @@
 %    \begin{macrocode}
 \newcommand*\@smallfrac[2]{%
   \leavevmode
-  \vbox{%
-    \baselineskip\z@skip%
-    \lineskip.25ex%
-    \lineskiplimit-\maxdimen
-    \ialign{\hfil##\hfil\crcr
-            \vbox to 0pt{\vss\hbox{\@numerator@fig{#1}}\vskip.68ex}\crcr
-            \leavevmode\leaders\hrule height 1.1ex depth -1.01ex\hfill\crcr
-            \vtop to 0pt{\vbox{}\hbox{\@denominator@fig{#2}}\vss}\crcr
-            \noalign{\vskip-.47ex}}}}
+  \setbox\@tempboxa
+    \vbox{%
+      \baselineskip\z@skip%
+      \lineskip.25ex%
+      \lineskiplimit-\maxdimen
+      \ialign{\hfil##\hfil\crcr
+              \vbox to 2.25ex{\vss\hbox{\@numerator@fig{#1}}\vskip.68ex}\crcr
+              \leavevmode\leaders\hrule height 1.1ex depth -1.01ex\hfill\crcr
+              \vtop to 1ex{\vbox{}\hbox{\@denominator@fig{#2}}\vss}\crcr
+              \noalign{\vskip-1.47ex}}}%
+  \dp\@tempboxa=0.6ex%
+  \box\@tempboxa}
 \newcommand*\@slantfrac[2]{%
   {\Mn@extra@font\@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\@@denominator@fig{#2}}}
-\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.06em\@smallfrac{#1}{#2}\kern0.06em}}
+\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.06em\strut\@smallfrac{#1}{#2}\kern0.06em}}
 \DeclareRobustCommand*\slantfrac[2]{\ensure@text{\kern0.06em\@slantfrac{#1}{#2}\kern0.06em}}
 %    \end{macrocode}
 %
