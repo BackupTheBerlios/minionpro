@@ -912,15 +912,15 @@
       \lineskip.25ex%
       \lineskiplimit-\maxdimen
       \ialign{\hfil##\hfil\crcr
-              \vbox to 2.25ex{\vss\hbox{\@numerator@fig{#1}}\vskip.68ex}\crcr
+              \vbox to 2.15ex{\vss\hbox{\@numerator@fig{#1}}\vskip.68ex}\crcr
               \leavevmode\leaders\hrule height 1.1ex depth -1.01ex\hfill\crcr
               \vtop to 1ex{\vbox{}\hbox{\@denominator@fig{#2}}\vss}\crcr
               \noalign{\vskip-1.47ex}}}%
-  \dp\@tempboxa=0.6ex%
+  \dp\@tempboxa=0.45ex%
   \box\@tempboxa}
 \newcommand*\@slantfrac[2]{%
   {\Mn@extra@font\@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\@@denominator@fig{#2}}}
-\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.06em\strut\@smallfrac{#1}{#2}\kern0.06em}}
+\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.06em\@smallfrac{#1}{#2}\kern0.06em}}
 \DeclareRobustCommand*\slantfrac[2]{\ensure@text{\kern0.06em\@slantfrac{#1}{#2}\kern0.06em}}
 %    \end{macrocode}
 %
@@ -1563,17 +1563,17 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\Mn@AddToConfig{encoding}{OML}{
-      <->     otf* [shape=Mixed, figures=] MinionPro
-}
-\Mn@AddToConfig{encoding}{OMLfrench}{
-      <->     otf* [shape=French, figures=] MinionPro
-}
 \Mn@AddToConfig{shape}{it,scit,sscit,sw}{
       <->     otf* MinionPro-It
 }
 \Mn@AddToConfig{shape}{n,sc,ssc}{
       <->     otf* MinionPro
+}
+\Mn@AddToConfig{encoding/shape}{OML/it}{
+      <->     otf* [figures=] MinionPro-Mixed
+}
+\Mn@AddToConfig{encoding/shape}{OMLfrench/it}{
+      <->     otf* [figures=] MinionPro-French
 }
 %    \end{macrocode}
 % Substitutions
