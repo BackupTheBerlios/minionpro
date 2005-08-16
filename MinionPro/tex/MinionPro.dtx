@@ -295,46 +295,9 @@
 % \end{tabular}
 % \endgroup
 %
-% \iffalse
 % \medskip\noindent
-% Split fractions can be typeset either using the individual glyphs
-% |\text|\meta{number}|numerator|, |\text|\meta{number}|denominator|, and
-% |\textfractionsolidus| or using the following pre-composed fractions:
-%
-% \medskip\tabindent
-% \begingroup
-% \newcommand*\sym[1]{#1 & \ttfamily\string#1}%
-% \begin{tabular}{@{}*1{ll@{\qquad}}ll@{}}
-% \sym\textonehalf       & \sym\textonethird \\
-% \sym\texttwothirds     & \sym\textonequarter \\
-% \sym\textthreequarters & \sym\textoneeighth \\
-% \sym\textthreeeighths  & \sym\textfiveeighths \\
-% \sym\textseveneighths \\
-% \end{tabular}
-% \endgroup
-%
-% \medskip\noindent
-% Numerical fractions are useful for typesetting,
-% e.g., $\cos\mathonehalf(x+y)$ or $\Gamma(\mathonethird x+\mathtwothirds)$
-% and can be accessed in math mode using
-%
-% \medskip\tabindent
-% \begingroup
-% \newcommand*\sym[1]{\ensuremath{#1} & \ttfamily\string#1}%
-% \begin{tabular}{@{}*1{ll@{\qquad}}ll@{}}
-% \sym\mathonehalf       & \sym\mathtwofifths \\
-% \sym\mathonethird      & \sym\mathonesixth \\
-% \sym\mathtwothirds     & \sym\mathoneeighth \\
-% \sym\mathonequarter    & \sym\maththreeeighths \\
-% \sym\maththreequarters & \sym\mathfiveeighths\\
-% \sym\mathonefifth      & \sym\mathseveneighths\\
-% \end{tabular}
-% \endgroup
-% \fi
-%
-% \medskip\noindent
-% Numerical and split fractions are fractions with a height matching the font's 
-% body height. These are useful for typesetting,
+% Small and slanted fractions are fractions with a height matching the font's 
+% body size. These are useful for typesetting,
 % e.g., $\cos(\smallfrac{1}{2} x+\smallfrac{3}{2}y)$ or ``\slantfrac{1}{12}\ liters of 
 % red wine'' and can be accessed using
 %
@@ -940,21 +903,6 @@
 \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
 \DeclareMathSymbol{\lozenge}          {\mathord}{letters}{'375}
 \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
-% The following will be removed:
-\DeclareMathSymbol{\itimath}          {\mathord}{letters}{'173}
-\DeclareMathSymbol{\itjmath}          {\mathord}{letters}{'174}
-\DeclareMathSymbol{\mathonehalf}      {\mathord}{letters}{'270}
-\DeclareMathSymbol{\mathonethird}     {\mathord}{letters}{'271}
-\DeclareMathSymbol{\mathtwothirds}    {\mathord}{letters}{'272}
-\DeclareMathSymbol{\mathonequarter}   {\mathord}{letters}{'273}
-\DeclareMathSymbol{\maththreequarters}{\mathord}{letters}{'274}
-\DeclareMathSymbol{\mathonefifth}     {\mathord}{letters}{'275}
-\DeclareMathSymbol{\mathtwofifths}    {\mathord}{letters}{'276}
-\DeclareMathSymbol{\mathonesixth}     {\mathord}{letters}{'277}
-\DeclareMathSymbol{\mathoneeighth}    {\mathord}{letters}{'333}
-\DeclareMathSymbol{\maththreeeighths} {\mathord}{letters}{'334}
-\DeclareMathSymbol{\mathfiveeighths}  {\mathord}{letters}{'335}
-\DeclareMathSymbol{\mathseveneighths} {\mathord}{letters}{'336}
 %    \end{macrocode}
 % Archaic Greek letters not provided by MinionPro
 %    \begin{macrocode}

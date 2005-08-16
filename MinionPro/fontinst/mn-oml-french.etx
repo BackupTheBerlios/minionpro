@@ -760,30 +760,6 @@
 \setslot{ITslashedzero}
 \endsetslot
 
-\setslot{numfraconehalf}
-\endsetslot
-
-\setslot{numfraconethird}
-\endsetslot
-
-\setslot{numfractwothirds}
-\endsetslot
-
-\setslot{numfraconequarter}
-\endsetslot
-
-\setslot{numfracthreequarters}
-\endsetslot
-
-\setslot{numfraconefifth}
-\endsetslot
-
-\setslot{numfractwofifths}
-\endsetslot
-
-\setslot{numfraconesixth}
-\endsetslot
-
 \nextslot{192}
 \setslot{UPpartialdiff}
    \comment{The partial differentiation symbol `$\partial$'.}
@@ -891,18 +867,6 @@
 
 \setslot{ITZ}
    \comment{The letter `$\mathnormal{Z}$'.}
-\endsetslot
-
-\setslot{numfraconeeighth}
-\endsetslot
-
-\setslot{numfracthreeeighths}
-\endsetslot
-
-\setslot{numfracfiveeighths}
-\endsetslot
-
-\setslot{numfracseveneighths}
 \endsetslot
 
 \nextslot{224}
