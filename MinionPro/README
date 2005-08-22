@@ -1,0 +1,106 @@
+=== MinionPro Binary Distribution ===
+
+    http://developer.berlios.de/projects/minionpro
+
+    Achim Blumensath
+    Andreas B\"uhmann
+    Michael Zedler
+
+These files are public domain.
+
+Requirements
+============
+
+You need the MnSymbol fonts installed. They can be obtained from CTAN
+(ftp://ftp.ctan.org).
+
+You also need some program to convert the OpenType fonts into Type1
+format. If you have either LCDF Typetools or fontforge installed then
+you can use one of the provided scripts:
+
+o convert-lcdf uses LCDF Typetools (http://www.lcdf.org/~eddietwo/type/)
+o convert-ff uses fontforge (http://fontforge.sourceforge.net)
+
+Files
+=====
+
+The MinionPro distribution is split into several archives. Which of them
+you need depends on the version of the fonts you have installed.
+
+Metrics:
+
+o MinionPro-base-metrics: metrics for Regular, Italic, Bold, and
+  BoldItalic
+o MinionPro-full-metrics: additional metrics for Medium, MediumItalic,
+  Semibold, and SemiboldItalic
+o MininoPro-opticals-metrics: metrics for Capt, Subh, and Disp versions
+
+Encodings and map files:
+
+MinionPro comes in three versions 1.000, 1.001, and 2.000. We provide
+encoding files for 1.000 and 2.000:
+
+For font version 1.000:
+
+o MinionPro-base-enc-1
+o MinionPro-full-enc-1
+o MinionPro-opticals-enc-1
+
+For font version 2.000:
+
+o MinionPro-base-enc-2
+o MinionPro-full-enc-2
+o MinionPro-opticals-enc-2
+
+For example, if you have only the four basic weights in version 2.000
+then you need
+
+  MinionPro-base-metrics
+  MinionPro-base-enc-2
+
+If you have all weights, but not the optical families, in version 1.000
+then you need
+
+  MinionPro-base-metrics
+  MinionPro-full-metrics
+  MinionPro-base-enc-1
+  MinionPro-full-enc-1
+
+If you have all fonts in version 1.000 then you need
+
+  MinionPro-base-metrics
+  MinionPro-full-metrics
+  MininoPro-opticals-metrics
+  MinionPro-base-enc-1
+  MinionPro-full-enc-1
+  MinionPro-opticals-enc-1
+
+Installing
+==========
+
+1) Unpack the archives
+
+  $ tar -xzvf MinionPro-*.tgz
+
+2) Create a directory otf and copy your OpenType font files into it.
+
+  $ mkdir otf
+  $ cp /some/path/*.otf otf
+
+3) Convert the OpenType fonts into Type1 format:
+
+  $ ./convert-lcdf   (or ./convert-ff, or use some other program)
+
+4) Run ./install You can specify the directory where the files
+should be put. The default is $TEXMFLOCAL.
+
+  $ ./install /usr/local/teTeX/share/texmf-local
+
+5) Add MinionPro.map to your updmap.cfg and run updmap.
+
+6) You can find the documentation in
+
+  $TEXMFLOCAL/doc/latex/MinionPro/MinionPro.pdf
+
+7) Happy TeXing!
+

@@ -1,0 +1,61 @@
+=== MinionPro Source Distribution ===
+
+    http://developer.berlios.de/projects/minionpro
+
+    Achim Blumensath
+    Andreas B\"uhmann
+    Michael Zedler
+
+These files are public domain.
+
+Requirements
+============
+
+o LCDF Typetools, version 2.34 or better
+  (http://www.lcdf.org/~eddietwo/type/)
+o fontinst v1.925 or better
+
+Building
+========
+
+1) Unpack the archive:
+
+  $ tar -xzvf MinionPro-source.tgz
+  $ cd MinionPro
+
+2) Create a directory otf and copy your OpenType font files into it.
+
+  $ mkdir otf
+  $ cp /some/path/*.otf otf
+
+3) Run ./scripts/makeall
+
+  $ ./scripts/makeall
+
+makeall has some options to specify which metrics to create:
+
+  --greek        create greek metrics
+  --nogreek      turn --greek off
+  --cyrillic     create cyrillic metrics
+  --nocyrillic   turn --cyrillic off
+  --vietnamese   create vietnamese metrics
+  --novietnamese turn --vietnamese off
+  --expanded     create expanded metrics for pdftex
+  --noexpanded   turn --expanded off
+  --kern         add some missing kerning pairs
+  --nokern       use the original Adobe kerning
+  --open-g       use an open g for math
+  --closed-g     use the normal italic g for math
+
+Installing
+==========
+
+1) Run ./scripts/install. You can specify the directory where the files
+should be put. The default is $TEXMFLOCAL.
+
+  $ ./scripts/install /usr/local/teTeX/share/texmf-local
+
+2) Add MinionPro.map to your updmap.cfg and run updmap.
+
+3) Happy TeXing!
+

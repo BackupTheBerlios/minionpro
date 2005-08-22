@@ -12,8 +12,6 @@ usage() {
   echo "--greek      | --nogreek"
   echo "--cyrillic   | --nocyrillic"
   echo "--vietnamese | --novietnamese"
-  echo "--integrals  | --nointegrals"
-  echo "--swash      | --noswash"
   echo "--expanded   | --noexpanded"
   echo "--kern       | --nokern"
   echo "--open-g     | --closed-g"
@@ -29,8 +27,6 @@ fi
 create_greek=true
 create_cyrillic=true
 create_vietnamese=true
-create_integrals=true
-create_swash=true
 create_expanded=false
 create_kerned=true
 open_g=false
@@ -44,10 +40,6 @@ do
     --nocyrillic)   create_cyrillic=false;;
     --vietnamese)   create_vietnamese=true;;
     --novietnamese) create_vietnamese=false;;
-    --integrals)    create_integrals=true;;
-    --nointegrals)  create_integrals=false;;
-    --swash)        create_swash=true;;
-    --noswash)      create_swash=false;;
     --expanded)     create_expanded=true;;
     --noexpanded)   create_expanded=false;;
     --kern)         create_kerned=true;;
@@ -248,7 +240,7 @@ get_lgr_flags() {
     *)    lgr_flags="";;
   esac
   lgr_flags="$lgr_flags --position 'uni1FCE 0 30 0'"
-  lgr_flags="$lgr_flags --position 'uni1FCF 0 30 0'"  
+  lgr_flags="$lgr_flags --position 'uni1FCF 0 30 0'"
   lgr_flags="$lgr_flags --position 'uni1FBD 0 30 0'"
   lgr_flags="$lgr_flags --position 'uni1FCD 0 30 0'"
   lgr_flags="$lgr_flags --position 'uni1FDD 0 30 0'"
@@ -347,16 +339,13 @@ make_integrals() {
 
   if [ -e "$font-$1.pfb" ]
   then
-    if $create_integrals
-    then
-      echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
+    echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
-      make_tfm "$1" integral integral
-      make_tfm "$1" integral integral-cn1 "-E 0.85"
-      make_tfm "$1" integral integral-cn2 "-E 0.75 -S 0.04"
+    make_tfm "$1" integral integral
+    make_tfm "$1" integral integral-cn1 "-E 0.85"
+    make_tfm "$1" integral integral-cn2 "-E 0.75 -S 0.04"
 
-      echo 'echo " done." >&2' >>maketfm.tmp
-    fi
+    echo 'echo " done." >&2' >>maketfm.tmp
   fi
 }
 
@@ -415,14 +404,14 @@ make_swash_metrics() {
     make_tfm "$1" swash-ly1 osf-swash-ly1  "-fliga -fonum -fpnum"
     make_tfm "$1" swash-ly1 tlf-swash-ly1  "-fliga -flnum -ftnum"
     make_tfm "$1" swash-ly1 tosf-swash-ly1 "-fliga -fonum -ftnum"
-    
+
     if $create_vietnamese
     then
       make_tfm "$1" swash-t5  lf-swash-t5    "-fliga -flnum -fpnum"
       make_tfm "$1" swash-t5  osf-swash-t5   "-fliga -fonum -fpnum"
       make_tfm "$1" swash-t5  tlf-swash-t5   "-fliga -flnum -ftnum"
       make_tfm "$1" swash-t5  tosf-swash-t5  "-fliga -fonum -ftnum"
-    fi    
+    fi
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
@@ -448,7 +437,7 @@ make_spaced_swash_metrics() {
     make_tfm "$1" swash-ly1 osf-swash-l1-ly1  "-L 40 -fonum -fpnum"
     make_tfm "$1" swash-ly1 tlf-swash-l1-ly1  "-L 40 -flnum -ftnum"
     make_tfm "$1" swash-ly1 tosf-swash-l1-ly1 "-L 40 -fonum -ftnum"
-    
+
     if $create_vietnamese
     then
       make_tfm "$1" swash-t5  lf-swash-l1-t5    "-L 40 -fliga -flnum -fpnum"
