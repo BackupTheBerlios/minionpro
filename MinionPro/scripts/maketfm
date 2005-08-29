@@ -8,7 +8,7 @@ shift
 
 usage() {
   echo "USAGE: maketfm <font> [options]"
-  echo "\nSupported options are:"
+  echo -e "\nSupported options are:"
   echo "--greek      | --nogreek"
   echo "--cyrillic   | --nocyrillic"
   echo "--vietnamese | --novietnamese"
@@ -20,7 +20,7 @@ usage() {
 
 if [ "x$font" = "x" ]
 then
-  echo "No font specified!\n"
+  echo -e "No font specified!\n"
   usage
 fi
 
@@ -46,7 +46,7 @@ do
     --nokern)       create_kerned=false;;
     --open-g)       open_g=true;;
     --closed-g)     open_g=false;;
-    *)              echo "Unknown option $opt\n";
+    *)              echo -e "Unknown option $opt\n";
                     usage;;
   esac
 done
@@ -105,30 +105,45 @@ make_enckern() {
       local enc=$(basename $e .enc)
       enc=${enc#mn-}
 
-      if $create_kerned
-      then
-        if [ "$enc" = "lgi" ]
+      for l in "" "-l1" "-l2"
+      do
+        if $create_kerned
         then
-          kernsrc="lgr"
-        else
-          kernsrc=$enc;
-        fi
-        if [ -e "kerning/$1-$kernsrc.kern" ]
-        then
-          cat $e "kerning/$1-$kernsrc.kern" | grep -v "#" >enc/mn-$1-$enc.enckern
-        else
-          if [ -e "kerning/$1.kern" ]
+          if [ -e "kerning/$1$l-$enc.kern" ]
           then
-            cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1-$enc.enckern
+            cat $e "kerning/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
           else
-            cp $e enc/mn-$1-$enc.enckern
+            if [ -e "kerning/$1$l.kern" ]
+            then
+              cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+            else
+              if [ -e "kerning/$1-$enc.kern" ]
+              then
+                cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+              else
+                if [ -e "kerning/$1.kern" ]
+                then
+                  cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+                else
+                  cp $e enc/mn-$1$l-$enc.enckern
+                fi
+              fi
+            fi
           fi
+        else
+          cp $e enc/mn-$1$l-$enc.enckern
         fi
-      else
-        cp $e enc/mn-$1-$enc.enckern
-      fi
+      done
     done
   fi
+}
+
+get_kern_file() {
+  case $3 in
+    *-l2-*) kernfile=enc/mn-$1-l2-$2.enckern;;
+    *-l1-*) kernfile=enc/mn-$1-l1-$2.enckern;;
+    *)      kernfile=enc/mn-$1-$2.enckern;;
+  esac
 }
 
 make_tfm() {
@@ -142,24 +157,27 @@ make_tfm() {
 
   local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -fkern"
 
+  local kernfile
+  get_kern_file "$name" "$enc" "$spec"
+
   echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm.tmp
-  echo "otftotfm           $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'"    >>maketfm.tmp
+  echo "otftotfm           $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'"    >>maketfm.tmp
 
   # expanded metrics for pdftex's font expansion
 
   if $create_expanded
   then
     echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm-expanded.tmp
-    echo "otftotfm -E1.020 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'+20" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.016 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'+16" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.012 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'+12" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.008 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'+8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E1.004 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'+4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.996 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'-4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.992 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'-8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.988 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'-12" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.984 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' 'otf/$font-$name.otf' '$tex_name'-16" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.980 $common_flags $@ -e 'enc/mn-$name-$enc.enckern' "otf/$font-$name.otf" "$tex_name"-20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.020 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.016 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+16" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.012 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+12" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.008 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E1.004 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.996 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.992 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.988 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-12" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.984 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-16" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.980 $common_flags $@ -e '$kernfile' "otf/$font-$name.otf" "$tex_name"-20" >>maketfm-expanded.tmp
   fi
 }
 
