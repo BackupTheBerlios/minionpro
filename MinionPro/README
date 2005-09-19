@@ -98,9 +98,13 @@ should be put. The default is $TEXMFLOCAL.
 
 5) Add MinionPro.map to your updmap.cfg and run updmap.
 
-6) You can find the documentation in
+6) If you get errors about insufficient memory you might need to increase
+the values of font_mem_size and font_max in your TeX configuration. For most
+distributions, these can be changed in the file texmf/web2c/texmf.cnf
+
+7) You can find the documentation in
 
   $TEXMFLOCAL/doc/latex/MinionPro/MinionPro.pdf
 
-7) Happy TeXing!
+8) Happy TeXing!
 
