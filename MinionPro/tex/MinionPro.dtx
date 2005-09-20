@@ -217,19 +217,24 @@
 % \subsubsection*{Calligraphic fonts}
 %
 % \begin{options}
-%   \option*{mnsy} & use the calligraphic font from MnSymbol\\
-%   \option{cmsy}  & take the calligraphic symbols from Computer Modern\\
-%   \option{swash} & use the swash capitals from MinionPro\\
-%   \option{abx}   & use the calligraphic symbols provided by mathabx; \\
-%                  & this font contains also lowercase letters, but is not quite finished.
+%   \option*{mnsy} & use the calligraphic font from MnSymbol: $\mathcal{ABC}$\\
+%   \option{cmsy}  & take the calligraphic symbols from Computer Modern:
+%                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC} \\
+%   \option{swash} & use the swash capitals from MinionPro: \textsw{ABC}\\
+%   \option{abx}   & use the calligraphic symbols provided by mathabx:
+%                    \IfFileExists{mathabx.sty}{\font\testabx=mathu10\testabx ABCabc}{}\\
+%                  & (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
 % \subsubsection*{Blackboard and fraktur letters}
 %
 % \begin{options}
-%   \option*{amsbb}  & use the AMS blackboard font\\
-%   \option{pazobb}  & use the Pazo blackboard font (does not fit very well to MinionPro)\\
-%   \option*{eufrak} & use the Euler fraktur font
+%   \option*{amsbb}   & use the AMS blackboard font: $\mathbb{CNR}$\\
+%   \option{lucidabb} & use the (commercial) Lucida Math blackboard font \\
+%   \option{pazobb}   & use the Pazo blackboard font:
+%                       {\font\testpazo=fplmbb at 9.2pt\testpazo CNR}
+%                       (does not fit very well to MinionPro)\\
+%   \option*{eufrak}  & use the Euler fraktur font: $\mathfrak{ABCabc}$
 % \end{options}
 %
 % \subsubsection*{Greek letters}
@@ -519,6 +524,11 @@
   \DeclareFontFamily{T1}{fplmbb}{}
   \DeclareFontShape{T1}{fplmbb}{m}{n}{ <->s*[0.92] fplmbb }{}
   \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}}
+\newcommand\Mn@load@lucidabb{
+  \let\mathbb\@undefined
+  \DeclareFontFamily{U}{hlcm}{}
+  \DeclareFontShape{U}{hlcm}{m}{n}{ <->s*[0.92] hlcra }{}
+  \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -538,10 +548,11 @@
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\DeclareOption{amsbb} {\let\Mn@load@bb\Mn@load@amsbb}
-\DeclareOption{pazobb}{\let\Mn@load@bb\Mn@load@pazobb}
-\DeclareOption{wbfrak}{\let\Mn@load@frak\Mn@load@wbfrak}
-\DeclareOption{eufrak}{\let\Mn@load@frak\Mn@load@eufrak}
+\DeclareOption{amsbb}   {\let\Mn@load@bb\Mn@load@amsbb}
+\DeclareOption{pazobb}  {\let\Mn@load@bb\Mn@load@pazobb}
+\DeclareOption{lucidabb}{\let\Mn@load@bb\Mn@load@lucidabb}
+\DeclareOption{wbfrak}  {\let\Mn@load@frak\Mn@load@wbfrak}
+\DeclareOption{eufrak}  {\let\Mn@load@frak\Mn@load@eufrak}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
