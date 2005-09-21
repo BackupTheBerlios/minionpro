@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mkdir -p pfb
+
+echo "Creating PostScript fonts ..."
+
+for font in otf/*.otf
+do
+  fontforge scripts/fonttopfb.ff
+done
+
+mv otf/*.pfb pfb
+

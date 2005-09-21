@@ -88,7 +88,7 @@
 
 \newcommand\tabindent{\noindent\hspace{2em}}
 \newenvironment{options}{%
-  \par\medskip\tabindent
+  \par\penalty10000\medskip\penalty10000\tabindent
   \begin{tabular}{@{}p{\optionswidth}l@{}}%
 }{%
   \end{tabular}%
@@ -147,12 +147,69 @@
 % \end{quote}
 % \emph{after} the command |\usepackage{MinionPro}|.
 %
-% There is also a slight incompatibility with the \pkg{dcolumn} package
+% \subsubsection*{\pkg{dcolumn} and tabular figures}
+%
+% There is a slight incompatibility with the \pkg{dcolumn} package
 % which expects all figures to have the same width. If you want to use this
 % package you either have to specify the \option{mathtabular} option (this is
 % the brute force solution, not recommended), or you can use the
 % |\figureversion{tabular}| command to switch to tabular figures in front of
 % every table (much better, but also more work).
+%
+% \subsubsection*{Using tabular figures in the table of contents}
+%
+% Nearly all common \LaTeX\ document classes do not support several figure versions.
+% Usually it is desirable to set most text with proportional figures and use
+% tabular figures only in tables and lists. In order to use tabular figures
+% in the table of contents you have to make the following modifications to
+% internal \LaTeX\ commands:
+%
+% \begingroup\small
+% \begin{verbatim}
+% \def\numberline#1{\hb@xt@\@tempdima{\figureversion{tabular}#1\hfil}}
+% \def\@dottedtocline#1#2#3#4#5{%
+%   \ifnum #1>\c@tocdepth \else
+%     \vskip \z@ \@plus.2\p@
+%     {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+%      \parindent #2\relax\@afterindenttrue
+%      \interlinepenalty\@M
+%      \leavevmode
+%      \@tempdima #3\relax
+%      \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+%      {#4}\nobreak
+%      \leaders\hbox{$\m@th
+%         \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+%         mu$}\hfill
+%      \nobreak
+%      \hb@xt@\@pnumwidth{\hfil\normalfont\figureversion{tabular}\normalcolor #5}%
+%      \par}%
+%   \fi}
+% \end{verbatim}
+% \par\endgroup
+%
+% \noindent
+% The first redefinition causes the section numbers to be set in tabular
+% figures, the second one does the same for the page numbers. Note that, if you
+% put these definitions directly into your document then you have to surround
+% them by the commands \verb|\makeatletter| and \verb|\makeatother|.
+%
+% Further, note that these modifications only work for the standard document classes
+% \pkg{article}, \pkg{report}, and \pkg{book}. If you use other classes such as
+% {\small KOMA}-Script or memoir then you have to copy their respective definitions and insert
+% the command \verb|\figureversion{tabular}| at the appropriate places.
+%
+% If you are too afraid to modify internal \LaTeX\ commands and your section titles do
+% not contain numbers then there is an easy hack to get an equivalent result. Just
+% surround your \verb|\tableofcontents| command by the lines
+%
+% \begingroup\small
+% \begin{verbatim}
+% \begingroup
+% \figureversion{tabular}
+% \tableofcontents
+% \endgroup
+% \end{verbatim}
+% \par\endgroup
 %
 % \section{Options}
 %
