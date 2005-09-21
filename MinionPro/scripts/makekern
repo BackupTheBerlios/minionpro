@@ -1,5 +1,0 @@
-#!/bin/bash
-for i in *.afm
-do
-  cat $i|grep ^KPX|sed s/f_f/ff/g|sed s/seven/uni0037/g|sed s/five/uniF735/g|gawk '{print "% LIGKERN "$2" {"$4"} "$3}'|gawk '{print $0} /\} guillemotleft/ {print "% LIGKERN "$3" "$4" less"} /\} guillemotright/ {print "% LIGKERN "$3" "$4" greater"}'>kerning/`echo $i|sed s/"MinionPro-"//g|sed s/".afm"/".kern"/g`
-done
