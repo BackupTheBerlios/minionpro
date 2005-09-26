@@ -580,8 +580,14 @@
   \DeclareFontFamily{U}{hlcm}{}
   \DeclareFontShape{U}{hlcm}{m}{n}{ <->s*[0.92] hlcra }{}
   \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}}
+\newcommand\Mn@load@furierbb{
+  \let\mathbb\@undefined
+  \DeclareFontFamily{U}{futm}{}
+  \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
+  \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}}
 \DeclareOption{amsbb}   {\let\Mn@load@bb\Mn@load@amsbb}
 \DeclareOption{lucidabb}{\let\Mn@load@bb\Mn@load@lucidabb}
+\DeclareOption{furierbb}{\let\Mn@load@bb\Mn@load@furierbb}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
