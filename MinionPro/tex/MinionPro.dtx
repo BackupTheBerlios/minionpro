@@ -1,9 +1,9 @@
 %\iffalse meta-comment
 %<*driver>
-           \ProvidesFile{MinionPro.dtx}       [2005/01/23 v2.0 MinionPro support for LaTeX]
+           \ProvidesFile{MinionPro.dtx}        [2005/09/25 v2.0 MinionPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MinionPro}         [2005/01/23 v2.0 MinionPro support for LaTeX]
+%<style>   \ProvidesPackage{MinionPro}         [2005/09/25 v2.0 MinionPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}     [2005/02/07 v1.0 microtype config file for MinionPro]
 %<fontdef> \ProvidesFile{MinionPro-FontDef.sty}[2005/04/13 v2.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMinionPro-Extra.fd}  [2005/01/23 v2.0 font definitions for U/MinionPro-Extra.]
@@ -147,22 +147,146 @@
 % \end{quote}
 % \emph{after} the command |\usepackage{MinionPro}|.
 %
-% \subsubsection*{\pkg{dcolumn} and tabular figures}
-%
-% There is a slight incompatibility with the \pkg{dcolumn} package
+% There is also a slight incompatibility with the \pkg{dcolumn} package
 % which expects all figures to have the same width. If you want to use this
 % package you either have to specify the \option{mathtabular} option (this is
 % the brute force solution, not recommended), or you can use the
 % |\figureversion{tabular}| command to switch to tabular figures in front of
 % every table (much better, but also more work).
 %
-% \subsubsection*{Using tabular figures in the table of contents}
+% \section{Options}
 %
-% Nearly all common \LaTeX\ document classes do not support several figure versions.
+% \subsubsection*{Selection of the fonts to be used}
+%
+% The following options specify which version of the fonts you want to use.
+% The default settings are marked with an asterisk*.
+%
+% \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
+% \begin{options}
+%   \option*{smallfamily} & use only regular and bold face\\
+%   \option{medfamily}    & use semibold face in addition to \option{smallfamily} \\
+%   \option{fullfamily}   & use medium face in addition to \option{medfamily}\\
+%   \option*{noopticals}  & use only the optical size Text\\
+%   \option{opticals}     & use the optical sizes Caption, Text, Subhead, and Display\\
+%   \option{slides}       & use only the optical shape Caption (useful for slides)
+% \end{options}
+%
+% \subsubsection*{Figure selection}
+%
+% MinionPro offers four different figure versions. A detailed
+% description is given in Section~\ref{sec:fig}.
+% The default version can be selected by the following options:
+%
+% \begin{options}
+%   \option{textosf}     & use text figures in text mode\\
+%   \option{mathosf}     & use text figures in math mode\\
+%   \option*{osf}        & use text figures in text and math mode\\
+%   \option{textlf}      & use lining figures in text mode\\
+%   \option{mathlf}      & use lining figures in math mode\\
+%   \option{lf}          & use lining figures in text and math mode\\
+%   \option{mathtabular} & use tabular figures in math mode\\
+% \end{options}
+%
+% \subsubsection*{Calligraphic fonts}
+%
+% \begin{options}
+%   \option*{mnsy} & use the calligraphic font from MnSymbol: $\mathcal{ABC}$\\
+%   \option{cmsy}  & take the calligraphic symbols from Computer Modern:
+%                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC} \\
+%   \option{swash} & use the swash capitals from MinionPro: \textsw{ABC}\\
+%   \option{abx}   & use the calligraphic symbols provided by mathabx:
+%                    \IfFileExists{mathabx.sty}{\font\testabx=mathu10\testabx ABCabc}{}\\
+%                  & (This font contains also lowercase letters, but it is not quite finished.)
+% \end{options}
+%
+% \subsubsection*{Blackboard letters}
+%
+% \begin{options}
+%   \option*{amsbb}   & use the AMS blackboard font: $\mathbb{CNR}$\\
+%   \option{lucidabb} & use the (commercial) Lucida Math blackboard font \\
+% \end{options}
+%
+% \subsubsection*{Greek letters}
+%
+% The following options specify whether you want to use upright or italic Greek
+% letters in math mode.
+%
+% \begin{options}
+%   \option*{mixedgreek} & uppercase Greek upright, lowercase Greek italic\\
+%   \option{italicgreek} & all Greek letters italic\\
+%   \option{frenchmath}  & all Greek and uppercase Roman letters upright
+% \end{options}
+%
+% \noindent
+% Upright and italic Greek letters are also directly accessible via the commands
+% |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
+%
+% \subsubsection*{Miscellaneous options}
+%
+% \begin{options}
+%   \option{minionint}
+%      & take the integral symbols from MinionPro, not from MnSymbol:\\
+%      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
+%   \option{footnotefigures}
+%      & use special figures for footnote marks, \\
+%      & i.e., example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
+%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
+%        This option can be used\\
+%      & if \emph{only} figures are used as footnote marks.
+% \end{options}
+%
+% \section{Figure selection}
+% \label{sec:fig}
+%
+% MinionPro offers four different figure versions. One can choose between
+% \emph{text figures} (i.e., lowercase figures) and \emph{lining figures} (i.e., uppercase figures)
+% and one can choose between \emph{proportional} figures (figures with different widths)
+% and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
+%
+% \medskip
+% \begin{tabular}{@{}lll@{}}
+% \toprule
+%                & text figures & lining figures \\
+% \midrule
+%   proportional & \figureversion{text,proportional}0123456789
+%                & \figureversion{lining,proportional}0123456789 \\
+%   tabular      & \figureversion{text,tabular}0123456789
+%                & \figureversion{lining,tabular}0123456789 \\
+% \bottomrule
+% \end{tabular}
+%
+% \medskip\noindent
+% The |\figureversion| command can be used to switch between
+% different figure versions. Possible parameters are:
+%
+% \begin{options}
+%   \option{text}, \option{osf}          & text figures\\
+%   \option{lining}, \option{lf}         & lining figures\\
+%   \option{tabular}, \option{tab}       & tabular figures\\
+%   \option{proportional}, \option{prop} & proportional figures
+% \end{options}
+%
+% Nearly all common \LaTeX\ document classes do not support fonts with
+% several figure versions.
 % Usually it is desirable to set most text with proportional figures and use
-% tabular figures only in tables and lists. In order to use tabular figures
-% in the table of contents you have to make the following modifications to
-% internal \LaTeX\ commands:
+% tabular figures only in tables and lists.
+% The following hack can be used to get tabular figures in the table of contents.
+% Surround your \verb|\tableofcontents| command by the lines
+%
+% \begingroup\small
+% \begin{verbatim}
+% \begingroup
+% \figureversion{tabular}
+% \tableofcontents
+% \endgroup
+% \end{verbatim}
+% \par\endgroup
+%
+% \noindent
+% But note that, if your section titles contain numbers then these will also be set
+% in tabular figures.
+% There is also a proper solution which works in all cases. But it requires
+% modifications of internal \LaTeX\ commands:
 %
 % \begingroup\small
 % \begin{verbatim}
@@ -197,131 +321,6 @@
 % \pkg{article}, \pkg{report}, and \pkg{book}. If you use other classes such as
 % {\small KOMA}-Script or memoir then you have to copy their respective definitions and insert
 % the command \verb|\figureversion{tabular}| at the appropriate places.
-%
-% If you are too afraid to modify internal \LaTeX\ commands and your section titles do
-% not contain numbers then there is an easy hack to get an equivalent result. Just
-% surround your \verb|\tableofcontents| command by the lines
-%
-% \begingroup\small
-% \begin{verbatim}
-% \begingroup
-% \figureversion{tabular}
-% \tableofcontents
-% \endgroup
-% \end{verbatim}
-% \par\endgroup
-%
-% \section{Options}
-%
-% \subsubsection*{Selection of the fonts to be used}
-%
-% The following options specify which version of the fonts you want to use.
-% The default settings are marked with an asterisk*.
-%
-% \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
-% \begin{options}
-%   \option*{smallfamily} & use only regular and bold face\\
-%   \option{medfamily}    & use semibold face in addition to \option{smallfamily} \\
-%   \option{fullfamily}   & use medium face in addition to \option{medfamily}\\
-%   \option*{noopticals}  & use only the optical size Text\\
-%   \option{opticals}     & use the optical sizes Caption, Text, Subhead, and Display\\
-%   \option{slides}       & use only the optical shape Caption (useful for slides)
-% \end{options}
-%
-% \subsubsection*{Figure selection}
-%
-% MinionPro offers four different figure versions. One can choose between
-% \emph{text figures} (i.e., lowercase figures) and \emph{lining figures} (i.e., uppercase figures)
-% and one can choose between \emph{proportional} figures (figures with different widths)
-% and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
-%
-% \medskip
-% \begin{tabular}{@{}lll@{}}
-% \toprule
-%                & text figures & lining figures \\
-% \midrule
-%   proportional & \figureversion{text,proportional}0123456789
-%                & \figureversion{lining,proportional}0123456789 \\
-%   tabular      & \figureversion{text,tabular}0123456789
-%                & \figureversion{lining,tabular}0123456789 \\
-% \bottomrule
-% \end{tabular}
-%
-% \medskip\noindent
-% The default version can be selected by the following options:
-%
-% \begin{options}
-%   \option{textosf}     & use text figures in text mode\\
-%   \option{mathosf}     & use text figures in math mode\\
-%   \option*{osf}        & use text figures in text and math mode\\
-%   \option{textlf}      & use lining figures in text mode\\
-%   \option{mathlf}      & use lining figures in math mode\\
-%   \option{lf}          & use lining figures in text and math mode\\
-%   \option{mathtabular} & use tabular figures in math mode\\
-% \end{options}
-%
-% \noindent
-% Inside the document the |\figureversion| command can be used to switch between
-% different figure versions. Possible parameters are:
-%
-% \begin{options}
-%   \option{text}, \option{osf}          & text figures\\
-%   \option{lining}, \option{lf}         & lining figures\\
-%   \option{tabular}, \option{tab}       & tabular figures\\
-%   \option{proportional}, \option{prop} & proportional figures
-% \end{options}
-%
-% \subsubsection*{Calligraphic fonts}
-%
-% \begin{options}
-%   \option*{mnsy} & use the calligraphic font from MnSymbol: $\mathcal{ABC}$\\
-%   \option{cmsy}  & take the calligraphic symbols from Computer Modern:
-%                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC} \\
-%   \option{swash} & use the swash capitals from MinionPro: \textsw{ABC}\\
-%   \option{abx}   & use the calligraphic symbols provided by mathabx:
-%                    \IfFileExists{mathabx.sty}{\font\testabx=mathu10\testabx ABCabc}{}\\
-%                  & (This font contains also lowercase letters, but it is not quite finished.)
-% \end{options}
-%
-% \subsubsection*{Blackboard and fraktur letters}
-%
-% \begin{options}
-%   \option*{amsbb}   & use the AMS blackboard font: $\mathbb{CNR}$\\
-%   \option{lucidabb} & use the (commercial) Lucida Math blackboard font \\
-%   \option{pazobb}   & use the Pazo blackboard font:
-%                       {\font\testpazo=fplmbb at 9.2pt\testpazo CNR}
-%                       (does not fit very well to MinionPro)\\
-%   \option*{eufrak}  & use the Euler fraktur font: $\mathfrak{ABCabc}$
-% \end{options}
-%
-% \subsubsection*{Greek letters}
-%
-% The following options specify whether you want to use upright or italic Greek
-% letters in math mode.
-%
-% \begin{options}
-%   \option*{mixedgreek} & uppercase Greek upright, lowercase Greek italic\\
-%   \option{italicgreek} & all Greek letters italic\\
-%   \option{frenchmath}  & all Greek and uppercase Roman letters upright
-% \end{options}
-%
-% \noindent
-% Upright and italic Greek letters are also directly accessible via the commands
-% |\upgamma|, |\itgamma|, |\upGamma|, |\itGamma|, etc.
-%
-% \subsubsection*{Miscellaneous options}
-%
-% \begin{options}
-%   \option{minionint}
-%      & take the integral symbols from MinionPro, not from MnSymbol:\\
-%      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
-%   \option{footnotefigures}
-%      & use special figures for footnote marks, \\
-%      & i.e., example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
-%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
-%        This option can be used\\
-%      & if \emph{only} figures are used as footnote marks.
-% \end{options}
 %
 % \section{Additional font shapes and symbols}
 %
@@ -576,40 +575,13 @@
 \newcommand\Mn@load@amsbb{
   \let\mathbb\@undefined
   \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}
-\newcommand\Mn@load@pazobb{
-  \let\mathbb\@undefined
-  \DeclareFontFamily{T1}{fplmbb}{}
-  \DeclareFontShape{T1}{fplmbb}{m}{n}{ <->s*[0.92] fplmbb }{}
-  \DeclareMathAlphabet\mathbb{T1}{fplmbb}{m}{n}}
 \newcommand\Mn@load@lucidabb{
   \let\mathbb\@undefined
   \DeclareFontFamily{U}{hlcm}{}
   \DeclareFontShape{U}{hlcm}{m}{n}{ <->s*[0.92] hlcra }{}
   \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\newcommand\Mn@load@wbfrak{
-  \let\mathfrak\@undefined
-  \DeclareMathAlphabet\mathfrak     {T1}{DS-Wartburg-Fraktur}{m}{n}
-  \SetMathAlphabet\mathfrak{bold}   {T1}{DS-Wartburg-Fraktur}{b}{n}
-  \SetMathAlphabet\mathfrak{boldtabular}{T1}{DS-Wartburg-Fraktur}{b}{n}}
-\newcommand\Mn@load@eufrak{
-%    \end{macrocode}
-% We cannot load \pkg{eufrak} if \pkg{amsfonts} is already loaded.
-%    \begin{macrocode}
-  \@ifpackageloaded{amsfonts}
-    {\SetMathAlphabet\mathfrak{boldtabular}{U}{euf}{b}{n}}%
-    {\RequirePackage{eufrak}%
-     \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
 \DeclareOption{amsbb}   {\let\Mn@load@bb\Mn@load@amsbb}
-\DeclareOption{pazobb}  {\let\Mn@load@bb\Mn@load@pazobb}
 \DeclareOption{lucidabb}{\let\Mn@load@bb\Mn@load@lucidabb}
-\DeclareOption{wbfrak}  {\let\Mn@load@frak\Mn@load@wbfrak}
-\DeclareOption{eufrak}  {\let\Mn@load@frak\Mn@load@eufrak}
 %    \end{macrocode}
 %
 % \subsubsection{Integrals}
@@ -642,6 +614,12 @@
 %
 %    \begin{macrocode}
 \RequirePackage{MnSymbol,MinionPro-FontDef}
+%    \end{macrocode}
+% If no fraktur font is loaded then take the Euler font.
+%    \begin{macrocode}
+\@ifundefined{mathfrak}{%
+  \RequirePackage{eufrak}%
+  \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}{}
 %    \end{macrocode}
 % By default, we use |b| for the bold series. If |MinionPro-Semibold| is not
 % available this might internally be mapped to |MinionPro-Bold| (see
