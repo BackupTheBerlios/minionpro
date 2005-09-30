@@ -123,10 +123,11 @@
 %
 % The \pkg{MinionPro} package provides support for the MinionPro
 % font family from Adobe.
-% To use these fonts in a \LaTeX\ document you can issue the command
+% You can use these fonts in a \LaTeX\ document by adding the command
 % \begin{quote}
 %   |\usepackage{MinionPro}|
 % \end{quote}
+% to the preamble.
 %
 % \section{Interference with other packages}
 % \label{sec:dcolumn}
@@ -156,7 +157,7 @@
 %
 % \section{Options}
 %
-% \subsubsection*{Selection of the fonts to be used}
+% \subsubsection*{Font selection}
 %
 % The following options specify which version of the fonts you want to use.
 % The default settings are marked with an asterisk*.
@@ -189,6 +190,8 @@
 %
 % \subsubsection*{Calligraphic fonts}
 %
+% These options specify which font is used by the |\mathcal| command.
+%
 % \begin{options}
 %   \option*{mnsy} & use the calligraphic font from MnSymbol: $\mathcal{ABC}$\\
 %   \option{cmsy}  & take the calligraphic symbols from Computer Modern:
@@ -199,12 +202,14 @@
 %                  & (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
-% \subsubsection*{Blackboard letters}
+% \subsubsection*{Blackboard bold letters}
+%
+% You can also select different fonts for the |\mathbb| command.
 %
 % \begin{options}
-%   \option*{amsbb}    & use the AMS blackboard font: $\mathbb{CNR}$\\
+%   \option*{amsbb}    & use the AMS blackboard font: $\mathbb{NZQRC}$\\
 %   \option{fourierbb} & use the Fourier blackboard font:
-%                        {\font\testfour=fourier-bb at 9.5\testfour CNR} \\
+%                        {\font\testfour=fourier-bb at 9.5pt\testfour NZQRC} \\
 %   \option{lucidabb}  & use the (commercial) Lucida Math blackboard font \\
 % \end{options}
 %
@@ -214,9 +219,9 @@
 % letters in math mode.
 %
 % \begin{options}
-%   \option*{mixedgreek} & uppercase Greek upright, lowercase Greek italic\\
-%   \option{italicgreek} & all Greek letters italic\\
-%   \option{frenchmath}  & all Greek and uppercase Roman letters upright
+%   \option*{mixedgreek} & uppercase Greek is upright, lowercase Greek is italic\\
+%   \option{italicgreek} & all Greek letters are italic\\
+%   \option{frenchmath}  & all Greek letters and the uppercase Roman letters are upright
 % \end{options}
 %
 % \noindent
@@ -230,18 +235,18 @@
 %      & take the integral symbols from MinionPro, not from MnSymbol:\\
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
 %   \option{footnotefigures}
-%      & use special figures for footnote marks, \\
-%      & i.e., example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
-%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
-%        This option can be used\\
-%      & if \emph{only} figures are used as footnote marks.
+%      & use special figures for footnote marks, i.e.,\\
+%      & example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
+%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}. \\
+%      & This option can only be used if the footnote marks consist \\
+%      & \emph{solely} of figures.
 % \end{options}
 %
 % \section{Figure selection}
 % \label{sec:fig}
 %
 % MinionPro offers four different figure versions. One can choose between
-% \emph{text figures} (i.e., lowercase figures) and \emph{lining figures} (i.e., uppercase figures)
+% \emph{text figures} (lowercase figures) and \emph{lining figures} (uppercase figures)
 % and one can choose between \emph{proportional} figures (figures with different widths)
 % and \emph{tabular} figures (all figures have the same width, useful mainly for tables).
 %
@@ -279,6 +284,7 @@
 % \begin{verbatim}
 % \begingroup
 % \figureversion{tabular}
+% \renewcommand\familydefault{MinionPro-TOsF}
 % \tableofcontents
 % \endgroup
 % \end{verbatim}
@@ -362,7 +368,7 @@
 % Small and slanted fractions are fractions with a height matching the font's 
 % body size. These are useful for typesetting,
 % e.g., $\cos(\smallfrac{1}{2} x+\smallfrac{3}{2}y)$ or ``\slantfrac{1}{12}\ liters of 
-% red wine'' and can be accessed using
+% red wine'' and can be accessed via
 %
 % \medskip\tabindent
 % \begin{tabular}{ll@{}@{}}
@@ -374,7 +380,7 @@
 % Note that \emph{only} figures can be used for \meta{numerator} and \meta{denominator}.
 %
 % \bigskip\noindent
-% Ornaments can be accessed via the \pkg{pifont} package using the command
+% Ornaments can be accessed via the \pkg{pifont} package with the command
 % \begin{quote}
 %   |\Pisymbol{MinionPro-Extra}|\marg{number}
 % \end{quote}
@@ -433,7 +439,7 @@
 % \medskip\noindent
 % \begingroup
 % \centering\let\>=\\%
-% \begin{tabular}{@{}p{5em}p{9.5em}lp{9em}@{}}
+% \begin{tabular}{@{}p{7.5em}p{7em}lp{9em}@{}}
 %   \toprule
 %   encoding & family & series & shape \\
 %   \midrule
@@ -443,15 +449,21 @@
 %   n, it (sl), sw\footnotemark,\>
 %   sc, scit (scsl, scsw),\> ssc, sscit (sscsl, sscsw) \\
 %   \addlinespace
+%   \midrule
+%   \addlinespace
 %   \raggedright \acro{LGR,} \acro{LGI,} \acro{T2A,} \acro{T2B,} \acro{T2C,} \acro{X2,} \acro{OT2} &
 %   MinionPro-OsF, MinionPro-LF, MinionPro-TOsF, MinionPro-TLF &
 %   m, b (sb, bx), eb &
 %   n, it (sl) \\
 %   \addlinespace
+%   \midrule
+%   \addlinespace
 %   \acro{OML,} \acro{OMLfrench} &
 %   MinionPro-TOsF &
 %   m, b (sb, bx), eb &
 %   n, it \\
+%   \addlinespace
+%   \midrule
 %   \addlinespace
 %   \acro{U} &
 %   MinionPro-Extra &
@@ -937,8 +949,8 @@
   \box\@tempboxa}
 \newcommand*\@slantfrac[2]{%
   {\Mn@extra@font\@@numerator@fig{#1}\kern-0.05em/\kern-0.06em\@@denominator@fig{#2}}}
-\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.09em\@smallfrac{#1}{#2}\kern0.09em}}
-\DeclareRobustCommand*\slantfrac[2]{\ensure@text{\kern0.09em\@slantfrac{#1}{#2}\kern0.09em}}
+\DeclareRobustCommand*\smallfrac[2]{\ensure@text{\kern0.06em\@smallfrac{#1}{#2}\kern0.09em}}
+\DeclareRobustCommand*\slantfrac[2]{\ensure@text{\kern0.06em\@slantfrac{#1}{#2}\kern0.09em}}
 %    \end{macrocode}
 %
 % \subsection{Additional symbols}
