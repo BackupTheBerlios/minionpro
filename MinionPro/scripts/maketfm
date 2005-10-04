@@ -410,25 +410,25 @@ make_swash_metrics() {
 
     get_it_ot1_flags "$1"
 
-    make_tfm "$1" swash-t1  lf-swash-t1    "-fliga -flnum -fpnum"
-    make_tfm "$1" swash-t1  osf-swash-t1   "-fliga -fonum -fpnum"
-    make_tfm "$1" swash-t1  tlf-swash-t1   "-fliga -flnum -ftnum"
-    make_tfm "$1" swash-t1  tosf-swash-t1  "-fliga -fonum -ftnum"
-    make_tfm "$1" swash-ot1 lf-swash-ot1   "-fliga -flnum -fpnum $it_ot1_flags"
-    make_tfm "$1" swash-ot1 osf-swash-ot1  "-fliga -fonum -fpnum $it_ot1_flags"
-    make_tfm "$1" swash-ot1 tlf-swash-ot1  "-fliga -flnum -ftnum $it_ot1_flags"
-    make_tfm "$1" swash-ot1 tosf-swash-ot1 "-fliga -fonum -ftnum $it_ot1_flags"
-    make_tfm "$1" swash-ly1 lf-swash-ly1   "-fliga -flnum -fpnum"
-    make_tfm "$1" swash-ly1 osf-swash-ly1  "-fliga -fonum -fpnum"
-    make_tfm "$1" swash-ly1 tlf-swash-ly1  "-fliga -flnum -ftnum"
-    make_tfm "$1" swash-ly1 tosf-swash-ly1 "-fliga -fonum -ftnum"
+    make_tfm "$1" t1  lf-swash-t1    "-fliga -flnum -fpnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" t1  osf-swash-t1   "-fliga -fonum -fpnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" t1  tlf-swash-t1   "-fliga -flnum -ftnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" t1  tosf-swash-t1  "-fliga -fonum -ftnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ot1 lf-swash-ot1   "-fliga -flnum -fpnum $it_ot1_flags --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ot1 osf-swash-ot1  "-fliga -fonum -fpnum $it_ot1_flags --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ot1 tlf-swash-ot1  "-fliga -flnum -ftnum $it_ot1_flags --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ot1 tosf-swash-ot1 "-fliga -fonum -ftnum $it_ot1_flags --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ly1 lf-swash-ly1   "-fliga -flnum -fpnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ly1 osf-swash-ly1  "-fliga -fonum -fpnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ly1 tlf-swash-ly1  "-fliga -flnum -ftnum --include-alternates \"*.swash\" -faalt"
+    make_tfm "$1" ly1 tosf-swash-ly1 "-fliga -fonum -ftnum --include-alternates \"*.swash\" -faalt"
 
     if $create_vietnamese
     then
-      make_tfm "$1" swash-t5  lf-swash-t5    "-fliga -flnum -fpnum"
-      make_tfm "$1" swash-t5  osf-swash-t5   "-fliga -fonum -fpnum"
-      make_tfm "$1" swash-t5  tlf-swash-t5   "-fliga -flnum -ftnum"
-      make_tfm "$1" swash-t5  tosf-swash-t5  "-fliga -fonum -ftnum"
+      make_tfm "$1" t5  lf-swash-t5    "-fliga -flnum -fpnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  osf-swash-t5   "-fliga -fonum -fpnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  tlf-swash-t5   "-fliga -flnum -ftnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  tosf-swash-t5  "-fliga -fonum -ftnum --include-alternates \"*.swash\" -faalt"
     fi
 
     echo 'echo " done." >&2' >>maketfm.tmp
