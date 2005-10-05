@@ -295,9 +295,20 @@
 % you can replace the |TOsF| by |TLF|. The same method can be applied to the
 % list of figures and the list of tables.
 %
-% Note that, if you use the above hack and your section titles contain numbers then
-% these will also be set in tabular figures. Furthermore, the hack does not work
-% for the \pkg{scrartcl} class.
+% If you are using the \pkg{scrartcl} class then, instead of the above lines, you need
+% the command
+%
+% \begingroup\small
+% \begin{verbatim}
+% \addtokomafont{sectioning}{\rmfamily\figurestyle{tab}}
+% \end{verbatim}
+% \par\endgroup
+%
+% \noindent
+% anywhere in your preamble.
+%
+% Note that, if you use one of the above hacks and your section titles contain numbers then
+% these will also be set in tabular figures.
 %
 % There is also a proper solution which works in all cases. Unfortunately,
 % it requires modifications of internal \LaTeX\ commands:
