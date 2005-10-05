@@ -291,10 +291,16 @@
 % \par\endgroup
 %
 % \noindent
-% But note that, if your section titles contain numbers then these will also be set
-% in tabular figures.
-% There is also a proper solution which works in all cases. But it requires
-% modifications of internal \LaTeX\ commands:
+% The above code switches to tabular text figures. If you prefer lining figures then
+% you can replace the |TOsF| by |TLF|. The same method can be applied to the
+% list of figures and the list of tables.
+%
+% Note that, if you use the above hack and your section titles contain numbers then
+% these will also be set in tabular figures. Furthermore, the hack does not work
+% for the \pkg{scrartcl} class.
+%
+% There is also a proper solution which works in all cases. Unfortunately,
+% it requires modifications of internal \LaTeX\ commands:
 %
 % \begingroup\small
 % \begin{verbatim}
