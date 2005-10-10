@@ -443,25 +443,25 @@ make_spaced_swash_metrics() {
 
     get_it_ot1_flags "$1"
 
-    make_tfm "$1" swash-t1  lf-swash-l1-t1    "-L 40 -flnum -fpnum"
-    make_tfm "$1" swash-t1  osf-swash-l1-t1   "-L 40 -fonum -fpnum"
-    make_tfm "$1" swash-t1  tlf-swash-l1-t1   "-L 40 -flnum -ftnum"
-    make_tfm "$1" swash-t1  tosf-swash-l1-t1  "-L 40 -fonum -ftnum"
-    make_tfm "$1" swash-ot1 lf-swash-l1-ot1   "-L 40 -flnum -fpnum $it_ot1_flags"
-    make_tfm "$1" swash-ot1 osf-swash-l1-ot1  "-L 40 -fonum -fpnum $it_ot1_flags"
-    make_tfm "$1" swash-ot1 tlf-swash-l1-ot1  "-L 40 -flnum -ftnum $it_ot1_flags"
-    make_tfm "$1" swash-ot1 tosf-swash-l1-ot1 "-L 40 -fonum -ftnum $it_ot1_flags"
-    make_tfm "$1" swash-ly1 lf-swash-l1-ly1   "-L 40 -flnum -fpnum"
-    make_tfm "$1" swash-ly1 osf-swash-l1-ly1  "-L 40 -fonum -fpnum"
-    make_tfm "$1" swash-ly1 tlf-swash-l1-ly1  "-L 40 -flnum -ftnum"
-    make_tfm "$1" swash-ly1 tosf-swash-l1-ly1 "-L 40 -fonum -ftnum"
+    make_tfm "$1" t1  lf-swash-l1-t1    "-L 40 -flnum -fpnum"
+    make_tfm "$1" t1  osf-swash-l1-t1   "-L 40 -fonum -fpnum"
+    make_tfm "$1" t1  tlf-swash-l1-t1   "-L 40 -flnum -ftnum"
+    make_tfm "$1" t1  tosf-swash-l1-t1  "-L 40 -fonum -ftnum"
+    make_tfm "$1" ot1 lf-swash-l1-ot1   "-L 40 -flnum -fpnum $it_ot1_flags"
+    make_tfm "$1" ot1 osf-swash-l1-ot1  "-L 40 -fonum -fpnum $it_ot1_flags"
+    make_tfm "$1" ot1 tlf-swash-l1-ot1  "-L 40 -flnum -ftnum $it_ot1_flags"
+    make_tfm "$1" ot1 tosf-swash-l1-ot1 "-L 40 -fonum -ftnum $it_ot1_flags"
+    make_tfm "$1" ly1 lf-swash-l1-ly1   "-L 40 -flnum -fpnum"
+    make_tfm "$1" ly1 osf-swash-l1-ly1  "-L 40 -fonum -fpnum"
+    make_tfm "$1" ly1 tlf-swash-l1-ly1  "-L 40 -flnum -ftnum"
+    make_tfm "$1" ly1 tosf-swash-l1-ly1 "-L 40 -fonum -ftnum"
 
     if $create_vietnamese
     then
-      make_tfm "$1" swash-t5  lf-swash-l1-t5    "-L 40 -fliga -flnum -fpnum"
-      make_tfm "$1" swash-t5  osf-swash-l1-t5   "-L 40 -fliga -fonum -fpnum"
-      make_tfm "$1" swash-t5  tlf-swash-l1-t5   "-L 40 -fliga -flnum -ftnum"
-      make_tfm "$1" swash-t5  tosf-swash-l1-t5  "-L 40 -fliga -fonum -ftnum"
+      make_tfm "$1" t5  lf-swash-l1-t5    "-L 40 -fliga -flnum -fpnum"
+      make_tfm "$1" t5  osf-swash-l1-t5   "-L 40 -fliga -fonum -fpnum"
+      make_tfm "$1" t5  tlf-swash-l1-t5   "-L 40 -fliga -flnum -ftnum"
+      make_tfm "$1" t5  tosf-swash-l1-t5  "-L 40 -fliga -fonum -ftnum"
     fi
 
     echo 'echo " done." >&2' >>maketfm.tmp
