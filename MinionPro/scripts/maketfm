@@ -51,14 +51,6 @@ do
   esac
 done
 
-## Detect whether the full set of optical sizes is present.
-#opticals=true
-#
-#if [ ! -e "otf/$font-Capt.otf" ]
-#then
-#  opticals=false
-#fi
-
 # Determine version of the fonts.
 
 case $(strings $font-Regular.pfb | grep "^/version") in
@@ -155,7 +147,7 @@ make_tfm() {
 
   local tex_name="$font-$name-$spec"
 
-  local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -fkern"
+  local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -fkern --warn-missing"
 
   local kernfile
   get_kern_file "$name" "$enc" "$spec"
@@ -208,24 +200,19 @@ get_ts_flags() {
     tosf) ts_flags="-ftnum $dong_flags --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
   esac
 }
+get_clear_fligs_flags() {
+  clear_fligs_flags="--unicoding='ff  =: emptyslot'"
+  clear_fligs_flags="$clear_fligs_flags --unicoding='fi  =: emptyslot'"
+  clear_fligs_flags="$clear_fligs_flags --unicoding='fl  =: emptyslot'"
+  clear_fligs_flags="$clear_fligs_flags --unicoding='ffi =: emptyslot'"
+  clear_fligs_flags="$clear_fligs_flags --unicoding='ffl =: emptyslot'"
+}
 get_sc_flags() {
   case $1 in
-      lf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
-          sc_flags="$sc_flags -flnum -fpnum --subs-filter='<Letter>' -fsmcp";;
-     osf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
-          sc_flags="$sc_flags -fonum -fpnum -fsmcp";;
-     tlf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
-          sc_flags="$sc_flags -flnum -ftnum --subs-filter='<Letter>' -fsmcp";;
-    tosf) sc_flags="--unicoding='ff =: emptyslot' --unicoding='fi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='fl =: emptyslot' --unicoding='ffi =: emptyslot'"
-          sc_flags="$sc_flags --unicoding='ffl =: emptyslot'"
-          sc_flags="$sc_flags -fonum -ftnum -fsmcp";;
+      lf) sc_flags="-flnum -fpnum --subs-filter='<Letter>' -fsmcp";;
+     osf) sc_flags="-fonum -fpnum -fsmcp";;
+     tlf) sc_flags="-flnum -ftnum --subs-filter='<Letter>' -fsmcp";;
+    tosf) sc_flags="-fonum -ftnum -fsmcp";;
   esac
 }
 get_sc_ts_flags() {
@@ -272,6 +259,7 @@ get_lgr_flags() {
 make_normal_metrics() {
 
   get_flags        "$1" "$2"
+  get_clear_fligs_flags "$2"
   get_ts_flags     "$2"
   get_sc_flags     "$2"
   get_sc_ts_flags  "$2"
@@ -306,17 +294,18 @@ make_normal_metrics() {
   make_tfm "$1" ts1    $2-sc-ts1    "       $sc_ts_flags"
   make_tfm "$1" ts1    $2-sc-l2-ts1 "-L 80  $sc_ts_flags --space-factor=1.15"
 
-  make_tfm "$1" t1     $2-sc-t1     "       $sc_flags               --unicoding='germandbls =: SSsmall'"
-  make_tfm "$1" ot1    $2-sc-ot1    "       $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
-  make_tfm "$1" ly1    $2-sc-ly1    "       $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
-  make_tfm "$1" t1     $2-sc-l2-t1  "-L 80  $sc_flags               --space-factor=1.15 --unicoding='germandbls =: SSsmall'"
-  make_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80  $sc_flags $it_ot1_flags --space-factor=1.15 --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
-  make_tfm "$1" ly1    $2-sc-l2-ly1 "-L 80  $sc_flags               --space-factor=1.15 --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" t1     $2-sc-t1     "       $sc_flags $clear_fligs_flags               --unicoding='germandbls =: SSsmall'"
+  make_tfm "$1" ot1    $2-sc-ot1    "       $sc_flags $clear_fligs_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ly1    $2-sc-ly1    "       $sc_flags $clear_fligs_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" t1     $2-sc-l2-t1  "-L 80  $sc_flags $clear_fligs_flags               --space-factor=1.15 --unicoding='germandbls =: SSsmall'"
+  make_tfm "$1" ot1    $2-sc-l2-ot1 "-L 80  $sc_flags $clear_fligs_flags $it_ot1_flags --space-factor=1.15 --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ly1    $2-sc-l2-ly1 "-L 80  $sc_flags $clear_fligs_flags               --space-factor=1.15 --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
 }
 
 make_spread_metrics() {
 
   get_flags        "$1" "$2"
+  get_clear_fligs_flags "$2"  
   get_ts_flags     "$2"
   get_sc_flags     "$2"
   get_sc_ts_flags  "$2"
@@ -348,9 +337,9 @@ make_spread_metrics() {
 
   make_tfm "$1" ts1    $2-l1-ts1    "-L 40        $ts_flags"
   make_tfm "$1" ts1    $2-sc-l1-ts1 "-L 40        $sc_ts_flags"
-  make_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags               --unicoding='germandbls =: SSsmall'"
-  make_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40        $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
-  make_tfm "$1" ly1    $2-sc-l1-ly1 "-L 40        $sc_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" t1     $2-sc-l1-t1  "-L 40        $sc_flags $clear_fligs_flags               --unicoding='germandbls =: SSsmall'"
+  make_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40        $sc_flags $clear_fligs_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
+  make_tfm "$1" ly1    $2-sc-l1-ly1 "-L 40        $sc_flags $clear_fligs_flags               --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
 }
 
 make_integrals() {
@@ -425,10 +414,10 @@ make_swash_metrics() {
 
     if $create_vietnamese
     then
-      make_tfm "$1" t5  lf-swash-t5    "-fliga -flnum -fpnum --include-alternates \"*.swash\" -faalt"
-      make_tfm "$1" t5  osf-swash-t5   "-fliga -fonum -fpnum --include-alternates \"*.swash\" -faalt"
-      make_tfm "$1" t5  tlf-swash-t5   "-fliga -flnum -ftnum --include-alternates \"*.swash\" -faalt"
-      make_tfm "$1" t5  tosf-swash-t5  "-fliga -fonum -ftnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5 lf-swash-t5   "-flnum -fpnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5 osf-swash-t5  "-fonum -fpnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5 tlf-swash-t5  "-flnum -ftnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5 tosf-swash-t5 "-fonum -ftnum --include-alternates \"*.swash\" -faalt"
     fi
 
     echo 'echo " done." >&2' >>maketfm.tmp
@@ -458,10 +447,10 @@ make_spaced_swash_metrics() {
 
     if $create_vietnamese
     then
-      make_tfm "$1" t5  lf-swash-l1-t5    "-L 40 -fliga -flnum -fpnum --include-alternates \"*.swash\" -faalt"
-      make_tfm "$1" t5  osf-swash-l1-t5   "-L 40 -fliga -fonum -fpnum --include-alternates \"*.swash\" -faalt"
-      make_tfm "$1" t5  tlf-swash-l1-t5   "-L 40 -fliga -flnum -ftnum --include-alternates \"*.swash\" -faalt"
-      make_tfm "$1" t5  tosf-swash-l1-t5  "-L 40 -fliga -fonum -ftnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  lf-swash-l1-t5    "-L 40 -flnum -fpnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  osf-swash-l1-t5   "-L 40 -fonum -fpnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  tlf-swash-l1-t5   "-L 40 -flnum -ftnum --include-alternates \"*.swash\" -faalt"
+      make_tfm "$1" t5  tosf-swash-l1-t5  "-L 40 -fonum -ftnum --include-alternates \"*.swash\" -faalt"
     fi
 
     echo 'echo " done." >&2' >>maketfm.tmp
@@ -530,4 +519,3 @@ done
 . maketfm-expanded.tmp
 
 rm maketfm.tmp maketfm-expanded.tmp
-

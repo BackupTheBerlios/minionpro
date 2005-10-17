@@ -1,11 +1,7 @@
-% UNICODING asterisksuperior =: blacksquare ;
-% UNICODING plussuperior =: blacksquare ;
-% UNICODING colonsuperior =: blacksquare ;
-% UNICODING semicolonsuperior =: blacksquare ;
-%
 % TeX extra characters encoding.
+% CODINGSCHEME FONTSPECIFIC
 %
-/MinionPro-ExtraEncoding [          % now 256 chars follow
+/MinionPro-ExtraEncoding [
 % 0x00
 /uniF661 /uniF662 /uniF663 /uniF664 /uniF665 /uniF666 /uniF667 /uniF668
 /uniF669 /uniF66A /uniF66B /uniF66C /uniF631 /uniF632 /.notdef /.notdef

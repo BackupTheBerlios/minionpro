@@ -1,10 +1,5 @@
 % Ibycus encoding
-
-% UNICODING epsilonasperperispomene =: blacksquare ;
-% UNICODING epsilonlenisperispomene =: blacksquare ;
-% UNICODING epsilonperispomene =: blacksquare ;
-% UNICODING omicronasperperispomene =: blacksquare ;
-% UNICODING omicronlenisperispomene =: blacksquare ;
+% CODINGSCHEME IBYCUS4 /BASED ON TLG/
 
 % LIGKERN || = 0 ;
 
@@ -208,7 +203,7 @@
 % LIGKERN uni1F7C uni1FBE =: uni1FF2 ; 
 % LIGKERN uni1FF6 uni1FBE =: uni1FF7 ;
 %
-/MinionPro-IbycusHTGEncoding [          % now 256 chars follow
+/MinionPro-IbycusHTGEncoding [
 % 0x00 
   /space /space_dotbelowcomb /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

@@ -1,37 +1,7 @@
-% TS1 Encoding
+% TS1 encoding
+% CODINGSCHEME TEX TEXT COMPANION SYMBOLS 1---TS1
 %
-% unfakable glyphs
-%
-% UNICODING blank =: blacksquare ;
-% UNICODING hyphendbl =: blacksquare ;
-% UNICODING angleleft =: blacksquare ;
-% UNICODING angleright =: blacksquare ;
-% UNICODING textmho =: blacksquare ;
-% UNICODING circle =: blacksquare ;
-% UNICODING arrowup =: blacksquare ;
-% UNICODING arrowdown =: blacksquare ;
-% UNICODING born =: blacksquare ;
-% UNICODING divorced =: blacksquare ;
-% UNICODING died =: blacksquare ;
-% UNICODING leaf =: blacksquare ;
-% UNICODING married =: blacksquare ;
-% UNICODING musicalnote =: blacksquare ;
-% UNICODING textdblhyphenchar =: blacksquare ;
-% UNICODING won =: blacksquare ;
-% UNICODING textnaira =: blacksquare ;
-% UNICODING textguarani =: blacksquare ;
-% UNICODING textrecipe =: blacksquare ;
-% UNICODING bahtthai =: blacksquare ;
-% UNICODING textdiscount =: blacksquare ;
-% UNICODING bulletinverse =: blacksquare ;
-% UNICODING textservicemark =: blacksquare ;
-% UNICODING textlquill =: blacksquare ;
-% UNICODING textrquill =: blacksquare ;
-% UNICODING textcopyleft =: blacksquare ;
-% UNICODING textcircledP =: blacksquare ;
-% UNICODING referencemark =: blacksquare ;
-%
-/MinionPro-TS1Encoding [          % now 256 chars follow
+/MinionPro-TS1Encoding [
 % 0x00
   /Grave /Acute /uniEFF7 /uniEFF5 /Dieresis /Hungarumlaut /uniEFF3 /Caron
   /uniEFEE /Macron /uniEFED /uniEFF2 /uniEFF1 /quotesinglbase /.notdef /.notdef

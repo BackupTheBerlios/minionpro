@@ -1,6 +1,7 @@
-% TeX math italic encoding.
+% integral glyph
+% CODINGSCHEME FONTSPECIFIC
 %
-/MinionPro-integralEncoding [          % now 256 chars follow
+/MinionPro-IntegralEncoding [
 /integral /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
