@@ -11,8 +11,7 @@ These files are public domain.
 Requirements
 ============
 
-o LCDF Typetools, version 2.35 or better
-  (http://www.lcdf.org/~eddietwo/type/)
+o LCDF Typetools, version 2.35 or better (http://www.lcdf.org/type/)
 o fontinst v1.925 or better
 
 Building
