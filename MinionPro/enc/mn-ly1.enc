@@ -1,8 +1,5 @@
-% Y&Y Windows ANSI encoding
-% CODINGSCHEME TEX TYPEWRITER AND WINDOWS ANSI
-%
-% LIGKERN f {L} k ; f {L} b ; f {L} h ; ff {L} k ; ff {L} b ; ff {L} h ; 
-%
+% LIGKERN f {L} k ; f {L} b ; f {L} h ; ff {L} k ; ff {L} b ; ff {L} h ;
+
 /MinionPro-TeXnANSIEncoding [
 % 0x00
 /.notdef /Euro /.notdef /.notdef /fraction /dotaccent /hungarumlaut /ogonek
@@ -12,7 +9,7 @@
 % 0x20
 /space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
 /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
-/zero /one /two /three /four /five /six /seven 
+/zero /one /two /three /four /five /six /seven
 /eight /nine /colon /semicolon /less /equal /greater /question
 % 0x40
 /at /A /B /C /D /E /F /G

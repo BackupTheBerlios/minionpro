@@ -1,5 +1,4 @@
-% T1 encoding
-% CODINGSCHEME EXTENDED TEX FONT ENCODING - LATIN
+% T1 Encoding
 %
 % LIGKERN f {L} b ; ff {L} b ; f {L} h ; ff {L} h ; f {L} k ; ff {L} k
 % LIGKERN Tcedilla {L} h ; Tcaron {L} h
@@ -10,13 +9,13 @@
 % LIGKERN quoteleft quoteleft =: quotedblleft ;
 % LIGKERN quoteright quoteright =: quotedblright
 %
-/MinionPro-T1Encoding [
+/MinionPro-T1Encoding [          % now 256 chars follow
 % 0x00
   /grave /acute /circumflex /tilde /dieresis /hungarumlaut /ring /caron
   /breve /macron /dotaccent /cedilla
   /ogonek /quotesinglbase /guilsinglleft /guilsinglright
 % 0x10
-  /quotedblleft /quotedblright /quotedblbase /guillemotleft 
+  /quotedblleft /quotedblright /quotedblbase /guillemotleft
   /guillemotright /endash /emdash
   /f_f_t %/compwordmark
   /f_j %/perthousandzero

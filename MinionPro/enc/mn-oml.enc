@@ -1,7 +1,6 @@
-% TeX math italic encoding
-% CODINGSCHEME TEX MATH ITALIC
+% TeX math italic encoding.
 %
-/MinionPro-OMLEncoding [
+/MinionPro-OMLEncoding [          % now 256 chars follow
 % 0x0
 /Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon
 /Phi /Psi /Omega /alpha /beta /gamma /delta

@@ -1,5 +1,4 @@
 % Ibycus encoding
-% CODINGSCHEME IBYCUS4 /BASED ON TLG/
 
 % LIGKERN || = 0 ;
 
@@ -18,7 +17,7 @@
 
 % LIGKERN sigma || =:| uni03C2 ; sigma guillemotright =:| uni03C2 ;
 % LIGKERN sigma parenright =:| uni03C2 ; sigma period =:| uni03C2 ;
-% LIGKERN sigma comma =:| uni03C2 ; sigma exclam =:| uni03C2 ; 
+% LIGKERN sigma comma =:| uni03C2 ; sigma exclam =:| uni03C2 ;
 % LIGKERN sigma semicolon =:| uni03C2 ; sigma anoteleia =:| uni03C2 ;
 % LIGKERN sigma colon =:| uni03C2 ; sigma plus =: uni03E0;
 
@@ -26,17 +25,17 @@
 % LIGKERN upsilon plus =: upsilondieresis;
 
 % '
-% LIGKERN quoteright Alpha =: uni1FBB ; 
-% LIGKERN quoteright Epsilon =: uni1FC9 ; 
-% LIGKERN quoteright Eta =: uni1FCB ; 
-% LIGKERN quoteright Iota =: uni1FDB ; 
-% LIGKERN quoteright Omega =: uni1FFB ; 
-% LIGKERN quoteright Omicron =: uni1FF9 ; 
-% LIGKERN quoteright Upsilon =: uni1FEB ; 
+% LIGKERN quoteright Alpha =: uni1FBB ;
+% LIGKERN quoteright Epsilon =: uni1FC9 ;
+% LIGKERN quoteright Eta =: uni1FCB ;
+% LIGKERN quoteright Iota =: uni1FDB ;
+% LIGKERN quoteright Omega =: uni1FFB ;
+% LIGKERN quoteright Omicron =: uni1FF9 ;
+% LIGKERN quoteright Upsilon =: uni1FEB ;
 % LIGKERN alpha quoteright =: uni1F71 ;
 % LIGKERN epsilon quoteright =: uni1F73 ;
-% LIGKERN eta quoteright =: uni1F75 ;       
-% LIGKERN iota quoteright =: uni1F77 ; 
+% LIGKERN eta quoteright =: uni1F75 ;
+% LIGKERN iota quoteright =: uni1F77 ;
 % LIGKERN omicron quoteright =: uni1F79 ;
 % LIGKERN upsilon quoteright =: uni1F7B ;
 % LIGKERN omega quoteright =: uni1F7D ;
@@ -44,25 +43,25 @@
 % LIGKERN upsilondieresis quoteright =: uni1FE3 ;
 
 % `
-% LIGKERN quoteleft Alpha =: uni1FBA  ; 
-% LIGKERN quoteleft Epsilon =:| grave ; 
-% LIGKERN quoteleft Eta =:| grave ; 
-% LIGKERN quoteleft Iota =:| grave ; 
-% LIGKERN quoteleft Omega =:| grave ; 
-% LIGKERN quoteleft Omicron =:| grave ; 
-% LIGKERN quoteleft Upsilon =:| grave ; 
-% LIGKERN alpha quoteleft =: uni1F70 ; 
-% LIGKERN epsilon quoteleft =: uni1F72 ; 
-% LIGKERN eta quoteleft =: uni1F74 ; 
+% LIGKERN quoteleft Alpha =: uni1FBA  ;
+% LIGKERN quoteleft Epsilon =:| grave ;
+% LIGKERN quoteleft Eta =:| grave ;
+% LIGKERN quoteleft Iota =:| grave ;
+% LIGKERN quoteleft Omega =:| grave ;
+% LIGKERN quoteleft Omicron =:| grave ;
+% LIGKERN quoteleft Upsilon =:| grave ;
+% LIGKERN alpha quoteleft =: uni1F70 ;
+% LIGKERN epsilon quoteleft =: uni1F72 ;
+% LIGKERN eta quoteleft =: uni1F74 ;
 % LIGKERN iota quoteleft =: uni1F76 ;
-% LIGKERN omicron quoteleft =: uni1F78 ; 
+% LIGKERN omicron quoteleft =: uni1F78 ;
 % LIGKERN upsilon quoteleft =: uni1F7A ;
-% LIGKERN omega quoteleft =: uni1F7C ; 
+% LIGKERN omega quoteleft =: uni1F7C ;
 % LIGKERN iotadieresis quoteleft =: uni1FD2 ;
 % LIGKERN upsilondieresis quoteleft =: uni1FE2 ;
 
 % ~
-% LIGKERN alpha equal =: uni1FB6 ; 
+% LIGKERN alpha equal =: uni1FB6 ;
 % LIGKERN eta equal =: uni1FC6 ;
 % LIGKERN iota equal =: uni1FD6 ;
 % LIGKERN upsilon equal =: uni1FE6 ;
@@ -80,7 +79,7 @@
 % LIGKERN parenleft quoteleft =: uni1FDD ;
 % LIGKERN parenleft quoteright =: uni1FDE ;
 % LIGKERN parenleft equal =: uni1FDF ;
-% LIGKERN alpha parenleft =: uni1F01 ; 
+% LIGKERN alpha parenleft =: uni1F01 ;
 % LIGKERN epsilon parenleft =: uni1F11 ;
 % LIGKERN eta parenleft =: uni1F21 ;
 % LIGKERN iota parenleft =: uni1F31 ;
@@ -91,31 +90,31 @@
 
 % ('
 % LIGKERN uni1FDE Alpha =: uni1F0D ;
-% LIGKERN uni1F01 quoteright =: uni1F05 ; 
-% LIGKERN uni1F11 quoteright =: uni1F15 ; 
-% LIGKERN uni1F21 quoteright =: uni1F25 ; 
-% LIGKERN uni1F31 quoteright =: uni1F35 ; 
-% LIGKERN uni1F41 quoteright =: uni1F45 ; 
-% LIGKERN uni1F51 quoteright =: uni1F55 ; 
-% LIGKERN uni1F61 quoteright =: uni1F65 ; 
+% LIGKERN uni1F01 quoteright =: uni1F05 ;
+% LIGKERN uni1F11 quoteright =: uni1F15 ;
+% LIGKERN uni1F21 quoteright =: uni1F25 ;
+% LIGKERN uni1F31 quoteright =: uni1F35 ;
+% LIGKERN uni1F41 quoteright =: uni1F45 ;
+% LIGKERN uni1F51 quoteright =: uni1F55 ;
+% LIGKERN uni1F61 quoteright =: uni1F65 ;
 
 % (`
 % LIGKERN uni1FDD Alpha =: uni1F0B ;
-% LIGKERN uni1F01 quoteleft =: uni1F03 ; 
+% LIGKERN uni1F01 quoteleft =: uni1F03 ;
 % LIGKERN uni1F11 quoteleft =: uni1F13 ;
-% LIGKERN uni1F21 quoteleft =: uni1F23 ; 
-% LIGKERN uni1F31 quoteleft =: uni1F33 ; 
+% LIGKERN uni1F21 quoteleft =: uni1F23 ;
+% LIGKERN uni1F31 quoteleft =: uni1F33 ;
 % LIGKERN uni1F41 quoteleft =: uni1F43 ;
-% LIGKERN uni1F51 quoteleft =: uni1F53 ; 
-% LIGKERN uni1F61 quoteleft =: uni1F63 ; 
+% LIGKERN uni1F51 quoteleft =: uni1F53 ;
+% LIGKERN uni1F61 quoteleft =: uni1F63 ;
 
 % (=
 % LIGKERN uni1FDF Alpha =: uni1F0F ;
-% LIGKERN uni1F01 equal =: uni1F07 ; 
-% LIGKERN uni1F21 equal =: uni1F27 ; 
+% LIGKERN uni1F01 equal =: uni1F07 ;
+% LIGKERN uni1F21 equal =: uni1F27 ;
 % LIGKERN uni1F31 equal =: uni1F37 ;
 % LIGKERN uni1F51 equal =: uni1F57 ;
-% LIGKERN uni1F61 equal =: uni1F67 ; 
+% LIGKERN uni1F61 equal =: uni1F67 ;
 
 % )
 % LIGKERN parenright Alpha =: uni1F08  ;
@@ -135,83 +134,83 @@
 % LIGKERN omicron parenright =: uni1F40 ;
 % LIGKERN upsilon parenright =: uni1F50 ;
 % LIGKERN omega parenright =: uni1F60 ;
-% LIGKERN rho parenright =: uni1FE4 ; 
+% LIGKERN rho parenright =: uni1FE4 ;
 
 % )'
-% LIGKERN uni1FCE Alpha =: uni1F0C ; 
-% LIGKERN uni1F00 quoteright =: uni1F04 ; 
-% LIGKERN uni1F10 quoteright =: uni1F14 ; 
-% LIGKERN uni1F20 quoteright =: uni1F24 ; 
-% LIGKERN uni1F30 quoteright =: uni1F34 ; 
-% LIGKERN uni1F40 quoteright =: uni1F44 ; 
-% LIGKERN uni1F50 quoteright =: uni1F54 ; 
-% LIGKERN uni1F60 quoteright =: uni1F64 ; 
+% LIGKERN uni1FCE Alpha =: uni1F0C ;
+% LIGKERN uni1F00 quoteright =: uni1F04 ;
+% LIGKERN uni1F10 quoteright =: uni1F14 ;
+% LIGKERN uni1F20 quoteright =: uni1F24 ;
+% LIGKERN uni1F30 quoteright =: uni1F34 ;
+% LIGKERN uni1F40 quoteright =: uni1F44 ;
+% LIGKERN uni1F50 quoteright =: uni1F54 ;
+% LIGKERN uni1F60 quoteright =: uni1F64 ;
 
 % )`
-% LIGKERN uni1FCD Alpha =: uni1F0A ; 
-% LIGKERN uni1F00 quoteleft =: uni1F02 ; 
-% LIGKERN uni1F10 quoteleft =: uni1F12 ; 
-% LIGKERN uni1F20 quoteleft =: uni1F22 ; 
-% LIGKERN uni1F30 quoteleft =: uni1F32 ; 
-% LIGKERN uni1F40 quoteleft =: uni1F42 ; 
-% LIGKERN uni1F50 quoteleft =: uni1F52 ; 
-% LIGKERN uni1F60 quoteleft =: uni1F62 ; 
+% LIGKERN uni1FCD Alpha =: uni1F0A ;
+% LIGKERN uni1F00 quoteleft =: uni1F02 ;
+% LIGKERN uni1F10 quoteleft =: uni1F12 ;
+% LIGKERN uni1F20 quoteleft =: uni1F22 ;
+% LIGKERN uni1F30 quoteleft =: uni1F32 ;
+% LIGKERN uni1F40 quoteleft =: uni1F42 ;
+% LIGKERN uni1F50 quoteleft =: uni1F52 ;
+% LIGKERN uni1F60 quoteleft =: uni1F62 ;
 
 % )=
 % LIGKERN uni1FCF Alpha =: uni1F0E ;
-% LIGKERN uni1F00 equal =: uni1F06 ; 
-% LIGKERN uni1F20 equal =: uni1F26 ; 
-% LIGKERN uni1F30 equal =: uni1F36 ; 
-% LIGKERN uni1F50 equal =: uni1F56 ; 
-% LIGKERN uni1F60 equal =: uni1F66 ; 
+% LIGKERN uni1F00 equal =: uni1F06 ;
+% LIGKERN uni1F20 equal =: uni1F26 ;
+% LIGKERN uni1F30 equal =: uni1F36 ;
+% LIGKERN uni1F50 equal =: uni1F56 ;
+% LIGKERN uni1F60 equal =: uni1F66 ;
 
 % iota
-% LIGKERN alpha uni1FBE =: uni1FB3 ; 
+% LIGKERN alpha uni1FBE =: uni1FB3 ;
 % LIGKERN uni1F71 uni1FBE =: uni1FB4 ;
-% LIGKERN uni1F00 uni1FBE =: uni1F80 ; 
+% LIGKERN uni1F00 uni1FBE =: uni1F80 ;
 % LIGKERN uni1F01 uni1FBE =: uni1F81 ;
-% LIGKERN uni1F02 uni1FBE =: uni1F82 ; 
+% LIGKERN uni1F02 uni1FBE =: uni1F82 ;
 % LIGKERN uni1F03 uni1FBE =: uni1F83 ;
-% LIGKERN uni1F04 uni1FBE =: uni1F84 ; 
+% LIGKERN uni1F04 uni1FBE =: uni1F84 ;
 % LIGKERN uni1F05 uni1FBE =: uni1F85 ;
-% LIGKERN uni1F06 uni1FBE =: uni1F86 ; 
+% LIGKERN uni1F06 uni1FBE =: uni1F86 ;
 % LIGKERN uni1F07 uni1FBE =: uni1F87 ;
-% LIGKERN uni1F70 uni1FBE =: uni1FB2 ; 
+% LIGKERN uni1F70 uni1FBE =: uni1FB2 ;
 % LIGKERN uni1FB6 uni1FBE =: uni1FB7 ;
-% LIGKERN eta uni1FBE =: uni1FC3 ; 
+% LIGKERN eta uni1FBE =: uni1FC3 ;
 % LIGKERN uni1F75 uni1FBE =: uni1FC4 ;
-% LIGKERN uni1F20 uni1FBE =: uni1F90 ; 
+% LIGKERN uni1F20 uni1FBE =: uni1F90 ;
 % LIGKERN uni1F21 uni1FBE =: uni1F91 ;
-% LIGKERN uni1F22 uni1FBE =: uni1F92 ; 
+% LIGKERN uni1F22 uni1FBE =: uni1F92 ;
 % LIGKERN uni1F23 uni1FBE =: uni1F93 ;
-% LIGKERN uni1F24 uni1FBE =: uni1F94 ; 
+% LIGKERN uni1F24 uni1FBE =: uni1F94 ;
 % LIGKERN uni1F25 uni1FBE =: uni1F95 ;
-% LIGKERN uni1F26 uni1FBE =: uni1F96 ; 
+% LIGKERN uni1F26 uni1FBE =: uni1F96 ;
 % LIGKERN uni1F27 uni1FBE =: uni1F97 ;
-% LIGKERN uni1F74 uni1FBE =: uni1FC2 ; 
+% LIGKERN uni1F74 uni1FBE =: uni1FC2 ;
 % LIGKERN uni1FC6 uni1FBE =: uni1FC7 ;
-% LIGKERN omega uni1FBE =: uni1FF3 ; 
+% LIGKERN omega uni1FBE =: uni1FF3 ;
 % LIGKERN uni1F7D uni1FBE =: uni1FF4 ;
-% LIGKERN uni1F60 uni1FBE =: uni1FA0 ; 
+% LIGKERN uni1F60 uni1FBE =: uni1FA0 ;
 % LIGKERN uni1F61 uni1FBE =: uni1FA1 ;
-% LIGKERN uni1F62 uni1FBE =: uni1FA2 ; 
+% LIGKERN uni1F62 uni1FBE =: uni1FA2 ;
 % LIGKERN uni1F63 uni1FBE =: uni1FA3 ;
-% LIGKERN uni1F64 uni1FBE =: uni1FA4 ; 
+% LIGKERN uni1F64 uni1FBE =: uni1FA4 ;
 % LIGKERN uni1F65 uni1FBE =: uni1FA5 ;
-% LIGKERN uni1F66 uni1FBE =: uni1FA6 ; 
+% LIGKERN uni1F66 uni1FBE =: uni1FA6 ;
 % LIGKERN uni1F67 uni1FBE =: uni1FA7 ;
-% LIGKERN uni1F7C uni1FBE =: uni1FF2 ; 
+% LIGKERN uni1F7C uni1FBE =: uni1FF2 ;
 % LIGKERN uni1FF6 uni1FBE =: uni1FF7 ;
 %
-/MinionPro-IbycusHTGEncoding [
-% 0x00 
-  /space /space_dotbelowcomb /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/MinionPro-IbycusHTGEncoding [          % now 256 chars follow
+% 0x00
+  /space /space_dotbelowcomb /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0x10
-  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0x20
-/space /exclam /dieresis /dieresisacute 
+/space /exclam /dieresis /dieresisacute
 /dieresisgrave /percent /endash /quoteright
 /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
 % 0x30
@@ -222,14 +221,14 @@
 /Eta /Iota /c /Kappa /Lambda /Mu /Nu /Omicron
 % 0x50
 /Pi /Theta /Rho /Sigma /Tau /Upsilon /F /Omega
-/Chi /Psi /Zeta /bracketleft 
+/Chi /Psi /Zeta /bracketleft
 /uni1FCF /bracketright /uni1FCE /uni1FCD
 % 0x60
 /quoteleft /alpha /beta /xi /delta /epsilon /phi /gamma
 /eta /iota /sigmafinal /kappa /lambda /mu /nu /omicron
 % 0x70
 /pi /theta /rho /sigma /tau /upsilon /uniEFD5 /omega
-/chi /psi /zeta /guillemotleft 
+/chi /psi /zeta /guillemotleft
 /uni1FBE /guillemotright /tilde /emdash
 % 0x80
 /uni1F70 /uni1F01 /uni1F00 /uni1FDD
@@ -237,7 +236,7 @@
 /uni1F71 /uni1F05 /uni1F04 /uni1F03
 /epsilonperispomene /omicronasperperispomene /uni03DE /uni03E0
 % 0x90
-/uni1FB6 /uni1F07 
+/uni1FB6 /uni1F07
 /uni1F06 /uni1F02
 /epsilonlenisperispomene /omicronlenisperispomene /C /cwm
 /uni1F74 /uni1F21 /uni1F20 /uni1F23
@@ -261,7 +260,7 @@
 /uni1F77 /uni1F35 /uni1F34 /uni1F32
 /uni1F7B /uni1F55 /uni1F54 /uni1F52
 /uni1FD6 /uni1F37 /uni1F36 /braceleft
-/uni1FE6 /uni1F57 
+/uni1FE6 /uni1F57
 /uni1F56 /braceright
 % 0xE0
 /uni1F72 /uni1F11 /uni1F10 /uni1F12

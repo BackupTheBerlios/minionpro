@@ -1,5 +1,3 @@
-% CODINGSCHEME TEX CYRILLIC FONT ENCODING - T2B
-%
 /MinionPro-T2BAdobeEncoding [
 % 0x00
 /grave
@@ -53,7 +51,7 @@
 /period
 /slash
 % 0x30
-/zero /one /two /three /four /five /six /seven 
+/zero /one /two /three /four /five /six /seven
 /eight /nine /colon /semicolon /less /equal /greater /question
 % 0x40
 /at

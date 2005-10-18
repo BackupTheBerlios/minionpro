@@ -1,7 +1,6 @@
-% TS1 encoding
-% CODINGSCHEME TEX TEXT COMPANION SYMBOLS 1---TS1
+% TS1 Encoding
 %
-/MinionPro-TS1Encoding [
+/MinionPro-TS1Encoding [          % now 256 chars follow
 % 0x00
   /Grave /Acute /uniEFF7 /uniEFF5 /Dieresis /Hungarumlaut /uniEFF3 /Caron
   /uniEFEE /Macron /uniEFED /uniEFF2 /uniEFF1 /quotesinglbase /.notdef /.notdef
