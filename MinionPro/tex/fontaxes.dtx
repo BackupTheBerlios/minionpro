@@ -18,7 +18,7 @@
 \end{document}
 %</driver>
 %\fi
-% 
+%
 % \GetFileInfo{fontaxes.dtx}
 % \title{Axes, axes, axes}
 % \author{Andreas B\"uhmann}
@@ -33,11 +33,11 @@
 %   and \axis{math weight} and \axis{math figure alignment} on top of
 %   \axis{math version}.
 % \end{abstract}
-% 
+%
 % \tableofcontents
 %
 % \section{Usage}
-% 
+%
 % \subsection{Shape}
 %
 % \pkg{fontaxes} splits \LaTeX's single shape axis into two ones: the primary
@@ -71,7 +71,7 @@
 % |\|\meta{abbr}|shape|, redefine the corresponding |\|\meta{abbr}|default|.
 % The additional |\swdefault|, |\sscdefault|, and |\ulcdefault| are provided
 % with their default values |sw|, |ssc|, and |ulc|.
-% 
+%
 % \subsection{Figure version}
 %
 % Different figure versions are often implemented as additional families
@@ -80,7 +80,7 @@
 % |pplx|).
 % \pkg{fontaxes} splits off the axes \axis{figure style} and \axis{figure
 %   alignment}, which leaves the \axis{base family} (|MinionPro| or |ppl|).
-% 
+%
 % \changes{v0.2}{2005/05/04}{Rename figures switching commands
 %   |\|\meta{\dots}|fig|.}  \DescribeMacro\txfigures %
 % \DescribeMacro\lnfigures %
@@ -90,7 +90,7 @@
 % |\txfigures| and |\lnfigures|), and two modes of figure alignment, |tabular|
 % and |proportional| (accessible via the switches |\tbfigures| and
 % |\prfigures|).
-% 
+%
 % \DescribeMacro\fontfigurestyle %
 % \DescribeMacro\fontfigurealignment %
 % Additionally, you can access both axes directly using the low-level commands
@@ -105,7 +105,7 @@
 % For choosing the figure versions to be used in math mode you can use the
 % corresponding axis \axis{math figure alignment}. Note, there currently is no
 % means for changing the figure style used in math.
-% 
+%
 % \subsection{Math version}
 %
 % \DescribeMacro\boldmath %
@@ -114,7 +114,7 @@
 % as commands |\boldmath| and |\unboldmath| for switching between them.
 % \pkg{fontaxes} redefines these commands to operate on the axis \axis{math
 % weight}.
-% 
+%
 % \DescribeMacro\tabularmath %
 % \DescribeMacro\proportionalmath %
 % A second axis \axis{math figure alignment} is introduced that allows you to
@@ -147,7 +147,7 @@
 % |\scshape|   &                        & |\scdefault| \\
 % |\sscshape|  &                        & |\sscdefault| \\
 % \midrule
-% |\txfigures| & |\fontfigurestyle|     & |text| \\  
+% |\txfigures| & |\fontfigurestyle|     & |text| \\
 % |\lnfigures| &                        & |lining| \\
 % \nextaxis
 % |\tbfigures| & |\fontfigurealignment| & |tabular| \\
@@ -165,7 +165,7 @@
 % \caption{Author commands set values on axes}
 % \label{tab:cmds}
 % \end{table}
-% 
+%
 % \subsection{Additional commands}
 %
 % \DescribeMacro\textsw %
@@ -179,7 +179,7 @@
 % the following commands that apply the font change to their argument only.
 % For example, |\textsw|\marg{text} is roughly equivalent to |{\swshape|
 %   \meta{text}|}| (but automatically adds italic corrections).
-% 
+%
 % \medskip\noindent
 % \begin{tabular}{@{}ll@{}}
 % command & corresponding switch(es) \\
@@ -193,13 +193,13 @@
 % |\tabularfigures|      & |\tbfigures \tabularmath| \\
 % |\proportionalfigures| & |\prfigures \proportionalmath| \\
 % \end{tabular}
-% 
+%
 % \medskip %
 % \DescribeMacro\figureversion %
 % The command |\figureversion|\marg{options} allows easy switching of multiple
 % aspects of figures simultaneously. It takes as an argument a comma-separated
 % list of one or more of the following options:
-% 
+%
 % \medskip\noindent
 % \begin{tabular}{@{}ll@{}}
 % option & effect \\
@@ -209,7 +209,7 @@
 % |tabular|, |tab|       & |\tbfigures \tabularmath| \\
 % |proportional|, |prop| & |\prfigures \proportionalmath| \\
 % \end{tabular}
-% 
+%
 % \section{Naming conventions}
 %
 % How to name your font families and shapes so they will work with this
@@ -260,7 +260,7 @@
 % \end{macro}
 % \end{macro}
 % \end{macro}
-% 
+%
 % \begin{macro}{\swdefault}
 % \begin{macro}{\ulcdefault}
 % \begin{macro}{\sscdefault}
@@ -340,7 +340,7 @@
   \@for\fa@fv:=\fa@fv@list\do{%
     \@ifundefined{\fa@fv@prefix\fa@fv}{%
       \PackageWarning{fontaxes}%
-      {Unknown figure style `\fa@fv'\MessageBreak 
+      {Unknown figure style `\fa@fv'\MessageBreak
        specified as the argument to \string\figureversion.\MessageBreak
        Figure style not changed}%
     }{%
@@ -392,7 +392,7 @@
 % \end{macro}
 %
 % \subsubsection{Math version}
-% 
+%
 % \begin{macro}{\boldmath}
 % \begin{macro}{\unboldmath}
 % Axis 1: weight
@@ -430,7 +430,7 @@
 % |\fontprimaryshape{n,it,sl,sw}| sets |\fontshape|
 % |\fontsecondaryshape{ulc,sc,ssc}| sets |\fontshape|
 % \endgroup
-% 
+%
 % \begin{macro}{\mathweight}
 % \begin{macro}{\mathfigurealignment}
 %    \begin{macrocode}
@@ -641,7 +641,7 @@
 }
 \newcommand*\fa@encode@figures@default{%
   \edef\fa@code{OsF}%
-  \PackageWarning{fontaxes}{Unknown figure version 
+  \PackageWarning{fontaxes}{Unknown figure version
     `\fa@figure@style\space + \fa@figure@align'\MessageBreak
     Encoding to `\fa@code'}%
 }
@@ -652,7 +652,7 @@
   \fa@encode@{figuresalt}{{\fa@figure@style}{\fa@figure@align}}%
 }
 \newcommand*\fa@encode@figuresalt@default{%
-  \PackageWarning{fontaxes}{Unknown figure version 
+  \PackageWarning{fontaxes}{Unknown figure version
     `\fa@figure@style\space + \fa@figure@align'\MessageBreak
     Encoding to `\fa@code'}%
   \edef\fa@code{j}%
@@ -821,7 +821,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-% 
+%
 % \subsection{Compatibility}
 %
 % If no math versions |tabular| and |boldtabular| are defined in the preamble,
@@ -839,7 +839,7 @@
 % Declare math version |#1| to be a copy of math version |#2| if |#1| does not
 % exist already. To accomplish this we have to know that a math version's
 % configuration is basically stored in a macro |\mv@|\meta{name} (which makes
-% us dependent on the NFSS implementation; sigh \dots). 
+% us dependent on the NFSS implementation; sigh \dots).
 %    \begin{macrocode}
 \newcommand*\fa@provide@mv@copy[2]{%
   \@ifundefined{mv@#1}{%
@@ -850,7 +850,7 @@
 }
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 %
 % \subsection{Tools}
 %
@@ -951,13 +951,13 @@
 % \end{macro}
 %
 % \subsection{Tests}
-% 
+%
 % The file |test-fontaxes.tex| (docstrip target |test|) exercises some
 % features of \pkg{fontaxes}. Since it is rather ad-hoc code, it is not shown
 % here. (It also requires the package \pkg{MinionPro}.)
 %
 % \Finale
-% \endinput 
+% \endinput
 %
 %    \begin{macrocode}
 %<*test>
@@ -1066,13 +1066,13 @@ Am \visible{\textssc{Anfang \textit{war}}} das Wort\\
 \visible\tbfigures 12345 \visible\tbfigures 67890\\
 \visible\tbfigures 12345 \visible\prfigures 67890\\
 \visible\tbfigures 12345 \visible\txfigures 67890\\
-\visible{\tbfigures\lnfigures}12345 
+\visible{\tbfigures\lnfigures}12345
   \visible\lnfigures 67890\\
-\visible{\tbfigures\lnfigures}12345 
+\visible{\tbfigures\lnfigures}12345
   \visible\tbfigures 67890\\
-\visible{\tbfigures\lnfigures}12345 
+\visible{\tbfigures\lnfigures}12345
   \visible\prfigures 67890\\
-\visible{\tbfigures\lnfigures}12345 
+\visible{\tbfigures\lnfigures}12345
   \visible\txfigures 67890\\
 \end{tabular}
 
@@ -1086,7 +1086,7 @@ non-existent}
 \begingroup
 \def\nums{1234567890\par}
 \txfigures MinionPro \nums
-\fontbasefamily{ppl}\selectfont 
+\fontbasefamily{ppl}\selectfont
 Palatino \nums
 \lnfigures
 lining \nums
@@ -1186,7 +1186,7 @@ MinionPro again, should be text \emph{and tabular} \nums
 \tbfigures tabularfigures 1234 \showfont\par
 \fontfamily{pplx}\selectfont selecting pplx explicitly \showfont\par
 \txfigures textfigures 1234 \showfont\par
-\fontbasefamily{MinionPro}\selectfont 
+\fontbasefamily{MinionPro}\selectfont
 Back to MinionPro (is tabular still there?) 1234 \showfont\par
 \fontfamily{ptm}\selectfont selecting ptm explicitly \showfont\par
 \lnfigures liningfigures 1234 \showfont\par

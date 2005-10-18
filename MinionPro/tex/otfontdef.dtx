@@ -19,14 +19,14 @@
 %</driver>
 %<*otfd>
 % \fi
-% 
+%
 % \GetFileInfo{otfontdef.dtx}
-% 
+%
 % \title{OpenType Font Definition}
 % \author{Andreas B\"uhmann}
 % \date{\fileversion\ -- \filedate}
 % \maketitle
-% 
+%
 % \begin{abstract}
 %   The package \pkg{otfontdef} provides a simple but powerful key-value-based interface for
 %   font definition files. It enables you to vary multiple font
@@ -41,7 +41,7 @@
 % each one independently of the other. To achieve this with ordinary means
 % involves intersecting size intervals, copying unchanged parts, etc., which
 % leads to a lot of repetition and, in turn, to decreased maintainability.
-% 
+%
 % As an example, imagine that you are about to map the font
 % |T1/MinionPro-OsF/m/it| to external fonts in a font definition file. This is
 % easy if there is exactly one external font:
@@ -93,7 +93,7 @@
 % generate the correct external font names according to some naming scheme.
 %
 % \section{Usage}
-% 
+%
 % \dots
 %
 % \StopEventually{}
@@ -191,7 +191,7 @@
 \otf@makeglobal{otf@optionsfalse}
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \begin{macro}{\otf@keys}
 % \begin{macro}{\otf@definekey}
 %   Only the first occurrence of a key sets the associated value; other
@@ -212,7 +212,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
-% 
+%
 % \begin{macro}{\otf@default@keys}
 % \begin{macro}{\otf@definedefault}
 %    \begin{macrocode}
@@ -258,9 +258,9 @@
   {\expandafter\KV@otf@shape\expandafter{\otf@Regular}}
 \otf@makeglobal{otf@default@keys}
 %    \end{macrocode}
-% 
+%
 % \begin{macro}{\otf@Regular}
-% \begin{macro}{\otf@Text} 
+% \begin{macro}{\otf@Text}
 %   All characters of these strings must have catcode 12 (other). They will be
 %   matched against substrings of |\DeclareFontShape| configurations.
 %    \begin{macrocode}
@@ -370,7 +370,7 @@
 \otf@makeglobal{otf@get@external@font}
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \begin{macro}{\otf@scheme@default}
 %   This is the font naming scheme used in the MinionPro project.
 %   \changes{v0.2}{2005/04/20}{Improve grouping}
