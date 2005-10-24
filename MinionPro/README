@@ -18,8 +18,11 @@ You also need some program to convert the OpenType fonts into Type1
 format. If you have either LCDF Typetools or fontforge installed then
 you can use one of the provided scripts:
 
-o convert-lcdf uses LCDF Typetools (http://www.lcdf.org/~eddietwo/type/)
-o convert-ff uses fontforge (http://fontforge.sourceforge.net)
+o convert-lcdf is a Unix script that uses LCDF Typetools
+  (http://www.lcdf.org/~eddietwo/type/)
+o convert-ff is a Unix script that uses fontforge
+  (http://fontforge.sourceforge.net)
+o convert.bat is a DOS script that uses LCDF Typetools
 
 Files
 =====
@@ -42,38 +45,28 @@ encoding files for 1.000 and 2.000:
 
 For font version 1.000:
 
-o MinionPro-base-enc-1
-o MinionPro-full-enc-1
-o MinionPro-opticals-enc-1
-
-For font version 2.000:
-
-o MinionPro-base-enc-2
-o MinionPro-full-enc-2
-o MinionPro-opticals-enc-2
+o MinionPro-enc-1: font version 1.000
+o MinionPro-enc-2: font version 2.000
 
 For example, if you have only the four basic weights in version 2.000
 then you need
 
   MinionPro-base-metrics
-  MinionPro-base-enc-2
+  MinionPro-enc-2
 
 If you have all weights, but not the optical families, in version 1.000
 then you need
 
   MinionPro-base-metrics
   MinionPro-full-metrics
-  MinionPro-base-enc-1
-  MinionPro-full-enc-1
+  MinionPro-enc-1
 
 If you have all fonts in version 1.000 then you need
 
   MinionPro-base-metrics
   MinionPro-full-metrics
   MininoPro-opticals-metrics
-  MinionPro-base-enc-1
-  MinionPro-full-enc-1
-  MinionPro-opticals-enc-1
+  MinionPro-enc-1
 
 Installing
 ==========

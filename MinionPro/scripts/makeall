@@ -18,8 +18,8 @@ maketfm() {
   shift
 
   set -o pipefail
-  { scripts/maketfm $family "$@" | sort -u > dvips/$family.map; } 2>&1 |
-  { perl scripts/filtererr || cat; }
+  ( scripts/maketfm $family "$@" | sort -u > dvips/$family.map ) 2>&1 |
+  ( perl scripts/filtererr || cat )
 }
 
 if ! maketfm MinionPro "$@"
@@ -33,3 +33,4 @@ mv *.pfb pfb
 (cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
 (cd tex; latex MinionPro.ins; latex otfontdef.ins; latex fontaxes.ins)
+
