@@ -95,7 +95,7 @@ fi
 
 if $open_g
 then
-  oml_flags="--unicoding g =: afii10192 afii10069.ital g"
+  oml_flags="--unicoding 'g =: afii10192 afii10069.ital g'"
 fi
 
 liga="-fliga"
