@@ -17,18 +17,23 @@ maketfm() {
   local family="$1"
   shift
 
-  set -o pipefail
-  ( scripts/maketfm $family "$@" | sort -u > dvips/$family.map ) 2>&1 |
+  # We pass the error code of maketfm via a stamp file.
+  touch maketfm.error
+
+  ( ( scripts/maketfm $family "$@" && rm maketfm.error ) | sort -u > dvips/$family.map ) 2>&1 |
   ( perl scripts/filtererr || cat )
 }
 
-if ! maketfm MinionPro "$@"
+maketfm MinionPro "$@"
+
+mv *.pfb pfb
+
+if [ -e maketfm.error ]
 then
+  rm maketfm.error
   echo "maketfm failed, exiting ..."
   exit 1
 fi
-
-mv *.pfb pfb
 
 (cd fontinst; ../scripts/makeint MinionPro; ../scripts/makeoml MinionPro)
 
