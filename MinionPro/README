@@ -28,45 +28,53 @@ Files
 =====
 
 The MinionPro distribution is split into several archives. Which of them
-you need depends on the version of the fonts you have installed.
+you need depends on the version of the fonts you have installed. We
+support three different versions of MinionPro:
 
-Metrics:
+o 001.000: This is the first version which can still be found on
+  FontFolio CDs.
+o 001.001: This is the version currently available for sale on the Adobe
+  website.
+o 002.000: This version is included in recent Acrobat Reader
+  installations.
 
-o MinionPro-base-metrics: metrics for Regular, Italic, Bold, and
-  BoldItalic
-o MinionPro-full-metrics: additional metrics for Medium, MediumItalic,
-  Semibold, and SemiboldItalic
-o MininoPro-opticals-metrics: metrics for Capt, Subh, and Disp versions
+For version 002.000 we provide a single archive containing everything
+you need:
 
-Encodings and map files:
+o MinionPro-base-v2.zip
 
-MinionPro comes in three versions 1.000, 1.001, and 2.000. We provide
-encoding files for 1.000 and 2.000:
+For versions 001.000 and 001.001 there are several archives:
 
-For font version 1.000:
+o MinionPro-metrics-base-v1.zip: contains the metrics for Regular,
+  Italic, Bold, and BoldItalic.
+o MinionPro-metrics-full-v1.zip: contains additional metrics for Medium,
+  MediumItalic, Semibold, and SemiboldItalic.
+o MinionPro-metrics-opticals-v1.zip: contains the metrics for the Capt,
+  Subh, and Disp optical shapes.
+o MinionPro-enc-v1.000.zip: contains the encoding files for version
+  001.000.
+o MinionPro-enc-v1.001.zip: contains the encoding files for version
+  001.001.
 
-o MinionPro-enc-1: font version 1.000
-o MinionPro-enc-2: font version 2.000
-
-For example, if you have only the four basic weights in version 2.000
+For example, if you have only the four basic weights in version 001.000
 then you need
 
-  MinionPro-base-metrics
-  MinionPro-enc-2
+  MinionPro-metrics-base-v1.zip
+  MinionPro-enc-v1.000.zip
 
-If you have all weights, but not the optical families, in version 1.000
-then you need
+If you have all weights, but not the optical families, in version
+001.001 then you need
 
-  MinionPro-base-metrics
-  MinionPro-full-metrics
-  MinionPro-enc-1
+  MinionPro-metrics-base-v1.zip
+  MinionPro-metrics-full-v1.zip
+  MinionPro-enc-v1.001.zip
 
-If you have all fonts in version 1.000 then you need
+If you have all fonts in version 001.001 then you need
 
-  MinionPro-base-metrics
-  MinionPro-full-metrics
-  MininoPro-opticals-metrics
-  MinionPro-enc-1
+  MinionPro-metrics-base-v1.zip
+  MinionPro-metrics-full-v1.zip
+  MinionPro-metrics-opticals-v1.zip
+  MinionPro-enc-v1.001.zip
 
 Installing
 ==========
@@ -91,9 +99,10 @@ should be put. The default is $TEXMFLOCAL.
 
 5) Add MinionPro.map to your updmap.cfg and run updmap.
 
-6) If you get errors about insufficient memory you might need to increase
-the values of font_mem_size and font_max in your TeX configuration. For most
-distributions, these can be changed in the file texmf/web2c/texmf.cnf
+6) If you get errors about insufficient memory you might need to
+increase the values of font_mem_size and font_max in your TeX
+configuration. For most distributions, these can be changed in the file
+texmf/web2c/texmf.cnf
 
 7) You can find the documentation in
 

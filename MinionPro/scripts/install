@@ -19,6 +19,7 @@ then
   tfm_dir="$dir/fonts/tfm/$vendor/$font"
   vf_dir="$dir/fonts/vf/$vendor/$font"
   tex_dir="$dir/tex/latex/$font"
+  doc_dir="$dir/doc/latex/$font"
 else
   # old directory layout
   enc_dir="$dir/dvips/$font"
@@ -27,14 +28,22 @@ else
   tfm_dir="$dir/fonts/tfm/$vendor/$font"
   vf_dir="$dir/fonts/vf/$vendor/$font"
   tex_dir="$dir/tex/latex/$font"
+  doc_dir="$dir/doc/latex/$font"
 fi
 
-mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir"
+mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir" "$doc_dir"
 
 cp pfb/*.pfb               "$pfb_dir"
 cp dvips/*.enc             "$enc_dir"
 cp dvips/$font.map         "$map_dir"
 cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
+
+if [ -e tex/MinionPro.pdf ]
+  cp tex/MinionPro.pdf "$doc_dir"
+fi
+if [ -e tex/MinionPro.ps ]
+  cp tex/MinionPro.ps "$doc_dir"
+fi
 
 # We use tar to copy the TFM and VF files in order to avoid shell errors
 # about too long command lines.
@@ -42,20 +51,5 @@ cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 (cd tfm; tar -cf - .) | (cd "$tfm_dir"; tar -xf -)
 (cd vf;  tar -cf - .) | (cd "$vf_dir";  tar -xf -)
 
-# copy TFM and VF in several batches
-#
-#cp tfm/MnSymbol*.tfm "$tfm_dir"
-#cp vf/MnSymbol*.vf   "$vf_dir"
-#
-#cp tfm/*-extra*.tfm        "$tfm_dir"
-#cp tfm/*-integral*.tfm     "$tfm_dir"
-#cp tfm/*Mixed*-oml.tfm     "$tfm_dir"
-#cp vf/*Mixed*-oml.vf       "$vf_dir"
-#
-#for x in tosf tlf osf lf
-#do
-#  cp tfm/*-$x-*.tfm "$tfm_dir"
-#  cp vf/*-$x-*.vf   "$vf_dir"
-#done
-
 mktexlsr "$dir"
+
