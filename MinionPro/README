@@ -81,11 +81,10 @@ Installing
 
 1) Unpack the archives
 
-  $ tar -xzvf MinionPro-*.tgz
+  $ unzip MinionPro-XXX.zip
 
-2) Create a directory otf and copy your OpenType font files into it.
+2) Copy your OpenType font files into the otf directory.
 
-  $ mkdir otf
   $ cp /some/path/*.otf otf
 
 3) Convert the OpenType fonts into Type1 format:
@@ -102,7 +101,7 @@ should be put. The default is $TEXMFLOCAL.
 6) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
 configuration. For most distributions, these can be changed in the file
-texmf/web2c/texmf.cnf
+texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
 
 7) You can find the documentation in
 
