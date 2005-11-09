@@ -38,11 +38,11 @@ cp dvips/*.enc             "$enc_dir"
 cp dvips/$font.map         "$map_dir"
 cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 
-if [ -e tex/MinionPro.pdf ]
-  cp tex/MinionPro.pdf "$doc_dir"
+if [ -e doc/MinionPro.pdf ]
+  cp doc/MinionPro.pdf "$doc_dir"
 fi
-if [ -e tex/MinionPro.ps ]
-  cp tex/MinionPro.ps "$doc_dir"
+if [ -e doc/MinionPro.ps ]
+  cp doc/MinionPro.ps "$doc_dir"
 fi
 
 # We use tar to copy the TFM and VF files in order to avoid shell errors
