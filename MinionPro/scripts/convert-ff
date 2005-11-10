@@ -6,7 +6,7 @@ echo "Creating PostScript fonts ..."
 
 for font in otf/*.otf
 do
-  fontforge scripts/fonttopfb.ff
+  fontforge scripts/fonttopfb.ff $font
 done
 
 mv otf/*.pfb pfb

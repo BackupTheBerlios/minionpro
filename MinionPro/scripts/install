@@ -39,9 +39,11 @@ cp dvips/$font.map         "$map_dir"
 cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 
 if [ -e doc/MinionPro.pdf ]
+then
   cp doc/MinionPro.pdf "$doc_dir"
 fi
 if [ -e doc/MinionPro.ps ]
+then
   cp doc/MinionPro.ps "$doc_dir"
 fi
 
