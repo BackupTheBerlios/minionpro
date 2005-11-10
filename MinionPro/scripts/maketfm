@@ -2,7 +2,7 @@
 
 # parse options
 
-font=$1
+font="$1"
 
 shift
 
@@ -33,9 +33,9 @@ create_expanded=false
 create_kerned=true
 open_g=false
 
-for opt in $*
+for opt in "$*"
 do
-  case $opt in
+  case "$opt" in
     --verbose)      verbose=true;;
     --quiet)        verbose=false;;
     --greek)        create_greek=true;;

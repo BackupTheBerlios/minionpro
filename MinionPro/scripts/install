@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 vendor=adobe
 font=MinionPro
 
-dir=$1
+dir="$1"
 
 if [ "x$dir" = x ]
 then
-  dir=$(kpsewhich -expand-var='$TEXMFLOCAL')
+  dir="$(kpsewhich -expand-var='$TEXMFLOCAL')"
 fi
 
 if [ -d "$dir/fonts/enc" ]
@@ -35,16 +35,16 @@ mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir" "$doc_
 
 cp pfb/*.pfb               "$pfb_dir"
 cp dvips/*.enc             "$enc_dir"
-cp dvips/$font.map         "$map_dir"
+cp "dvips/$font.map"       "$map_dir"
 cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
 
-if [ -e doc/MinionPro.pdf ]
+if [ -e "doc/$font.pdf" ]
 then
-  cp doc/MinionPro.pdf "$doc_dir"
+  cp "doc/$font.pdf" "$doc_dir"
 fi
-if [ -e doc/MinionPro.ps ]
+if [ -e "doc/$font.ps" ]
 then
-  cp doc/MinionPro.ps "$doc_dir"
+  cp "doc/$font.ps" "$doc_dir"
 fi
 
 # We use tar to copy the TFM and VF files in order to avoid shell errors

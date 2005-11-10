@@ -4,8 +4,8 @@ font=$1
 
 if [ "x$font" = "x" ]
 then
-  echo "No font specified!";
-  echo "USAGE: makeoml <font>";
+  echo "No font specified!"
+  echo "USAGE: makeoml <font>"
   exit 1
 fi
 
@@ -27,14 +27,14 @@ do
 done
 
 make_vpl() {
-  cp ../vf/$font-$1-tosf$2-oml.vf ../tfm/$font-$1-tosf$2-oml*.tfm .
-  vftovp $font-$1-tosf$2-oml.vf $font-$1-tosf$2-oml.tfm $font-$1-tosf$2-oml.vpl
-  rm $font-$1-tosf$2-oml.vf $font-$1-tosf$2-oml.tfm
+  cp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml*.tfm" .
+  vftovp "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm" "$font-$1-tosf$2-oml.vpl"
+  rm "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm"
 }
 
 run_fontinst() {
   local tex_file
-  tex_file=make-oml-$1.tex
+  tex_file="make-oml-$1.tex"
 
   shift
 
@@ -49,35 +49,35 @@ run_fontinst() {
     esac
   done
 
-  tex $tex_file
-  rm $font*.mtx MnSymbol*mtx
+  tex "$tex_file"
+  rm "$font"*.mtx MnSymbol*mtx
 }
 
 run_fontinst smallfamily Regular It Bold BoldIt
 
-if [ -e ../tfm/$font-Semibold-tosf-oml.tfm ]
+if [ -e "../tfm/$font-Semibold-tosf-oml.tfm" ]
 then
   run_fontinst medfamily Semibold SemiboldIt
 fi
 
-if [ -e ../tfm/$font-Medium-tosf-oml.tfm ]
+if [ -e "../tfm/$font-Medium-tosf-oml.tfm" ]
 then
   run_fontinst fullfamily Medium MediumIt
 fi
 
-if [ -e ../tfm/$font-Capt-tosf-oml.tfm ]
+if [ -e "../tfm/$font-Capt-tosf-oml.tfm" ]
 then
   run_fontinst medfamily-opticals Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
 fi
 
-if [ -e ../tfm/$font-MediumCapt-tosf-oml.tfm ]
+if [ -e "../tfm/$font-MediumCapt-tosf-oml.tfm" ]
 then
   run_fontinst fullfamily-opticals MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
 fi
 
 for v in *.vpl
 do
-  vptovf $v
+  vptovf "$v"
 done
 
 cp *Mixed*.vf   ../vf
