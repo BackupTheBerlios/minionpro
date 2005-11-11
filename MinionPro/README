@@ -19,7 +19,7 @@ format. If you have either LCDF Typetools or fontforge installed then
 you can use one of the provided scripts:
 
 o convert-lcdf is a Unix script that uses LCDF Typetools
-  (http://www.lcdf.org/~eddietwo/type/)
+  (http://www.lcdf.org/type/)
 o convert-ff is a Unix script that uses fontforge
   (http://fontforge.sourceforge.net)
 o convert.bat is a DOS script that uses LCDF Typetools
@@ -31,12 +31,17 @@ The MinionPro distribution is split into several archives. Which of them
 you need depends on the version of the fonts you have installed. We
 support three different versions of MinionPro:
 
-o 001.000: This is the first version which can still be found on
+o 001.000: This is the first version which can still be found on old
   FontFolio CDs.
-o 001.001: This is the version currently available for sale on the Adobe
-  website.
+o 001.001: This is the version currently available for sale.
 o 002.000: This version is included in recent Acrobat Reader
   installations.
+
+If you have LCDF Typetools installed you can determine the version with
+the otfinfo command. For example, for version 002.000 you get:
+
+  $ otfinfo -v MinionPro-Regular.otf
+  Version 2.012;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565
 
 For version 002.000 we provide a single archive containing everything
 you need:
@@ -91,8 +96,9 @@ Installing
 
   $ ./convert-lcdf   (or ./convert-ff, or use some other program)
 
-4) Run ./install You can specify the directory where the files
-should be put. The default is $TEXMFLOCAL.
+4) Run ./install (This script only works under Unix. If you are using
+Windows you have to copy the files yourself.) You can specify the
+directory where the files should be put. The default is $TEXMFLOCAL.
 
   $ ./install /usr/local/teTeX/share/texmf-local
 

@@ -39,7 +39,7 @@ then
 fi
 
 
-if [ -e ../tfm/$font-ItDisp-integral-cn1.tfm" ]
+if [ -e "../tfm/$font-ItDisp-integral-cn1.tfm" ]
 then
   tftopl "../tfm/$font-ItDisp-integral-cn1.tfm"         "$font-ItDisp-integral-cn1.pl"
   tftopl "../tfm/$font-SemiboldItDisp-integral-cn1.tfm" "$font-SemiboldItDisp-integral-cn1.pl"

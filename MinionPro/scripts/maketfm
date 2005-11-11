@@ -33,7 +33,7 @@ create_expanded=false
 create_kerned=true
 open_g=false
 
-for opt in "$*"
+for opt in "$@"
 do
   case "$opt" in
     --verbose)      verbose=true;;
@@ -65,11 +65,11 @@ done
 
 # Determine version of the fonts.
 
-case $(strings $font-Regular.pfb | grep "^/version") in
-  *\(001.000\)*) version=1;;
-  *\(001.001\)*) version=2;;
-  *\(002.000\)*) version=3;;
-  *)             version=4;;
+case $(otfinfo -v otf/$font-Regular.otf) in
+  *";PS 001.000;"*) version=1;;
+  *";PS 001.001;"*) version=2;;
+  *";PS 002.000;"*) version=3;;
+  *)                version=4;;
 esac
 
 # Newer versions have different glyph names.
