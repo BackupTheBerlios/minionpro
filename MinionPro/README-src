@@ -11,7 +11,7 @@ These files are public domain.
 Requirements
 ============
 
-o LCDF Typetools, version 2.35 or better (http://www.lcdf.org/type/)
+o LCDF Typetools, version 2.36 or better (http://www.lcdf.org/type/)
 o fontinst v1.925 or better
 
 Building
@@ -20,11 +20,9 @@ Building
 1) Unpack the archive:
 
   $ tar -xzvf MinionPro-source.tgz
-  $ cd MinionPro
 
-2) Create a directory otf and copy your OpenType font files into it.
+2) Copy your OpenType font files into the otf directory.
 
-  $ mkdir otf
   $ cp /some/path/*.otf otf
 
 3) Run ./scripts/makeall
@@ -33,6 +31,8 @@ Building
 
 makeall has some options to specify which metrics to create:
 
+  --verbose      show warning messages from otftotfm
+  --quiet        omit these messages
   --greek        create greek metrics
   --nogreek      turn --greek off
   --cyrillic     create cyrillic metrics
@@ -56,5 +56,10 @@ should be put. The default is $TEXMFLOCAL.
 
 2) Add MinionPro.map to your updmap.cfg and run updmap.
 
-3) Happy TeXing!
+3) If you get errors about insufficient memory you might need to
+increase the values of font_mem_size and font_max in your TeX
+configuration. For most distributions, these can be changed in the file
+texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
+
+4) Happy TeXing!
 

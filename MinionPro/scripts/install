@@ -33,10 +33,10 @@ fi
 
 mkdir -p "$enc_dir" "$map_dir" "$pfb_dir" "$tfm_dir" "$vf_dir" "$tex_dir" "$doc_dir"
 
-cp pfb/*.pfb               "$pfb_dir"
-cp dvips/*.enc             "$enc_dir"
-cp "dvips/$font.map"       "$map_dir"
-cp tex/*.{sty,cfg,fd,cmap} "$tex_dir"
+cp pfb/*.pfb          "$pfb_dir"
+cp dvips/*.enc        "$enc_dir"
+cp "dvips/$font.map"  "$map_dir"
+cp tex/*.{sty,cfg,fd} "$tex_dir"
 
 if [ -e "doc/$font.pdf" ]
 then

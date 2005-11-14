@@ -24,6 +24,10 @@ o convert-ff is a Unix script that uses fontforge
   (http://fontforge.sourceforge.net)
 o convert.bat is a DOS script that uses LCDF Typetools
 
+We recommend the use of LCDF Typetools since these are able to create
+the dotless j glyph. If you use other programs this glyph will be
+omitted.
+
 Files
 =====
 
