@@ -11,8 +11,9 @@ These files are public domain.
 Requirements
 ============
 
-You need the MnSymbol fonts installed. They can be obtained from CTAN
-(ftp://ftp.ctan.org).
+You need the MnSymbol fonts version 1.3 or better installed. They can be
+obtained from CTAN (ftp://ftp.ctan.org). Note that the version currently
+included MiKTeX is too old.
 
 You also need some program to convert the OpenType fonts into Type1
 format. If you have either LCDF Typetools or fontforge installed then
@@ -146,6 +147,14 @@ The corresponding commands for MiKTeX are:
 
   initexmf -u
   mkfntmap
+
+If you are using MiKTeX you also have to change the line
+
+  ENCPath=.;%R\dvips//;%R\fonts\enc//
+
+in your miktex.ini to
+
+  ENCPath=.;%R\dvips//;%R\fonts\enc//;%R\fonts\enc\dvips//
 
 7) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
