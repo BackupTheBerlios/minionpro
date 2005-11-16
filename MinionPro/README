@@ -24,9 +24,8 @@ o convert-ff is a Unix script that uses fontforge
   (http://fontforge.sourceforge.net)
 o convert.bat is a DOS script that uses LCDF Typetools
 
-We recommend the use of LCDF Typetools since these are able to create
-the dotless j glyph. If you use other programs this glyph will be
-omitted.
+We strongly recommend the use of LCDF Typetools since these are able to create
+the dotless j glyph. If you use other programs this glyph will be omitted.
 
 Files
 =====
@@ -47,50 +46,65 @@ the otfinfo command. For example, for version 002.000 you get:
   $ otfinfo -v MinionPro-Regular.otf
   Version 2.012;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565
 
-For version 002.000 we provide a single archive containing everything
-you need:
+In all cases you need the archive
 
-o MinionPro-base-v2.zip
+o scripts.zip
 
-For versions 001.000 and 001.001 there are several archives:
+For font version 002.000 we provide a single additional archive
+containing everything else you need:
 
-o MinionPro-metrics-base-v1.zip: contains the metrics for Regular,
-  Italic, Bold, and BoldItalic.
-o MinionPro-metrics-full-v1.zip: contains additional metrics for Medium,
+o base-v2.zip
+
+For versions 001.000 and 001.001 the files are spread over several
+archives:
+
+o metrics-base-v1.zip: contains the metrics for Regular, Italic, Bold,
+  and BoldItalic.
+o metrics-full-v1.zip: contains additional metrics for Medium,
   MediumItalic, Semibold, and SemiboldItalic.
-o MinionPro-metrics-opticals-v1.zip: contains the metrics for the Capt,
-  Subh, and Disp optical shapes.
-o MinionPro-enc-v1.000.zip: contains the encoding files for version
-  001.000.
-o MinionPro-enc-v1.001.zip: contains the encoding files for version
-  001.001.
+o metrics-opticals-v1.zip: contains the metrics for the Capt, Subh, and
+  Disp optical shapes.
+o enc-v1.000.zip: contains the encoding files for version 001.000.
+o enc-v1.001.zip: contains the encoding files for version 001.001.
 
 For example, if you have only the four basic weights in version 001.000
 then you need
 
-  MinionPro-metrics-base-v1.zip
-  MinionPro-enc-v1.000.zip
+  scripts.zip
+  metrics-base-v1.zip
+  enc-v1.000.zip
 
 If you have all weights, but not the optical families, in version
 001.001 then you need
 
-  MinionPro-metrics-base-v1.zip
-  MinionPro-metrics-full-v1.zip
-  MinionPro-enc-v1.001.zip
+  metrics-base-v1.zip
+  metrics-full-v1.zip
+  enc-v1.001.zip
 
 If you have all fonts in version 001.001 then you need
 
-  MinionPro-metrics-base-v1.zip
-  MinionPro-metrics-full-v1.zip
-  MinionPro-metrics-opticals-v1.zip
-  MinionPro-enc-v1.001.zip
+  metrics-base-v1.zip
+  metrics-full-v1.zip
+  metrics-opticals-v1.zip
+  enc-v1.001.zip
 
 Installing
 ==========
 
-1) Unpack the archives
+0) Select the directory you want to install the files into. Usually,
+this will be the local TeX tree which, for most teTeX distributions, is
 
-  $ unzip MinionPro-XXX.zip
+  /usr/local/teTeX/share/texmf-local
+
+For MiKTeX it might be
+
+  C:\Programs\MiKTeX\localtexmf
+
+1) Unpack the scripts archive into some working directory:
+
+  $ mkdir /tmp/MinionPro
+  $ cd /tmp/MinionPro
+  $ unzip scripts.zip
 
 2) Copy your OpenType font files into the otf directory.
 
@@ -100,22 +114,47 @@ Installing
 
   $ ./convert-lcdf   (or ./convert-ff, or use some other program)
 
-4) Run ./install (This script only works under Unix. If you are using
-Windows you have to copy the files yourself.) You can specify the
-directory where the files should be put. The default is $TEXMFLOCAL.
+For MiKTeX execute
 
-  $ ./install /usr/local/teTeX/share/texmf-local
+  convert.bat
 
-5) Add MinionPro.map to your updmap.cfg and run updmap.
+4) Copy the generated Type1 fonts into your local TeX tree:
 
-6) If you get errors about insufficient memory you might need to
+  $ mkdir -p /usr/local/teTeX/share/texmf-local/fonts/type1/adobe/MinionPro
+  $ cp pfb/*.pfb /usr/local/teTeX/share/texmf-local/fonts/type1/adobe/MinionPro
+
+5) Unpack the other archives directly into the TeX tree, for example:
+
+  $ cd /usr/local/teTeX/share/texmf-local
+  $ unzip metrics-base-v1.zip
+  $ unzip metrics-full-v1.zip
+  $ unzip enc-v1.001.zip
+
+(You do not have to unpack the scripts archive which was only needed for
+step 3.)
+
+6) Add the line
+
+  Map MinionPro.map
+
+to your updmap.cfg. Refresh the file database and run updmap:
+
+  $ mktexlsr
+  $ updmap
+
+The corresponding commands for MiKTeX are:
+
+  initexmf -u
+  mkfntmap
+
+7) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
 configuration. For most distributions, these can be changed in the file
 texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
 
-7) You can find the documentation in
+8) You can find the documentation in
 
-  $TEXMFLOCAL/doc/latex/MinionPro/MinionPro.pdf
+  /usr/share/teTeX/texmf-local/doc/latex/MinionPro/MinionPro.pdf
 
-8) Happy TeXing!
+9) Happy TeXing!
 
