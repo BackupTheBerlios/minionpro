@@ -78,12 +78,14 @@ then you need
 If you have all weights, but not the optical families, in version
 001.001 then you need
 
+  scripts.zip
   metrics-base-v1.zip
   metrics-full-v1.zip
   enc-v1.001.zip
 
 If you have all fonts in version 001.001 then you need
 
+  scripts.zip
   metrics-base-v1.zip
   metrics-full-v1.zip
   metrics-opticals-v1.zip
