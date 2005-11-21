@@ -154,11 +154,6 @@ to your updmap.cfg. Refresh the file database and run updmap:
   $ mktexlsr
   $ updmap
 
-The corresponding commands for MiKTeX are:
-
-  initexmf -u
-  mkfntmap
-
 8) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
 configuration. For most distributions, these can be changed in the file
