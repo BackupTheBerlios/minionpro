@@ -136,7 +136,15 @@ For MiKTeX execute
 (You do not have to unpack the scripts archive which was only needed for
 step 3.)
 
-6) Add the line
+6) If you have an old TeX distribution you might need to move the
+encoding files and the map file into another directory:
+
+  $ cd /usr/local/teTeX/share/texmf-local
+  $ mkdir -p dvips/MinionPro
+  $ mv fonts/enc/dvips/MinionPro/* dvips/MinionPro
+  $ mv fonts/map/dvips/MinionPro/* dvips/MinionPro
+
+7) Add the line
 
   Map MinionPro.map
 
@@ -158,14 +166,14 @@ in your miktex.ini to
 
   ENCPath=.;%R\dvips//;%R\fonts\enc//;%R\fonts\enc\dvips//
 
-7) If you get errors about insufficient memory you might need to
+8) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
 configuration. For most distributions, these can be changed in the file
 texmf/web2c/texmf.cnf. For MiKTeX the file is called miktex.ini.
 
-8) You can find the documentation in
+9) You can find the documentation in
 
   /usr/share/teTeX/texmf-local/doc/latex/MinionPro/MinionPro.pdf
 
-9) Happy TeXing!
+10) Happy TeXing!
 
