@@ -47,7 +47,7 @@ the otfinfo command. For example, for version 002.000 you get:
   $ otfinfo -v MinionPro-Regular.otf
   Version 2.012;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565
 
-In all cases you need the archive
+In all cases you need the archive:
 
 o scripts.zip
 
@@ -95,13 +95,14 @@ Installing
 ==========
 
 0) Select the directory you want to install the files into. Usually,
-this will be the local TeX tree which, for most teTeX distributions, is
+this will be the local TeX tree. You can determine its path via the
+command
+
+  $ kpsexpand '$TEXMFLOCAL'
+
+In the following instructions we will assume that the path is
 
   /usr/local/teTeX/share/texmf-local
-
-For MiKTeX it might be
-
-  C:\Programs\MiKTeX\localtexmf
 
 1) Unpack the scripts archive into some working directory:
 
@@ -157,14 +158,6 @@ The corresponding commands for MiKTeX are:
 
   initexmf -u
   mkfntmap
-
-If you are using MiKTeX you also have to change the line
-
-  ENCPath=.;%R\dvips//;%R\fonts\enc//
-
-in your miktex.ini to
-
-  ENCPath=.;%R\dvips//;%R\fonts\enc//;%R\fonts\enc\dvips//
 
 8) If you get errors about insufficient memory you might need to
 increase the values of font_mem_size and font_max in your TeX
