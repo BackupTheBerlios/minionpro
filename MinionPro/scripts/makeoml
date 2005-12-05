@@ -27,7 +27,7 @@ do
 done
 
 make_vpl() {
-  cp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml*.tfm" .
+  cp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml"*.tfm .
   vftovp "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm" "$font-$1-tosf$2-oml.vpl"
   rm "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm"
 }
