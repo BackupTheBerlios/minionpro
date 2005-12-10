@@ -1,4 +1,8 @@
 % Ibycus encoding
+% CODINGSCHEME IBYCUS4 /BASED ON TLG/
+
+% UNICODING uni03DD =: uni03DD uniEFD5 ;
+% UNICODING Sampigreek =: Sampigreek uni03E1 ;
 
 % LIGKERN || = 0 ;
 
@@ -10,16 +14,16 @@
 % LIGKERN less less =: guillemotleft ;
 % LIGKERN greater greater =: guillemotright ;
 % LIGKERN sigma uni1FBE |=: cwm ;
-% LIGKERN Kappa plus =: uni03DE ;
-% LIGKERN kappa plus =: uni03DE ;
+% LIGKERN Kappa plus =: Koppagreek ;
+% LIGKERN kappa plus =: Koppagreek ;
 % LIGKERN Xi plus =: C ;
 % LIGKERN xi plus =: c ;
 
-% LIGKERN sigma || =:| uni03C2 ; sigma guillemotright =:| uni03C2 ;
-% LIGKERN sigma parenright =:| uni03C2 ; sigma period =:| uni03C2 ;
-% LIGKERN sigma comma =:| uni03C2 ; sigma exclam =:| uni03C2 ;
-% LIGKERN sigma semicolon =:| uni03C2 ; sigma anoteleia =:| uni03C2 ;
-% LIGKERN sigma colon =:| uni03C2 ; sigma plus =: uni03E0;
+% LIGKERN sigma || =:| sigmafinal ; sigma guillemotright =:| sigmafinal ;
+% LIGKERN sigma parenright =:| sigmafinal ; sigma period =:| sigmafinal ;
+% LIGKERN sigma comma =:| sigmafinal ; sigma exclam =:| sigmafinal ;
+% LIGKERN sigma semicolon =:| sigmafinal ; sigma anoteleia =:| sigmafinal ;
+% LIGKERN sigma colon =:| sigmafinal ; sigma plus =: Sampigreek;
 
 % LIGKERN iota plus =: iotadieresis;
 % LIGKERN upsilon plus =: upsilondieresis;
@@ -227,14 +231,14 @@
 /quoteleft /alpha /beta /xi /delta /epsilon /phi /gamma
 /eta /iota /sigmafinal /kappa /lambda /mu /nu /omicron
 % 0x70
-/pi /theta /rho /sigma /tau /upsilon /uniEFD5 /omega
+/pi /theta /rho /sigma /tau /upsilon /uni03DD /omega
 /chi /psi /zeta /guillemotleft
 /uni1FBE /guillemotright /tilde /emdash
 % 0x80
 /uni1F70 /uni1F01 /uni1F00 /uni1FDD
-/epsilonasperperispomene /otilde /uni03DE /uni1FDE
+/epsilonasperperispomene /otilde /Koppagreek /uni1FDE
 /uni1F71 /uni1F05 /uni1F04 /uni1F03
-/epsilonperispomene /omicronasperperispomene /uni03DE /uni03E0
+/epsilonperispomene /omicronasperperispomene /Koppagreek /Sampigreek
 % 0x90
 /uni1FB6 /uni1F07
 /uni1F06 /uni1F02

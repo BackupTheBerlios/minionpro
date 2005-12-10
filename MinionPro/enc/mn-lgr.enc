@@ -1,12 +1,16 @@
 % LGR Encoding
+% CODINGSCHEME GREEK FONT ENCODING - LGR
+% UNICODING uni03DD =: uni03DD uniEFD5 ;
+% UNICODING Digammagreek =: Digammagreek uni03DD uniEFD5 ;
+% UNICODING Sampigreek =: Sampigreek uni03E1 ;
 
 % boundary character: endash
 % LIGKERN || = 0 ;
 
-% LIGKERN sigma || =:| uni03C2 ; sigma guillemotright =:| uni03C2 ;
-% LIGKERN sigma parenright =:| uni03C2 ; sigma period =:| uni03C2 ;
-% LIGKERN sigma comma =:| uni03C2 ; sigma exclam =:| uni03C2 ;
-% LIGKERN sigma semicolon =:| uni03C2 ; sigma anoteleia =:| uni03C2 ;
+% LIGKERN sigma || =:| sigmafinal ; sigma guillemotright =:| sigmafinal ;
+% LIGKERN sigma parenright =:| sigmafinal ; sigma period =:| sigmafinal ;
+% LIGKERN sigma comma =:| sigmafinal ; sigma exclam =:| sigmafinal ;
+% LIGKERN sigma semicolon =:| sigmafinal ; sigma anoteleia =:| sigmafinal ;
 
 % LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;
 % LIGKERN parenleft parenleft =: guillemotleft ;
@@ -213,11 +217,11 @@
 
 /MinionPro-LGREncoding [
 % 0x00
-  /endash /.notdef /.notdef /.notdef /.notdef /.notdef /uni03DA /.notdef
+  /endash /.notdef /.notdef /.notdef /.notdef /.notdef /Stigmagreek /.notdef
   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 % 0x10
-  /.notdef /.notdef /uni03DE  /.notdef /.notdef /.notdef /.notdef /.notdef
-  /Euro /perthousand  /.notdef /uni03E0 /quoteleft /quoteright /breve /macron
+  /.notdef /.notdef /Koppagreek  /.notdef /.notdef /.notdef /.notdef /.notdef
+  /Euro /perthousand  /.notdef /Sampigreek /quoteleft /quoteright /breve /macron
 % 0x20
   /uni1FC1 /exclam /dieresis /dieresistonos /uni1FED /percent /uniF6E8 /tonos
   /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
@@ -231,7 +235,7 @@
   /Pi /Chi /Rho /Sigma /Tau /Upsilon /uni1FDE /Omega
   /Xi /Psi /Zeta /bracketleft /uni1FCF /bracketright /uni1FCE /uni1FCD
 % 0x60
-  /grave /alpha /beta /uni03C2 /delta /epsilon /phi /gamma
+  /grave /alpha /beta /sigmafinal /delta /epsilon /phi /gamma
   /eta /iota /theta /kappa /lambda /mu /nu /omicron
 % 0x70
   /pi /chi /rho /sigma /tau /upsilon /cwm /omega
@@ -240,7 +244,7 @@
   /uni1F70 /uni1F01 /uni1F00 /uni1F03 /uni1FB2 /uni1F81 /uni1F80 /uni1F83
   /alphatonos /uni1F05 /uni1F04 /uni1F02 /uni1FB4 /uni1F85 /uni1F84 /uni1F82
 % 0x90
-  /uni1FB6 /uni1F07 /uni1F06 /uniEFD5 /uni1FB7 /uni1F87 /uni1F86 /.notdef
+  /uni1FB6 /uni1F07 /uni1F06 /uni03DD /uni1FB7 /uni1F87 /uni1F86 /.notdef
   /uni1F74 /uni1F21 /uni1F20 /.notdef /uni1FC2 /uni1F91 /uni1F90 /.notdef
 % 0xA0
   /etatonos /uni1F25 /uni1F24 /uni1F23 /uni1FC4 /uni1F95 /uni1F94 /uni1F93
@@ -249,7 +253,7 @@
   /uni1F7C /uni1F61 /uni1F60 /uni1F63 /uni1FF2 /uni1FA1 /uni1FA0 /uni1FA3
   /omegatonos /uni1F65 /uni1F64 /uni1F62 /uni1FF4 /uni1FA5 /uni1FA4 /uni1FA2
 % 0xC0
-  /uni1FF6 /uni1F67 /uni1F66 /uniEFD5 /uni1FF7 /uni1FA7 /uni1FA6 /.notdef
+  /uni1FF6 /uni1F67 /uni1F66 /Digammagreek /uni1FF7 /uni1FA7 /uni1FA6 /.notdef
   /uni1F76 /uni1F31 /uni1F30 /uni1F33 /uni1F7A /uni1F51 /uni1F50 /uni1F53
 % 0xD0
   /iotatonos /uni1F35 /uni1F34 /uni1F32 /upsilontonos /uni1F55 /uni1F54 /uni1F52

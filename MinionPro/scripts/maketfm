@@ -74,13 +74,11 @@ esac
 
 # Newer versions have different glyph names.
 
-digamma_flags=""
 extra_flags=""
-oml_flags=""
+oml_flags="--unicoding 'rho1 =: rho'"
 
 if [ $version -ge 3 ]
 then
-  digamma_flags="--unicoding 'uniEFD5 =: uni03DD'"
   extra_flags="--unicoding 'orn.014 =: uni2767'"
   extra_flags="$extra_flags --unicoding 'orn.015 =: uni2766'"
   extra_flags="$extra_flags --unicoding 'orn.029 =: uni27A2'"
@@ -93,7 +91,7 @@ fi
 
 if $open_g
 then
-  oml_flags="--unicoding 'g =: afii10192 afii10069.ital g'"
+  oml_flags="$oml_flags --unicoding 'g =: afii10192 afii10069.ital g'"
 fi
 
 liga="-fliga"
@@ -287,8 +285,8 @@ make_normal_metrics() {
 
   if $create_greek
   then
-    make_tfm "$1" lgr  $2-lgr       "-sgrek $lgr_flags $greek_flags $digamma_flags $flags"
-    make_tfm "$1" lgi  $2-lgi       "-sgrek $lgr_flags $greek_flags $digamma_flags $flags"
+    make_tfm "$1" lgr  $2-lgr       "-sgrek $lgr_flags $greek_flags $flags"
+    make_tfm "$1" lgi  $2-lgi       "-sgrek $lgr_flags $greek_flags $flags"
   fi
   if $create_cyrillic
   then
@@ -332,8 +330,8 @@ make_spread_metrics() {
 
   if $create_greek
   then
-    make_tfm "$1" lgr  $2-l1-lgr    "-L 40 -sgrek $lgr_flags $greek_flags $digamma_flags $flags"
-    make_tfm "$1" lgi  $2-l1-lgi    "-L 40 -sgrek $lgr_flags $greek_flags $digamma_flags $flags"
+    make_tfm "$1" lgr  $2-l1-lgr    "-L 40 -sgrek $lgr_flags $greek_flags $flags"
+    make_tfm "$1" lgi  $2-l1-lgi    "-L 40 -sgrek $lgr_flags $greek_flags $flags"
   fi
   if $create_cyrillic
   then
@@ -381,7 +379,7 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml     tosf-oml    "-L 40 --math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml     tosf-oml    "-L 40 --math-spacing=255 -fonum -ftnum $oml_flags"
     make_tfm "$1" extra-u extra-u     "$extra_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
@@ -399,7 +397,7 @@ make_spaced_metrics() {
     make_spread_metrics "$1" osf
     make_spread_metrics "$1" tosf
 
-    make_tfm "$1" oml tosf-l1-oml "-L 80 --math-spacing=255 -fonum -ftnum $digamma_flags $oml_flags"
+    make_tfm "$1" oml tosf-l1-oml "-L 80 --math-spacing=255 -fonum -ftnum $oml_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
