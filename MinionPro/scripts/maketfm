@@ -111,6 +111,11 @@ greek_flags="$greek_flags --position 'uni1FDF 0 30 0'"
 greek_flags="$greek_flags --position 'uni1FFE 0 30 0'"
 greek_flags="$greek_flags --position 'grave   0 30 0'"
 
+if [ -e "scripts/maketfm-$font.cfg" ]
+then
+  . "scripts/maketfm-$font.cfg"
+fi
+
 make_enckern() {
 
   if [ -e "$font-$1.pfb" ]
