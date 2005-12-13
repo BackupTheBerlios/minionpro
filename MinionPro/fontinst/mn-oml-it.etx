@@ -578,6 +578,15 @@
 \setslot{ITslashedzero}
 \endsetslot
 
+\setslot{ITinfinity}
+\endsetslot
+
+\setslot{ITsummation}
+\endsetslot
+
+\setslot{ITproduct}
+\endsetslot
+
 \nextslot{255}
 \setslot{skew}
 \endsetslot

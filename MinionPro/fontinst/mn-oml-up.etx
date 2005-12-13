@@ -578,6 +578,15 @@
 \setslot{UPslashedzero}
 \endsetslot
 
+\setslot{UPinfinity}
+\endsetslot
+
+\setslot{UPsummation}
+\endsetslot
+
+\setslot{UPproduct}
+\endsetslot
+
 \nextslot{255}
 \setslot{skew}
 \endsetslot

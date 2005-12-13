@@ -1,21 +1,21 @@
 % TeX math italic encoding.
 % CODINGSCHEME TEX MATH ITALIC
-% UNICODING uni03DD =: uni03DD uniEFD5 ;
-% UNICODING theta1  =: theta1  theta ;
-% UNICODING omega1  =: omega1  pi ;
-% UNICODING sigma1  =: sigma1  sigma ;
-% UNICODING phi1    =: phi1    phi ;
+% UNICODING digamma          =: uni03DD uniEFD5 ;
+% UNICODING sigmafinal       =: sigmafinal sigma ;
+% UNICODING pisymbolgreek    =: pisymbolgreek pi ;
+% UNICODING theta1 =: theta1 theta ;
+% UNICODING phi1   =: phi1 phi ;
 %
 /MinionPro-OMLEncoding [          % now 256 chars follow
 % 0x0
 /Gamma /Delta /Theta /Lambda /Xi /Pi /Sigma /Upsilon
 /Phi /Psi /Omega /alpha /beta /gamma /delta
-/afii10101   % this is not the right glyph but looks similar
+/ecyrillic   % this is not the right glyph but looks similar
 % 0x10
 /zeta /eta /theta /iota /kappa /lambda /mu /nu
 /xi /pi /rho /sigma /tau /upsilon /phi /chi
 % 0x20
-/psi /omega /epsilon /theta1 /omega1 /rho1 /sigma1 /phi1
+/psi /omega /epsilon /theta1 /pisymbolgreek /rho1 /sigmafinal /phi1
 /arrowlefttophalf /arrowleftbothalf /arrowrighttophalf /arrowrightbothalf
 /arrowhookleft /arrowhookright /triangleright /triangleleft
 % 0x30
@@ -34,8 +34,9 @@
 /p /q /r /s /t /u /v /w
 /x /y /z /dotlessi /dotlessj /weierstrass /vector /cyrflex
 % 0x80
-/integral /hbar /uni03DD /kappasymbolgreek /betasymbolgreek /afii10095 /afii10073 /eth
-/lozenge /uniF638 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/integral /hbar /digamma /kappasymbolgreek 
+/betasymbolgreek /ereversedcyrillic /zecyrillic /eth
+/lozenge /uniF638 /infinity /summation /product /.notdef /.notdef /.notdef
 % 0x90
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
