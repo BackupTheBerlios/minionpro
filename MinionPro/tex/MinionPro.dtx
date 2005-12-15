@@ -500,6 +500,16 @@
 %
 % \subsection{Options}
 %
+%    \begin{macrocode}
+%<*style>
+\newif\if@Mn@Text@
+\newif\if@Mn@Math@
+\@Mn@Text@true
+\@Mn@Math@true
+\DeclareOption{onlytext}{\@Mn@Text@true\@Mn@Math@false}
+\DeclareOption{onlymath}{\@Mn@Text@false\@Mn@Math@true}
+%    \end{macrocode}
+%
 % \subsubsection{Font sets}
 %
 % The package \pkg{MinionPro-FontDef} adapts the font definitions to the
@@ -507,7 +517,6 @@
 % relevant options; only MinionPro integrals are handled here in
 % \pkg{MinionPro}.
 %    \begin{macrocode}
-%<*style>
 \newcommand\Mn@minionint@opticals{-NoOpticals}
 \newcommand\Mn@minionint@bold{-Bold}
 \DeclareOption{slides}{%
@@ -652,67 +661,74 @@
 % \subsection{Font declarations}
 %
 %    \begin{macrocode}
-\RequirePackage{MnSymbol,MinionPro-FontDef}
+\RequirePackage{MinionPro-FontDef}
+
+\if@Mn@Math@
+  \RequirePackage{MnSymbol}
 %    \end{macrocode}
 % If no fraktur font is loaded then take the Euler font.
 %    \begin{macrocode}
-\@ifundefined{mathfrak}{%
-  \RequirePackage{eufrak}%
-  \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}{}
+  \@ifundefined{mathfrak}{%
+    \RequirePackage{eufrak}%
+    \SetMathAlphabet\EuFrak{boldtabular}{U}{euf}{b}{n}}{}
+\fi
 %    \end{macrocode}
 % By default, we use |b| for the bold series. If |MinionPro-Semibold| is not
 % available this might internally be mapped to |MinionPro-Bold| (see
 % \pkg{MinionPro-FontDef}).
 %    \begin{macrocode}
-\edef\rmdefault{\Mn@Text@Family}
-%\edef\bfdefault{b}
-\let\ibycusdefault\Mn@Text@Family
+\if@Mn@Text@
+  \edef\rmdefault{\Mn@Text@Family}
+  \let\ibycusdefault\Mn@Text@Family
+\fi
 %    \end{macrocode}
 %
 % \subsubsection{Math fonts}
 %
 % Redefine the standard math versions |normal| and |bold|.
 %    \begin{macrocode}
-\DeclareSymbolFont{operators}  {T1} {\Mn@Math@Family}{m} {n}
-\DeclareSymbolFont{letters}    {OML}{MinionPro-TOsF} {m} {\Mn@Math@LetterShape}
-\SetSymbolFont{operators}{bold}{T1} {\Mn@Math@Family}{eb}{n}
-\SetSymbolFont{letters}  {bold}{OML}{MinionPro-TOsF} {eb}{\Mn@Math@LetterShape}
-\DeclareMathAlphabet\mathbf    {T1} {\Mn@Math@Family}{eb}{n}
-\DeclareMathAlphabet\mathit    {T1} {\Mn@Math@Family}{m} {it}
-\SetMathAlphabet\mathit  {bold}{T1} {\Mn@Math@Family}{eb}{it}
+\if@Mn@Math@
+  \DeclareSymbolFont{operators}  {T1} {\Mn@Math@Family}{m} {n}
+  \DeclareSymbolFont{letters}    {OML}{MinionPro-TOsF} {m} {\Mn@Math@LetterShape}
+  \SetSymbolFont{operators}{bold}{T1} {\Mn@Math@Family}{eb}{n}
+  \SetSymbolFont{letters}  {bold}{OML}{MinionPro-TOsF} {eb}{\Mn@Math@LetterShape}
+  \DeclareMathAlphabet\mathbf    {T1} {\Mn@Math@Family}{eb}{n}
+  \DeclareMathAlphabet\mathit    {T1} {\Mn@Math@Family}{m} {it}
+  \SetMathAlphabet\mathit  {bold}{T1} {\Mn@Math@Family}{eb}{it}
 %    \end{macrocode}
 % Extra math versions |tabular| and |boldtabular|, which use tabular figures
 % instead of proportional ones. These math versions can be useful in tables
 % (cf.\ section~\ref{sec:dcolumn}).
 %    \begin{macrocode}
-\DeclareMathVersion{tabular}
-\SetSymbolFont{operators}{tabular}    {T1} {\Mn@Math@TFamily}{m}{n}
-\SetSymbolFont{letters}  {tabular}    {OML}{MinionPro-TOsF}  {m}{\Mn@Math@LetterShape}
-\SetMathAlphabet\mathit  {tabular}    {T1} {\Mn@Math@TFamily}{m}{it}
+  \DeclareMathVersion{tabular}
+  \SetSymbolFont{operators}{tabular}    {T1} {\Mn@Math@TFamily}{m}{n}
+  \SetSymbolFont{letters}  {tabular}    {OML}{MinionPro-TOsF}  {m}{\Mn@Math@LetterShape}
+  \SetMathAlphabet\mathit  {tabular}    {T1} {\Mn@Math@TFamily}{m}{it}
 
-\DeclareMathVersion{boldtabular}
-\SetSymbolFont{operators}{boldtabular}{T1} {\Mn@Math@TFamily}{eb}{n}
-\SetSymbolFont{letters}  {boldtabular}{OML}{MinionPro-TOsF}  {eb}{\Mn@Math@LetterShape}
-\SetMathAlphabet\mathit  {boldtabular}{T1} {\Mn@Math@TFamily}{eb}{it}
+  \DeclareMathVersion{boldtabular}
+  \SetSymbolFont{operators}{boldtabular}{T1} {\Mn@Math@TFamily}{eb}{n}
+  \SetSymbolFont{letters}  {boldtabular}{OML}{MinionPro-TOsF}  {eb}{\Mn@Math@LetterShape}
+  \SetMathAlphabet\mathit  {boldtabular}{T1} {\Mn@Math@TFamily}{eb}{it}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
-\DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
-\DeclareMathAccent{\hat}     {\mathalpha}{operators}{2}
-\DeclareMathAccent{\tilde}   {\mathalpha}{operators}{3}
-\DeclareMathAccent{\ddot}    {\mathalpha}{operators}{4}
-\DeclareMathAccent{\mathring}{\mathalpha}{operators}{6}
-\DeclareMathAccent{\check}   {\mathalpha}{operators}{7}
-\DeclareMathAccent{\breve}   {\mathalpha}{operators}{8}
-\DeclareMathAccent{\bar}     {\mathalpha}{operators}{9}
-\DeclareMathAccent{\dot}     {\mathalpha}{operators}{10}
+  \DeclareMathAccent{\grave}   {\mathalpha}{operators}{0}
+  \DeclareMathAccent{\acute}   {\mathalpha}{operators}{1}
+  \DeclareMathAccent{\hat}     {\mathalpha}{operators}{2}
+  \DeclareMathAccent{\tilde}   {\mathalpha}{operators}{3}
+  \DeclareMathAccent{\ddot}    {\mathalpha}{operators}{4}
+  \DeclareMathAccent{\mathring}{\mathalpha}{operators}{6}
+  \DeclareMathAccent{\check}   {\mathalpha}{operators}{7}
+  \DeclareMathAccent{\breve}   {\mathalpha}{operators}{8}
+  \DeclareMathAccent{\bar}     {\mathalpha}{operators}{9}
+  \DeclareMathAccent{\dot}     {\mathalpha}{operators}{10}
 %    \end{macrocode}
 % Execute the hooks set up above to load the various math alphabets.
 %    \begin{macrocode}
-\Mn@load@bb
-\Mn@load@frak
-\Mn@load@cal
+  \Mn@load@bb
+  \Mn@load@frak
+  \Mn@load@cal
+\fi
 %    \end{macrocode}
 %
 % \subsection{Font selection}
@@ -740,104 +756,106 @@
 % letters in two lists. (We distinguish them by the first letter of their
 % name.) These lists are then used to select the different versions.
 %    \begin{macrocode}
-\newcommand\Mn@greek@list@upper{}
-\newcommand\Mn@greek@list@lower{}
-\let\Mn@greek@list@upper\@gobble
-\let\Mn@greek@list@lower\@gobble
+\if@Mn@Math@
+  \newcommand\Mn@greek@list@upper{}
+  \newcommand\Mn@greek@list@lower{}
+  \let\Mn@greek@list@upper\@gobble
+  \let\Mn@greek@list@lower\@gobble
 %    \end{macrocode}
 % This macro holds one of the two list names.
 %    \begin{macrocode}
-\newcommand\Mn@greek@list{}
-\newcommand*\Mn@greek@letter[3]{%
-  \expandafter\DeclareMathSymbol
-  \expandafter{\csname it#1\endcsname}{\mathord}{letters}{#2}%
-  \expandafter\DeclareMathSymbol
-  \expandafter{\csname up#1\endcsname}{\mathord}{letters}{#3}%
-  \edef\@tempa{`\@car#1\@nil}%
-  \edef\Mn@greek@list{\expandafter\noexpand\csname
-    Mn@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
-  \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
-}
+  \newcommand\Mn@greek@list{}
+  \newcommand*\Mn@greek@letter[3]{%
+    \expandafter\DeclareMathSymbol
+    \expandafter{\csname it#1\endcsname}{\mathord}{letters}{#2}%
+    \expandafter\DeclareMathSymbol
+    \expandafter{\csname up#1\endcsname}{\mathord}{letters}{#3}%
+    \edef\@tempa{`\@car#1\@nil}%
+    \edef\Mn@greek@list{\expandafter\noexpand\csname
+      Mn@greek@list@\ifnum\uccode\@tempa=\@tempa upper\else lower\fi\endcsname}%
+    \expandafter\edef\Mn@greek@list{\Mn@greek@list,#1}%
+  }
 %    \end{macrocode}
 % We can now declare the Greek letters (left italic, right upright).
 %    \begin{macrocode}
-\Mn@greek@letter{Gamma}         {'000}{'200}
-\Mn@greek@letter{Delta}         {'001}{'201}
-\Mn@greek@letter{Theta}         {'002}{'202}
-\Mn@greek@letter{Lambda}        {'003}{'203}
-\Mn@greek@letter{Xi}            {'004}{'204}
-\Mn@greek@letter{Pi}            {'005}{'205}
-\Mn@greek@letter{Sigma}         {'006}{'206}
-\Mn@greek@letter{Upsilon}       {'007}{'207}
-\Mn@greek@letter{Phi}           {'010}{'210}
-\Mn@greek@letter{Psi}           {'011}{'211}
-\Mn@greek@letter{Omega}         {'012}{'212}
-\Mn@greek@letter{alpha}         {'013}{'213}
-\Mn@greek@letter{beta}          {'014}{'214}
-\Mn@greek@letter{gamma}         {'015}{'215}
-\Mn@greek@letter{delta}         {'016}{'216}
-\Mn@greek@letter{epsilon}       {'017}{'217}
-\Mn@greek@letter{zeta}          {'020}{'220}
-\Mn@greek@letter{eta}           {'021}{'221}
-\Mn@greek@letter{theta}         {'022}{'222}
-\Mn@greek@letter{iota}          {'023}{'223}
-\Mn@greek@letter{kappa}         {'024}{'224}
-\Mn@greek@letter{lambda}        {'025}{'225}
-\Mn@greek@letter{mu}            {'026}{'226}
-\Mn@greek@letter{nu}            {'027}{'227}
-\Mn@greek@letter{xi}            {'030}{'230}
-\Mn@greek@letter{pi}            {'031}{'231}
-\Mn@greek@letter{rho}           {'032}{'232}
-\Mn@greek@letter{sigma}         {'033}{'233}
-\Mn@greek@letter{tau}           {'034}{'234}
-\Mn@greek@letter{upsilon}       {'035}{'235}
-\Mn@greek@letter{phi}           {'036}{'236}
-\Mn@greek@letter{chi}           {'037}{'237}
-\Mn@greek@letter{psi}           {'040}{'240}
-\Mn@greek@letter{omega}         {'041}{'241}
-\Mn@greek@letter{varepsilon}    {'042}{'242}
-\Mn@greek@letter{vartheta}      {'043}{'243}
-\Mn@greek@letter{varpi}         {'044}{'244}
-\Mn@greek@letter{varrho}        {'045}{'245}
-\Mn@greek@letter{varsigma}      {'046}{'246}
-\Mn@greek@letter{varphi}        {'047}{'247}
+  \Mn@greek@letter{Gamma}         {'000}{'200}
+  \Mn@greek@letter{Delta}         {'001}{'201}
+  \Mn@greek@letter{Theta}         {'002}{'202}
+  \Mn@greek@letter{Lambda}        {'003}{'203}
+  \Mn@greek@letter{Xi}            {'004}{'204}
+  \Mn@greek@letter{Pi}            {'005}{'205}
+  \Mn@greek@letter{Sigma}         {'006}{'206}
+  \Mn@greek@letter{Upsilon}       {'007}{'207}
+  \Mn@greek@letter{Phi}           {'010}{'210}
+  \Mn@greek@letter{Psi}           {'011}{'211}
+  \Mn@greek@letter{Omega}         {'012}{'212}
+  \Mn@greek@letter{alpha}         {'013}{'213}
+  \Mn@greek@letter{beta}          {'014}{'214}
+  \Mn@greek@letter{gamma}         {'015}{'215}
+  \Mn@greek@letter{delta}         {'016}{'216}
+  \Mn@greek@letter{epsilon}       {'017}{'217}
+  \Mn@greek@letter{zeta}          {'020}{'220}
+  \Mn@greek@letter{eta}           {'021}{'221}
+  \Mn@greek@letter{theta}         {'022}{'222}
+  \Mn@greek@letter{iota}          {'023}{'223}
+  \Mn@greek@letter{kappa}         {'024}{'224}
+  \Mn@greek@letter{lambda}        {'025}{'225}
+  \Mn@greek@letter{mu}            {'026}{'226}
+  \Mn@greek@letter{nu}            {'027}{'227}
+  \Mn@greek@letter{xi}            {'030}{'230}
+  \Mn@greek@letter{pi}            {'031}{'231}
+  \Mn@greek@letter{rho}           {'032}{'232}
+  \Mn@greek@letter{sigma}         {'033}{'233}
+  \Mn@greek@letter{tau}           {'034}{'234}
+  \Mn@greek@letter{upsilon}       {'035}{'235}
+  \Mn@greek@letter{phi}           {'036}{'236}
+  \Mn@greek@letter{chi}           {'037}{'237}
+  \Mn@greek@letter{psi}           {'040}{'240}
+  \Mn@greek@letter{omega}         {'041}{'241}
+  \Mn@greek@letter{varepsilon}    {'042}{'242}
+  \Mn@greek@letter{vartheta}      {'043}{'243}
+  \Mn@greek@letter{varpi}         {'044}{'244}
+  \Mn@greek@letter{varrho}        {'045}{'245}
+  \Mn@greek@letter{varsigma}      {'046}{'246}
+  \Mn@greek@letter{varphi}        {'047}{'247}
 %    \end{macrocode}
 % Some of the following symbols are not really Greek letters but are treated in
 % the same way.
 %    \begin{macrocode}
-\Mn@greek@letter{varbeta}       {'260}{'250}
-\Mn@greek@letter{varkappa}      {'261}{'251}
-\Mn@greek@letter{backepsilon}   {'262}{'252}
-\Mn@greek@letter{varbackepsilon}{'263}{'253}
-\Mn@greek@letter{digamma}       {'264}{'254}
-\Mn@greek@letter{eth}           {'266}{'256}
+  \Mn@greek@letter{varbeta}       {'260}{'250}
+  \Mn@greek@letter{varkappa}      {'261}{'251}
+  \Mn@greek@letter{backepsilon}   {'262}{'252}
+  \Mn@greek@letter{varbackepsilon}{'263}{'253}
+  \Mn@greek@letter{digamma}       {'264}{'254}
+  \Mn@greek@letter{eth}           {'266}{'256}
 %    \end{macrocode}
 % Go through a list |#2| of Greek letters and |\let| them be their
 % |#1|-prefixed variants.
 %    \begin{macrocode}
-\newcommand*\Mn@greek@select[2]{%
-  \expandafter\let\expandafter\Mn@greek@list\csname Mn@greek@list@#2\endcsname
-  \@for\@tempa:=\Mn@greek@list\do{%
-    \expandafter\let\csname\@tempa\expandafter\endcsname
-    \csname#1\@tempa\endcsname
-  }%
-}
-\newcommand*\Mn@greek@Upright{%
-  \Mn@greek@select{up}{upper}%
-  \Mn@greek@select{up}{lower}%
-}
-\newcommand*\Mn@greek@Italic{%
-  \Mn@greek@select{it}{upper}%
-  \Mn@greek@select{it}{lower}%
-}
-\newcommand*\Mn@greek@Mixed{%
-  \Mn@greek@select{up}{upper}%
-  \Mn@greek@select{it}{lower}%
-}
+  \newcommand*\Mn@greek@select[2]{%
+    \expandafter\let\expandafter\Mn@greek@list\csname Mn@greek@list@#2\endcsname
+    \@for\@tempa:=\Mn@greek@list\do{%
+      \expandafter\let\csname\@tempa\expandafter\endcsname
+      \csname#1\@tempa\endcsname
+    }%
+  }
+  \newcommand*\Mn@greek@Upright{%
+    \Mn@greek@select{up}{upper}%
+    \Mn@greek@select{up}{lower}%
+  }
+  \newcommand*\Mn@greek@Italic{%
+    \Mn@greek@select{it}{upper}%
+    \Mn@greek@select{it}{lower}%
+  }
+  \newcommand*\Mn@greek@Mixed{%
+    \Mn@greek@select{up}{upper}%
+    \Mn@greek@select{it}{lower}%
+  }
 %    \end{macrocode}
 % Finally initialise the Greek letters.
 %    \begin{macrocode}
-\Mn@load@greek
+  \Mn@load@greek
+\fi
 %    \end{macrocode}
 %
 % \subsection{Superior and inferior figures}
@@ -977,30 +995,34 @@
 % Some symbols missing from MnSymbol can be taken from MinionPro.
 %
 %    \begin{macrocode}
-\DeclareMathSymbol{\hbar}             {\mathord}{letters}{'265}
-\DeclareMathSymbol{\uphbar}           {\mathord}{letters}{'255}
-\DeclareMathSymbol{\partial}          {\mathord}{letters}{'100}
-\DeclareMathSymbol{\uppartial}        {\mathord}{letters}{'300}
-\DeclareMathSymbol{\ell}              {\mathord}{letters}{'140}
-\DeclareMathSymbol{\upell}            {\mathord}{letters}{'340}
-\DeclareMathSymbol{\slashedzero}      {\mathord}{letters}{'257}
-\DeclareMathSymbol{\upimath}          {\mathord}{letters}{'373}
-\DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
-\DeclareMathSymbol{\lozenge}          {\mathord}{letters}{'375}
-\DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
+\if@Mn@Math@
+  \DeclareMathSymbol{\hbar}             {\mathord}{letters}{'265}
+  \DeclareMathSymbol{\uphbar}           {\mathord}{letters}{'255}
+  \DeclareMathSymbol{\partial}          {\mathord}{letters}{'100}
+  \DeclareMathSymbol{\uppartial}        {\mathord}{letters}{'300}
+  \DeclareMathSymbol{\ell}              {\mathord}{letters}{'140}
+  \DeclareMathSymbol{\upell}            {\mathord}{letters}{'340}
+  \DeclareMathSymbol{\slashedzero}      {\mathord}{letters}{'257}
+  \DeclareMathSymbol{\upimath}          {\mathord}{letters}{'373}
+  \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
+  \DeclareMathSymbol{\lozenge}          {\mathord}{letters}{'375}
+  \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
+\fi
 %    \end{macrocode}
 % Archaic Greek letters not provided by MinionPro
 %    \begin{macrocode}
-%\def\Qoppa{\reflectbox{P}}
-%\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
-\let\Stigma\stigma
-\AtBeginDocument{
-  \UndeclareTextCommand{\textvisiblespace}{T1}%
-  \UndeclareTextCommand{\textcompwordmark}{T1}%
-  \UndeclareTextCommand{\textsterling}{T1}%
-  \UndeclareTextCommand{\j}{T1}%
-  \UndeclareTextCommand{\j}{LY1}%
-}
+\if@Mn@Text@
+  %\def\Qoppa{\reflectbox{P}}
+  %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
+  \let\Stigma\stigma
+  \AtBeginDocument{
+    \UndeclareTextCommand{\textvisiblespace}{T1}%
+    \UndeclareTextCommand{\textcompwordmark}{T1}%
+    \UndeclareTextCommand{\textsterling}{T1}%
+    \UndeclareTextCommand{\j}{T1}%
+    \UndeclareTextCommand{\j}{LY1}%
+  }
+\fi
 %    \end{macrocode}
 %
 % \subsection{Integral symbols}
@@ -1008,94 +1030,98 @@
 % We can also replace the integral signs from MnSymbol by those of MinionPro.
 % The following definitions provide this as an option.
 %    \begin{macrocode}
-\newcommand\Mn@Decl@Minion@Ints{%
+\if@Mn@Math@
+  \newcommand\Mn@Decl@Minion@Ints{%
 %    \end{macrocode}
 % Replace |MnSymbolF| by |MnSymbolFI|.
 %    \begin{macrocode}
-  \DeclareFontFamily{U}{MnSymbolFI}{}
-  \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
-      <-6>  MnSymbolFI\Mn@minionint@opticals5
-     <6-7>  MnSymbolFI\Mn@minionint@opticals6
-     <7-8>  MnSymbolFI\Mn@minionint@opticals7
-     <8-9>  MnSymbolFI\Mn@minionint@opticals8
-     <9-10> MnSymbolFI\Mn@minionint@opticals9
-    <10-12> MnSymbolFI\Mn@minionint@opticals10
-    <12->   MnSymbolFI\Mn@minionint@opticals12
-  }{}
-  \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
-      <-6>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals5
-     <6-7>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals6
-     <7-8>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals7
-     <8-9>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals8
-     <9-10> MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals9
-    <10-12> MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals10
-    <12->   MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals12
-  }{}
+    \DeclareFontFamily{U}{MnSymbolFI}{}
+    \DeclareFontShape{U}{MnSymbolFI}{m}{it}{
+        <-6>  MnSymbolFI\Mn@minionint@opticals5
+       <6-7>  MnSymbolFI\Mn@minionint@opticals6
+       <7-8>  MnSymbolFI\Mn@minionint@opticals7
+       <8-9>  MnSymbolFI\Mn@minionint@opticals8
+       <9-10> MnSymbolFI\Mn@minionint@opticals9
+      <10-12> MnSymbolFI\Mn@minionint@opticals10
+      <12->   MnSymbolFI\Mn@minionint@opticals12
+    }{}
+    \DeclareFontShape{U}{MnSymbolFI}{b}{it}{
+        <-6>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals5
+       <6-7>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals6
+       <7-8>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals7
+       <8-9>  MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals8
+       <9-10> MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals9
+      <10-12> MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals10
+      <12->   MnSymbolFI\Mn@minionint@bold\Mn@minionint@opticals12
+    }{}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-  \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
-  \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
+    \DeclareSymbolFont{symbols}  {U}{MnSymbolFI}{m}{it}
+    \SetSymbolFont{symbols}{bold}{U}{MnSymbolFI}{b}{it}
 %    \end{macrocode}
 % Make the original integral symbols available as |\var|\dots.
 %    \begin{macrocode}
-  \let\varint\tint
-  \let\variint\tiint
-  \let\variiint\tiiint
-  \let\variiiint\tiiiint
-  \let\varidotsint\tidotsint
-  \let\varlandupint\tlandupint
-  \let\varlanddownint\tlanddownint
-  \let\varstrokedint\tstrokedint
-  \let\varoint\toint
-  \let\varoiint\toiint
-  \let\varrcirclerightint\trcirclerightint
-  \let\varlcirclerightint\tlcirclerightint
-  \let\varrcircleleftint\trcircleleftint
-  \let\varlcircleleftint\tlcircleleftint
-  \let\varsumint\tsumint
+    \let\varint\tint
+    \let\variint\tiint
+    \let\variiint\tiiint
+    \let\variiiint\tiiiint
+    \let\varidotsint\tidotsint
+    \let\varlandupint\tlandupint
+    \let\varlanddownint\tlanddownint
+    \let\varstrokedint\tstrokedint
+    \let\varoint\toint
+    \let\varoiint\toiint
+    \let\varrcirclerightint\trcirclerightint
+    \let\varlcirclerightint\tlcirclerightint
+    \let\varrcircleleftint\trcircleleftint
+    \let\varlcircleleftint\tlcircleleftint
+    \let\varsumint\tsumint
 %    \end{macrocode}
 % Replace the symbols with the new integrals.
 %    \begin{macrocode}
-  \DeclareMathSymbol\tint            \mathop{symbols}{112}
-  \DeclareMathSymbol\tiint           \mathop{symbols}{114}
-  \DeclareMathSymbol\tiiint          \mathop{symbols}{116}
-  \DeclareMathSymbol\tiiiint         \mathop{symbols}{118}
-  \DeclareMathSymbol\tidotsint       \mathop{symbols}{120}
-  \DeclareMathSymbol\tlandupint      \mathop{symbols}{122}
-  \DeclareMathSymbol\tlanddownint    \mathop{symbols}{124}
-  \DeclareMathSymbol\tstrokedint     \mathop{symbols}{126}
-  \DeclareMathSymbol\toint           \mathop{symbols}{128}
-  \DeclareMathSymbol\toiint          \mathop{symbols}{130}
-  \DeclareMathSymbol\trcirclerightint\mathop{symbols}{132}
-  \DeclareMathSymbol\tlcirclerightint\mathop{symbols}{134}
-  \DeclareMathSymbol\trcircleleftint \mathop{symbols}{136}
-  \DeclareMathSymbol\tlcircleleftint \mathop{symbols}{138}
-  \DeclareMathSymbol\tsumint         \mathop{symbols}{140}
-  \let\intop\tint
-  \let\ointop\toint
-}
+    \DeclareMathSymbol\tint            \mathop{symbols}{112}
+    \DeclareMathSymbol\tiint           \mathop{symbols}{114}
+    \DeclareMathSymbol\tiiint          \mathop{symbols}{116}
+    \DeclareMathSymbol\tiiiint         \mathop{symbols}{118}
+    \DeclareMathSymbol\tidotsint       \mathop{symbols}{120}
+    \DeclareMathSymbol\tlandupint      \mathop{symbols}{122}
+    \DeclareMathSymbol\tlanddownint    \mathop{symbols}{124}
+    \DeclareMathSymbol\tstrokedint     \mathop{symbols}{126}
+    \DeclareMathSymbol\toint           \mathop{symbols}{128}
+    \DeclareMathSymbol\toiint          \mathop{symbols}{130}
+    \DeclareMathSymbol\trcirclerightint\mathop{symbols}{132}
+    \DeclareMathSymbol\tlcirclerightint\mathop{symbols}{134}
+    \DeclareMathSymbol\trcircleleftint \mathop{symbols}{136}
+    \DeclareMathSymbol\tlcircleleftint \mathop{symbols}{138}
+    \DeclareMathSymbol\tsumint         \mathop{symbols}{140}
+    \let\intop\tint
+    \let\ointop\toint
+  }
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\Mn@load@integrals
+  \Mn@load@integrals
+\fi
 %    \end{macrocode}
 %
 % \subsection{Logos}
 %
 % Correct logos.
 %    \begin{macrocode}
-\def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
-\DeclareRobustCommand{\LaTeX}{L\kern-.32em%
-        {\sbox\z@ T%
-         \vbox to\ht\z@{\hbox{\check@mathfonts
-                              \fontsize\sf@size\z@
-                              \math@fontsfalse\selectfont
-                              A}%
-                        \vss}%
-        }%
-        \kern-.15em%
-        \TeX}
+\if@Mn@Text@
+  \def\TeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.125emX\@}
+  \DeclareRobustCommand{\LaTeX}{L\kern-.32em%
+          {\sbox\z@ T%
+           \vbox to\ht\z@{\hbox{\check@mathfonts
+                                \fontsize\sf@size\z@
+                                \math@fontsfalse\selectfont
+                                A}%
+                          \vss}%
+          }%
+          \kern-.15em%
+          \TeX}
+\fi
 %    \end{macrocode}
 %
 % \subsection{AMS}
@@ -1126,7 +1152,9 @@
 %    \end{macrocode}
 % Make the changes take effect. This concludes the main style file.
 %    \begin{macrocode}
-\normalfont
+\if@Mn@Text@
+  \normalfont
+\fi
 %</style>
 %    \end{macrocode}
 %
