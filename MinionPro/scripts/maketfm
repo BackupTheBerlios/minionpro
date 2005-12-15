@@ -55,45 +55,6 @@ do
   esac
 done
 
-## Detect whether the full set of optical sizes is present.
-#opticals=true
-#
-#if [ ! -e "otf/$font-Capt.otf" ]
-#then
-#  opticals=false
-#fi
-
-# Determine version of the fonts.
-
-case $(otfinfo -v otf/$font-Regular.otf) in
-  *";PS 001.000;"*) version=1;;
-  *";PS 001.001;"*) version=2;;
-  *";PS 002.000;"*) version=3;;
-  *)                version=4;;
-esac
-
-# Newer versions have different glyph names.
-
-extra_flags=""
-oml_flags="--unicoding 'rho1 =: rho'"
-
-if [ $version -ge 3 ]
-then
-  extra_flags="--unicoding 'orn.014 =: uni2767'"
-  extra_flags="$extra_flags --unicoding 'orn.015 =: uni2766'"
-  extra_flags="$extra_flags --unicoding 'orn.029 =: uni27A2'"
-  extra_flags="$extra_flags --unicoding 'orn.035 =: uni2733'"
-  extra_flags="$extra_flags --unicoding 'orn.037 =: uni2734'"
-  extra_flags="$extra_flags --unicoding 'orn.038 =: uni2713'"
-else
-  create_vietnamese=false
-fi
-
-if $open_g
-then
-  oml_flags="$oml_flags --unicoding 'g =: afii10192 afii10069.ital g'"
-fi
-
 liga="-fliga"
 noliga="--unicoding='ff =: emptyslot'"
 noliga="$noliga --unicoding='fi =: emptyslot'"
@@ -101,15 +62,9 @@ noliga="$noliga --unicoding='fl =: emptyslot'"
 noliga="$noliga --unicoding='ffi =: emptyslot'"
 noliga="$noliga --unicoding='ffl =: emptyslot'"
 
-greek_flags="--position 'uni1FCE 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FCF 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FBD 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FCD 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FDD 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FDE 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FDF 0 30 0'"
-greek_flags="$greek_flags --position 'uni1FFE 0 30 0'"
-greek_flags="$greek_flags --position 'grave   0 30 0'"
+extra_flags=""
+oml_flags=""
+greek_flags=""
 
 if [ -e "scripts/maketfm-$font.cfg" ]
 then
@@ -131,21 +86,21 @@ make_enckern() {
       do
         if $create_kerned
         then
-          if [ -e "kerning/$1$l-$enc.kern" ]
+          if [ -e "kerning/$font/$1$l-$enc.kern" ]
           then
-            cat $e "kerning/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+            cat $e "kerning/$font/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
           else
-            if [ -e "kerning/$1$l.kern" ]
+            if [ -e "kerning/$font/$1$l.kern" ]
             then
-              cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+              cat $e "kerning/$font/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
             else
-              if [ -e "kerning/$1-$enc.kern" ]
+              if [ -e "kerning/$font/$1-$enc.kern" ]
               then
-                cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+                cat $e "kerning/$font/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
               else
-                if [ -e "kerning/$1.kern" ]
+                if [ -e "kerning/$font/$1.kern" ]
                 then
-                  cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+                  cat $e "kerning/$font/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
                 else
                   cp $e enc/mn-$1$l-$enc.enckern
                 fi
@@ -209,9 +164,9 @@ make_tfm() {
 }
 
 make_ligkern_options() {
-  if [ -e "kerning/$1.kern" ]
+  if [ -e "kerning/$font/$1.kern" ]
   then
-    cat "kerning/$1.kern" |
+    cat "kerning/$font/$1.kern" |
     grep "#$2#" |
     gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}' | xargs |
     sed -e "s/#$2#//g" -e "s/XXX/\'/g"
