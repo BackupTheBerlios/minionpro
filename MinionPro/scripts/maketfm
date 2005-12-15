@@ -33,12 +33,19 @@ create_expanded=false
 create_kerned=true
 create_sc=true
 create_sc_grekcyrl=false
+create_swash=true
 open_g=false
 
 if [ x"`otfinfo -f otf/$font-Regular.otf|grep smcp`" = "x" ] 
 then 
   create_sc=false
 fi
+
+if [ x"`otfinfo -f otf/$font-It.otf|grep Swash`" = "x" ] 
+then 
+  create_swash=false
+fi
+
 
 for opt in "$@"
 do
@@ -522,12 +529,17 @@ make_additional_italic() {
 
   for sub in "" Capt Disp Subh
   do
-    make_swash_metrics "$1$sub"
+    if $create_swash
+    then
+      make_swash_metrics "$1$sub"
+    fi
     make_integrals     "$1$sub"
   done
-
-  make_spaced_swash_metrics "$1"
-  make_spaced_swash_metrics "$1Capt"
+  if $create_swash
+  then
+    make_spaced_swash_metrics "$1"
+    make_spaced_swash_metrics "$1Capt"
+  fi
 }
 
 # We first create shell scripts with the actual otftotfm calls.
