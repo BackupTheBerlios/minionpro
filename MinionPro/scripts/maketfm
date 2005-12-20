@@ -10,6 +10,8 @@ usage() {
   echo "USAGE: maketfm <font> [options]"
   echo -e "\nSupported options are:"
   echo "--verbose    | --quiet"
+  echo "--smallcaps  | --nosmallcaps"
+  echo "--swash      | --noswash"
   echo "--greek      | --nogreek"
   echo "--cyrillic   | --nocyrillic"
   echo "--vietnamese | --novietnamese"
@@ -31,21 +33,20 @@ create_cyrillic=true
 create_vietnamese=true
 create_expanded=false
 create_kerned=true
-create_sc=true
+create_smallcaps=true
 create_sc_grekcyrl=false
 create_swash=true
 open_g=false
 
-if [ x"`otfinfo -f otf/$font-Regular.otf|grep smcp`" = "x" ] 
+if [ "x$(otfinfo -f otf/$font-Regular.otf | grep smcp)" = "x" ] 
 then 
-  create_sc=false
+  create_smallcaps=false
 fi
 
-if [ x"`otfinfo -f otf/$font-It.otf|grep Swash`" = "x" ] 
+if [ "x$(otfinfo -f otf/$font-It.otf | grep Swash)" = "x" ] 
 then 
   create_swash=false
 fi
-
 
 for opt in "$@"
 do
@@ -54,6 +55,10 @@ do
     --quiet)        verbose=false;;
     --greek)        create_greek=true;;
     --nogreek)      create_greek=false;;
+    --smallcaps)    create_smallcaps=true;;
+    --nosmallcaps)  create_smallcaps=false;;
+    --swash)        create_swash=true;;
+    --noswash)      create_swash=false;;
     --cyrillic)     create_cyrillic=true;;
     --nocyrillic)   create_cyrillic=false;;
     --vietnamese)   create_vietnamese=true;;
@@ -69,7 +74,6 @@ do
   esac
 done
 
-liga="-fliga"
 noliga="--unicoding='ff =: emptyslot'"
 noliga="$noliga --unicoding='fi =: emptyslot'"
 noliga="$noliga --unicoding='fl =: emptyslot'"
@@ -275,7 +279,7 @@ make_normal_metrics() {
     make_tfm "$1" t5   $2-t5        "       $flags"
   fi
 
-  if $create_sc
+  if $create_smallcaps
   then
     make_tfm "$1" t1     $2-sc-t1     "       $sc_flags               --unicoding='germandbls =: SSsmall'"
     make_tfm "$1" ot1    $2-sc-ot1    "       $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
@@ -289,26 +293,26 @@ make_normal_metrics() {
 
     if $create_sc_grekcyrl
     then
-    if $create_greek
-    then
-      make_tfm "$1" lgr  $2-sc-lgr    "       $sc_flags               -sgrek $lgr_flags $greek_flags"
-      make_tfm "$1" lgi  $2-sc-lgi    "       $sc_flags               -sgrek $lgr_flags $greek_flags"
-      make_tfm "$1" lgr  $2-sc-l2-lgr "-L 80  $sc_flags               -sgrek $lgr_flags $greek_flags --space-factor=1.15 "
-      make_tfm "$1" lgi  $2-sc-l2-lgi "-L 80  $sc_flags               -sgrek $lgr_flags $greek_flags --space-factor=1.15"
-    fi
-    if $create_cyrillic
-    then
-      make_tfm "$1" t2a  $2-sc-t2a    "       $sc_flags               -scyrl"
-      make_tfm "$1" t2b  $2-sc-t2b    "       $sc_flags               -scyrl"
-      make_tfm "$1" t2c  $2-sc-t2c    "       $sc_flags               -scyrl"
-      make_tfm "$1" x2   $2-sc-x2     "       $sc_flags               -scyrl"
-      make_tfm "$1" ot2  $2-sc-ot2    "       $sc_flags               -scyrl"
-      make_tfm "$1" t2a  $2-sc-l2-t2a "-L 80  $sc_flags               -scyrl --space-factor=1.15"
-      make_tfm "$1" t2b  $2-sc-l2-t2b "-L 80  $sc_flags               -scyrl --space-factor=1.15"
-      make_tfm "$1" t2c  $2-sc-l2-t2c "-L 80  $sc_flags               -scyrl --space-factor=1.15"
-      make_tfm "$1" x2   $2-sc-l2-x2  "-L 80  $sc_flags               -scyrl --space-factor=1.15"
-      make_tfm "$1" ot2  $2-sc-l2-ot2 "-L 80  $sc_flags               -scyrl --space-factor=1.15"
-    fi
+      if $create_greek
+      then
+        make_tfm "$1" lgr  $2-sc-lgr    "       $sc_flags               -sgrek $lgr_flags $greek_flags"
+        make_tfm "$1" lgi  $2-sc-lgi    "       $sc_flags               -sgrek $lgr_flags $greek_flags"
+        make_tfm "$1" lgr  $2-sc-l2-lgr "-L 80  $sc_flags               -sgrek $lgr_flags $greek_flags --space-factor=1.15 "
+        make_tfm "$1" lgi  $2-sc-l2-lgi "-L 80  $sc_flags               -sgrek $lgr_flags $greek_flags --space-factor=1.15"
+      fi
+      if $create_cyrillic
+      then
+        make_tfm "$1" t2a  $2-sc-t2a    "       $sc_flags               -scyrl"
+        make_tfm "$1" t2b  $2-sc-t2b    "       $sc_flags               -scyrl"
+        make_tfm "$1" t2c  $2-sc-t2c    "       $sc_flags               -scyrl"
+        make_tfm "$1" x2   $2-sc-x2     "       $sc_flags               -scyrl"
+        make_tfm "$1" ot2  $2-sc-ot2    "       $sc_flags               -scyrl"
+        make_tfm "$1" t2a  $2-sc-l2-t2a "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" t2b  $2-sc-l2-t2b "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" t2c  $2-sc-l2-t2c "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" x2   $2-sc-l2-x2  "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+        make_tfm "$1" ot2  $2-sc-l2-ot2 "-L 80  $sc_flags               -scyrl --space-factor=1.15"
+      fi
     fi
 
     if $create_vietnamese
@@ -351,7 +355,7 @@ make_spread_metrics() {
     make_tfm "$1" t5   $2-l1-t5     "-L 40        $flags"
   fi
 
-  if $create_sc
+  if $create_smallcaps
   then
     make_tfm "$1" t1     $2-sc-l1-t1  "-L 40 $sc_flags               --unicoding='germandbls =: SSsmall'"
     make_tfm "$1" ot1    $2-sc-l1-ot1 "-L 40 $sc_flags $it_ot1_flags --unicoding='germandbls =: SSsmall' --unicoding='dotlessj =: Jsmall'"
@@ -360,19 +364,19 @@ make_spread_metrics() {
 
     if $create_sc_grekcyrl
     then
-    if $create_greek
-    then
-      make_tfm "$1" lgr  $2-sc-l1-lgr "-L 40 $sc_flags -sgrek $lgr_flags $greek_flags"
-      make_tfm "$1" lgi  $2-sc-l1-lgi "-L 40 $sc_flags -sgrek $lgr_flags $greek_flags"
-    fi
-    if $create_cyrillic
-    then
-      make_tfm "$1" t2a  $2-sc-l1-t2a "-L 40 $sc_flags -scyrl"
-      make_tfm "$1" t2b  $2-sc-l1-t2b "-L 40 $sc_flags -scyrl"
-      make_tfm "$1" t2c  $2-sc-l1-t2c "-L 40 $sc_flags -scyrl"
-      make_tfm "$1" x2   $2-sc-l1-x2  "-L 40 $sc_flags -scyrl"
-      make_tfm "$1" ot2  $2-sc-l1-ot2 "-L 40 $sc_flags -scyrl"
-    fi
+      if $create_greek
+      then
+        make_tfm "$1" lgr  $2-sc-l1-lgr "-L 40 $sc_flags -sgrek $lgr_flags $greek_flags"
+        make_tfm "$1" lgi  $2-sc-l1-lgi "-L 40 $sc_flags -sgrek $lgr_flags $greek_flags"
+      fi
+      if $create_cyrillic
+      then
+        make_tfm "$1" t2a  $2-sc-l1-t2a "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" t2b  $2-sc-l1-t2b "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" t2c  $2-sc-l1-t2c "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" x2   $2-sc-l1-x2  "-L 40 $sc_flags -scyrl"
+        make_tfm "$1" ot2  $2-sc-l1-ot2 "-L 40 $sc_flags -scyrl"
+      fi
     fi
 
     if $create_vietnamese
