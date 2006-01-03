@@ -1,0 +1,33 @@
+MnSymbol is a symbol font designed to be used in conjunction with Adobe
+MinionPro.
+
+All files in this archive are in the public domain.
+
+To install the fonts:
+
+(1) Run
+
+  $ latex MnSymbol.ins
+
+(2) Copy all files with the suffix .mf into the directory
+
+   .../texmf/fonts/source/public/MnSymbol/
+
+(3) Copy the file MnSymbol.sty to
+
+   .../texmf/tex/latex/MnSymbol/MnSymbol.sty
+
+(4) Copy the documentation (MnSymbol.ps, MnSymbol.pdf, README) into the directory
+
+   .../texmf/doc/latex/MnSymbol/
+
+(5) If you also want to install the PostScript fonts (these are traced fonts
+of low quality) copy
+
+  o ps-fonts/MnSymbol.map into .../texmf/fonts/map/dvips/MnSymbol
+  o ps-fonts/*.enc        into .../texmf/fonts/enc/dvips/MnSymbol
+  o ps-fonts/*.pfb        into .../texmf/fonts/type1/public/MnSymbol
+
+(6) Regenerate the file database.
+
+Achim Blumensath
