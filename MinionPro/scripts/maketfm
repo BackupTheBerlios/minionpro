@@ -104,21 +104,21 @@ make_enckern() {
       do
         if $create_kerned
         then
-          if [ -e "kerning/$font/$1$l-$enc.kern" ]
+          if [ -e "kerning/$1$l-$enc.kern" ]
           then
-            cat $e "kerning/$font/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+            cat $e "kerning/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
           else
-            if [ -e "kerning/$font/$1$l.kern" ]
+            if [ -e "kerning/$1$l.kern" ]
             then
-              cat $e "kerning/$font/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+              cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
             else
-              if [ -e "kerning/$font/$1-$enc.kern" ]
+              if [ -e "kerning/$1-$enc.kern" ]
               then
-                cat $e "kerning/$font/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+                cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
               else
-                if [ -e "kerning/$font/$1.kern" ]
+                if [ -e "kerning/$1.kern" ]
                 then
-                  cat $e "kerning/$font/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+                  cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
                 else
                   cp $e enc/mn-$1$l-$enc.enckern
                 fi
@@ -182,9 +182,9 @@ make_tfm() {
 }
 
 make_ligkern_options() {
-  if [ -e "kerning/$font/$1.kern" ]
+  if [ -e "kerning/$1.kern" ]
   then
-    cat "kerning/$font/$1.kern" |
+    cat "kerning/$1.kern" |
     grep "#$2#" |
     gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}' | xargs |
     sed -e "s/#$2#//g" -e "s/XXX/\'/g"
