@@ -1016,10 +1016,10 @@
   %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
   \let\Stigma\stigma
 
-  \DeclareEncodingSubset{TS1}{MinionPro-LF}  {0}%
-  \DeclareEncodingSubset{TS1}{MinionPro-TLF} {0}%
-  \DeclareEncodingSubset{TS1}{MinionPro-OSF} {0}%
-  \DeclareEncodingSubset{TS1}{MinionPro-TOSF}{0}%
+  \DeclareEncodingSubset{TS1}{MinionPro-LF}  {1}%
+  \DeclareEncodingSubset{TS1}{MinionPro-TLF} {1}%
+  \DeclareEncodingSubset{TS1}{MinionPro-OsF} {1}%
+  \DeclareEncodingSubset{TS1}{MinionPro-TOsF}{1}%
   \AtBeginDocument{
     \UndeclareTextCommand{\textvisiblespace}{T1}%
     \UndeclareTextCommand{\textcompwordmark}{T1}%
@@ -1840,7 +1840,6 @@
 %<Uextra>    \Mn@DeclareSmallFontFamily[Extra]{U}  {MinionPro}
 %<LGR>       \Mn@DeclareSmallFontFamily       {LGR}{MinionPro}
 %<LGI>       \Mn@DeclareSmallFontFamily       {LGI}{MinionPro}
-%<OML>       \Mn@DeclareMathFontFamily        {OML}{MinionPro}
 %<OT1>       \Mn@DeclareLargeFontFamily       {OT1}{MinionPro}
 %<T1>        \Mn@DeclareLargeFontFamily       {T1} {MinionPro}
 %<LY1>       \Mn@DeclareLargeFontFamily       {LY1}{MinionPro}
@@ -1851,6 +1850,18 @@
 %<TS1>       \Mn@DeclareLargeFontFamily       {TS1}{MinionPro}
 %<X2>        \Mn@DeclareSmallFontFamily       {X2} {MinionPro}
 %<OT2>       \Mn@DeclareSmallFontFamily       {OT2}{MinionPro}
+%<OML&tosf>  \Mn@DeclareMathFontFamily        {OML}{MinionPro}
+%<*OML&(lf|osf|tlf)>
+  \@for\Mn@variant:=LF,TLF,OsF\do{%
+    \DeclareFontFamily{OML}{MinionPro-\Mn@variant}{\skewchar\font=255}
+    \@for\Mn@series:=m,sb,b,bx,eb\do{%
+      \@for\Mn@shape:=n,it\do{%
+        \DeclareFontShape{OML}{MinionPro-\Mn@variant}{\Mn@series}{\Mn@shape}%
+          { <-> ssub*MinionPro-TOsF/\Mn@series/\Mn@shape }{}
+      }%
+    }%
+  }%
+%</OML&(lf|osf|tlf)>
 %</fd>
 %    \end{macrocode}
 %
