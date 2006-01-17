@@ -7,7 +7,7 @@
   /uniEFEE /Macron /uniEFED /uniEFF2 /uniEFF1 /quotesinglbase /.notdef /.notdef
 % 0x10
   /.notdef /.notdef /quotedblbase /.notdef /.notdef /twelveudash /threequartersemdash /capitalcompwordmark
-  /uniE0FC /uniE0FE /cyrflex /cyrFlex /cyrflex /cyrFlex /.notdef /ascendercompwordmark
+  /uni2190.alt1 /uni2192.alt1 /cyrflex /cyrFlex /cyrflex /cyrFlex /.notdef /ascendercompwordmark
 % 0x20
   /blank /.notdef /.notdef /.notdef /dollar /.notdef /.notdef /quotesingle
   /.notdef /.notdef /asteriskcentered /.notdef /comma /hyphendbl /period /fraction
