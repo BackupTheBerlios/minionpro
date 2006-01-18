@@ -1016,6 +1016,11 @@
   %\def\Sampi{\begingroup\fontfamily{cmr}\fontencoding{LGR}\selectfont\char23\endgroup}
   \let\Stigma\stigma
 
+  % fix \r A
+  \DeclareTextCompositeCommand{\r}{OT1}{A}
+     {\leavevmode\setbox\z@\hbox{!}\dimen@\ht\z@\advance\dimen@-1ex%
+     \ooalign{\hss\raise.67\dimen@\hbox{\char23}\hss\crcr A}}
+
   \DeclareEncodingSubset{TS1}{MinionPro-LF}  {1}%
   \DeclareEncodingSubset{TS1}{MinionPro-TLF} {1}%
   \DeclareEncodingSubset{TS1}{MinionPro-OsF} {1}%
