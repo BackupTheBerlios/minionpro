@@ -175,6 +175,13 @@
 %   \option{slides}       & use only the optical shape Caption (useful for slides)
 % \end{options}
 %
+% \noindent
+% The package also provides a way to only change the text fonts or only the math fonts.
+% \begin{options}
+%   \option{onlytext} & only change the text fonts\\
+%   \option{onlymath} & only change the math fonts
+% \end{options}
+%
 % \subsubsection*{Figure selection}
 %
 % MinionPro offers four different figure versions. A detailed
@@ -662,6 +669,7 @@
 %
 %    \begin{macrocode}
 \RequirePackage{MinionPro-FontDef}
+\@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@Mn@Math@
   \RequirePackage{MnSymbol}
@@ -1021,7 +1029,6 @@
      {\leavevmode\setbox\z@\hbox{!}\dimen@\ht\z@\advance\dimen@-1ex%
      \ooalign{\hss\raise.67\dimen@\hbox{\char23}\hss\crcr A}}
 
-  \RequirePackage{textcomp}
   \DeclareEncodingSubset{TS1}{MinionPro-LF}  {1}%
   \DeclareEncodingSubset{TS1}{MinionPro-TLF} {1}%
   \DeclareEncodingSubset{TS1}{MinionPro-OsF} {1}%
