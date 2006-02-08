@@ -9,15 +9,16 @@ shift
 usage() {
   echo "USAGE: maketfm <font> [options]"
   echo -e "\nSupported options are:"
-  echo "--verbose    | --quiet"
-  echo "--smallcaps  | --nosmallcaps"
-  echo "--swash      | --noswash"
-  echo "--greek      | --nogreek"
-  echo "--cyrillic   | --nocyrillic"
-  echo "--vietnamese | --novietnamese"
-  echo "--expanded   | --noexpanded"
-  echo "--kern       | --nokern"
-  echo "--open-g     | --closed-g"
+  echo "--verbose      | --quiet"
+  echo "--smallcaps    | --nosmallcaps"
+  echo "--swash        | --noswash"
+  echo "--greek        | --nogreek"
+  echo "--cyrillic     | --nocyrillic"
+  echo "--vietnamese   | --novietnamese"
+  echo "--kern         | --nokern"
+  echo "--wide-spacing | --narrow-spacing"
+  echo "--expanded     | --noexpanded"
+  echo "--open-g       | --closed-g"
   exit 1
 }
 
@@ -37,6 +38,7 @@ create_smallcaps=true
 create_sc_grekcyrl=false
 create_swash=true
 open_g=false
+wide_spacing=false
 
 if [ "x$(otfinfo -f otf/$font-Regular.otf | grep smcp)" = "x" ] 
 then 
@@ -51,26 +53,28 @@ fi
 for opt in "$@"
 do
   case "$opt" in
-    --verbose)      verbose=true;;
-    --quiet)        verbose=false;;
-    --greek)        create_greek=true;;
-    --nogreek)      create_greek=false;;
-    --smallcaps)    create_smallcaps=true;;
-    --nosmallcaps)  create_smallcaps=false;;
-    --swash)        create_swash=true;;
-    --noswash)      create_swash=false;;
-    --cyrillic)     create_cyrillic=true;;
-    --nocyrillic)   create_cyrillic=false;;
-    --vietnamese)   create_vietnamese=true;;
-    --novietnamese) create_vietnamese=false;;
-    --expanded)     create_expanded=true;;
-    --noexpanded)   create_expanded=false;;
-    --kern)         create_kerned=true;;
-    --nokern)       create_kerned=false;;
-    --open-g)       open_g=true;;
-    --closed-g)     open_g=false;;
-    *)              echo -e "Unknown option $opt\n";
-                    usage;;
+    --verbose)        verbose=true;;
+    --quiet)          verbose=false;;
+    --greek)          create_greek=true;;
+    --nogreek)        create_greek=false;;
+    --smallcaps)      create_smallcaps=true;;
+    --nosmallcaps)    create_smallcaps=false;;
+    --swash)          create_swash=true;;
+    --noswash)        create_swash=false;;
+    --cyrillic)       create_cyrillic=true;;
+    --nocyrillic)     create_cyrillic=false;;
+    --vietnamese)     create_vietnamese=true;;
+    --novietnamese)   create_vietnamese=false;;
+    --expanded)       create_expanded=true;;
+    --noexpanded)     create_expanded=false;;
+    --kern)           create_kerned=true;;
+    --nokern)         create_kerned=false;;
+    --open-g)         open_g=true;;
+    --closed-g)       open_g=false;;
+    --wide-spacing)   wide_spacing=true;;
+    --narrow-spacing) wide_spacing=false;;
+    *)                echo -e "Unknown option $opt\n";
+                      usage;;
   esac
 done
 
@@ -83,6 +87,7 @@ noliga="$noliga --unicoding='ffl =: emptyslot'"
 extra_flags=""
 oml_flags=""
 greek_flags=""
+quote_flags=""
 
 if [ -e "scripts/maketfm-$font.cfg" ]
 then
@@ -198,7 +203,7 @@ get_flags() {
      tlf) flags="-flnum -ftnum";;
     tosf) flags="-fonum -ftnum";;
   esac
-  flags="$flags $(make_ligkern_options "$1" "$2")"
+  flags="$flags $quote_flags $(make_ligkern_options "$1" "$2")"
 }
 get_ts_flags() {
   case $1 in
