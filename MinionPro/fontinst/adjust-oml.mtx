@@ -195,7 +195,7 @@
 \adjustmetrics{ITpi1}{0}{20}{0}{50}{20}
 \adjustmetrics{ITrho}{10}{10}{0}{70}{25}
 \adjustmetrics{ITrho1}{10}{10}{0}{70}{25}
-\adjustmetrics{ITsigma}{0}{0}{-20}{25}{25}
+\adjustmetrics{ITsigma}{0}{40}{-20}{25}{25}
 \adjustmetrics{ITsigma1}{0}{0}{0}{70}{25}
 \adjustmetrics{ITtau}{0}{0}{0}{50}{25}
 \adjustmetrics{ITupsilon}{0}{0}{0}{45}{25}
