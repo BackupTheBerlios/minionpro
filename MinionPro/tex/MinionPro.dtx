@@ -96,6 +96,8 @@
 }
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
+\renewcommand\Module[1]{%
+  \mathcode`\|="2353 \mathcode`\&="2026 $\langle\mathsf{#1}\rangle$}
 
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
