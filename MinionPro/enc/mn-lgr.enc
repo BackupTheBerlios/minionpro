@@ -235,7 +235,7 @@
   /Pi /Chi /Rho /Sigma /Tau /Upsilon /uni1FDE /Omega
   /Xi /Psi /Zeta /bracketleft /uni1FCF /bracketright /uni1FCE /uni1FCD
 % 0x60
-  /grave /alpha /beta /sigmafinal /delta /epsilon /phi /gamma
+  /grave /alpha /beta /sigmafinal /delta /epsilon /phi1 /gamma
   /eta /iota /theta /kappa /lambda /mu /nu /omicron
 % 0x70
   /pi /chi /rho /sigma /tau /upsilon /cwm /omega

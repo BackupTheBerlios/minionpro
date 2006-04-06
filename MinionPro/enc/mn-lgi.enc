@@ -80,6 +80,7 @@
 % LIGKERN parenleft Omega =:| uni1FFE ;
 % LIGKERN parenleft Omicron =:| uni1FFE ;
 % LIGKERN parenleft Upsilon =:| uni1FFE ;
+% LIGKERN parenleft Rho =: uni1FEC ;
 % LIGKERN parenleft quoteleft =: uni1FDD ;
 % LIGKERN parenleft quoteright =: uni1FDE ;
 % LIGKERN parenleft equal =: uni1FDF ;
@@ -228,7 +229,7 @@
 /Chi /Psi /Zeta /bracketleft
 /uni1FCF /bracketright /uni1FCE /uni1FCD
 % 0x60
-/quoteleft /alpha /beta /xi /delta /epsilon /phi /gamma
+/quoteleft /alpha /beta /xi /delta /epsilon /phi1 /gamma
 /eta /iota /sigmafinal /kappa /lambda /mu /nu /omicron
 % 0x70
 /pi /theta /rho /sigma /tau /upsilon /uni03DD /omega
