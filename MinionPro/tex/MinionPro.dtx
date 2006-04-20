@@ -308,11 +308,16 @@
 % list of figures and the list of tables.
 %
 % If you are using the \pkg{scrartcl} class then, instead of the above lines, you need
-% the command
+% the commands
 %
 % \begingroup\small
 % \begin{verbatim}
+% \begingroup
+% \figureversion{tabular}
 % \addtokomafont{sectioning}{\rmfamily\figureversion{tab}}
+% \renewcommand\familydefault{MinionPro-TOsF}
+% \tableofcontents
+% \endgroup
 % \end{verbatim}
 % \par\endgroup
 %
