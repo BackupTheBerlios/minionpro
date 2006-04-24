@@ -34,11 +34,12 @@ The MinionPro distribution is split into several archives. Which of them
 you need depends on the version of the fonts you have installed. We
 support three different versions of MinionPro:
 
-o 001.000: This is the first version which can still be found on old
-  FontFolio CDs.
-o 001.001: This is the version currently available for sale.
+o 001.000: This is the first version which can be found on, e.g., 
+           the 'Adobe Type Classics for Learning' CD.
+o 001.001: This is the version included with, e.g., the 
+           'Adobe Font Folio Opentype Edition' CD.
 o 002.000: This version is included in recent Acrobat Reader
-  installations.
+           installations and is currently for sale.
 
 If you have LCDF Typetools installed you can determine the version with
 the otfinfo command. For example, for version 002.000 you get:
@@ -46,48 +47,45 @@ the otfinfo command. For example, for version 002.000 you get:
   $ otfinfo -v MinionPro-Regular.otf
   Version 2.012;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565
 
-In all cases you need the archive:
 
+In all cases you need the archive:
 o scripts.zip
 
-For font version 002.000 we provide a single additional archive
-containing everything else you need:
+Depending on the font version you need *one* of the encoding file archives 
+  enc-v1.000.zip
+  enc-v1.001.zip
+  env-v2.000.zip
+Do not install several encoding file archives, they are mutually exclusive.
 
-o base-v2.zip
-
-For versions 001.000 and 001.001 the files are spread over several
-archives:
-
-o metrics-base-v1.zip: contains the metrics for Regular, Italic, Bold,
+Depending on the amount of font shapes that you own you need to install 
+o metrics-base.zip: contains the metrics for Regular, Italic, Bold,
   and BoldItalic.
-o metrics-full-v1.zip: contains additional metrics for Medium,
+o metrics-full.zip: contains additional metrics for Medium,
   MediumItalic, Semibold, and SemiboldItalic.
-o metrics-opticals-v1.zip: contains the metrics for the Capt, Subh, and
+o metrics-opticals.zip: contains additional metrics for the Capt, Subh, and
   Disp optical shapes.
-o enc-v1.000.zip: contains the encoding files for version 001.000.
-o enc-v1.001.zip: contains the encoding files for version 001.001.
 
-For example, if you have only the four basic weights in version 001.000
-then you need
+For example, if you have only the fonts coming with Adobe Reader 7,
+you have the base weights in font version 002.000. Then you need
 
   scripts.zip
-  metrics-base-v1.zip
-  enc-v1.000.zip
+  metrics-base.zip
+  enc-v2.000.zip
 
 If you have all weights, but not the optical families, in version
 001.001 then you need
 
   scripts.zip
-  metrics-base-v1.zip
-  metrics-full-v1.zip
+  metrics-base.zip
+  metrics-full.zip
   enc-v1.001.zip
 
 If you have all fonts in version 001.001 then you need
 
   scripts.zip
-  metrics-base-v1.zip
-  metrics-full-v1.zip
-  metrics-opticals-v1.zip
+  metrics-base.zip
+  metrics-full.zip
+  metrics-opticals.zip
   enc-v1.001.zip
 
 Installing
@@ -129,8 +127,8 @@ For MiKTeX execute
 5) Unpack the other archives directly into the TeX tree, for example:
 
   $ cd /usr/local/teTeX/share/texmf-local
-  $ unzip metrics-base-v1.zip
-  $ unzip metrics-full-v1.zip
+  $ unzip metrics-base.zip
+  $ unzip metrics-full.zip
   $ unzip enc-v1.001.zip
 
 (You do not have to unpack the scripts archive which was only needed for
