@@ -146,7 +146,7 @@
 % compatible with \pkg{amssymb} and \pkg{amsfonts}. Please see also the
 % corresponding section in the \pkg{MnSymbol} documentation.
 %
-% The MinionPro package includes support files for the \pkg{microtype} package 
+% The MinionPro package includes support files for the \pkg{microtype} package
 % (version 1.8 or higher), consult the package's documentation for further details.
 %
 % There is also a slight incompatibility with the \pkg{dcolumn} package
@@ -287,13 +287,11 @@
 %   \option{proportional}, \option{prop} & proportional figures
 % \end{options}
 %
-% Nearly all common \LaTeX\ document classes do not support fonts with
-% several figure versions.
-% Usually it is desirable to set most text with proportional figures and use
-% tabular figures only in tables and lists.
+% Nearly no common \LaTeX\ document class supports fonts with several figure
+% versions. Usually it is desirable to set most text with proportional figures
+% and use tabular figures only in tables and lists.
 % The following hack can be used to get tabular figures in the table of contents.
 % Surround your \verb|\tableofcontents| command by the lines
-%
 % \begingroup\small
 % \begin{verbatim}
 % \begingroup
@@ -302,32 +300,32 @@
 % \tableofcontents
 % \endgroup
 % \end{verbatim}
-% \par\endgroup
-%
+% \endgroup
 % \noindent
 % The above code switches to tabular text figures. If you prefer lining figures then
 % you can replace the |TOsF| by |TLF|. The same method can be applied to the
 % list of figures and the list of tables.
 %
-% If you use one of the \pkg{koma} classes, wish to set headlines with
-% MinionPro and that in the table of contents the page numbers of the  
-% highest sectioning level use tabular figures, then add the following code 
+% Using the \pkg{koma-script} classes, some sectioning levels are typeset by default
+% with a sans-serif font in the table of contents. In order to use MinionPro with
+% tabular figures instead, in addition to the above code add
+%
+% \begingroup\small
+% \medskip\tabindent
+%   |\addtokomafont|\marg{sectioning level}|{\rmfamily\figureversion{tabular}}|
+% \par\endgroup
+%
+% \noindent
+% anywhere in your preamble. For typesetting \emph{all} headlines with MinionPro, use
 %
 % \begingroup\small
 % \begin{verbatim}
-% \addtokomafont{sectioning}{\rmfamily\figureversion{tabular}}
-% \begingroup
-% \figureversion{tabular}
-% \renewcommand\familydefault{MinionPro-TOsF}
-% \tableofcontents
-% \endgroup
+%   \addtokomafont{sectioning}{\rmfamily\figureversion{tabular}}
 % \end{verbatim}
 % \par\endgroup
 %
 % \noindent
-% anywhere in your preamble.
-%
-% Note that, if you use one of the above hacks and your section titles contain numbers then
+% Note that if you use one of the above hacks and your section titles contain numbers then
 % these will also be set in tabular figures.
 %
 % There is also a proper solution which works in all cases. Unfortunately,
@@ -350,7 +348,7 @@
 %         \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
 %         mu$}\hfill
 %      \nobreak
-%      \hb@xt@\@pnumwidth{\hfil\normalfont\figureversion{tabular}\normalcolor #5}%
+%      \hb@xt@\@pnumwidth{\hfil\normalfont\figureversion{tab}\normalcolor #5}%
 %      \par}%
 %   \fi}
 % \end{verbatim}
@@ -364,8 +362,8 @@
 %
 % Further, note that these modifications only work for the standard document classes
 % \pkg{article}, \pkg{report}, and \pkg{book}. If you use other classes such as
-% {\small KOMA}-Script or memoir then you have to copy their respective definitions and insert
-% the command \verb|\figureversion{tabular}| at the appropriate places.
+% \pkg{koma-script} or \pkg{memoir} then you have to copy their respective definitions and insert
+% the command \verb|\figureversion{tab}| at the appropriate places.
 %
 % \section{Additional font shapes and symbols}
 %
@@ -466,9 +464,9 @@
 % in the preamble and consult the documentation given in |ibycus-babel.pdf|
 % on \acro{CTAN}. ``Dot below letter'' accents and |\setgreekfontsize| are not supported.
 %
-% \section{Searching for figures or words containing ligatures in \acro{PDF} documents}
+% \section{Searching for figures or for words containing ligatures in \acro{PDF} documents}
 %
-% Searching for figures or words containing ligatures in \acro{PDF} documents generated
+% Searching for figures or for words containing ligatures in \acro{PDF} documents generated
 % with \pkg{pdflatex} or \pkg{Ghostscript} may not be possible. This is due to a missing
 % feature of these two programs, specifically the inability to generate \acro{CMAP}
 % tables on the fly.
