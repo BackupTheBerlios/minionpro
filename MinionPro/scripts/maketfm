@@ -416,7 +416,7 @@ make_metrics() {
     make_normal_metrics "$1" osf
     make_normal_metrics "$1" tosf
 
-    make_tfm "$1" oml     tosf-oml    "-L 40 --math-spacing=255 -fonum -ftnum $oml_flags"
+    make_tfm "$1" oml     tosf-oml    "-L 40 --math-spacing=255 --subs-filter='!uniF638' -fonum -ftnum $oml_flags"
     make_tfm "$1" extra-u extra-u     "$extra_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
@@ -434,7 +434,7 @@ make_spaced_metrics() {
     make_spread_metrics "$1" osf
     make_spread_metrics "$1" tosf
 
-    make_tfm "$1" oml tosf-l1-oml "-L 80 --math-spacing=255 -fonum -ftnum $oml_flags"
+    make_tfm "$1" oml tosf-l1-oml "-L 80 --math-spacing=255 --subs-filter='!uniF638' -fonum -ftnum $oml_flags"
 
     echo 'echo " done." >&2' >>maketfm.tmp
   fi
