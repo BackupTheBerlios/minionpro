@@ -60,8 +60,8 @@
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
 \usepackage[minionint]{MinionPro}
-\usepackage[british]{babel}
-\usepackage{array,booktabs,pifont}
+\usepackage[greek,british]{babel}
+\usepackage{array,booktabs,pifont,paralist}
 \IfFileExists{lmodern.sty}{%
   \renewcommand{\sfdefault}{lmss}%
   \renewcommand{\ttdefault}{lmtt}%
@@ -515,6 +515,25 @@
 % \end{tabular}\par
 % \endgroup
 % \footnotetext{via substitution in \acro{TS1} encoding}
+%
+% \section{Version History}
+%
+% Version 2.0: Initial Release on \acro{CTAN}\\
+% Version 2.1:
+% \begin{compactitem}\small
+%   \item new package options \verb|onlytext| and \verb|onlymath|
+%   \item \verb|frenchmath| option fixed
+%   \item update to \pkg{microtype} version 1.8
+%   \item \verb|\t| accent fixed
+%   \item \verb|\r| accent in \acro{OT1} encoding fixed
+%   \item use $\upvarphi$ instead of $\upphi$ in \acro{LGR} and \acro{LGI} encoding
+%   \item add {\fontencoding{LGR}\selectfont\char60 R} to \acro{LGI} encoding
+%   \item arrows in \acro{TS1} and \acro{U} encodings fixed
+%   \item CODINGSCHEME statements added to encoding files
+%   \item improve sidebearings of $\sigma$ in math mode
+%   \item improve apostrophe kerning
+%   \item use MnSymbol's ``\textbar'' in doc.sty's module prefix
+% \end{compactitem}
 %
 % \StopEventually{}
 %
