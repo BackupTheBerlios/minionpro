@@ -3,7 +3,7 @@
            \ProvidesFile{MinionPro.dtx}        [2006/04/21 v2.1 MinionPro support for LaTeX]
 %</driver>
 %<style>   \NeedsTeXFormat{LaTeX2e}
-%<style>   \ProvidesPackage{MinionPro}         [2005/09/25 v2.0 MinionPro support for LaTeX]
+%<style>   \ProvidesPackage{MinionPro}         [2006/04/21 v2.1 MinionPro support for LaTeX]
 %<mtcfg>   \ProvidesFile{mt-MinionPro.cfg}     [2005/02/07 v1.0 microtype config file for MinionPro]
 %<fontdef> \ProvidesFile{MinionPro-FontDef.sty}[2005/04/13 v2.1 font definition macros]
 %<Uextra>  \ProvidesFile{UMinionPro-Extra.fd}  [2005/01/23 v2.0 font definitions for U/MinionPro-Extra.]
@@ -147,7 +147,7 @@
 % corresponding section in the \pkg{MnSymbol} documentation.
 %
 % The MinionPro package includes support files for the \pkg{microtype} package
-% (version 1.8 or higher), consult the package's documentation for further details.
+% (version~1.8 or higher), consult the package's documentation for further details.
 %
 % There is also a slight incompatibility with the \pkg{dcolumn} package
 % which expects all figures to have the same width. If you want to use this
@@ -155,8 +155,8 @@
 % the brute force solution, not recommended), or you can use the
 % |\figureversion{tabular}| command to switch to tabular figures in front of
 % every table (much better, but also more work). In addition, \pkg{dcolumn}
-% sets figures in math mode, hence the choice of math figures (see Sect.
-% \ref{txt:Options}) determines if text or lining figures are used.
+% sets figures in math mode, hence the choice of math figures
+% (see Section~\ref{txt:Options}) determines if text or lining figures are used.
 %
 % \section{Options}\label{txt:Options}
 %
@@ -208,8 +208,8 @@
 %                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC} \\
 %   \option{swash} & use the swash capitals from MinionPro: \textsw{ABC}\\
 %   \option{abx}   & use the calligraphic symbols provided by mathabx:
-%                    \IfFileExists{mathabx.sty}{\font\testabx=mathc10\testabx ABCabc}{}\\
-%                  & (This font contains also lowercase letters, but it is in beta state.)
+%                    \IfFileExists{mathabx.sty}{\font\testabx=mathcm10\testabx ABCabc}{}\\
+%                  & (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
 % \subsubsection*{Blackboard bold letters}
@@ -472,7 +472,7 @@
 % tables on the fly.
 %
 % To our knowledge fully searchable \acro{pdf} documents can only be obtained by using
-% version 2.0 of the MinionPro fonts with either \pkg{dvipdfmx} or \pkg{Adobe Distiller}.
+% version~2.0 of the MinionPro fonts with either \pkg{dvipdfmx} or \pkg{Adobe Distiller}.
 %
 % \section{\acro{NFSS} classification}
 %
@@ -523,14 +523,14 @@
 % \begin{compactitem}\small
 %   \item new package options \verb|onlytext| and \verb|onlymath|
 %   \item \verb|frenchmath| option fixed
-%   \item update to \pkg{microtype} version 1.8
+%   \item update to \pkg{microtype} version~1.8
 %   \item \verb|\t| accent fixed
 %   \item \verb|\r| accent in \acro{OT1} encoding fixed
 %   \item slashed zero in font version 2.000 fixed
 %   \item use $\upvarphi$ instead of $\upphi$ in \acro{LGR} and \acro{LGI} encoding
 %   \item add {\fontencoding{LGR}\selectfont\char60 R} to \acro{LGI} encoding
 %   \item arrows in \acro{TS1} and \acro{U} encodings fixed
-%   \item CODINGSCHEME statements added to encoding files
+%   \item {\small CODINGSCHEME} statements added to encoding files
 %   \item improve sidebearings of $\sigma$ in math mode
 %   \item improve apostrophe kerning
 %   \item use MnSymbol's ``\textbar'' in doc.sty's module prefix

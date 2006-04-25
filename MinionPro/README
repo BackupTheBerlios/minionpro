@@ -47,17 +47,20 @@ the otfinfo command. For example, for version 002.000 you get:
   $ otfinfo -v MinionPro-Regular.otf
   Version 2.012;PS 002.000;Core 1.0.38;makeotf.lib1.6.6565
 
-
 In all cases you need the archive:
+
 o scripts.zip
 
 Depending on the font version you need *one* of the encoding file archives 
-  enc-v1.000.zip
-  enc-v1.001.zip
-  env-v2.000.zip
+
+o enc-v1.000.zip
+o enc-v1.001.zip
+o env-v2.000.zip
+
 Do not install several encoding file archives, they are mutually exclusive.
 
 Depending on the amount of font shapes that you own you need to install 
+
 o metrics-base.zip: contains the metrics for Regular, Italic, Bold,
   and BoldItalic.
 o metrics-full.zip: contains additional metrics for Medium,
