@@ -624,7 +624,12 @@
     \SetMathAlphabet\mathcal{boldtabular}{OMS}{cmsy}{b}{n}
   }
 }
-\DeclareOption{abx}{\PassOptionsToPackage{abx}{MnSymbol}}
+\DeclareOption{abx}{
+  \PassOptionsToPackage{abx}{MnSymbol}
+  \def\Mn@load@cal{
+    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
+  }
+}
 \DeclareOption{swash}{
   \def\Mn@load@cal{
     \DeclareMathAlphabet\mathcal         {T1}{\Mn@Math@Family} {m} {sw}
