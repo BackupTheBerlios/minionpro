@@ -80,7 +80,7 @@
 % LIGKERN parenleft Omega =:| uni1FFE ;
 % LIGKERN parenleft Omicron =:| uni1FFE ;
 % LIGKERN parenleft Upsilon =:| uni1FFE ;
-% LIGKERN parenleft Rho =: uni1FEC ;
+% LIGKERN parenleft Rho =:| uni1FFE ;
 % LIGKERN parenleft quoteleft =: uni1FDD ;
 % LIGKERN parenleft quoteright =: uni1FDE ;
 % LIGKERN parenleft equal =: uni1FDF ;

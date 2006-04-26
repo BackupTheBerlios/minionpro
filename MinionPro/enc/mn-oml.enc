@@ -5,6 +5,7 @@
 % UNICODING pisymbolgreek    =: pisymbolgreek pi ;
 % UNICODING theta1           =: theta1 theta ;
 % UNICODING phi1             =: phi1 phi ;
+% UNICODING openg            =: uniF6C6 g ;
 %
 /MinionPro-OMLEncoding [          % now 256 chars follow
 % 0x0
@@ -36,7 +37,7 @@
 % 0x80
 /integral /hbar /digamma /kappasymbolgreek
 /betasymbolgreek /ereversedcyrillic /zecyrillic /eth
-/lozenge /uniF638 /infinity /summation /product /.notdef /.notdef /.notdef
+/lozenge /uniF638 /infinity /summation /product /openg /.notdef /.notdef
 % 0x90
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

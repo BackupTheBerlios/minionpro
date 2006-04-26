@@ -248,6 +248,8 @@
 %   \option{minionint}
 %      & take the integral symbols from MinionPro, not from MnSymbol:\\
 %      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
+%   \option{openg}
+%      & use $\openg$ instead of $g$ in math mode. \\
 %   \option{footnotefigures}
 %      & use special figures for footnote marks, i.e.,\\
 %      & example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
@@ -315,7 +317,7 @@
 %   |\addtokomafont|\marg{sectioning level}|{\rmfamily\figureversion{tabular}}|
 % \par\endgroup
 %
-% \noindent
+% \smallskip\noindent
 % anywhere in your preamble. For typesetting \emph{all} headlines with MinionPro, use
 %
 % \begingroup\small
@@ -392,7 +394,7 @@
 %   \sym\digamma     & \sym\varkappa       & \sym\varbeta \\
 %   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
 %   \sym\jmath       & \sym\eth            & \sym\lozenge \\
-%   \sym\slashedzero \\
+%   \sym\slashedzero & \sym\openg \\
 % \end{tabular}
 % \endgroup
 %
@@ -516,13 +518,15 @@
 % \endgroup
 % \footnotetext{via substitution in \acro{TS1} encoding}
 %
-% \section{Version History}
+% \section{Version history}
 %
 % Version 2.0: Initial Release on \acro{CTAN}\\
 % Version 2.1:
-% \begin{compactitem}\small
+% \begin{compactitem}
 %   \item new package options \verb|onlytext| and \verb|onlymath|
+%   \item new package option \verb|openg|
 %   \item \verb|frenchmath| option fixed
+%   \item \verb|abx| option fixed
 %   \item update to \pkg{microtype} version~1.8
 %   \item \verb|\t| accent fixed
 %   \item \verb|\r| accent in \acro{OT1} encoding fixed
@@ -546,10 +550,13 @@
 %<*style>
 \newif\if@Mn@Text@
 \newif\if@Mn@Math@
+\newif\if@Mn@OpenG@
 \@Mn@Text@true
 \@Mn@Math@true
+\@Mn@OpenG@false
 \DeclareOption{onlytext}{\@Mn@Text@true\@Mn@Math@false}
 \DeclareOption{onlymath}{\@Mn@Text@false\@Mn@Math@true}
+\DeclareOption{openg}{\@Mn@OpenG@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
@@ -1055,6 +1062,7 @@
   \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
   \DeclareMathSymbol{\lozenge}          {\mathord}{letters}{'375}
   \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
+  \DeclareMathSymbol{\openg}            {\mathalpha}{letters}{'267}
 \fi
 %    \end{macrocode}
 % Archaic Greek letters not provided by MinionPro
@@ -1160,6 +1168,23 @@
 %
 %    \begin{macrocode}
   \Mn@load@integrals
+\fi
+%    \end{macrocode}
+%
+% \subsection{Open G support}
+%
+% We can replace the closed $g$ with the open variant $\openg$.
+% The following definitions provide this as an option.
+%    \begin{macrocode}
+\if@Mn@Math@
+\if@Mn@OpenG@
+  \mathcode `g="8000
+  \DeclareMathSymbol{\Mn@g}{\mathalpha}{letters}{`g}
+  \begingroup
+  \lccode`\~=`\g
+  \lowercase{\gdef ~{\ifnum\the\mathgroup=\m@ne \openg \else \Mn@g \fi}}
+  \endgroup 
+\fi
 \fi
 %    \end{macrocode}
 %

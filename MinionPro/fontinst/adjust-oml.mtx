@@ -216,6 +216,7 @@
 \adjustmetrics{IThbar}{0}{0}{0}{0}{10}
 \adjustmetrics{ITeth}{0}{0}{0}{60}{10}
 \adjustmetrics{ITlscript}{0}{0}{0}{100}{20}
+\adjustmetrics{ITopeng}{50}{0}{-60}{80}{40}
 
 \setkern{UPDelta}{ITT}{-20}
 \setkern{UPDelta}{ITV}{-80}

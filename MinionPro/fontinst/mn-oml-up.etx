@@ -587,6 +587,9 @@
 \setslot{UPproduct}
 \endsetslot
 
+\setslot{UPopeng}
+\endsetslot
+
 \nextslot{255}
 \setslot{skew}
 \endsetslot

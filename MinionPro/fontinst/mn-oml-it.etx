@@ -587,6 +587,9 @@
 \setslot{ITproduct}
 \endsetslot
 
+\setslot{ITopeng}
+\endsetslot
+
 \nextslot{255}
 \setslot{skew}
 \endsetslot

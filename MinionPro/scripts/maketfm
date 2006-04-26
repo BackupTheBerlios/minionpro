@@ -18,7 +18,6 @@ usage() {
   echo "--kern         | --nokern"
   echo "--wide-spacing | --narrow-spacing"
   echo "--expanded     | --noexpanded"
-  echo "--open-g       | --closed-g"
   exit 1
 }
 
@@ -37,7 +36,6 @@ create_kerned=true
 create_smallcaps=true
 create_sc_grekcyrl=false
 create_swash=true
-open_g=false
 wide_spacing=false
 
 if [ "x$(otfinfo -f otf/$font-Regular.otf | grep smcp)" = "x" ] 
@@ -69,8 +67,6 @@ do
     --noexpanded)     create_expanded=false;;
     --kern)           create_kerned=true;;
     --nokern)         create_kerned=false;;
-    --open-g)         open_g=true;;
-    --closed-g)       open_g=false;;
     --wide-spacing)   wide_spacing=true;;
     --narrow-spacing) wide_spacing=false;;
     *)                echo -e "Unknown option $opt\n";

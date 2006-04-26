@@ -757,8 +757,7 @@
 \setslot{ITeth}
 \endsetslot
 
-% remove:
-\setslot{ITslashedzero}
+\setslot{ITopeng}
 \endsetslot
 
 \nextslot{192}
