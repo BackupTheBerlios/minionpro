@@ -246,10 +246,14 @@
 %
 % \begin{options}
 %   \option{minionint}
-%      & take the integral symbols from MinionPro, not from MnSymbol:\\
-%      & $\displaystyle\int$ instead of $\displaystyle\varint$ \\
+%      & take the integral symbols from MinionPro, not from\\
+%      & MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$ \\
 %   \option{openg}
 %      & use $\openg$ instead of $g$ in math mode. \\
+%   \option{loosequotes}
+%      & The quote signs of MinionPro are set rather tight. This can\\
+%      & lead to undesirable spacing for apostrophes. The \option{loosequotes} \\
+%      & option slightly increases the side bearings of quotes. \\
 %   \option{footnotefigures}
 %      & use special figures for footnote marks, i.e.,\\
 %      & example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
@@ -536,7 +540,7 @@
 %   \item arrows in \acro{TS1} and \acro{U} encodings fixed
 %   \item {\small CODINGSCHEME} statements added to encoding files
 %   \item improve sidebearings of $\sigma$ in math mode
-%   \item improve apostrophe kerning
+%   \item new package option \verb|loosequotes|
 %   \item use MnSymbol's ``\textbar'' in doc.sty's module prefix
 % \end{compactitem}
 %
@@ -550,13 +554,10 @@
 %<*style>
 \newif\if@Mn@Text@
 \newif\if@Mn@Math@
-\newif\if@Mn@OpenG@
 \@Mn@Text@true
 \@Mn@Math@true
-\@Mn@OpenG@false
 \DeclareOption{onlytext}{\@Mn@Text@true\@Mn@Math@false}
 \DeclareOption{onlymath}{\@Mn@Text@false\@Mn@Math@true}
-\DeclareOption{openg}{\@Mn@OpenG@true}
 %    \end{macrocode}
 %
 % \subsubsection{Font sets}
@@ -693,8 +694,9 @@
 \DeclareOption{minionint}{\def\Mn@load@integrals{\Mn@Decl@Minion@Ints}}
 %    \end{macrocode}
 %
-% \subsubsection{Optical footnote marks}
+% \subsubsection{Miscellaneous options}
 %
+% Footnote figures, the g glyph in math mode, extra spacing for the apostrophe.
 %    \begin{macrocode}
 \DeclareOption{footnotefigures}{%
   \def\@makefnmark{%
@@ -703,6 +705,21 @@
     \fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
     \@thefnmark
     \endgroup}}
+%
+\newcommand\Mn@Define@Open@g{}
+\DeclareOption{openg}{%
+  \def\Mn@Define@Open@g{%
+    \mathcode`g="8000%
+    \DeclareMathSymbol{\Mn@g}{\mathalpha}{letters}{`g}%
+    \begingroup
+    \lccode`\~=`\g
+    \lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \openg \else \Mn@g \fi}}%
+    \endgroup
+  }}
+%
+\newcommand\Mn@Quote@Spacing{}
+\DeclareOption{loosequotes}{%
+  \def\Mn@Quote@Spacing{\Mn@Quote@Spacing@Loose}}
 %    \end{macrocode}
 %
 % \subsubsection{Defaults}
@@ -735,6 +752,21 @@
 \if@Mn@Text@
   \edef\rmdefault{\Mn@Text@Family}
   \let\ibycusdefault\Mn@Text@Family
+%    \end{macrocode}
+% If a recent verion of \pkg{microtype} is loaded then we implement an option
+% to increase the side bearings of all quote glyphs.
+%    \begin{macrocode}
+  \def\Mn@Quote@Spacing@Loose{%
+    \@ifpackageloaded{microtype}{}{\RequirePackage{microtype}}
+    \@ifundefined{SetExtraKerning}{}{
+      \SetExtraKerning
+        { encoding = {OT1,T1,LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+          family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
+          shape    = n }
+        { \textquotedblleft = {30,30},  \textquotedblright = {30,30},
+          \textquoteleft    = {30,30},  \textquoteright    = {30,30} }}
+  }
+  \Mn@Quote@Spacing
 \fi
 %    \end{macrocode}
 %
@@ -1173,18 +1205,11 @@
 %
 % \subsection{Open G support}
 %
-% We can replace the closed $g$ with the open variant $\openg$.
+% We can replace the closed~$g$ with the open variant~$\openg$.
 % The following definitions provide this as an option.
 %    \begin{macrocode}
 \if@Mn@Math@
-\if@Mn@OpenG@
-  \mathcode `g="8000
-  \DeclareMathSymbol{\Mn@g}{\mathalpha}{letters}{`g}
-  \begingroup
-  \lccode`\~=`\g
-  \lowercase{\gdef ~{\ifnum\the\mathgroup=\m@ne \openg \else \Mn@g \fi}}
-  \endgroup 
-\fi
+  \Mn@Define@Open@g
 \fi
 %    \end{macrocode}
 %
@@ -1901,10 +1926,10 @@
   \DeclareMicrotypeAlias{MinionPro-TLF}{MinionPro}%
   \DeclareMicrotypeAlias{MinionPro-TOsF}{MinionPro}%
 }
-\@ifundefined{MicroType@Hook}{%
-  \global\let\MicroType@Hook\Mn@MicroType@Aliases
+\@ifundefined{Microtype@Hook}{%
+  \global\let\Microtype@Hook\Mn@MicroType@Aliases
 }{%
-  \g@addto@macro\MicroType@Hook{\Mn@MicroType@Aliases}%
+  \g@addto@macro\Microtype@Hook{\Mn@Microtype@Aliases}%
 }%
 \@ifundefined{DeclareMicroTypeAlias}{}{\Mn@MicroType@Aliases}%
 %</fontdef>
