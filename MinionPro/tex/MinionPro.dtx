@@ -131,11 +131,11 @@
 % \end{quote}
 % to the preamble.
 % This will change both the text font and the math font to MinionPro.
-% If you prefer another math font you can load the corresponding package
-% (such as \pkg{eulervm}) \emph{after} the \pkg{MinionPro} package.
+% If you prefer another math font (such as \pkg{eulervm}) use the option 
+% \option{textonly} as explained in Section~\ref{sec:Options}.
 %
 % \section{Interference with other packages}
-% \label{sec:dcolumn}
+% \label{sec:Interferences}
 %
 % The \pkg{MinionPro} package automatically loads the following packages:
 % \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol}.
@@ -156,9 +156,9 @@
 % |\figureversion{tabular}| command to switch to tabular figures in front of
 % every table (much better, but also more work). In addition, \pkg{dcolumn}
 % sets figures in math mode, hence the choice of math figures
-% (see Section~\ref{txt:Options}) determines if text or lining figures are used.
+% (see Section~\ref{sec:Options}) determines if text or lining figures are used.
 %
-% \section{Options}\label{txt:Options}
+% \section{Options}\label{sec:Options}
 %
 % \subsubsection*{Font selection}
 %
@@ -254,6 +254,7 @@
 %      & The quote signs of MinionPro are set rather tight. This can\\
 %      & lead to undesirable spacing for apostrophes. The \option{loosequotes} \\
 %      & option slightly increases the side bearings of quotes. \\
+%      & Requires \pkg{pdflatex}~1.40 and \pkg{microtype}~2.0.\\
 %   \option{footnotefigures}
 %      & use special figures for footnote marks, i.e.,\\
 %      & example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
@@ -527,21 +528,21 @@
 % Version 2.0: Initial Release on \acro{CTAN}\\
 % Version 2.1:
 % \begin{compactitem}
-%   \item new package options \verb|onlytext| and \verb|onlymath|
-%   \item new package option \verb|openg|
-%   \item \verb|frenchmath| option fixed
-%   \item \verb|abx| option fixed
+%   \item new package options \option{onlytext} and \option{onlymath}
+%   \item new package option \option{loosequotes}
+%   \item new package option \option{openg}
+%   \item fixed package option \option{frenchmath}
+%   \item fixed package option \option{abx}
 %   \item update to \pkg{microtype} version~1.8
-%   \item \verb|\t| accent fixed
-%   \item \verb|\r| accent in \acro{OT1} encoding fixed
-%   \item slashed zero in font version 2.000 fixed
+%   \item fixed \verb|\t| accent
+%   \item fixed \verb|\r| accent in \acro{OT1} encoding
+%   \item fixed slashed zero in font version 2.000
+%   \item fixed arrows in \acro{TS1} and \acro{U} encodings
 %   \item use $\upvarphi$ instead of $\upphi$ in \acro{LGR} and \acro{LGI} encoding
-%   \item add {\fontencoding{LGR}\selectfont\char60 R} to \acro{LGI} encoding
-%   \item arrows in \acro{TS1} and \acro{U} encodings fixed
-%   \item {\small CODINGSCHEME} statements added to encoding files
-%   \item improve sidebearings of $\sigma$ in math mode
-%   \item new package option \verb|loosequotes|
-%   \item use MnSymbol's ``\textbar'' in doc.sty's module prefix
+%   \item added {\fontencoding{LGR}\selectfont\char60 R} to \acro{LGI} encoding
+%   \item added {\small CODINGSCHEME} statements to encoding files
+%   \item improved sidebearings of $\sigma$ in math mode
+%   \item use MnSymbol's ``\textbar'' in \pkg{doc.sty}'s module prefix
 % \end{compactitem}
 %
 % \StopEventually{}
@@ -785,7 +786,7 @@
 %    \end{macrocode}
 % Extra math versions |tabular| and |boldtabular|, which use tabular figures
 % instead of proportional ones. These math versions can be useful in tables
-% (cf.\ section~\ref{sec:dcolumn}).
+% (cf.\ section~\ref{sec:Interferences}).
 %    \begin{macrocode}
   \DeclareMathVersion{tabular}
   \SetSymbolFont{operators}{tabular}    {T1} {\Mn@Math@TFamily}{m}{n}
