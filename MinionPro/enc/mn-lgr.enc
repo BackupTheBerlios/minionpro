@@ -223,7 +223,7 @@
   /.notdef /.notdef /Koppagreek  /.notdef /.notdef /.notdef /.notdef /.notdef
   /Euro /perthousand  /.notdef /Sampigreek /quoteleft /quoteright /breve /macron
 % 0x20
-  /uni1FC1 /exclam /dieresis /dieresistonos /uni1FED /percent /uniF6E8 /tonos
+  /uni1FC1 /exclam /dieresis /dieresistonos /uni1FED /percent /periodcentered /tonos
   /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
 % 0x30
   /zero /one /two /three /four /five /six /seven

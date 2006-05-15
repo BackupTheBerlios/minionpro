@@ -52,8 +52,8 @@
 /period
 /slash
 % 0x30
-/uniF639 /uniF6DC /uniF63A /uniF63B /uniF63C /uniF63D /uniF63E /uniF63F
-/uniF640 /uniF641 /colon /semicolon /less /equal /greater /question
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /semicolon /less /equal /greater /question
 % 0x40
 /at
 /A
