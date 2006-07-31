@@ -565,8 +565,11 @@ done
 
 # Then we execute and delete them.
 
-. maketfm.tmp
-. maketfm-expanded.tmp
+tr "\200" " " <maketfm.tmp >maketfm.tmp2
+tr "\200" " " <maketfm-expanded.tmp >maketfm-expanded.tmp2
 
-rm maketfm.tmp maketfm-expanded.tmp
+. maketfm.tmp2
+. maketfm-expanded.tmp2
+
+rm maketfm.tmp maketfm.tmp2 maketfm-expanded.tmp maketfm-expanded.tmp2
 
