@@ -565,8 +565,8 @@ done
 
 # Then we execute and delete them.
 
-tr "\200" " " <maketfm.tmp >maketfm.tmp2
-tr "\200" " " <maketfm-expanded.tmp >maketfm-expanded.tmp2
+tr "\177" " " <maketfm.tmp >maketfm.tmp2
+tr "\177" " " <maketfm-expanded.tmp >maketfm-expanded.tmp2
 
 . maketfm.tmp2
 . maketfm-expanded.tmp2
