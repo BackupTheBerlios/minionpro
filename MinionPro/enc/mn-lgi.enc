@@ -73,7 +73,7 @@
 % LIGKERN omicron equal =: otilde ;
 
 % (
-% LIGKERN parenleft Alpha =:| uni1FFEE  ;
+% LIGKERN parenleft Alpha =:| uni1FFE  ;
 % LIGKERN parenleft Epsilon =:| uni1FFE ;
 % LIGKERN parenleft Eta =:| uni1FFE ;
 % LIGKERN parenleft Iota =:| uni1FFE ;
