@@ -183,3 +183,10 @@
 % LIGKERN acute {-96} Upsilon
 % LIGKERN acute {-186} Omicron
 % LIGKERN acute {-192} uni03A9
+% LIGKERN tonos {-350} Alpha
+% LIGKERN tonos {-142} Epsilon
+% LIGKERN tonos {-145} Eta
+% LIGKERN tonos {-148} Iota
+% LIGKERN tonos {-212} Omicron
+% LIGKERN tonos {-137} Upsilon
+% LIGKERN tonos {-205} uni03A9
