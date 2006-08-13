@@ -123,13 +123,6 @@
 % LIGKERN tonos omicron =: omicrontonos ;
 % LIGKERN tonos upsilon =: upsilontonos ;
 % LIGKERN tonos omega =: omegatonos ;
-% LIGKERN tonos Alpha =: Alphatonos ;
-% LIGKERN tonos Epsilon =: Epsilontonos ;
-% LIGKERN tonos Eta =: Etatonos ;
-% LIGKERN tonos Iota =: Iotatonos ;
-% LIGKERN tonos Omega =: Omegatonos ;
-% LIGKERN tonos Omicron =: Omicrontonos ;
-% LIGKERN tonos Upsilon =: Upsilontonos ;
 
 % dieresis
 % LIGKERN dieresis grave =: uni1FED ;
@@ -141,25 +134,10 @@
 % LIGKERN dieresis tonos =: dieresistonos
 
 % iota
-% Akzentuierte Grossbuchstaben
-% LIGKERN uni1F08 uni1FBE |=: iota ;
-% LIGKERN uni1F09 uni1FBE |=: iota ;
-% LIGKERN uni1F0A uni1FBE |=: iota ;
-% LIGKERN uni1F0B uni1FBE |=: iota ;
-% LIGKERN uni1F0C uni1FBE |=: iota ;
-% LIGKERN uni1F0D uni1FBE |=: iota ;
-% LIGKERN uni1F0E uni1FBE |=: iota ;
-% LIGKERN uni1F0F uni1FBE |=: iota ;
-% LIGKERN uni1FBA uni1FBE |=: iota ;
-
 % LIGKERN Alpha uni1FBE |=: iota ;
 % LIGKERN Eta uni1FBE |=: iota ;
 % LIGKERN Omega uni1FBE |=: iota ;
-% LIGKERN Alphatonos uni1FBE |=: iota ;
-% LIGKERN Etatonos uni1FBE |=: iota ;
-% LIGKERN Omegatonos uni1FBE |=: iota ;
 
-%restliche iota
 % LIGKERN alpha uni1FBE =: uni1FB3 ;
 % LIGKERN alphatonos uni1FBE =: uni1FB4 ;
 % LIGKERN uni1F00 uni1FBE =: uni1F80 ;
