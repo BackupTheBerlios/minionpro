@@ -61,14 +61,14 @@
 % LIGKERN acute {-132} Iota
 % LIGKERN acute {-106} Upsilon
 % LIGKERN acute {-259} Omicron
-% LIGKERN acute {-255} uni03A9
+% LIGKERN acute {-255} Omega
 % LIGKERN tonos {-379} Alpha
 % LIGKERN tonos {-167} Epsilon
 % LIGKERN tonos {-162} Eta
 % LIGKERN tonos {-162} Iota
 % LIGKERN tonos {-240} Omicron
 % LIGKERN tonos {-140} Upsilon
-% LIGKERN tonos {-246} uni03A9
+% LIGKERN tonos {-246} Omega
 % POSITION space_dotbelowcomb_Iota -365 -55 -440 ;
 % POSITION space_dotbelowcomb_iota -305 -55 -440 ;
 % POSITION space_dotbelowcomb_upsilon -420 -55 -440 ;
