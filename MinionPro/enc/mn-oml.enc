@@ -37,7 +37,7 @@
 % 0x80
 /integral /hbar /digamma /kappasymbolgreek
 /betasymbolgreek /ereversedcyrillic /zecyrillic /eth
-/lozenge /uniF638 /infinity /summation /product /openg /.notdef /.notdef
+/.notdef /uniF638 /infinity /summation /product /openg /.notdef /.notdef
 % 0x90
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
 /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef

@@ -572,9 +572,9 @@
 \setslot{UPeth}
 \endsetslot
 
-\setslot{UPlozenge}
-\endsetslot
+% one empty slot
 
+\nextslot{137}
 \setslot{UPslashedzero}
 \endsetslot
 

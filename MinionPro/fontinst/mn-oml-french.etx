@@ -986,9 +986,9 @@
    \comment{The dotless letter `$\jmath$'.}
 \endsetslot
 
-\setslot{UPlozenge}
-\endsetslot
+% one empty slot
 
+\nextslot{254}
 \setslot{ITintegral}
 \endsetslot
 

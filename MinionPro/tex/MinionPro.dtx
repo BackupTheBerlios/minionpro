@@ -131,7 +131,7 @@
 % \end{quote}
 % to the preamble.
 % This will change both the text font and the math font to MinionPro.
-% If you prefer another math font (such as \pkg{eulervm}) use the option 
+% If you prefer another math font (such as \pkg{eulervm}) use the option
 % \option{onlytext} as explained in Section~\ref{sec:Options}.
 %
 % \section{Interference with other packages}
@@ -329,9 +329,7 @@
 % \begin{verbatim}
 %   \addtokomafont{sectioning}{\rmfamily\figureversion{tabular}}
 % \end{verbatim}
-% \par\endgroup
-%
-% \noindent
+% \endgroup
 % Note that if you use one of the above hacks and your section titles contain numbers then
 % these will also be set in tabular figures.
 %
@@ -359,9 +357,7 @@
 %      \par}%
 %   \fi}
 % \end{verbatim}
-% \par\endgroup
-%
-% \noindent
+% \endgroup
 % The first redefinition causes the section numbers to be set in tabular
 % figures, the second one does the same for the page numbers. Note that, if you
 % put these definitions directly into your document then you have to surround
@@ -398,15 +394,15 @@
 % \begin{tabular}{@{}*2{ll@{\qquad}}ll@{}}
 %   \sym\digamma     & \sym\varkappa       & \sym\varbeta \\
 %   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
-%   \sym\jmath       & \sym\eth            & \sym\lozenge \\
+%   \sym\jmath       & \sym\eth            & \sym\Bbbk \\
 %   \sym\slashedzero & \sym\openg \\
 % \end{tabular}
 % \endgroup
 %
 % \medskip\noindent
 % Small and slanted fractions are fractions with a height matching the font's
-% body size. These are useful for typesetting,
-% e.g., $\cos(\smallfrac{1}{2} x+\smallfrac{3}{2}y)$ or ``\slantfrac{1}{12}\ liters of
+% body size. These are useful for typesetting, e.g.,
+% $\cos(\smallfrac{1}{2} x + \smallfrac{3}{2} y)$ or ``\slantfrac{1}{12}~litres of
 % red wine'' and can be accessed via
 %
 % \medskip\tabindent
@@ -418,7 +414,7 @@
 % \medskip\noindent
 % Note that \emph{only} figures can be used for \meta{numerator} and \meta{denominator}.
 %
-% \bigskip\noindent
+% \medskip\noindent
 % Ornaments can be accessed via the \pkg{pifont} package with the command
 % \begin{quote}
 %   |\Pisymbol{MinionPro-Extra}|\marg{number}
@@ -673,17 +669,23 @@
 %    \begin{macrocode}
 \newcommand\Mn@load@amsbb{
   \let\mathbb\@undefined
-  \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}}
+  \let\Bbbk\@undefined
+  \DeclareMathAlphabet\mathbb{U}{msb}{m}{n}
+  \newcommand\Bbbk{\mathbb{\mathchar"717C}}}
 \newcommand\Mn@load@lucidabb{
   \let\mathbb\@undefined
+  \let\Bbbk\@undefined
   \DeclareFontFamily{U}{hlcm}{}
   \DeclareFontShape{U}{hlcm}{m}{n}{ <->s*[0.92] hlcra }{}
-  \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}}
+  \DeclareMathAlphabet\mathbb{U}{hlcm}{m}{n}
+  \newcommand\Bbbk{\mathbb{k}}}
 \newcommand\Mn@load@fourierbb{
   \let\mathbb\@undefined
+  \let\Bbbk\@undefined
   \DeclareFontFamily{U}{futm}{}
   \DeclareFontShape{U}{futm}{m}{n}{ <->s*[0.95] fourier-bb }{}
-  \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}}
+  \DeclareMathAlphabet\mathbb{U}{futm}{m}{n}
+  \newcommand\Bbbk{\mathbb{k}}}
 \DeclareOption{amsbb}    {\let\Mn@load@bb\Mn@load@amsbb}
 \DeclareOption{lucidabb} {\let\Mn@load@bb\Mn@load@lucidabb}
 \DeclareOption{fourierbb}{\let\Mn@load@bb\Mn@load@fourierbb}
@@ -1094,7 +1096,6 @@
   \DeclareMathSymbol{\slashedzero}      {\mathord}{letters}{'257}
   \DeclareMathSymbol{\upimath}          {\mathord}{letters}{'373}
   \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
-  \DeclareMathSymbol{\lozenge}          {\mathord}{letters}{'375}
   \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
   \DeclareMathSymbol{\openg}            {\mathalpha}{letters}{'267}
 \fi

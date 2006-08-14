@@ -572,9 +572,9 @@
 \setslot{ITeth}
 \endsetslot
 
-\setslot{ITlozenge}
-\endsetslot
+% one empty slot
 
+\nextslot{137}
 \setslot{ITslashedzero}
 \endsetslot
 
