@@ -245,7 +245,6 @@
 % LIGKERN beta exclam |=: space_dotbelowcomb_beta ;
 % LIGKERN tau exclam |=: space_dotbelowcomb_beta ;
 % LIGKERN rho exclam |=: space_dotbelowcomb_beta ;
-% LIGKERN c exclam |=: space_dotbelowcomb_beta ;
 % LIGKERN zeta exclam |=: space_dotbelowcomb_zeta ;
 % LIGKERN sigmafinal exclam |=: space_dotbelowcomb_zeta ;
 % LIGKERN xi exclam |=: space_dotbelowcomb_zeta ;
@@ -261,7 +260,7 @@
 % LIGKERN uni1F25 exclam |=: space_dotbelowcomb_eta ;
 % LIGKERN uni1FC6 exclam |=: space_dotbelowcomb_eta ;
 % LIGKERN uni1F74 exclam |=: space_dotbelowcomb_eta ;
-% LIGKERN Zeta exclam |=: space_dotbelowcomb_eta ;
+% LIGKERN Zeta    exclam |=: space_dotbelowcomb_alpha ;
 % LIGKERN uni1FC3 exclam |=: space_dotbelowcomb_etasub ;
 % LIGKERN uni1FC4 exclam |=: space_dotbelowcomb_etasub ;
 % LIGKERN uni1FC2 exclam |=: space_dotbelowcomb_etasub ;
@@ -282,8 +281,7 @@
 % LIGKERN Lambda exclam |=: space_dotbelowcomb_Gamma ;
 % LIGKERN Nu exclam |=: space_dotbelowcomb_Gamma ;
 % LIGKERN Pi exclam |=: space_dotbelowcomb_Gamma ;
-% LIGKERN C exclam |=: space_dotbelowcomb_Gamma ;
-% LIGKERN Delta exclam |=: space_dotbelowcomb_Gammma ;
+% LIGKERN Delta exclam |=: space_dotbelowcomb_Gamma ;
 % LIGKERN Kappa exclam |=: space_dotbelowcomb_Gamma ;
 % LIGKERN omicron exclam |=: space_dotbelowcomb_omicron ;
 % LIGKERN otilde exclam |=: space_dotbelowcomb_omicron ;
@@ -364,7 +362,7 @@
 % LIGKERN Phi exclam |=: space_dotbelowcomb_Eta ;
 % LIGKERN Omicron exclam |=: space_dotbelowcomb_Eta ;
 % LIGKERN Theta exclam |=: space_dotbelowcomb_Eta ;
-% LIGKERN C exclam |=: space_dotbelowcomb_Eta ;
+% LIGKERN c exclam |=: space_dotbelowcomb_beta ;
 % LIGKERN Omega exclam |=: space_dotbelowcomb_Eta ;
 % LIGKERN Rho exclam |=: space_dotbelowcomb_Eta ;
 % LIGKERN psi exclam |=: space_dotbelowcomb_psi ;
@@ -374,28 +372,8 @@
 % LIGKERN Koppagreek exclam |=: space_dotbelowcomb_gamma ;
 % LIGKERN chi exclam |=: space_dotbelowcomb_gamma ;
 % LIGKERN Psi exclam |=: space_dotbelowcomb_Psi ;
-% LIGKERN Mu exclam |=: space_dotbelowcomb_Mu ;
+% LIGKERN Mu exclam |=: space_dotbelowcomb_Mu ; 
 
-% UNICODING space_dotbelowcomb_Iota =: uniE188 ;
-% UNICODING space_dotbelowcomb_iota =: uniE188 ;
-% UNICODING space_dotbelowcomb_upsilon =: uniE188 ;
-% UNICODING space_dotbelowcomb_lambda =: uniE188 ;
-% UNICODING space_dotbelowcomb_beta =: uniE188 ;
-% UNICODING space_dotbelowcomb_zeta =: uniE188 ;
-% UNICODING space_dotbelowcomb_eta =: uniE188 ;
-% UNICODING space_dotbelowcomb_Eta =: uniE188 ;
-% UNICODING space_dotbelowcomb_Gamma =: uniE188 ;
-% UNICODING space_dotbelowcomb_omicron =: uniE188 ;
-% UNICODING space_dotbelowcomb_alpha =: uniE188 ;
-% UNICODING space_dotbelowcomb_alphasub =: uniE188 ;
-% UNICODING space_dotbelowcomb_omegasub =: uniE188 ;
-% UNICODING space_dotbelowcomb_etasub =: uniE188 ;
-% UNICODING space_dotbelowcomb_epsilon =: uniE188 ;
-% UNICODING space_dotbelowcomb_psi =: uniE188 ;
-% UNICODING space_dotbelowcomb_gamma =: uniE188 ;
-% UNICODING space_dotbelowcomb_Mu =: uniE188 ;
-% UNICODING space_dotbelowcomb_Psi =: uniE188 ;
-%
 /MinionPro-IbycusHTGEncoding [          % now 256 chars follow
 % 0x00
   /space   /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
