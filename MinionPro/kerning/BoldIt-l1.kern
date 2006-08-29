@@ -69,7 +69,7 @@
 % LIGKERN tonos {-252} Omicron
 % LIGKERN tonos {-178} Upsilon
 % LIGKERN tonos {-240} Omega
-
+% LIGKERN uni1FBD {-118} Upsilon
 % POSITION space_dotbelowcomb_Iota -400 -55 -400 ;
 % POSITION space_dotbelowcomb_iota -375 -55 -400 ;
 % POSITION space_dotbelowcomb_upsilon -490 -55 -400 ;
