@@ -475,7 +475,7 @@
 % tables on the fly.
 %
 % To our knowledge fully searchable \acro{pdf} documents can only be obtained by using
-% version~2.0 of the MinionPro fonts with \pkg{dvipdfmx}, \pkg{pdflatex} (version 1.40 or better), 
+% version~2.0 of the MinionPro fonts with \pkg{dvipdfmx}, \pkg{pdflatex} (version~1.40 or better),
 % or \pkg{Adobe Distiller}.
 %
 % \section{\acro{NFSS} classification}
@@ -1088,6 +1088,7 @@
 %
 %    \begin{macrocode}
 \if@Mn@Math@
+  \let\hbar\undefined
   \DeclareMathSymbol{\hbar}             {\mathord}{letters}{'265}
   \DeclareMathSymbol{\uphbar}           {\mathord}{letters}{'255}
   \DeclareMathSymbol{\partial}          {\mathord}{letters}{'100}
@@ -1101,7 +1102,7 @@
   \DeclareMathSymbol{\openg}            {\mathalpha}{letters}{'267}
 \fi
 %    \end{macrocode}
-% Archaic Greek letters not provided by MinionPro
+% Archaic Greek letters not provided by MinionPro.
 %    \begin{macrocode}
 \if@Mn@Text@
   %\def\Qoppa{\reflectbox{P}}
