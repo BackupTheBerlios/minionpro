@@ -172,10 +172,19 @@
 %   \option{fullfamily}   & use medium face in addition to \option{medfamily}\\
 %   \option*{noopticals}  & use only the optical size Text\\
 %   \option{opticals}     & use the optical sizes Caption, Text, Subhead, and Display\\
-%   \option{slides}       & use only the optical shape Caption (useful for slides)
+%   \option{slides}       & use only the optical size Caption (useful for slides) \\
+%   \option*{normalsize}  & adapt optical sizes to the normal font size (10\,pt, 11\,pt, 12\,pt) \\
+%   \option{nonormalsize} & use static settings for the optical sizes
 % \end{options}
 %
-% \noindent
+% Since MinionPro comes in only four different optical sizes we use a
+% variable mapping from font size to the optical size. This means that,
+% both for 10\,pt and 11\,pt documents, text set in |\small| size will
+% use the Caption size. Sometimes it might be desirable to turn off this
+% automatism -- for instance, if you want to load the \pkg{MinionPro}
+% package before the |\documentclass| command. In these cases you can
+% use the \option{nonormalsize} option to do so.
+%
 % The package also provides a way to only change the text fonts or only the math fonts.
 % \begin{options}
 %   \option{onlytext} & only change the text fonts\\
@@ -586,6 +595,10 @@
 \DeclareOption{fullfamily}{%
   \def\Mn@minionint@bold{-Semibold}%
   \PassOptionsToPackage{fullfamily}{MinionPro-FontDef}}
+\DeclareOption{normalsize}{%
+  \PassOptionsToPackage{normalsize}{MinionPro-FontDef}}
+\DeclareOption{nonormalsize}{%
+  \PassOptionsToPackage{nonormalsize}{MinionPro-FontDef}}
 %    \end{macrocode}
 %
 % \subsubsection{Figure style}
