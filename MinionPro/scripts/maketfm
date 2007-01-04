@@ -187,7 +187,7 @@ make_ligkern_options() {
   then
     cat "kerning/$1.kern" |
     grep "#$2#" |
-    gawk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}' | xargs |
+    awk '{print "--ligkern XXX"$3" "$4" "$5"XXX"}' | xargs |
     sed -e "s/#$2#//g" -e "s/XXX/\'/g"
   fi
 }
