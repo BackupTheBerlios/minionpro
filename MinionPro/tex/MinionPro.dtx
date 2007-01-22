@@ -59,6 +59,7 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
 \usepackage[minionint]{MinionPro}
 \usepackage[greek,british]{babel}
 \usepackage{array,booktabs,pifont,paralist}
@@ -67,7 +68,6 @@
   \renewcommand{\ttdefault}{lmtt}%
   \DeclareMathAlphabet\mathsf    {T1}{lmss}{m}{n}%
 }{}
-\usepackage[expansion=false]{microtype}
 
 \newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}
@@ -777,14 +777,24 @@
   \def\Mn@Quote@Spacing@Loose{%
     \@ifpackageloaded{microtype}{}{\RequirePackage{microtype}}
     \@ifundefined{SetExtraKerning}{}{
-      \SetExtraKerning
-        { encoding = {OT1,T1,LGR,U,OT2,T2A,T2B,T2C,T5,X2},
-          family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
-          shape    = n }
-        { \textquotedblleft = {30,30},  \textquotedblright = {30,30},
-          \textquoteleft    = {30,30},  \textquoteright    = {30,30} }}
+      \let\Mn@Set@Quote@Spacing\SetExtraKerning}
+%      \SetExtraKerning
+%        [ unit = 1em ]
+%        { encoding = {OT1,T1,LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+%          family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
+%          shape    = n }
+%        { \textquotedblleft = {30,30},  \textquotedblright = {30,30},
+%          \textquoteleft    = {30,30},  \textquoteright    = {30,30} }}
   }
+  \newcommand*\Mn@Set@Quote@Spacing[3][]{}
   \Mn@Quote@Spacing
+  \Mn@Set@Quote@Spacing
+    [ unit = 1em ]
+    { encoding = {OT1,T1,LGR,U,OT2,T2A,T2B,T2C,T5,X2},
+      family   = {MinionPro-OsF,MinionPro-LF,MinionPro-TOsF,MinionPro-TLF},
+      shape    = n }
+    { \textquotedblleft = {30,30},  \textquotedblright = {30,30},
+      \textquoteleft    = {30,30},  \textquoteright    = {30,30} }
 \fi
 %    \end{macrocode}
 %
