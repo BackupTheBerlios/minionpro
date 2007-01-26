@@ -126,6 +126,10 @@ make_enckern() {
               fi
             fi
           fi
+          if [ "$enc" = "integral" ] 
+          then
+            cp $e enc/mn-$1$l-$enc.enckern
+          fi
         else
           cp $e enc/mn-$1$l-$enc.enckern
         fi
