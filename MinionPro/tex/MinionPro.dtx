@@ -59,7 +59,7 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
-\usepackage[expansion=false]{microtype}
+\usepackage[expansion=false,kerning=true]{microtype}
 \usepackage[minionint]{MinionPro}
 \usepackage[greek,british]{babel}
 \usepackage{array,booktabs,pifont,paralist}
@@ -775,7 +775,7 @@
 % to increase the side bearings of all quote glyphs.
 %    \begin{macrocode}
   \def\Mn@Quote@Spacing@Loose{%
-    \@ifpackageloaded{microtype}{}{\RequirePackage{microtype}}
+    \@ifpackageloaded{microtype}{}{\RequirePackage[kerning=true]{microtype}}
     \@ifundefined{SetExtraKerning}{}{
       \let\Mn@Set@Quote@Spacing\SetExtraKerning}
 %      \SetExtraKerning
