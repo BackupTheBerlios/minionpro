@@ -62,7 +62,7 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
-\usepackage[expansion=false,kerning=true]{microtype}
+\usepackage[expansion=false]{microtype}
 \usepackage[minionint]{MinionPro}
 \usepackage[greek,british]{babel}
 \usepackage{array,booktabs,pifont,paralist}
@@ -232,9 +232,9 @@
 %   \option*{amsbb}    & use the AMS blackboard font: $\mathbb{NZQRC}$\\
 %   \option{fourierbb} & use the Fourier blackboard font:
 %                        \IfFileExists{fourier.sty}{\font\testfour=fourier-bb at 9.5pt\testfour NZQRC}{} \\
-%   \option{lucidabb}  & use the (commercial) Lucida Math blackboard font%
+%   \option{lucidabb}  & use the (commercial) Lucida Math blackboard font:
 %\iffalse%
-%                       : {\font\testluc=hlcra at 9.2pt\testluc NZQRC}%
+%  {\font\testluc=hlcra at 9.2pt\testluc NZQRC}%
 %\fi%
 %                                                                          \\
 % \end{options}
@@ -409,6 +409,7 @@
 % \begin{tabular}{@{}*2{ll@{\qquad}}ll@{}}
 %   \sym\digamma     & \sym\varkappa       & \sym\varbeta \\
 %   \sym\backepsilon & \sym\varbackepsilon & \sym\hbar \\
+%   \sym\hslash      & \sym\lambdabar      & \sym\lambdaslash \\
 %   \sym\jmath       & \sym\eth            & \sym\Bbbk \\
 %   \sym\slashedzero & \sym\openg \\
 % \end{tabular}
@@ -543,6 +544,7 @@
 %   \item added package options \option{onlytext} and \option{onlymath}
 %   \item added package option \option{loosequotes}
 %   \item added package option \option{openg}
+%   \item added package options \option{normalsize} and \option{nonormalsize}
 %   \item fixed package option \option{frenchmath}
 %   \item fixed package option \option{abx}
 %   \item update to \pkg{microtype} version~1.8
@@ -553,6 +555,7 @@
 %   \item fixed \acro{LGR} and \acro{LGI} encodings to use $\upvarphi$ instead of $\upphi$
 %   \item fixed {\fontencoding{LGR}\selectfont\char60 R} in \acro{LGI} encoding
 %   \item added punctuation support in \acro{LGI} encoding (thanks to Jens Boerstinghaus)
+%   \item added symbols \verb|\hslash|, \verb|\lambdabar|, \verb|\lambdaslash|
 %   \item fixed side bearings of $\sigma$ in math mode
 %   \item added {\small CODINGSCHEME} statements to encoding files
 %   \item fixed usage of MnSymbol's ``\textbar'' in \pkg{doc.sty}'s module prefix
@@ -1129,6 +1132,8 @@
   \DeclareMathSymbol{\upjmath}          {\mathord}{letters}{'374}
   \DeclareMathSymbol{\varsmallint}      {\mathord}{letters}{'376}
   \DeclareMathSymbol{\openg}            {\mathalpha}{letters}{'267}
+  \DeclareRobustCommand\lambdabar       {\middlebar\lambda}
+  \DeclareRobustCommand\lambdaslash     {\middleslash\lambda}
 \fi
 %    \end{macrocode}
 % Archaic Greek letters not provided by MinionPro.
