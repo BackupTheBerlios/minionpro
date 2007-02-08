@@ -207,10 +207,14 @@ get_flags() {
 }
 get_ts_flags() {
   case $1 in
-      lf) ts_flags="-fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
-     osf) ts_flags="-fpnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
-     tlf) ts_flags="-ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
-    tosf) ts_flags="-ftnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+    *It*) ts_flags="$ts_it_compat_flags";;
+       *) ts_flags="$ts_rm_compat_flags";;
+  esac
+  case $2 in
+      lf) ts_flags="$ts_flags -fpnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
+     osf) ts_flags="$ts_flags -fpnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
+     tlf) ts_flags="$ts_flags -ftnum --subs-filter='<Number>' -fonum --subs-filter='!<Number>' -flnum";;
+    tosf) ts_flags="$ts_flags -ftnum --subs-filter='<Number>' -flnum --subs-filter='!<Number>' -fonum";;
   esac
 }
 get_sc_flags() {
@@ -223,18 +227,22 @@ get_sc_flags() {
 }
 get_sc_ts_flags() {
   case $1 in
-      lf) sc_ts_flags="-fpnum"
+    *It*) sc_ts_flags="ts_it_compat_flags";;
+       *) sc_ts_flags="ts_rm_compat_flags";;
+  esac
+  case $2 in
+      lf) sc_ts_flags="$sc_ts_flags -fpnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
-     osf) sc_ts_flags="-fpnum -fsmcp"
+     osf) sc_ts_flags="$sc_ts_flags -fpnum -fsmcp"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter=!'<Number>' -fonum";;
-     tlf) sc_ts_flags="-ftnum"
+     tlf) sc_ts_flags="$sc_ts_flags -ftnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -fonum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Letter>'  -fsmcp";;
-    tosf) sc_ts_flags="-ftnum -fsmcp"
+    tosf) sc_ts_flags="$sc_ts_flags -ftnum -fsmcp"
           sc_ts_flags="$sc_ts_flags --subs-filter='<Number>'  -flnum"
           sc_ts_flags="$sc_ts_flags --subs-filter='!<Number>' -fonum";;
   esac
@@ -255,9 +263,9 @@ get_lgr_flags() {
 make_normal_metrics() {
 
   get_flags        "$1" "$2"
-  get_ts_flags     "$2"
+  get_ts_flags     "$1" "$2"
   get_sc_flags     "$2"
-  get_sc_ts_flags  "$2"
+  get_sc_ts_flags  "$1" "$2"
   get_it_ot1_flags "$1"
   get_lgr_flags    "$1"
 
@@ -331,9 +339,9 @@ make_normal_metrics() {
 make_spread_metrics() {
 
   get_flags        "$1" "$2"
-  get_ts_flags     "$2"
+  get_ts_flags     "$1" "$2"
   get_sc_flags     "$2"
-  get_sc_ts_flags  "$2"
+  get_sc_ts_flags  "$1" "$2"
   get_it_ot1_flags "$1"
   get_lgr_flags    "$1"
 
