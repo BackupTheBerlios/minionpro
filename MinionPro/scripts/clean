@@ -15,4 +15,4 @@ rm -f dvips/*.{enc,map}
 rm -f enc/*.enckern
 rm -f fontinst/*.{tfm,vpl,vf,log} fontinst/*-integral*.pl
 rm -f tex/*.{fd,drv,sty,log,cfg} tex/test-fontaxes.tex
-rm -f maketmp{,-expanded}.{tmp,tmp2}
+rm -f maketfm{,-expanded}.{tmp,tmp2} maketfm.error glyph-list-?? base-fonts-*

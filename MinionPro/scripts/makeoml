@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export TEXFONTS=../tfm:../vf:
+
 font=$1
 
 if [ "x$font" = "x" ]

@@ -39,7 +39,6 @@ create_sc_grekcyrl=false
 create_swash=true
 wide_spacing=false
 glyph_list=""
-base_font_list=""
 
 if [ "x$(otfinfo -f otf/$font-Regular.otf | grep smcp)" = "x" ] 
 then 
@@ -72,8 +71,7 @@ do
     --nokern)         create_kerned=false;;
     --wide-spacing)   wide_spacing=true;;
     --narrow-spacing) wide_spacing=false;;
-    --pack=*)         glyph_list="${opt#--pack=}"
-                      base_font_list="base-fonts-$font";;
+    --pack=*)         glyph_list="${opt#--pack=}";;
     --pack)           echo -e "Option --pack is missing an argument\n";
                       usage;;
     *)                echo -e "Unknown option $opt\n";
@@ -92,13 +90,6 @@ oml_flags=""
 greek_flags=""
 quote_flags=""
 
-if [ "x$base_font_list" != "x" ]
-then
-  base_encoding_flags="--base-encodings='$base_font_list'"
-else
-  base_encoding_flags=""
-fi
-
 if [ -e "scripts/maketfm-$font.cfg" ]
 then
   . "scripts/maketfm-$font.cfg"
@@ -110,17 +101,13 @@ make_base_encodings() {
   then
     local i b enc
 
-    echo "" >$base_font_list
-
     split -d -l 256 "$glyph_list" glyph-list-
 
     for b in glyph-list-*
     do
       i=${b#glyph-list-}
 
-      enc="enc/base-$font-$i.enc"
-
-      echo "$font-Base-$i $enc" >>$base_font_list
+      enc="dvips/base-$font-$i.enc"
 
       echo "/$font-Base-$i [" >$enc
 
@@ -187,13 +174,19 @@ make_base_fonts() {
   then
     local name="$1"
     local e i
+    local base_font_list="base-fonts-$font-$name"
 
-    for e in enc/base-$font-*.enc
+    echo >$base_font_list
+
+    for e in dvips/base-$font-*.enc
     do
-      i=${e#enc/base-$font-}
+      i=${e#dvips/base-$font-}
       i=${i%.enc}
+      local texname="$font-$name-Base-$i"
 
-      otftotfm --tfm-directory=./tfm --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj -e "$e" "otf/$font-$name.otf" "$font-Base-$i"
+      otftotfm --tfm-directory=./tfm --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj --literal-encoding="$e" "otf/$font-$name.otf" "$texname"
+
+      echo "$texname $e" >>$base_font_list
 
     done
   fi
@@ -207,6 +200,12 @@ make_tfm() {
   shift 3
 
   local tex_name="$font-$name-$spec"
+
+  local base_encoding_flags=""
+  if [ "x$glyph_list" != "x" ]
+  then
+    base_encoding_flags="--base-encodings='base-fonts-$font-$name'"
+  fi
 
   local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips"
   common_flags="$common_flags --no-type1 --no-updmap --no-dotlessj --warn-missing -fkern $base_encoding_flags"
@@ -615,8 +614,17 @@ make_additional_italic() {
   fi
 }
 
+# Fix map lines referring to .otf fonts (resulting from otftotfm not finding
+# the .pfb because they have not yet been installed: Happens either before the
+# first installation if otftotfm is compiled with kpathsea support or in any
+# case if it's compiled without.)
+fix_map() {
+    sed -e 's/\.otf$/.pfb/'
+}
+
 # Ok, let's start.
 
+{
 make_base_encodings
 
 # We first create shell scripts with the actual otftotfm calls.
@@ -640,15 +648,9 @@ done
 tr "\177" " " <maketfm.tmp >maketfm.tmp2
 tr "\177" " " <maketfm-expanded.tmp >maketfm-expanded.tmp2
 
-# Fix map lines referring to .otf fonts (resulting from otftotfm not finding
-# the .pfb because they have not yet been installed: Happens either before the
-# first installation if otftotfm is compiled with kpathsea support or in any
-# case if it's compiled without.)
-
-{
     . maketfm.tmp2
     . maketfm-expanded.tmp2
-} | sed -e 's/\.otf$/.pfb/'
+} | fix_map
 
 rm maketfm.tmp maketfm.tmp2 maketfm-expanded.tmp maketfm-expanded.tmp2
 
