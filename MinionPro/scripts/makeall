@@ -2,14 +2,7 @@
 
 mkdir -p pfb tfm vf dvips
 
-echo "Creating PostScript fonts ..."
-
-for font in otf/*.otf
-do
-  base=$(basename "$font" .otf)
-  cfftot1    "$font"     "$base.pfb"
-  t1dotlessj "$base.pfb" "${base}LCDFJ.pfb"
-done
+./scripts/convert-lcdf
 
 echo "Creating TeX metrics ..."
 
@@ -28,8 +21,6 @@ maketfm() {
 }
 
 maketfm MinionPro "$@"
-
-mv *.pfb pfb
 
 if [ -e maketfm.error ]
 then

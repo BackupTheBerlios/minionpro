@@ -133,7 +133,7 @@ make_base_encodings() {
 
 make_enckern() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     local e
 
@@ -149,24 +149,18 @@ make_enckern() {
           if [ -e "kerning/$1$l-$enc.kern" ]
           then
             cat $e "kerning/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-          else
-            if [ -e "kerning/$1$l.kern" ]
-            then
-              cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-            else
-              if [ -e "kerning/$1-$enc.kern" ]
-              then
-                cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-              else
-                if [ -e "kerning/$1.kern" ]
-                then
-                  cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-                else
-                  cp $e enc/mn-$1$l-$enc.enckern
-                fi
-              fi
-            fi
-          fi
+          elif [ -e "kerning/$1$l.kern" ]
+	  then
+	    cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+	  elif [ -e "kerning/$1-$enc.kern" ]
+	  then
+	    cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+	  elif [ -e "kerning/$1.kern" ]
+	  then
+	    cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+	  else
+	    cp $e enc/mn-$1$l-$enc.enckern
+	  fi
           if [ "$enc" = "integral" ]
           then
             cp $e enc/mn-$1$l-$enc.enckern
@@ -226,23 +220,23 @@ make_tfm() {
   fi
 
   echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm.tmp
-  echo "otftotfm           $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'"    >>maketfm.tmp
+  echo "otftotfm           $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'"    >>maketfm.tmp
 
   # expanded metrics for pdftex's font expansion
 
   if $create_expanded
   then
     echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm-expanded.tmp
-    echo "otftotfm -E1.020 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+20" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.016 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+16" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.012 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+12" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.008 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E1.004 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.996 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.992 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.988 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-12" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.984 $common_flags $@ -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-16" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.980 $common_flags $@ -e '$kernfile' "otf/$font-$name.otf" "$tex_name"-20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.020 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+20" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.016 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+16" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.012 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+12" >>maketfm-expanded.tmp
+    echo "otftotfm -E1.008 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E1.004 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.996 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-4"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.992 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-8"  >>maketfm-expanded.tmp
+    echo "otftotfm -E0.988 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-12" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.984 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-16" >>maketfm-expanded.tmp
+    echo "otftotfm -E0.980 $common_flags $* -e '$kernfile' "otf/$font-$name.otf" "$tex_name"-20" >>maketfm-expanded.tmp
   fi
 }
 
@@ -461,7 +455,7 @@ make_spread_metrics() {
 
 make_integrals() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -475,7 +469,7 @@ make_integrals() {
 
 make_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -495,7 +489,7 @@ make_metrics() {
 
 make_spaced_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -512,7 +506,7 @@ make_spaced_metrics() {
 
 make_swash_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -545,7 +539,7 @@ make_swash_metrics() {
 
 make_spaced_swash_metrics() {
 
-  if [ -e "$font-$1.pfb" ]
+  if [ -e "pfb/$font-$1.pfb" ]
   then
     echo 'echo -n "Processing font '"$font-$1"' ..." >&2' >>maketfm.tmp
 
@@ -646,8 +640,15 @@ done
 tr "\177" " " <maketfm.tmp >maketfm.tmp2
 tr "\177" " " <maketfm-expanded.tmp >maketfm-expanded.tmp2
 
-. maketfm.tmp2
-. maketfm-expanded.tmp2
+# Fix map lines referring to .otf fonts (resulting from otftotfm not finding
+# the .pfb because they have not yet been installed: Happens either before the
+# first installation if otftotfm is compiled with kpathsea support or in any
+# case if it's compiled without.)
+
+{
+    . maketfm.tmp2
+    . maketfm-expanded.tmp2
+} | sed -e 's/\.otf$/.pfb/'
 
 rm maketfm.tmp maketfm.tmp2 maketfm-expanded.tmp maketfm-expanded.tmp2
 
