@@ -101,7 +101,7 @@ make_base_encodings() {
   then
     local i b enc
 
-    split -d -l 256 "$glyph_list" glyph-list-
+    split -l 256 "$glyph_list" glyph-list-
 
     for b in glyph-list-*
     do
@@ -112,9 +112,11 @@ make_base_encodings() {
       echo "/$font-Base-$i [" >$enc
 
       cat glyph-list-$i >>$enc
+      wc $enc | awk '{for (x=1;x<=257-$1;x++) printf("/.notdef\n")}' >>$enc
 
       echo "] def" >>$enc
     done
+    rm glyph-list-*
   fi
 }
 
@@ -178,6 +180,10 @@ make_base_fonts() {
 
     echo >$base_font_list
 
+    otftotfm --tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap -e enc/mn-ot1.enc "otf/$font-$name.otf" "$font-$name"
+    rm ./tfm/"$font-$name"--base.tfm ./tfm/"$font-$name".tfm ./vf/"$font-$name".vf ./dvips/a_*.enc
+    echo "$font-$name--lcdfj - dotlessj" >>$base_font_list
+
     for e in dvips/base-$font-*.enc
     do
       i=${e#dvips/base-$font-}
@@ -202,13 +208,13 @@ make_tfm() {
   local tex_name="$font-$name-$spec"
 
   local base_encoding_flags=""
-  if [ "x$glyph_list" != "x" ]
+  if [ "x$glyph_list" != "x" ] && [ "$enc" != "integral" ] 
   then
     base_encoding_flags="--base-encodings='base-fonts-$font-$name'"
   fi
 
   local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips"
-  common_flags="$common_flags --no-type1 --no-updmap --no-dotlessj --warn-missing -fkern $base_encoding_flags"
+  common_flags="$common_flags --no-type1 --no-updmap --warn-missing -fkern $base_encoding_flags"
 
   local kernfile
   get_kern_file "$name" "$enc" "$spec"
@@ -619,7 +625,7 @@ make_additional_italic() {
 # first installation if otftotfm is compiled with kpathsea support or in any
 # case if it's compiled without.)
 fix_map() {
-    sed -e 's/\.otf$/.pfb/'
+    sed -e 's/\.otf$/.pfb/' | grep -v "base "
 }
 
 # Ok, let's start.
