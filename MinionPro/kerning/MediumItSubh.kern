@@ -97,23 +97,4 @@
 % LIGKERN tonos {-135} Upsilon
 % LIGKERN tonos {-213} Omega
 
-% POSITION space_dotbelowcomb_Iota -400 -55 -400 ;
-% POSITION space_dotbelowcomb_iota -375 -55 -400 ;
-% POSITION space_dotbelowcomb_upsilon -490 -55 -400 ;
-% POSITION space_dotbelowcomb_lambda -475 -55 -400 ;
-% POSITION space_dotbelowcomb_beta -430 -55 -400 ;
-% POSITION space_dotbelowcomb_zeta -430 -150 -400 ;
-% POSITION space_dotbelowcomb_eta -520 -55 -400 ;
-% POSITION space_dotbelowcomb_etasub -565 -220 -400 ;
-% POSITION space_dotbelowcomb_Gamma -552 -55 -400 ;
-% POSITION space_dotbelowcomb_omicron -475 -55 -400 ;
-% POSITION space_dotbelowcomb_omegasub -535 -220 -400 ;
-% POSITION space_dotbelowcomb_alpha -530 -55 -400 ;
-% POSITION space_dotbelowcomb_alphasub -475 -220 -400 ;
-% POSITION space_dotbelowcomb_epsilon -395 -55 -400 ;
-% POSITION space_dotbelowcomb_Eta -590 -55 -400 ;
-% POSITION space_dotbelowcomb_psi -575 -300 -400 ;
-% POSITION space_dotbelowcomb_gamma -540 -300 -400 ;
-% POSITION space_dotbelowcomb_Psi -580 -55 -400 ;
-% POSITION space_dotbelowcomb_Mu -680 -55 -400 ; 
 
