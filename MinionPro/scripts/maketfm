@@ -79,12 +79,20 @@ do
   esac
 done
 
+# expanded metrics for pdftex's font expansion
+if $create_expanded; then
+  expansions="-20 -16 -12 -8 -4 0 4 8 12 16 20"
+else
+  expansions="0"
+fi
+
 noliga="--unicoding='ff =: emptyslot'"
 noliga="$noliga --unicoding='fi =: emptyslot'"
 noliga="$noliga --unicoding='fl =: emptyslot'"
 noliga="$noliga --unicoding='ffi =: emptyslot'"
 noliga="$noliga --unicoding='ffl =: emptyslot'"
 
+dir_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --type1-directory=./pfb"
 extra_flags=""
 oml_flags=""
 greek_flags=""
@@ -139,17 +147,17 @@ make_enckern() {
           then
             cat $e "kerning/$1$l-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
           elif [ -e "kerning/$1$l.kern" ]
-	  then
-	    cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-	  elif [ -e "kerning/$1-$enc.kern" ]
-	  then
-	    cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-	  elif [ -e "kerning/$1.kern" ]
-	  then
-	    cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
-	  else
-	    cp $e enc/mn-$1$l-$enc.enckern
-	  fi
+          then
+            cat $e "kerning/$1$l.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          elif [ -e "kerning/$1-$enc.kern" ]
+          then
+            cat $e "kerning/$1-$enc.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          elif [ -e "kerning/$1.kern" ]
+          then
+            cat $e "kerning/$1.kern" | grep -v "#" >enc/mn-$1$l-$enc.enckern
+          else
+            cp $e enc/mn-$1$l-$enc.enckern
+          fi
           if [ "$enc" = "integral" ]
           then
             cp $e enc/mn-$1$l-$enc.enckern
@@ -170,30 +178,50 @@ get_kern_file() {
   esac
 }
 
+get_exp_info() {
+  local exp=$1
+  if ((exp == 0)); then
+    exp_suffix=
+    exp_flag=
+  else
+    exp_suffix=$(printf "%+d" "$exp")
+    exp_flag=-E$(bc <<< "scale=3; 1+$exp/1000")
+  fi
+}
+
 make_base_fonts() {
 
   if [ "x$glyph_list" != "x" ]
   then
     local name="$1"
     local e i
-    local base_font_list="base-fonts-$font-$name"
 
-    echo >$base_font_list
+    local exp exp_flag exp_suffix
+    for exp in $expansions; do
+      get_exp_info "$exp"
 
-    otftotfm --tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips --no-type1 --no-updmap -e enc/mn-ot1.enc "otf/$font-$name.otf" "$font-$name"
-    rm ./tfm/"$font-$name"--base.tfm ./tfm/"$font-$name".tfm ./vf/"$font-$name".vf ./dvips/a_*.enc
-    echo "$font-$name--lcdfj - dotlessj" >>$base_font_list
+      local base_font_list="base-fonts-$font-$name$exp_suffix"
+      local tex_prefix="$font-$name"
 
-    for e in dvips/base-$font-*.enc
-    do
-      i=${e#dvips/base-$font-}
-      i=${i%.enc}
-      local texname="$font-$name-Base-$i"
+      echo -n >$base_font_list
 
-      otftotfm --tfm-directory=./tfm --encoding-directory=./dvips --no-type1 --no-updmap --no-dotlessj --literal-encoding="$e" "otf/$font-$name.otf" "$texname"
+      otftotfm $exp_flag $dir_flags --no-type1 --no-updmap -e enc/mn-ot1.enc "otf/$font-$name.otf" "$tex_prefix$exp_suffix" | grep -- --lcdfj
+      rm ./tfm/"${tex_prefix}--base${exp_suffix}".tfm \
+        ./tfm/"${tex_prefix}${exp_suffix}".tfm \
+        ./vf/"${tex_prefix}${exp_suffix}".vf ./dvips/a_*.enc
+      echo "$tex_prefix--lcdfj$exp_suffix - dotlessj" >>$base_font_list
 
-      echo "$texname $e" >>$base_font_list
+      for e in dvips/base-$font-*.enc
+      do
+        i=${e#dvips/base-$font-}
+        i=${i%.enc}
+        local texname="$font-$name-Base-$i$exp_suffix"
 
+        otftotfm $exp_flag $dir_flags --no-type1 --no-updmap --no-dotlessj --literal-encoding="$e" "otf/$font-$name.otf" "$texname"
+
+        echo "$texname $e" >>$base_font_list
+
+      done
     done
   fi
 }
@@ -205,44 +233,43 @@ make_tfm() {
   local spec="$3"
   shift 3
 
-  local tex_name="$font-$name-$spec"
-
-  local base_encoding_flags=""
-  if [ "x$glyph_list" != "x" ] && [ "$enc" != "integral" ] 
-  then
-    base_encoding_flags="--base-encodings='base-fonts-$font-$name'"
-  fi
-
-  local common_flags="--tfm-directory=./tfm --vf-directory=./vf --encoding-directory=./dvips"
-  common_flags="$common_flags --no-type1 --no-updmap --warn-missing -fkern $base_encoding_flags"
-
-  local kernfile
-  get_kern_file "$name" "$enc" "$spec"
+  local common_flags="$dir_flags --no-type1 --no-updmap --warn-missing -fkern"
 
   if ! $verbose
   then
     common_flags="-q $common_flags"
   fi
 
+  local kernfile
+  get_kern_file "$name" "$enc" "$spec"
+
   echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm.tmp
-  echo "otftotfm           $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'"    >>maketfm.tmp
-
-  # expanded metrics for pdftex's font expansion
-
   if $create_expanded
   then
     echo -n 'echo -n " '"$spec"'," >&2; ' >>maketfm-expanded.tmp
-    echo "otftotfm -E1.020 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+20" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.016 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+16" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.012 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+12" >>maketfm-expanded.tmp
-    echo "otftotfm -E1.008 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E1.004 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'+4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.996 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-4"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.992 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-8"  >>maketfm-expanded.tmp
-    echo "otftotfm -E0.988 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-12" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.984 $common_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'-16" >>maketfm-expanded.tmp
-    echo "otftotfm -E0.980 $common_flags $* -e '$kernfile' "otf/$font-$name.otf" "$tex_name"-20" >>maketfm-expanded.tmp
   fi
+
+  local exp
+  for exp in $expansions; do
+    local exp_suffix exp_flag script_file
+    get_exp_info "$exp"
+    if ((exp == 0)); then
+      script_file=maketfm.tmp
+    else
+      script_file=maketfm-expanded.tmp
+    fi
+
+    local base_encoding_flags=""
+    if [ "x$glyph_list" != "x" ] && [ "$enc" != "integral" ] 
+    then
+      base_encoding_flags="--base-encodings='base-fonts-$font-$name$exp_suffix'"
+    fi
+
+    local tex_name="$font-$name-$spec$exp_suffix"
+
+    echo "otftotfm $exp_flag $common_flags $base_encoding_flags $*" \
+      "-e '$kernfile' 'otf/$font-$name.otf' '$tex_name'" >>"$script_file"
+  done
 }
 
 make_ligkern_options() {
