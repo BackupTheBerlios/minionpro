@@ -36,11 +36,12 @@ $| = 1;
 my %rounded = (
     heights => 0,
     depths => 0,
+    "italic corrections" => 0,
 );
 my %no_encoding = ();
 
 while (<STDIN>) {
-    s{(.*?)I had to round some (\w+) by ([\d.]+) units\.\n}[
+    s{(.*?)I had to round some (\w+(?:\s+\w+){0,2}) by ([\d.]+) units\.\n}[
         $rounded{$2} = max $rounded{$2}, $3;
         print_literal($1);
         print_error("r") if $show_round_flags;
