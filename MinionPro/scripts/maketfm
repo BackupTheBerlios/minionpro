@@ -104,6 +104,24 @@ then
   . "scripts/maketfm-$font.cfg"
 fi
 
+# check utilities
+
+otftotfm_version() {
+  otftotfm --version | sed -n -e 's/^otftotfm .* \([0-9.]\+\)$/\1/p'
+}
+
+requires_otftotfm_version() {
+  local min=$1 status=0
+  local ver=$(otftotfm_version)
+  if (( $(bc <<< "${ver:-0} < $min") )); then
+    echo "You need otftotfm version $min or greater to run this script." >&2
+    exit 1
+  fi
+}
+
+requires_otftotfm_version 2.58
+
+
 # output progress message later while the scripts run
 progress() {
   local scripts=

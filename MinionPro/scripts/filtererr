@@ -76,7 +76,9 @@ while (<STDIN>) {
 flush_errors();
 
 foreach (sort keys %rounded) {
-    printf "I had to round some $_ by %.7f units.\n", $rounded{$_};
+    if ($rounded{$_} > 0) {
+	printf "I had to round some $_ by %.7f units.\n", $rounded{$_};
+    }
 }
 foreach my $where (sort keys %no_encoding) {
     print "$where: warning: The following glyphs had no encoding: ";
