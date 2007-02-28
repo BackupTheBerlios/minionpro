@@ -1,8 +1,6 @@
 #!/bin/sh
 
-export TEXFONTS=../tfm:../vf:
-
-font=$1
+font="$1"
 
 if [ "x$font" = "x" ]
 then
@@ -28,10 +26,12 @@ do
   done
 done
 
+export TEXFONTS=../tfm:../vf:
+
 make_vpl() {
-  cp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml"*.tfm .
-  vftovp "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm" "$font-$1-tosf$2-oml.vpl"
-  rm "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm"
+#  cp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml"*.tfm .
+  vftovp "../vf/$font-$1-tosf$2-oml.vf" "../tfm/$font-$1-tosf$2-oml.tfm" "$font-$1-tosf$2-oml.vpl"
+#  rm "$font-$1-tosf$2-oml.vf" "$font-$1-tosf$2-oml.tfm"
 }
 
 run_fontinst() {

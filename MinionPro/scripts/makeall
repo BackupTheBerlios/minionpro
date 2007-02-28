@@ -1,8 +1,20 @@
 #!/bin/bash
 
+case "$*" in
+  *--verbose*) verbose=true;;
+  *)           verbose=false;;
+esac
+
 mkdir -p pfb tfm vf dvips
 
-./scripts/convert-lcdf
+echo "Creating PostScript fonts ..."
+
+for font in otf/*.otf
+do
+  base=$(basename "$font" .otf)
+  cfftot1    "$font"     "$base.pfb"
+  t1dotlessj "$base.pfb" "${base}LCDFJ.pfb"
+done
 
 echo "Creating TeX metrics ..."
 
@@ -14,13 +26,15 @@ maketfm() {
   touch maketfm.error
 
   ( scripts/maketfm "$family" "$@" >"dvips/$family.map.tmp" && rm maketfm.error ) 2>&1 |
-  ( perl scripts/filtererr || cat )
+  ( ( [[ ! $verbose ]] && perl scripts/filtererr ) || cat )
 
-  sort -u <"dvips/$family.map.tmp" >"dvips/$family.map"
+  sed -e "s/\.otf$/.pfb/" <"dvips/$family.map.tmp" | sort -u >"dvips/$family.map"
   rm "dvips/$family.map.tmp"
 }
 
 maketfm MinionPro "$@"
+
+mv *.pfb pfb
 
 if [ -e maketfm.error ]
 then
