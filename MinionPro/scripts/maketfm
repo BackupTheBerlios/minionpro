@@ -149,9 +149,9 @@ make_base_encodings() {
   then
     local i k enc
 
-    split -d -l 256 "$glyph_list" glyph-list.tmp-
+    split -l 256 "$glyph_list" glyph-list.tmp-
 
-    base_font_list=$(echo glyph-list.tmp-[0-9][0-9] | sed -e "s/glyph-list.tmp-//g")
+    base_font_list=$(echo glyph-list.tmp-[a-z][a-z] | sed -e "s/glyph-list.tmp-//g")
 
     for i in $base_font_list
     do
