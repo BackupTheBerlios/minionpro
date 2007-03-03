@@ -158,7 +158,7 @@ make_base_encodings() {
       enc="dvips/base-$font-$i.enc"
 
       echo "% CODINGSCHEME FONTSPECIFIC" >$enc
-      echo "/$font-Base-Encoding-$i [" >$enc
+      echo "/$font-Base-Encoding-$i [" >>$enc
 
       cat glyph-list.tmp-$i >>$enc
 
@@ -222,10 +222,12 @@ get_exp_info() {
   if (( exp == 0 ))
   then
     exp_suffix=""
+    exp_factor=""
     exp_flags=""
   else
     exp_suffix=$(printf "%+d" "$exp")
-    exp_flags=-E$(bc <<< "scale=3; 1+$exp/1000")
+    exp_factor=$(bc <<< "scale=3; 1+$exp/1000")
+    exp_flags="-E$exp_factor"
   fi
 }
 
@@ -234,7 +236,7 @@ make_base_fonts() {
   if [[ $glyph_list != "" ]]
   then
     local name="$1"
-    local enc font_list i exp exp_flags exp_suffix
+    local enc font_list i exp exp_flags exp_suffix exp_factor
     local common_flags="--tfm-directory=tfm --vf-directory=vf --encoding-directory=dvips --no-type1 --no-updmap"
 
     for exp in $expansions
@@ -248,9 +250,9 @@ make_base_fonts() {
       do
         enc="dvips/base-$font-$i.enc"
 
-        echo "$font-$name-Base-$i $enc" >>"$font_list"
+        echo "$font-$name-Base-$i$exp_suffix $enc" >>"$font_list"
 
-        otftotfm $common_flags $exp_flags --no-dotlessj --literal-encoding="$enc" "otf/$font-$name.otf" "$font-$name-Base-$i"
+        otftotfm $common_flags $exp_flags --no-dotlessj --literal-encoding="$enc" "otf/$font-$name.otf" "$font-$name-Base-$i$exp_suffix"
 
       done
 
@@ -258,17 +260,18 @@ make_base_fonts() {
 
       echo "$font-$name--lcdfj$exp_suffix - dotlessj" >>"$font_list"
 
-      echo "$font-$name--lcdfj $font-${name}LCDFJ \"\" <$font-${name}LCDFJ.pfb"
+      echo "$font-$name--lcdfj$exp_suffix $font-${name}LCDFJ \"${exp_factor:+$exp_factor ExtendFont}\" <$font-${name}LCDFJ.pfb"
 
-      otftotfm $common_flags $exp_flags --no-map --encoding=enc/dotlessj.enc "otf/$font-$name.otf" "$font-$name"
+      otftotfm $common_flags $exp_flags --no-map --encoding=enc/dotlessj.enc "otf/$font-$name.otf" "$font-$name$exp_suffix"
 
-      rm "tfm/$font-$name.tfm"
+      rm "tfm/$font-$name$exp_suffix.tfm"
+      rm "vf/$font-$name$exp_suffix.vf"
     done
   fi
 }
 
 get_base_encoding_flags () {
-  if [ "x$base_font_list" != "x" ] && [ "$2" != integral ]
+  if [[ $base_font_list != "" && $2 != integral ]]
   then
     base_encoding_flags="--base-encodings='base-fonts-$font-$1$3'"
   else
@@ -297,11 +300,16 @@ make_tfm() {
   shift 3
 
   local exp enc_flags base_encoding_flags exp_suffix exp_flags script_file
+  local exp_factor
 
   get_enc_flags "$name" "$enc" "$spec"
 
   local common_flags="--tfm-directory=tfm --vf-directory=vf --encoding-directory=dvips"
-  common_flags="$common_flags --no-type1 --no-updmap --no-dotlessj --warn-missing -fkern $base_encoding_flags"
+  common_flags="$common_flags --no-type1 --no-updmap --no-dotlessj --warn-missing -fkern $enc_flags"
+  if ! $verbose
+  then
+      common_flags="-q $common_flags"
+  fi
 
   for exp in $expansions
   do
@@ -320,13 +328,12 @@ make_tfm() {
 
     if $verbose
     then
-      progress -n " $tex_name,"
+      progress -o "$script_file" -n " $tex_name,"
     else
-      progress -n " $spec,"
-      common_flags="-q $common_flags"
+      progress -o "$script_file" -n " $spec$exp_suffix,"
     fi
 
-    echo "otftotfm $common_flags $base_encoding_flags $exp_flags $* -e '$kernfile' 'otf/$font-$name.otf' '$tex_name'" >>"$script_file"
+    echo "otftotfm $common_flags $base_encoding_flags $exp_flags $* 'otf/$font-$name.otf' '$tex_name'" >>"$script_file"
   done
 
 }
@@ -740,5 +747,5 @@ tr "\177" " " <maketfm-expanded.tmp >maketfm-expanded.tmp2
 . maketfm-expanded.tmp2
 
 rm maketfm.tmp maketfm.tmp2 maketfm-expanded.tmp maketfm-expanded.tmp2
-rm base-fonts-"$font"-*
+rm -f base-fonts-"$font"-*
 

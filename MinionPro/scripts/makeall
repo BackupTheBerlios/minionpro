@@ -26,7 +26,7 @@ maketfm() {
   touch maketfm.error
 
   ( scripts/maketfm "$family" "$@" >"dvips/$family.map.tmp" && rm maketfm.error ) 2>&1 |
-  ( ( [[ ! $verbose ]] && perl scripts/filtererr ) || cat )
+  ( ( ! $verbose && perl scripts/filtererr ) || cat )
 
   sed -e "s/\.otf$/.pfb/" <"dvips/$family.map.tmp" | sort -u >"dvips/$family.map"
   rm "dvips/$family.map.tmp"
