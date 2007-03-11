@@ -11,8 +11,12 @@ requires_otftotfm_version() {
   local min_version="$1"
   local status=0
   local version=$(otftotfm_version)
+  : ${version:=0.0}
 
-  if (( $(bc <<< "${version:-0} < $min_version") ))
+  local major=${version%%.*}         minor=${version#*.}
+  local min_major=${min_version%%.*} min_minor=${min_version#*.}
+
+  if (( $major < $min_major || ($major == $min_major && $minor < $min_minor) ))
   then
     echo "You need otftotfm version $min_version or greater to run this script." >&2
     exit 1
@@ -160,7 +164,7 @@ make_base_encodings() {
       enc="dvips/base-$font-$i.enc"
 
       echo "% CODINGSCHEME FONTSPECIFIC" >"$enc"
-      echo "/$font-Base-Encoding-$i [" >"$enc"
+      echo "/$font-Base-Encoding-$i [" >>"$enc"
 
       cat glyph-list.tmp-$i >>"$enc"
 
@@ -229,7 +233,7 @@ get_exp_info() {
   else
     exp_suffix=$(printf "%+d" "$exp")
     exp_factor=$(bc <<< "scale=3; 1+$exp/1000")
-    exp_flags="-E$exp_factor"
+    exp_flags="-E $exp_factor"
   fi
 }
 
@@ -325,7 +329,6 @@ make_tfm() {
       progress -n " $tex_name,"
     else
       progress -n " $spec$exp_suffix,"
-      common_flags="-q $common_flags"
     fi
 
     echo "otftotfm $common_flags $base_encoding_flags $exp_flags $* $enc_flags 'otf/$font-$name.otf' '$tex_name'" >>maketfm.tmp
