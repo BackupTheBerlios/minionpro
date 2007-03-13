@@ -3,20 +3,22 @@
 # Check utilities.
 
 otftotfm_version() {
-  otftotfm --version | sed -n -e 's/^otftotfm .* \([0-9.]\+\)$/\1/p'
+  otftotfm --version | head -n 1 | sed -e 's/^otftotfm .* \([0-9.]\+\)$/\1/'
 }
 
 requires_otftotfm_version() {
 
   local min_version="$1"
-  local status=0
   local version=$(otftotfm_version)
+
   : ${version:=0.0}
 
-  local major=${version%%.*}         minor=${version#*.}
-  local min_major=${min_version%%.*} min_minor=${min_version#*.}
+  local ver_major=${version%%.*}
+  local ver_minor=${version#*.}
+  local min_major=${min_version%%.*}
+  local min_minor=${min_version#*.}
 
-  if (( $major < $min_major || ($major == $min_major && $minor < $min_minor) ))
+  if (( $ver_major < $min_major || ($ver_major == $min_major && $ver_minor < $min_minor) ))
   then
     echo "You need otftotfm version $min_version or greater to run this script." >&2
     exit 1
