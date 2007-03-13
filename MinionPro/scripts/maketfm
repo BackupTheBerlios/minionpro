@@ -3,13 +3,15 @@
 # Check utilities.
 
 otftotfm_version() {
-  otftotfm --version | head -n 1 | sed -e 's/^otftotfm .* \([0-9.]\+\)$/\1/'
+  otftotfm --version | head -n 1 #| sed -e 's/^otftotfm .* \([0-9.]\+\)$/\1/'
 }
 
 requires_otftotfm_version() {
 
   local min_version="$1"
-  local version=$(otftotfm_version)
+  local version="$(otftotfm_version)"
+
+  version=${version#otftotfm (LCDF typetools) }
 
   : ${version:=0.0}
 
@@ -155,7 +157,7 @@ make_base_encodings() {
 
   if [[ $glyph_list != "" ]]
   then
-    local i k enc
+    local i k n enc
 
     split -l 256 "$glyph_list" glyph-list.tmp-
 
@@ -170,7 +172,9 @@ make_base_encodings() {
 
       cat glyph-list.tmp-$i >>"$enc"
 
-      for ((k = $(wc -l <glyph-list.tmp-$i); k < 256; k++))
+      n=$(wc -l <glyph-list.tmp-$i)
+
+      for ((k = ${n// /}; k < 256; k++))
       do
         echo "/.notdef" >>"$enc"
       done
