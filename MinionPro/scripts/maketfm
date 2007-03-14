@@ -181,6 +181,8 @@ make_base_encodings() {
 
       echo "] def" >>"$enc"
 
+      scripts/beautify-enc.sh "$enc"
+
       rm glyph-list.tmp-$i
     done
   fi
@@ -216,10 +218,6 @@ make_enckern() {
           else
             cp $e enc/mn-$1$l-$enc.enckern
           fi
-#          if [ "$enc" = "integral" ]
-#          then
-#            cp $e enc/mn-$1$l-$enc.enckern
-#          fi
         else
           cp $e enc/mn-$1$l-$enc.enckern
         fi
