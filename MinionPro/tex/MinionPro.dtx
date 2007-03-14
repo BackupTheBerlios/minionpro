@@ -761,6 +761,7 @@
 %    \begin{macrocode}
 \RequirePackage{MinionPro-FontDef}
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
+\@ifpackageloaded{ifpdf}{}{\RequirePackage{ifpdf}}
 
 \if@Mn@Math@
   \RequirePackage{MnSymbol}
@@ -979,6 +980,109 @@
 % Finally initialise the Greek letters.
 %    \begin{macrocode}
   \Mn@load@greek
+\fi
+%    \end{macrocode}
+%
+% \subsection{pdftex to-unicode support}
+%
+%    \begin{macrocode}
+\ifpdf
+  \pdfglyphtounicode{uniEFD5}{03DD}    % uni03DD
+  \pdfglyphtounicode{uniEFED}{02D9}    % dotaccent.cap
+  \pdfglyphtounicode{uniEFEE}{02D8}    % breve.cap
+  \pdfglyphtounicode{uniEFF1}{02DB}    % ogonek.cap
+  \pdfglyphtounicode{uniEFF2}{00B8}    % cedilla.cap
+  \pdfglyphtounicode{uniEFF3}{02DA}    % ring.cap
+  \pdfglyphtounicode{uniEFF5}{02DC}    % tilde.cap
+  \pdfglyphtounicode{uniEFF7}{02C6}    % circumflex.cap
+  \pdfglyphtounicode{uniF628}{2030}    % perthousand.oldstyle
+  \pdfglyphtounicode{uniF62C}{0028}    % parenleft.denominator
+  \pdfglyphtounicode{uniF62D}{0029}    % parenright.denominator
+  \pdfglyphtounicode{uniF631}{0028}    % parenleft.numerator
+  \pdfglyphtounicode{uniF632}{0029}    % parenright.numerator
+  \pdfglyphtounicode{uniF638}{0030}    % zero.slash
+  \pdfglyphtounicode{uniF639}{0030}    % zero.fitted
+  \pdfglyphtounicode{uniF63A}{0032}    % two.fitted
+  \pdfglyphtounicode{uniF63B}{0033}    % three.fitted
+  \pdfglyphtounicode{uniF63C}{0034}    % four.fitted
+  \pdfglyphtounicode{uniF63D}{0035}    % five.fitted
+  \pdfglyphtounicode{uniF63E}{0036}    % six.fitted
+  \pdfglyphtounicode{uniF63F}{0037}    % seven.fitted
+  \pdfglyphtounicode{uniF640}{0038}    % eight.fitted
+  \pdfglyphtounicode{uniF641}{0039}    % nine.fitted
+  \pdfglyphtounicode{uniF642}{0025}    % percent.oldstyle
+  \pdfglyphtounicode{uniF643}{0030}    % zero.taboldstyle
+  \pdfglyphtounicode{uniF644}{0031}    % one.taboldstyle
+  \pdfglyphtounicode{uniF645}{0032}    % two.taboldstyle
+  \pdfglyphtounicode{uniF646}{0033}    % three.taboldstyle
+  \pdfglyphtounicode{uniF647}{0034}    % four.taboldstyle
+  \pdfglyphtounicode{uniF648}{0035}    % five.taboldstyle
+  \pdfglyphtounicode{uniF649}{0036}    % six.taboldstyle
+  \pdfglyphtounicode{uniF64A}{0037}    % seven.taboldstyle
+  \pdfglyphtounicode{uniF64B}{0038}    % eight.taboldstyle
+  \pdfglyphtounicode{uniF64C}{0039}    % nine.taboldstyle
+  \pdfglyphtounicode{uniF64D}{20A1}    % colonmonetary.taboldstyle
+  \pdfglyphtounicode{uniF64E}{20AC}    % Euro.taboldstyle
+  \pdfglyphtounicode{uniF64F}{0192}    % florin.taboldstyle
+  \pdfglyphtounicode{uniF650}{0023}    % numbersign.taboldstyle
+  \pdfglyphtounicode{uniF651}{00A3}    % sterling.taboldstyle
+  \pdfglyphtounicode{uniF652}{00A5}    % yen.taboldstyle
+  \pdfglyphtounicode{uniF653}{0024}    % dollar.taboldstyle
+  \pdfglyphtounicode{uniF654}{00A2}    % cent.taboldstyle
+  \pdfglyphtounicode{uniF655}{0030}    % zero.denominator
+  \pdfglyphtounicode{uniF656}{0031}    % one.denominator
+  \pdfglyphtounicode{uniF657}{0032}    % two.denominator
+  \pdfglyphtounicode{uniF658}{0033}    % three.denominator
+  \pdfglyphtounicode{uniF659}{0034}    % four.denominator
+  \pdfglyphtounicode{uniF65A}{0035}    % five.denominator
+  \pdfglyphtounicode{uniF65B}{0036}    % six.denominator
+  \pdfglyphtounicode{uniF65C}{0037}    % seven.denominator
+  \pdfglyphtounicode{uniF65D}{0038}    % eight.denominator
+  \pdfglyphtounicode{uniF65E}{0039}    % nine.denominator
+  \pdfglyphtounicode{uniF65F}{002C}    % comma.denominator
+  \pdfglyphtounicode{uniF660}{002E}    % period.denominator
+  \pdfglyphtounicode{uniF661}{0030}    % zero.numerator
+  \pdfglyphtounicode{uniF662}{0031}    % one.numerator
+  \pdfglyphtounicode{uniF663}{0032}    % two.numerator
+  \pdfglyphtounicode{uniF664}{0033}    % three.numerator
+  \pdfglyphtounicode{uniF665}{0034}    % four.numerator
+  \pdfglyphtounicode{uniF666}{0035}    % five.numerator
+  \pdfglyphtounicode{uniF667}{0036}    % six.numerator
+  \pdfglyphtounicode{uniF668}{0037}    % seven.numerator
+  \pdfglyphtounicode{uniF669}{0038}    % eight.numerator
+  \pdfglyphtounicode{uniF66A}{0039}    % nine.numerator
+  \pdfglyphtounicode{uniF66B}{002C}    % comma.numerator
+  \pdfglyphtounicode{uniF66C}{002E}    % period.numerator
+  \pdfglyphtounicode{uniF66D}{0103}    % abreve.sc
+  \pdfglyphtounicode{uniF66F}{0105}    % aogonek.sc
+  \pdfglyphtounicode{uniF671}{0107}    % cacute.sc
+  \pdfglyphtounicode{uniF672}{010D}    % ccaron.sc
+  \pdfglyphtounicode{uniF675}{010F}    % dcaron.sc
+  \pdfglyphtounicode{uniF676}{0111}    % dcroat.sc
+  \pdfglyphtounicode{uniF678}{011B}    % ecaron.sc
+  \pdfglyphtounicode{uniF67B}{014B}    % eng.sc
+  \pdfglyphtounicode{uniF67C}{0119}    % eogonek.sc
+  \pdfglyphtounicode{uniF67D}{011F}    % gbreve.sc
+  \pdfglyphtounicode{uniF684}{0133}    % ij.sc
+  \pdfglyphtounicode{uniF687}{0129}    % itilde.sc
+  \pdfglyphtounicode{uniF68A}{013A}    % lacute.sc
+  \pdfglyphtounicode{uniF68B}{013E}    % lcaron.sc
+  \pdfglyphtounicode{uniF68E}{0144}    % nacute.sc
+  \pdfglyphtounicode{uniF68F}{0148}    % ncaron.sc
+  \pdfglyphtounicode{uniF692}{0151}    % ohungarumlaut.sc
+  \pdfglyphtounicode{uniF695}{0155}    % racute.sc
+  \pdfglyphtounicode{uniF696}{0159}    % rcaron.sc
+  \pdfglyphtounicode{uniF698}{015B}    % sacute.sc
+  \pdfglyphtounicode{uniF699}{015F}    % scedilla.sc
+  \pdfglyphtounicode{uniF69D}{0165}    % tcaron.sc
+  \pdfglyphtounicode{uniF69E}{0163}    % tcommaaccent.sc
+  \pdfglyphtounicode{uniF6A0}{0171}    % uhungarumlaut.sc
+  \pdfglyphtounicode{uniF6A3}{016F}    % uring.sc
+  \pdfglyphtounicode{uniF6A4}{0169}    % utilde.sc
+  \pdfglyphtounicode{uniF6AA}{1EF3}    % ygrave.sc
+  \pdfglyphtounicode{uniF6AB}{017A}    % zacute.sc
+  \pdfglyphtounicode{uniF6AC}{017C}    % zdotaccent.sc
+  \pdfglyphtounicode{uniF6DC}{0031}    % one.fitted
 \fi
 %    \end{macrocode}
 %
