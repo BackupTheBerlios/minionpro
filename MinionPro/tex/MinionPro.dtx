@@ -75,6 +75,7 @@
 \newcommand*\pkg[1]{\mbox{\textsf{#1}}}
 \newcommand*\file[1]{\textsf{#1}}
 \newcommand*\acro[1]{\textsc{\MakeLowercase{#1}}}
+\newcommand\pdfTeX{pdf\TeX}
 
 \newcommand*\?{\kern0.08em}
 
@@ -494,13 +495,22 @@
 % \toprule
 %   Font Version & Program                          & Problem \\
 % \midrule
-%   1.000        & Ghostscript, pre-1.40 pdftex     & LF/TOsF, non-standard ligatures, swashes\\
-%   1.001, 2.000 & Ghostscript, pre-1.40 pdftex     & LF/OsF/TOsF, ligatures, swashes, small caps\\
+%   1.000        & Ghostscript, pre-1.40 \pdfTeX    & LF/TOsF, non-standard ligatures, swashes\\
+%   1.001, 2.000 & Ghostscript, pre-1.40 \pdfTeX    & LF/OsF/TOsF, ligatures, swashes, small caps\\
 %   1.00x        & Distiller, dvipdfmx              & LF/TOsF\\
-%   1.00x        & pdftex 1.40                      & ok\\
-%   2.000        & Distiller, dvipdfmx, pdftex 1.40 & ok\\
+%   1.00x        & \pdfTeX~1.40                     & ok\\
+%   2.000        & Distiller, dvipdfmx, \pdfTeX~1.40 & ok\\
 % \bottomrule
 % \end{tabular}
+%
+% \medskip\noindent To make figures and ligatures searchable when
+% using \pdfTeX~1.40, you need to enable glyph-to-unicode translation
+% and load the default mapping table: (Some non-standard mappings are
+% provided by the \pkg{MinionPro} package.)
+% \begin{verbatim}
+% \input glyphtounicode
+% \pdfgentounicode=1
+% \end{verbatim}
 %
 % \section{\acro{NFSS} classification}
 %
@@ -555,7 +565,7 @@
 %   \item added package options \option{normalsize} and \option{nonormalsize}
 %   \item fixed package option \option{frenchmath}
 %   \item fixed package option \option{abx}
-%   \item added support for \pkg{pdftex}~1.4 \acro{cmap} inclusion
+%   \item added support for \pdfTeX~1.4 \acro{cmap} inclusion
 %   \item update to \pkg{microtype} version~1.8
 %   \item fixed \verb|\t| accent
 %   \item fixed \verb|\r| accent in \acro{OT1} encoding
@@ -992,7 +1002,7 @@
 \fi
 %    \end{macrocode}
 %
-% \subsection{pdftex to-unicode support}
+% \subsection{\pdfTeX\ to-unicode support}
 %
 % Old versions of MinionPro have non-standard glyph names.
 %    \begin{macrocode}
