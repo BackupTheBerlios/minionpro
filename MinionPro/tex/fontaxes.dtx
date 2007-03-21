@@ -5,7 +5,7 @@
 %</driver>
 %<package>\ProvidesPackage{fontaxes}
 %<*driver|package>
-[2005/05/04 v0.1d Font selection axes]
+[2007/03/21 v0.2a Font selection axes]
 %</driver|package>
 %<*driver>
 \documentclass[draft]{ltxdoc}
@@ -793,12 +793,13 @@
 % \end{macro}
 %
 % \begin{macro}{\fa@decode@}
+% \changes{v0.2a}{2007/03/21}{Fix error message}
 % Interpret the decoding tables.
 %    \begin{macrocode}
 \newcommand*\fa@decode@[2]{%
   \@ifundefined{fa@decode@#1{#2}}{%
     \let\fa@edoc\relax
-    \fa@warn@undecodable{shape `#2'}%
+    \fa@warn@undecodable{#1 `#2'}%
   }{\edef\fa@edoc{\@nameuse{fa@decode@#1{#2}}}}%
 }
 %    \end{macrocode}
