@@ -18,7 +18,7 @@ You also need some program to convert the OpenType fonts into Type1
 format. If you have the LCDF Typetools (http://www.lcdf.org/type/)
 installed you can use one of the provided scripts:
 
-o convert-lcdf is a Unix script
+o convert.sh  is a Unix script
 o convert.bat is a DOS script
 
 Files
@@ -110,7 +110,7 @@ In the following instructions we will assume that the path is
 
 3) Convert the OpenType fonts into Type1 format:
 
-  $ ./convert-lcdf
+  $ ./convert.sh
 
 For MiKTeX execute
 

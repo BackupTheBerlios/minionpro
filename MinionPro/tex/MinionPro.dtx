@@ -490,23 +490,30 @@
 % be possible depending on the way the \acro{PDF} file was created. The following table
 % gives an overview of which glyphs may cause problems.
 %
-% \medskip\tabindent
+% \medskip
 % \begin{tabular}{lll}
 % \toprule
-%   Font Version & Program                          & Problem \\
+%   font version & program        & problems \\
 % \midrule
-%   1.000        & Ghostscript, pre-1.40 \pdfTeX    & LF/TOsF, non-standard ligatures, swashes\\
-%   1.001, 2.000 & Ghostscript, pre-1.40 \pdfTeX    & LF/OsF/TOsF, ligatures, swashes, small caps\\
-%   1.00x        & Distiller, dvipdfmx              & LF/TOsF\\
-%   1.00x        & \pdfTeX~1.40                     & ok\\
-%   2.000        & Distiller, dvipdfmx, \pdfTeX~1.40 & ok\\
+%   1.000  & Ghostscript,         & LF/TOsF, non-standard ligatures, swashes\\
+%          & pre-1.40 \pdfTeX     &\\
+% \midrule
+%   1.001, & Ghostscript,         & LF/OsF/TOsF, ligatures, swashes, small caps\\
+%   2.000  & pre-1.40 \pdfTeX     & \\
+% \midrule
+%   1.00x  & Distiller, dvipdfmx  & LF/TOsF\\
+% \midrule
+%   1.00x  & \pdfTeX~1.40         & ok\\
+% \midrule
+%   2.000  & Distiller, dvipdfmx, & ok\\
+%          & \pdfTeX~1.40         & \\
 % \bottomrule
 % \end{tabular}
 %
-% \medskip\noindent To make figures and ligatures searchable when
-% using \pdfTeX~1.40, you need to enable glyph-to-unicode translation
-% and load the default mapping table: (Some non-standard mappings are
-% provided by the \pkg{MinionPro} package.)
+% \medskip\noindent
+% To make figures and ligatures searchable when using \pdfTeX~1.40,
+% you need to enable glyph-to-unicode translation and load the default
+% mapping table:
 % \begin{verbatim}
 % \input glyphtounicode
 % \pdfgentounicode=1
@@ -579,7 +586,7 @@
 %   \item fixed side bearings of $\sigma$ in math mode
 %   \item added {\small CODINGSCHEME} statements to encoding files
 %   \item fixed usage of MnSymbol's ``\textbar'' in \pkg{doc.sty}'s module prefix
-%   \item unified raw encodings to five per font
+%   \item reduce number of raw encodings to five per font
 % \end{compactitem}
 %
 % \StopEventually{}
