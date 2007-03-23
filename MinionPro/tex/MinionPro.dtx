@@ -221,7 +221,7 @@
 %                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC} \\
 %   \option{swash} & use the swash capitals from MinionPro: \textsw{ABC}\\
 %   \option{abx}   & use the calligraphic symbols provided by mathabx:
-%                    \IfFileExists{mathabx.sty}{\font\testabx=mathcm10\testabx ABCabc}{}\\
+%                    \IfFileExists{mathabx.sty}{\font\testabx=mathc10\testabx ABCabc}{}\\
 %                  & (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
@@ -683,9 +683,9 @@
 }
 \DeclareOption{abx}{
   \PassOptionsToPackage{abx}{MnSymbol}
-  \def\Mn@load@cal{
-    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
-  }
+%  \def\Mn@load@cal{
+%    \SetMathAlphabet\mathcal{boldtabular}{OT1}{mathc}{b}{n}
+%  }
 }
 \DeclareOption{swash}{
   \def\Mn@load@cal{
