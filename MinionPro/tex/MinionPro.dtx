@@ -65,7 +65,7 @@
 \usepackage[expansion=false]{microtype}
 \usepackage[minionint]{MinionPro}
 \usepackage[greek,british]{babel}
-\usepackage{array,booktabs,pifont,paralist}
+\usepackage{array,booktabs,pifont,paralist,calc}
 \IfFileExists{lmodern.sty}{%
   \renewcommand{\sfdefault}{lmss}%
   \renewcommand{\ttdefault}{lmtt}%
@@ -88,15 +88,25 @@
 \newcommand*\option@[1]{\textsf{#1}}
 \makeatother
 
-\newlength\optionswidth
-
 \newcommand\tabindent{\noindent\hspace{\leftmargini}}
-\newenvironment{options}{%
-  \par\penalty10000\medskip\penalty10000\tabindent
-  \begin{tabular}{@{}p{\optionswidth}l@{}}%
+\newlength\optionswidth
+\newenvironment{options}[1][{\makebox[\optionswidth]{}}]{%
+  \settowidth{\optionswidth}{#1}%
+  \global\optionswidth=\optionswidth
+  \list{}{%
+    \setlength{\labelwidth}{\optionswidth}%
+    \setlength{\labelsep}{2\tabcolsep}%
+    \setlength{\leftmargin}{\leftmargini+\labelwidth+\labelsep}%
+    \setlength{\rightmargin}{0pt}%
+    \setlength{\topsep}{\medskipamount}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemsep}{0pt}%
+    \renewcommand*\makelabel[1]{%
+      \parbox[t]{\labelwidth}{\raggedright\hspace{0pt}##1}}%
+    \raggedright
+  }%
 }{%
-  \end{tabular}%
-  \par\medskip
+  \endlist
 }
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
@@ -169,16 +179,15 @@
 % The following options specify which version of the fonts you want to use.
 % The default settings are marked with an asterisk*.
 %
-% \settowidth{\optionswidth}{\option{proportional}, \option{prop}}\relax
-% \begin{options}
-%   \option*{smallfamily} & use only regular and bold face\\
-%   \option{medfamily}    & use semibold face in addition to \option{smallfamily} \\
-%   \option{fullfamily}   & use medium face in addition to \option{medfamily}\\
-%   \option*{noopticals}  & use only the optical size Text\\
-%   \option{opticals}     & use the optical sizes Caption, Text, Subhead, and Display\\
-%   \option{slides}       & use only the optical size Caption (useful for slides) \\
-%   \option*{normalsize}  & adapt optical sizes to the normal font size (10\,pt, 11\,pt, 12\,pt) \\
-%   \option{nonormalsize} & use static settings for the optical sizes
+% \begin{options}[\option{proportional}, \option{prop}]
+% \item[\option*{smallfamily}] use only regular and bold face
+% \item[\option{medfamily}]    use semibold face in addition to \option{smallfamily}
+% \item[\option{fullfamily}]   use medium face in addition to \option{medfamily}
+% \item[\option*{noopticals}]  use only the optical size Text
+% \item[\option{opticals}]     use the optical sizes Caption, Text, Subhead, and Display
+% \item[\option{slides}]       use only the optical size Caption (useful for slides)
+% \item[\option*{normalsize}]  adapt optical sizes to the normal font size (10\,pt, 11\,pt, 12\,pt)
+% \item[\option{nonormalsize}] use static settings for the optical sizes
 % \end{options}
 %
 % Since MinionPro comes in only four different optical sizes we use a
@@ -191,8 +200,8 @@
 %
 % The package also provides a way to only change the text fonts or only the math fonts.
 % \begin{options}
-%   \option{onlytext} & only change the text fonts\\
-%   \option{onlymath} & only change the math fonts
+% \item[\option{onlytext}] only change the text fonts
+% \item[\option{onlymath}] only change the math fonts
 % \end{options}
 %
 % \subsubsection*{Figure selection}
@@ -202,13 +211,13 @@
 % The default version can be selected by the following options:
 %
 % \begin{options}
-%   \option{textosf}     & use text figures in text mode\\
-%   \option{mathosf}     & use text figures in math mode\\
-%   \option*{osf}        & use text figures in text and math mode\\
-%   \option{textlf}      & use lining figures in text mode\\
-%   \option{mathlf}      & use lining figures in math mode\\
-%   \option{lf}          & use lining figures in text and math mode\\
-%   \option{mathtabular} & use tabular figures in math mode\\
+% \item[\option{textosf}]     use text figures in text mode
+% \item[\option{mathosf}]     use text figures in math mode
+% \item[\option*{osf}]        use text figures in text and math mode
+% \item[\option{textlf}]      use lining figures in text mode
+% \item[\option{mathlf}]      use lining figures in math mode
+% \item[\option{lf}]          use lining figures in text and math mode
+% \item[\option{mathtabular}] use tabular figures in math mode
 % \end{options}
 %
 % \subsubsection*{Calligraphic fonts}
@@ -216,13 +225,13 @@
 % These options specify which font is used by the |\mathcal| command.
 %
 % \begin{options}
-%   \option*{mnsy} & use the calligraphic font from MnSymbol: $\mathcal{ABC}$\\
-%   \option{cmsy}  & take the calligraphic symbols from Computer Modern:
-%                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC} \\
-%   \option{swash} & use the swash capitals from MinionPro: \textsw{ABC}\\
-%   \option{abx}   & use the calligraphic symbols provided by mathabx:
-%                    \IfFileExists{mathabx.sty}{\font\testabx=mathc10\testabx ABCabc}{}\\
-%                  & (This font contains also lowercase letters, but it is not quite finished.)
+% \item[\option*{mnsy}] use the calligraphic font from MnSymbol: $\mathcal{ABC}$
+% \item[\option{cmsy}]  take the calligraphic symbols from Computer Modern:
+%                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC}
+% \item[\option{swash}] use the swash capitals from MinionPro: \textsw{ABC}
+% \item[\option{abx}]   use the calligraphic symbols provided by mathabx:
+%                    \IfFileExists{mathabx.sty}{\font\testabx=mathc10\testabx ABCabc}{}\par
+%                  (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
 % \subsubsection*{Blackboard bold letters}
@@ -230,14 +239,13 @@
 % You can also select different fonts for the |\mathbb| command.
 %
 % \begin{options}
-%   \option*{amsbb}    & use the AMS blackboard font: $\mathbb{NZQRC}$\\
-%   \option{fourierbb} & use the Fourier blackboard font:
-%                        \IfFileExists{fourier.sty}{\font\testfour=fourier-bb at 9.5pt\testfour NZQRC}{} \\
-%   \option{lucidabb}  & use the (commercial) Lucida Math blackboard font%
+% \item[\option*{amsbb}]    use the AMS blackboard font: $\mathbb{NZQRC}$
+% \item[\option{fourierbb}] use the Fourier blackboard font:
+%                        \IfFileExists{fourier.sty}{{\font\testfour=fourier-bb at 9.5pt\testfour NZQRC}}{}
+% \item[\option{lucidabb}]  use the (commercial) Lucida Math blackboard font%
 %\iffalse%
 %                        : {\font\testluc=hlcra at 9.2pt\testluc NZQRC}%
 %\fi%
-%                                                                          \\
 % \end{options}
 %
 % \subsubsection*{Greek letters}
@@ -246,9 +254,11 @@
 % letters in math mode.
 %
 % \begin{options}
-%   \option*{mixedgreek} & uppercase Greek is upright, lowercase Greek is italic\\
-%   \option{italicgreek} & all Greek letters are italic\\
-%   \option{frenchmath}  & all Greek letters and the uppercase Roman letters are upright
+% \item[\option*{mixedgreek}] uppercase Greek is upright, lowercase
+%   Greek is italic
+% \item[\option{italicgreek}] all Greek letters are italic
+% \item[\option{frenchmath}]  all Greek letters and the uppercase Roman
+%   letters are upright
 % \end{options}
 %
 % \noindent
@@ -258,25 +268,27 @@
 % \subsubsection*{Miscellaneous options}
 %
 % \begin{options}
-%   \option{minionint}
-%      & take the integral symbols from MinionPro, not from\\
-%      & MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$ \\
-%   \option{openg}
-%      & use $\openg$ instead of $g$ in math mode. \\
-%   \option{loosequotes}
-%      & The quote signs of MinionPro are set rather tight. This can\\
-%      & lead to undesirable spacing for apostrophes. The \option{loosequotes} \\
-%      & option slightly increases the side bearings of quotes. \\
-%      & This option requires \pdfTeX~1.40 and \pkg{microtype}~2.0.\\
-%      & Beware that this option prevents hyphenation of words\\
-%      & containing apostrophes. Such words will require explicit\\
-%      & hyphenation commands |\-|.\\
-%   \option{footnotefigures}
-%      & use special figures for footnote marks, i.e.,\\
-%      & example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
-%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}. \\
-%      & This option can only be used if the footnote marks consist \\
-%      & \emph{solely} of figures.
+% \item[\option{minionint}]
+%      take the integral symbols from MinionPro, not from
+%      MnSymbol: $\displaystyle\int$ instead of $\displaystyle\varint$
+% \item[\option{openg}]
+%      use $\openg$ instead of $g$ in math mode.
+% \item[\option{loosequotes}]
+%      The quote signs of MinionPro are set rather tight. This can
+%      lead to undesirable spacing for apostrophes. The \option{loosequotes}
+%      option slightly increases the side bearings of quotes.
+%
+%      This option requires \pdfTeX~1.40 and \pkg{microtype}~2.0.
+%      Beware that this option prevents hyphenation of words
+%      containing apostrophes. Such words will require explicit
+%      hyphenation commands |\-|.
+% \item[\option{footnotefigures}]
+%      use special figures for footnote marks, i.e.,\newline
+%      example\begingroup\fontfamily{MinionPro-Extra}\fontencoding{U}\selectfont
+%        6,9\endgroup\ instead of example\textsuperscript{\figureversion{lf}6,9}.
+%
+%      This option can only be used if the footnote marks consist
+%      \emph{solely} of figures.
 % \end{options}
 %
 % \section{Figure selection}
@@ -304,10 +316,10 @@
 % different figure versions. Possible parameters are:
 %
 % \begin{options}
-%   \option{text}, \option{osf}          & text figures\\
-%   \option{lining}, \option{lf}         & lining figures\\
-%   \option{tabular}, \option{tab}       & tabular figures\\
-%   \option{proportional}, \option{prop} & proportional figures
+% \item[\option{text}, \option{osf}]          text figures
+% \item[\option{lining}, \option{lf}]         lining figures
+% \item[\option{tabular}, \option{tab}]       tabular figures
+% \item[\option{proportional}, \option{prop}] proportional figures
 % \end{options}
 %
 % Nearly no common \LaTeX\ document class supports fonts with several figure
@@ -390,9 +402,9 @@
 % via the |sw| fontshape and the commands |\swshape| and |\textsw|.
 %
 % \begin{options}
-%   |sc|  & \textsc {This is a Sample Text}\\
-%   |ssc| & \textssc{This is a Sample Text}\\
-%   |sw|  & \textsw {This is a Sample Text}
+% \item[|sc|]  \textsc {This is a Sample Text}
+% \item[|ssc|] \textssc{This is a Sample Text}
+% \item[|sw|]  \textsw {This is a Sample Text}
 % \end{options}
 %
 % \noindent
