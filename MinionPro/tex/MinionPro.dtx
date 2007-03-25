@@ -90,6 +90,7 @@
 
 \newcommand\tabindent{\noindent\hspace{\leftmargini}}
 \newlength\optionswidth
+\providecommand\newblock{}
 \newenvironment{options}[1][{\makebox[\optionswidth]{}}]{%
   \settowidth{\optionswidth}{#1}%
   \global\optionswidth=\optionswidth
@@ -103,11 +104,13 @@
     \setlength{\itemsep}{0pt}%
     \renewcommand*\makelabel[1]{%
       \parbox[t]{\labelwidth}{\raggedright\hspace{0pt}##1}}%
+    \renewcommand\newblock{\medskip}%
     \raggedright
   }%
 }{%
   \endlist
 }
+\newenvironment{code}{\begin{quote}\small}{\end{quote}}
 \renewcommand\theCodelineNo{%
   \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
 \renewcommand\Module[1]{%
@@ -183,9 +186,11 @@
 % \item[\option*{smallfamily}] use only regular and bold face
 % \item[\option{medfamily}]    use semibold face in addition to \option{smallfamily}
 % \item[\option{fullfamily}]   use medium face in addition to \option{medfamily}
+% \newblock
 % \item[\option*{noopticals}]  use only the optical size Text
 % \item[\option{opticals}]     use the optical sizes Caption, Text, Subhead, and Display
 % \item[\option{slides}]       use only the optical size Caption (useful for slides)
+% \newblock
 % \item[\option*{normalsize}]  adapt optical sizes to the normal font size (10\,pt, 11\,pt, 12\,pt)
 % \item[\option{nonormalsize}] use static settings for the optical sizes
 % \end{options}
@@ -214,9 +219,11 @@
 % \item[\option{textosf}]     use text figures in text mode
 % \item[\option{mathosf}]     use text figures in math mode
 % \item[\option*{osf}]        use text figures in text and math mode
+% \newblock
 % \item[\option{textlf}]      use lining figures in text mode
 % \item[\option{mathlf}]      use lining figures in math mode
 % \item[\option{lf}]          use lining figures in text and math mode
+% \newblock
 % \item[\option{mathtabular}] use tabular figures in math mode
 % \end{options}
 %
@@ -327,7 +334,6 @@
 % and use tabular figures only in tables and lists.
 % The following hack can be used to get tabular figures in the table of contents.
 % Surround your \verb|\tableofcontents| command by the lines
-% \begingroup\small
 % \begin{verbatim}
 % \begingroup
 % \figureversion{tabular}
@@ -335,8 +341,6 @@
 % \tableofcontents
 % \endgroup
 % \end{verbatim}
-% \endgroup
-% \noindent
 % The above code switches to tabular text figures. If you prefer lining figures then
 % you can replace the |TOsF| by |TLF|. The same method can be applied to the
 % list of figures and the list of tables.
@@ -344,14 +348,13 @@
 % Using the \pkg{koma-script} classes, some sectioning levels are typeset by default
 % with a sans-serif font in the table of contents. In order to use MinionPro with
 % tabular figures instead, in addition to the above code add
-% \begin{quote}\small
+% \begin{code}
 %   |\addtokomafont|\marg{sectioning level}|{\rmfamily\figureversion{tabular}}|
-% \end{quote}
+% \end{code}
 % anywhere in your preamble. For typesetting \emph{all} headlines with MinionPro, use
-%
-% \begin{quote}\small
+% \begin{code}
 %   |\addtokomafont{sectioning}{\rmfamily\figureversion{tabular}}|
-% \end{quote}
+% \end{code}
 %
 % Note that if you use one of the above hacks and your section titles contain numbers then
 % these will also be set in tabular figures.
@@ -359,7 +362,6 @@
 % There is also a proper solution which works in all cases. Unfortunately,
 % it requires modifications of internal \LaTeX\ commands:
 %
-% \begingroup\small
 % \begin{verbatim}
 % \def\numberline#1{\hb@xt@\@tempdima{\figureversion{tabular}#1\hfil}}
 % \def\@dottedtocline#1#2#3#4#5{%
@@ -380,7 +382,6 @@
 %      \par}%
 %   \fi}
 % \end{verbatim}
-% \endgroup
 % The first redefinition causes the section numbers to be set in tabular
 % figures, the second one does the same for the page numbers. Note that, if you
 % put these definitions directly into your document then you have to surround
@@ -531,7 +532,7 @@
 %
 % Parenthesised combinations are provided via substitutions.
 %
-% \medskip\noindent
+% \nobreak\medskip\noindent
 % \begingroup
 % \centering\let\>=\\%
 % \begin{tabular}{@{}p{7.5em}p{7em}lp{9em}@{}}
