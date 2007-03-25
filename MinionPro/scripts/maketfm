@@ -746,5 +746,5 @@ tr "\177" " " <maketfm.tmp >maketfm.tmp2  # This is just a workaround for a bug 
 
 . maketfm.tmp2
 
-rm maketfm.tmp maketfm.tmp2 base-fonts-"$font"-*
+rm -f maketfm.tmp maketfm.tmp2 base-fonts-"$font"-*
 
