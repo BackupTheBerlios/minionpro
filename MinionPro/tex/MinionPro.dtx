@@ -66,6 +66,16 @@
 \usepackage[minionint]{MinionPro}
 \usepackage[greek,british]{babel}
 \usepackage{array,booktabs,pifont,paralist,calc}
+\usepackage[bookmarks]{hyperref}
+\hypersetup{
+  bookmarksnumbered,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdftitle={MinionPro Support for LaTeX},
+  pdfauthor={Achim Blumensath, Andreas B\"uhmann, Michael Zedler},
+  pdfkeywords={LaTeX, MinionPro, MnSymbol}
+}
+
 \IfFileExists{lmodern.sty}{%
   \renewcommand{\sfdefault}{lmss}%
   \renewcommand{\ttdefault}{lmtt}%
@@ -76,6 +86,9 @@
 \newcommand*\file[1]{\textsf{#1}}
 \newcommand*\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand\pdfTeX{pdf\TeX}
+\pdfstringdefDisableCommands{%
+  \renewcommand*\acro[1]{#1}%
+}
 
 \newcommand*\?{\kern0.08em}
 
@@ -155,7 +168,7 @@
 % \label{sec:Interferences}
 %
 % The \pkg{MinionPro} package automatically loads the following packages:
-% \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol}.
+% \pkg{textcomp}, \pkg{amsmath}, and \pkg{MnSymbol} (version~1.4).
 % If you want to pass options to these packages you can
 % either put the corresponding |\usepackage| command before the
 % |\usepackage{MinionPro}| or you can include the options in the
@@ -237,7 +250,7 @@
 %                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC}
 % \item[\option{swash}] use the swash capitals from MinionPro: \textsw{ABC}
 % \item[\option{abx}]   use the calligraphic symbols provided by mathabx:
-%                    \IfFileExists{mathabx.sty}{\font\testabx=mathc10\testabx ABCabc}{}\par
+%                    \IfFileExists{mathabx.sty}{{\font\testabx=mathc10\testabx ABCabc}}{}\par
 %                  (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
@@ -402,7 +415,7 @@
 % Swash capitals like \textsw{`Canadian Mountain Holidays'} are accessed
 % via the |sw| fontshape and the commands |\swshape| and |\textsw|.
 %
-% \begin{options}
+% \begin{options}[|ssc|]
 % \item[|sc|]  \textsc {This is a Sample Text}
 % \item[|ssc|] \textssc{This is a Sample Text}
 % \item[|sw|]  \textsw {This is a Sample Text}
@@ -799,7 +812,7 @@
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 
 \if@Mn@Math@
-  \RequirePackage{MnSymbol}
+  \RequirePackage{MnSymbol}[2007/01/21 v1.4]
 %    \end{macrocode}
 % If no fraktur font is loaded then take the Euler font.
 %    \begin{macrocode}
