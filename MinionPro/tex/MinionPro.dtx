@@ -101,6 +101,8 @@
 \newcommand*\option@[1]{\textsf{#1}}
 \makeatother
 
+\setlength{\leftmargini}{1em}
+\setlength{\parindent}{1em}
 \newcommand\tabindent{\noindent\hspace{\leftmargini}}
 \newlength\optionswidth
 \providecommand\newblock{}
@@ -247,11 +249,11 @@
 % \begin{options}
 % \item[\option*{mnsy}] use the calligraphic font from MnSymbol: $\mathcal{ABC}$
 % \item[\option{cmsy}]  take the calligraphic symbols from Computer Modern:
-%                    {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC}
+%                       {\fontencoding{OMS}\fontfamily{cmsy}\selectfont ABC}
 % \item[\option{swash}] use the swash capitals from MinionPro: \textsw{ABC}
 % \item[\option{abx}]   use the calligraphic symbols provided by mathabx:
-%                    \IfFileExists{mathabx.sty}{{\font\testabx=mathc10\testabx ABCabc}}{}\par
-%                  (This font contains also lowercase letters, but it is not quite finished.)
+%                       \IfFileExists{mathabx.sty}{{\font\testabx=mathc10\testabx ABCabc}}{}\par
+%                       (This font contains also lowercase letters, but it is not quite finished.)
 % \end{options}
 %
 % \subsubsection*{Blackboard bold letters}
@@ -261,8 +263,8 @@
 % \begin{options}
 % \item[\option*{amsbb}]    use the AMS blackboard font: $\mathbb{NZQRC}$
 % \item[\option{fourierbb}] use the Fourier blackboard font:
-%                        \IfFileExists{fourier.sty}{{\font\testfour=fourier-bb at 9.5pt\testfour NZQRC}}{}
-% \item[\option{lucidabb}]  use the (commercial) Lucida Math blackboard font%
+%                           \IfFileExists{fourier.sty}{{\font\testfour=fourier-bb at 9.5pt\testfour NZQRC}}{}
+% \item[\option{lucidabb}]  use the (commercial) Lucida Math blackboard font\relax
 %\iffalse%
 %                        : {\font\testluc=hlcra at 9.2pt\testluc NZQRC}%
 %\fi%
@@ -275,10 +277,10 @@
 %
 % \begin{options}
 % \item[\option*{mixedgreek}] uppercase Greek is upright, lowercase
-%   Greek is italic
+%                             Greek is italic
 % \item[\option{italicgreek}] all Greek letters are italic
 % \item[\option{frenchmath}]  all Greek letters and the uppercase Roman
-%   letters are upright
+%                             letters are upright
 % \end{options}
 %
 % \noindent
