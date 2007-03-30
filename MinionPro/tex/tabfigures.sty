@@ -1,0 +1,19 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tabfigures}[2007/03/30 v0.1 Tabular figures (patches)]
+
+% Equation numbers
+\DeclareOption{eqno}{%
+  \AtBeginDocument{%
+    \@ifpackageloaded{amsmath}{%
+      \newcommand\Mn@old@maketag@@@{}%
+      \let\Mn@old@maketag@@@\maketag@@@
+      \def\maketag@@@#1{\Mn@old@maketag@@@{\figureversion{tab}#1}}%
+    }{%
+      \CheckCommand*\@eqnnum{{\normalfont \normalcolor (\theequation)}}%
+      \def\@eqnnum{{\normalfont \figureversion{tab}\normalcolor (\theequation)}}%
+    }%
+  }%
+}
+
+\ProcessOptions\relax
+\endinput
