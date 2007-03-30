@@ -5,7 +5,7 @@
 %</driver>
 %<package>\ProvidesPackage{fontaxes}
 %<*driver|package>
-[2007/03/21 v0.2a Font selection axes]
+[2007/03/31 v0.2b Font selection axes]
 %</driver|package>
 %<*driver>
 \documentclass[draft]{ltxdoc}
@@ -760,14 +760,17 @@
 % \end{macro}
 %
 % \begin{macro}{\fa@create@decode@table}
+% \changes{v0.2b}{2007/03/31}{Restore values of axes}
 % |#1| name, |#2| list of axes
 %    \begin{macrocode}
 \newcommand*\fa@create@decode@table[2]{%
+  \begingroup
   \fa@foreach{#2}{%
     \@nameuse{fa@encode@#1}%
     \global\expandafter
     \edef\csname fa@decode@#1{\fa@code}\endcsname{#2}%
   }%
+  \endgroup
 }
 %    \end{macrocode}
 %
