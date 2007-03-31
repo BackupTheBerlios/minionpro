@@ -10,10 +10,15 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage{MinionPro}
+\usepackage{microtype}
 \usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
 \usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{array,booktabs}
+\usepackage{ifpdf}
+\ifpdf\ifnum\pdftexversion<140 \else
+\InputIfFileExists{glyphtounicode.tex}{\pdfgentounicode=1}{}
+\fi\fi
 % markup
 \newcommand*\pkg[1]{\textsf{#1}}
 \newcommand*\cls{} \let\cls\pkg
@@ -23,7 +28,8 @@
 \def\Tf@font{\figureversion{tab}\color{tabular}}
 \makeatother
 \newenvironment{sample}{%
-  \par\addvspace{\smallskipamount}%
+  \par
+  \addvspace{\smallskipamount}%
   \minipage{\linewidth}%
 }{%
   \endminipage
@@ -48,7 +54,7 @@
 %
 % \section{Purpose}
 % 
-% Normally, there is no concept of tabular figures
+% Traditionally, there is no concept of tabular figures
 % (\tabularfigures{0123456789}) versus proportional figures
 % (\proportionalfigures{0123456789}) in \LaTeX. That is why, with a
 % font like \pkg{MinionPro}, you have to specifically adapt your
