@@ -26,6 +26,7 @@
 \colorlet{tabular}{green!50!black}
 \makeatletter
 \def\Tf@font{\figureversion{tab}\color{tabular}}
+\newcommand\Tf{\Tf@font}
 \makeatother
 \newenvironment{sample}{%
   \par
@@ -54,22 +55,29 @@
 %
 % \section{Purpose}
 % 
-% Traditionally, there is no concept of tabular figures
-% (\tabularfigures{0123456789}) versus proportional figures
-% (\proportionalfigures{0123456789}) in \LaTeX. That is why, with a
-% font like \pkg{MinionPro}, you have to specifically adapt your
-% document class or even the \LaTeX\ kernel to this new task of using
-% tabular figures in the right places such as the table of contents,
-% enumerations or other material where numbers should line up
-% vertically. This package tries to assist you in the most common
-% situations.
+% Traditionally, there has not been any concept of proportional
+% figures (\proportionalfigures{0123456789}) versus tabular figures%
+% \marginpar{%
+%   \raggedleft\LARGE
+%   \begin{tabular}[t]{r>{\Tf}r}
+%     51 & 51 \\
+%     60 & 60 \\
+%   \end{tabular}
+% } ({\Tf 0123456789}) in \LaTeX. Effectively, the commonly used fonts
+% only included figures that are equally wide. That is why, with fonts
+% like \pkg{MinionPro} that use proportional figures by default, you
+% have to specifically adapt your document class or even the \LaTeX\
+% kernel to this new task of using tabular figures in the right places
+% such as the table of contents, enumerations or other material where
+% numbers should line up vertically. This package tries to assist you
+% in the most common situations.
 %
 % \section{Effects}
 %
 % This package is a collection of patches that inject
-% |\figureversion{tabular}| into the involved commands in the right
-% places. You have to explicitly enable those patches by using one or
-% more of the following package options, like this:
+% |\figureversion{tabular}| into the involved formatting commands in
+% the right places. You have to explicitly enable those patches by
+% using one or more of the following package options, like this:
 % \begin{verbatim}
 % \usepackage[toc,eqno]{tabfigures}
 % \end{verbatim}
@@ -78,8 +86,8 @@
 % possible, it has to touch the internals of other classes and
 % packages.)
 %
-% Throughout this document, tabular figures effected by this package
-% are colored \textcolor{tabular}{green}.
+% Throughout this document, tabular figures are colored
+% \textcolor{tabular}{green}.
 %
 % \begin{description}
 % \item[\hyperdef{sample}{toc}{toc}] Use tabular figures for the
