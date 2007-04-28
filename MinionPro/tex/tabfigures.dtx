@@ -5,7 +5,7 @@
 %</driver>
 %<package>\ProvidesPackage{tabfigures}
 %<*driver|package>
-[2007/03/31 v0.1b Tabular figures (patches)]
+[2007/04/28 v0.1c Tabular figures (patches)]
 %</driver|package>
 %<*driver>
 \documentclass{ltxdoc}
@@ -22,6 +22,7 @@
 % markup
 \newcommand*\pkg[1]{\textsf{#1}}
 \newcommand*\cls{} \let\cls\pkg
+\newcommand*\bst{} \let\bst\pkg
 % show this package at work
 \colorlet{tabular}{green!50!black}
 \makeatletter
@@ -157,10 +158,11 @@
 %
 % \section{Compatibility}
 %
-% This package was designed to work with the default settings of the
-% standard document classes \cls{article}, \cls{report}, and
+% This package has been designed to work with the default settings of
+% the standard document classes \cls{article}, \cls{report}, and
 % \cls{book}; their \pkg{KOMA-Script} counterparts; the \cls{memoir}
-% class; and the \pkg{amsmath} package.
+% class; the \pkg{amsmath} package; and the standard bibliographic
+% styles \bst{numeric} and \bst{alphabetic} of \pkg{biblatex} v0.6a.
 %
 % \StopEventually
 %
@@ -291,6 +293,10 @@
 \DeclareOption{bib}{%
   \AtBeginDocument{%
     \Tf@def\@biblabel{\Tf@font \Tf@\@biblabel}%
+    \@ifpackageloaded{biblatex}{%
+      \DeclareFieldFormat{labelnumberwidth}{\Tf@font #1}%
+      \DeclareFieldFormat{labelalphawidth}{\Tf@font #1}%
+    }{}%
   }%
 }
 %    \end{macrocode}
