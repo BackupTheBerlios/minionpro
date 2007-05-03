@@ -345,68 +345,22 @@
 % \item[\option{proportional}, \option{prop}] proportional figures
 % \end{options}
 %
-% Nearly no common \LaTeX\ document class supports fonts with several figure
-% versions. Usually it is desirable to set most text with proportional figures
-% and use tabular figures only in tables and lists.
-% The following hack can be used to get tabular figures in the table of contents.
-% Surround your \verb|\tableofcontents| command by the lines
-% \begin{verbatim}
-% \begingroup
-% \figureversion{tabular}
-% \renewcommand\familydefault{MinionPro-TOsF}
-% \tableofcontents
-% \endgroup
-% \end{verbatim}
-% The above code switches to tabular text figures. If you prefer lining figures then
-% you can replace the |TOsF| by |TLF|. The same method can be applied to the
-% list of figures and the list of tables.
+% Usually it is desirable to set most text with proportional figures and to use
+% tabular figures only in tables and lists. Unfortunately most \LaTeX\ document
+% classes do not support fonts with several figure versions. Therefore we
+% provide a package \pkg{tabfigures} that patches some common document classes
+% and packages (the standard \LaTeX\ clases, KOMA-Script, \pkg{memoire}, and
+% \pkg{amsmath}) to use tabular figures at some places. The \pkg{tabfigures}
+% package supports the following options:
 %
-% Using the \pkg{koma-script} classes, some sectioning levels are typeset by default
-% with a sans-serif font in the table of contents. In order to use MinionPro with
-% tabular figures instead, in addition to the above code add
-% \begin{code}
-%   |\addtokomafont|\marg{sectioning level}|{\rmfamily\figureversion{tabular}}|
-% \end{code}
-% anywhere in your preamble. For typesetting \emph{all} headlines with MinionPro, use
-% \begin{code}
-%   |\addtokomafont{sectioning}{\rmfamily\figureversion{tabular}}|
-% \end{code}
-%
-% Note that if you use one of the above hacks and your section titles contain numbers then
-% these will also be set in tabular figures.
-%
-% There is also a proper solution which works in all cases. Unfortunately,
-% it requires modifications of internal \LaTeX\ commands:
-%
-% \begin{verbatim}
-% \def\numberline#1{\hb@xt@\@tempdima{\figureversion{tabular}#1\hfil}}
-% \def\@dottedtocline#1#2#3#4#5{%
-%   \ifnum #1>\c@tocdepth \else
-%     \vskip \z@ \@plus.2\p@
-%     {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
-%      \parindent #2\relax\@afterindenttrue
-%      \interlinepenalty\@M
-%      \leavevmode
-%      \@tempdima #3\relax
-%      \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
-%      {#4}\nobreak
-%      \leaders\hbox{$\m@th
-%         \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
-%         mu$}\hfill
-%      \nobreak
-%      \hb@xt@\@pnumwidth{\hfil\normalfont\figureversion{tab}\normalcolor #5}%
-%      \par}%
-%   \fi}
-% \end{verbatim}
-% The first redefinition causes the section numbers to be set in tabular
-% figures, the second one does the same for the page numbers. Note that, if you
-% put these definitions directly into your document then you have to surround
-% them by the commands \verb|\makeatletter| and \verb|\makeatother|.
-%
-% Further, note that these modifications only work for the standard document classes
-% \pkg{article}, \pkg{report}, and \pkg{book}. If you use other classes such as
-% \pkg{koma-script} or \pkg{memoir} then you have to copy their respective definitions and insert
-% the command \verb|\figureversion{tab}| at the appropriate places.
+% \begin{options}
+% \item[toc]    use tabular figures in the table of contents
+% \item[eqno]   use tabular figures for equation numbers
+% \item[enum]   use tabular figures in enumerate environments
+% \item[bib]    use tabular figures in the bibliography
+% \item[lineno] use tabular figures for line numbers (this affects only the
+%               \pkg{doc} class)
+% \end{options}
 %
 % \section{Additional font shapes and symbols}
 %
