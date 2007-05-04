@@ -27,7 +27,7 @@ requires_otftotfm_version() {
   fi
 }
 
-requires_otftotfm_version 2.60
+requires_otftotfm_version 2.62
 
 # Parse options.
 

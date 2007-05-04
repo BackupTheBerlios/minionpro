@@ -64,6 +64,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[expansion=false]{microtype}
 \usepackage[minionint]{MinionPro}
+\usepackage[toc,enum,lineno]{tabfigures}
 \usepackage[greek,british]{babel}
 \usepackage{array,booktabs,pifont,paralist,calc}
 \usepackage[unicode,bookmarks]{hyperref}
@@ -126,8 +127,8 @@
   \endlist
 }
 \newenvironment{code}{\begin{quote}\small}{\end{quote}}
-\renewcommand\theCodelineNo{%
-  \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
+%\renewcommand\theCodelineNo{%
+%  \normalfont\scriptsize\figureversion{tabular}\arabic{CodelineNo}}
 \settowidth\MacroIndent{\normalfont\scriptsize\figureversion{tabular}0000\ }
 \renewcommand\Module[1]{%
   \mathcode`\|="2353 \mathcode`\&="2026 $\langle\mathsf{#1}\rangle$}
@@ -147,12 +148,7 @@
 % \author{Achim Blumensath \and Andreas B\"uhmann \and Michael Zedler}
 % \date{\fileversion\ -- \filedate}
 % \maketitle
-%
-% \begingroup
-% \figureversion{tabular}%
-% \renewcommand\familydefault{MinionPro-TOsF}%
 % \tableofcontents
-% \endgroup
 %
 % \section{Overview}
 %
@@ -349,7 +345,7 @@
 % tabular figures only in tables and lists. Unfortunately most \LaTeX\ document
 % classes do not support fonts with several figure versions. Therefore we
 % provide a package \pkg{tabfigures} that patches some common document classes
-% and packages (the standard \LaTeX\ clases, KOMA-Script, \pkg{memoire}, and
+% and packages (the standard \LaTeX\ clases, KOMA-Script, \pkg{memoir}, and
 % \pkg{amsmath}) to use tabular figures at some places. The \pkg{tabfigures}
 % package supports the following options:
 %
@@ -553,6 +549,7 @@
 %   \item fixed package option \option{abx}
 %   \item added support for \pdfTeX~1.4 \acro{cmap} inclusion
 %   \item update to \pkg{microtype} version~1.8
+%   \item added \pkg{tabfigures} to automatically handle tabular figures in toc, equation labels, bibliographies, enumerations
 %   \item fixed \verb|\t| accent
 %   \item fixed \verb|\r| accent in \acro{OT1} encoding
 %   \item fixed slashed zero in font version 2.000
