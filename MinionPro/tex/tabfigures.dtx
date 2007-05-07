@@ -5,7 +5,7 @@
 %</driver>
 %<package>\ProvidesPackage{tabfigures}
 %<*driver|package>
-[2007/04/28 v0.1c Tabular figures (patches)]
+[2007/05/07 v0.1d Tabular figures (patches)]
 %</driver|package>
 %<*driver>
 \documentclass{ltxdoc}
@@ -294,8 +294,8 @@
   \AtBeginDocument{%
     \Tf@def\@biblabel{\Tf@font \Tf@\@biblabel}%
     \@ifpackageloaded{biblatex}{%
-      \DeclareFieldFormat{labelnumberwidth}{\Tf@font #1}%
-      \DeclareFieldFormat{labelalphawidth}{\Tf@font #1}%
+      \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{\Tf@font #1}}%
+      \DeclareFieldFormat{labelalphawidth}{\mkbibbrackets{\Tf@font #1}}%
     }{}%
   }%
 }
