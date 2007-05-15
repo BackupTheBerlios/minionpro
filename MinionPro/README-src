@@ -11,7 +11,7 @@ These files are public domain.
 Requirements
 ============
 
-o LCDF Typetools, version 2.36 or better (http://www.lcdf.org/type/)
+o LCDF Typetools, version 2.62 or better (http://www.lcdf.org/type/)
 o fontinst v1.925 or better
 
 Building
@@ -31,24 +31,25 @@ Building
 
 makeall has some options to specify which metrics to create:
 
-  --verbose        show warning messages from otftotfm
-  --quiet          omit these messages (default)
-  --smallcaps      create small caps metrics (default)
-  --nosmallcaps    turn --smallcaps off
-  --swash          create swash metrics (default)
-  --noswash        turn --swash off
-  --greek          create greek metrics (default)
-  --nogreek        turn --greek off
-  --cyrillic       create cyrillic metrics (default)
-  --nocyrillic     turn --cyrillic off
-  --vietnamese     create vietnamese metrics (default)
-  --novietnamese   turn --vietnamese off
-  --expanded       create expanded metrics for pdftex
-  --noexpanded     turn --expanded off (default)
-  --kern           add some missing kerning pairs (default)
-  --nokern         use the original Adobe kerning
-  --wide-spacing   increase the sidebearings of quote glyphs
-  --narrow-spacing turn --wide-spacing off (default)
+  --verbose            show warning messages from otftotfm
+  --quiet              omit these messages (default)
+  --smallcaps          create small caps metrics (default)
+  --nosmallcaps        turn --smallcaps off
+  --swash              create swash metrics (default)
+  --noswash            turn --swash off
+  --greek              create greek metrics (default)
+  --nogreek            turn --greek off
+  --cyrillic           create cyrillic metrics (default)
+  --nocyrillic         turn --cyrillic off
+  --vietnamese         create vietnamese metrics (default)
+  --novietnamese       turn --vietnamese off
+  --expanded           create expanded metrics for pdftex
+  --noexpanded         turn --expanded off (default)
+  --kern               add some missing kerning pairs (default)
+  --nokern             use the original Adobe kerning
+  --wide-spacing       increase the sidebearings of quote glyphs
+  --narrow-spacing     turn --wide-spacing off (default)
+  --pack=<glyph-list>  create base fonts to reduce the size of the map file
 
 Installing
 ==========
