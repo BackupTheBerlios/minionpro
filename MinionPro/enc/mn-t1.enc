@@ -9,6 +9,7 @@
 % LIGKERN hyphen hyphen =: endash ; endash hyphen =: emdash ;
 % LIGKERN quoteleft quoteleft =: quotedblleft ;
 % LIGKERN quoteright quoteright =: quotedblright
+% LIGKERN comma comma =: quotedblbase ;
 %
 /MinionPro-T1Encoding [          % now 256 chars follow
 % 0x00
