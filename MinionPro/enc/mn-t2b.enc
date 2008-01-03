@@ -1,4 +1,9 @@
 % CODINGSCHEME TEX CYRILLIC FONT ENCODING - T2B
+% LIGKERN quoteleft quoteleft =: quotedblleft ;
+% LIGKERN quoteright quoteright =: quotedblright ;
+% LIGKERN comma comma =: quotedblbase ;
+% LIGKERN less less =: guillemotleft ;
+% LIGKERN greater greater =: guillemotright ;
 /MinionPro-T2BAdobeEncoding [
 % 0x00
 /grave
