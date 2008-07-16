@@ -46,6 +46,7 @@ usage() {
   echo "--cyrillic     | --nocyrillic"
   echo "--vietnamese   | --novietnamese"
   echo "--kern         | --nokern"
+  echo "--dotlessj     | --nodotlessj"
   echo "--wide-spacing | --narrow-spacing"
   echo "--expanded     | --noexpanded"
   echo "--pack=<glyph list>"
@@ -67,6 +68,7 @@ create_kerned=true
 create_smallcaps=true
 create_sc_grekcyrl=false
 create_swash=true
+create_dotlessj=true
 wide_spacing=false
 glyph_list=""
 base_font_list=""
@@ -100,6 +102,8 @@ do
     --noexpanded)     create_expanded=false;;
     --kern)           create_kerned=true;;
     --nokern)         create_kerned=false;;
+    --dotlessj)       create_dotlessj=true;;
+    --nodotlessj)     create_dotlessj=false;;
     --wide-spacing)   wide_spacing=true;;
     --narrow-spacing) wide_spacing=false;;
     --pack=*)         glyph_list="${opt#--pack=}";;
@@ -268,14 +272,17 @@ make_base_fonts() {
 
       # We also need to create a base font for the /dotlessj glyph.
 
-      echo "$font-$name--lcdfj$exp_suffix - dotlessj" >>"$font_list"
+      if $create_dotlessj
+      then
+        echo "$font-$name--lcdfj$exp_suffix - dotlessj" >>"$font_list"
 
-      echo "$font-$name--lcdfj$exp_suffix $font-${name}LCDFJ \"${exp_factor:+$exp_factor ExtendFont}\" <$font-${name}LCDFJ.pfb"
+        echo "$font-$name--lcdfj$exp_suffix $font-${name}LCDFJ \"${exp_factor:+$exp_factor ExtendFont}\" <$font-${name}LCDFJ.pfb"
 
-      otftotfm $common_flags $exp_flags --no-map --encoding=enc/dotlessj.enc "otf/$font-$name.otf" "$font-$name$exp_suffix"
+        otftotfm $common_flags $exp_flags --no-map --encoding=enc/dotlessj.enc "otf/$font-$name.otf" "$font-$name$exp_suffix"
 
-      rm "tfm/$font-$name$exp_suffix.tfm"
-      rm "vf/$font-$name$exp_suffix.vf"
+        rm "tfm/$font-$name$exp_suffix.tfm"
+        rm "vf/$font-$name$exp_suffix.vf"
+      fi
     done
   fi
 }
